@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Introduzione</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Slrn" href="slrn.html">
+    <LINK rel="PREVIOUS" title="Slrn" href="slrn.html">
+    <LINK rel="NEXT" title="File di configurazione .slrnrc" href=
+    "configurazioneslrn.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "slrn.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 15.
+          Slrn</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "configurazioneslrn.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="INTRODUZIONESLRN">15.1.
+      Introduzione</A></H1>
+
+      <P>In questa sezione trovate il file di configurazione, ampiamente
+      commentato, e i tasti principali di <B class="KEYCAP">Slrn</B>
+      (ATTENZIONE, l'HOWTO è stato aggiornato alla versione 0.9.7.1! Quindi
+      se avete qualche problema ad usarlo con versioni precedenti,
+      controllate che non stiate usando opzioni troppo recenti o con una
+      sintassi cambiata, tipo un "set..." davanti). Slrn è un news-reader (un
+      programma capace di collegarsi ad un news-server) che permette di
+      leggere <EM>ONLINE</EM> i newsgroup. Per questo motivo dovete avere
+      installato un news-server locale (guardate la sezione <B class=
+      "KEYCAP">Leafnode</B> del <EM>Quick&amp;Easy Configuration HOWTO</EM>
+      per un esempio), in modo da non dover stare collegati a internet tutto
+      il tempo in cui userete i newsgroup: infatti il news-server locale
+      scaricherà le nuove news da quello remoto, e voi usarete il news-reader
+      collegandovi in locale (quindi per usare un news-reader online dovete
+      avere IN FUNZIONE in locale il news-server, anche quando non siete
+      collegati a internet). Per indicare a slrn il server e l'editor da
+      usare, dovrete inserire nel file <TT class=
+      "FILENAME">$HOME/.bash_profile</TT> le seguenti righe (sezione <B
+      class="KEYCAP">Bash</B> del <EM>Quick&amp;Easy Configuration
+      HOWTO</EM>):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+NNTPSERVER='127.0.0.1'
+SLANG_EDITOR='mcedit %s'
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Slrn ha tre modalità di funzionamento:</P>
+
+      <OL type="1">
+        <LI>
+          <P><B class="KEYCAP">selezione newsgroup</B> - permette di vedere
+          la lista dei newsgroup presenti sul server (magari visualizzandone
+          solo una parte, tramite <EM>wildcard</EM>), sottoscrivere o
+          annullare la sottoscrizione ad essi e selezionare quello da
+          consultare</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">selezione articolo/thread</B> - selezionando
+          un newsgroup entrerete in questa modalità, che permette di
+          scegliere gli articoli da salvare, marcarli come letti o meno,
+          inviare un nuovo articolo, oppure rispondere ad uno già presente
+          con un <EM>followup</EM> (sul newsgroup) o un <EM>reply</EM> (per
+          email)</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">lettura articolo</B> - selezionando un
+          articolo per la lettura, è poi possibile leggerlo, rispondere per
+          email (tasto <B class="KEYCAP">r</B>) o sul newsgroup (tasto <B
+          class="KEYCAP">f</B>), salvarlo (tasto <B class="KEYCAP">o</B>) o
+          inviarne uno nuovo (tasto <B class="KEYCAP">P</B>), o ancora
+          stamparlo (tasto <B class="KEYCAP">y</B>).</P>
+        </LI>
+      </OL>
+
+      <P>Il tasto <B class="KEYCAP">?</B> permette di avere sempre un aiuto,
+      qualunque sia la modalità selezionata. <B class="KEYCAP">q</B> permette
+      di ritornare alla modalità precedente o di uscire se si è in quella di
+      selezione newsgroup. La prima volta che userete slrn, dovrete farlo con
+      l'opzione <B class="KEYCAP">-create</B>, che genera, nella directory
+      indicata nel file di configurazione, altre sottodirectory e il file che
+      contiene la copia locale dei newsgroup presenti sul server (nel caso
+      ciò non avvenga, create le directory <B class="KEYCAP">$HOME/News/</B>,
+      <B class="KEYCAP">$HOME/News/decoded/</B>, <B class=
+      "KEYCAP">$HOME/News/other/</B> e <B class=
+      "KEYCAP">$HOME/News/postponed/</B>, oltre a <B class=
+      "KEYCAP">$HOME/News/.Slrn/</B>). In seguito basterà lanciare in comando
+      <B class="COMMAND">slrn</B> da solo, senza opzioni. In genere al primo
+      avvio vi ritroverete con già sottoscritti alcuni newsgroup cui forse
+      non siete interessati, e avete due possibilità: o scorrere la lista a
+      mano e deselezionare i newsgroup uno ad uno con il tasto <B class=
+      "KEYCAP">u</B>, oppure uscire e dare i seguenti comandi nella directory
+      <B class="KEYCAP">$HOME/News/</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+tr \: \! &lt; .newsrc &gt; .newsrc.new
+rm .newsrc
+mv .newsrc.new .newsrc
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per effettuare le sottoscrizioni, premere <B class="KEYCAP">L</B> e
+      inserire una parte del nome del newsgroup, tipo: <B class=
+      "KEYCAP">*.comp.os.*</B>, poi spostatevi sui newsgroup da sottoscrivere
+      e premere <B class="KEYCAP">s</B>, infine premete ancora <B class=
+      "KEYCAP">L</B> per visualizzare solo i newsgroup sottoscritti.</P>
+
+      <P>A volte può capitare di voler rileggere un articolo o un
+      <EM>thread</EM> già letto e per questo non più visualizzato da slrn: si
+      può farlo con la sequenza <B class=
+      "KEYCAP">&lt;Esc&gt;1&lt;Return&gt;</B> o con <B class=
+      "KEYCAP">&lt;Esc&gt;1&lt;Esc&gt;p</B>. La prima riscarica dal server
+      tutti gli articoli già letti (riconoscibili da una <B class=
+      "KEYCAP">D</B> all'inizio della riga), mentre la seconda riconstruisce
+      solo il thread corrente. Per applicare uno stesso comando a più
+      articoli (ad esempio per salvare un intero thread), selezionateli prima
+      con <B class="KEYCAP">;</B> o <B class="KEYCAP">#</B>, e poi applicate
+      il comando normalmente. I file generati da slrn quando si salva un
+      articolo o un thread sono in formato <EM>standard mailbox</EM>, quindi
+      per aprirli usate l'opzione adatta del vostro mail-reader (per esempio
+      per <SPAN class="APPLICATION">Mutt</SPAN> usate: <B class=
+      "COMMAND">mutt -f /path/del/file/salvato</B>).</P>
+
+      <P>Una caratteristica molto utile di slrn è il cosiddetto <B class=
+      "KEYCAP">scoring</B>: esso permette di assegnare un <EM>punteggio</EM>
+      agli articoli in base ad alcuni criteri. Questo permette ad esempio di
+      marcare come già letti gli articoli con subject che non vi interessano
+      (<B class="KEYCAP">killing</B>, da cui <EM>killfile</EM>, sinonimo di
+      <EM>scorefile</EM>), oppure di assegnare punteggi alti ad articoli
+      contenenti determinati subject o provenienti da determinate persone,
+      così come di assegnarne di bassi ad altri, facendo in modo da avere
+      nell'elenco degli articoli per primi quelli più interessanti, e via di
+      seguito gli altri. Premendo il tasto <B class="KEYCAP">K</B> su un
+      articolo e rispondendo ad alcune semplici domande, si genera una voce
+      all'interno dello scorefile, che è possibile visionare o modificare con
+      la sequenza di tasti <B class="KEYCAP">&lt;Esc&gt;1 K</B>. In genere
+      dovrete usare delle espressioni regolari, potete vederne la sintassi
+      nella sezione di <B class="KEYCAP">Procmail</B> del <EM>Quick&amp;Easy
+      Configuration HOWTO</EM>.</P>
+
+      <P>Se volete evitare di scaricare del tutto gli articoli che non vi
+      interessano, dovete impostare di conseguenza il news-server, non il
+      news-reader (guardate la parte apposita nella sezione di Leafnode del
+      <EM>Quick&amp;Easy Configuration HOWTO</EM>).</P>
+
+      <P>Altri comandi e consigli sono di seguito, nella descrizione dei
+      tasti principali di slrn, mentre molte altre informazioni e macro
+      possono essere trovate nell'ottimo <B class=
+      "KEYCAP">Slrn-Slrnpull-HOWTO</B> di <A href=
+      "http://web.tiscalinet.it/airaghi" target="_top">Alessandro
+      Airaghi</A>, oppure nel manuale ufficiale di <B class=
+      "KEYCAP">Slrn</B>, che mi sono smadonnato a tradurre in italiano per
+      voi! ;-) Lo trovate in vare versioni nell'area "Download" del mio sito:
+      <A href="http://www.mrshark.it" target=
+      "_top">http://www.mrshark.it</A>.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "slrn.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "configurazioneslrn.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Slrn</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "slrn.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">File di configurazione
+          .slrnrc</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

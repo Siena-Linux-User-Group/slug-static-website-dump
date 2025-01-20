@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Loadlin</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="FSRESIZE" href="fsresize.html">
+    <LINK rel="NEXT" title="Kernel" href="kernel.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "fsresize.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "kernel.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="LOADLIN">Capitolo 2. Loadlin</A></H1>
+
+      <P>In questa sezione spiego come avviare Linux con <B class=
+      "COMMAND">Loadlin</B>, un programma DOS che permette di evitare di
+      installare <B class="KEYCAP">Lilo</B> da qualsiasi parte, utile spesso
+      quando si ha a che fare con multiple (e frequenti) installazioni di
+      Windows, che solitamente sovrascrivono l'MBR eliminando Lilo. Verrà
+      anche mostrato l'uso di un menu che faciliterà la scelta dell'OS, oltre
+      alla gestione di due diversi kernel (per esempio uno stabile e uno in
+      prova - duplicate le relative sezioni per averne altri).</P>
+
+      <P>Create una directory (io la chiamo <B class="KEYCAP">loadlin</B>,
+      perché in <B class="KEYCAP">linux</B> ho installato <EM>mulinux</EM>,
+      per emergenze) nella vostra partizione Windows e copiateci dentro il
+      kernel stabile che usate (da Linux, è nella directory <B class=
+      "KEYCAP">/boot</B>), rinominandolo <B class="KEYCAP">vmlinuz.old</B>, e
+      l'eventuale nuovo kernel in prova, rinominandolo <B class=
+      "KEYCAP">vmlinuz.new</B>. Copiateci dentro anche <B class=
+      "COMMAND">loadlin.exe</B>, dalla directory <B class=
+      "KEYCAP">Dosutils</B> presente nel cd della vostra distribuzione. Ora
+      create il file <B class="COMMAND">c:\loadlin\linuxold.bat</B> come
+      segue:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+loadlin.exe @loadlin.old
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e create il file delle impostazioni <B class=
+      "KEYCAP">c:\loadlin\loadlin.old</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+vmlinuz.old
+root=/dev/hdb2
+ro
+vga=extended
+mem=128M
+append="reserve=0x300,64 ether=9,0x300,eth0"
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Il primo rigo è il nome del file del kernel; il secondo
+      (MODIFICATELO per il vostro sistema! Altre info nella pagina delle
+      Partizioni) è la partizionie di root di linux; il terzo è OBBLIGATORIO
+      per montare il filesystem a sola lettura (ci penserà il processo
+      principale init a rimontartlo in lettura/scrittura durante l'avvio); il
+      quarto rigo è opzionale (a me piace la console 80x50); il quinto
+      permette di specificare se avete più di 64 mbyte di RAM, nel caso non
+      vengano riconosciuti tutti; l'ultimo rigo serve per comunicare
+      parametri per qualche periferica che devono essere passati al kernel
+      (in questo caso una scheda di rete NE2000 compatibile ISA).</P>
+
+      <P>Se avete il secondo kernel in prova, create anche il file <B class=
+      "COMMAND">c:\loadlin\linuxnew.bat</B> come segue:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+loadlin.exe @loadlin.new
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e create il secondo file delle impostazioni <B class=
+      "KEYCAP">c:\loadlin\loadlin.new</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+vmlinuz.new
+root=/dev/hdb2
+ro
+vga=extended
+mem=128M
+append="reserve=0x300,64 ether=9,0x300,eth0"
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ora modificate il file <B class="KEYCAP">c:\msdos.sys</B> (PRIMA
+      date: <B class="COMMAND">attrib -s -h -r c:\msdos.sys</B>) nelle
+      seguenti righe:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+... altre cose presenti da non toccare
+[Options]
+BootGUI=0
+Logo=0
+... altre cose presenti da non toccare
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>NON cancellate tutte quelle x alla fine, il file deve essere più
+      lungo di 1024 byte. Rimettete a posto i permessi con <B class=
+      "COMMAND">attrib +s +h +r c:\msdos.sys</B>. Ora il file <B class=
+      "KEYCAP">c:\config.sys</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+[Menu]
+menuitem=Win98, Avvia Windows 98...
+menuitem=MSdos, Avvia MS-DOS...
+menuitem=Linux_New, Avvia Linux-New...
+menuitem=Linux_Old, Avvia Linux-Old...
+menudefault=Win98,5
+
+[Win98]
+DEVICE=C:\WINDOWS\HIMEM.SYS
+DEVICE=C:\WINDOWS\EMM386.EXE NOEMS
+DOS=HIGH,UMB
+
+[MSdos]
+DEVICE=C:\WINDOWS\HIMEM.SYS
+DEVICE=C:\WINDOWS\EMM386.EXE NOEMS
+DOS=HIGH,UMB
+
+[Linux_New]
+
+[Linux_Old]
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Naturalmente prendete tutto quello che già avete nel vostro <B
+      class="KEYCAP">config.sys</B> e copiatelo in entrambe le sezioni Win98
+      e MSdos (dovrebbero essere uguali), al posto di quello che ho messo io.
+      Ultimo file, <B class="KEYCAP">c:\autoexec.bat</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+goto %config%
+
+:Win98
+rem ... inserite le altre cose presenti nel vostro autoexec.bat
+rem le 4 righe seguenti non servono per linux, ma tornano utili con win ;-)
+deltree /y c:\windows\temp
+md c:\windows\temp
+set tmp=c:\windows\temp
+set temp=c:\windows\temp
+win
+goto end
+
+:MSdos
+rem ... inserite le altre cose presenti nel vostro autoexec.bat
+rem le 4 righe seguenti non servono per linux, ma tornano utili con win ;-)
+deltree /y c:\windows\temp
+md c:\windows\temp
+set tmp=c:\windows\temp
+set temp=c:\windows\temp
+goto end
+
+:Linux_New
+call c:\loadlin\linuxnew.bat
+goto end
+
+:Linux_Old
+call c:\loadlin\linuxold.bat
+goto end
+
+:end
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Un consiglio: dati i noti disservizi di Windows, se avete 2 o più
+      partizioni VFAT, spostate la directory loadlin in un'altra partizione e
+      modificate i path (magari copiateci dentro per backup anche i file <B
+      class="KEYCAP">autoexec.bat</B>, <B class="KEYCAP">config.sys</B> e <B
+      class="KEYCAP">msdos.sys</B>). Nel caso aggiorniate il kernel,
+      ricordate di ricopiare il nuovo file nella directory <B class=
+      "KEYCAP">loadlin</B>!!!</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "fsresize.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "kernel.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">FSRESIZE</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Kernel</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

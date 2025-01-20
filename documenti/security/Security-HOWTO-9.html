@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Preparazione della Sicurezza (prima di entrare in rete)</TITLE>
+ <LINK HREF="Security-HOWTO-10.html" REL=next>
+ <LINK HREF="Security-HOWTO-8.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc9" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-10.html">Avanti</A>
+<A HREF="Security-HOWTO-8.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc9">Indice</A>
+<HR>
+<H2><A NAME="secure-prep"></A> <A NAME="s9">9. Preparazione della Sicurezza (prima di entrare in rete)</A></H2>
+
+<P>Bene: avete controllato il sistema, &egrave; sicuro per quanto possibile e 
+siete pronti a metterlo in rete. Ci sono alcune cose che dovreste fare ora per
+prepararvi ad un'intrusione, in modo da poter mettere fuori gioco velocemente
+l'aggressore e tornare alla piena funzionalit&agrave;.
+<P>
+<H2><A NAME="ss9.1">9.1 Fate un backup completo della macchina.</A>
+</H2>
+
+<P>La discussione dei metodi di backup va oltre gli scopi di questo documento, ma
+vanno spese alcune parole su backup e sicurezza: 
+<P>Se avete meno di 650mb di dati da salvare su una partizione, un CD-R &egrave;
+un'ottima strada (perch&eacute; difficile da manomettere e molto durevole).
+Nastri e altri media riscrivibili dovrebbero essere protetti dalla scrittura
+non appena il backup &egrave; completo e quindi verificati per evitare la 
+manomissione. Assicuratevi di lasciare i backup in un'area sicura e off-line.
+Un buon backup vi dar&agrave; un buon punto di riferimento da cui ripristinare
+il sistema.
+<P>
+<P>
+<H2><A NAME="ss9.2">9.2 Scegliere una Buona Tabella di Backup</A>
+</H2>
+
+<P>Un ciclo di sei nastri &egrave; facile da mantenere. Prevede quattro nastri per
+la settimana, uno per i Venerd&igrave; pari e uno per quelli dispari. Eseguite 
+un backup incrementale ogni giorno, e un backup completo sul nastro del
+Venerd&igrave;. Potreste fare un backup completo anche per dei particolari
+cambiamenti importanti. 
+<P>
+<P>
+<H2><A NAME="ss9.3">9.3 Fate un Backup dei Vostri Database di RPM o Debian</A>
+</H2>
+
+<P>Nel caso di un'intrusione, potete usare il vostro database di pacchetti come
+usereste <CODE>tripwire</CODE>, ma solo se siete sicuri che non &egrave; stato
+modificato. Dovreste copiare il database RPM in un floppy e tenerlo sempre
+off-line. Probabilmente la Debian ha qualcosa di simile.
+<P>I file <CODE>/var/lib/rpm/fileindex.rpm</CODE> e <CODE>/var/lib/rpm/packages.rpm</CODE>
+probabilmente non entreranno in un solo floppy, ma se compressi dovrebbero
+entrare in un floppy ciascuno.
+<P>Ora, se il vostro sistema viene compromesso potete usare il comando:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+                        root#  rpm -Va
+</PRE>
+</CODE></BLOCKQUOTE>
+
+per verificare ogni file sul sistema. Leggete la pagina man di <CODE>rpm</CODE>,
+perch&eacute; esistono alcune opzioni che possono essere usate per avere un
+output pi&ugrave;: conciso. Ricordate che dovete essere sicuri che anche 
+l'eseguibile di RPM non sia stato compromesso.
+<P>Questo significa che ogni volta che viene aggiunto al sistema un RPM, il
+database dovr&agrave; essere ri-archiviato.  voi decidere i vantaggi contro
+gli svantaggi.
+<P>
+<P>
+<H2><A NAME="logs"></A> <A NAME="ss9.4">9.4 Tenete Nota dei Dati degli Account</A>
+</H2>
+
+<P>&Egrave; molto importante che le informazioni che vengono da <CODE>syslog</CODE>
+non siano modificate. Rendendo leggibili e scrivibili file in <CODE>var/log</CODE>
+solo da poche persone &egrave; un buon inizio. 
+<P>Assicuratevi di tenere d'occhio cosa viene scritto l&igrave; soprattutto in
+<CODE>auth</CODE>. La presenza di molti login falliti, per esempio, indica una
+tentata intrusione.
+<P>Dove cercare i log dipende dalla vostra distribuzione. In un sistema Linux
+conforme al "Linux Filesystem Standard", come RedHat, cercherete in
+<CODE>/var/log</CODE> e controllerete <CODE>messages</CODE>,
+<CODE>mail.log</CODE>, ed altri.
+<P>Potete capire dove il sistema tiene i log leggendo il file <CODE>/etc/syslog.conf</CODE>.
+Questo &egrave; il file che dice a <CODE>syslogd</CODE> (il demone dei log di sistema)
+dove tenere i messaggi dei log.
+<P>Potreste anche voler configurare lo script o il demone che alterna i log per
+fargli tenere  a lungo i log per avere tutto il tempo di esaminarli. Date
+un'occhiata al pacchetto <CODE>logrotate</CODE> su distribuzioni RedHat recenti.
+Altre distribuzioni hanno probabilmente un processo simile. 
+<P>Se i vostri log sono stati manomessi, cercate di capire quando &egrave; iniziata
+la manomissione e cosa sembra cambiato. Ci sono lunghi periodi di tempo che
+non hanno log? Controllare i nastri di backup in cerca di log intatti &egrave;
+un buon inizio.
+<P>Gli intrusori in genere modificano i log per coprire le loro tracce, ma
+dovrebbero comunque essere controllati. Potreste notare l'intrusore che cerca
+un accesso o sfrutta un programma per ottenere l'account di root. Potreste
+vedere voci nei log che l'intrusore non ha avuto il tempo di cambiare.
+<P>Dovreste anche assicurarvi di separare <CODE>auth</CODE> dagli altri log, inclusi
+i tentativi di cambiare utente con <CODE>su</CODE>, i tentativi di login, e altre
+informazioni sugli account.
+<P>Se possibile, configurate <CODE>syslog</CODE> per mandare una copia dei log ad un
+sistema sicuro. Questo eviter&agrave; che un intrusore cancelli le sue tracce
+insieme ai tentativi di login/su/ftp/ecc. Leggete la pagina man di <CODE>syslog.conf</CODE>
+e cercate l'opzione <CODE>@</CODE>.
+<P>Ci sono diversi altri programmi <CODE>syslogd</CODE> pi&ugrave; avanzati. Leggete
+<A HREF="http://www.core-sdi.com/ssyslog/">http://www.core-sdi.com/ssyslog/</A> a proposito di Secure Syslog.
+Secure Syslog permette di crittare le voci del syslog per essere sicuri che
+nessuno le manometta. 
+<P>Un altro <CODE>syslogd</CODE> con altre caratteristiche &egrave; 
+<A HREF="http://www.balabit.hu/products/syslog-ng.html">syslog-ng</A>. Vi permette molta flessibilit&agrave; e critta i flussi
+remoti di syslog per evitare la manomissione. 
+<P>In fine, i log sono inutili se nessuno li controlla. Prendetevi del tempo ogni
+tanto per leggere i vostri log e farvi un'idea di come devono essere in normali
+condizioni. Saperlo fa risaltare molte cose strane.
+<P>
+<P>
+<H2><A NAME="ss9.5">9.5 Applicate Tutti i Nuovi Aggiornamenti di Sistema.</A>
+</H2>
+
+<P>Molti utenti Linux istallano da un CD-ROM. A causa della natura repentina degli
+aggiornamenti di sicurezza, vengono rilasciati continuamente nuovi programmi.
+Prima di connettere la vostra macchina alla rete &egrave; bene controllare sul
+sito ftp della vostra distribuzione e prendere tutti i pacchetti aggiornati da
+quando avete installato il CD-ROM. Spesso questi pacchetti contengono molte
+soluzioni di sicurezza, quindi &egrave; una buona idea installarli. 
+<P>
+<P>
+<HR>
+<A HREF="Security-HOWTO-10.html">Avanti</A>
+<A HREF="Security-HOWTO-8.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc9">Indice</A>
+</BODY>
+</HTML>

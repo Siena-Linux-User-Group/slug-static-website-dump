@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>FIPS</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Partizioni" href="partizioni.html">
+    <LINK rel="PREVIOUS" title="Prerequisiti generali" href=
+    "prerequisitigenerali.html">
+    <LINK rel="NEXT" title="FSRESIZE" href="fsresize.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "prerequisitigenerali.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 1.
+          Partizioni</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "fsresize.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="FIPS">1.5. FIPS</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="INTRODUZIONEFIPS">1.5.1.
+        Introduzione</A></H2>
+
+        <P><B class="KEYCAP">Fips</B> è un programma molto potente, che
+        permette di ridurre le dimensioni delle partizioni primarie FAT (Fips
+        1.5 e 2.0) e FAT32 (solo Fips 2.0). Fips riduce lo spazio di una
+        partizione PRIMARIA modificando alcuni valori nella Tavola delle
+        Partizioni e nel settore di boot, creando nello spazio che rimane
+        vuoto una nuova partizione PRIMARIA (NON formattata, quindi se vi
+        serve di nuovo per DOS/Windows, dovete formattarla, mentre se vi
+        serve per Linux potete o cambiarle l'identificativo con fdisk DI
+        LINUX o eliminarla per poi creare le partizioni che servono da Linux,
+        come esposto nella prima parte). Per questo Fips NON funziona su
+        partizioni estese, ma solo su quelle primarie, e funziona solo se NON
+        avete già raggiunto il limite di 4 partizioni primarie per hard-disk.
+        Fips non cambia la dimensione dei cluster né il tipo di FAT della
+        partizione originaria, mentre per quella nuova i cluster saranno
+        generati in base alla dimensione della partizione, come fa usualmente
+        Format, tranne se si ha una FAT32, nel cui caso i cluster saranno di
+        4 kbyte.</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PREREQUISITIFIPS">1.5.2. Prerequisiti
+        all'uso di FIPS</A></H2>
+
+        <P>Preparate il dischetto come spiegato prima e dalla directory dove
+        avete scompattato Fips copiateci dentro i file: <B class=
+        "COMMAND">restorrb.exe</B>, <B class="COMMAND">fips.exe</B> e <B
+        class="COMMAND">errors.txt</B>. Leggete tutte le istruzioni generali
+        date in precedenza.</P>
+
+        <DIV class="WARNING">
+          <TABLE class="WARNING" border="1" width="100%">
+            <TR>
+              <TD align="CENTER"><B>Attenzione</B></TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT">
+                <P>ATTENZIONE: se usate Stacker/Superstor/DoubleSpace per
+                comprimere una parte del vostro hard-disk, o se usate On
+                Track Disk Manager o EZdrive per estendere le capacità di
+                riconoscimento degli hard-disk eide da parte dei vecchi bios,
+                o ancora nel caso di hard-disk SCSI, leggete il file
+                SPECIAL.txt che accompagna Fips e gli altri documenti.</P>
+              </TD>
+            </TR>
+          </TABLE>
+        </DIV>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="USOFIPS">1.5.3. Uso di FIPS</A></H2>
+
+        <P>Infilate il floppy preparato prima e riavviate il pc. Al prompt
+        lanciate <B class="COMMAND">fips</B>, il quale dopo aver controllato
+        di non essere in ambiente multitasking incomincerà a controllare
+        quanti hard-disk ci sono nel pc, permettendo di scegliere, poi mostra
+        la tabella delle partizioni dell'hard-disk scelto, effettua il
+        controllo del settore principale e nel caso di più partizioni
+        primarie, permette di scegliere quella su cui operare. Mostra quindi
+        il settore di avvio della partizione scelta, fa degli altri controlli
+        e verifica che le due copie della FAT siano congruenti, poi verifica
+        lo spazio vuoto alla fine della partizione. In ognuno di questi casi,
+        se viene riscontrato un errore, Fips esce al prompt fermandosi e
+        segnalando l'errore riscontrato. Viene chiesto quindi di salvare lo
+        stato attuale della tabella delle partizioni sul floppy, per poter
+        tornare indietro in caso di errori. <B class="KEYCAP">FATELO!</B> Se
+        tutto va bene, viene permesso di ridimensionare la partizione in modo
+        visuale, tramite i tasti cursore. Quando avete raggiunto una
+        situazione accettabile, premete Invio. Fips rifà di nuovo tutti i
+        controlli, vi mostra la nuova tabella delle partizioni e vi chiede se
+        volete continuare, premendo <B class="KEYCAP">C</B>. Fips rifà ancora
+        tutti i controlli (pignolo, eh? ;-) ) e vi chiede se volete scrivere
+        la nuova tabella delle partizioni su disco. Se premete <B class=
+        "KEYCAP">Y</B> essa viene scritta sul disco e ritornate al prompt.
+        Tutto fatto! Ora RIAVVIATE il pc per rendere attivi i cambiamenti e
+        verificate il tutto. NON fate niente sul disco prima di aver
+        riavviato. Se qualcosa non vi soddisfa, ripristinate la situazione
+        precedente ripartendo dal dischetto su cui avete salvato la tabella
+        delle partizioni (perché l'avete fatto, vero? ;-) ) usando <B class=
+        "COMMAND">restorrb</B>. Controllate di nuovo la vecchia partizione
+        con <B class="COMMAND">Scandisk</B> o altro, riavviate il pc per
+        vedere che parta come prima. Per usare la partizione sotto DOS o
+        Windows, oppure per suddividerla ancora, DOVETE prima formattarla
+        (ATTENZIONE alle lettere, sicuramente sono cambiate!). Per usarla
+        sotto Linux, usate il suo fdisk per cambiarle l'ID di tipo da FAT a
+        Linux Native o Linux Swap, e usate <B class="COMMAND">MKFS</B> per
+        creare un file-system EXT2. Dovreste a questo punto essere a posto
+        (più o meno, fino a quando la metà oscura del vostro hard-disk
+        (DOS/Win) non sarà stata eliminata ;-) ).</P>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "prerequisitigenerali.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "fsresize.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Prerequisiti
+          generali</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "partizioni.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">FSRESIZE</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

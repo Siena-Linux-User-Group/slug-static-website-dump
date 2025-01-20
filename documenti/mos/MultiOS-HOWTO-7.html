@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html><head>
+ <meta name="GENERATOR" content="LinuxDoc-Tools 0.9.21"><title>Managing Multiple Operating Systems HOWTO: Costo e suggerimenti:</title>
+ 
+ <link href="MultiOS-HOWTO-6.html" rel="previous">
+ <link href="MultiOS-HOWTO.html#toc7" rel="contents"></head>
+
+<body>
+Avanti
+<a href="MultiOS-HOWTO-6.html">Indietro</a>
+<a href="MultiOS-HOWTO.html#toc7">Indice</a>
+<hr>
+<h2><a name="s7">7.</a> <a href="MultiOS-HOWTO.html#toc7">Costo e suggerimenti:</a></h2>
+
+<h2><a name="ss7.1">7.1</a> <a href="MultiOS-HOWTO.html#toc7.1">Costo:</a>
+</h2>
+
+<p>Ho trovato un supporto per dischi removibili e una guida a 20$. E' il
+"SNT MOBILE RACK". I dischi non mi sono costati nulla perché avevo diversi
+vecchi o piccoli dischi IDE in giro, in seguito a aggiornamenti, e così via.
+Anche se dovete acquistarli, i dischi da 2 Gb sono a buon mercato.</p>
+
+<h2><a name="ss7.2">7.2</a> <a href="MultiOS-HOWTO.html#toc7.2">Suggerimenti:</a>
+</h2>
+
+<p>1.  Una volta che decidete se il vostro disco removibile dev'essere
+configurato come master o come slave, impostate correttamente i ponticelli
+prima di fissarlo al suo supporto. Se ve ne dimenticate, far risalire
+eventuali problemi di avvio a un errata impostazione dei ponticelli può
+richiedere diverso tempo.</p>
+
+<p>2.  Accertatevi che le routine di installazione di un S/O possano vedere
+SOLO il drive sul quale stanno eseguendo l'installazione. La RedHat si è
+rifiutata di lasciarmi installare LILO nel MBR SCSI se poteva vedere il
+drive IDE. Per cui, al fine di effettuare l'installazione su un drive SCSI
+interno, ho dovuto rimuovere fisicamente l'IDE. Per effettuare
+l'installazione su di un IDE, ho dovuto disabilitare nel BIOS il supporto SCSI.</p>
+
+<p>3.  Se il programma di installazione di un S/O vi dice che sta per
+ripartizionare TUTTI i vostri drive sovrascrivendo TUTTO, credeteci.</p>
+
+<p>4.  E' molto facile collegare un cavo IDE a rovescio.</p>
+
+<p>5.  Ho sperimentato unicamente una configurazione IDE master/master.
+Non sono sicuro di come funzionerebbe una configurazione master/slave.</p>
+
+<p>6.  Installare il supporto per il disco removibile richiede l'apertura del
+case del computer. Se non siete pratici di questo, trovate un amico che vi aiuti.</p>
+
+<p>7.  Se impostate nel BIOS il disco removibile a uno specifico tipo di disco
+funzionerà a dovere finché non lo rimpiazzate con un disco di tipo diverso.
+A questo punto avrete messaggi d'errore o avvertimenti e il sistema potrebbe
+non avviarsi.</p>
+
+<p>8.  Pianificate ogni cosa in anticipo.</p>
+
+<p>9. Con una rapida modifica nel BIOS, il secondo disco diventa il vostro
+disco d'avvio. Questo significa che potete avere un S/O pienamente
+funzionante da usare come disco di emergenza/ripristino.</p>
+
+<hr>
+Avanti
+<a href="MultiOS-HOWTO-6.html">Indietro</a>
+<a href="MultiOS-HOWTO.html#toc7">Indice</a>
+</body></html>

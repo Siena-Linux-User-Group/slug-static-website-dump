@@ -1,0 +1,560 @@
+<html><head>
+<title>VPN with IPsec using Freeswan</title>
+</head><body bgcolor=#FFFFFF>
+<center><strong>VPN with IPsec using Freeswan</strong></center>
+<center><small>o "sentirsi in locale da remoto" :-)</small></center>
+<br><br><small><i>Last update 02 Dic 2002</i></small>
+<br><br>
+<b>[0] Discaimer e note legali</b>
+<blockquote>
+<pre>
+Copyright (c) 2002 by O-Zone <a href="mailto:o-zone@zerozone.it">o-zone@zerozone.it</a>.
+This material may be distributed only subject to the terms and
+conditions set forth in the Open Publication License, v0.4 or
+later (the latest version is presently available at
+http://www.opencontent.org/openpub/). Distribution of substantively 
+modified versions of this document is prohibited without the 
+explicit permission of the copyright holder.
+Distribution of the work or derivative of the work in any standard
+(paper) book form is prohibited unless prior permission is obtained
+from the copyright holder.
+
+Tutto cio' che e' espresso nel presente documento riguarda la personale
+esperienza con il programma in questione. Nessuna responsabilita' potra'
+essere addossata all'autore per danni derivati dall'uso proprio e improprio
+del suddetto. Non mi riterro' in nessun caso responsabile dei risultati
+provocati dall'uso delle procedure qui' descritte ne' dai possibili problemi
+che ne possano derivare. Uso a vostro unico rischio. Solo a scopo didattico.
+</pre>
+</blockquote>
+<b>[1] Introduzione</b>
+<blockquote>
+Ciao a tutti ! Ho scritto questo documento, una semplie e chiara guida, dopo 
+aver sbattuto ripetutamente la testa con IPsec e FreeSwan. Avendo visto, 
+con mio grande dispiacere, che di HOWTO in Italiano non ce ne sono e che i 
+documenti disponibili in inglese sono spesso incompleti ed arcani, eccomi 
+quà a scriverne uno basato UNICAMENTE sulla mia esperienza con FreeSwan e 
+SSH Sentinel (che è un prodotto commerciale reperibile su 
+<a href="http://www.ssh.com">www.ssh.com</a>). Cercherò di essere chiaro e 
+comprensibile anche a chi ha pochissime basi teoriche spiegando (o 
+cercando di spiegare <zic>) le basi dei tunnels e delle VPN anche 
+riferendomi a quanto scritto su <i>Reti di Computer di A. Tanembaum</i> 
+che consiglio a tutti come testo di riferimento per le reti informatiche. 
+Ricordo che, comunque, non sono un ingegnere informatico percui potrò 
+risultare impreciso ed usare termini non corretti. Vi prego di informarmi 
+di ciò a o-zone(at)zerozone.it ! 
+<br> Come mai mi sono trovato a perdere tempo con le VPN ? 
+Bè essenzialmente per lavoro ! Qualche anno addietro mi son trovato con 
+l'incarico di collegare due Intranet aziendali tra loro attraverso 
+Internet. Ci sono diverse possibilità, tra cui il PPP (e relativo PPtP), 
+ma ho deciso di basare il lavoro anche sulla sicurezza ed affidabilità 
+percui IPsec è risultata la scelta ideale. Non vi nego che per "tirare sù" 
+il mio primo tunnel ho impiegato diversi giorni ma vi dico anche che dopo 
+averlo fatto la prima volta la seconda è come...compiliare le GTK ;-) ! Ma 
+ora basta con le chiacchere ed iniziamo a scoprire questi fantastici 
+oggetti chiamati VPN :-)
+</blockquote> <b>[2] VPN o "Teoria dei tunnels"</b> 
+<blockquote>
+VPN è l'acronimo di Virtual Private Network (ovvero Rete Privata 
+Virtuale). Si intende, cioè, una rete privata *virtuale* ma pur sempre 
+privata ! Come si ottiene la privacy della nostra rete ? Semplice: 
+attraverso la cifratura. Non starò a spiegarvi lo scambio di chiavi 
+secondo Diffie-Hellman o, più in dettaglio, il sistema IKE per lo scambio 
+delle chiavi attraverso rete insicura. Vi dirò semplicemente che i due 
+"sbocchi" del tunnel posseggono entrambi una chiave pubblica e una 
+privata. Essi si scambiano tra loro la chiave pubblica e la usano per 
+crittare i messaggi destinati al proprietrio della rispettiva chiave 
+privata. Esempio: due host A e B con le rispettive chiavi pubbliche pkA e 
+pkB e le rispettive chiavi private skA e skB. A invia a B la sua pkA e B 
+invia ad A la sua pkA. Quando A deve mandare un messaggio a B prende la 
+pkB e codifica il messaggio. B, alla ricezione del messaggio codificato 
+con pkB, utilizza la skB per decodificarlo. Per ulteriori informazioni su 
+questo sistema consiglio due letture: <i>Codici e Segreti di Simon 
+Singh</i> e <i>Segreti spie codici cifrati di Giustozzi Monti Zimuel</i> 
+e, se proprio volete vedere in pratica come poterlo usare vi consiglio 
+<i>Kriptonite</i> che trovate sia in libreria che in rete a <a 
+href="http://www.ecn.org/kriptonite">www.ecn.org/kriptonite</a>.
+<br>
+Praticamente cosa succede ? In fase di configurazione (nel caso di 
+Freeswan) si mette, nel file di configurazione dei tunnels, la pkA (o la 
+pkB) del PC all'altro capo. Se la pkA (o la pkB) inserite non sono 
+corrette, l'altro capo non può decodificare il messaggio ed il tunnel non 
+viene aperto. C'è anche un'altro sistema di sicurezza supplementare basato 
+sugli IP (ma questo non è possibile nel caso di RoadWarriors, che vedremo 
+dopo). Ora però non vorrei dirvi troppo sullo scambio di chiavi e passiamo 
+a cosa significa avere una VPN tra due PC (o reti di PC). Immaginiamo il 
+seguente scenario:<br>
+<pre>
+
+   *A Intranet*                                        *B Intranet*
+
+ [PC x.1]-----+
+              |                                             
+[PC x.2]----[ H ]                                      [ H ]----[PC x.2]
+            [ U ]--[ROUTER]---( Internet )---[ROUTER]--[ U ]
+[PC x.4]----[ B ]                                      [ B ]----[PC x.1]
+              |  
+ [PC x.3]-----+
+
+La rete *A Intranet* ha gli IP come 10.0.0.x
+La rete *B Intranet* ha gli IP come 10.0.1.x
+</pre>
+ed immaginiamo che il PC 10.0.0.1 (della *A Intranet*) sia un File Server 
+di documenti aziendali importanti, segreti e riservatissimi ! Supponiamo 
+che la sede B (*B Intranet*) debba necessariamente accedere a tali 
+documenti. Come possiamo essere sicuri che i dati ivi contenuti non 
+vengano intercettati nel loro cammino attraverso Internet (intesa come 
+Rete insicura) ? Semplice: cifrando i dati in transito ! Possiamo creare 
+una VPN IPsec usando Freeswan (che è rilasciato sotto licensa GPL ed è 
+Open Source) <a href="http://www.freeswan.org">www.freeswan.org</a> e, una 
+volta terminato il lavoro (dopo vi spiego come) potete, da un qualsiasi PC 
+di *A Intranet* accedere a *B Intranet* e viceversa. In pratica una 
+azienda può estendere la sua Intranet aziendale oltre il perimetro 
+dell'edificio senza dover affittare costosissime CDN (o HDSL) dedicate ma 
+utilizzando una connessione ad Internet (ovvio che nel caso di transito di 
+molti dati un modem ISDN o 56K non è sufficente :-)). In pratica quello 
+che vi ho descritto è ciò che ho realizzato qualche anno fà ed ancora oggi 
+funziona perfettamente senza aver richiesto alcun intervento tecnico. Ma 
+ora basta chiacchere e passiamo ad un minimo di teoria !
+</blockquote> 
+<b>[3] IPsec</b>
+<blockquote>
+IPsec è il termine per l'Internet Security Protocol ben descritto e 
+progettato dall'IETF (Internet Engineering Task Force) <a 
+href="http://www.ietf.org">www.ietf.org</a>. Ci sono diverse 
+implementazioni di IPsec e non tutte sono compatibili tra loro. Ripeto che 
+in questo documento tratteremo ESCLUSIVAMENTE FreeSwan. Nella pagina IPsec 
+dell'IETF sono contenuti tutti i documenti che descrivono lo scambio delle 
+chiavi (IKE),l'incapsulamento (ESP) del payload ed altre specifiche più o 
+meno interessanti. Nell'appendice c'è il link alla pagina. Ora è il caso 
+di passare a vedere FreeSwan più da vicino.
+</blockquote> 
+<b>[4] Freeswan</b>
+<blockquote>
+<b>ATTENZIONE ! PREMESSA !</b><br>
+Ciò che state per leggere si basa sulla MIA PERSONALE ESPERIENZA e 
+presuppone una distribuzione Slackware 8.0, il kernel 2.4.19 (anche 
+successivi della serie 2.4 dovrebbero andare bene),freeswan 1.99 e la 
+capacità di compilare/configurare il kernel da soli. Una discerta 
+conoscenza del sistema è richiesta (non mi metto a spiegare dove sono i 
+log, come funziona il comando dmesg, cos'è un Firewall etc etc...). La 
+macchina deve essere connessa ad una rete ed essere in grado di 
+utlizzarla (in pratica, la rete DEVE funzionare). Ovvio che, come 
+specificato nel DISCLAIMER, non mi assumo alcuna responsabilità per 
+quanto fate o farete.<br><br>
+</blockquote>
+<b>[4.0] Prima di iniziare (ovvero: software richiesto)</b>
+<blockquote>
+<pre>
+* Un kernel vanilla (puro come Linus Torvald l'ha rilasciato :-)) 
+  preferibilmente 2.4.19
+* dhcp v3.0pl1 (ISC)
+* dhcprelay v0.3.1
+* OpenSSL 0.9.6a (o successivi che sono preferibili)
+* FreeS/WAN v1.99
+* IPTables 
+</blockquote>
+<b>[4.1] Installare FreeSwan</b>
+<blockquote>
+Scaricatevi il pacchetto freeswan-1.99 da <a 
+href="http://www.freeswan.org/download.html">www.freeswan.org/download.html</a> 
+e scompattatelo con 'tar xzvf freeswan-1.99.tar.gz'. Se desiderate il supporto dei certificati 
+x509 (SSL) dovete prendervi la patch relativa che trovate su <a 
+href="http://www.strongsec.com/freeswan">www.strongsec.com/freeswan</a>. 
+In questo caso scompattatevi la patch con 'tar xzvf 
+x509patch-0.9.15-freeswan-1.99.tar.gz' ed installatela seguendo le 
+istruzione contenute nel README. A questo punto siete nella directory 
+'freeswan-1.99' ed avete già letto attentamente sia il README che 
+l'INSTALL (due file molto importanti da leggere SEMPRE !). A questo punto, 
+probabilmente, dovrete fare un bel 'make menugo'. Dopo varie applicazioni 
+al vostro povero kernel ;-) vi appare la schermata di configurazione 
+ncurses del kernel (quella che ottenete facendo un 'make menuconfig' 
+quando configurate il kernel). A questo punto passate direttamente a 
+'Networking Options'. Probabilmente potete saltare tutto e dirigervi in 
+fondo a tale pagina. Fate in modo di avere questo:
+<pre>
+[*] IP Security Protocol (FreeS/WAN IPSEC)
+--- IPsec options (FreeS/WAN)
+[*] IPSEC: IP-in-IP encapculation (tunnel mode)
+[*] IPSEC: Authentication Header
+[*] 	HMAC_MD5 ...
+[*]	HMAC-SHA1 ...
+[*] IPSEC: Encapsulating Security Paload
+[*]	3DES encryption algorithm
+[*] IPSEC: IP Compression
+[*] IPSEC Debugging Option
+</pre>
+Appena finito uscite dalla configurazione (salvatela !) ed aspettate che 
+FreeSwan finisca di fare tutti i suoi lavoretti di compilazione. Appena 
+tornate al prompt è l'ora di ricompilare il kernel con 'make kinstall'. e 
+successivamente 'make install'. A questo punto, con buona probabilità, 
+siete pronti per ripartire con IPsec. Fate un bel reboot della macchina ed 
+osservate bene i messaggi di avvio del Kernel: ad un certo punto dovreste 
+avere un qualcosa che dice (controllate con 'dmesg'):
+<pre>
+klips_info:ipsec init: KLIPS startup, FreeS/WAN IPsec version: 1.99
+</pre>
+Adesso siamo pronti per iniziare a configurare il nostro amico.
+</blockquote>
+<b>[4.1] Configurare FreeSwan</b>
+<blockquote>
+Sotto la directory '/etc' dovreste avere due file: 'ipsec.conf' e 
+'ipsec.secrets' oltre ad una directory './ipsec.d'. In breve:
+<pre>
+<i>ipsec.conf</i> contiene la configurazione di FreeSwan
+<i>ipsec.secrets</i> contiene le chiavi segrete (e deve essere tenuto al 
+sicuro !)
+<i>./ipsec.d/</i> conterrà i certificati x509 (se ne avete bisogno)
+</pre>
+La configurazione di default che trovate in 'ipsec.conf' è relativamente 
+utile per capire come funziona FreeSwan: dateci uno sguardo. Adesso 
+tracciatevi un grafico sulla topologia della Vostra rete e di cosa VOLETE 
+ottenere. In questo HowTo ci baseremo su due tipi di rete: la prima è 
+quella già proposta nel capitolo 2 (*A Intranet* e *B Intranet* che devono 
+condividere risorse) mentre l'altra si basa su una Intranet Aziendale e 
+tanti PC "satellite" che si connettono a richiesta usando SSH Sentinel ed 
+un certificato x509. 
+<br>
+<b>[4.1.1] RoadWarriors</b>
+<blockquote>
+Ecco un grafico della situazione:
+<pre>
+   *A Intranet*                                        *RoadWarriors*
+
+ [PC x.1]-----+
+              |
+[PC x.2]----[ H ]             ( ........ )-----------[PC x.2]
+            [ U ]--[ROUTER]---( Internet )---[PC x.x]
+[PC x.4]----[ B ]             ( ........ )-------[PC x.x]
+              |
+ [PC x.3]-----+
+
+La rete *A Intranet* ha gli IP come 10.0.0.x 
+I RoadWarriors ottengono l'IP da un server DHCP su [ROUTER]
+</pre>
+Un pò di terminologia: "RoadWarrior" (letteralmente: guerriero di strada) 
+è un PC (presumibilmente un portatile) che cambia spesso IP e si connette 
+da qualsiasi punto della rete. E' ovvio che un tunnel con IP fissi sia 
+inapplicabile ! Ecco che, per l'autentificazione, utilizzeremo dei 
+certificati x509 rilasciati dall'amministratore della Intranet a CHI ha il 
+permesso di accedervi da remoto. Come generare tali certificati lo vedremo 
+nel capitolo seguente. Per ottenere queste funzionalità dovete 
+NECESSARIAMENTE installare FreeSwan con la Patch per x509 (Capitolo 4 par. 
+0). Iniziamo con il solito grafico della nostra Intranet. Nel nostro caso 
+abbiamo una rete interna con IP 10.0.0.x (anche ottenuti con DHCP) e tanti 
+PC connessi ad internet con un qualunque IP. Guardiamo solo il lato del 
+server Linux che funziona come [ROUTER] ed ha IP pubblico, supponiamo, 
+203.100.0.2 ed è raggiungibile da QUALSIASI punto della rete (è molto 
+importante che sia un IP pubblico, non NAT !). Nel file 'ipsec.conf' nel 
+capitolo 7 par. 2 vediamo:
+<pre>
+	....
+        right=%any
+        rightrsasigkey=%cert
+        leftid=@server.esempio.it
+        left=203.100.0.2
+        leftnexthop=203.100.0.1
+        leftsubnet=10.0.0.0/24
+	....
+</pre>
+Cosa significa 'left' e 'right' ? 'left' e 'right' sono i "capi" del 
+nostro tunnel e dobbiamo dire a FreeSwan quali sono. Possiamo usare la 
+direttiva '%any' per indicare qualsiasi IP (in questo esempio 'right' è 
+l'eventuale PC che fà da RoadWarriow) e left l'IP pubblico del server 
+(203.100.0.2 ad esempio). Se il nostro server, che ha come nome canonico 
+'server.esempio.it' è connesso ad Internet tramite un router è opportuno 
+indicare l'IP di quest'ultimo nella direttiva 'leftnexthop'. La direttiva 
+'leftsubnet' stà ad indicare la classe di indirizzi IP della Intranet a 
+"sinistra" del server. Il metodo di autentificazione per la parte a destra 
+('right') è '%cert' (certificato) ed è specificata nella direttiva 
+'rightrsasigkey'. Quale certificato usare lo specifichiamo nelle direttive 
+del tunnel:
+<pre>
+conn roadwarrior
+        right=%any
+        rightid="C=IT, ST=Italy, L=Siena, O=LaMiaBellaOrganizzazione....."
+        rightsubnetwithin=10.0.0.0/23
+        leftsubnet=10.0.0.0/24
+</pre>
+In questo caso il 'rightid' contiene i dati del certificato da usare per 
+autenticare il client.
+Eventualmente la descrizione delle singole direttive e relativa sintassi 
+sono in 'man ipsec.conf' ;-).
+Per la configurazione del DHCP e DHCPRelay guardare i file esemplificativi 
+in fondo al documento.
+</blockquote>
+<b>[4.1.2] Tunnel tra due punti fissi</b>
+<blockquote>
+Questo è molto più semplice del precedente. Lo scenario è il seguente:
+<pre>
+
+   *A Intranet*                                        *B Intranet*
+
+ [PC x.1]-----+
+              |
+[PC x.2]----[ H ]                                      [ H ]----[PC x.2]
+            [ U ]--[ROUTER]---( Internet )---[ROUTER]--[ U ]
+[PC x.4]----[ B ]                                      [ B ]----[PC x.1]
+              |
+ [PC x.3]-----+
+
+La rete *A Intranet* ha gli IP come 10.0.0.x
+La rete *B Intranet* ha gli IP come 10.0.1.x
+</pre>
+Generiamo, in ambedue i ROUTER, le coppie di chiavi pubbliche e private di 
+ciascuno utilizzando il comando 'freeswan-1.99/utils/newhostkey' e 
+prendiamo nota della chiave pubblica di ciascun host (che dobbiamo poi 
+mettere nel file di configurazione del router opposto). E' importante che 
+ambedue i ROUTER abbiano IP pubblici. Dobbiamo, a questo punto, curarsi di 
+due direttive principali:
+<pre>
+        authby=rsasig
+        leftrsasigkey=SCRIVI QUI PUBLIC KEY DELLA SEDE A$
+        rightrsasigkey=SCRIVI QUI PUBLIC KEY DELLA SEDE B$
+</pre>
+Queste due direttive contengono, per entrambi i ROUTER, lo stesso valore ! 
+Infatti 'left' e 'right' non sono relativi all'host ma SONO SEMPRE GLI 
+STESSI ! Se decidicamo che 'left' è la *B Intranet* lo sarà su entrambi i 
+ROUTER. Mi sembra abbastanza chiaro cosa dovrete fare ! Una hostkey è una 
+stringa si caratteri simile a questa (NON LA USATE !):
+<pre>        
+#pubkey=0sAQOZLmi4X72dbdFxSumebLbIf4T1dwmouT1GfdAnp1CgLNJMAESaeyuC+7nTv+....
+</pre>
+e la trovate nel file /etc/ipsec.secrets. Ovvio che DOVETE GENERARE LA 
+VOSTRA CHIAVE E MAI MAI MAI MAI!!! UTILIZZARE QUELLA DI DEFAULT ! :-)
+Una volta che avete messo le rispettive chiavi nei rispettivi posti 
+iniziate a configurare la parte relativa agli IP:
+<pre>
+        # SEDE A
+        left=xxx.xxx.xxx.xxx
+        leftsubnet=10.0.0.0/24
+        leftnexthop=xxx.xxx.xxx.zzz  # Esterna
+        # Right security gateway, subnet behind it, next hop toward left.
+        # SEDE B
+        right=yyy.yyy.yyy.yyy
+        rightsubnet=10.0.1.0/24
+        rightnexthop=yyy.yyy.yyy.www # Esterna
+</pre>
+anche in questo caso 'rightnexthop' si applica solo se avete un router tra 
+voi ed Internet. E' molto importante che gli IP siano corretti e che dal 
+'left' della SEDE A si riesca a pingare il 'right' della SEDE B altrimenti 
+nulla funzionerà (FreeSwan non connetterà magicamente due host che non 
+sono connessi alla rete in maniera corretta !).
+</blockquote>
+A questo punto siete pronti ad avviare IPsec con il comando 
+'/etc/rc.d/init.d/ipsec --restart' :-).
+Facendo un 'man ipsec' oppure 'ipsec --help' potete vedere tutte le 
+molteplici opzioni. Generalmente si utilizza solo 'ipsec whack --status' 
+per controllare se il tunnel è sù.
+</blockquote>
+<b>[5] Generare ed utilizzare certificati x509 (SSL)</b>
+<blockquote>
+Per questa sezione, al momento, basatevi sull'HowTo che trovate insieme ad 
+SSH Sentinel: <a 
+href="http://www.ssh.com/support/sentinel/documents.cfm">SSH's  
+Sentinel-FreeSWAN interop PDF (X.509)</a>.
+</blockquote>
+<b>[6] Configurare il vostro RoadWarrior per l'uso con il DHCP</b>
+<blockquote>
+Sul RoadWarrior ho installato Win2000 ed utilizzo SSH Sentinel come 
+implementazione IPsec. SSH Sentinel NON è software GPL nè è gratuito ! 
+C'è una versione di prova sul sito <a href="http://www.ssh.com">www.SSH.com</a>.
+Per la configurazione guardatevi l'HOW-TO relativo che trovate sul sito. 
+In due parole basta importare il certificato generato sul server e dire 
+l'IP del server. Poco più.
+</blockquote>
+<b>[7] ipsec.conf</b>
+<blockquote>
+<b>[7.1] ipsec.conf tunnel semplice</b>
+<blockquote>
+<small>In questo esempio la eth0 è connessa alla rete interna (intranet) e 
+la eth1 ha IP pubblico ed è connessa alla rete (tramite router Cisco 
+2611)</small><br> 
+<b>/etc/ipsec.conf</b>
+<pre>
+# basic configuration
+config setup
+        interfaces="ipsec0=eth1"
+        klipsdebug=none
+        plutodebug=none
+        plutoload=%search
+        plutostart=%search
+        uniqueids=yes
+
+# defaults for subsequent connection descriptions
+conn %default
+        keyingtries=0
+        spi=0x200
+        esp=3des-md5-96
+        espenckey=0x01234567_xxxxxx_xxxxxx_xxxxx_xxxxxxx_xxxxxx
+        espauthkey=0x12345678_xxxxxxxx_xxxxxxx_xxxxxxx
+
+conn tunnel
+        # Left security gateway, subnet behind it, next hop toward right.
+        # SEDE A
+        left=xxx.xxx.xxx.xxx
+        leftsubnet=10.0.6.0/24
+        leftnexthop=xxx.xxx.xxx.zzz  # Esterna
+        # Right security gateway, subnet behind it, next hop toward left.
+        # SEDE B
+        right=yyy.yyy.yyy.yyy
+        rightsubnet=10.0.0.0/24
+        rightnexthop=yyy.yyy.yyy.www # Esterna
+        keyingtries=0
+        auto=start
+        # RSA authentication with keys from DNS.
+        authby=rsasig
+	leftrsasigkey=SCRIVI QUI PUBLIC KEY DELLA SEDE A$        
+	rightrsasigkey=SCRIVI QUI PUBLIC KEY DELLA SEDE B$
+</pre>
+</blockquote>
+<b>[7.2] ipsec.conf con DHCP (dhcpd.conf), DHCPRelay e x509 (SSL)</b>
+<blockquote>
+<small>In questo esempio la eth0 e la eth1 sono interfacce con IP pubblici 
+e la eth2 è l'interfaccia della Intranet. ipsec0 è bindato sulla 
+eth0.</small><br>
+<b>/etc/ipsec.conf</b>
+<pre>
+# basic configuration
+config setup
+        interfaces="ipsec0=eth0"
+        klipsdebug=none
+        plutodebug=none
+        plutoload=%search
+        plutostart=%search
+        uniqueids=yes
+        strictcrlpolicy=yes
+        dumpdir=/root
+
+# defaults for subsequent connection descriptions
+# (these defaults will soon go away)
+conn %default
+        keyingtries=3
+        compress=yes
+        disablearrivalcheck=no
+        authby=rsasig
+        keyexchange=ike
+        ikelifetime=240m
+        keylife=60m
+        pfs=yes
+        esp=3des
+        right=%any
+        rightrsasigkey=%cert
+        leftid=@[Nome canonico del server]
+        left=[IP del Server]
+        leftnexthop=[Eventuale IP del router - Il gateway del server]
+        leftsubnet=10.0.0.0/24
+        leftupdown=/usr/local/lib/ipsec/updown.x509
+        leftcert=/etc/ipsec.d/myCert.pem
+        auto=add
+
+conn dhcp
+        rekey=no
+        keylife=30s
+        rekeymargin=15s
+        leftprotoport=udp/bootps
+        rightprotoport=udp/bootpc
+
+conn roadwarrior
+        right=%any
+        rightid="C=IT, ST=Italy, L=Siena, O=LaMiaBellaOrganizzazione....."
+        rightsubnetwithin=10.0.0.0/23
+        leftsubnet=10.0.0.0/24
+
+conn roadwarrior-sentinel
+        right=%any
+        rightid="C=IT, ST=Italy, L=Siena, O=....."
+        leftsubnet=0.0.0.0/0
+        rightsubnetwithin=10.0.0.0/24
+</pre>
+<b>/etc/ipsec.secrets</b>
+<pre>
+: RSA   /etc/ipsec.d/private/myKey.pem "mysecretkey"
+</pre>
+<b>/etc/dhcpd.conf</b>
+<pre>
+# Intranet configuration file for ISC dhcpd
+option domain-name "xxxx.it";
+option domain-name-servers ns1.xxxx.it, ns2.xxxx.it;
+default-lease-time 600;
+max-lease-time 7200;
+ddns-update-style ad-hoc;
+authoritative;
+log-facility syslog;
+
+class "vpn-clients" {
+        match if option agent.circuit-id = "ipsec0";
+}
+
+subnet 0.0.0.0 netmask 0.0.0.0 {
+        ddns-updates off;
+        ddns-hostname "10.0.0.1";
+        option x-display-manager 10.0.0.1;
+        option domain-name-servers 10.0.0.1;
+        option domain-name "firewall.xxxxx.it";
+        option subnet-mask 255.255.255.0;
+        option host-name "firewall.xxxx.it";
+        option routers 10.0.0.1;
+        option broadcast-address 10.0.0.255;
+        pool {
+            allow members of "vpn-clients";
+            range 10.0.0.201 10.0.0.220;
+            default-lease-time 3600;
+            max-lease-time 7200;
+        }
+        pool {
+            deny members of "vpn-clients";
+            range 10.0.0.20 10.0.0.200;
+            default-lease-time 7200;
+            max-lease-time 14400;
+        }
+}
+</pre>
+<b>/usr/local/etc/dhcprelay.conf</b>
+<pre>
+# DHCP-Relay configuration file
+# $Id: VPN-IPsec-Freeswan-HOWTO.html,v 1.1.1.1 2006/04/16 16:13:49 pragma Exp $
+
+# Logfile
+LOGFILE="/var/log/dhcprelay.log"
+
+# IPSec devices (comma separated list including NO spaces)
+DEVICES="ipsec0"
+
+# Device over which the DHCP-Server can be reached
+SERVERDEVICE="lo"
+
+# Hostname or IP Address of the DHCP-Server
+DHCPSERVER="10.0.0.1"
+
+</pre>
+</blockquote>
+</blockquote>
+<b>[8] Cose da ricordare</b>
+<blockquote>
+<pre>
+(1) I server [ROUTER] devono potersi pingare (raggiungere) tra loro 
+altrimenti NULLA funzionerà mai. Se non dovessero essere raggiungibili 
+avete un problema con la rete e FreeS/WAN non vi aiuterà.
+
+(2) Non deve esserci NAT (o MASQ) tra i server ROUTER (esistono delle 
+patch per ovviare a ciò) altrimenti i pacchetti IP type 52 e 53 non 
+passeranno.
+
+(3) Verificate e riverificate di aver messo le chiavi corrette (meglio un 
+Copy&Paste).
+
+(4) Non vi arrabbiate se non funziona tutto subito ! FreeS/WAN è molto 
+complesso ma una volta che ci siete riusciti, vi assicuro, la 
+soddisfazione è grande !
+
+(5) Ricordatevi che una VPN non risolve tutti i vostri problemi di 
+sicurezza. Usate software aggiornato ed un buon firewall (IPTables è 
+ottimo !)
+</blockquote>
+<b>[9] Appendice</b>
+<blockquote>
+<a href="http://www.ietf.org/html.charters/OLD/ipsec-charter.html">IETF 
+IPsec</a>
+</blockquote>
+</body></html>

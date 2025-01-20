@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Introduzione</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Masterizzazione" href="masterizzazione.html">
+    <LINK rel="PREVIOUS" title="Masterizzazione" href="masterizzazione.html">
+    <LINK rel="NEXT" title=
+    " Compilazione del kernel per il riconoscimento del masterizzatore "
+    href="kernelmaster.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "masterizzazione.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 16.
+          Masterizzazione</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "kernelmaster.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="INTRODUZIONEMASTERIZZAZIONE">16.1.
+      Introduzione</A></H1>
+
+      <P>In Linux il processo di masterizzazione di CD-R/RW avviene
+      attraverso due fasi ben distinte che spesso su altri sistemi operativi
+      avvengono con l'uso di un unico software. Le due fasi sono: la
+      creazione dell'immagine <B class="KEYCAP">ISO9660</B> (il filesystem
+      con il quale i normali cd dati sono organizzati), più le eventuali
+      estensioni, ed il processo di scrittura vera e propria sul cd. Per la
+      realizzazione delle immagini ci si avvale quasi universalmente di <B
+      class="COMMAND">mkisofs</B>, mentre per il <EM>burning</EM> i programmi
+      sono <B class="COMMAND">cdrecord</B> e <B class="COMMAND">cdrdao</B>.
+      Sono tutti e tre programmi sotto licenza GPL che lavorano a linea di
+      comando e contemplano una quantità di opzioni che ne fa degli strumenti
+      di una difficoltà (solo iniziale però) ed una versatilità veramente
+      notevoli. Ciò non vuol dire che non si possano usare interfacce
+      grafiche varie, ma queste sono _sempre_ front-ends di questi tre
+      programmi (a volte anche di altri meno usati). In questo capitolo
+      tratterò dell'uso di <B class="COMMAND">cdrecord</B>+<B class=
+      "COMMAND">mkisofs</B>. <B class="COMMAND">cdrdao</B> è, a detta di
+      molti, un programma altrettanto valido (se non di più per alcuni
+      aspetti, tipo la copia al volo di cd-audio), ma non lo conosco (verrà
+      aggiunto in una prossima revisione del <EM>Quick&amp;Easy Configuration
+      HOWTO</EM>). Spero di colmare questa lacuna il più presto possibile, e,
+      se nel frattempo, qualcuno vuole contribuire all'howto aggiungendo una
+      sezione su <B class="COMMAND">cdrdao</B> eviterò in tutti i modi di
+      offendermi... ;-)</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>Tutti i comandi che citerò in cui è incluso <B class=
+              "COMMAND">cdrecord</B> dovranno essere dati come utente <B
+              class="KEYCAP">root</B>, dato che <B class=
+              "COMMAND">cdrecord</B> manda comandi privilegiati attraverso
+              l'interfaccia SCSI. Impostare il <EM>setuid</EM> per <B class=
+              "COMMAND">cdrecord</B> in modo da poter masterizzare come
+              utente qualunque non è una buona idea per la sicurezza del
+              sistema. Personalmente preferisco "essere root", poi ognuno può
+              fare come vuole, quindi quelli che seguono sono i comandi per
+              "setuidare" cdrecord.</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# chown root.root /usr/bin/cdrecord
+# chmod 4111 /usr/bin/cdrecord
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Il processo di cd-burning in Linux consta di solito di tre fasi:</P>
+
+      <OL type="1">
+        <LI>
+          <P>facciamo riconoscere al nostro pinguino il masterizzatore</P>
+        </LI>
+
+        <LI>
+          <P>spappoliamo alcuni cd tanto per gradire (ottimi sottobicchieri,
+          ma devono essere di un numero multiplo di 6)</P>
+        </LI>
+
+        <LI>
+          <P>una volta capito bene il funzionamento delle cose ci
+          dimenticheremo di cosa sia un buffer underrun (a meno di non
+          cercarcelo proprio)</P>
+        </LI>
+      </OL>
+
+      <P>Alcune precisazioni a quanto detto:</P>
+
+      <UL>
+        <LI>
+          <P>con un po' di attenzione la fase 3 può essere saltata</P>
+        </LI>
+
+        <LI>
+          <P>la necessità di creare precedentemente un'immagine dei dati
+          presume che si abbia sull'hard-disk uno spazio libero equivalente
+          all'immagine che deve essere creata (650-700 Mbyte)</P>
+        </LI>
+
+        <LI>
+          <P>con una macchina abbastanza potente (diciamo un PII 350 o
+          superiore, ed equivalenti) possiamo anche "saltare" la fase di
+          creazione dell'immagine su hard-disk e passare i dati di <B class=
+          "COMMAND">mkisofs</B> direttamente a <B class=
+          "COMMAND">cdrecord</B></P>
+        </LI>
+
+        <LI>
+          <P>coi cd bruciati nella fase 2, oltre a dei sottobicchieri, si
+          possono ricavare dei simpatici ed originali orologi a muro ;-)</P>
+        </LI>
+      </UL>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "masterizzazione.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "kernelmaster.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Masterizzazione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "masterizzazione.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Compilazione del kernel
+          per il riconoscimento del masterizzatore</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

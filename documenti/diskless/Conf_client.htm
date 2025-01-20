@@ -1,0 +1,562 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="it">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><title>Bootstrap remoto con macchine diskless HOWTO --- © Alessandro Illiano</title>
+     <p align="left">Avanti <a href="Conf_server.htm">Indietro</a>
+     <a href="index.html">Indice </a>
+    <hr>
+</head>
+
+
+<body>
+
+<p align="left"><font size="5"><b>5. Configurazione dei client</b></font></p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<a name="immagine"></a>
+<p align="left"><font size="4">5.1 Creazione dell'immagine del kernel </font>
+</p>
+<p align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+Per preparare a dovere la configurazione
+per i client è necessario compilare il kernel (<b><i>make menuconfig</i></b> o
+<b><i>make xconfig</i></b> a vostro piacere) nel seguente modo:</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+<br>
+&nbsp;</p>
+<ul>
+  <ul>
+    <li>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+    Abilitare la scheda di rete presente
+    sul pc e <i>compilarla staticamente all'interno del kernel</i></li>
+    <li>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+    sotto <i>Networking options </i>
+    abilitare:<ul>
+      <li>
+      <p style="MARGIN-BOTTOM: 0cm; TEXT-DECORATION: none" align="left">
+      <i>IP: kernel level
+      autoconfiguration</i></li>
+      <li>
+      <p style="MARGIN-BOTTOM: 0cm; TEXT-DECORATION: none" align="left">
+      <i>IP: DHCP support</i></li>
+    </ul>
+    </li>
+  </ul>
+</ul>
+<ul>
+  <ul>
+    <li>
+    <p style="MARGIN-BOTTOM: 0cm; TEXT-DECORATION: none" align="left">
+    <span style="FONT-STYLE: normal">
+    sotto </span><i>Filesystems</i><ul>
+      <li>
+      <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+      sotto <i>Network File systems </i>
+      abilitare:<ul>
+        <li>
+        <p style="MARGIN-BOTTOM: 0cm; TEXT-DECORATION: none" align="left">
+        <i>NFS file system support</i></li>
+        <li>
+        <p style="MARGIN-BOTTOM: 0cm; TEXT-DECORATION: none" align="left">
+        <i>Root file system on NFS</i></li>
+      </ul>
+      </li>
+    </ul>
+    </li>
+  </ul>
+</ul>
+<p style="MARGIN-BOTTOM: 0cm" align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">
+Ricompilare il kernel con il seguente
+comando: <b><i>make dep &amp;&amp; make bzImage</i></b></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+A questo punto e' possibile creare
+l'immagine del kernel:</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">
+mknbi-linux --output=vmlinuz.prova
+--rootdir=/172.16.0.51 --ip=172.16.0.51:172.16.1.1:172.16.0.10:255.255.0.0:486
+arch/i386/boot/bzImage</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+mknbi-linux possiamo scaricarlo da http://etherboot.sourceforge.net/</a></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+Analizziamo il comando:<br>
+&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+--output=vmlinuz.prova e' il nome
+dell'immagine del kernel che stiamo per creare<br>
+&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+--rootdir=/172.16.0.51 e' la directory
+(nel SERVER) del filesystem del client <br>
+&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+--ip=172.16.0.51:172.16.1.1:172.16.0.10:255.255.0.0:486 </p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+questo parametro e' strutturato secondo
+la seguente maschera: </p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+--ip=client:server:gateway:netmask:nome
+client arch/i386/boot/bzImage indica la directory dove si trova la bzImage
+creata con la compilazione del kernel<br>
+&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+- Adesso ci ritroveremo nella directory
+da dove abbiamo lanciato il comando un file di nome <i>vmlinuz.prova </i>che
+sarà la nostra immagine del kernel da passare ai client nella directory /tftpboot/<br>
+&nbsp;</p>
+<ul>
+  <li>
+  <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+  Per ogni dubbio consulare il manuale di
+  mknbi-linux (man mknbi-linux)</li>
+</ul>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left"><br>
+&nbsp;</p>
+<a name="floppy"></a>
+<p align="left"><font size="4">5.2 Creazione del floppy di avvio </font></p>
+<p align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">Dobbiamo scaricare <i>Etherboot </i>da <a href="http://www.etherboot.org/">
+www.etherboot.org</a> e, dopo averlo installato, seguire le istruzioni:</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">Per creare un floppy di boot nella distribuzione viene fornito uno speciale
+blocco di boot. Questo piccolo programma di 512 byte carica in memoria i blocchi
+del disco che lo seguono nel floppy e inizia l'esecuzione. Quindi, per fare un
+floppy di boot, uno deve solo concatenare il blocco di boot con il binario
+Etherboot contenente il driver per una scheda di rete, in questo modo:</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">
+# cat floppyload.bin 3c509.lzrom &gt; /dev/fd0</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">
+<i>3c509.lzrom</i><span style="FONT-STYLE: normal">
+indica il driver per la scheda di rete presente nel pc (client)</span> che e'
+disponibile in etherboot;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<i>floppyload.bin</i> indica il pacchetto
+per il boot che si trova all'interno di etherboot. </p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left"><br>
+<b>Quindi, ricapitolando, arrivati a
+questo punto, dovremmo avere (nel SERVER):</b></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">&nbsp;</p>
+<ul>
+  <li>
+  <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+  una directory chiamata /tftpboot/<ul>
+    <li>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+    all'interno di questa, le directory
+    associate agli ip dei client; nel mio caso ho:</li>
+  </ul>
+  </li>
+</ul>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+/tftpboot/172.16.0.51/</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">/tftpboot/???.??.?.??/</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">
+............. e cosi' via per ogni client</p>
+<ul>
+  <li>
+  <p style="MARGIN-BOTTOM: 0cm" align="left">
+  inoltre all'interno di /tftpboot/ ci
+  deve essere l'immagine del kernel (vmlinuz.prova) preparata con il comando '
+  mknbi-linux'</li>
+</ul>
+<ul>
+  <li>
+  <p style="MARGIN-BOTTOM: 0cm" align="left">
+  i servizi di server dhcp, tftp e nfs
+  attivi all'avvio.</li>
+</ul>
+<p style="MARGIN-BOTTOM: 0cm" align="left"><br>
+Se tutto cio' e' presente
+<span style="FONT-STYLE: normal">possiamo provare ad avviare il client
+attraverso il boot da floppy (quello creato con etherboot) e vedere se carica
+l'immagine del kernel che sta sul server DHCP.</span></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+Qua riceveremo un errore del tipo “VFS:
+cannot mount root filesystem” perche giustamente ancora non abbiamo creato la
+root filesystem del client all'interno della propria directory (/tftpboot/172.16.0.51/rootfilesystem).</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left"><br>
+Quindi basta creare la <b>rootfilesystem</b>
+ed il gioco e' fatto. </p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<a name="root"></a>
+<p align="left"><font size="4">5.3 Creazione della root file system </font></p>
+<p align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+Io ho scelto di creare la rootfilesystem
+con i pacchetti di Slackware 9.0 .</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+Se volete seguirmi ho creato uno script
+che automatizza la creazione del filesystem (ricordo che le distribuzioni
+utilizzate sono: RedHat 7.3 per il server e Slackware 9.0 per i client), purche'
+siano scaricati e copiati su cd almeno i seguenti pacchetti:</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left"><br>
+&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">aaa_base-9.0.0-noarch-1.tgz</a>
+</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+apmd-3.0.2-i386-1.tgz</a></font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2"><span style="FONT-STYLE: normal">bash-2.05b-i386-2.tgz</span></a> </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">bin-8.5.0-i386-1.tgz</a></font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+binutils-2.13.90.0.18-i386-1.tgz</a>
+</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+<span style="FONT-STYLE: normal">bootp-2.4.3-i386-1.tgz</span></a></font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2"><span style="FONT-STYLE: normal">bzip2-1.0.2-i386-4.tgz </span></a></font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">cpio-2.5-i386-1.tgz</a></font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">cxxlibs-5.0.2-i386-1.tgz </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">db1-1.85-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+<span style="FONT-STYLE: normal">db2-2.4.14-i386-1.tgz</span></a> </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">db3-3.3.11-i386-3.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">dcron-2.3.3-i386-4.tgz </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">devfsd-1.3.25-i386-2.tgz </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+devs-2.3.1-i386-13.tgz</a> </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">dhcp-3.0pl2-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+e2fsprogs-1.32-i386-2.tgz</a> </font>
+</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">elflibs-9.0.3-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+etc-5.0-noarch-11.tgz</a> </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">fileutils-4.1-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+findutils-4.1.7-i386-1.tgz</a>
+</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">floppy-5.4-i386-3.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+gawk-3.1.1-i386-2.tgz</a> </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+gdbm-1.8.0-i386-3.tgz</a></font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+glibc-2.3.1-i386-3.tgz</a> </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">glibc-i18n-2.3.1-noarch-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+glibc-solibs-2.3.1-i386-3.tgz</a>
+</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">glibc-zoneinfo-2.3.1-noarch-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+grep-2.5-i386-2.tgz</a> </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">gzip-1.3.3-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+iptables-1.2.7a-i386-2.tgz</a>
+</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">kbd-1.08-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">less-381-i386-1.tgz </font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">lftp-2.6.5-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+libtermcap-1.2.3-i386-5.tgz</a>
+</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">links-0.98-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">modutils-2.4.22-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">nc-1.10-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">ncftp-3.1.5-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">ncurses-5.3-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">nfs-utils-1.0.1-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">nmap-3.00-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">openssh-3.5p1-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">openssl-0.9.7a-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">openssl-solibs-0.9.7a-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">perl-5.8.0-i386-3.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">pkgtools-9.0.0-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">popt-1.7-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">portmap-4.0-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">procps-3.1.6-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">python-2.2.2-i386-3.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">readline-4.3-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">sed-4.0.5-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">shadow-4.0.3-i386-6.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">sh-utils-2.0-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">slang-1.4.5-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">svgalib-1.4.3-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">sysklogd-1.4.1-i386-7.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">sysvinit-2.84-i386-25.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">tar-1.13.25-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">textutils-2.0-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">util-linux-2.11z-i386-1.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">vim-6.1-i386-7.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">wget-1.8.2-i386-2.tgz</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">
+yptools-2.8-i386-2.tgz</a></font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="FONT-SIZE: 10pt" size="2">zlib-1.1.4-i386-3.tgz</font><br>
+<br>
+&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+Se avete messo su cd i pacchetti e avete
+montato il cd nel SERVER potete lanciare il mio script che vi creerà il file
+system del client all'interno della sua directory (/tftpboot/172.16.0.51);<br>
+&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+E' ESTREMAMENTE IMPORTANTE CHE LO SCRIPT
+VENGA LANCIATO DALLA DIRECTORY </p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left"><font size="3">/tftpboot/172.16.0.51/</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+LADDOVE 172.16.0.51 INDICA L'INDIRIZZO IP
+DEL CLIENT CHE IL SERVER DHCP ASSEGNA A LUI IN AUTOMATICO AL BOOTSTRAP.</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+INOLTRE LO SCRIPT VA INVOCATO
+SPECIFICANDO IL MOUNT POINT DEL CD-ROM:</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<b>Esempio:</b> <b>./nomescript /mnt/cdrom</b></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left"><font size="3"><i>Questo e' lo 
+SCRIPT:</i></font></p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">
+###################################################################################################</p>
+<p style="MARGIN-BOTTOM: 0cm" align="left">
+<span style="FONT-STYLE: normal">
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>&nbsp;Questo 
+script e' stato realizzato da Alessandro Illiano per la Yacme
+<a href="http://s.r.l/">s.r.l</a>. 
+ed e' distribuito con&nbsp; licenza GPL.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+###################################################################################################</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#!/bin/bash</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+mntpoint=$1</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Controllo dei parametri</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+if [ -z $mntpoint ]; then</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+echo &quot;Non hai specificato il mount point 
+del CD-ROM!&quot;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+echo -n &quot;Mount point del CD-ROM: &quot;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+read x</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+if [ -z $x ] || [ ! -d $x ]; then</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+echo &quot;Directory errata!&quot;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+exit 1</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+else</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+mntpoint=$x</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+fi</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+fi</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Chiede se si vuole cancellare tutto</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+echo -n &quot;Vuoi cancellare il contenuto di 
+`pwd`? [S/N] &quot;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+read x</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+if [ &quot;$x&quot; = &quot;S&quot; ] || [ &quot;$x&quot; = &quot;s&quot; ]; then</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+rm -rf *</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+find . -not -name '.' -not -name '..' 
+-type f -exec 'rm -rf {}' \;</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+fi</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Scompatta i file nel CD-ROM</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+for i in ${mntpoint}/*.tgz; do</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+tar -xvzf $i</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+done</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Toglie .new dal nome del file</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+for i in `find . -name '*.new'`;do</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+nome=`echo $i | sed -e &quot;s,.new,,&quot;`</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+mv -f $i $nome</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+done</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Sposta le librerie</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+mv -f lib/incoming/* lib/</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Crea i riferimenti mancanti in 
+ld.so.conf</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cat &gt;&gt; etc/ld.so.conf &lt;&lt; EOF</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+/lib</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+/usr/lib</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+EOF</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Crea la cache di ldconfig</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+ldconfig -r `pwd`</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Collegamento della shell</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cd bin/</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+ln -sf bash2 sh</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cd ..</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Cambia la shell di root</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cp etc/passwd pippo</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cat pippo | sed -e &quot;s,bash,bash2,&quot; &gt; etc/passwd</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+rm -f pippo</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Collegamento del comando mount</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cd sbin</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+ln -s ../bin/mount mount</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cd ..</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Creazione della directory proc</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+mkdir -p proc</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+chmod 555 proc</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Un pò di pulizia</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+mv -f etc-incoming/* etc/</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+rm -rf install</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+rm -rf etc-incoming</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+#</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal; TEXT-DECORATION: none" align="left">
+# Creazione etc/fstab</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+cat &gt; etc/fstab &lt;&lt; EOF</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+/dev/nfs / nfs defaults 0 0</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+none /proc proc defaults 0 0</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+EOF</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left"><br>
+####################################################################################################</p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+<font style="font-weight: 700">© Alessandro Illiano</font></p>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+&nbsp;</p>
+<hr>
+<p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+Avanti <a href="Conf_server.htm">Indietro</a> <a href="index.html">Indice </a></p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

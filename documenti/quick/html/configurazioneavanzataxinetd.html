@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Configurazione avanzata</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Xinetd" href="xinetd.html">
+    <LINK rel="PREVIOUS" title="Configurazione di base" href=
+    "configurazionebasexinetd.html">
+    <LINK rel="NEXT" title="Mutt" href="mutt.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "configurazionebasexinetd.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 13.
+          Xinetd</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "mutt.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CONFIGURAZIONEAVANZATAXINETD">13.3.
+      Configurazione avanzata</A></H1>
+
+      <P>Vediamo ora alcuni usi più avanzati di <SPAN class=
+      "APPLICATION">xinetd</SPAN>.</P>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="XINETDPORTBINDING">13.3.1. Port
+        binding</A></H2>
+
+        <P>Il <B class="KEYCAP">port binding</B> permette di associare un
+        servizio a un determinato indirizzo IP o a una determinata
+        interfaccia di rete. È evidente che ciò torna utile solo nel caso ci
+        siano almeno 2 interfacce di rete, ad esempio su un gateway con 2
+        ethernet, o una ethernet per la LAN e una connessione PPP, anche con
+        IP dinamico. Ad esempio di potrebbe allestire un server <B class=
+        "KEYCAP">FTP</B> cui gli utenti locali possano accedere liberamente
+        su un indirizzo IP, mentre gli utenti remoti useranno un altro
+        indirizzo IP. <SPAN class="APPLICATION">xinetd</SPAN> deve comunque
+        poter distinguere tra i 2 servizi, e questo si fa con l'attributo <B
+        class="KEYCAP">id</B>, il quale, se avete una sola chiamata per un
+        servizio, è implicito e corrisponde al nome del servizio stesso. Ecco
+        un esempio:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+service ftp
+{
+    id           = ftp-public
+    wait         = no
+    user         = root
+    server       = /usr/sbin/in.ftpd
+    server_args  = -l
+    instances    = 4
+    nice         = 10
+    only_from    = 0.0.0.0/0       # accesso a ogni client
+    bind         = 212.198.253.142 # indirizzo IP pubblico per questo server
+}
+
+service ftp
+{
+    id           = ftp-internal
+    socket_type  = stream
+    wait         = no
+    user         = root
+    server       = /usr/sbin/in.ftpd
+    server_args  = -l
+    only_from    = 192.168.1.0/24 # solo per uso interno
+    bind         = 192.168.1.1    # indirizzo IP locale per questo server
+}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>In questo modo, i client della rete locale dovranno accedere
+        all'indirizzo IP assegnato per avere accesso ai dati di loro
+        competenza. Un problema può sorgere se si usano indirizzi IP
+        dinamici, come quelli delle connessioni PPP. Si può risolvere con uno
+        script come il seguente:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh 
+PUBLIC_ADDRESS=`/sbin/ifconfig $1 | grep "inet addr" | awk '{print $2}'| awk -F: '{print $2}'` 
+sed s/PUBLIC_ADDRESS/"$PUBLIC_ADDRESS"/g /etc/xinetd.base &gt; /etc/xinetd.conf
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Lo script prevede che la configurazione di base di <SPAN class=
+        "APPLICATION">xinetd</SPAN> sia nel file <TT class=
+        "FILENAME">/etc/xinetd.base</TT>, con la stringa <B class=
+        "KEYCAP">PUBLIC_ADDRESS</B> al posto dell'IP che dovrà essere
+        sostituito. Richiamando questo script con il nome dell'interfaccia di
+        rete come suo argomento, per esempio nello script "ifup-..."
+        dell'interfaccia di rete, questa stringa viene sostituita con
+        l'indirizzo IP effettivo e viene creato il file <TT class=
+        "FILENAME">/etc/xinetd.conf</TT>, per cui basterà riavviare <SPAN
+        class="APPLICATION">xinetd</SPAN> per avere la configurazione con
+        l'indirizzo IP corretto. Certo che il tutto è molto più pratico e
+        veloce se invece degli indirizzi IP usate i nomi delle interfacce di
+        rete...</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PORTREDIRECTXINETD">13.3.2. Redirezione di
+        porte</A></H2>
+
+        <P><SPAN class="APPLICATION">xinetd</SPAN> può agire da transparent
+        proxy, tramite la redirezione delle porte, che permette di inviare le
+        richieste per un dato servizio su determinati host e porta, su
+        un'altra porta e anche su un altro host, se necessario.</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+service telnet
+{
+    flags       = REUSE
+    socket_type = stream
+    wait        = no
+    user        = root
+    server      = /usr/sbin/in.telnetd
+    only_from   = 192.168.1.0/24
+    redirect    = 192.168.1.15 23
+}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Siccome il meccanismo può essere utile ma pericoloso, è
+        consigliato fare il log su entrambi i lati della connessione, oltre
+        che usare un firewall.</P>
+
+        <DIV class="TIP">
+          <BLOCKQUOTE class="TIP">
+            <P><B>Suggerimento:</B> Hint! Hint! Chissà se si può
+            redirezionare un possibile contatto di un possibile attacker su
+            una porta qualsiasi (dove non sia in funzione già un server
+            reale) aperta all'uopo, direttamente su una porta dello stesso
+            attacker... (uno squalo bastardo... ;-) )</P>
+          </BLOCKQUOTE>
+        </DIV>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="XINETDSERVIZIINTERNI">13.3.3. Servizi
+        interni</A></H2>
+
+        <P><SPAN class="APPLICATION">xinetd</SPAN> fornisce e gestisce
+        internamente 5 servizi base UNIX: "echo, time, daytime, chargen e
+        discard". Inoltre fornisce altri 3 servizi, che pur essendo interni,
+        se usati vanno contrassegnati anche come UNLISTED, non essendo
+        riportati né in <TT class="FILENAME">/etc/services</TT> né in <TT
+        class="FILENAME">/etc/rpc</TT>: "servers, services e xadmin". Il
+        primo fornisce informazioni sui server in funzione, il secondo sui
+        servizi disponibili, con protocolli e porte, il terzo è
+        un'interfaccia di amministrazione del super-demone. Poiché questi
+        servizi rendono il vostro sistema vulnerabile, si consiglia di usarli
+        solo in fase di configurazione, non essendo protetti in alcun modo,
+        p.e. da password. Poi per sicurezza si consiglia di disabilitarli
+        nella sezione "defaults":</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+defaults {
+    ...
+    disabled = servers services xadmin
+    ...
+}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Non mi dilungo oltre, in quanto il mio consiglio è di dimenticare
+        che questi 3 servizi esistono! ;-) Inserite la riga "disabled" nella
+        sezione "defaults" e lasciateli perdere.</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="XINETDCHROOT">13.3.4. Chroot di un
+        servizio</A></H2>
+
+        <P>Se avete configurato un servizio (p.e. FTP) in ambiente <B class=
+        "KEYCAP">chroot</B> e volete continuare a usarlo in questo modo,
+        dovrete usare una sintassi simile alla seguente, con il comando <B
+        class="COMMAND">chroot</B> come opzione "server" e il server
+        effettivo nell'opzione "server_args":</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+service ftp
+{
+    id           = ftp
+    socket_type  = stream
+    wait         = no
+    user         = root
+    server       = /usr/sbin/chroot
+    server_args  = /var/servers/ftp /usr/sbin/in.ftpd -l
+}   
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "configurazionebasexinetd.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "mutt.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Configurazione di
+          base</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "xinetd.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Mutt</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

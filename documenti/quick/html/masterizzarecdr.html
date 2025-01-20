@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Procedura di masterizzazione CDR</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Masterizzazione" href="masterizzazione.html">
+    <LINK rel="PREVIOUS" title=
+    " Compilazione del kernel per il riconoscimento del masterizzatore "
+    href="kernelmaster.html">
+    <LINK rel="NEXT" title=" Procedura di masterizzazione CDRW " href=
+    "masterizzarecdrw.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "kernelmaster.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 16.
+          Masterizzazione</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "masterizzarecdrw.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="MASTERIZZARECDR">16.3. Procedura di
+      masterizzazione CDR</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="IMMAGINEMKISOFS">16.3.1. Creazione
+        dell'immagine iso con mkisofs</A></H2>
+
+        <P>Il comando generale da usare è:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+mkisofs [opzioni] -o nome_file_immagine.iso /directory/da/esportare
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Opzioni possibili:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+-A "Etichetta cd"
+
+-b boot.img 
+            --- Per rendere il cd bootabile (El Torito extensions). Il
+                file file boot.img viene creato tramite il comando:
+                dd if=/dev/fd0 of=boot.img bs=18k con un floppy di boot
+                nel device /dev/fd0 (un floppy di boot di qualsiasi OS...
+                perfino winbug!)
+                va aggiunta necessariamente anche l'opzione successiva.
+
+-c boot.catalog 
+            --- Per questo non c'è problema, il boot.catalog lo crea
+                automaticamente mkisofs
+
+-C #inizio ultima sessione,#inizio prossima sessione
+            --- Necessario - insieme all'opzione -M per le sessioni
+                successive alla prima (vedi la sezione "multisessione")
+
+-D          
+            --- Viola le regole standard dell'ISO9660 permettendo di
+                abbattere il limite degli 8 livelli di subdir massimi.
+                Normalmente il cd lavora ugualmente bene su parecchi
+                sistemi.
+
+-l
+            --- Abbatte il limite del formato 8.3 MS-DOS permettendo
+                nomi di files di 30 caratteri. I sistemi DOS potrebbero
+                non leggere più il cd.
+
+-J
+            --- Estensioni MS Joliet per rendere il cd compatibile col
+                set di caratteri dei vari Winbug.
+
+-L
+            --- Copia nel file iso anche i files che iniziano con "."
+
+-M path
+   oppure
+-M device
+            --- Specifica il percorso alla immagine ISO9660 precedente
+                esistente che deve essere "fusa" (va bene anche
+                indicare il nome della periferica). Necessario insieme 
+                all'opzione -C per le sessioni successive alla prima 
+                (vedi sotto).
+
+-P "Editore"
+   e
+-p "Preparatore"
+            --- Sono stringhe: se proprio volete metterle scriveteci 
+                quello che più vi aggrada
+
+-o /percorso/nomefile.iso
+            --- Indica dove piazzare il file iso da creare e come
+                chiamarlo
+
+-R
+            --- Attiva le esensioni RockRidge (proprietà e
+                permessi)
+
+-r
+            --- Come il precedente ma proprietà e permessi vengono
+                settati con i valori usabili da tutti (555).
+
+-T
+            --- Genera un file TRANS.TBL per i sistemi che non
+                supportano le estensioni RockRidge.
+
+-v
+            --- Aumenta la prolissità del comando.
+
+-V "Id del volume"
+            --- Come per -P e -p
+
+-x path
+            --- Esclude ciò che viene indicato nel path (anche
+                più di uno, ognuno anticipato da un "-x").
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Ad esempio:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+mkisofs -v -l -T -r -D -J -o /ISO-IMG/image_1.iso /dir/da/esportare
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>È utile testare l'immagine iso appena creata montando - tramite il
+        <EM>loopback device</EM> - come se fosse un vero e proprio cdrom, col
+        comando seguente:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+mount -t iso9660 -o ro,loop=/dev/loop0 /ISO-IMG/file_immagine.iso /mnt/cdrom
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Ricordati poi di smontarla con: <B class="COMMAND">umount
+        /mnt/cdrom</B></P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="SCRIVERECDRECORD">16.3.2. Scrivere il cd
+        con cdrecord</A></H2>
+
+        <P>Sintassi del comando:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+cdrecord [opzioni generali] dev=device [opzioni traccia] traccia1 traccia2...
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Opzioni generali possibili:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+-v
+            --- Aumenta la prolissità del comando.
+
+-force
+            --- Forza la continuazione del processo anche se ci sono errori
+                non fatali (utile col blanking su CD-RW "capricciosi")
+
+-dummy
+            --- Fa tutto quello che deve fare ma _col laser spento_!!!
+                Chiaramente utile per testare le nostre configurazioni
+                senza destinare un cd all'uso come orologio... ;-)
+
+-dao
+            --- Disk at Once mode. Evita scricchiolii e schifezze varie
+                dopo le tracce audio (se il vostro masterizzatore lo
+                supporta).
+
+-multi
+            --- Per la scrittura multi sessione. Va messo per la prima
+                sessione, per le successive e _NON_ per l'ultima (vedi
+                più in basso).
+
+-msinfo
+            --- Importante anch'esso per la multisessione (vedi sempre
+                dopo).
+
+-fix
+            --- Il disco viene solamente fissato.
+
+-nofix
+            --- Il disco non viene fissato.
+
+-eject
+            --- Espelle il disco dopo la sessione (alcuni tipi di
+                periferiche ne hanno bisogno).
+blank=type
+            --- Per i CD-RW (vedi dopo).
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Opzioni traccia possibili:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+-audio /path/nome_traccia.wav/au
+            --- Specifica la natura audio della traccia (va messo per
+                ogni traccia audio che si vuole incidere).
+
+-data /path/file_immagine.iso
+            --- Specifica la natura dati della traccia
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Comando tipico in dummy mode per tracce dati:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+cdrecord -v -dummy -eject speed=8 dev=0,0,0 -data /ISO-IMG/file_iso.iso
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="TRACCEAUDIO">16.3.3. Scrivere sul cd
+        tracce audio</A></H2>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+cdrecord -v speed=n dev=0,0,0 -audio /path/traccia_1.wav -audio \
+    /path/traccia_2.au -audio /path/traccia_3.wav ...
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="CDMIXEDMODE">16.3.4. Scrivere sul cd in
+        "mixed mode" (audio e dati)</A></H2>
+
+        <P>I comuni lettori hi fi sono capaci di leggere solo la prima
+        sessione, e, se c'è una traccia dati cercano spesso di "leggerla"
+        rischiando di spaccare i woofer: la soluzione è quella di scrivere
+        una prima sessione solo audio e la eventuale seconda con dati.</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+cdrecord -v speed=8 dev=0,0,0 -audio /path/traccia_1.wav -data file_iso.iso
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="CDMULTISESSIONE">16.3.5.
+        Multisessione</A></H2>
+
+        <P>Bisogna passare a mkisofs le "coordinate" della sessione
+        precedente (se ce n'è una). Queste le può rilevare <B class=
+        "COMMAND">cdrecord</B> con l'opzione <B class=
+        "KEYCAP">-msinfo</B></P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+cdrecord -msinfo dev=0,0,0
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Sono due numeri separati da una virgola (n,N) e vanno passati così
+        come sono a <B class="COMMAND">mkisofs</B> tramite l'opzione <B
+        class="KEYCAP">-C</B></P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+mkisofs -v -l -T -r -D -J -o /ISO-IMG/nome_immagine.iso -C n,N \
+    -M /dev/scd0 /dir/da/esportare
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>L'opzione <B class="KEYCAP">-M</B> specifica la periferica da
+        interrogare ed è altrettanto necessaria. Invece che il nome della
+        periferica, <B class="KEYCAP">-M</B> potrebbe essere anche seguito
+        dal nome dell'immagine precedente. A <B class="COMMAND">cdrecord</B>
+        bisogna passare l'opzione <B class="KEYCAP">-multi</B> a tutte le
+        sessioni tranne che all'ultima. Il comando tipico (in dummy mode)
+        potrebbe essere:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+cdrecord -v -dummy -multi -eject speed=8 dev=0,0,0 -data /ISO-IMG/file_iso.iso
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "kernelmaster.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "masterizzarecdrw.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Compilazione del kernel
+          per il riconoscimento del masterizzatore</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "masterizzazione.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Procedura di
+          masterizzazione CDRW</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

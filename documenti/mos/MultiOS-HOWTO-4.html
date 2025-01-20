@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html><head>
+ <meta name="GENERATOR" content="LinuxDoc-Tools 0.9.21"><title>Managing Multiple Operating Systems HOWTO: Requisiti di sistema:</title>
+ 
+ <link href="MultiOS-HOWTO-5.html" rel="next">
+ <link href="MultiOS-HOWTO-3.html" rel="previous">
+ <link href="MultiOS-HOWTO.html#toc4" rel="contents"></head>
+
+<body>
+<a href="MultiOS-HOWTO-5.html">Avanti</a>
+<a href="MultiOS-HOWTO-3.html">Indietro</a>
+<a href="MultiOS-HOWTO.html#toc4">Indice</a>
+<hr>
+<h2><a name="s4">4.</a> <a href="MultiOS-HOWTO.html#toc4">Requisiti di sistema:</a></h2>
+
+<p>BIOS - Qualunque BIOS che consenta l'identificazione automatica della
+geometria di un disco e permetta di selezionare la sequenza di dispositivi
+da cui avviare dovrebbe andar bene. Ho messo in piedi sistemi basati
+sia su PhoenixBIOS 4.0 che su AMI Plug and Play Flash BIOS.</p>
+
+<p>DISCHI - Un disco fisso interno dedicato a Linux. (primo disco)
+Un supporto per dischi removibili, con un qualunque numero di dischi. (secondo disco)</p>
+
+<p>Dal momendo che gran parte di questo HOWTO ha a che fare con dischi, da qui
+in poi userò in genere i termini "primo disco" e "secondo disco". Il primo disco
+è quello cui si accede inizialmente all'accensione della macchina, comunemente
+noto come disco di avvio. Ha LILO installato nel MBR ed è dedicato ad un unico
+sistema operativo, specificamente Linux. Il secondo disco è un disco removibile
+che contiene uno o più sistemi operativi alternativi che possono o meno avere
+un boot loader nel MBR o altrove.</p>
+
+<p>Non ci sono altri requisiti hardware/firmware. Qualunque altro requisito
+sarebbe imposto dal particolare sistema operativo. Ad esempio, anche se potreste
+riuscire ad installarlo, Solaris 7 non girerà bene su un vecchio computer
+a 90Mhz! La configurazione e la metodologia qui descritte dovrebbero comunque
+funzionare bene a prescindere dalla velocità della CPU o da altre periferiche
+installate.</p>
+
+<p>Sistemi operativi - Ho sperimentato questo processo con Linux (Redhat e Suse),
+Solaris 7, BeOS, Win 98 e persino MSDOS 6.22. Non vedo alcun motivo per cui non
+dovrebbe funzionare con Win 95, O/S 2, o FreeBSD. Non ho familiarità con Windows
+NT o 2000 per cui non so come reagirebbero a questo tipo di configurazione.</p>
+
+<p>Boot loader: Ho usato LILO sul primo disco e bootman del BeOS sugli altri
+dischi. Ho usato LILO sul primo disco perché era l'unico boot loader che mi consentiva
+di selezionare l'MBR del secondo disco come partizione di avvio valida.
+Qualunque boot loader relativamente efficace dovrebbe funzionare sul secondo
+disco.</p>
+
+<hr>
+<a href="MultiOS-HOWTO-5.html">Avanti</a>
+<a href="MultiOS-HOWTO-3.html">Indietro</a>
+<a href="MultiOS-HOWTO.html#toc4">Indice</a>
+</body></html>

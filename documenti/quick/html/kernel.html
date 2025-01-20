@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Kernel</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="Loadlin" href="loadlin.html">
+    <LINK rel="NEXT" title="Prerequisiti" href="prerequisitikernel.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "loadlin.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "prerequisitikernel.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="KERNEL">Capitolo 3. Kernel</A></H1>
+
+      <DIV class="TOC">
+        <DL>
+          <DT><B>Sommario</B></DT>
+
+          <DT>3.1. <A href="prerequisitikernel.html">Prerequisiti</A></DT>
+
+          <DD>
+            <DL>
+              <DT>3.1.1. <A href=
+              "prerequisitikernel.html#REPERIMENTOKERNEL">Reperimento</A></DT>
+
+              <DT>3.1.2. <A href=
+              "prerequisitikernel.html#SOFTWARENECESSARIO">Software
+              necessario</A></DT>
+
+              <DT>3.1.3. <A href=
+              "prerequisitikernel.html#SCOMPATTAZIONEPATCHCONF">Scompattazione,
+              patch e avvio della configurazione</A></DT>
+            </DL>
+          </DD>
+
+          <DT>3.2. <A href="parametrikernel.html">Parametri</A></DT>
+
+          <DD>
+            <DL>
+              <DT>3.2.1. <A href="parametrikernel.html#CODEMATURITY">Code
+              maturity level options</A></DT>
+
+              <DT>3.2.2. <A href=
+              "parametrikernel.html#PROCESSORTYPE">Processor type and
+              features</A></DT>
+
+              <DT>3.2.3. <A href=
+              "parametrikernel.html#LOADABLEMODULE">Loadable module
+              support</A></DT>
+
+              <DT>3.2.4. <A href="parametrikernel.html#GENERALSETUP">General
+              setup</A></DT>
+
+              <DT>3.2.5. <A href="parametrikernel.html#PLUGANDPLAY">Plug and
+              Play support</A></DT>
+
+              <DT>3.2.6. <A href="parametrikernel.html#BLOCKDEVICE">Block
+              devices</A></DT>
+
+              <DT>3.2.7. <A href=
+              "parametrikernel.html#NETWORKINGOPTIONS">Networking
+              options</A></DT>
+
+              <DT>3.2.8. <A href="parametrikernel.html#QOSFAIR">QoS and/or
+              fair queueing</A></DT>
+
+              <DT>3.2.9. <A href=
+              "parametrikernel.html#TELEFONYSUPPORT">Telephony
+              Support</A></DT>
+
+              <DT>3.2.10. <A href="parametrikernel.html#SCSISUPPORT">SCSI
+              support</A></DT>
+
+              <DT>3.2.11. <A href="parametrikernel.html#SCSILOWLEVEL">SCSI
+              low-level drivers</A></DT>
+
+              <DT>3.2.12. <A href=
+              "parametrikernel.html#NETWORKDEVICE">Network device
+              support</A></DT>
+
+              <DT>3.2.13. <A href="parametrikernel.html#ARCNET">ARCnet
+              devices</A></DT>
+
+              <DT>3.2.14. <A href=
+              "parametrikernel.html#ETHERNET10100">Ethernet (10 or
+              100Mbit)</A></DT>
+
+              <DT>3.2.15. <A href=
+              "parametrikernel.html#ETHERNET1000">Ethernet (1000
+              Mbit)</A></DT>
+
+              <DT>3.2.16. <A href="parametrikernel.html#APPLETALK">Appletalk
+              devices</A></DT>
+
+              <DT>3.2.17. <A href="parametrikernel.html#TOKENRING">Token ring
+              devices</A></DT>
+
+              <DT>3.2.18. <A href="parametrikernel.html#WANINTERFACE">Wan
+              interfaces</A></DT>
+
+              <DT>3.2.19. <A href="parametrikernel.html#AMATEURRADIO">Amateur
+              Radio support</A></DT>
+
+              <DT>3.2.20. <A href="parametrikernel.html#IRDASUBSYSTEM">IrDA
+              subsystem support</A></DT>
+
+              <DT>3.2.21. <A href=
+              "parametrikernel.html#INFRAREDPORT">Infrared-port device
+              drivers</A></DT>
+
+              <DT>3.2.22. <A href="parametrikernel.html#ISDNSUBSYSTEM">ISDN
+              subsystem</A></DT>
+
+              <DT>3.2.23. <A href="parametrikernel.html#OLDCDROM">Old CD-ROM
+              drivers (not SCSI, not IDE)</A></DT>
+
+              <DT>3.2.24. <A href=
+              "parametrikernel.html#CHARACTERDEVICES">Character
+              devices</A></DT>
+
+              <DT>3.2.25. <A href="parametrikernel.html#MICE">Mice</A></DT>
+
+              <DT>3.2.26. <A href=
+              "parametrikernel.html#JOYSTICKS">Joysticks</A></DT>
+
+              <DT>3.2.27. <A href="parametrikernel.html#WATCHDOG">Watchdog
+              Cards</A></DT>
+
+              <DT>3.2.28. <A href="parametrikernel.html#VIDEO4LINUX">Video
+              For Linux</A></DT>
+
+              <DT>3.2.29. <A href="parametrikernel.html#FTAPEFLOPPY">Ftape,
+              the floppy tape device driver</A></DT>
+
+              <DT>3.2.30. <A href=
+              "parametrikernel.html#FILESYSTEMSTYPE">Filesystems</A></DT>
+
+              <DT>3.2.31. <A href=
+              "parametrikernel.html#NETWORKFILESYSTEM">Network File
+              Systems</A></DT>
+
+              <DT>3.2.32. <A href=
+              "parametrikernel.html#PARTITIONTYPES">Partition Types</A></DT>
+
+              <DT>3.2.33. <A href=
+              "parametrikernel.html#NATIVELANGUAGE">Native Language
+              Support</A></DT>
+
+              <DT>3.2.34. <A href=
+              "parametrikernel.html#CONSOLEDRIVERS">Console drivers</A></DT>
+
+              <DT>3.2.35. <A href=
+              "parametrikernel.html#SOUNDSUBSYSTEM">Sound</A></DT>
+
+              <DT>3.2.36. <A href=
+              "parametrikernel.html#LOWLEVELSOUND">Additional low level sound
+              drivers</A></DT>
+
+              <DT>3.2.37. <A href="parametrikernel.html#KERNELHACKING">Kernel
+              hacking</A></DT>
+            </DL>
+          </DD>
+
+          <DT>3.3. <A href="compilazioneinstallazione.html">Compilazione e
+          installazione</A></DT>
+        </DL>
+      </DIV>
+
+      <P>Qui si spiega come compilare e installare un kernel della serie
+      stabile 2.2.x. Di solito questo si fa per includere nel kernel delle
+      funzionalità non presenti, ad esempio il supporto per alcune schede che
+      per motivi di genericità non vengono sempre incluse nei kernel di serie
+      delle distribuzioni, oppure per modelli recenti che per forza non
+      esistevano all'epoca. Non è un procedimento complicato, ma vanno
+      seguiti dei passi stabiliti, per non creare instabilità nel sistema a
+      causa del mancato supporto a proprietà basilari, come il supporto al
+      filesystem <B class="KEYCAP">ext2</B>, o ai binari <B class=
+      "KEYCAP">elf</B>, oppure ancora al tipo di disco da cui fate il boot.
+      Per sapere quale kernel avete in funzione nel vostro PC, usate il
+      comando <B class="COMMAND">uname -r</B>. Per sapere qual è l'ultima
+      versione di kernel disponibile online, usate il comando <B class=
+      "COMMAND">finger @finger.kernel.org</B>.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "loadlin.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "prerequisitikernel.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Loadlin</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Prerequisiti</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

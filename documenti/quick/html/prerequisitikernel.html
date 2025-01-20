@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Prerequisiti</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Kernel" href="kernel.html">
+    <LINK rel="PREVIOUS" title="Kernel" href="kernel.html">
+    <LINK rel="NEXT" title="Parametri" href="parametrikernel.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "kernel.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 3.
+          Kernel</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "parametrikernel.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="PREREQUISITIKERNEL">3.1.
+      Prerequisiti</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="REPERIMENTOKERNEL">3.1.1.
+        Reperimento</A></H2>
+
+        <P>Il sito principale è <A href="ftp://ftp.kernel.org" target=
+        "_top">ftp://ftp.kernel.org</A>, ma esistono i mirror nazionali,
+        reperibili come ftp.XX.kernel.org, dove XX è il codice del paese (ad
+        esempio "it" per Italia, "de" per Germania, "fr" per Francia, "uk"
+        per Inghilterra, e così via). Cercate nella directory <B class=
+        "KEYCAP">/pub/linux/kernel/2.2</B>. In genere esistono 2 tipi di file
+        in 2 formati di compressione diversi. I file sono del tipo: <B class=
+        "KEYCAP">linux-VERSIONE_KERNEL.tar.COMPRESSORE</B>, oppure <B class=
+        "KEYCAP">patch-VERSIONE_KERNEL.tar.COMPRESSORE</B>. COMPRESSORE può
+        essere <B class="KEYCAP">gz</B> per file compressi con GZIP, o <B
+        class="KEYCAP">bz2</B> per file compressi con BZIP2 (in genere più
+        piccoli) I file che iniziano per <B class="KEYCAP">linux</B>
+        contenengono i sorgenti del kernel COMPLETO, mentre i file che
+        iniziano per <B class="KEYCAP">patch</B> contengono solo le
+        differenze con le versioni precedenti. Quindi, per esempio, ci
+        possono essere i file: <B class="KEYCAP">linux-2.2.14.tar.gz</B>, <B
+        class="KEYCAP">linux-2.2.14.tar.bz2</B>, <B class=
+        "KEYCAP">patch-2.2.14.tar.gz</B> e <B class=
+        "KEYCAP">patch-2.2.14.tar.bz2</B>, insieme in genere a tutte le
+        versioni precedenti. Conviene scaricare la versione completa se
+        proprio non avete i sorgenti, mentre se avete una versione precedente
+        potete scaricare solo i file di differenza, da applicare sui sorgenti
+        in vostro possesso per avere alla fine la STESSA IDENTICA versione di
+        sorgenti che avreste ottenuto dalla versione completa. Ricordate però
+        che dovete scaricare TUTTE le versioni di patch dalla versione in
+        vostro possesso fino a quella che volete ottenere (quindi se avete i
+        sorgenti completi <B class="KEYCAP">linux-2.2.11.tar.gz</B>, e volete
+        arrivare alla versione 2.2.14, dovete scaricare i file <B class=
+        "KEYCAP">patch-2.2.12.tar.gz</B>, <B class=
+        "KEYCAP">patch-2.2.13.tar.gz</B> e <B class=
+        "KEYCAP">patch-2.2.14.tar.gz</B>, da applicare al 2.2.11 in
+        successione, come indicato in seguito (ATTENZIONE!: le patch delle
+        versioni "pre..." non sono incrementali). Un consiglio: NON usate i
+        sorgenti standard forniti dalle distribuzioni se dovete applicarvi
+        delle patch, perché in genere sono versioni modificate e le patch
+        notando questo fatto non vengono applicate (tipico il caso della
+        RedHat), oltre al fatto che non mettono a posto alcuni collegamenti.
+        Inoltre cercate di evitare le versioni sperimentali dei kernel
+        (2.X.YYY, con X dispari), a meno che non aggiungano il supporto per
+        qualche nuovo hardware di cui non potete fare a meno, perché a volte
+        non sono completamente stabili (sono sperimentali per questo).</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="SOFTWARENECESSARIO">3.1.2. Software
+        necessario</A></H2>
+
+        <P>Naturalmente i sorgenti del kernel. Poi i programmi <B class=
+        "COMMAND">gzip</B> e <B class="COMMAND">bzip2</B>, in base al tipo di
+        compressione usata per i sorgenti. I pacchetti software: <B class=
+        "KEYCAP">make</B>, <B class="KEYCAP">bin86</B>, <B class=
+        "KEYCAP">glibc-devel</B>, <B class="KEYCAP">gcc</B> (in genere, se
+        viene segnalata la mancanza qualche file, fa parte di questi
+        pacchetti, quindi installateli tutti). Se volete usare l'interfaccia
+        grafica di configurazione in <EM>X-Window</EM>, naturalmente dovete
+        aver installato e configurato bene l'<EM>X-server</EM>, e poi vi
+        servono anche il pacchetto contenente il linguaggio <B class=
+        "KEYCAP">tcl</B> e il suo tool grafico <B class="KEYCAP">tk</B>.</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="SCOMPATTAZIONEPATCHCONF">3.1.3.
+        Scompattazione, patch e avvio della configurazione</A></H2>
+
+        <P>Ecco i passi da seguire (tutto ciò che è tra doppi apici in <B
+        class="KEYCAP">grassetto</B> è un comando, e va dato senza di essi;
+        come esempio si suppone di avere una versione 2.2.11 e di aggiornare
+        alla versione 2.2.14):</P>
+
+        <OL type="1">
+          <LI>
+            <P>Se non lo siete già, diventate utente root e spostatevi in
+            /usr/src ("<B class="COMMAND">su root</B>", più la password, poi
+            "<B class="COMMAND">cd /usr/src</B>")</P>
+          </LI>
+
+          <LI>
+            <P>Date: "<B class="COMMAND">ls -l</B>". Controllate se esiste
+            una riga che contiene '<EM>linux</EM>': se non esiste, saltate al
+            punto 5; se esiste e il primo carattere della riga è <B class=
+            "KEYCAP">d</B>, si tratta di una directory, saltate al punto 4;
+            altrimenti se esiste e il primo carattere della riga è <B class=
+            "KEYCAP">l</B>, si tratta di un collegamento, continuate col
+            punto 3</P>
+          </LI>
+
+          <LI>
+            <P>Rimuovete il link: "<B class="COMMAND">rm -f linux</B>" (in
+            questo modo i vecchi sorgenti eventualmente presenti rimarranno
+            nella directory cui puntava il link, in genere
+            '<EM>linux-VERSIONE_KERNEL</EM>'), e saltate al punto 5</P>
+          </LI>
+
+          <LI>
+            <P>Rinominate la directory: "<B class="COMMAND">mv linux
+            linux.old</B>" (in questo modo i vecchi sorgenti eventualmente
+            presenti verranno spostati nella directory '<EM>linux.old</EM>'),
+            e continuate col punto 5</P>
+          </LI>
+
+          <LI>
+            <P>Scompattate i nuovi sorgenti: se il file in vostro possesso
+            finisce in '<EM>.gz</EM>', date "<B class="COMMAND">tar xvzf
+            /persorso/del/file/linux-2.2.11.tar.gz</B>", mentre se finisce
+            con '<EM>.bz2</EM>', date "<B class="COMMAND">tar xvf
+            /persorso/del/file/linux-2.2.11.tar.bz2 --use-compress-program
+            bzip2</B>"</P>
+          </LI>
+
+          <LI>
+            <P>Se avete già l'ultima versione dei sorgenti, saltate al punto
+            7, altrimenti se dovete applicare delle patch per aggiornare i
+            sorgenti ad una versione più recente, date i seguenti comandi
+            (TUTTE le patch vanno applicate in sequenza):</P>
+
+            <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+              <TR>
+                <TD>
+<PRE class="PROGRAMLISTING">
+cd linux
+gzip -dc /persorso/del/file/patch-2.2.12.gz | patch -p1
+gzip -dc /persorso/del/file/patch-2.2.13.gz | patch -p1
+gzip -dc /persorso/del/file/patch-2.2.14.gz | patch -p1
+cd .. 
+           
+</PRE>
+                </TD>
+              </TR>
+            </TABLE>
+
+            <P>nel caso abbiate dei file del tipo
+            '<EM>patch-VERSIONE_KERNEL.bz2</EM>', sostituite nei comandi
+            precedenti '<B class="KEYCAP">gzip</B>' con '<B class=
+            "KEYCAP">bzip2</B>'</P>
+          </LI>
+
+          <LI>
+            <P>Rinominate la directory ottenuta in base alla versione dei
+            sorgenti che avete ottenuto (nell'esempio 2.2.14) e ricreate
+            alcuni collegamenti simbolici:</P>
+
+            <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+              <TR>
+                <TD>
+<PRE class="PROGRAMLISTING">
+mv linux linux-2.2.14
+ln -s linux-2.2.14 linux
+rm -rf /usr/src/linux/include/asm /usr/include/asm
+rm -rf /usr/include/linux /usr/include/scsi
+ln -s /usr/src/linux/include/asm-i386/ /usr/src/linux/include/asm
+ln -s /usr/src/linux/include/asm-i386/ /usr/include/asm
+ln -s /usr/src/linux/include/linux/ /usr/include/linux
+ln -s /usr/src/linux/include/scsi/ /usr/include/scsi
+           
+</PRE>
+                </TD>
+              </TR>
+            </TABLE>
+
+            <P>così da portare il tutto in una situazione standard (i
+            sorgenti devono essere in '<EM>/usr/src/linux/</EM>')</P>
+          </LI>
+
+          <LI>
+            <P>Si passa ora alla fase più delicata dell'operazione: scegliere
+            cosa includere e cosa no nel kernel. Date "<B class="COMMAND">cd
+            linux</B>" e poi "<B class="COMMAND">make mrproper</B>" per
+            eliminare residui di eventuali vecchie compilazioni (attenzione
+            che questo comando cancella il file '<EM>.config</EM>', che
+            contiene le impostazioni date in una precedente compilazione,
+            quindi nel caso fatevene una copia). Ora date a vostra scelta uno
+            dei tre comandi seguenti, in base al tipo di interfaccia che
+            volete usare (solo quello che c'è prima del # !!!):</P>
+
+            <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+              <TR>
+                <TD>
+<PRE class="PROGRAMLISTING">
+make config # (interfaccia a caratteri base)
+make menuconfig # (interfaccia a caratteri con menu)
+make xconfig # (interfaccia grafica - dovete essere in X-Window)
+           
+</PRE>
+                </TD>
+              </TR>
+            </TABLE>
+
+            <P>e passiamo alla configurazione dei parametri.</P>
+          </LI>
+        </OL>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "kernel.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "parametrikernel.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Kernel</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "kernel.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Parametri</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

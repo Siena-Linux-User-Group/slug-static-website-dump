@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Tasti principali</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Slrn" href="slrn.html">
+    <LINK rel="PREVIOUS" title="File di configurazione .slrnrc" href=
+    "configurazioneslrn.html">
+    <LINK rel="NEXT" title="Varie macro per SLRN" href="macroslrn.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "configurazioneslrn.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 15.
+          Slrn</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "macroslrn.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="TASTISLRN">15.3. Tasti principali</A></H1>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+Note:
+1. ^ sta per CTRL, &lt;qualcosa&gt; sta per il tasto indicato
+2. I comandi sono case-sensitive, maiuscole e minuscole sono diverse.
+3. Per attivare i tasti '$' e '&amp;' per fare le ricerche all'interno
+   dei messaggi, dovete inserire nel vostro .slrnrc una riga tipo:
+   interpret "News/.Slrn/new-search.sl"
+   dove 'new-search.sl' è presente alla fine di questa sezione dell'Howto
+4. I tasti ^K e ^W (Kill e Watch) fanno parte della macro 'onekey-score.sl',
+   e permettono di imitare gli "occhialini" di Agent, applicando un punteggio
+   temporaneo (dovrete poi rimuoverlo a mano dal killfile... finché non
+   aggiungo un'altra macro che lo fa in automatico, cercatela per ora sul sito
+   di SLRN) che vi permette di tenere sott'occhio o ignorare un thread con una
+   sola combinazione di tasti.
+5. &lt;ESC&gt; e c vi permette di configurare i colori in modo interattivo ;-)
+
+Comandi attivi sui gruppi:
+P             invia un articolo nel newsgroup corrente
+&lt;Esc&gt;P        invia o modifica un articolo posposto
+&lt;Space&gt;       seleziona il newsgroup corrente
+&lt;Return&gt;      seleziona il newsgroup corrente
+s             sottoscrivi il newsgroup corrente
+&lt;Esc&gt;1 s      sottoscrivi i newsgroup che corrispondono al pattern...
+u             annulla la sottoscrizione al newsgroup
+&lt;Esc&gt;1 u      annulla la sottoscrizione ai newsgroup corrispondondenti  al pattern...
+c             segna tutti gli articoli come letti (catchup)
+&lt;Esc&gt;u        segna tutti gli articoli come non letti
+
+Movimenti:
+&lt;Esc&gt;&lt;        spostati in cima all'elenco
+&lt;Esc&gt;&gt;        spostati in coda all'elenco
+&lt;PageUp&gt;      spostati alla pagina precedente
+&lt;PageDown&gt;    spostati alla pagina successiva
+&lt;Up&gt;          spostati al gruppo precedente
+&lt;Down&gt;        spostati al gruppo successivo
+
+Varie:
+a             aggiungi un nuovo newsgroup
+^L            cancella e ridisegna lo schermo
+l             (dis)attiva la visualizzazione dei gruppi che non hanno articoli non letti
+L             (dis)attiva l'elenco dei gruppi non sottoscritti
+&lt;ESC&gt;1 L      nasconde i gruppi non sottoscritti
+/             ricerca una parola nei gruppi ('l' per visualizzare quelli non sottoscritti)
+q             esci dal newsreader
+G             preleva i nuovi articoli
+K             (dis)attiva la modalità punteggi (score)
+X             forza il salvataggio del file newsrc
+&lt;ESC&gt;a        (dis)attiva la visualizzazione della descrizione del newsgroup
+.             ripeti l'ultima sequenza di tasti
+
+Comandi attivi sugli articoli:
+Movimenti:
+&lt;Space&gt;       seleziona l'articolo o scorri di una pagina
+&lt;Del&gt;         scorri l'articolo indietro di una pagina
+b             scorri l'articolo indietro di una pagina
+&lt;Esc&gt;&lt;Up&gt;     scorri l'articolo indietro di una riga
+&lt;Esc&gt;&lt;Down&gt;   scorri l'articolo avanti di una riga
+&lt;Left&gt;        sposta la visualizzazione articolo a sinistra
+&lt;Right&gt;       sposta la visualizzazione articolo a destra
+
+Articoli:
+P             componi un nuovo articolo (NON un follow-up)
+f             componi un follow-up all'articolo corrente
+&lt;Esc&gt;1 f      componi un follow-up all'articolo corrente inserendo tutti gli header
+&lt;Esc&gt;2 f      componi un follow-up all'articolo corrente non quotando l'originale
+&lt;Esc&gt;P        invia o modifica un articolo posposto
+F             reinvia (forward) l'articolo a qualcuno
+r             rispondi via email all'autore
+
+Ricerche:
+/             cerca in avanti nell'articolo
+a             cerca in avanti un autore
+A             cerca all'indietro un autore
+s             cerca in avanti un Subject
+S             cerca all'indietro un Subject
+$             cerca negli articoli (guarda nota N.3)
+=             salta al prossimo articolo con il Subject indicato
+!             salta al prossimo articolo con il punteggio più alto
+
+Varie:
+W             (dis)attiva ritorno a capo
+t             (dis)attiva la visualizione completa degli header
+T             (dis)attiva la visualizione delle righe quotate
+h             nascondi la finestra dell'articolo
+&lt;Tab&gt;         salta il testo quotato
+&lt;Esc&gt;^C       cancella l'articolo (solo se si è l'autore)
+y             stampa l'articolo
+o             accoda l'articolo, il thread, o gli articoli segnati ad un file
+|             manda un articolo a un comando della shell con una pipe
+
+Comandi attivi nella finestra degli header:
+Movimenti:
+&lt;Esc&gt;&lt;        spostati in cima all'elenco degli header
+&lt;Esc&gt;&gt;        spostati in coda all'elenco degli header
+p             spostati al precedente articolo non letto
+n             spostati al successivo articolo non letto o gruppo se è raggiunta la fine
+L             torna all'ultimo articolo letto
+N             salta al newsgroup successivo
+&lt;Up&gt;          spostati all'articolo precedente
+&lt;Down&gt;        spostati all'articolo successivo
+,             torna al precedente articolo segnato
+
+Gestione:
+d             segna un articolo come letto e spostati al successivo non letto
+&lt;Esc&gt;d        segna un thread come letto e spostati al successivo non letto
+u             segna un articolo come non letto
+;             segna l'articolo nella posizione corrente
+c             segna tutti gli articoli come letti (catchup)
+&lt;Esc&gt;u        segna tutti gli articoli come non letti
+C             segna tutti gli articoli fino alla posizione corrente come letti
+&lt;Esc&gt;U        segna tutti gli articoli fino alla posizione corrente come non letti
+
+Varie:
+&lt;Esc&gt;t        (dis)attiva il raggruppamento del thread
+&lt;Esc&gt;a        modifica il formato di visualizzazione degli header
+&lt;Esc&gt;s        seleziona il tipo di ordinamento
+&lt;Esc&gt;p        cerca l'header genitore, scaricandolo dal server se necessario
+&lt;Esc&gt;1&lt;Esc&gt;p  ricostruisci il thread, scaricandolo dal server se necessario
+&lt;Esc&gt;^P       cerca tutti gli header figli di quello corrente (chiedendo al server)
+K             crea una nuova voce di punteggio (score) in base all'header corrente
+&lt;Esc&gt;1 K      modifica il file dei punteggi (score)
+*             segna l'articolo affinchè non sia affetto dai comandi di catchup
+&lt;Esc&gt;1 *      elimina i segni '*' da tutti gli articoli marcati
+x             rimuovi tutti gli articoli letti dall'elenco
+.             ripeti l'ultima sequenza di tasti
+^W            marca con punteggio positivo un thread o articolo
+^K            marca con punteggio negativo un thread o articolo
+&lt;Esc&gt;e c   modifica interattiva dei colori di SLRN
+U             cerca l'URL e seguila
+q             esci dalla modalità gruppo
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "configurazioneslrn.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "macroslrn.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">File di configurazione
+          .slrnrc</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "slrn.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Varie macro per
+          SLRN</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Junkbuster</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="Wwwoffle" href="wwwoffle.html">
+    <LINK rel="NEXT" title="Xinetd" href="xinetd.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "wwwoffle.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "xinetd.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="JUNKBUSTER">Capitolo 12. Junkbuster</A></H1>
+
+      <P><SPAN class="APPLICATION">Junkbuster</SPAN> è un <EM>proxy
+      server</EM> che filtra le richieste del browser impedendo che venga
+      scaricata spazzatura (<EM>spam</EM> o <EM>junk</EM>), come
+      <EM>banner</EM> e altre immagini inutili o <EM>cookie</EM> indesiderati
+      (per entrambe le cose, banner e cookie, si può ampliare la lista a mano
+      o scaricare periodicamente i file aggiornati - vedi più avanti). Una
+      volta scaricato e installato da rpm o tar.gz, bisogna attivarlo con il
+      comando: <B class="COMMAND">/etc/rc.d/init.d/junkbuster start</B>
+      (adattate alla vostra distribuzione), oltre che fare in modo che parta
+      in automatico ad ogni avvio del PC (aggiungetelo con <B class=
+      "COMMAND">ntsysv</B> o con <B class="COMMAND">chkconfig --add
+      junkbuster</B>). Se non avete altri proxy, la configurazione è già
+      buona: al massimo potete modificare nel file <TT class=
+      "FILENAME">/etc/junkbuster/config</TT> la chiamata <EM>tinygif</EM>
+      impostandola a <EM>2</EM>, cosicchè abbiate un riferimento per le
+      immagini che non vengono scaricate, altrimenti verrà usata un'immagine
+      trasparente di 1x1 pixel allargata alle dimensioni dell'immagine
+      sostituita (un'altra possibilità è di avere una <EM>broken icon</EM>,
+      cioè l'icona che il browser mette di default quando non trova
+      un'immagine, impostando <EM>tinygif</EM> a <EM>0</EM>). Dovete solo
+      modificare le impostazioni del browser affinchè usi un proxy sulla
+      porta <B class="KEYCAP">8000</B> di <B class="KEYCAP">localhost</B>
+      Usate le istruzioni date nel capitolo di <SPAN class=
+      "APPLICATION">wwwoffle</SPAN>, sostituendo <B class="KEYCAP">8080</B>
+      con <B class="KEYCAP">8000</B>.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> <EM>Debian</EM> invece della <B class=
+          "KEYCAP">8000</B> usa la porta <B class="KEYCAP">5865</B>, quindi o
+          modificate di conseguenza, o cambiate la direttiva
+          <EM>listen-address</EM> nel file <TT class=
+          "FILENAME">/etc/junkbuster/config</TT>.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Se invece avete un altro proxy (<SPAN class=
+      "APPLICATION">wwwoffle</SPAN> o <SPAN class=
+      "APPLICATION">squid</SPAN>), dovete impostare sempre il browser
+      affinchè punti a <SPAN class="APPLICATION">junkbuster</SPAN> sulla
+      porta <B class="KEYCAP">8000</B>, e modificare il file <TT class=
+      "FILENAME">/etc/junkbuster/config</TT> togliendo il segno di commento #
+      dalla riga :</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+forwardfile /etc/junkbuster/forward
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e inserendo alla fine del file <TT class=
+      "FILENAME">/etc/junkbuster/forward</TT> la riga (nel caso di
+      wwwoffle):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+*    localhost:8080    .    .
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>ATTENZIONE ai 2 punti finali - sostituite 8080 con 3128 per
+              squid</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P>Questo secondo me è il metodo migliore, cioè <B class=
+      "KEYCAP">browser</B> &lt;--&gt; <B class="KEYCAP">junkbuster</B>
+      &lt;--&gt; <B class="KEYCAP">proxy</B> &lt;--&gt; <B class=
+      "KEYCAP">internet</B>, al posto di <B class="KEYCAP">browser</B>
+      &lt;--&gt; <B class="KEYCAP">proxy</B> &lt;--&gt; <B class=
+      "KEYCAP">junkbuster</B> &lt;--&gt; <B class="KEYCAP">internet</B>,
+      perché nel primo caso le richieste fatte dal browser per contenuti junk
+      vengono filtrate e non richieste per nulla al proxy e quindi ad
+      internet, mentre nel secondo la cache del proxy si riempirebbe delle
+      immagini <EM>fittizie</EM> generate da junkbuster, pur non scaricando
+      ugualmente la spazzatura.</P>
+
+      <P>Per aggiornare gli elenchi di url, immagini e cookie da bloccare,
+      potete scaricarli via browser, alla pagina: <A href=
+      "http://www.waldherr.org/junkbuster/update.shtml" target=
+      "_top">http://www.waldherr.org/junkbuster/update.shtml</A>, oppure
+      usare gli script che trovate nella directory <B class=
+      "KEYCAP">/usr/doc/junkbuster/</B>. Si tratta dei file <TT class=
+      "FILENAME">junkbuster.monthly</TT> e <TT class=
+      "FILENAME">junkbuster.weekly</TT> : per usarli, copiateli
+      rispettivamente in <TT class="FILENAME">/etc/cron.monthly</TT> e <TT
+      class="FILENAME">/etc/cron.weekly</TT>. In questo modo avrete sempre i
+      file aggiornati. Potete anche lanciarli manualmente da shell,
+      naturalmente. Ricordate che usano il programma <SPAN class=
+      "APPLICATION">wget</SPAN> per scaricare, quindi dovete installarlo.
+      Rimane solo da dire che se volete aggiungere vostri url, cookie o
+      immagini da bloccare, dovete farlo nei file <TT class=
+      "FILENAME">/etc/junkbuster/blocklist.local</TT>, <TT class=
+      "FILENAME">/etc/junkbuster/cookiefile.local</TT> e <TT class=
+      "FILENAME">/etc/junkbuster/imagelist.local</TT>, che verranno accodati
+      dagli script di prima ai file appena scaricati.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "wwwoffle.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "xinetd.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Wwwoffle</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Xinetd</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

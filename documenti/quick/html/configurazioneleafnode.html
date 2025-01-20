@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Configurazione</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Leafnode" href="leafnode.html">
+    <LINK rel="PREVIOUS" title="Leafnode" href="leafnode.html">
+    <LINK rel="NEXT" title="Scorefile" href="scorefile.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "leafnode.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 8.
+          Leafnode</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "scorefile.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CONFIGURAZIONELEAFNODE">8.1.
+      Configurazione</A></H1>
+
+      <P><B class="KEYCAP">Leafnode</B> si occupa di ricevere e inviare i
+      post da e verso i <EM>newsgroup Usenet</EM>. È in genere adatto, data
+      la sua semplicità, per computer singoli o comunque piccole reti. Se
+      necessitate di creare newsgroup locali per la vostra LAN, o avete
+      bisogno di maggior potenza e opzioni, rivolgetevi a <B class=
+      "KEYCAP">INN</B>, di cui potete trovare un'ampia trattazione nell'Howto
+      scritto da <EM>Filippo Panessa - aka Kalem</EM> (<A href=
+      "http://web.tiscalinet.it/kalem" target=
+      "_top">http://web.tiscalinet.it/kalem</A>). Non potete usare
+      contemporaneamente due demoni che cercano di controllare la stessa
+      porta, quindi nel caso abbiate <B class="KEYCAP">INN</B> o altri
+      newsserver, commentate la riga apposita all'interno di <TT class=
+      "FILENAME">/etc/inetd.conf</TT> o <TT class=
+      "FILENAME">/etc/xinetd.conf</TT> e riavviate. Per configurarlo, dopo
+      averlo installato, modificate il file <TT class=
+      "FILENAME">/etc/leafnode/config</TT> come segue (è proprio il minimo
+      indispensabile, ci sono molte più opzioni, direttamente commentate nel
+      file). Ricordate che la directory <B class="KEYCAP">/etc/leafnode/</B>
+      e il suo contenuto devono appartenere all'utente e gruppo <B class=
+      "KEYCAP">news</B>, quindi date da una console, loggati come utente <B
+      class="KEYCAP">root</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+chown -R news.news /etc/leafnode/
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ricordate inoltre che alcune vecchie distribuzioni di <B class=
+      "KEYCAP">leafnode</B> non erano compatibili con l'anno 2000, quindi
+      usatene una versione &gt; 1.9.4. Segue il file <B class=
+      "KEYCAP">config</B> di esempio:</P>
+
+      <P><B class="KEYCAP">=== file: /etc/leafnode/config ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+## inserisci qui il tuo server news - OBBLIGATORIO
+server = news.libero.it
+
+## I thread vengono cancellati dopo il numero di giorni seguente,
+## se non definito diversamente con groupexpire - OBBLIGATORIO
+## man leafnode per informazioni su groupexpire
+expire = 60
+
+## Numero massimo di messaggi da scaricare per volta. Sconsigliato
+## sia impostarlo al di sotto di 1000 che al disopra di 2000
+maxfetch = 2000
+
+## per scaricare solo gli header dei messaggi e in seguito solo i body
+## marcati per il download, impostare delaybody ad 1
+delaybody = 0
+
+## impedisce di scaricare articoli più grandi di 50000 bytes
+maxbytes = 50000
+
+## impedisce di scaricare articoli più lunghi di 1000 righe
+maxlines = 1000
+
+## massimo numero di giorni in cui sarà scaricato un newsgroup che non
+## viene letto, prima di annullare la sottoscrizione in automatico
+timeout_long = 7
+
+## minimo numero di giorni in cui sarà scaricato un newsgroup che forse si è sottoscritto
+## per errore e non viene letto, prima di annullare la sottoscrizione in automatico
+timeout_short = 2
+
+## attiva l'invio di messaggi di debug al syslog, per evidenziare malfunzionamenti
+debugmode = 1
+
+## evita che vengano sottoscritti in automatico newsgroup non desiderati
+## in caso di crosspost verso di essi
+create_all_links = 0
+
+## file contenente i filtri per i messaggi da NON scaricare (leggete alla fine della pagina
+## per altre informazioni e nel caso togliete il carattere # all'inizio della riga seguente)
+# filterfile = /etc/leafnode/filterfile
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Controllate che in <TT class="FILENAME">/etc/inetd.conf</TT> sia
+      presente una riga come la seguente, NON commentata da #:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+nntp   stream   tcp    nowait    news    /usr/sbin/tcpd   /usr/sbin/leafnode
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Nel caso non esista, aggiungetela. Se invece usate <SPAN class=
+      "APPLICATION">xinetd</SPAN>, guardate la sezione apposita dell'howto,
+      c'è un file già pronto. Date da utente <B class="KEYCAP">root</B>: <B
+      class="COMMAND">killall -HUP inetd</B> per riavviare il demone <SPAN
+      class="APPLICATION">inetd</SPAN>, oppure <B class="COMMAND">killall
+      -USR1 xinetd</B> per riavviare il demone <SPAN class=
+      "APPLICATION">xinetd</SPAN> e provate a fare: <B class="COMMAND">telnet
+      localhost 119</B> per vedere se <B class="KEYCAP">leafnode</B> vi
+      risponde. Dovreste ottenere una riga simile alla seguente:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="SCREEN">
+200 Leafnode NNTP Daemon, version 1.9.19 running at    localhost.localdomain
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Nel caso di <SPAN class="APPLICATION">inetd</SPAN>, potrebbe dover
+      essere aggiunta al file <TT class="FILENAME">/etc/hosts.allow</TT> la
+      riga:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+leafnode: LOCAL
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e al file <TT class="FILENAME">/etc/hosts.deny</TT> la riga:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+ALL: ALL
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per scaricare le news, dovete lanciare il comando: <B class=
+      "COMMAND">fetchnews</B> da utente <B class="KEYCAP">root</B> o <B
+      class="KEYCAP">news</B> (badate che spesso l'utente <B class=
+      "KEYCAP">news</B> viene creato ma non gli viene assegnata una password,
+      quindi non può loggarsi; nel caso da utente <B class="KEYCAP">root</B>
+      date il comando: <B class="COMMAND">passwd news</B> e assegnategliene
+      una). Se non volete loggarvi come utenti <B class="KEYCAP">root</B> o
+      <B class="KEYCAP">news</B> (presuppongo che l'eseguibile <B class=
+      "COMMAND">fetchnews</B> sia in <B class="KEYCAP">/usr/sbin/</B>, se <B
+      class="COMMAND">which fetchnews</B> vi da un <EM>path</EM> diverso
+      sostituitelo dove necessario), date i seguenti comandi da root :</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+chown root.news /usr/sbin/fetchnews
+chmod a+s /usr/sbin/fetchnews
+ln -s /usr/sbin/fetchnews /usr/bin/fetchnews
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e poi modificate <TT class="FILENAME">/etc/group</TT> in modo che
+      nell'ultimo campo appaia il vostro nome utente:</P>
+
+      <P><EM>prima</EM>: news:x:13:news</P>
+
+      <P><EM>dopo</EM>: news:x:13:news,vostronomeutente</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> il numero può cambiare, e la <B class=
+          "KEYCAP">x</B> potrebbe essere assente nel caso non utilizziate le
+          <EM>shadow password</EM> o potrebbe essere qualcosa di
+          ingarbugliato nel caso il gruppo abbia una password, sempre <EM>non
+          shadow</EM>.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>La prima volta che lancerete il comando <B class=
+      "COMMAND">fetchnews</B> verranno scaricati tutti i nomi dei gruppi
+      presenti sul server remoto. Dopo questa fase, entrate nel vostro
+      <EM>newsreader</EM> preferito e scorrendo la lista dei newsgroup
+      marcate quelli che volete frequentare, entrando nel newsgroup scelto e
+      LEGGENDO il <EM>placeholder</EM> di leafnode (questo dovrebbe creare i
+      file: <TT class=
+      "FILENAME">/var/spool/news/interesting.groups/nome.del.gruppo.scelto</TT>
+      di lunghezza 0: controllate e se ciò non avviene createli voi con il
+      comando: <B class="COMMAND">touch
+      /var/spool/news/interesting.groups/nome.del.gruppo.scelto</B>,
+      ripetendo per ognuno dei gruppi scelti). Al successivo lancio di <B
+      class="COMMAND">fetchnews</B> verranno scaricati gli <EM>header</EM> e
+      gli <EM>articoli</EM> (in base all'impostazione di <EM>delaybody</EM>
+      nel file <TT class="FILENAME">/etc/leafnode/config</TT>) dei gruppi
+      sottoscritti. Per leggerli, impostate il vostro newsreader su server:
+      <B class="KEYCAP">localhost</B> e porta <B class="KEYCAP">119</B>.
+      Riguardo a quale newsreader scegliere, io vi consiglio <SPAN class=
+      "APPLICATION">slrn</SPAN> per console (la configurazione è nelle ultime
+      pagine del <EM>Quick&amp;Easy Configuration HOWTO</EM>): ci sono varie
+      scuole di pensiero a seconda che vogliate un programma da
+      <EM>console</EM> o da <EM>gui</EM>. Tra i migliori per <EM>console</EM>
+      ci sono <SPAN class="APPLICATION">slrn</SPAN> e <SPAN class=
+      "APPLICATION">tin</SPAN>, tra quelli per <EM>gui</EM> i più promettenti
+      sembrano <SPAN class="APPLICATION">pan</SPAN> e <SPAN class=
+      "APPLICATION">knode</SPAN> (notate che ho scritto "promettenti", non
+      migliori, in quanto ancora buggatelli anzichenò), oltre al veterano
+      <SPAN class="APPLICATION">knews</SPAN> (che non c'entra niente con il
+      <EM>KDE</EM>, il cui newsreader <SPAN class="APPLICATION">krn</SPAN> è
+      bene che evitiate come LA PESTE, a meno che vi piaccia tanto Windows da
+      volerne emulare i crash sotto Linux! ;-) ).</P>
+
+      <P>Possibili opzioni utili di fetchnews sono:</P>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">-v</B> : (anche ripetuto, come <B class=
+          "KEYCAP">-vvvv</B>) che stampa a video un resoconto di quello che
+          sta succedendo, più dettagliato in base a quante <B class=
+          "KEYCAP">v</B> mettete</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-P</B> : invia solo i vostri nuovi messaggi,
+          senza scaricare quelli presenti sul server remoto</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-n</B> : evita l'annullamento automatico delle
+          sottoscrizioni di gruppi che non si leggono da molto tempo
+          (intervallo modificabile nel file di configurazione, opzioni
+          <EM>timeout_short</EM> e <EM>timeout_long</EM>).</P>
+        </LI>
+      </UL>
+
+      <P>Per cancellare i vecchi post che hanno superato il tempo di
+      <EM>expire</EM>, data da utenti <B class="KEYCAP">root</B> o <B class=
+      "KEYCAP">news</B> il comando: <B class="COMMAND">texpire</B>, magari
+      forzandolo con l'opzione <B class="KEYCAP">-f</B>.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "leafnode.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "scorefile.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Leafnode</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "leafnode.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Scorefile</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

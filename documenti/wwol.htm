@@ -1,0 +1,823 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Wonderful World of Linux 2.4</TITLE>
+
+
+</HEAD>
+<BODY BGCOLOR="#BBDDFF">
+<CENTER>
+	<HR NOSHADE>
+	<TABLE width="100%" border=0 cellspacing=0 cellpadding=0 bgcolor="#BBDDFF">
+	<TR><TD align="LEFT">
+	<a href="../../siena.linux.it/index.html">
+	<IMG SRC="../img/logo.jpg" ALT="Cor Magis Tibi Sena Pandit" border=0 valign=middle>
+	</a>
+	</TD>
+	<TD align="RIGHT" VALIGN="TOP" width="99%">
+	<a href="../../siena.linux.it/index.html">
+	<img src="../img/scritta.jpg" alt="SLUG - Siena.Linux.User.Group" border=0></a>
+        </TD>
+	</TR>
+	</TABLE>
+        <HR NOSHADE>
+<BR><BR>
+<H1>Wonderful World of Linux 2.4</H1>
+
+ 
+<H2>Joe Pranevich
+ </H2>Final Candidate #2, 1 April 2000
+ 
+<P><HR>
+<EM>All'inizio c'era Linus e il suo 386. Per ragioni troppo complesse da descrivere in questo documento, egli non decise di utilizzare il sistema operativo di più comune utilizzo a quel tempo e invece decise di scriversene uno per conto suo. Alcuni anni e molte migliaia di linee di codice dopo, fu rilasciata la versione 2.2 di Linux. Questa versione è stata una pietra miliare di per se stessa e io scrissi un articolo al proposito del quale sono molto contento. Sfortunatamente per me, comunque, (e fortunatamente per il resto del mondo), Linus (e compagnia) hanno continuato a modificare il sistema operativo Linux, tanto che ormai la versione 2.4 sta per giungere a completamento. Scritto per la vostra approvazione, questo documento descrive alcune delle nuove caratteristiche di Linux 2.4. (Il documento è basato sulla versione 2.3.99-
+pre3, che rappresenta attualmente la più recente versione del kernel. Quando la serie di sviluppo raggiungerà la maturità, essa diventerà la versione 2.4.) Questo documento è dunque la versione candidata ad essere la finale, e se c'è qualcosa di importante che mi sono dimenticato di menzionare (secondo la vostra opinione), fatemelo sapere e io l'aggiungerò non appena mi sarà possibile.
+Al contrario degli annunci di pre-release di altri sistemi operativi, le funzionalità descritte in questo documento sono già tutte presenti nel kernel di Linux 2.3 (la versione per sviluppatori) (anche se alcune di queste potrebbero essere non molto stabili nell'albero di sviluppo e altre saranno contrassegnate come "sperimentali" al momento dell'uscita del 2.4). Dal momento che Linux aderisce strettamente alla filosofia Open Source, molte funzionalità sono aggiunte da sviluppatori indipendenti non appena essi scoprono un particolare bisogno o un baco nel codice esistente. Questi interventi sono comunque controllati da Linus e dai suoi non ufficiali sottotenenti per il controllo di qualità. Questo processo di filtraggio è quello che rende Linux coerente malgrado la sua potenzialmente molto estesa rete di sviluppatori.
+Inoltre, nel pieno spirito del movimento Open Source, i prodotti sono rilasciati "non appena sono pronti" e generalmente non hanno date annunciate di rilascio. Al momento, Linux 2.3 si trova in un ciclo di pre-
+rilascio finale dal quale non otterrà grossi cambiamenti aldilà della correzione dei bug. Possiamo realmente aspettarci il rilascio della versione 2.4 ufficiale entro un paio di mesi ma latri mesi passeranno prima che questa versione sia inserita in qualche distribuzione. (Rimane comunque da vedere come e quali di queste nuove caratteristiche i distributori sceglieranno di supportare sin dall'inizio. Il supporto per il DevFS e dell'LVM, in particolare, sarà un grande impegno per le future distribuzioni).
+Questa stesura del WWOL2.4 è sottotitolata "Aggiornamento del Primo d'Aprile" e rappresenta un piccolo aggiornamento rispetto alla prima versione. Questa stesura è la CANDIDATA FINALE. Questo significa che non vedrete grandi cambiamenti tra questa e quella finale. Il feedback è molto importante a questo punto.
+In questo documento ho cercato di attirare l'attenzione su quelle aree dove Linux 2.4 non è compatibile con Linux 2.2. Ricordate comunque che i moduli in forma binaria per la maggior parte non funzioneranno dal momento che sono cambiate molte strutture interne. Il formato di alcuni dei file del filesystem /proc è stato modificato. In ogni caso la maggior parte delle applicazioni non noteranno la differenza. (Applicazioni di basso livello, come per esempio il demone ppp, o altri programmi che si basano su un'intima interrelazione con il kernel, non saranno mai compatibili al 100% tra i rilasci delle maggiori revisioni del kernel.)
+Joe - jpranevich@linuxtoday.com (casa)       jpranevich@lycos.com      (lavoro)
+Il mio indirizzo di posta elettronica presso linuxtoday.com è di nuovo funzionante, grazie alla veloce correzione fatta dal team di Linux Today. Questo articolo non ha niente a che fare con Lycos, mio datore di lavoro. I punti di vista espressi sono tutti miei e questo articolo non costituisce in nessun modo una presa di posizione da parte di Lycos. Loro sono comunque una ditta per la quale è molto bello lavorare. E' concessa la riproduzione di questo articolo solo dopo la mia approvazione. Nel caso, mandatemi un richiesta via email.</EM>
+<HR>
+<BR><BR>
+
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 BGCOLOR="#FFFFFF">
+<tr>
+    <td>
+
+<H2><A NAME="s1">1. Linux al suo interno</A>  </H2>
+
+<P>Linux 2.2 è stato un grande miglioramento rispetto a Linux 
+2.0 e tutta la serie 1.x del kernel. Aggiunse il supporto a 
+molti nuovi file system, un nuovo sistema di file caching, 
+ed era molto più scalabile. Linux 2.4 parte da quei 
+presupposti per poter diventare il miglior kernel Linux in 
+tutte le possibili situazioni.
+Il kernel Linux è un assortimento di componenti modulari e 
+di sottosistemi includendo tra questi i device drivers, i 
+protocolli e altri tipi di componente. Questi sono poi 
+amalgamati al nocciolo del kernel da delle API, interfacce 
+per la programmazione, che forniscono un metodo standard 
+tramite il quale il kernel di Linux può essere esteso a 
+seconda delle esigenze. La maggior parte di questo 
+documento si focalizzerà su questi componenti del sistema 
+operativo (OS) Linux in quanto sono questi che fanno la 
+maggior parte del lavoro. Sono essi che gestiscono il 
+vostro hard disk, leggono i vostri file e ai quali compete 
+l'espletamento delle funzioni più ovvie e di basso livello. 
+Ma Linux 2.4 é sicuramente di più di un semplice 
+agglomerato di componenti. Questo assortimento di driver e 
+di API girano tutti intorno ad un unica, particolare e 
+centrale parte del kernel. In questa parte sono incluse 
+cose fondamentali come lo scheduler, il memory manager, il 
+virtual file system e l'allocatore di risorse.
+Linux 2.4 è la prima release del kernel ad includere un 
+sottosistema di gestione delle risorse veramente completo. 
+Precedenti incarnazioni di Linux, includevano solo le 
+vestigia di questo supporto, ma questo era considerato 
+kludgy e non provvedeva le funzionalità necessarie al mondo 
+"Plug and Play". Diversamente da altri cambiamenti interni, 
+molti utenti saranno in grado di apprezzare direttamente 
+questa modifica in quanto questa avrà effetto sul modo 
+tramite il quale le risorse saranno allocate e riportate al 
+kernel. Come parte di questa modifica, il database ormai 
+obsoleto delle schede PCI di Linux 2.2 è stato aggiornato 
+cosicché tutte le risorse potranno avere associato un nome 
+di device, piuttosto che semplicemente un driver.
+La nuova release del kernel Linux corregge anche alcun 
+problemi nel modo in cui erano gestiti il VFS (virtual 
+filesystem) e le cache dei file. Nelle più vecchie versioni 
+di Linux, il file caching era dipendente da un sistema a 
+doppio buffer che effettivamente semplificava alcune cose, 
+ma per contro causava molti mal di testa agli sviluppatori 
+del kernel che avessero dovuto sincerarsi che questi due 
+buffer non andassero mai fuori sincronia. In aggiunta, la 
+presenza di un buffer addizionale, aumentava l'uso della 
+memoria e rallentava tutto il sistema dal momento che il 
+kernel doveva fare del lavoro addizionale per mantenere 
+quella sincronia.
+L'abilità di Linux di gestire i processi e gli utenti è 
+stata grandemente estesa nella versione 2.4. Le precedenti 
+versioni includevano un limite relativamente basso sia nel 
+numero di processi che potevano essere eseguiti 
+simultaneamente, che nel numero di utenti univoci su un 
+sistema, due condizioni, queste, che irrimediabilmente 
+compromettevano le possibilità di Linux di entrare in 
+ambienti Enterprise. Linux 2.4 corregge questi problemi 
+provvedendo un limite configurabile e scalabile al numero 
+di processi simultanei ed aumentando il massimo numero di 
+utenti (e gruppi) fino a circa 4,2 miliardi (2^32). 
+Inoltre, è stata migliorata l'efficienza dello scheduler 
+permettendo a Linux di gestire meglio sistemi con un 
+elevato numero di processi concorrenti.
+Linux 2.4 può inoltre gestire hardware di classe 
+"enterprise" molto più grande di quando potevano le 
+precedenti revisioni di kernel. Per esempio è stato incluso 
+il supporto per più di 4 Gb di RAM su qualsiasi hardware li 
+possa gestire, (incluso hardware Intel), più di 16 schede 
+Ethernet, più di 10 controller IDE, IO-APIC multipli e 
+altri abusi apparentemente superflui di buon hardware. 
+Inoltre, Linux 2.4 include un assortimento molto più grande 
+di device drivers e hardware supportato di qualsiasi altra 
+revisione tanto che qualsiasi hardware vi possa venire in 
+mente avrà una probabilità decente di funzionare . (Resta 
+inteso, tuttavia, che uno dovrebbe comunque consultare la 
+documentazione dell'hardware supportato, prima di uscire  a 
+comprare l'hardware più recente). Soprattutto questo 
+potrebbe infatti non essere ancora supportato.
+Linux è comunque diventato più adatto all'ambiente 
+Enterprise di quanto possano dirne i puri numeri. Molti 
+componenti di Linux 2.4 inclusi tutti i maggiori file 
+system e lo strato di rete sono stati completamente 
+riscritti con in mente la maggior scalabilità. Linux 2.4 
+dovrebbe essere ancora più scalabile vista l'ottimizzazione 
+ottenuta su molti sottosistemi per l'uso su piattaforme con 
+8 o più processori. Inoltre è continuato il lavoro, 
+iniziato a partire dal Linux 2.2, del rimuovere il global 
+spin lock e per questo molti lock del kernel sono diventati 
+molto più precisi permettendo ancora migliori scalabilità 
+in ambienti multiprocessore. Linux 2.4 aderirà più 
+strettamente con lo standard POSIX, inclusa l'ultima 
+versione del filesystem NFS (NFSv3), ed aggiunge altre 
+modifiche al fine di essere utilizzabile in maniera 
+migliore e più utile in un ambiente Enterprise. Linux 2.4 
+potrebbe essere chiamato "Enterprise Linux", ma l'argomento 
+potrebbe essere portato avanti nello stesso modo per 
+definirlo come "il" Linux anche per altre categorie.
+Una delle domande più frequenti su Linux 2.4 è circa la 
+memoria che questo richiederà per operare. Ebbene, mentre 
+molti sistemi operativi sembrano richiedere più e più 
+memoria e risorse via via che questi maturano, Linux 2.4 
+inverte questa tendenza richiedendo perfino meno memoria, 
+in certe situazioni. Naturalmente, dal momento che Linux 
+2.4 includerà molte funzionalità in più rispetto al 2.2 e 
+molte di queste richiederanno più spazio, in media potrebbe 
+volerci più ram. (A questo proposito conviene notare che, a 
+differenza di molti altri sistemi operativi, molti 
+componenti del kernel possono essere comunque disabilitati 
+in fase di compilazione dello stesso).
+<H2><A NAME="s2">2. Gli svariati gusti di Linux </A></H2>
+
+<P>In termini di pure linee di codice, il kernel di Linux è 
+composto soprattutto da driver. Infatti la dimensione del 
+core non è poi incrementata molto durante le successive 
+revisioni. Alcuni di questi driver sono indipendenti 
+dall'architettura, come i driver IDE. Questi sono stati 
+scritti per lavorare su diverse piattaforme. Altri driver, 
+invece, sono strettamente dipendenti dalla piattaforma, 
+sopratutto per quanto riguarda quell'hardware costruito 
+specificamente per essere utilizzato su una sola 
+piattaforma. Gli sviluppatori del kernel cercano in ogni 
+caso di mantenere l'implementazione dei driver il più 
+generica possibile, allo scopo che sia poi più semplice 
+riutilizzare il codice scritto per un certo hardware al 
+momento che questo diventa disponibile anche per un'altra 
+piattaforma. Il sistema operativo Linux è una bestia con 
+molte teste e sfaccettature, simili ma diverse l'una con 
+l'altra, a seconda della piattaforma sulla quale lo stiamo 
+utilizzando.
+Avendo detto questo, questo documento farà riferimento 
+soprattutto ad hardware Intel anche perché questo è 
+l'hardware che io utilizzo maggiormente a casa. Non voglio 
+entrare nelle specifiche di ogni singolo porting, ma Linux 
+2.4 aggiunge il supporto per due nuove famiglie di 
+processore. Non ho nessuna esperienza con quei tipi di 
+piattaforma  e per questo non sono sicuro del livello 
+dell'hardware supportato. (O perfino quale classe di 
+hardware essi rappresentino). E' comunque auspicabile che 
+questi matureranno con il passare del tempo così come hanno 
+fatto gli altri porting. Il supporto per ogni singola 
+caratteristica è diversa da porting a porting e alcune 
+limitazione sull'hardware, memoria, ecc., differiranno a 
+seconda dell'architettura sottostante.
+In termini di hardware di tipo Intel, il supporto di Linux 
+2.4 è molto simile a quello offerto nel 2.2. Tutti i 
+microprocessori Intel a partire dal i386 sono ancora 
+supportati, fino ad arrivare al Pentium III. Lo stesso vale 
+per i microprocessori compatibili, come quelli di Cyrix e 
+di AMD. In aggiunta, Linux 2.4 includerà il supporto per 
+hardware spesso presente sui chip più nuovi inclusi le 
+varietà non Intel dei MTRR (Memory Type Range Registers) 
+(conosciuti anche come MCR) che aumenteranno le prestazioni 
+di alcuni tipi di dispositivo a larga banda. Mentre Linux 
+2.2 includeva il supporto per IO-APIC (Advanced 
+Programmable Interrupt Controller) su sistemi 
+multiprocessore, Linux 2.4 includerà quel supporto anche 
+per i sistemi con un solo processore ed in più supporterà 
+macchina con IO-APIC multipli. Il supporto per IO-APIC 
+multipli permetterà a Linux 2.4 di essere molto più 
+scalabile su sistemi high-end di quanto lo fossero i suoi 
+predecessori.
+<H2><A NAME="s3">3. Linux 2.4 e l'architettura ia64 </A></H2>
+
+<P>Pur non essendo ancora distribuita alla grande produzione, 
+la nuova architettura Intel a 64 bit che dovrà rimpiazzare 
+tutta la linea x86, sta ormai giungendo alla maturazione. 
+Anche mancando ancora qualsiasi tipo di hardware con il 
+supporto per quel tipo di microprocessore, sono state 
+incluse delle patch del kernel per il supporto di quello e 
+dei suoi successori.
+<H2><A NAME="s4">4. Linux 2.4 e il Crusoe</A></H2>
+
+<P>Dal momento che Linus lavora in Transmeta, il processore 
+Crusoe supporterà pienamente Linux non appena il primo 
+prodotto basato su questo chip arriverà sul mercato. 
+Infatti la compatibilità di Linux e Crusoe è stata 
+chiaramente dimostrata utilizzando il test Quake. 
+(Probabilmente il più importante test per tutti i nuovi 
+processori.) Dal momento che Crusoe emula le istruzioni 
+i386, non si può certo parlare di un vero e proprio porting 
+per questo processore ma nel nuovo kernel 2.4 saranno 
+comunque presenti delle funzionalità specifiche di questo 
+chip (soprattutto per quello che riguarda la gestione del 
+risparmio energetico e di un nuovo strato "virtuale" per la 
+tastiera) 
+<H2><A NAME="s5">5. Linux 2.4 e i processori Intel Pre-386</A></H2>
+
+<P>Sorprendentemente continuo a ricevere un sacco di domande 
+sui Linux pre-386. La risposta, perlomeno adesso, è che 
+questo animale non esiste. Un progetto parente, ELKS 
+(Embedable Linux Kernel Support) sta lavorando per 
+permettere l'esecuzione di un sistema operativo simile a 
+Linux su queste macchine, includendo il supporto per la 
+modalità protetta sui chips che la supportano. Questo 
+progetto comunque è separato dal vero e proprio progetto 
+Linux e rimane comunque fuori dagli scopi di questo 
+documento.
+Esiste anche un porting separato del kernel di Linux, 
+chiamato uLinux, che sta cercando di portare Linux su 
+quelle macchine così vecchie, incluse quelle con processori 
+senza MMU. Questo progetto non è ancora stato integrato in 
+quello principale del kernel, ma potrà eventualmente 
+portare alcune reali funzionalità Linux su quell'hardware.
+<H2><A NAME="s6">6. Il Supporto Hardware - /dev/*</A></H2>
+
+<P>Prima di parlare del supporto hardware del Linux 2.4, 
+vorrei porre l'attenzione su uno dei suoi aspetti più nuovi 
+e controversi : DevFS: il device filesystem. DevFS è una 
+(al momento opzionale) funzionalità che fondamentalmente 
+riscrive il modo tramite il quale Linux gestisce 
+l'interazione tra i device. Questa funzionalità sarà 
+presentata all'utente in due maniere molto ovvie. Per prima 
+cosa praticamente tutti i nomi dei device sono stati 
+cambiati. Per esempio. "/dev/hda" potrebbe essere il vostro 
+hard disk, ma adesso potrebbe trovarsi in "/dev/ide0/...". 
+Questo schema modificato aumenta il namespace disponibile 
+per i device e permette alle periferiche "moderne" come 
+l'USB di essere meglio integrate nel modello dei device 
+proprio di UNIX. Secondariamente i nomi dei device saranno 
+aggiunti alla directory /dev/ non appena i driver saranno 
+caricati nel kernel, invece che avere tutti i possibili 
+nomi preesistenti nella directory. I vecchi nomi 
+continueranno a rimanere disponibili per compatibilità, 
+usando il programma "devfsd" (da far girare in userspace).
+Questa modifica avrà effetto soprattutto verso i 
+manutentori delle distribuzioni che si vorranno assicurare 
+che tutte le applicazioni vengano modificate per poter 
+utilizzare i nuovi nomi. L'utente finale non sarà invece 
+molto interessato a questi cambiamenti. Questi, se non 
+altro, potranno una sorpresa per molti. Mentre molti utenti 
+potrebbero essere perplessi da questa funzionalità a causa 
+della maggior prolissità sulla nomenclatura dei device, è 
+facile notare quanto limitante possa essere  l'altra 
+maniera.
+<H2><A NAME="s7">7. I Bus - ISA, PCI, USB, MCA, etc. </A></H2>
+
+<P>I processori sono soltanto una parte di quel simpatico 
+mondo che esiste all'interno del vostro computer. 
+Ugualmente importante è l'architettura bus del computer, i 
+componenti del sistema che sono responsabili del 
+collegamento tra i vari device interni ed esterni. Alcune 
+architetture del bus, come l'originario ISA, sono molto 
+meno responsabili riguardo al loro hardware che qualsiasi 
+altra cosa; essi non provvedono nessun tipo di gestione 
+delle risorse, ma giusto un posto dove infilare le schede. 
+Altri, come il PCI, supportano un livello molto più 
+avanzato di configurazione, permettono di poter riallocare 
+le risorse dei dispositivi e molte altre cose. Dal momento 
+che tutti i principali bus interni delle architetture Intel 
+erano già supportati da Linux 2.2 ((E)ISA, VLB, PCI, MCA), 
+non c'è niente di sorprendentemente nuovo in quest'area. 
+Linux 2.4 comunque migliora ancora il supporto per questi 
+bus, inserendoli all'interno del suo nuovo sottosistema di 
+gestione delle risorse.
+Due sono i grandi miglioramenti in quest'area. Linux 2.4 
+include, per la prima volta nel kernel, il supporto per le 
+schede ISA Plug-and-Play. Prima, Linux poteva supportare 
+questi dispositivi utilizzando delle apposite utility e 
+alcuni successivi raffinamenti da parte dell'utente o delle 
+distribuzioni. Linux 2.4 invece permetterà di utilizzare 
+questi dispositivi fin dal processo di boot (per esempio 
+sarà possibile eseguire il boot da un controller IDE ISA 
+PnP) e la configurazione di questi dispositivi avverrà 
+adesso in maniera automatica. Linux 2.4 inoltre avrà il 
+supporto nel kernel per l'I2O. L'I2O (Intelligent 
+Input/Output)) è un superset del PCI studiato allo scopo di 
+consentire la scrittura di device drivers indipendenti dal 
+sistema operativo. Oltre a questi due cambiamenti poi, 
+molti utenti verificheranno che il 2.4 avrà il supporto per 
+molti più componenti hardware che possono essere presenti 
+in un PC.
+Linux 2.4 inoltre aumenterà il supporto per i device 
+esterni. E' stato aggiunto Il supporto per le schede PCMCIA 
+(chiamate anche PC Card). Questo supporto era già 
+disponibile in molte distribuzioni e molte di queste lo 
+includevano di default. Linux 2.4 supporta un miglior 
+integrazione con il driver PCMCIA e dovrebbe facilitare 
+l'installazione e il processo di configurazione per questi 
+device a molti utenti. Come la precedente versione di 
+questo driver, comunque, Linux 2.4 si dovrà ancora 
+appoggiare ad un demone esterno ed ad altri componenti per 
+ottenere il meglio dai dispositivi PCMCIA.
+Forse la notizia più eccitante su questo fronte è il 
+supporto per l'Universal Serial Bus, un bus esterno che si 
+sta facendo avanti per dispositivi come tastiere, mouse, 
+sistemi sonori, scanner e stampanti. USB è un opzione 
+comune in molti congegni hardware, compreso quelli non 
+Intel. Il supporto di Linux per questi dispositivi è ancora 
+all'inizio ma una larga parte di comuni periferiche USB 
+(come le tastiere, i mouse, casse etc.) è già supportato al 
+livello di kernel.
+Molto più recentemente, è stato aggiunto al kernel anche il 
+supporto Firewire. Il Firewire è una soluzione molto comune 
+per molti dispositivi che utilizzano una larga banda per i 
+dati. Non sono comunque presenti ancora molti driver (e 
+dispositivi) per questo tipo di architettura hardware, ma 
+il loro supporto è comunque destinato ad espandersi nel 
+tempo.
+<H2><A NAME="s8">8. I Device a blocchi - LVM, Disk Drives, etc.</A></H2>
+
+<P>Nella loro forma più semplice i device a blocchi sono 
+dispositivi che possono essere considerati come un array di 
+byte ai quali è possibile accedere in maniera non 
+sequenziale. In questa definizione potrebbero ricadere 
+dispositivi come gli hard disk (nei quali è possibile 
+leggere qualsiasi settore si desideri) ma non le porte 
+seriali (in quanto uno può leggere solo quello che si trova 
+alla fine del cavo). Estensioni a questo concetto (come 
+espellere un disco, etc.) sono gestiti da Linux tramite 
+ioctls (I/O Controls). Il concetto dei device a blocchi non 
+è mai molto cambiato e il supporto per i dischi IDE e SCSI 
+è stato presente fin dalle prime revisioni del kernel.
+Nel Linux 2.4. tutti i driver per i device a blocchi sono 
+stati riscritti in qualche modo dal momento che le API per 
+il device a blocchi è stato cambiato per togliere 
+immondizia lasciata in eredità dalle vecchie versioni e per 
+separare completamente le API per i device a blocchi dalle 
+API dei file a livello di kernel. Questi cambiamenti 
+necessari alla riscrittura di queste API, pur non essendo 
+stati drastici, rendono necessario ai manutentori dei 
+moduli che stanno fuori dall'albero principale del kernel, 
+di rivedere i loro sorgenti.
+Sui sistemi desktop i dispositivi a disco che utilizzano il 
+bus IDE sono prevalenti. Linux ha il supporto per i dischi 
+IDE fin dalle primissime versioni, ma Linux 2.4 lo ha 
+migliorato sotto moltissimi aspetti. Per prima cosa i 
+sistemi high-end che hanno molteplici controller IDE 
+possono beneficiare del fatto che il numero massimo di 
+controller supportati è stato portato a 10. (Mentre nelle 
+precedenti versioni se ne poteva avere al massimo 4). Dal 
+momento comunque che la maggior parte delle motherboard 
+vengono vendute con un massimo di due controller IDE, 
+questo ampliamento non riguarderà la maggior parte degli 
+utenti desktop. Come seconda cosa, sono state apportate 
+alcune modifiche nel driver IDE che miglioreranno il 
+supporto per i controller IDE PCI e PnP, floppy disc e 
+cassette IDE, DVD e CD-ROM. E, per finire, Linux 2.4 
+include degli aggiornamenti per il driver in modo sia da 
+gestire meglio alcuni bug presenti in alcuni chipset IDE, 
+sia per sfruttare al meglio delle caratteristiche di altri.
+Mentre è ragionevole affermare che il sottosistema SCSI non 
+è cambiato nella stessa maniera del sottosistema IDE, il 
+supporto a questo BUS è stato comunque per la maggior parte 
+riscritto. Addizionalmente è stato aggiunto il supporto ad 
+un certo numero di nuovi adattatori. Una successiva 
+rifinitura al sottosistema SCSI è già prevista durante lo 
+sviluppo del 2.5
+Una funzionalità completamente nuova nel kernel 2.4 è 
+l'implementazione del "raw" I/O device. Un raw device è 
+quello i cui gli accessi non sono gestiti attraverso il 
+livello di caching, ma è esso stesso ad averne il diretto 
+controllo. Un device raw potrebbe essere usato nei casi in 
+cui un'applicazione sofisticata desidera il completo 
+controllo sul metodo di caching dei dati e l'utilizzo della 
+usuale cache non è voluto. Alternativamente, un device raw 
+potrebbe essere usato in situazioni dove la gestione dei 
+dati è critica e dove si voglia essere sicuri che questi 
+vengano scritti immediatamente sul disco in maniera che, 
+nel caso di un grave problema hardware, nessun dato possa 
+essere perso. Versioni precedenti di questo tipo di 
+supporto non erano mai stati inclusi dal momento che questo 
+voleva dire praticamente dover duplicare ogni nodo dei 
+device in modo che ognuno di essi potesse avere anche la 
+propria controparte "raw". (Ed è questa l'implementazione 
+offerta da molti UNIX commerciali). L'implementazione 
+corrente invece userà un pool di nodi device che potrà 
+essere associato ad un numero arbitrario di device a 
+blocchi.
+Un'area di grande rilievo all'interno dei miglioramenti 
+inclusi nel nuovo kernel 2.4 è data dall'inclusione del 
+sottosistema LVM (Logical Volume Manager) all'interno del 
+corpo principale del kernel. Si tratta di un sistema, 
+standard in molti UNIX di classe Enterprise come HP-UX a 
+Tru64 UNIX (precedentemente Digital UNIX), che ripensa 
+completamente il modo con il quale i filesystem ed i volumi 
+sono gestiti. Senza entrare troppo nei dettagli, il LVM 
+permette ai dischi lo span disk, essere ridimensionati ed 
+amministrati in una maniera più flessibile di quanto 
+potesse permetterlo lo schema di tabella delle partizioni 
+corrente. Alcune delle funzionalità del sottosistema LVM 
+possono essere replicati tramite il driver md (multiple 
+device) o tramite alcuni tool da eseguire in userspace. In 
+ogni caso il sottosistema LVM offre queste caratteristiche 
+in un modo che si attiene agli standard ed in una maniera 
+che risulterà familiare agli utenti degli UNIX commerciali.
+In aggiunta a molti degli altri cambiamenti sui device a 
+blocchi, Linux 2.4 presenterà anche un supporto aggiornato 
+per i driver loopback e ramdisk in modo da correggere 
+alcuni bug che si potevano presentare in determinate 
+situazioni.
+<H2><A NAME="s9">9. I Filesystem e le tabelle delle partizioni</A></H2>
+
+<P>I filesystem possono essere utilizzati in un vasto numero 
+di maniere. Il modo più comune di utilizzare un device a 
+blocchi è quello di montare su di esso un filesystem. 
+(Internamente il codice che gestisce il filesystem è in 
+pratica un livello che si sovrappone a quello del driver 
+del device). Altre maniere di utilizzare un device a 
+blocchi includono il partizionamento (che è molto simile ad 
+un filesystem, solo gestito in una maniera completamente 
+diversa), o utilizzarlo in modalità "raw".
+Linux 2.4 include tutti i tipi di filesystem che erano 
+presenti nel 2.2. Questi filesystem includono FAT (per i 
+vari DOS), NTFS (per Windows NT), VFAT e FAT32 (per Windows 
+9x), HFS (per MacOS), HPFS (per OS/2) ed altri. Ne sono 
+stati aggiunti altri, tra i quali il filesystem UDF usato 
+sui DVD e il filesystem efs usato da IRIX. Tutti i 
+filesystem sono stati riscritti per aggiornarli al supporto 
+della nuova metodologia di page caching e per questo 
+saranno anche più efficienti. L'unica eccezione a questo 
+sarà il filesystem NTFS dal momento che questo non ha al 
+momento un manutentore di riferimento e non è correntemente 
+ancora molto stabile.
+Sono presenti inoltre un buon numero di miglioramenti che 
+aumenteranno la compatibilità con altri sistemi. Gli utenti 
+OS/2 saranno finalmente in grado di poter accedere al loro 
+filesystem in scrittura da Linux. (Questa modifica è stata 
+a lungo attesa e spero che sia rimasto un sufficiente 
+numero di utenti OS/2 ad apprezzarla). Gli utenti NT non 
+hanno ancora questo lusso dal momento che il loro driver si 
+trova ancora in stato sperimentale. Gli utenti NextStep 
+saranno in grado di montare il loro CD-ROM sotto Linux dal 
+momento che questo supporterà un estensione al filesystem 
+UFS.
+Linux 2.4 non includerà ancora un journaling filesystem, 
+anche se alcuni progetti stanno per aggiungere questa 
+funzionalità in maniera stabile. Anche se è praticamente 
+certo che il journaling filesystem non sarà supportato per 
+l'uscita del 2.4 è comunque previsto che entro il ciclo di 
+vita del 2.4 un journaling filesystem sarà aggiunto (prima 
+che gli sviluppatori interrompano lo sviluppo per iniziare 
+a lavorare sul 2.6 o chissà cos'altro)
+La gestione della tabella delle partizioni è stata 
+riscritta e adesso permette una maggior scelta tra tabelle 
+di partizioni non native. Questo potrebbe essere utile se 
+voi aveste, per esempio, un drive SCSI esterno di un 
+Macintosh da voler utilizzare su un PC Linux. Un notevole 
+numero di nuove tabelle di partizioni sono state aggiunte, 
+incluso il formato delle macchine IRIX.
+Non tutti i filesystem sono montati su device a blocchi, 
+comunque. Alcuni, come i filesystem proc e devfs sono 
+completamente virtuali. Altri sono "montati" sulla rete. Ci 
+sono molti metodi per ottenere questa funzionalità e ogni 
+sistema operativo ha il proprio metodo.
+Il mondo Windows usa il protocollo Server Message Block 
+(SMB) per il loro filesystem di rete. Il nuovo kernel di 
+Linux rimuove l'operazione che andava fatta in fase di 
+compilazione dello stesso tramite la quale veniva richiesto 
+di indicare se si volessero montare dischi di Windows 9x o 
+NT. Il nuovo kernel sarà in grado di riconoscere 
+automaticamente il tipo di filesystem remoto e abiliterà la 
+correzione del bug solo se serve. Questo permetterà una 
+migliore integrazione di Linux negli ambienti dove 
+coesistono diverse versioni di Windows.
+Nel mondo UNIX, il protocollo Network Filesystem (NFS) è il 
+metodo principale per la condivisione dei file. Linux 2.4 
+include per la prima volta la possibilità di accedere a 
+condivisioni di filesystem sulla più recente versione del 
+protocollo NFS, NFSv3. NFSv3 aggiunge molti vantaggi 
+rispetto alla sua precedente versione ed è una delle 
+funzionalità maggiormente richieste al nuovo Linux. E' 
+necessario comunque notare che il demone NFS del kernel 
+continuerà ad esportare solo condivisioni NFSv2. (E' stato 
+annunciato che il supporto per NFSv4 è in fase di 
+sviluppo).
+<H2><A NAME="s10">10. I Device a carattere - Tastiera, Mouse, Console e Porte </A></H2>
+
+<P>La classe di dispositivi che può essere acceduta solo in 
+maniera sequenziale è rappresentata dal device a caratteri. 
+Questi sono dispositivi, come quello seriale, che  
+permettono di leggere da un flusso e di inserire dati 
+all'interno di esso, ma non di "saltare" avanti ed 
+indietro. Questi dispositivi annoverano tra di essi le 
+porte seriali e parallele, le tastiere, i mouse e i 
+terminali. Ci sono stati alcuni grossi miglioramenti in 
+questo settore.
+Uno dei più grandi aggiornamenti in quest'area riguarda 
+proprio il supporto del mouse e della tastiera. Le 
+precedenti versioni di Linux includevano il supporto 
+seriale e PS/2 per mouse e tastiera (e ADB per Macintosh). 
+Linux 2.4 adesso supporterà anche questi stessi dispositivi 
+collegati tramite porte USB. In aggiunta, Linux 2.4 
+supporterà la tastiera anche su quei sistemi nei quali 
+questa non è inizializzata dal BIOS e in sistemi che hanno 
+difficoltà a capire se una tastiera è connessa o meno. E, 
+per finire, Linux 2.4 include un più esteso supporto per le 
+tavolette grafiche ed include un'opzione per poterle 
+utilizzare anche come un normale mouse, persino quando 
+questo non è direttamente supportato dall'hardware.
+Il supporto seriale di Linux non è poi cambiato tanto dai 
+tempi del Linux 2.2. Linux 2.4, (ma già alcune versioni del 
+2.2) supporta la condivisione degli IRQ su schede seriali 
+PCI; prima, questa funzionalità era soltanto limitata alle 
+schede seriali che fossero ISA o direttamente sulla piastra 
+madre. Si spera che questi cambiamenti possano permettere 
+un utilizzo delle porte seriali su Linux semplice come non 
+mai.
+In un dipartimento separato c'è stato del lavoro fin dal 
+2.2 per implementare il supporto dei cosiddetti "WinModems" 
+(o "soft modems" o "LinModems"). Questi sono modem la cui 
+caratteristica tecnica principale è quella di essere 
+implementati per la maggior parte via software e i quali 
+driver sono rilasciati dalle case costruttrici solo per 
+Windows. (Spesso il DSP ed altre parti dell'hardware sono 
+nel software piuttosto che nell'hardware del modem). Mentre 
+nessun tipo di codice è stato sottoposto a Linus per il 
+supporto di queste bestie, sono stati sviluppati 
+indipendentemente alcuni driver per il  loro supporto ed 
+alcuni di questi hanno di mostrato di poter essere 
+utilizzabili, comunque al di fuori dell'albero principale 
+del kernel. Anche se passerà ancora del tempo per ottenere 
+il pieno supporto per questo tipo di hardware, è da notare 
+come la palla di neve dell'Open Source stia rotolando in 
+questa direzione.
+Al contrario che per il supporto seriale Linux 2.4 include 
+una larga riscrittura del sottosistema della porta 
+parallela. Uno dei più grossi cambiamenti in quest'area 
+riguarda il supporto per i cosiddetti dispositivi paralleli 
+"generici". Questi potrebbero essere utilizzati dai 
+programmi che accedono alla porta seriale in maniera non 
+usuale o, più realisticamente, che vogliono interrogare la 
+porta parallela per ottenere informazioni PnP. In aggiunta, 
+questa riscrittura permetterà agli utenti Linux 2.4 di 
+accedere a tutti le modalità avanzate supportate dalla loro 
+porta parallela incluso l'UDMA (per un più veloce I/O) 
+quando queste modalità siano supportate dall'hardware.
+Il supporto per l'infrarosso ha fatto progressi dal 2.2 e 
+ci sono stati molte modifiche in quest'area, incluso un 
+miglior supporto per la rete. Devo confessare però una 
+scarsa esperienza personale in questo ambito.
+<H2><A NAME="s11">11. Multimedia: Sound, TV, Radio, etc. </A></H2>
+
+<P>Dalla parte più complicata della lista dei dispositivi a 
+carattere troviamo alcuni dei meno essenziali ad essere 
+supportati da Linux. Nel suo ruolo emergente di sistema 
+operativo per i sistemi desktop Linux cerca con molto 
+sforzo di supportare schede sonore, sintonizzatori radio e 
+TV ed altri sistemi di output video e audio. Ad essere 
+sinceri Linux 2.4 non include così grandi cambiamenti sotto 
+questo aspetto così come fece a suo tempo il 2.2. 
+Naturalmente Linux 2.4 non manca però di fornire una lista 
+di nuovi driver, tra i quali il supporto per il full 
+duplex, e di un aggiornamento di quelli meno recenti. Linux 
+2.4, così come le versioni più recenti del 2.2, includono 
+del codice che permette ad alcune schede sonore di allocare 
+memoria più semplicemente nel loro range richiesto. Questo 
+dovrebbe rendere più semplice la loro configurazione.
+C'e' comunque del lavoro in corso su una completa 
+riscrittura del sottosistema sonoro per permetterà il 
+supporto alle più avanzate funzionalità delle moderne 
+schede sonore. Questo non sarà ancora presente nel Linux 
+2.4, ma lo attendiamo per il kernel di Linux 2.6.
+<H2><A NAME="s12">12. Le schede video e i Device Framebuffer</A></H2>
+
+<P>Un'altra, ancora più complessa varietà di device è il 
+frame-buffer. Un frame buffer è semplicemente una sezione 
+di memoria che rappresenta (o è) la memoria video 
+organizzata in maniera tale che scrivere in questa memoria 
+modifica il colore dei pixel sullo schermo. Questo è un 
+dispositivo più complesso di altri in quanto supporta 
+ioctls per il cambio delle palette ed altre funzioni 
+associate al video, tutte piuttosto complicate.
+Linux 2.4 include un buon numero di nuovi driver e 
+aggiornamenti per i vecchi. Specialmente importante qui è 
+il supporto di Linux per molte più schede VGA "standard", 
+perlomeno i certe modalità. (Anche se solo in modalità 16 
+colori, funzioneranno). Tenete presente che potremmo 
+passare sopra a questa funzionalità e (su i386) è 
+necessaria solo per quelle persone con certi sistemi che 
+non potrebbero essere supportati in altro modo. Al momento 
+in cui scrivo, il progetto XFree prevede molti più driver 
+per molte più schede video di quante non ne supporti il 
+kernel e per questo non è necessario utilizzare quella 
+funzionalità per ottenere il supporto a X Window. (SVGALib 
+ed altre librerie permettono la manipolazione diretta del 
+video, se supportata dall'hardware, ma l'utilizzo di queste 
+librerie deve essere fatto con cautela, visto i problemi di 
+sicurezza che potrebbero comportare.
+Uno dei maggiori cambiamenti in questo campo è stata 
+l'aggiunta del Direct Rendering Manager all'interno del 
+kernel. Il DRM viene a controllare il modo con il quale i 
+processi utilizzano l'hardware grafico, evitando che più 
+processi che vogliano scrivere nello stesso momento sul 
+video portino ad un crash del sistema. Questo dovrebbe 
+aumentare la stabilità in molte situazioni. Il DRM funziona 
+anche come punto di entrata per l'accesso DMA per le schede 
+video. Tutti insieme questi cambiamenti permetteranno a 
+Linux 2.4 (insieme a XFree 4.x e ad altri programmi 
+compatibili) di essere più stabili e più sicuri al momento 
+di effettuare operazioni grafiche di una certa gravosità. 
+Oltretutto permetteranno a certi sintonizzatori TV di 
+essere più utilizzabili.
+<H2><A NAME="s13">13. Accessibilità</A></H2>
+
+<P>Quando pensiamo a Linux, le parole "user friendly" 
+generalmente non vengono immediatamente a mente. Però uno 
+potrebbe essere sorpreso di scoprire che Linux 2.4 (ed 
+alcune ultime versioni del kernel 2.2) supporterà anche 
+schede di sintesi vocale. Questo driver e il relativo 
+hardware permetteranno agli utenti Linux con problemi di 
+vista di poter ascoltare tutto l'output di Linux, incluso i 
+messaggi che appaiono molto presto durante il processo di 
+boot. Veramente pochi sistemi operativi possono arrivare a 
+tanto. (Sono necessari comunque altre patch e utility per 
+poter utilizzare questo tipo di supporto. La parte relativa 
+al kernel è solo un componente di tutto il sistema).
+<H2><A NAME="s14">14. La rete e i Protocolli</A></H2>
+
+<P>Il sistema di rete e l'hardware che lo supporta è una delle 
+aree dove Linux ha sempre eccelso. Questi device non sono 
+né "a caratteri", né "a blocchi", ma abitano una speciale 
+spazio, liberi dal bisogno di nodi device. Linux 2.4 
+includerà molti miglioramenti a questo strato, inclusi 
+nuovi driver, correzione di errori, e nuove funzionalità 
+aggiunte ai driver esistenti.
+Il modello Linux per i socket della rete è uno standard nel 
+mondo delle varianti UNIX. Sfortunatamente questo standard 
+ha alcune deficienze correggibili. In Linux 2.2 e 
+precedenti versioni, se tu hai un numero di processi che 
+aspettano tutti un qualche evento su un socket di rete (uno 
+web server, per esempio), essi saranno tutti "svegliati" 
+non appena quell'evento si dovesse verificare. Per questo 
+motivo per ogni pagina web che viene richiesta, Linux 
+dovrebbe svegliare un numero di processi i quali tenteranno 
+ognuno di soddisfare la richiesta. Non ha senso che più 
+processi cerchino di soddisfare la stessa richiesta dal 
+momento che solo uno la potrà prendere in carico mentre gli 
+altri, constatando che non hanno niente da fare, 
+ritorneranno a dormire. Linux è abbastanza efficiente nel 
+cercare di eseguire questa serie di attività nel più breve 
+tempo possibile ma potrebbe comunque essere reso tutto 
+molto più efficace rimovendo le inutili "sveglie". Linux 
+2.4 include dei cambiamenti, che implementano il sistema 
+"wake one", che permetteranno di rimuovere completamente 
+l'effetto stampede di molti processi. In parole povere, il 
+sistema "wake one" fa proprio quello che il suo nome fa 
+supporre: sveglia solo un processo in caso di una richiesta 
+che potrebbe interessarne diversi. Questo permetterà ad 
+applicazioni come Apache di poter essere ancora più 
+efficienti è permetterà a Linux di poter essere una scelta 
+ancora migliore come web server.
+Linux 2.4 include anche uno strato di rete completamente 
+riscritto. Infatti è stato ripensato per essere il meno 
+serializzato possibile in modo da poter essere il più 
+scalabile di qualsiasi altra precedente versione. In 
+aggiunta l'intero sottosistema è stato ottimizzato per 
+essere il più stabile possibile su sistemi multiprocessore 
+e molti problemi sono stati eliminati. In più conterrà 
+molte ottimizzazioni rivolte a permettere l'integrazione 
+con alcune differenze presenti nelle implementazione dei 
+protocolli di rete di alcuni sistemi operativi, incluso tra 
+questi Windows. Dovrebbe essere menzionato a questo punto 
+che Linux rimane tuttora l'unico sistema operativo 
+completamente compatibile alla lettera con le specifiche 
+del IPv4. (Sì, IPv4; quello che utiliziamo comunemente) e 
+Linux 2.4 supporta un'implementazione del IPv4 che è ancora 
+più scalabile della precedente. Come Linux 2.2 divenne 
+completamente compatibile con la specifica, l'uso del 
+"colon mode" per l'aliasing è stato reso obsoleto. Questa 
+funzionalità è stata completamente rimossa dal 2.4 e per 
+questo richiederà del lavoro da parte di qualche 
+distribuzione o degli utenti più avanzati per riscrivere 
+parzialmente certi script.
+Per utenze di livello Enterprise, c'è un certo numero di 
+funzionalità che meglio permetteranno a Linux di essere 
+integrato in vecchi e nuovi sistemi di infrastrutture 
+esistenti. Un'aggiunta importante sotto questo aspetto è il 
+supporto di Linux 2.4 al protocollo e all'hardware DECNet e 
+ARCNet. Questo permetterà una miglior integrazione con 
+sistemi specializzati inclusi vecchi Digital/Compaq. 
+Inoltre, sempre di interesse per questa classe di utenti, 
+Linux 2.4 includerà il supporto per gli adattatori di rete 
+ATM per networking ad alta velocità.
+Per gli utilizzatori di fascia basse dei sistemi desktop, 
+PPP è una parte importante nella loro vita di tutti i 
+giorni. Linux 2.4 include alcune importanti riscritture e 
+modularizzazioni di molto codice, incluso la tanto a lungo 
+aspettata combinazione dello strato PPP dello strato ISDN e 
+lo strato del PPP seriale, come quello usato dalle 
+connessioni dial-up dei modem. In aggiunta alla 
+modularizzazione, l'ISDN è stato aggiornato per il supporto 
+a molte nuove schede. Lo strato PLIP (PPP su porta 
+parallela) è stato migliorato ed adesso usa il nuovo strato 
+di astrazione della porta parallela.
+Anche se non presente in Linux 2.4, c'è del lavoro in corso 
+per supportare il protocollo NetBIOS usato dai sistemi 
+operativi Microsoft. Anche se Microsoft si sta allontanando 
+da questo protocollo nei suoi prodotti per avvicinarsi al 
+TCP/IP, questo rimane ancora importante per un buon numero 
+di ambiente basati su Windows. (Prima gli sviluppatori del 
+kernel avevano commentato che questo protocollo era troppo 
+arzigogolato e bacato per essere supportato direttamente 
+nel kernel. Adesso che un'implementazione è venuta fuori, 
+rimane solo da vedere quanto possa essere ritenuta stabile 
+per essere inserita nel kernel ufficiale.)
+<H2><A NAME="s15">15. I tipi di binari </A></H2>
+
+<P>Una porzione spesso trascurata del kernel di Linux e' il 
+caricatore dei programmi (program loader), la parte che 
+prende il vostro programma, lo carica e lo esegue. Molte 
+persone non sanno però che il Linux 2.2 aggiunse il 
+supporto per il caricamento di binari "miscellanei", un 
+modulo flessibile disegnato per permettere di associare un 
+dato tipo di binario (basandosi sull'estensione o 
+sull'header del file) con una particolare applicazione più 
+o meno nella stessa maniera di come fanno Windows o sistemi 
+operativi comparabili. Questo potrebbe, per esempio, 
+permetterti di associare tutte le applicazioni Windows 
+sulla nostra macchina a WINE (Windows non-Emulator) così 
+che quando uno scrivesse "./notepad.exe" accadrebbe la cosa 
+giusta. (Comunque non è generalmente una buona idea portare 
+questo concetto all'estremo a livello di kernel e molte 
+delle "associazioni" provviste da Windows è bene che siano 
+lasciate al vostro file manager o al desktop environment. 
+Sarebbe una pessima idea, per esempio, poter lanciare 
+"/etc/passwd" e fare in modo che venga aperto un editor di 
+testi con quel file. La mia personale raccomandazione è di 
+utilizzare questa funzionalità solo con i file che possono 
+essere di tipo "eseguibile"). Questa fu considerata una 
+grande vittoria da molti in quanto permetteva ad alcuni 
+gruppi come WINE (Windows non-Emulator) e Dosemu (DOS 
+Emulator) di scrivere le istruzioni necessarie per far sì 
+che i loro programmi fossero eseguiti in maniera "nativa" 
+dal kernel.
+Linux 2.2 e Linux 2.0 includevano un supporto nativo per 
+far partire l'interprete Java (se presente) tutte le volte 
+che era richiesta l'esecuzione di una applicazione Java. 
+(Fu anche uno dei primi sistemi operativi ad offrire questa 
+funzionalità a livello di kernel). Linux 2.4 continua ad 
+includere questo supporto ma lo specifico driver per Java è 
+stato rimosso e gli utenti hanno adesso la necessità di 
+aggiornare la loro configurazione per l'uso dei binari 
+"miscellanei".
+<H2><A NAME="s16">16. Il demone Web del kernel</A></H2>
+
+<P>Una delle più pubblicizzate funzionalità del kernel di 
+Linux 2.4 e' il demone web inserito nel kernel, chiamato 
+khttpd. Ebbene sì: Linux adesso supporterà un modulo del 
+kernel che può processare richieste HTTP senza bisogno di 
+comunicare con server che risiedono nell'user space (come 
+Apache). Questa funzionalità è spesso capita male; non è 
+studiata infatti per rimpiazzare Apache o qualsiasi altro 
+web server è può essere utilizzata solo per servire pagine 
+statiche (non c'è il supporto CGI). Se questo modulo riceve 
+una richiesta per qualcosa che non può gestire, allora 
+semplicemente lo passerà al server che sta girando 
+nell'user space il quale non si accorgerà nemmeno della 
+differenza tra questa ed una normale richiesta. Questa 
+funzionalità farà di Linux una ancor miglior scelta per web 
+server che hanno bisogno di essere istantaneamente attivati 
+per servire contenuti statici, come per esempio un server 
+dedicato alle immagini.
+<H2><A NAME="s17">17. La crittografia nel Kernel </A></H2>
+
+<P>Anche se le leggi per l'esportazione sono state modificate 
+negli Stati Uniti dall'uscita del 2.2, Linux 2.4 non 
+includerà molto probabilmente il supporto per la 
+crittografia all'interno della distribuzione principale. Le 
+leggi per l'import e l'export della crittografia sono 
+differenti in tutto il mondo e molti sviluppatori di Linux 
+detestano rischiare di complicare la vita a chicchessia 
+sviluppatore del kernel, in qualsiasi nazione egli si possa 
+trovare. Sono già comunque presenti delle patch per 
+aggiungere la crittografia ad alcuni sottosistemi del 
+kernel. Rimane solo da vedere quanto ufficiali queste patch 
+potranno essere nel futuro.
+
+</td>
+</tr>
+</table>
+</BODY>
+</HTML>
+

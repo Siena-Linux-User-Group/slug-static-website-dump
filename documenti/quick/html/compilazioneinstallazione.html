@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Compilazione e installazione</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Kernel" href="kernel.html">
+    <LINK rel="PREVIOUS" title="Parametri" href="parametrikernel.html">
+    <LINK rel="NEXT" title="Internet" href="internet.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "parametrikernel.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 3.
+          Kernel</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "internet.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="COMPILAZIONEINSTALLAZIONE">3.3. Compilazione
+      e installazione</A></H1>
+
+      <P>Fatto tutto questo, salvate con l'opzione apposita, incrociate le
+      dita e date:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+make dep &amp;&amp; make clean &amp;&amp; make bzImage &amp;&amp; make modules
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>uscite e andate a farvi un caffè o una lunga passeggiata (con un
+      processore a 200 MHz servono in genere una quindicina di minuti,
+      regolatevi!) Non è come aspettare un figlio, ma la prima volta ci si
+      ritrova con le unghie completamente rosicchiate ;-). Se tutto è andato
+      bene, il vostro nuovo bambino... ehm, kernel, è contenuto nel file '<B
+      class="KEYCAP">/usr/src/linux/arch/i386/boot/bzImage</B>'. Complimenti!
+      Ora bisogna installare il tutto. Per prima cosa i moduli. Se avete
+      ricompilato la stessa versione di kernel che state già usando, dovete
+      spostare la directory con la versione precedente dei moduli, prima di
+      installarli (se avete compilato una versione diversa da quella in uso,
+      potete saltare il primo dei due comandi seguenti):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+mv /lib/modules/VERSIONE_KERNEL /lib/modules/VERSIONE_KERNEL.old
+make modules_install
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Fatto questo, controllate se nella directory '<B class=
+      "KEYCAP">/boot</B>' esistono i seguenti file:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+ls -l /boot/System.map /boot/vmlinuz
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>come prima, se il primo carattere è una '<B class="KEYCAP">l</B>' si
+      tratta di collegamenti (rimuoveteli con <B class="COMMAND">rm -f
+      /boot/...</B>), mentre se è '<B class="KEYCAP">-</B>' si tratta di file
+      (rinominateli con <B class="COMMAND">mv -f /boot/NOMEFILE
+      /boot/NOMEFILE-VERSIONE_KERNEL_PRECEDENTE</B>). Ora copiate in '<B
+      class="KEYCAP">/boot</B>' il kernel e la <B class=
+      "KEYCAP">System-map</B> aggiornate e ricreate i collegamenti (l'esempio
+      si riferisce sempre al kernel 2.2.14):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cp /usr/src/linux/arch/i386/boot/bzImage /boot/vmlinuz-2.2.14
+ln -s /boot/vmlinuz-2.2.14 /boot/vmlinuz
+cp /usr/src/linux/System.map /boot/System.map-2.2.14
+ln -s /boot/System.map-2.2.14 /boot/System.map
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Se usate '<B class="COMMAND">loadlin</B>', copiate il nuovo kernel
+      nella sua directory (guardate la pagina apposita del <EM>Quick&amp;Easy
+      Configuration HOWTO</EM>). Mentre se usate '<B class=
+      "COMMAND">lilo</B>', modificate il file '<B class=
+      "KEYCAP">/etc/lilo.conf</B>' in modo da avere sia il vecchio kernel che
+      il nuovo (fino a quando non sarete sicuri che quest'ultimo funzioni
+      perfettamente - la parte aggiunta per il nuovo kernel è quella tra le
+      due righe di ###..., e qualcosa potrebbe essere diverso):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+boot = /dev/hda
+delay = 5
+vga = normal
+root = /dev/hdb2   # correggere con la vostra partizione di root!
+read-only
+image = /boot/vmlinuz.old    # controllate o rinominate il vecchio kernel di conseguenza
+    label = oldlinux
+#################################
+image = /boot/vmlinuz   # questo è il nuovo kernel
+    label = linux
+#################################
+other = /dev/hda1
+    label = dos
+    table = /dev/hda
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e ridate "<B class="COMMAND">/sbin/lilo -v</B>" per rimetterlo a
+      posto (<B class="COMMAND">man lilo</B>, <B class="COMMAND">man
+      lilo.conf</B> o <EM>lilo-howto</EM> per altre informazioni). Se volete
+      rimuovere lilo, usate il comando "<B class="COMMAND">fdisk /mbr</B>"
+      dal DOS, oppure "<B class="COMMAND">lilo -U</B>" da Linux. Per la
+      stampante, controllate che il file '<B class=
+      "KEYCAP">/etc/conf.modules</B>' contenga le righe:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+alias parport_lowlevel parport_pc
+options parport_pc io=0x378, 0x278 irq=7 auto
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Se volete provare il kernel prima di usarlo definitivamene,
+      tralasciate per ora tutta la parte dopo "<B class="COMMAND">make
+      modules_install</B>" e copiatelo su un dischetto che userete come boot
+      (il floppy NON va montato per eseguire queste operazioni!!!):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cp /usr/src/linux/arch/i386/boot/bzImage /boot/vmlinuz-2.2.14
+cp /usr/src/linux/vmlinuz-2.2.14 /dev/fd0
+rdev /dev/fd0 /dev/hda2
+rdev -R /dev/fd0 1
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Sostituite a <B class="KEYCAP">/dev/hda2</B> la vostra partizione di
+      root ('/')!!! Questo è tutto!</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Per Debian: dopo aver ricompilato, potete ottenere
+          un pacchetto <B class="KEYCAP">.deb</B> contenente kernel e moduli
+          e che aggiorna anche in automatico lilo, col seguente comando dato
+          da dentro la dir '<B class="KEYCAP">/usr/src/linux/</B>' :</P>
+
+          <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+make-kpkg --revision pingu.0 kernel_image
+       
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P>dove potete sostituire pingu.0 con quello che volete.</P>
+        </BLOCKQUOTE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "parametrikernel.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "internet.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Parametri</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "kernel.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Internet</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

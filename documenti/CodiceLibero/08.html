@@ -1,0 +1,768 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type"
+content="text/html;charset=iso-8859-1" />
+<style type="text/css">
+<!--
+a:link { text-decoration; color: #cc3333 }
+a:visited { text-decoration; color: #cc3333 }
+a:active { text-decoration: underline; color: #ff0000 }
+a:hover { text-decoration: underline; color: #ff0000  }
+.testata {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; color: #000000; background-color: #E8ECEC}
+.sezione {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bolder; font-variant: small-caps; color: #000000; background-color: #E8ECEC}
+.testo {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: normal; color: #000000}
+.piede {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; font-style: normal; font-weight: normal; color: #000000}
+-->
+</style>
+</head>
+
+<body>
+<table width="100%">
+<tbody>
+<tr>
+<td class="sezione"><table border="0" cellpadding="0" cellspacing="0" align="right"><tr><td><a href="http://www.apogeonline.com">www.apogeonline.com</a>&#160;</td></tr></table>Codice Libero - Capitolo 6
+</td></tr>
+
+<tr><td>
+<br>
+<table cellspacing="0" cellpadding="2"><tr align=left valign=top>
+<td>&nbsp;&nbsp;&nbsp;</td><td class="testo">
+<div class="chapter">
+<div class="titlepage">
+<div>
+<h3 class="title"><a id="IDAKMIW" name="IDAKMIW"></a>La comune dell&#8217;Emacs</h3>
+</div>
+</div>
+
+<p>Il laboratorio di intelligenza artificiale degli anni
+&#8217;70 era un luogo speciale sotto tutti gli aspetti. Il
+connubio tra progetti d&#8217;avanguardia e ricercatori di
+livello insuperabile, gli conferivano una posizione di primo
+piano nel mondo dell&#8217;informatica. La cultura hacker vigente
+al suo interno con le sue politiche anarchiche, gli conferiva
+un&#8217;aurea ribelle. Soltanto pi&#249; avanti, con
+l&#8217;addio dei migliori ricercatori e delle superstar del
+software, gli hacker avrebbero compreso quanto fosse unico ed
+effimero il mondo in cui avevano vissuto un tempo.</p>
+
+<p>&#8220;Era una sorta di paradiso terrestre&#8221;, cos&#236;
+Stallman ricorda il laboratorio e l&#8217;ethos della condivisone
+del software, in un articolo del 1998 per la rivista <span
+class="emphasis"><em>Forbes</em></span>. &#8220;Non ci veniva
+neppure in mente di non collaborare tra noi&#8221;<sup>[<a
+id="IDAQMIW" name="IDAQMIW"
+href="08.html#ftn.IDAQMIW">43</a>]</sup>.</p>
+
+<p>Queste descrizioni mitologiche, per quanto eccessive,
+sottolineano un fatto importante. Erano in parecchi a ritenere il
+nono piano dello stabile al 545 di Tech Square come qualcosa di
+pi&#249; di un luogo di lavoro. Hacker come Stallman lo
+consideravano la loro casa.</p>
+
+<p>Nel lessico di quest&#8217;ultimo, il termine
+&#8220;casa&#8221; riveste un significato del tutto particolare.
+Con una nota polemica verso i propri genitori, ancora oggi
+rifiuta di riconoscere come casa propria nessun&#8217;altra
+abitazione precedente alla Currier House, il dormitorio in cui
+viveva ai tempi di Harvard. Luogo che tra l&#8217;altro dovette
+abbandonare in maniera tragicomica, almeno stando alla sua stessa
+descrizione. Una volta, parlando dei suoi anni ad Harvard,
+Stallman disse che il suo unico rimpianto fu di essere stato
+sbattuto fuori. Non appena gli chiesi cosa avesse provocato
+quell&#8217;episodio, mi resi conto di aver toccato un altro mito
+della sua vita.</p>
+
+<p>&#8220;Ad Harward hanno questa politica: se passi troppi
+esami, ti chiedono di andartene&#8221;, mi disse.</p>
+
+<p>Lasciato il dormitorio e senz&#8217;alcuna voglia di
+tornarsene a New York, Stallman segu&#236; la strada gi&#224;
+percorsa da Greenblatt, Gosper, Sussman e numerosi altri hacker
+prima di lui. Dopo essersi iscritto al MIT e aver preso in
+affitto un appartamento nella vicina Cambridge, ben presto
+Stallman si rese conto di come il laboratorio di intelligenza
+artificiale fosse divenuto di fatto la sua dimora. In un
+intervento del 1986, cos&#236; ricorda quel periodo:</p>
+
+<blockquote class="blockquote">
+<p>&#200; probabile che io abbia vissuto al laboratorio pi&#249;
+di altri, perch&#233; quasi ogni anno per un motivo o per
+l&#8217;altro dovevo trovarmi un nuovo appartamento, e
+nell&#8217;attesa finivo per trascorrere l&#236; qualche mese. Mi
+ci sono trovato sempre bene, in estate era proprio fresco.
+Capitava di frequente che qualcuno vi si addormentasse, altro
+effetto dell&#8217;entusiasmo; stai alzato davanti al monitor
+fino allo stremo delle forze perch&#233; non vuoi smettere, e
+quando sei completamente esausto non fai altro che distenderti
+sulla superficie morbida e orizzontale pi&#249; vicina.
+Un&#8217;atmosfera davvero informale<sup>[<a id="IDA4MIW"
+name="IDA4MIW" href="08.html#ftn.IDA4MIW">44</a>]</sup>.</p>
+</blockquote>
+
+<p>Talvolta questa atmosfera casalinga creava dei problemi.
+Quello che alcuni consideravano alla stregua di dormitorio, per
+altri non era altro che una specie di ritrovo per
+&#8220;oppiomani elettronici.&#8221; Nel libro <span
+class="emphasis"><em>Computer Power and Human Reason</em></span>,
+del 1976, Joseph Weizenbaum, ricercatore presso il MIT, non
+risparmia pesanti critiche ai &#8220;vagabondi
+informatici&#8221;, nella sua definizione degli hacker che
+popolavano quei locali. &#8220;Vestiti trasandati, capelli
+sporchi e spettinati, barba lunga, testimoniavano la loro
+indifferenza al corpo e al mondo circostante&#8221; scrive
+Weizenbaum. &#8220;[I vagabondi informatici] vivono, almeno
+relativamente a questo contesto, soltanto grazie e per il
+computer.&#8221;<sup>[<a id="IDAENIW" name="IDAENIW"
+href="08.html#ftn.IDAENIW">45</a>]</sup></p>
+
+<p>Un quarto di secolo dopo la pubblicazione di quel libro,
+Stallman rispose alla descrizione dei &#8220;vagabondi
+informatici&#8221; di Weizenbaum come se quest&#8217;ultimo gli
+fosse stato di fronte in quel preciso istante. &#8220;Vuole che
+tutti siano dei professionisti, gente che lavora per i soldi e
+che appena possibile dimentica e abbandona i progetti di cui si
+occupa&#8221;, spiega Stallman. &#8220;Quello che a lui appare
+come uno scenario comune, a me sembra una vera
+tragedia.&#8221;</p>
+
+<p>E tuttavia, anche la vita dell&#8217;hacker non era priva di
+tali tragedie. Stallman descrive la sua transizione da hacker del
+fine settimana a ricercatore a tempo pieno nel laboratorio di
+intelligenza artificiale come una serie di dolorose sventure, che
+riusc&#236; a superare soltanto grazie all&#8217;euforia
+dell&#8217;hacking. Nel suo racconto, il primo di questi episodi
+risale all&#8217;epoca della laurea ad Harvard. Convinto di voler
+proseguire gli studi in fisica, Stallman si iscrisse subito al
+MIT. Una scelta naturale che non soltanto gli permetteva di
+seguire le orme di alcuni grandi studenti del MIT come William
+Shockley (1936), Richard P. Feynman (1939) e Murray Gell-Mann
+(1951), ma gli consentiva anche di vivere a meno di tre
+chilometri dal laboratorio di intelligenza artificiale e dal
+nuovo computer PDP-10. &#8220;Ero attratto dalla programmazione,
+ma pensavo ancora che avrei potuto coltivare entrambe le
+cose&#8221;, ricorda Stallman.</p>
+
+<p>Di giorno a seguire i corsi di laurea e la notte a programmare
+nei monastici confini del laboratorio di intelligenza
+artificiale, Stallman era alla ricerca del perfetto equilibrio.
+Il fulcro di questa frenetica attivit&#224; stava per&#242; nelle
+uscite settimanali con il gruppo di danze popolari, evento
+sociale che gli garantiva quantomeno un modico livello di
+interazione con l&#8217;altro sesso. Fu sul finire del primo anno
+al MIT, tuttavia, che avvenne il disastro. Una ferita al
+ginocchio lo costrinse a lasciare il gruppo. All&#8217;inizio lo
+consider&#242; un problema temporaneo e dedic&#242; al
+laboratorio d&#8217;intelligenza artificiale l&#8217;ulteriore
+tempo libero distolto alla danza. Ma al termine dell&#8217;estate
+inizi&#242; a preoccuparsi seriamente, col ginocchio ancora
+dolorante e l&#8217;approssimarsi dei nuovi corsi. &#8220;Il
+ginocchio non ne voleva sapere di migliorare&#8221;, ricorda
+Stallman, &#8220;con la conseguenza che dovetti smettere
+definitivamente di danzare. Fu un colpo mortale.&#8221;</p>
+
+<p>Senza n&#233; dormitorio n&#233; danze, il suo universo
+sociale fin&#236; per implodere. Al pari di un astronauta alle
+prese con i postumi dell&#8217;assenza di gravit&#224;, si rese
+conto di come la sua capacit&#224; di interagire con i
+non-hacker, soprattutto di genere femminile, si fosse atrofizzata
+in maniera considerevole. Dopo 16 settimane trascorse al
+laboratorio di intelligenza artificiale, quella fiducia in se
+stesso lentamente accumulata durante i quattro anni ad Harvard
+era praticamente scomparsa.</p>
+
+<p>&#8220;In pratica mi sentivo svuotato di ogni energia&#8221;,
+rammenta Stallman. &#8220;Non avevo voglia di far nulla se non
+quel che mi attirava al momento, non avevo energia per altro. Ero
+disperato.&#8221;</p>
+
+<p>Fin&#236; presto per ritirarsi ulteriormente dal mondo,
+dedicandosi unicamente al lavoro nel laboratorio di intelligenza
+artificiale. Nell&#8217;ottobre 1975, abbandon&#242; i corsi al
+MIT, per non farvi mai pi&#249; ritorno. Da semplice hobby
+iniziale, l&#8217;attivit&#224; di hacking era diventata la sua
+vocazione.</p>
+
+<p>Riflettendo su quel periodo, Stallman considera inevitabile il
+passaggio da studente a tempo pieno ad hacker a tempo pieno.
+Prima o poi, cos&#236; ritiene, quest&#8217;ultimo richiamo
+avrebbe superato ogni altro interesse a livello professionale.
+&#8220;In materie come fisica o matematica, non riuscivo mai a
+proporre contributi originali&#8221;, sostiene Stallman
+riferendosi alle vicissitudini precedenti la ferita al ginocchio.
+&#8220;Sarei stato orgoglioso di fornire contributi allo sviluppo
+di uno dei due campi, ma non vedevo come avrei potuto farlo. Non
+sapevo da che parte cominciare. Col software, invece, sapevo
+gi&#224; come scrivere cose funzionanti e utili. Il piacere di
+questa conoscenza mi port&#242; a desiderare di proseguire su
+questa strada.&#8221;</p>
+
+<p>Stallman non era certo il primo ad equiparare hacking e
+piacere. Gran parte di coloro che lavoravano al laboratorio di
+intelligenza artificiale vantavano un curriculum accademico
+analogamente incompleto. Molti di loro si erano iscritti a corsi
+di laurea in matematica o in ingegneria elettrica soltanto per
+poi abbandonare le proprie ambizioni professionali per la sottile
+soddisfazione che si ottiene risolvendo problemi mai affrontati
+prima. Come San Tommaso d&#8217;Aquino, noto per aver lavorato
+talmente a lungo sulle questioni teologiche da avere talvolta
+delle visioni spirituali, gli hacker raggiungevano stati di
+trascendenza interiore grazie alla concentrazione mentale e alla
+spossatezza fisica. Come la maggior parte di loro, Stallman
+rifiutava l&#8217;uso di droghe ma era attirato dallo stato di
+ebbrezza che si prova dopo 20 ore trascorse a scrivere
+codice.</p>
+
+<p>Forse l&#8217;emozione pi&#249; piacevole era il senso di
+appagamento personale. Per Stallman l&#8217;arte
+dell&#8217;hacking era qualcosa di naturale. Le lunghe notti
+passate a studiare quando era bambino, gli permettevano di
+lavorare a lungo, con poche ore di sonno. Asociale e
+individualista fin da quando aveva dieci anni, non aveva alcun
+problema a lavorare in completa solitudine. E in quanto
+matematico eccellente con capacit&#224; innate per la logica e un
+occhio critico, Stallman riusciva a superare quelle barriere
+progettuali che facevano dannare gran parte degli hacker.</p>
+
+<p>&#8220;Era davvero speciale&#8221;, ricorda Gerald Sussman,
+membro di facolt&#224; al MIT ed ex ricercatore presso il
+laboratorio di intelligenza artificiale. Descrivendolo come
+&#8220;pensatore e progettista acuto&#8221;, fu Sussman ad
+assumere Stallman come assistente per un progetto di ricerca a
+partire dal 1975. Si trattava di un progetto complesso, che
+richiedeva la creazione di un programma di IA in grado di
+analizzare i diagrammi dei circuiti. Qualcosa che richiedeva non
+soltanto un esperto di Lisp, un linguaggio di programmazione
+realizzato appositamente per applicazioni nel campo
+dell&#8217;intelligenza artificiale, ma anche la piena
+comprensione di come un essere umano avrebbe affrontato lo stesso
+problema.</p>
+
+<p>Quando non lavorava a progetti ufficiali come quello di
+Sussman sul programma automatico di analisi dei circuiti,
+Stallman si dedicava a progetti personali. Era nel miglior
+interesse di ciascun hacker contribuire al miglioramento
+dell&#8217;infrastruttura del laboratorio, e uno dei suoi
+progetti pi&#249; importanti di quel periodo riguardava
+l&#8217;editor TECO.</p>
+
+<p>Negli anni &#8217;70 il suo impegno in tale progetto appare
+inestricabilmente connesso alla successiva leadership del
+movimento del software libero, oltre a rappresentare un passaggio
+significativo nella storia dello sviluppo dell&#8217;informatica,
+motivo per cui val la pena riassumerlo qui. Nel corso degli anni
+&#8217;50 e &#8217;60, quando il computer fece la sua prima
+apparizione nelle aule universitarie, la programmazione
+costituiva qualcosa di puramente astratto. Per comunicare con la
+macchina, gli sviluppatori creavano una serie di schede
+perforate, ognuna delle quali rappresentava un singolo comando
+software. Tali schede venivano poi passate
+all&#8217;amministratore centrale del sistema, il quale le
+avrebbe a sua volta introdotte una ad una nella macchina,
+aspettando che questa ne producesse in uscita una nuova serie,
+che andava infine decifrata come output dai programmatori. Questa
+procedura, nota come &#8220;elaborazione batch&#8221;, era tanto
+noiosa ed estenuante quanto soggetta ad abusi di autorit&#224;.
+Uno dei fattori a monte dell&#8217;innata avversione degli hacker
+per la centralizzazione, stava nel potere conferito ai primi
+amministratori di sistema cui spettava decidere quali lavori
+avessero priorit&#224; pi&#249; alta.</p>
+
+<p>Nel 1962 i ricercatori informatici e gli hacker riuniti sotto
+il progetto MAC del MIT, precursore del laboratorio di
+intelligenza artificiale, presero a darsi da fare per alleviare
+quel senso di frustrazione. Il &#8220;time sharing&#8221;
+(condivisione di tempo) all&#8217;inizio detto &#8220;time
+stealing&#8221; (furto di tempo), aveva reso possibile a pi&#249;
+programmatori l&#8217;uso contemporaneo delle capacit&#224;
+operative di una macchina. L&#8217;interfaccia a telescrivente
+consentiva inoltre la comunicazione non pi&#249; tramite una
+serie di fori in una scheda, bens&#236; grazie
+all&#8217;interazione testuale. Il programmatore digitava dei
+comandi e leggeva poi, riga per riga, il risultato prodotto dalla
+macchina.</p>
+
+<p>Sul finire degli anni &#8217;60, lo studio
+dell&#8217;interfaccia comp&#236; altri passi in avanti. Nel 1968
+in un famoso intervento Doug Engelbart, allora ricercatore presso
+lo Stanford Research Institute, illustr&#242; il prototipo di
+quella che sarebbe diventata l&#8217;interfaccia grafica moderna.
+Con l&#8217;aggiunta di un monitor televisivo e di un puntatore
+chiamato &#8220;mouse&#8221;, Engelbart mise a punto un sistema
+ancora pi&#249; interattivo di quello a condivisione di tempo
+sviluppato al MIT. Trattando il monitor come una stampante ad
+alta velocit&#224;, tale sistema offriva la possibilit&#224; di
+seguire gli spostamenti del cursore sul video in tempo reale.
+Tutt&#8217;a un tratto l&#8217;utente era in grado di posizionare
+il testo in una parte qualunque dello schermo.</p>
+
+<p>Queste innovazioni non sarebbero arrivate sul mercato prima di
+altri vent&#8217;anni, ma gi&#224; dagli anni &#8217;70 i monitor
+stavano iniziando a sostituire le telescriventi come terminali di
+visualizzazione, dando la possibilit&#224; di lavorare a tutto
+schermo anzich&#233; riga per riga.</p>
+
+<p>Uno dei primi programmi a sfruttare tali potenzialit&#224; fu
+appunto TECO. Acronimo per Text Editor and COrrector, si trattava
+in pratica dell&#8217;aggiornamento di un vecchio editor di linea
+per telescriventi, adattato alla macchina PDP-6 del
+laboratorio<sup>[<a id="IDAYNIW" name="IDAYNIW"
+href="08.html#ftn.IDAYNIW">46</a>]</sup>.</p>
+
+<p>Pur rappresentando un notevole passo avanti rispetto ai primi
+programmi analoghi, TECO presentava ancora dei difetti. Per
+creare e modificare un documento, il programmatore doveva
+inserire una serie di comandi specificando ogni singola
+operazione di modifica. Si trattava di un processo del tutto
+astratto. Al contrario degli odierni elaboratori di testi, capaci
+di aggiornare il testo ogni volta che si preme un tasto, TECO
+richiedeva di inserire una lunga sequenza di istruzioni seguita
+da un &#8220;end of command&#8221; (fine del comando) per poter
+cambiare una sola frase. Col passar del tempo gli hacker
+divennero sufficientemente abili da scrivere interi documenti in
+questa modalit&#224;, ma come sottoline&#242; in seguito Stallman
+il processo richiedeva &#8220;uno sforzo mentale simile a quello
+di una partita a scacchi giocata a occhi bendati.&#8221;<sup>[<a
+id="IDA5NIW" name="IDA5NIW" href="08.html#ftn.IDA5NIW">47</a>]</sup></p>
+
+<p>Onde facilitare la procedura, gli hacker del laboratorio di
+intelligenza artificiale misero a punto un sistema in grado di
+visualizzare entrambe le modalit&#224; (&#8220;source&#8221; e
+&#8220;display&#8221;) sullo schermo diviso a met&#224;.
+Nonostante la mossa innovativa, il passaggio da una modalit&#224;
+all&#8217;altra rappresentava pur sempre una gran seccatura.</p>
+
+<p>TECO non era l&#8217;unico elaboratore testi a tutto schermo
+che girava nel mondo informatico di allora. Nel 1976 durante una
+visita al laboratorio di intelligenza artificiale di Stanford,
+Stallman si imbatt&#232; in un editor chiamato E. Il programma
+comprendeva una funzione interna grazie alla quale l&#8217;utente
+poteva aggiornare il testo visualizzato dopo aver digitato ogni
+tasto. Nel lessico della programmazione anni &#8217;70, si
+pu&#242; dire che E era uno dei primi rudimentali esempi di
+software WYSIWYG. Abbreviazione di &#8220;what you see is what
+you get&#8221; (quello che vedi &#232; quello che ottieni), il
+termine stava ad indicare la possibilit&#224;, da parte
+dell&#8217;utente, di manipolare il file spostando direttamente
+il testo prescelto, anzich&#233; operare tramite una serie
+ulteriore di istruzioni.<sup>[<a id="IDAHOIW" name="IDAHOIW"
+href="08.html#ftn.IDAHOIW">48</a>]</sup></p>
+
+<p>Colpito da quell&#8217;idea, al MIT Stallman si mise
+all&#8217;opera per espandere le funzionalit&#224; di TECO in
+maniera analoga. Part&#236; da una funzione nota come Control-R,
+scritta da Carl Mikkelson e cos&#236; chiamata per la
+combinazione dei tasti tramite cui veniva attivata. Tale
+combinazione consentiva il passaggio dall&#8217;abituale
+modalit&#224; di esecuzione astratta a quella pi&#249; intuitiva
+operabile tasto dopo tasto. Stallman modific&#242; la funzione in
+maniera sottile ma sgnificativa, rendendo possibile
+l&#8217;attivazione di altre stringhe di comando, cio&#232; le
+cosiddette &#8220;macro&#8221;, mediante diverse combinazioni di
+tasti. Laddove in precedenza l&#8217;utente doveva digitare una
+stringa di istruzioni per poi perderla al momento di passare alla
+riga successiva, la funzione ideata da Stallman permetteva di
+salvare su file le macro utilizzate cos&#236; da richiamarle
+all&#8217;occorrenza. La modifica di Mikkelson aveva elevato TECO
+al livello di un editor WYSIWYG, quella di Stallman al livello di
+un editor WYSIWYG programmabile dall&#8217;utente. &#8220;Si
+tratt&#242; di una vera e propria rivoluzione&#8221;, sostiene
+Guy Steele, uno degli hacker allora presenti nel laboratorio di
+intelligenza artificiale del MIT.</p>
+
+<p>Nel ricordo dello stesso Stallman, l&#8217;idea delle macro
+provoc&#242; un&#8217;esplosione di innovazioni a catena.
+&#8220;Ognuno costru&#236; la propria serie di comandi per
+l&#8217;editor, ciascuno dei quali attivava le funzioni pi&#249;
+comunemte utilizzate&#8221;, avrebbe successivamente ricordato.
+&#8220;Le macro venivano passate di mano in mano e migliorate,
+cos&#236; da ampliarne la portata e l&#8217;utilizzo.
+Gradualmente le raccolte di macro si trasformarono in veri e
+propri programmi&#8221;. L&#8217;innovazione si rivel&#242; utile
+per cos&#236; tante persone, che la inserirono nella loro
+versione di TECO, tanto che quest&#8217;ultimo divenne secondario
+rispetto alla mania delle macro cos&#236; generata.
+&#8220;Iniziammo a categorizzarlo mentalmente come un linguaggio
+di programmazione piuttosto che un elaboratore testi&#8221;,
+aggiunge Stallman. &#8220;Gli utenti si dilettavano ad affinare
+il software e a scambiarsi nuove idee.&#8221;</p>
+
+<p>Due anni dopo quel boom, il tasso di innovazione cominci&#242;
+a mostrare pericolosi effetti collaterali. La crescita esplosiva
+aveva fornito una conferma esaltante della validit&#224;
+dell&#8217;approccio collaborativo tra gli hacker, conducendo
+per&#242; anche ad un&#8217;eccessiva complessit&#224;.
+&#8220;Era l&#8217;effetto Torre di Babele&#8221;, sostiene Guy
+Steele.</p>
+
+<p>Questo effetto minacciava di uccidere lo stesso spirito da cui
+aveva tratto origine. Il sistema ITS (Incompatible Time Sharing)
+era stato progettato dagli hacker per facilitare la condivisione
+delle informazioni e migliorare reciprocamente il lavoro degli
+altri. Ci&#242; significava essere in grado di sedersi davanti al
+monitor di un altro programmatore per inserire direttamente
+commenti e correzioni nel software su cui stava lavorando.
+&#8220;Talvolta la maniera pi&#249; semplice per mostrare a
+qualcuno come scrivere o sistemare il codice era semplicemente
+quella di sedersi al terminale e farlo al posto suo&#8221;,
+spiega Steele.</p>
+
+<p>A un certo punto, dopo due anni di applicazioni, le macro
+iniziarono a mascherare le funzioni stesse del programma.
+Desiderosi di sfruttare al meglio le nuove funzionalit&#224; a
+tutto schermo, gli hacker avevano personalizzato a tal punto le
+loro versioni di TECO che, sedendosi davanti al terminale di
+qualcun altro ci voleva un&#8217;ora buona solo per scoprire
+quali macro eseguissero le diverse operazioni.</p>
+
+<p>Frustrato, Steele si fece carico di risolvere il problema.
+Raccolse quattro diversi pacchetti di macro e inizi&#242; a
+compilare un grafico che documentasse i comandi pi&#249; utili.
+Fu mentre lavorava all&#8217;implementazione dei vari comandi
+specifici che Steele attrasse l&#8217;attenzione di Stallman.
+&#8220;Prese a sbirciare dietro le mie spalle, chiedendomi cosa
+stessi facendo&#8221;, rammenta.</p>
+
+<p>Per Steele, hacker tranquillo che raramente si era trovato ad
+interagire con Stallman, il ricordo &#232; ancora palpabile.
+Osservare un hacker al lavoro da dietro le spalle costituiva
+un&#8217;attivit&#224; comune in quel laboratorio. Stallman,
+incaricato della gestione di TECO, defin&#236;
+&#8220;interessante&#8221; l&#8217;idea di Steele e decise di
+condurla rapidamente in porto.</p>
+
+<p>&#8220;Come mi piace sostenere, io curai il primo 0,001 per
+cento dell&#8217;implementazione e Stallman si occup&#242; del
+resto&#8221;, ricorda Steele con un sorriso.</p>
+
+<p>Il nome per il nuovo progetto, Emacs, venne scelto dallo
+stesso Stallman. Abbreviazione di &#8220;editing macros&#8221;,
+stava a indicare la trascendenza evolutiva avvenuta nel corso di
+quei due anni dall&#8217;esplosione delle macro. Approfittava
+inoltre di un vuoto nel lessico della programmazione interna.
+Notando la mancanza nel sistema ITS di programmi che iniziavano
+con la lettera &#8220;E&#8221;, la scelta di Emacs ne rese
+possibile l&#8217;identificazione tramite la sola lettera
+iniziale. Ancora una volta la brama degli hacker per la massima
+efficienza aveva centrato l&#8217;obiettivo<sup>[<a id="IDAVOIW"
+name="IDAVOIW" href="08.html#ftn.IDAVOIW">49</a>]</sup>.</p>
+
+<p>Mentre lavoravano allo sviluppo di un sistema standard per i
+comandi macro, Stallman e Steele dovettero fare alcune acrobazie
+politiche. Con la creazione di un programma standard, Stallman si
+poneva in chiara violazione di uno dei comandamenti
+dell&#8217;etica hacker: &#8220;promuovi la
+decentralizzazione&#8221;. E contemporaneamente minacciava di
+ostacolare la flessibilit&#224; che aveva inizialmente alimentato
+l&#8217;esplosiva innovazione di TECO.</p>
+
+<p>&#8220;Da una parte stavamo cercando di ricreare una serie
+uniforme di comandi, dall&#8217;altra volevamo mantenerli aperti
+salvaguardando l&#8217;importanza della
+programmabilit&#224;&#8221;, puntualizza Steele.</p>
+
+<p>Per risolvere il problema, Stallman, Steele e i colleghi David
+Moon e Dan Weinreib decisero allora di limitare tale
+standardizzazione alle istruzioni WYSIWYG che controllavano la
+visualizzazione del testo sul monitor. Il resto del progetto
+Emacs avrebbe conservato l&#8217;estensibilit&#224; a piacimento
+dei comandi.</p>
+
+<p>Stallman si trovava per&#242; di fronte a un nuovo rompicapo:
+se gli utenti avessero apportato modifiche senza comunicarle al
+resto della comunit&#224;, l&#8217;effetto Torre di Babele
+sarebbe semplicemente riemerso altrove. Rifacendosi alla dottrina
+hacker sulla condivisione delle innovazioni, Stallman inser&#236;
+nel codice sorgente una dichiarazione che ne stabiliva le
+modalit&#224; d&#8217;utilizzo. Ciascuno era libero di modificare
+e ridistribuire il codice a condizione di informare gli altri
+sulle ulteriori estensioni ideate. E scelse come soprannome
+&#8220;Emacs Commune&#8221; (la comune dell&#8217;Emacs).
+Cos&#236; come TECO era divenuto qualcosa di pi&#249; di un
+semplice elaboratore testi, Emacs era diventato qualcosa di
+pi&#249; di un semplice programma. Per Stallman si trattava di un
+contratto sociale. In uno dei primi appunti relativi al progetto,
+ne descrisse in dettaglio i termini. &#8220;L&#8217;EMACS&#8221;,
+scrisse, &#8220;viene distribuito sulla base della condivisione
+comune, ovvero ogni miglioramento deve essere ritrasmesso a me
+che provveder&#242; a incorporarlo nelle successive
+redistribuzioni.&#8221;<sup>[<a id="IDA5OIW" name="IDA5OIW"
+href="08.html#ftn.IDA5OIW">50</a>]</sup></p>
+
+<p>Non tutti accettarono quel contratto. Il ritmo esplosivo
+dell&#8217;innovazione prosegu&#236; per tutto il decennio, dando
+vita a una miriade di programmi simili all&#8217;Emacs con
+diversi livelli di compatibilit&#224; tra loro. Alcuni indicavano
+la relazione con l&#8217;originale progetto di Stallman tramite
+nomi ironicamente ricorsivi: Sine (Sine is not Emacs), Eine (Eine
+is not Emacs), Zwei (Zwei was Eine initially). In quanto devoto
+esponente dell&#8217;etica hacker, Stallman non vide alcun motivo
+per bloccare questa ventata innovativa ricorrendo a pressioni
+legali. E tuttavia, il fatto che qualcuno decidesse di
+appropriarsi di software appartenente all&#8217;intera
+comunit&#224;, per poi modificarlo e dargli un nuovo nome,
+dimostrava una palese mancanza di stile.</p>
+
+<p>Tale comportamento si affiancava ad altri sviluppi negativi in
+atto nella comunit&#224; hacker. La decisione di Brian Reid del
+1979 di inserire &#8220;bombe a tempo&#8221; all&#8217;interno di
+Scribe, consentendo cos&#236; alla Unilogic di limitare
+l&#8217;accesso al software da parte di utenti non-paganti,
+rappresent&#242; un oscuro presagio per Stallman. &#8220;Lo
+ritenne l&#8217;evento peggiore, addirittura nazista, in cui si
+fosse mai imbattuto&#8221;, ricorda Reid. Pur avendo raggiunto
+successivamente una certa notoriet&#224; in quanto co-ideatore
+della gerarchia &#8220;alt&#8221; su Usenet, Reid afferma che
+deve ancora farsi perdonare quella decisione del 1979, almeno
+agli occhi di Stallman: &#8220;secondo lui, tutto il software
+dovrebbe essere libero e l&#8217;idea di far pagare un programma
+andrebbe considerata un crimine contro
+l&#8217;umanit&#224;.&#8221;<sup>[<a id="IDADPIW" name="IDADPIW"
+href="08.html#ftn.IDADPIW">51</a>]</sup></p>
+
+<p>Pur se impossibilitato a fare alcunch&#233; per impedire
+quella manovra di Reid, Stallman riusc&#236; a ridimensionare
+altri comportamenti ritenuti contrari all&#8217;etica hacker. In
+qualit&#224; di gestore centrale del codice per la
+&#8220;comune&#8221; dell&#8217;Emacs, inizi&#242; a utilizzare
+quella posizione di potere a scopo politico. Nella fase finale
+del conflitto con gli amministratori del laboratorio
+d&#8217;informatica sulla questione delle password, Stallman
+lanci&#242; uno &#8220;sciopero del software&#8221;<sup>[<a
+id="IDALPIW" name="IDALPIW" href="08.html#ftn.IDALPIW">52</a>]</sup>,
+rifiutandosi di fornire allo staff di quel laboratorio le ultime
+versioni di Emacs fino a quando non avessero eliminato il sistema
+di sicurezza dai computer del laboratorio. La mossa non
+miglior&#242; molto la crescente reputazione di estremista
+acquisita da Stallman, raggiunse per&#242; l&#8217;obiettivo
+prefissato: gli aderenti alla comune si sarebbero fatti sentire a
+difesa dei valori base degli hacker.</p>
+
+<p>&#8220;Parecchia gente ce l&#8217;aveva con me sostenendo che
+li stessi tenendo in ostaggio o ricattando, e sotto certi aspetti
+avevano ragione&#8221;, avrebbe raccontato in seguito Stallman al
+giornalista Steven Levy. &#8220;Avevo lanciato
+un&#8217;operazione violenta nei loro confronti perch&#233;
+ritenevo fossero costoro ad agire violentemente contro tutti gli
+altri in senso pi&#249; generale.&#8221;<sup>[<a id="IDARPIW"
+name="IDARPIW" href="08.html#ftn.IDARPIW">53</a>]</sup></p>
+
+<p>Col passare del tempo, Emacs si trasform&#242; in un veicolo
+per la diffusione dell&#8217;etica hacker. La flessibilit&#224;
+di cui lo avevano dotato Stallman e gli altri hacker non soltanto
+incoraggiava la collaborazione ma anzi la imponeva. Gli utenti
+che non si aggiornavano sullo sviluppo del software o che non
+inviavano a Stallman i propri contributi, correvano il rischio di
+rimanere tagliati fuori dalle ultime novit&#224;. E queste erano
+tutt&#8217;altro che poca cosa. A vent&#8217;anni dalla sua
+creazione, gli utenti avevano modificato Emacs per consentirne
+l&#8217;impiego in molti ambiti -- come foglio di calcolo,
+calcolatrice, database, browser Web -- al punto che gli ultimi
+sviluppatori, per rappresentarne l&#8217;ampia versatilit&#224;,
+adottarono l&#8217;immagine di un lavandino in cui l&#8217;acqua
+fuoriesce. &#8220;Era questa l&#8217;idea che volevamo
+comunicare&#8221;, spiega Stallman. &#8220;La quantit&#224; di
+funzioni al suo interno &#232; allo stesso tempo meravigliosa e
+terrificante.&#8221;</p>
+
+<p>I contemporanei di Stallman nel laboratorio di intelligenza
+artificiale si mostrano pi&#249; benevoli. Hal Abelson, laureando
+al MIT, gi&#224; collaboratore di Stallman negli anni &#8217;70 e
+successivamente membro del direttivo della Free Software
+Foundation, descrive l&#8217;Emacs come &#8220;una creazione
+assolutamente brillante&#8221;. Consentendo ai programmatori di
+aggiungere nuove librerie e funzioni senza mettere sottosopra il
+sistema, secondo Abelson, Stallman apr&#236; la strada verso
+futuri progetti analoghi su larga scala. &#8220;La struttura si
+dimostr&#242; sufficientemente robusta da permettere
+l&#8217;aperta collaborazione da parte di persone di ogni parte
+del mondo&#8221;, aggiunge. &#8220;Non mi risulta che questo sia
+mai stato fatto prima.&#8221;<sup>[<a id="IDAVPIW" name="IDAVPIW"
+href="08.html#ftn.IDAVPIW">54</a>]</sup></p>
+
+<p>Analoga l&#8217;ammirazione espressa da Guy Steele.
+Attualmente ricercatore presso la Sun Microsystems, ricorda
+Stallman soprattutto come &#8220;brillante programmatore con la
+capacit&#224; di generare notevoli quantit&#224; di codice
+sostanzialmente privo di errori.&#8221; Pur tra le rispettive
+incompatibilit&#224; caratteriali, i due collaborarono abbastanza
+a lungo da permettere a Steele di apprezzare la profondit&#224;
+dello stile di Stallman nella programmazione. Ne rammenta in
+particolare un episodio specifico verso la fine degli anni
+&#8217;70, quando lavorarono assieme alla stesura della funzione
+&#8220;pretty print&#8221;, per la stampa del codice.
+Inizialmente concepita da Steele, tale funzione veniva attivata
+dall&#8217;ennesima combinazione di tasti che riformattava il
+codice sorgente in modo da risultare pi&#249; leggibile e
+occupare meno spazio, esaltandone ulteriormente le qualit&#224;
+WYSIWIG. Un&#8217;opzione sufficientemente strategica da attrarre
+l&#8217;attivo interesse di Stallman, e non ci volle molto
+perch&#233; i due ne progettassero insieme una versione
+migliorata.</p>
+
+<p>&#8220;Una mattina ci sedemmo davanti al monitor&#8221;,
+ricorda Steele. &#8220;Io ero alla tastiera e lui di fianco. Non
+aveva problemi a lasciarmi digitare, ma era lui a suggerirmi cosa
+fare.&#8221;</p>
+
+<p>La sessione dur&#242; 10 ore. Durante tutto quel tempo,
+aggiunge Steele, n&#233; lui n&#233; Stallman fecero alcuna
+pausa, e nemmeno avviarono qualche breve conversazione. Alla fine
+erano riusciti a ridurre il codice per la funzione di stampa a
+meno di 100 righe. &#8220;Per tutto quel tempo, le mie dita erano
+rimaste sulla tastiera&#8221;, ricorda Steele, &#8220;ma erano le
+idee di entrambi a fluire sullo schermo. Lui mi diceva cosa
+digitare, e io procedevo.&#8221;</p>
+
+<p>La lunghezza della sessione si rese evidente quando finalmente
+Steele usc&#236; dal laboratorio. Una volta fuori
+dall&#8217;edificio al 545 di Tech Square, rimase sorpreso di
+trovarsi circondato dal buio della notte. Come programmatore
+Steele era abituato a maratone analoghe. Eppure stavolta
+c&#8217;era qualcosa di diverso. Quel lavoro con Stallman lo
+aveva costretto a bloccare ogni stimolo esterno per concentrare
+tutte le sue energie mentali sull&#8217;unico obiettivo che
+avevano davanti. Ripensando a quella circostanza, Steele sostiene
+di aver considerato la forza mentale di Stallman esilarante e
+terrificante al tempo stesso. &#8220;Il mio primo pensiero subito
+dopo fu questo: &#232; stata una grande esperienza, molto
+intensa, ma non avrei mai voluto ripeterla in vita
+mia.&#8221;</p>
+
+<div class="footnotes"><br />
+<hr width="100" align="left" />
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAQMIW" name="ftn.IDAQMIW"
+href="08.html#IDAQMIW">43</a>]</sup> Si veda Josh McHugh, &#8220;For the
+Love of Hacking&#8221;, <span
+class="emphasis"><em>Forbes</em></span>, 10 agosto 1998. <a
+href="http://www.forbes.com/forbes/1998/0810/6203094a.html"
+target="_top">http://www.forbes.com/forbes/1998/0810/6203094a.html</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDA4MIW" name="ftn.IDA4MIW"
+href="08.html#IDA4MIW">44</a>]</sup> Si veda Stallman (1986).</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAENIW" name="ftn.IDAENIW"
+href="08.html#IDAENIW">45</a>]</sup> Si veda Joseph Weizenbaum, <span
+class="emphasis"><em>Computer Power and Human Reason: From
+Judgment to Calculation</em></span>, W. H. Freeman, 1976, p.
+116.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAYNIW" name="ftn.IDAYNIW"
+href="08.html#IDAYNIW">46</a>]</sup> Secondo il Jargon File,
+orginariamente l&#8217;acronimo TECO stava per Tape Editor and
+Corrector. <a
+href="http://www.tuxedo.org/~esr/jargon/html/entry/TECO.html"
+target="_top">http://www.tuxedo.org/~esr/jargon/html/entry/TECO.html</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDA5NIW" name="ftn.IDA5NIW"
+href="08.html#IDA5NIW">47</a>]</sup> Si veda Richard Stallman,
+&#8220;EMACS: The Extensible, Customizable, Display
+Editor&#8221;, annotazione interna per il laboratorio di
+intelligenza artificiale (1979). Una versione HTML aggiornata di
+questa nota, dalla quale ho tratto la citazione, &#232;
+disponibile online: <a
+href="http://www.gnu.org/software/emacs/emacs-paper.html"
+target="_top">http://www.gnu.org/software/emacs/emacs-paper.html</a>.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAHOIW" name="ftn.IDAHOIW"
+href="08.html#IDAHOIW">48</a>]</sup> Si veda Richard Stallman,
+&#8220;Emacs the Full Screen Editor&#8221; (1987). <a
+href="http://www.lysator.liu.se/history/garb/txt/87-1-emacs.txt"
+target="_top">http://www.lysator.liu.se/history/garb/txt/87-1-emacs.txt</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAVOIW" name="ftn.IDAVOIW"
+href="08.html#IDAVOIW">49</a>]</sup> <a
+href="http://www.lysator.liu.se/history/garb/txt/87-1-emacs.txt"
+target="_top">http://www.lysator.liu.se/history/garb/txt/87-1-emacs.txt</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDA5OIW" name="ftn.IDA5OIW"
+href="08.html#IDA5OIW">50</a>]</sup> Si veda Stallman (1979):
+#SEC34.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDADPIW" name="ftn.IDADPIW"
+href="08.html#IDADPIW">51</a>]</sup> In un&#8217;intervista del 1996 per
+la rivista online <span class="emphasis"><em>MEME</em></span>,
+Stallman defin&#236; incresciosa la vendita di Scribe, ma
+esit&#242; nel fare il nome di Reid. &#8220;Il problema fu che
+nessuno censur&#242; o pun&#236; quello studente per quanto aveva
+combinato&#8221;, sostenne Stallman. &#8220;Come conseguenza,
+altre persone furono tentate di seguirne l&#8217;esempio.&#8221;
+Si veda MEME 2.04. <a href="http://memex.org/meme2-04.html"
+target="_top">http://memex.org/meme2-04.html</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDALPIW" name="ftn.IDALPIW"
+href="08.html#IDALPIW">52</a>]</sup> Si veda Steven Levy, <span
+class="emphasis"><em>Hackers</em></span>, Penguin USA, 1984, p.
+419.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDARPIW" name="ftn.IDARPIW"
+href="08.html#IDARPIW">53</a>]</sup> Ibid.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAVPIW" name="ftn.IDAVPIW"
+href="08.html#IDAVPIW">54</a>]</sup> In questo capitolo ho scelto di
+concentrarmi maggiormente sul significato sociale
+dell&#8217;Emacs piuttosto che su quello legato al software. Per
+saperne di pi&#249; in tal senso, raccomando la nota di Stallman
+del 1979. Consiglio in particolare la sezione denominata
+&#8220;Research Through Development of Installed Tools&#8221;
+(#SEC27). Non soltanto risulta comprensibile per il lettore
+non-tecnico, ma mette altres&#236; in evidenza la stretta
+interconnessione tra la filosofia politica e quella relativa allo
+sviluppo del software nella concezione di Stallman. Quanto segue
+&#232; un breve estratto:</p>
+
+<blockquote class="blockquote">
+<p>L&#8217;EMACS non avrebbe potuto vedere la luce tramite un
+processo di attenta progettazione, poich&#233; simili procedure
+raggiungono l&#8217;obiettivo preposto soltanto nel caso questo
+risulti visibile e sia auspicabile fin dall&#8217;inizio. N&#233;
+il sottoscritto ne altri potevamo immaginare un elaboratore testi
+estendibile prima di averlo realizzato, e nessuno avrebbe potuto
+apprezzarne il valore prima di averlo utilizzato sul campo.
+L&#8217;EMACS esiste perch&#233; mi sentivo libero di inserirvi
+miglioramenti ridotti e unici lungo una strada la cui direzione
+era impossibile da intravedere.</p>
+</blockquote>
+</div>
+</div>
+</div>
+</td></tr></table></td></tr></table>
+</td></tr>
+</table>
+</p>
+
+<hr size="2" noshade align="left">
+
+<table width="60%" border="0" cellpadding="5" cellspacing="0" align="center"><tr>
+<td class="testo" align="left">&lt;&#160;&#160;<a href="07.html">indietro</a>&#160;</td>
+<td class="testo" align="center">&#160;|&#160;&#160;<a href="index.html#sommario">sommario</a>&#160;&#160;|&#160;</td>
+<td class="testo" align="right">&#160;<a href="09.html">avanti</a>&#160;&#160;&gt;</td>
+</tr></table>
+
+</body>
+</html>
+

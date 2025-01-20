@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>File di configurazione .slrnrc</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Slrn" href="slrn.html">
+    <LINK rel="PREVIOUS" title="Introduzione" href="introduzioneslrn.html">
+    <LINK rel="NEXT" title="Tasti principali" href="tastislrn.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "introduzioneslrn.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 15.
+          Slrn</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "tastislrn.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CONFIGURAZIONESLRN">15.2. File di
+      configurazione .slrnrc</A></H1>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+% server da cui scaricare le News e file apposito
+% NdA: preferisco tenere i file accessori di configurazione nella newsdir
+server "127.0.0.1" "News/.Slrn/jnewrc"
+
+% nome utente (parte a sinistra di '@') del proprio indirizzo email
+set username "mrshark"
+
+% nome dell'host (parte a destra di '@') del proprio indirizzo email
+set hostname "ELIMINAMI.libero.it"
+
+% nome reale
+set realname "MrShark - Antonio Fragola"
+
+% indirizzo per le risposte (viene usato anche un banale antispam)
+set replyto  "mrshark@ELIMINAMI.libero.it"
+
+% file contenente la firma da usare
+set signature ".signature"
+
+% stringa da preporre al testo quotato
+set quote_string "&gt;"
+
+% Se non zero, viene aggiunto uno spazio tra la quote_string e le
+% righe che non sono gia' quotate, rendendole piu' leggibili
+set smart_quote 1
+
+% se diverso da 0, la firma non verra' inclusa nel testo quotato dei followup
+set followup_strip_signature 0
+
+% se impostato ad 1, slrn non permette di inviare articoli con righe non
+% quotate più lunghe di 80 caratteri. Se impostato a 2 verrà solo mostrato
+% un avvertimento
+set reject_long_lines 2
+
+% espressione regolare per riconoscere il testo quotato
+% questa e' quella che uso io (ne seguono altre di altre persone):
+ignore_quotes "^ ? ?[&gt;&lt;:=|\-]"
+% ignore_quotes "^[&gt;|#:][&gt;|#: ]"
+
+% Sven Guckes &lt;guckes@math.fu-berlin.de&gt; :
+% Extensive setup allowing quoting with "names":
+% ignore_quotes "^ ? ?[A-Za-z0-9]*[]-|&gt;#:)}=+%&gt;]"
+% Not so extensive quoting:
+% ignore_quotes "^ ? ?[]-|&gt;#:)}=+%&gt;]"
+% Some other things I have tried - but did not like. ;-)
+% ignore_quotes "^ ? ?[&gt;#:%|)}}=+-]" "^[ \t]*[A-Za-z]+&gt;"
+% ignore_quotes "^[ \t]+[a-zA-Z]+&gt;" "^ ? ?[]&gt;#:|)}}=+-]+"
+% ignore_quotes "^[ \t]*[a-zA-Z]+&gt;"
+
+% John E. Davis &lt;davis@space.mit.edu&gt;:
+% Yes, he is the author of SLRN!  :-)
+% ignore_quotes "^\t? \\{0,5\\}[]{}&gt;&lt;:=|+\xBB!]" "^[\t ]*[A-Za-z]+&gt;"
+
+% Heikki "Hezu" Kantola &lt;Heikki.Kantola@IKI.FI&gt; :
+% ignore_quotes "^[ ]*[&gt;^&lt;:|&amp;;%]" "^[ ]*[a-zA-Z-]*&gt;" "^()" "^[-=]+&gt;" "^\+\+"
+
+% Felix von Leitner &lt;fefe@fefe.de&gt;
+% ignore_quotes "^ ? ?[&gt;:)=-]"
+% ignore_quotes "^ ? ?[-=]?[&gt;:]"
+
+% stringhe da preporre in follow-up e reply
+set followup_date_format "%d%m%y %H:%M"
+set followup_string "* %r &lt;%f&gt; [%D]:"
+set reply_string "In '%n', nell'articolo '%s', hai scritto:"
+
+% Header personalizzati da inserire nei nuovi articoli
+% consiglio di eliminare l'ultima '\' dalle righe seguenti
+% e di inserire le direttive su un'unica riga
+set custom_headers          "X-Operating-System: Debian GNU/Linux 2.2 Potato \
+- Kernel 2.2.18\nX-Disclaimer: Linux - The choice of a GNU generation!\nX-Editor: \
+Vim/5.7.19 http://www.vim.org\nX-URL: http://www.mrshark.it \
+http://cslug.linux.it\nX-GPG-Keyserver: http://www.keyserver.net\nX-GPG-Keynumber: \
+0x1503ADAB\nX-GPG-Fingerprint: E4E0 8B1A CDB1 09FA 692E  3E7F F82A 612B 1503 ADAB"
+
+set followup_custom_headers "X-Operating-System: Debian GNU/Linux 2.2 Potato \
+- Kernel 2.2.18\nX-Disclaimer: Linux - The choice of a GNU generation!\nX-Editor: \
+Vim/5.7.19 http://www.vim.org\nX-URL: http://www.mrshark.it \
+http://cslug.linux.it\nX-GPG-Keyserver: http://www.keyserver.net\nX-GPG-Keynumber: \
+0x1503ADAB\nX-GPG-Fingerprint: E4E0 8B1A CDB1 09FA 692E  3E7F F82A 612B 1503 ADAB"
+
+set reply_custom_headers    "X-Operating-System: Debian GNU/Linux 2.2 Potato \
+- Kernel 2.2.18\nX-Disclaimer: Linux - The choice of a GNU generation!\nX-Editor: \
+Vim/5.7.19 http://www.vim.org\nX-URL: http://www.mrshark.it \
+http://cslug.linux.it\nX-GPG-Keyserver: http://www.keyserver.net\nX-GPG-Keynumber: \
+0x1503ADAB\nX-GPG-Fingerprint: E4E0 8B1A CDB1 09FA 692E  3E7F F82A 612B 1503 ADAB"
+
+% Header da mostrare quando si legge un articolo
+% consiglio di eliminare l'ultima '\' dalle righe seguenti
+% e di inserire la direttiva visible_headers su un'unica riga
+visible_headers "From,Subject:,Newsgroups:,Date:,Followup-To:,Mail-Copies-To:,\
+Reply-To:,X-Operating-System:,X-Disclaimer:,Organization:,X-Organization:,\
+User-Agent:,X-Mailer,X-Newsreader:,X-Posting-Agent:,X-Http-User-Agent:"
+
+% WWW browser da usare se si e' o no in X, in seguito alla pressione di 'U'
+set non_Xbrowser "lynx '%s'"
+%set non_Xbrowser "links '%s'"
+%set non_Xbrowser "links file://'%s'"
+set Xbrowser "netscape -remote 'openURL (%s)' &amp;"
+%set Xbrowser "netscape '%s' &amp;"
+%set Xbrowser "~/.bin/url_handler.sh"
+
+% se diverso da 0, mostra il primo articolo quando si passa alla modalità articolo
+set show_article 0
+
+% se diverso da 0, non vengono effettuati backup del file newsrc
+set no_backups 0
+
+% segnala sia con un beep che visivamente
+set beep 2
+
+% se diverso da 0, annulla automaticamente le sottoscrizioni ai nuovi gruppi
+set unsubscribe_new_groups 1
+
+% se posto a 0, previene la ricerca di nuovi newsgroup
+set check_new_groups 0
+
+% se 0, visualizza il titolo solo nel primo articolo di un thread
+set show_thread_subject 0
+
+% usa caratteri ASCII per indicare le relazioni tra messaggi
+set simulate_graphic_chars 1
+
+% abilita supporto per il mouse in xterm
+set mouse 0
+
+% usa barra colorata come cursore invece di '-&gt;'
+set display_cursor_bar 1
+
+% se impostato ad 1, un articolo viene segnato come letto se visualizzato
+% se imposatato a 0, deve essere l'utente a segnarlo esplicitamente come letto
+set auto_mark_article_as_read 0
+
+% se impostati a 0, ci si sposta al prossimo articolo/gruppo automaticamente
+set query_next_article 1
+set query_next_group 1
+
+% se impostato a 0, non viene chiesta conferma per follow-up, reply, quit, ecc...
+set confirm_actions 0
+
+% se 0, salva tutti i gruppi durante il salvataggio del file newsrc
+% se 1, non salva i gruppi non sottoscritti
+% se 2, non salva i gruppi non sottoscritti o non letti
+set write_newsrc_flags 0
+
+% visualizza '~' alla fine di un articolo
+set use_tilde 1
+
+% nome dei file che conterranno i propri Post e Reply
+% (N.B.: la propria HOME e' sottintesa)
+set save_posts "News/My_Posts"
+set save_replies "News/My_Replies"
+
+% file che conterra' i Post falliti. "" per disabilitare
+set failed_posts_file "News/Failed_Posts"
+
+% nome del file dei punteggi (score). (N.B.: la propria HOME e' sottintesa)
+% l'ho chiamato con estensione .score cosi' VIM colora la sintassi ;-)
+set scorefile "News/killfile.score"
+
+% articoli con punteggi superiori a min_high_score vengono posti in cima
+% articoli con punteggi inferiori a max_low_score vengono posti alla fine
+% articoli con punteggi inferiori a below kill_score vengono eliminati
+set min_high_score 1
+set max_low_score 0
+set kill_score -666
+
+% nome della directory in cui vengono posti i file decodificati
+% (N.B.: la propria HOME e' sottintesa - assicurarsi che esista)
+set decode_directory "News/decoded"
+% directory dove vengono salvati tutti gli altri file
+% (N.B.: la propria HOME e' sottintesa - assicurarsi che esista)
+set save_directory "News/other"
+% directory dove verranno posti gli articoli posposti
+% (N.B.: la propria HOME e' sottintesa - assicurarsi che esista)
+set postpone_directory "News/postponed"
+
+% usa la directory TMPDIR per i file temporanei (consiglio per la privacy:
+% impostare TMPDIR come indicato in .bash_profile nella sezione BASH del
+% Quick&amp;Easy Configuration Howto e creare la directory: $HOME/.tmp)
+set use_tmpdir 1
+
+% ordina per thread, poi per data con i piu' recenti prima
+set sorting_method 9
+
+% un header con un nuovo subject inizia un nuovo thread
+set new_subject_breaks_threads 0
+
+% espandi i thread
+set uncollapse_threads 1
+
+% legge l'active file in avvio
+set read_active 1
+
+% manda a capo solo il body, non gli header o il testo quotato
+set wrap_flags 4
+
+% stampante
+set printer_name "muttprint"
+
+% editor
+set editor_command "vim -c 'set nobackup' +%d '%s'"
+set mail_editor_command "mutt -H '%s'"
+
+% evidenziazioni
+set emphasized_text_mode 3
+set emphasized_text_mask 3
+set process_verbatim_marks 1
+set hide_verbatim_marks 0
+set hide_signature 0
+
+% non postare articoli non modificati
+set abort_unmodified_edits 1
+
+% Impostazioni per il formato della finestra degli header
+set overview_date_format " %d%m%y %H:%M"
+
+header_display_format 0 "%F%-5S%-5l:[%25r%D] %T%s"
+header_display_format 1 "%F%-5S%G%-5l:[%12r]%t%s"
+header_display_format 2 "%F%G%-5l:[%12r]%t%s"
+header_display_format 3 "%F%-5l:%t%s"
+header_display_format 4 "%F%-5S%-5l:%t%50s %r"
+header_display_format 5 "%F%-5S [%10r]:%t%49s %-19g[%17d]"
+
+group_display_format 0 "&nbsp;&nbsp;%F&nbsp;[%-5u|%-6t]&nbsp;%n%45g%d"
+group_display_format 1 "&nbsp;&nbsp;%F%-5u&nbsp;&nbsp;%n%45g%d"
+group_display_format 2 "&nbsp;&nbsp;%F%-5u&nbsp;&nbsp;%n%50g%-8l-%h"
+group_display_format 3 "&nbsp;&nbsp;%F%-5u&nbsp;[%-6t]&nbsp;&nbsp;%n"
+
+% avvisa se non si rispettano alcune regole di netiquette
+set netiquette_warnings 0
+
+%---------------------------------------------------------------------------
+% Supporto Mime
+%---------------------------------------------------------------------------
+set use_mime 1
+set mime_charset "iso-8859-1"
+set use_metamail 0
+set metamail_command "metamail"
+
+% visualizza i numeri di fianco agli articoli, per selezioni veloci
+set use_header_numbers 1
+
+% carattere per nascondere il testo spoiler:
+set spoiler_char '*'
+
+% quando viene svelato uno spoiler, inizia una nuova pagina
+set spoiler_display_mode 1
+
+% non controllare gli articoli in base agli overview files
+set spool_check_up_on_nov 0
+
+% macro utili
+interpret "News/.Slrn/color.sl"
+setkey article edit_colors "\eec"
+
+interpret "News/.Slrn/new-search.sl"
+setkey article NewSearch-&gt;search_first "$"
+setkey article NewSearch-&gt;search_next "&amp;"
+
+interpret "News/.Slrn/onekey-score.sl"
+setkey article OneKeyScore-&gt;ignore_subthread "^K"
+setkey article OneKeyScore-&gt;watch_subthread "^W"
+
+interpret "News/.Slrn/preferences.sl"
+
+interpret "News/.Slrn/screen-resize.sl"
+
+set warn_followup_to 2
+
+%---------------------------------------------------------------------------
+% Colors
+%---------------------------------------------------------------------------
+set highlight_unread_subjects 1
+set color_by_score 3
+
+color article           "white"         "black"
+color author            "yellow"        "black"
+color boldtext          "brightblue"    "black"
+color box               "black"         "white"
+color cursor            "brightcyan"    "blue"
+color date              "lightgray"     "black"
+color description       "brightred"     "black"
+color error             "brightred"     "black"
+color frame             "yellow"        "blue"
+color from_myself       "brightmagenta" "black"
+color group             "brightgreen"   "black"
+color grouplens_display "lightgray"     "black"
+color header_name       "brightgreen"   "black"
+color header_number     "brightgreen"   "black"
+color headers           "yellow"        "black"
+color high_score        "brightred"     "black"
+color italicstext       "magenta"       "black"
+color menu_press        "blue"          "yellow"
+color menu              "yellow"        "blue"
+color neg_score         "green"         "black"
+color normal            "white"         "black"
+color pgpsignature      "lightgray"     "black"
+color pos_score         "blue"          "black"
+color quotes1           "yellow"        "black"
+color quotes2           "magenta"       "black"
+color quotes3           "red"           "black"
+color quotes4           "blue"          "black"
+color quotes5           "green"         "black"
+color quotes6           "white"          "black"
+color quotes7           "cyan"          "black"
+color quotes            "cyan"          "black"
+color response_char     "cyan"          "black"
+color selection         "yellow"        "blue"
+color signature         "red"           "black"
+color status            "yellow"        "blue"
+color subject           "brightgreen"   "black"
+color thread_number     "brightblue"    "black"
+color tilde             "brightgreen"   "black"
+color tree              "brightred"     "black"
+color underlinetext     "cyan"          "black"
+color verbatim          "green"         "black"
+
+%-----------------------------------------------------
+% Monochrome attributes for monochrom terminals.   One or more attributes
+% may be specified.
+%-----------------------------------------------------
+
+mono article            "none"
+mono author             "none"
+mono boldtext           "bold"
+mono cursor             "bold"  "reverse"
+mono date               "none"
+mono description        "none"
+mono error              "blink" "bold"
+mono frame              "reverse"
+mono from_myself        "bold"
+mono group              "bold"
+mono grouplens_display  "none"
+mono header_number      "none"
+mono headers            "bold"
+mono high_score         "bold"
+mono italicstext        "bold"
+mono menu_press         "none"
+mono menu               "reverse"
+mono normal             "none"
+mono pgpsignature       "none"
+mono quotes1            "underline"
+mono quotes2            "underline"
+mono quotes3            "underline"
+mono quotes4            "underline"
+mono quotes5            "underline"
+mono quotes6            "underline"
+mono quotes7            "underline"
+mono quotes             "underline"
+mono response_char      "bold"
+mono selection          "bold"
+mono signature          "none"
+mono status             "reverse"
+mono subject            "none"
+mono thread_number      "bold"
+mono tree               "bold"
+mono underlinetext      "underline"
+mono verbatim           "none"
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "introduzioneslrn.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "tastislrn.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Introduzione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "slrn.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Tasti principali</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

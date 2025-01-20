@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>TrueType</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Varie" href="varie.html">
+    <LINK rel="PREVIOUS" title="Varie" href="varie.html">
+    <LINK rel="NEXT" title="Bash" href="bash.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "varie.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 19.
+          Varie</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "bash.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="TRUETYPE">19.1. TrueType</A></H1>
+
+      <P>In questa sezione spiego come impostare <B class=
+      "KEYCAP">X-Window</B> per l'uso dei caratteri <EM>True-Type</EM>. Non
+      uso né <SPAN class="APPLICATION">xfstt</SPAN> né <SPAN class=
+      "APPLICATION">xftft</SPAN>, ma solo <SPAN class=
+      "APPLICATION">xfs</SPAN> <EM>patchato</EM> con l'aggiunta delle
+      librerie <SPAN class="APPLICATION">freetype</SPAN> (il tutto è di serie
+      dalla <B class="KEYCAP">Redhat 6.0</B> in poi e derivate - se <SPAN
+      class="APPLICATION">xfs</SPAN> della <B class="KEYCAP">Mandrake 7</B>
+      vi da problemi, recuperate quello della <B class="KEYCAP">RedHat
+      6.1</B> e sostituitelo). Vi servono anche i file contenuti in <B class=
+      "KEYCAP">ttmkfdir-QUALCOSA.rpm</B> o <EM>.tgz</EM> o <EM>.tar.gz</EM>,
+      quindi cercatelo in rete (potrebbe anche chiamasi <EM>ttmkdir...</EM>).
+      Quindi dopo aver installato quanto appena detto, create una directory
+      <B class="KEYCAP">/usr/share/fonts/truetype/</B> e copiateci dentro i
+      file dei <EM>font .ttf</EM> dalla partizione Windows o da qualche altra
+      parte dove avete <EM>font .ttf</EM>. Quando copio cose da Win in Linux,
+      solitamente mi ritrovo i file con l'attributo di esecuzione settato,
+      quindi nel caso date: <B class="COMMAND">chmod a-x
+      /usr/share/fonts/truetype</B>. Questo dipende da come avete impostato
+      la riga nel vostro file <TT class="FILENAME">/etc/fstab</TT> relativa
+      alla partizione Windows, con <EM>exec</EM> o <EM>noexec</EM>. I file in
+      questa dir devono essere TUTTI in minuscolo, quindi rinominate quelli
+      che abbiano lettere in maiuscolo. Se sono pochi potete fare a mano,
+      altrimenti usate questo script (dal <B class="KEYCAP">Tips-HOWTO</B> -
+      ATTENZIONE: i due caratteri intorno ad <EM>ls</EM> e il primo e ultimo
+      della riga <EM>lc=...</EM> sono apici inversi, non apici normali, e si
+      ottengono sulle tastiere italiane con <B class=
+      "KEYCAP">ALT_GR-APICE_NORMALE</B>):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+# lowerit
+# convert all file names in the current directory to
+# lower case only operates on plain files - does not
+# change the name of directories will ask for
+# verification before overwriting an existing file
+for x in `ls`
+do
+  if [ ! -f $x ]; then
+    continue
+  fi
+  lc=`echo $x  | tr '[A-Z]' '[a-z]'`
+  if [ $lc != $x ]; then
+    mv -i $x $lc
+  fi
+done
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Riguardo <EM>X-Window</EM>, conviene installare sia i font da 75 dpi
+      che quelli da 100, dovreste averli nella vostra distribuzione (quelli
+      da 75 dpi sono indicati per risoluzioni <EM>640x480</EM> o
+      <EM>800x600</EM>, quelli da 100 dpi sono più adatti alle risoluzioni da
+      <EM>1024x768</EM> in su, oppure a quelle più basse se siete parenti di
+      Mr Magoo ;-) ). Entrate nella directory <B class=
+      "KEYCAP">/usr/share/fonts/truetype/</B> e date il comando: <B class=
+      "COMMAND">ttmkfdir -o fonts.scale</B> e poi <B class=
+      "COMMAND">mkfontdir</B>. Avrete così creato i file <TT class=
+      "FILENAME">fonts.scale</TT> e <TT class="FILENAME">fonts.dir</TT>, che
+      saranno letti da xfs tramite la direttiva <EM>FontPath</EM>. Ogni volta
+      che inserirete nuovi font nella directory dovrete rilanciare questi 2
+      comandi per ricreare l'elenco dei font. Ora modificate il file: <TT
+      class="FILENAME">/etc/X11/fs/config</TT> in modo che carichi e usi
+      prima i font True-Type e poi gli altri (potete anche modificare
+      l'ordine dei 75/100 dpi, mettendo prima quelli che preferite in base
+      alla risoluzione, come spiegato prima):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+catalogue = /usr/share/fonts/truetype,
+/usr/X11R6/lib/X11/fonts/misc:unscaled,
+/usr/X11R6/lib/X11/fonts/100dpi:unscaled,
+/usr/X11R6/lib/X11/fonts/75dpi:unscaled,
+/usr/X11R6/lib/X11/fonts/misc,
+/usr/X11R6/lib/X11/fonts/Type1,
+/usr/X11R6/lib/X11/fonts/Speedo,
+/usr/X11R6/lib/X11/fonts/mdk,
+/usr/share/fonts/default/Type1,
+/usr/X11R6/lib/X11/fonts/100dpi,
+/usr/X11R6/lib/X11/fonts/75dpi
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Infine modificate il file <TT class=
+      "FILENAME">/etc/X11/XF86Config</TT>, commentando nella sezione
+      <EM>Files</EM> tutte le righe di FontPath, ora diventate inutili in
+      quanto richiamate da xfs, lasciando la riga di <EM>RgbPath</EM> e
+      aggiungendo la riga:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+FontPath "unix/:7101"
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>La RedHat sembra non avviare bene xfs, quindi assicuratevi che xfs
+      NON parta ogni volta che il sistema si avvia (eliminatelo con <B class=
+      "COMMAND">ntsysv</B> o con <B class="COMMAND">chkconfig --del xfs</B>)
+      e date il comando: <B class="COMMAND">/etc/rc.d/init.d/xfs stop</B> per
+      abbatterlo nel caso sia in funzione. Aggiungete la seguante riga al
+      file <TT class="FILENAME">/etc/rc.d/rc.local</TT> :</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+/usr/X11R6/bin/xfs -config /etc/X11/fs/config -port 7101 &gt; /dev/null &amp;
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>uscite da <EM>X-Window</EM> se siete in gui, riavviate il sistema o
+      reinserite l'ultima riga in console per avviare temporaneamente xfs
+      senza riavviare tutto il sistema, e rilanciate <B class=
+      "COMMAND">startx</B> per vedere se tutto va bene, provando a dare <B
+      class="COMMAND">xfontsel</B> (è contenuto in <B class=
+      "KEYCAP">X11R6-contrib</B>): cliccando su <EM>fmly</EM> dovreste vedere
+      i vostri font (in <EM>KDE</EM> potete usare anche <B class=
+      "COMMAND">kfontmanager</B>)! Per la questione dei 75/100 dpi, se avete
+      messo prima quelli da 100, ricordate anche di cambiare, sempre nel file
+      <TT class="FILENAME">/etc/X11/fs/config</TT>, la riga:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+default-resolutions = 75,75,100,100
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>in</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+default-resolutions = 100,100,75,75
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e modificate nel file <TT class="FILENAME">/etc/X11/xdm/Xserver</TT>
+      (o comunque cercate il file Xserver) la riga:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+:0 local /usr/X11R6/bin/X
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>in</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+:0 local /usr/X11R6/bin/X -dpi 100
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>In una prossima revisione del <EM>Quick&amp;Easy Configuration
+      HOWTO</EM> sarà aggiunta la configurazione dei font TrueType anche con
+      <EM>Xfstt</EM> e per l'uso con <SPAN class=
+      "APPLICATION">Staroffice</SPAN>.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "varie.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "bash.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Varie</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "varie.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Bash</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

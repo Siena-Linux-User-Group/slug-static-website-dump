@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Procedura di masterizzazione CDRW</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Masterizzazione" href="masterizzazione.html">
+    <LINK rel="PREVIOUS" title=" Procedura di masterizzazione CDR " href=
+    "masterizzarecdr.html">
+    <LINK rel="NEXT" title=" Procedura di masterizzazione On The Fly " href=
+    "onthefly.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "masterizzarecdr.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 16.
+          Masterizzazione</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "onthefly.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="MASTERIZZARECDRW">16.4. Procedura di
+      masterizzazione CDRW</A></H1>
+
+      <P>Per poter cancellare il contenuto di un disco cdrw su cui sono già
+      state scritte sessioni precedenti possiamo utilizzare l'opzione <B
+      class="KEYCAP">blank=type</B> di <B class="COMMAND">cdrecord</B>: dove
+      <B class="KEYCAP">type</B> è in genere "<B class="KEYCAP">all</B>" per
+      cancellare l'intero disco (più lento ma più approfondito) oppure <B
+      class="KEYCAP">fast</B> con cui si fa una cancellazione minimale ma
+      veloce. Spesso è utile, per alcuni cdrw difettosi usare, insieme
+      all'opzione <B class="KEYCAP">blank=all</B> anche l'opzione <B class=
+      "KEYCAP">-force</B> per forzare <B class="COMMAND">cdrecord</B> a
+      continuare il blanking anche in presenza di errore non fatali. Altri
+      blanking type sono documentati nella pagina man di <B class=
+      "COMMAND">cdrecord</B>. Ricordo solo <B class="KEYCAP">blank=track</B>
+      per cancellare una singola traccia. Il tipico comando per il blanking
+      è:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cdrecord -v blank=all -force -eject speed=4 dev=0,0,0
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Note sui cd riscrivibili:</P>
+
+          <UL>
+            <LI>
+              <P>Spesso i normali lettori cdrom hanno difficoltà a leggere
+              questo tipo di cd. Ciò è dovuto al diverso coefficiente di
+              riflessione del laser che caratterizza questo tipo di supporti.
+              Lo stesso problema è frequentissimo sui lettori hi-fi o car
+              audio. Per poter ascoltare la vostra musica preferita da un cd
+              audio da voi masterizzato come copia di sicurezza di quello
+              originale (a buon intenditor...), conviene che usiate normali
+              cdr.</P>
+            </LI>
+
+            <LI>
+              <P>Dopo molte cancellazioni/riscritture i vostri cdrw
+              diventeranno inutilizzabili. E' il normale ciclo di vita di
+              questi supporti che non sono eterni.</P>
+            </LI>
+          </UL>
+          <BR>
+          <BR>
+        </BLOCKQUOTE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "masterizzarecdr.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "onthefly.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Procedura di
+          masterizzazione CDR</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "masterizzazione.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Procedura di
+          masterizzazione On The Fly</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

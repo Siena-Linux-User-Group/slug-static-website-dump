@@ -1,0 +1,1306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Firewall</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="Leafnode+" href="leafnodeplus.html">
+    <LINK rel="NEXT" title="DNS" href="dns.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "leafnodeplus.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "dns.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="FIREWALL">Capitolo 9. Firewall</A></H1>
+
+      <P>Un <EM>firewall</EM> è essenzialmente un dispositivo che permette di
+      gestire come un filtro il traffico tra due interfacce di rete. In
+      questa sezione vedremo come impostare un firewall per un sistema <B
+      class="KEYCAP">Linux</B>, sia per proteggere un singolo PC, sia una <B
+      class="KEYCAP">rete locale</B>, in entrambe le situazioni nel caso di
+      collegamento a internet. Inoltre vedremo come poter consentire la <B
+      class="KEYCAP">condivisione</B> di una connessione internet, in modo
+      che un singolo PC possa isolare da possibili <EM>attacchi</EM> esterni
+      e allo stesso tempo permetta l'accesso all'esterno alla rete locale.
+      Per accesso esterno considero solo quello in entrata: tutti i PC della
+      rete potranno inviare e ricevere tutte le informazioni che vorranno, ma
+      non potranno offrire <EM>servizi</EM> all'esterno (infatti per questo
+      servizio serve un demone apposito, <B class="KEYCAP">rinetd</B>).
+      Inoltre l'inserimento nella macchina firewall di un server <B class=
+      "KEYCAP">DNS</B> e di un <B class="KEYCAP">cache proxy</B>
+      permetteranno di sveltire il traffico: il server DNS locale permette
+      infatti di avere una risposta più immediata alle richieste di
+      risoluzione dei nomi in indirizzi IP, mentre il cache proxy permette di
+      tenere copie locali delle pagine web e dei file già scaricati, evitando
+      una nuova richiesta esterna</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Questi due tipi di servizi sono trattati nelle
+          sezioni <B class="KEYCAP">DNS</B> e <B class="KEYCAP">WWWOFFLE</B>
+          del <EM>Quick&amp;Easy Configuration HOWTO</EM>).</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Linux contiene già al suo interno tutto il necessario per
+      implementare un <EM>firewall</EM> e il <EM>masquerading</EM>: si tratta
+      del tool <SPAN class="APPLICATION">ipchains</SPAN> dei kernel 2.2.x. I
+      kernel della serie 2.0.x usavano <SPAN class=
+      "APPLICATION">ipfwadm</SPAN>, mentre quelli dell'ultima versione 2.4.x
+      usano <SPAN class="APPLICATION">iptables</SPAN>: qui si tratterà solo
+      la gestione con <B class="KEYCAP">ipchains</B> e kernel 2.2.x (e in
+      futuro <B class="KEYCAP">iptables</B>), mentre <B class=
+      "KEYCAP">ipfwadm</B> non verrà trattato. Per poter utilizzare ipchains,
+      è necessario che il kernel sia compilato con le opzioni di firewalling
+      seguenti impostate a <B class="KEYCAP">Yes</B>:</P>
+
+      <UL>
+        <LI>
+          <P>Network firewalls</P>
+        </LI>
+
+        <LI>
+          <P>IP: firewalling</P>
+        </LI>
+
+        <LI>
+          <P>IP: always defragment</P>
+        </LI>
+
+        <LI>
+          <P>IP: transparent proxy support</P>
+        </LI>
+
+        <LI>
+          <P>IP: masquerading</P>
+        </LI>
+
+        <LI>
+          <P>IP: ICMP masquerading</P>
+        </LI>
+      </UL>
+
+      <P>più naturalmente tutto quello che vi serve per la rete (<B class=
+      "KEYCAP">networking</B>, <B class="KEYCAP">ppp</B>, <B class=
+      "KEYCAP">ethernet</B>, <B class="KEYCAP">routing</B>, ecc.). Ipchains
+      suddivide il traffico in tre tronconi, fornendo tre filtri: <B class=
+      "KEYCAP">input</B>, <B class="KEYCAP">output</B> e <B class=
+      "KEYCAP">forward</B>, gestibili tramite una serie di regole che
+      stabiliscono il trattamento del pacchetto arrivato. Le regole vengono
+      applicate nell'ordine in cui sono inserite, e se non è presente alcuna
+      regola specifica, si applica la politica di <EM>default</EM>. Nel
+      <EM>Quick&amp;Easy Configuration HOWTO</EM> prendereno in
+      considerazione solo le cose essenziali e solo quelle trattate nello
+      script seguente, per il resto si rimanda al <B class=
+      "KEYCAP">Firewall-Howto</B> e all' <B class=
+      "KEYCAP">Ipchains-Howto</B>, oltre all'ottima sezione degli <B class=
+      "KEYCAP">Appunti di Informatica Libera</B>. L'impostazione tipica di
+      una regola è la seguente:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+ipchains &lt;opzione-di-comando&gt; &lt;filtro&gt; [&lt;regola&gt;] [&lt;obiettivo&gt;]
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Le opzioni di comando sono:</P>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">-F</B> o <B class="KEYCAP">--flush</B> :
+          elimina tutte le regole del filtro specificato</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-D</B> o <B class="KEYCAP">--delete</B> :
+          elimina una o più regole dal filtro specificato</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-A</B> o <B class="KEYCAP">--append</B> :
+          aggiunge una regola in coda a quelle del filtro selezionato</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-I</B> o <B class="KEYCAP">--insert</B> :
+          inserisce una regola in una posizione stabilita del filtro
+          selezionato</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-R</B> o <B class="KEYCAP">--replace</B> :
+          sostituisce una regola del filtro selezionato</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-L</B> o <B class="KEYCAP">--list</B> : elenca
+          le regole di un uno o di tutti i filtri</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-P</B> o <B class="KEYCAP">--policy</B> :
+          cambia la politica predefinita per il filtro specificato</P>
+        </LI>
+      </UL>
+
+      <P>I filtri sono (rispettivamente per pacchetti in entrata, uscita e in
+      transito): <B class="KEYCAP">input</B>, <B class="KEYCAP">output</B>,
+      <B class="KEYCAP">forward</B></P>
+
+      <P>Gli obiettivi sono:</P>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">ACCEPT</B> : consente il transito del
+          pacchetto</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">DENY</B> : impedisce il transito del
+          pacchetto, limitandosi a ignorarlo</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">REJECT</B> : impedisce il transito del
+          pacchetto notificando all'origine il rifiuto (viene inviato un
+          messaggio <EM>ICMP</EM> specificante che il pacchetto è stato
+          rifiutato)</P>
+        </LI>
+      </UL>
+
+      <P>Le regole invece usano le seguenti opzioni (le parentesi <B class=
+      "KEYCAP">[]</B> indicano qualcosa di opzionale, mentre il <B class=
+      "KEYCAP">!</B> indica una negazione):</P>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">-p [!] {tcp|udp|icmp|all}</B> : stabilisce il
+          protocollo cui si applica la regola (default: all)</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-i [!] interfaccia</B> : stabilisce a quale
+          interfaccia si applica la regola</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-j obiettivo</B> : stabilisce cosa fare in
+          caso di corrispondenza della regola</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-s [!] indirizzo[/maschera]</B> : l'indirizzo
+          sorgente da cui arriva il pacchetto (default : 0.0.0.0/0, cioè ogni
+          indirizzo)</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-d [!] indirizzo[/maschera]</B> : l'indirizzo
+          cui è diretto il pacchetto (default : 0.0.0.0/0, cioè ogni
+          indirizzo)</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-l</B> : effettua il log di quanto passa
+          attraverso la regola</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-n</B> : non risolve i nomi di domini (lascia
+          l'ip numerico)</P>
+        </LI>
+      </UL>
+
+      <P>Altre informazioni sono reperibili nei documenti su indicati. Il
+      <EM>mascheramento IP</EM> permette di far credere all'esterno che
+      l'origine delle connessioni è sempre un solo nodo, anche quando in
+      realtà si tratta di un nodo interno ad una rete privata. Naturalmente,
+      il nodo che esegue il mascheramento è poi in grado di distinguere quali
+      siano stati i nodi mascherati che hanno originato la connessione,
+      girando a loro i pacchetti di loro competenza.</P>
+
+      <P>Lo script seguente funziona sia come firewall che da mascheramento
+      di una rete locale interna verso Internet. È configurato per l'accesso
+      <EM>dialup</EM> via <B class="KEYCAP">ppp</B> (usa l'interfaccia
+      <EM>ppp0</EM>). Leggete i commenti nel file, modificate dove indicato e
+      andate in pace. Dalla revisione 10 dello script, la configurazione
+      (cioè le parti dello script che NECESSARIAMENTE vanno adeguate al
+      proprio sistema) è stata estrapolata dallo script principale, e posta
+      il un file a parte, che se non modificate lo script sarà <TT class=
+      "FILENAME">/etc/firewall.conf</TT>. Per sapere come abilitare il
+      supporto per firewall e masquerading, guardate nella pagina relativa al
+      kernel. Lo script dovrebbe fare la maggior parte dei controlli su
+      esistenza di file, connessione, parametri, e segnalarvi se qualcosa non
+      va. Date i seguenti comandi per settare i giusti proprietari e
+      permessi:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cp firewall /usr/sbin
+chown root.root /usr/sbin/firewall
+chmod 744 /usr/sbin/firewall
+cp firewall.conf /etc
+chown root.root /etc/firewall.conf
+chmod 644 /etc/firewall.conf
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Una volta modificato il file di configurazione, potete avviare il
+      firewall DOPO aver stabilito la connessione (prima non esiste
+      l'interfaccia di rete <B class="KEYCAP">ppp0</B>!) col comando <B
+      class="COMMAND">firewall start</B>, e arrestarlo col comando <B class=
+      "COMMAND">firewall stop</B>. Altri comandi sono: <B class=
+      "COMMAND">firewall restart</B>, per riavviarlo dopo aver modificato il
+      file di configurazione a connessione attivata, e <B class=
+      "COMMAND">firewall status</B>, per avere un resoconto delle regole
+      attualmente attive nel sistema. Consiglio di automatizzare questa
+      procedura, inserendo i comandi di avvio e arresto rispettivamente in <B
+      class="KEYCAP">/etc/ppp/ip-up</B> e <B class=
+      "KEYCAP">/etc/ppp/ip-down</B>. Se usate REDHAT e simili, questi ultimi
+      sono dei file, quindi basta inserire i comandi al loro interno. Se
+      invece usate DEBIAN, questi sono delle directory, e contengono degli
+      script. Per il resto il funzionamento è analogo: i file o gli script
+      nelle dir vengono avviati rispettivamente subito dopo aver stabilito la
+      connessione e subito prima di arrestarla. Esempi di script per Debian
+      sono i seguenti:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/bash
+# script /etc/ppp/ip-up/firewallstart
+/usr/sbin/firewall start
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/bash
+# script /etc/ppp/ip-up/firewallstop
+/usr/sbin/firewall stop
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Per il mascheramento di <B class="KEYCAP">ICQ</B>,
+          dovete scaricare, compilare e installare il modulo <B class=
+          "KEYCAP">ip_masq_icq</B>, reperibile all'URL <A href=
+          "http://freeshell.org/~djsf/masq-icq/" target=
+          "_top">http://freeshell.org/~djsf/masq-icq/</A> oppure all'URL <A
+          href="http://djsf.narod.ru/masq-icq/" target=
+          "_top">http://djsf.narod.ru/masq-icq/</A> (un grazie a <EM>Filippo
+          Panessa</EM> per il suggerimento!). In <B class=
+          "KEYCAP">ICQ2000</B> non funziona ancora il trasferimento file.
+          Nella configurazione dei client che vengono mascherati, dovete
+          impostare nelle loro opzioni l'uso di un firewall sull'intervallo
+          di porte <B class="KEYCAP">2000:4000</B>.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/bash
+#
+#  ==========================================================================
+#  ========= Script per la configurazione di un Firewall per Linux ==========
+#  ==========================================================================
+#
+# Da utilizzarsi esclusivamente per una macchina stand-alone connessa
+# ad internet tramite connessione dial-up. E' necessario disporre di
+# un kernel della serie 2.2.x o 2.3.x compilato con il supporto
+# del masquerading, del firewall e l'opzione "always defragment".
+# In questa versione si usa IPCHAINS, NON IPFWADM o IPTABLES!
+# Viene filtrato cio' che entra e permesso alla rete di uscire
+#
+# $Revisione: 11.0$
+# modificato da MrShark su un lavoro precedente di Maurizio Cimaschi,
+# con vari preziosi suggerimenti di Pierluigi De Rosa e Marco d'Itri.
+# (Se ci sono errori, fatemeli conoscere a: &lt;mrshark@tiscalinet.it&gt;).
+#
+# Utilizzo: firewall start|stop|status|restart
+#     start = attiva il firewall
+#     stop = disattiva il firewall
+#     status = impostazioni correnti del firewall
+#     restart = rilegge il file di configurazione
+#
+# by Antonio Fragola, aka MrShark - The Informaniac
+#
+# Da questa revisione, le parti variabili sono state spostate in un
+# file esterno di configurazione, quindi NON c'e' piu' bisogno di
+# intervenire all'interno di questo file, a meno di non volerlo
+# personalizzare aggiungendo nuovi servizi eventualmente assenti.
+
+# Segue una serie di funzioni, lo script principale e' alla fine
+
+#  ==========================================================================
+fw_root () {
+    #--------------- verifica che lo script sia avviato da root
+    if [ $UID != 0 ]; then
+      clear
+      echo -e "\aATTENZIONE: solo l'utente root puo' avviare il firewall!"
+      exit 1
+    fi
+} # fw_root
+
+#  ==========================================================================
+fw_cfg () {
+    #--------------- verifica presenza file di configurazione
+    CFG="/etc/firewall.conf"
+    if [ -f $CFG ]; then
+      # source del file di configurazione
+      . $CFG
+    else
+      clear
+      echo -e "\aATTENZIONE: il file $CFG non e' presente!"
+      echo "Da questa revisione, le parti variabili sono state spostate in un"
+      echo "file esterno di configurazione, quindi NON c'e' piu' bisogno di"
+      echo "intervenire all'interno di questo file, a meno di non volerlo"
+      echo "personalizzare aggiungendo nuovi servizi eventualmente assenti."
+      exit 1
+    fi
+} # fw_cfg
+
+#  ==========================================================================
+fw_const () {
+    #--------------- costanti utili
+    #--------------- le parti variabili sono nel file di configurazione
+    INTERFACES=`/sbin/ifconfig | grep Link | cut -d \  -f 1`
+    CURRENT_KERNEL=`uname -r`
+    INTERFACEMASK="255.255.255.255"
+    INTERFACEIP=`/sbin/ifconfig $INTERFACE | grep inet | \
+      cut -d : -f 2 | cut -d \  -f 1`
+    LOCALIP="$INTERFACEIP/$INTERFACEMASK"
+    ANYWHERE="0.0.0.0/0"
+    LOOPBACK="127.0.0.0/8"
+    CLASS_A="10.0.0.0/8"
+    CLASS_B="172.16.0.0/12"
+    CLASS_C="192.168.0.0/16"
+    CLASS_D_MULTICAST="224.0.0.0/4"
+    CLASS_E_RESERVED_NET="240.0.0.0/5"
+    NFS_PORT="2049"                 # (TCP/UDP) NFS
+    SOCKS_PORT="1080"               # (TCP) Socks
+    # X Windows alloca le porte a partire dalla 6000 e incrementa
+    # fino alla 6063 per ogni server addizionale in funzione.
+    XWINDOW_PORTS="6000:6063"       # (TCP) X windows
+    # traceroute di solito usa -S 32769:65535 -D 33434:33523
+    TRACEROUTE_SRC_PORTS="32769:65535"
+    TRACEROUTE_DEST_PORTS="33434:33523"
+    PRIVPORTS="0:1023"
+    UNPRIVPORTS="1024:65535"
+    # i client SSH incominciano dalla porta 1023 e vanno a scalare fino alla 513
+    # per ogni nuova connessione simultanea generata da una porta privilegiata.
+    # I client possono essere impostati per usare solo porte non privilegiate.
+    SSH_PORTS="1022:1023"
+    #--------------- codici escape colori
+    RED="\\033[1;31m"
+    GREEN="\\033[0;32m"
+    WHITE="\\033[0;39m"
+    CYAN="\\033[0;36m"
+    BLUE="\\033[1;34m"
+    ORANGE="\\033[0;33m"
+    YELLOW="\\033[1;33m"
+    MAGENTA="\\033[1;35m"
+} # fw_const
+
+#  ==========================================================================
+fw_nointerface () {
+    #--------------- comunica che non esiste l'interfaccia di rete
+    clear
+    echo -e "${RED}ATTENZIONE: ${YELLOW}l'interfaccia "
+    echo -e "${RED}ppp0${YELLOW} NON e' attiva nel sistema."
+    echo -e "Firewall NON attivato. Controllare connessione Internet"
+    echo -en "${WHITE}Interfacce attualmente attive nel PC: "
+    for irf in ${INTERFACES} ; do
+      echo -en "${RED}${irf}${WHITE} "
+    done
+    echo -e "\n\a"
+    exit 1
+} # fw_nointerface
+
+#  ==========================================================================
+fw_go () {
+    #--------------- inizio attivazione e flushing
+    echo
+    echo "Attivazione del Firewall in corso..."
+    echo -e "Indirizzo IP locale sull'interfaccia ${YELLOW}"
+    echo -e "$INTERFACE${WHITE} : ${RED}$LOCALIP${WHITE}"
+    echo -n "Flushing delle regole eventualmente presenti : "
+    $IPCHAINS -F input
+    $IPCHAINS -F output
+    $IPCHAINS -F forward
+    echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+} # fw_go
+
+#  ==========================================================================
+fw_protezioni () {
+    #--------------- attivazione protezioni varie
+    echo -n "Permesso traffico locale sull'interfaccia di loopback : "
+    $IPCHAINS -A input -s $ANYWHERE -i lo -j ACCEPT
+    echo -e "\t[ ${GREEN}OK ${WHITE}]"
+    echo -n "Permesso traffico locale sull'interfaccia di rete della LAN : "
+    $IPCHAINS -A input -i $LOCAL_INTERFACE -s $LOCALNET -j ACCEPT
+    echo -e "\t[ ${GREEN}OK ${WHITE}]"
+    echo -n "Attivazione Source Address Verification : "
+    if [ -e /proc/sys/net/ipv4/conf/all/rp_filter ]; then
+      for f in /proc/sys/net/ipv4/conf/*/rp_filter; do
+        echo 1 &gt; $f
+      done
+      echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t[ ${RED}NO ${WHITE}]"
+      echo -n "SAV non disponibile, utilizzo di ipchains : "
+      $IPCHAINS -A input -s 127.0.0.1 -i lo -j ACCEPT
+      echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    fi
+    #--------------- syn cookie
+    echo -n "Attivazione TCP SYN Cookie Protection : "
+    if [ -e /proc/sys/net/ipv4/tcp_syncookies ]; then
+      echo 1 &gt;/proc/sys/net/ipv4/tcp_syncookies
+      echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+    #--------------- always defrag
+    echo -n "Attivazione Always Defragging Protection : "
+    if [ -e /proc/sys/net/ipv4/ip_always_defrag ]; then
+      echo 1 &gt; /proc/sys/net/ipv4/ip_always_defrag
+      echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+    #--------------- broadcast echo
+    echo -n "Attivazione Broadcast Echo Protection : "
+    if [ -e /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts ]; then
+      echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+      echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+    #--------------- bad error
+    echo -n "Attivazione Bad Error Message Protection : "
+    if [ -e /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses ]; then
+      echo 1 &gt; /proc/sys/net/ipv4/icmp_ignore_bogus_error_responses
+      echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+    #--------------- icmp redirect
+    echo -n "Disattivazione ICMP Redirect Acceptance : "
+    if [ -e /proc/sys/net/ipv4/conf/all/accept_redirects ]; then
+      for f in /proc/sys/net/ipv4/conf/*/accept_redirects; do
+        echo 0 &gt; $f
+      done
+      for f in /proc/sys/net/ipv4/conf/*/send_redirects; do
+        echo 0 &gt; $f
+      done
+      echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+    #--------------- source route
+    echo -n "Disattivazione Source Routed Packets : "
+    if [ -e /proc/sys/net/ipv4/conf/all/accept_source_route ]; then
+      for f in /proc/sys/net/ipv4/conf/*/accept_source_route; do
+        echo 0 &gt; $f
+      done
+      echo -e "\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+    #--------------- i marziani!
+    echo -n "Log pacchetti spoofed, source routed, redirected : "
+    if [ -e /proc/sys/net/ipv4/conf/all/log_martians ]; then
+      for f in /proc/sys/net/ipv4/conf/*/log_martians; do
+        echo 1 &gt; $f
+      done
+      echo -e "\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t[ ${RED}NO ${WHITE}]"
+    fi
+    #--------------- impostazione policy
+    echo -e "${YELLOW}Attivazione dei servizi in ingresso richiesti : ${WHITE}"
+    echo -n "Impostazione della POLICY di ingresso a DENY : "
+    $IPCHAINS -P input DENY
+    echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+} # fw_protezioni
+
+#  ==========================================================================
+fw_dns () {
+    #--------------- DNS (53)
+    echo -n "Server DNS  : "
+    if [ $DNS = "ON" ]; then
+      for dns in $DNS_IP ; do
+        $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s $dns 53 \
+          -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+        $IPCHAINS -A input -i $INTERFACE -p udp -s $dns 53 \
+          -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      done
+      echo -e "\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_dns
+
+#  ==========================================================================
+fw_http () {
+    #--------------- HTTP (80) e HTTPS (443)
+    echo -n "Navigazione WEB : "
+    if [ $HTTP = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s 0/0 80 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s 0/0 443 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_http
+
+#  ==========================================================================
+fw_smtp () {
+    #--------------- SMTP (25)
+    echo -n "Invio posta : "
+    if [ $SMTP = "ON" ]; then
+      for smtp in $SMTP_IP ; do
+        $IPCHAINS -A input -i $INTERFACE -p tcp -s $smtp 25 \
+          -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      # $IPCHAINS -A input -i $INTERFACE -p tcp -s $ANYWHERE 25 \
+      #   -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      done
+      echo -e "\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_smtp
+
+#  ==========================================================================
+fw_imap () {
+    #--------------- IMAP (143)
+    echo -n "Posta IMAP : "
+    if [ $IMAP = "ON" ]; then
+      for imap in $IMAP_IP ; do
+        $IPCHAINS -A input -i $INTERFACE -p tcp -s $imap 143 \
+          -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      done
+      echo -e "\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_imap
+
+#  ==========================================================================
+fw_pop3 () {
+    #--------------- POP3 (110)
+    echo -n "Prelievo posta : "
+    if [ $POP3 = "ON" ]; then
+      for pop3 in $POP3_IP ; do
+        $IPCHAINS -A input -i $INTERFACE -p tcp -s $pop3 110 \
+          -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      done
+      echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_pop3
+
+#  ==========================================================================
+fw_nntp () {
+    #--------------- NNTP (119)
+    echo -n "Newsgroup Usenet : "
+    if [ $NNTP = "ON" ]; then
+      for news in $NNTP_IP ; do
+        $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s $news 119 \
+          -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      done
+      echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_nntp
+
+#  ==========================================================================
+fw_ftp () {
+    #--------------- FTP (20/21)
+    echo -n "File Transfer Protocol : "
+    if [ $FTP = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y --source-port 21 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+    # FTP Port Mode (normale)
+      $IPCHAINS -A input -i $INTERFACE -p tcp --source-port 20 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+    # FTP Passive Mode (senza questa i browser non accedono ai siti FTP)
+      $IPCHAINS -A input -i $INTERFACE ! -y --source-port $UNPRIVPORTS \
+        -d $LOCALIP $UNPRIVPORTS -p tcp -j ACCEPT
+      echo -e "\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_ftp
+
+#  ==========================================================================
+fw_ssh () {
+    #--------------- SSH (22)
+    echo -n "Secure Shell : "
+    if [ $SSH = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s $ANYWHERE 22 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s $ANYWHERE 22 \
+        -d $LOCALIP $SSH_PORTS -j ACCEPT
+      echo -e "\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_ssh
+
+#  ==========================================================================
+fw_icmp () {
+    #--------------- ICMP (solo tipi 0/3/11)
+    echo -n "Traffico ICMP : "
+    if [ $ICMP = "ON" ]; then
+      $IPCHAINS -A input -p icmp -s $ANYWHERE 0 -d $LOCALIP -j ACCEPT
+      $IPCHAINS -A input -p icmp -s $ANYWHERE 3 -d $LOCALIP -j ACCEPT
+      $IPCHAINS -A input -p icmp -s $ANYWHERE 11 -d $LOCALIP -j ACCEPT
+      echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_icmp
+
+#  ==========================================================================
+fw_auth () {
+    #--------------- AUTH (113)
+    echo -n "Richieste di identificazione : "
+    if [ $AUTH = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp -d $LOCALIP 113 -j ACCEPT
+      echo -e "\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_auth
+
+#  ==========================================================================
+fw_irc () {
+    #--------------- IRC (6667)
+    echo -n "Internet Relay Chat : "
+    if [ $IRC = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s $ANYWHERE 6667 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_irc
+
+#  ==========================================================================
+fw_icq () {
+    #--------------- ICQ (2000:4000)
+    echo -n "ICQ : "
+    if [ $ICQ = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp -d $LOCALIP 2000:4000 -j ACCEPT
+      $IPCHAINS -A input -i $INTERFACE -p udp -d $LOCALIP 4000 -j ACCEPT
+      $IPCHAINS -A input -i $INTERFACE -p tcp --source-port 2000:4000 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+# con il "! -y" non funge il dcc in uscita! si deve impostare
+# anche il client ad usare questo range di porte
+#      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y --source-port 2000:4000 \
+#        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      $IPCHAINS -A input -i $INTERFACE -p udp --source-port 4000 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      echo -e "\t\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_icq
+
+#  ==========================================================================
+fw_napster () {
+    #--------------- NAPSTER (6699)
+    echo -n "NAPSTER : "
+    if [ $NAP = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y -s $ANYWHERE 6699 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      echo -e "\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_napster
+
+#  ==========================================================================
+fw_realaudio () {
+    #--------------- REALAUDIO (6970:6999)
+    echo -n "REALAUDIO : "
+    if [ $RAUD = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p udp --source-port $UNPRIVPORTS \
+        -d $LOCALIP 6970:6999 -j ACCEPT
+      echo -e "\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_realaudio
+
+#  ==========================================================================
+fw_whois () {
+    #--------------- WHOIS (43)
+    echo -n "WHOIS : "
+    if [ $WHS = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp ! -y --source-port 43 \
+        -d $LOCALIP $UNPRIVPORTS -j ACCEPT
+      echo -e "\t\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_whois
+
+#  ==========================================================================
+fw_trojan () {
+    #--------------- log bo e netbus
+    # Ogni tanto mi prude e mi va di divertirmi con fakebo! ;-)
+    # Cosa c'e` dietro queste mie porte? Venite a trovarmi quando
+    # sono online per saperlo, a vostro rischio e pericolo!!! ;-)
+    echo -n "Log Bo e Netbus : "
+    if [ $FAKE = "ON" ]; then
+      $IPCHAINS -A input -i $INTERFACE -p tcp \
+        --destination-port 12345:12346 -l -j ACCEPT
+      $IPCHAINS -A input -i $INTERFACE -p tcp \
+        --destination-port 31337 -l -j ACCEPT
+      $IPCHAINS -A input -i $INTERFACE -p udp \
+        --destination-port 31337 -l -j ACCEPT
+#socks per fake proxy
+      $IPCHAINS -A input -i $INTERFACE -p tcp \
+        --destination-port 1080 -l -j ACCEPT
+#fake telnet
+      $IPCHAINS -A input -i $INTERFACE -p tcp \
+        --destination-port 23 -l -j ACCEPT
+#fake finger
+      $IPCHAINS -A input -i $INTERFACE -p tcp \
+        --destination-port 79 -l -j ACCEPT
+#fake http
+      $IPCHAINS -A input -i $INTERFACE -p tcp \
+        --destination-port 80 -l -j ACCEPT
+      echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_trojan
+
+#  ==========================================================================
+fw_jerks () {
+    #--------------- ip personalizzati da filtrare
+    echo -n "Internet Jerks : "
+    if [ $JERK = "ON" ]; then
+      for jerk in $JERK_IP ; do
+        $IPCHAINS -A input -i $INTERFACE -s $jerk -j DENY
+      done
+      echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    else
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_jerks
+
+#  ==========================================================================
+fw_nolog () {
+    #--------------- blocco senza log
+    echo -n "Blocco IGMP e PIM : "
+    # Rifiuta senza loggarli i pacchetti dei protocolli IGMP (2) e PIM (103)
+    # Libero ha il vizio di mandare 'sti pacchetti che ingolfano i log! ;-)
+    $IPCHAINS -A input -i $INTERFACE -p 2 -s $ANYWHERE \
+      -d $CLASS_D_MULTICAST -j DENY
+    $IPCHAINS -A input -i $INTERFACE -p 103 -s $ANYWHERE \
+      -d $CLASS_D_MULTICAST -j DENY
+    echo -e "\t\t\t\t\t\t[ ${GREEN}OK ${WHITE}]" 
+} # fw_nolog
+
+#  ==========================================================================
+fw_blocklog () {
+    #--------------- blocco e log
+    echo -n "Blocco e log di tutto il resto : "
+    # Rifiuta pacchetti spoof che simulano di provenire dall'esterno.
+    $IPCHAINS -A input -i $INTERFACE -s $LOCALIP -j DENY -l
+    # Rifiuta pacchetti che sembrano provenire da una rete privata di Classe A
+    $IPCHAINS -A input -i $INTERFACE -s $CLASS_A -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -d $CLASS_A -j DENY -l
+    # Rifiuta pacchetti che sembrano provenire da una rete privata di Classe B
+    $IPCHAINS -A input -i $INTERFACE -s $CLASS_B -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -d $CLASS_B -j DENY -l
+    # Rifiuta pacchetti che sembrano provenire da una rete privata di Classe C
+    $IPCHAINS -A input -i $INTERFACE -s $CLASS_C -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -d $CLASS_C -j DENY -l
+    # Rifiuta pacchetti che sembrano provenire dall'interfaccia di Loopback
+    $IPCHAINS -A input -i $INTERFACE -s $LOOPBACK -j DENY -l
+    # Rifiuta pacchetti broadcast address SOURCE
+    $IPCHAINS -A input -i $INTERFACE -s $INTERFACEMASK -j DENY -l
+    # Rifiuta pacchetti multicast addresses di Classe D (in.h) (NET-3-HOWTO)
+    # Il Multicast e' illegale come indirizzo sorgente, ed usa UDP.
+    $IPCHAINS -A input -i $INTERFACE -s $CLASS_D_MULTICAST -j DENY -l
+    # Rifiuta pacchetti  da indirizzi IP riservati di Classe E
+    $IPCHAINS -A input -i $INTERFACE -s $CLASS_E_RESERVED_NET -j DENY -l
+    # Rifiuta pacchetti con indirizzi definiti riservati dall'IANA.
+    # Nota: questi indirizzi vengono allocati periodicamente e possono
+    # quindi variare. Controllare possibilmente ogni mese la nuova lista
+    # http://www.isi.edu/in-notes/iana/assignments/ipv4-address-space
+    # Per sicurezza, sono attivi solo le seguenti classi di ip:
+    # 
+    # 0.*.*.*         - Non possono essere bloccati per il DHCP
+    # 127.*.*.*       - LoopBack
+    # 169.254.*.*     - Link Local Networks
+    # 192.0.2.*       - TEST-NET
+    # 224-255.*.*.*
+    # 
+    # Gli altri variano troppo spesso ultimamente...
+    $IPCHAINS -A input -i $INTERFACE -s 127.0.0.0/8 -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -s 169.254.0.0/16 -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -s 192.0.2.0/24 -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -s 224.0.0.0/3 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 1.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 2.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 5.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 7.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 23.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 27.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 31.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 36.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 37.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 39.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 41.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 42.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 49.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 50.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 58.0.0.0/7 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 60.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 67.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 68.0.0.0/6 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 72.0.0.0/5 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 80.0.0.0/4 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 96.0.0.0/3 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 197.0.0.0/8 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 218.0.0.0/7 -j DENY -l
+    # $IPCHAINS -A input -i $INTERFACE -s 220.0.0.0/6 -j DENY -l
+    #--------------- porte TCP non privilegiate
+    # NFS: instauramento connessione TCP
+    $IPCHAINS -A input -i $INTERFACE -p tcp -y -d $LOCALIP \
+      $NFS_PORT -j DENY -l
+    # Xwindow: instauramento connessione
+    $IPCHAINS -A input -i $INTERFACE -p tcp -y -d $LOCALIP \
+      $XWINDOW_PORTS -j DENY -l
+    # SOCKS: instauramento connessione
+#    $IPCHAINS -A input -i $INTERFACE -p tcp -y -d $LOCALIP \
+#      $SOCKS_PORT -j DENY -l
+    #--------------- porte UDP non privilegiate
+    # NFS: instauramento connessione UDP
+    $IPCHAINS -A input -i $INTERFACE -p udp -d $LOCALIP \
+      $NFS_PORT -j DENY -l
+    # TRACEROUTE UDP in ingresso
+    $IPCHAINS -A input -i $INTERFACE -p udp -s $ANYWHERE \
+      $TRACEROUTE_SRC_PORTS -d $LOCALIP $TRACEROUTE_DEST_PORTS -j DENY -l
+    #--------------- altri log
+    $IPCHAINS -A input -i $INTERFACE -p tcp -d $LOCALIP -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -p udp -d $LOCALIP $PRIVPORTS \
+      -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -p udp -d $LOCALIP $UNPRIVPORTS \
+      -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -p icmp -s $ANYWHERE 5 \
+      -d $LOCALIP -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -p icmp -s $ANYWHERE 13:255 \
+      -d $LOCALIP -j DENY -l
+    $IPCHAINS -A input -i $INTERFACE -d $ANYWHERE -j DENY -l
+    echo -e "\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+} # fw_blocklog
+
+#  ==========================================================================
+fw_ver_masqmod () {
+    #--------------- controllo presenza moduli masquerading
+    echo -e "${YELLOW}Mascheramento : ${WHITE}"
+    echo -n "Controllo presenza moduli necessari : "
+    MASQ_PRESENT=""
+    for mod in ${IP_MASQ_MODULES}; do
+      if [ ! -e /lib/modules/$CURRENT_KERNEL/ipv4/ip_masq_${mod}.o ]; then
+        MASQ_PRESENT="err"
+      fi
+    done
+} # fw_ver_masqmod
+
+#  ==========================================================================
+fw_yesmasqmod () {
+    #--------------- moduli masquerading presenti e si continua
+    echo -e "\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    echo -n "Installazione dei moduli necessari al Mascheramento : "
+    for mod in ${IP_MASQ_MODULES} ; do
+      /sbin/insmod "ip_masq_${mod}" &gt; /dev/null
+    done
+    echo -e "\t\t[ ${GREEN}OK ${WHITE}]"
+    echo -n "Attivazione IP forwarding : "
+    echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+    echo -e "\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+    echo -n "Impostazione della POLICY di inoltro a DENY : "
+    $IPCHAINS -P forward DENY
+    $IPCHAINS -A forward -i $INTERFACE -s $LOCALNET -j MASQ
+    echo -e "\t\t\t[ ${GREEN}OK ${WHITE}]"
+    echo -n "Impostazione Timeout mascher. connessioni TCP a 10 ore : "
+    $IPCHAINS -M -S 36000 0 0
+    echo -e "\t[ ${GREEN}OK ${WHITE}]"
+    echo -n "Blocco e log di tutto il resto : "
+    $IPCHAINS -A forward -j DENY -s $ANYWHERE -d $ANYWHERE -l
+    echo -e "\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+} # fw_yesmasqmod
+
+#  ==========================================================================
+fw_nomasqmod () {
+    #--------------- moduli masquerading assenti, informa e continua senza
+    echo -e "\t\t\t\t[ ${RED}NO ${WHITE}]"
+    echo
+    echo -e "${RED}Errore!!! Moduli per il Mascheramento "
+    echo -e "non presenti nel sistema. Ricompilare il kernel col "
+    echo -e "supporto per firewall e masquerading.${WHITE}"
+    echo
+} # fw_nomasqmod
+
+#  ==========================================================================
+fw_masq () {
+    #--------------- mascheramento rete locale all' esterno
+    #--------------- verifica esistenza moduli mascheramento
+    if [ $MASQ = "ON" ]; then
+      fw_ver_masqmod
+    #--------------- se esistono, attiva mascheramento
+      if [ -z ${MASQ_PRESENT} ]; then
+        fw_yesmasqmod
+    #--------------- se non esistono, avverti e continua senza
+      else
+        fw_nomasqmod
+      fi
+    else
+      echo -en "${YELLOW}Mascheramento : ${WHITE}"
+      echo -e "\t\t\t\t\t\t[ ${RED}NO ${WHITE}]"
+    fi
+} # fw_masq
+
+#  ==========================================================================
+fw_start () {
+    #--------------- parte start dello script
+    clear
+    #--------------- verifica esistenza interfaccia esterna
+    if [ -z $INTERFACEIP ]; then
+    #--------------- se non esiste, avverti ed esci con errore 1
+      fw_nointerface
+    #--------------- se l'interfaccia esiste, si procede
+    else
+      fw_go
+      fw_protezioni      
+      fw_dns
+      fw_http
+      fw_smtp
+      fw_imap
+      fw_pop3
+      fw_nntp
+      fw_ftp
+      fw_ssh
+      fw_icmp
+      fw_auth
+      fw_irc
+      fw_icq
+      fw_napster
+      fw_realaudio
+      fw_whois
+      fw_trojan
+      fw_jerks
+      fw_nolog
+      fw_blocklog
+      fw_masq
+    fi
+} # fw_start
+
+#  ==========================================================================
+fw_stop () {
+    #--------------- parte stop dello script
+    clear
+    echo "Disattivazione del Firewall in corso..."
+    $IPCHAINS -F
+    $IPCHAINS -P input ACCEPT
+    $IPCHAINS -P forward ACCEPT
+    if [ $MASQ = "ON" ]; then
+      MASQ_PRESENT=""
+      for mod in ${IP_MASQ_MODULES} ; do
+        if [ ! -e /lib/modules/$CURRENT_KERNEL/ipv4/ip_masq_${mod}.o ]; then
+          MASQ_PRESENT="err"
+        fi
+      done
+      if [ -z ${MASQ_PRESENT} ] ; then
+        echo -n "Rimozione dei moduli necessari al Mascheramento : "
+        for mod in ${IP_MASQ_MODULES} ; do
+          /sbin/rmmod "ip_masq_${mod}" &gt; /dev/null
+        done
+        echo -e "\t\t[ ${GREEN}OK ${WHITE}]"
+        echo -n "Disattivazione IP forwarding : "
+        echo 0 &gt; /proc/sys/net/ipv4/ip_forward
+        echo -e "\t\t\t\t\t[ ${GREEN}OK ${WHITE}]"
+      fi
+    fi
+    echo -e "${YELLOW}ATTENZIONE: IL FIREWALL NON E' PIU' OPERATIVO${WHITE}"
+} # fw_stop
+
+#  ==========================================================================
+fw_status () {
+    #--------------- parte stats dello script
+    clear
+    echo "Impostazioni attuali del firewall : "
+    echo -e "Indirizzo IP locale sull'interfaccia \
+      ${YELLOW}$INTERFACE${WHITE} : ${RED}$LOCALIP${WHITE}"
+    $IPCHAINS -L -n
+} # fw_status
+
+#  ==========================================================================
+fw_altro () {
+    #--------------- nessuna o errata opzione fornita allo script
+    clear
+    echo -en "${BLUE}#############################"
+    echo -e "###############################${WHITE}"
+    echo -en "${BLUE}###${YELLOW}         Script di impostazione "
+    echo -e "${MAGENTA}FIREWALL ${YELLOW}v11.0        ${BLUE}###${WHITE}"
+    echo -en "${BLUE}#############################"
+    echo -e "###############################${WHITE}"
+    echo -e "${YELLOW}Utilizzo:${WHITE} firewall start|stop|status|restart"
+    echo -e "\t${CYAN}start${WHITE} = attiva il firewall"
+    echo -e "\t${CYAN}stop${WHITE} = disattiva il firewall"
+    echo -e "\t${CYAN}status${WHITE} = impostazioni correnti del firewall"
+    echo -e "\t${CYAN}restart${WHITE} = rilegge il file di configurazione"
+    echo
+    echo -en "${RED}ATTENZIONE: ${YELLOW}ricorda che l'interfaccia "
+    echo -e "${RED}ppp0${YELLOW} e' attiva"
+    echo -e "solo DOPO aver effettuato la connessione a Internet."
+    echo -en "${WHITE}Interfacce attualmente attive nel PC: "
+    for irf in ${INTERFACES} ; do
+      echo -en "${RED}${irf}${WHITE} "
+    done
+    echo -e "\n\a"
+} # fw_altro
+
+#  ==========================================================================
+#  script principale
+
+fw_root  #--------------- verifica che lo script sia avviato da root
+fw_cfg   #--------------- verifica presenza file di configurazione
+fw_const #--------------- costanti utili
+         #--------------- le parti variabili sono nel file di configurazione
+
+case "$1" in
+  start)
+    fw_start
+    ;;
+  stop)
+    fw_stop
+    ;;
+  restart)
+    fw_stop
+    fw_start
+    ;;
+  status)
+    fw_status
+    ;;
+  *)
+    fw_altro
+    exit 1
+esac
+exit 0
+       
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Segue il file di configurazione:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#  ==========================================================================
+#  ========= Script per la configurazione di un Firewall per Linux ==========
+#  ==========================================================================
+#
+# Questo e' il file di configurazione usato dallo script generale di
+# firewall/masquerading. Modificate tutto quello che serve per adattarlo
+# al vostro sistema. NON dovrebbe essere necessario modificare lo script
+# in se', in quanto tutte le cose da modificare sono state spostate qui'
+#
+# by Antonio Fragola, aka MrShark - The Informaniac
+#
+# NON rimuovete nulla, cambiate solo le cose indicate.
+# Impostate a ON o OFF i servizi che vi servono o meno
+
+# posizione dell'eseguibile "ipchains" - eseguite "which ipchains" da root
+  IPCHAINS="/sbin/ipchains"
+
+# interfaccia di rete che vi connette a Internet - di solito ppp0
+  INTERFACE="ppp0"
+
+# masquerading: ON solo se si ha una rete locale che deve accedere a internet.
+# Indicate anche l'interfaccia che vi collega alla rete locale per la quale
+# volete fare il masquerading, e la classe della vostra rete locale. Inoltre
+# indicate quali moduli volete mascherare (per icq serve un modulo NON fornito
+# col kernel, leggere nel Quick&amp;Easy Configuration Howto per reperirlo).
+  MASQ="ON"
+  LOCAL_INTERFACE="eth0"
+  LOCALNET="192.168.0.0/16"
+  IP_MASQ_MODULES="ftp irc"     # altri sono: "cuseeme quake vdolive raudio"
+
+# navigazione web
+  HTTP="ON"
+
+# trasferimento file
+  FTP="ON"
+
+# risoluzione nomi dominio - indicare gli IP dei server del vostro ISP
+  DNS="ON"
+  DNS_IP="193.70.152.25 193.70.192.25 195.130.224.18 195.130.225.129"
+
+# invio email - indicare l'IP del server del vostro ISP
+  SMTP="ON"
+  SMTP_IP="193.70.192.50 195.130.225.171"
+
+# ricezione email pop3 - inserite gli IP dei server imap che usate
+# (TUTTI quelli da cui volete ricevere email pop3, non solo quelli
+# del provider che usate correntemente), nel campo POP3_IP, usando
+# uno spazio come separatore tra l'uno e l'altro. Se volete andare
+# a capo, usate a fine riga il carattere "\", SENZA lasciare spazi
+# dopo di esso!!! Tenete presente che molti provider (come tiscali
+# e tin) usano IP multipli per i server, quindi dovrete elencarli
+# tutti (cercateli con nslookup) 
+  POP3="ON"
+  POP3_IP="195.130.225.147 195.130.225.148 195.130.225.149 \
+           195.130.225.150 195.130.225.151 195.130.225.152 \
+           195.130.225.153 195.130.225.154 193.70.192.80 \
+       195.130.225.172 193.70.192.70 62.149.128.10"
+
+# ricezione email imap - inserite gli IP dei server imap che usate
+# (TUTTI quelli da cui volete ricevere email imap, non solo quelli
+# del provider che usate correntemente), nel campo IMAP_IP, usando
+# uno spazio come separatore tra l'uno e l'altro. Se volete andare
+# a capo, usate a fine riga il carattere "\", SENZA lasciare spazi
+# dopo di esso!!! Tenete presente che molti provider (come tiscali
+# e tin) usano IP multipli per i server, quindi dovrete elencarli
+# tutti (cercateli con nslookup) 
+  IMAP="OFF"
+  IMAP_IP="1.2.3.4 2.3.4.5 3.4.5.6"
+
+# news usenet - indicare l'IP del server del vostro ISP
+  NNTP="ON"
+# news.libero.it, shy.datawell.it, news.caspur.it, news.unina.it, news.ecs.net news.cu.mi.it
+# NNTP_IP="192.106.1.6 213.26.160.219 193.204.5.75 192.132.34.81 194.21.74.41 193.43.96.1"
+  NNTP_IP="192.106.1.6 213.26.160.219 192.132.34.81 193.43.96.1"
+
+# controlli vari di connessione - NON DISATTIVARE!
+  ICMP="ON"
+
+# server identd - SERVE PER ALCUNE CONNESSIONI IRC
+  AUTH="ON"
+
+# chat irc
+  IRC="ON"
+
+# chat icq
+  ICQ="ON"
+
+# connessione a server ssh
+  SSH="ON"
+
+# napster
+  NAP="ON"
+
+# realaudio
+  RAUD="OFF"
+
+# client whois
+  WHS="ON"
+
+# fakebo - OGNI TANTO MI PRUDE! ;-)
+  FAKE="ON"
+
+# altri ip personalizzati da aggiungere al firewall - inserite gli
+# IP nel campo JERK_IP, usando uno spazio come separatore tra l'uno
+# e l'altro. Se volete andare a capo, usate a fine riga il carattere
+# "\", SENZA lasciare spazi dopo di esso!!!
+  JERK="OFF"
+  JERK_IP="1.1.1.1 2.2.2.2 3.3.3.3"
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>THIS IS THE END, MY ONLY FRIEND (by JIM).</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "leafnodeplus.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "dns.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Leafnode+</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">DNS</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

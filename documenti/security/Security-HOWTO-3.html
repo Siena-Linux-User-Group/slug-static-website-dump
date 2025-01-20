@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Sicurezza Fisica</TITLE>
+ <LINK HREF="Security-HOWTO-4.html" REL=next>
+ <LINK HREF="Security-HOWTO-2.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc3" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-4.html">Avanti</A>
+<A HREF="Security-HOWTO-2.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc3">Indice</A>
+<HR>
+<H2><A NAME="physical-security"></A> <A NAME="s3">3. Sicurezza Fisica</A></H2>
+
+<P>Il primo grado di sicurezza che dovete considerare &egrave; la sicurezza
+fisica dei vostri sistemi. Chi ha fisicamente accesso ai computer?
+Dovrebbe averlo? Riuscite a proteggere la vostra macchina da eventuali
+intrusioni? 
+<P>Di quanta sicurezza fisica avete bisogno sul vostro sistema dipende molto
+dalla situazione e/o dal budget. 
+<P>Se siete un utente casalingo, probabilmente non &egrave; molto importante
+(anche se potreste aver bisogno di proteggervi dalla curiosit&agrave; di
+bambini o parenti).  Se si tratta di un laboratorio, ne avrete pi&ugrave;
+bisogno, ma gli utenti avranno comunque bisogno di non essere limitati nel
+lavoro. Molte delle seguenti sezioni saranno d'aiuto. Se siete in un ufficio,
+potreste avere bisogno o no di tenere al sicuro le vostre macchine fuori dalle
+ore di lavoro o quando non siete presenti. In certe compagnie, lasciare 
+incustodita la vostra macchina &egrave; un errore da licenziamento. 
+<P>Ovvi metodi di sicurezza come lucchetti, macchine chiuse a chiave e video
+sorveglianza sono buone idee, ma vanno oltre il tema di questo documento. :)
+<P>
+<H2><A NAME="ss3.1">3.1 Serrature per Computer</A>
+</H2>
+
+<P>Molti case dei moderni PC includono la possibilit&agrave; di essere chiusi.
+In genere hanno una toppa sulla parte frontale del case che pu&ograve; essere
+alternate fra le posizioni "chiuso" e "aperto con una chiave. Queste serrature
+possono aiutare ad evitare che qualcuno rubi il vostro PC, o che apra il case
+e manipoli o rubi i componenti. In alcuni casi possono anche impedire che 
+qualcuno riavvii il computer con un proprio floppy o con componenti
+modificati. 
+<P>Queste serrature hanno funzioni diverse a seconda che siano riconosciute dalla
+scheda madre e di come &egrave; costruito il case. Su molti PC fanno in modo
+di obbligarvi a rompere il case per aprirlo. In altri, non vi permetteranno
+neanche di inserire nuove tastiere o mouse. Controllate le istruzioni della
+vostra scheda madre o del case per maggiori informazioni. A volte questa
+pu&ograve; essere una caratteristica molto utile, anche se le serrature
+sono in genere di bassissima qualit&agrave; e possono essere facilmente
+superate con un po' di scasso. 
+<P>Alcune macchine (soprattutto SPARC e Mac) hanno un gancio sul retro in cui 
+far passare una catena che un ipotetico intrusore dovrebbe rompere per aprire
+il case. Semplicemente metterci un lucchetto pu&ograve; essere un deterrente
+contro i furti.
+<P>
+<P>
+<H2><A NAME="ss3.2">3.2 Sicurezza del BIOS</A>
+</H2>
+
+<P>Il BIOS &egrave; il pi&ugrave; basso livello software per configurare il vostro
+hardware basato su tecnologia x86. LILO e altri metodi di boot di Linux
+accedono al BIOS per capire come avviare la macchina. Altro hardware su cui
+gira Linux ha un software simile (OpenFirmware sui Mac e i nuovi Sun, la PROM 
+di avvio di Sun, ecc...). Potete usare il vostro BIOS per evitare che un
+intrusore  riavvii la vostra macchina e manipoli il vostro sistema Linux. 
+<P>Molti BIOS di PC vi permettono di usare una password di avvio. Questo non 
+d&agrave; molta sicurezza (il BIOS pu&ograve; essere resettato o rimosso se
+qualcuno pu&ograve; aprire il case), ma potrebbe essere un buon deterrente
+(cio&egrave; si perder&agrave; del tempo e si lasceranno delle tracce).
+Allo stesso modo, su S/Linux (Linux per macchine con processore SPARC(tm)),
+la vostra EEPROM pu&ograve; essere configurata per richiedere una password di
+avvio. Questo pu&ograve; rallentare l'intrusore.  
+<P>Molti BIOS x86 vi permettono anche di usare diversi altri utili settaggi di
+sicurezza. Leggete il manuale del vostro BIOS o dategli un'occhiata quando
+riavviate la prossima volta. Per esempio alcuni BIOS bloccano l'avvio da floppy
+e altri richiedono una password per modificare certe caratteristiche del BIOS.
+<P><EM>Nota</EM>: se avete una macchina server e inserite una password di
+avvio, questa non ripartir&agrave; da sola. Ricordate che dovrete andare a
+mettere la password se mancasse la corrente. ;(
+<P>
+<H2><A NAME="ss3.3">3.3 Sicurezza del Boot Loader</A>
+</H2>
+
+<P>Anche i vari boot loader per Linux possono avere una password.
+LILO, per esempio, ha le opzioni <CODE>password</CODE> e <CODE>restricted</CODE>;
+<CODE>password</CODE> richiede una password all'avvio,
+mentre <CODE>restricted</CODE> richiede una password solo se specificate opzioni (
+come <CODE>single</CODE>) al prompt di <CODE>LILO</CODE>.
+<P>Dalla pagina man di lilo.conf: 
+<BLOCKQUOTE><CODE>
+<PRE>
+password=password
+              L'opzione `password=...' (vedi sotto) ha effetto su ogni partizione.
+
+restricted
+              L'opzione `restricted' (vedi sotto) ha effetto su ogni partizione.
+
+       password=password
+              proteggi l'immagine con una password.
+
+       restricted
+              Serve una password per avviare l'immagine solo se vengono
+              specificati parametri alla linea di comando (per es. single).
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>Tenete presente quando settate tutte queste password che poi dovrete
+ricordarvele. :) Ricordatevi anche che tutte queste password si limiteranno
+a rallentare un intrusore ben determinato.
+Non impediranno di avviare da un floppy e quindi montare la partizione di root.
+Se state usando questo tipo di sicurezza dovreste anche disabilitare il boot da
+floppy nel BIOS del computer, e quindi proteggerlo con una password.
+<P>Se qualcuno avesse informazioni sulla sicurezza dei boot loader, ci piacerebbe
+averle. (<CODE>grub</CODE>, <CODE>silo</CODE>, <CODE>milo</CODE>, <CODE>linload</CODE>, etc). 
+<P><EM>Nota</EM>: Se avete una macchina server e inserite una password di boot,
+la vostra macchina <EM>non</EM> si riavvier&agrave; da sola. Ricordate che
+dovrete andare a mettere la password se andasse via la corrente. ;(
+<P>
+<H2><A NAME="ss3.4">3.4 xlock e vlock</A>
+</H2>
+
+<P>Se vi allontanate dal computer ogni tanto, torna utile poter "bloccare" la macchina
+cos&igrave; che nessuno possa manomettere, o vedere, il vostro lavoro.
+Due programmi che lo fanno sono: <CODE>xlock</CODE> e <CODE>vlock</CODE>. 
+<P><CODE>xlock</CODE> blocca il video di una sessione di X. Dovrebbe essere incluso in
+ogni distribuzione che supporti X. Controllate la sua pagina man per trovare
+altre opzioni, ma in genere potete eseguire <CODE>xlock</CODE> da  xterm per
+bloccare il monitor e obbligare ad inserire una password per sbloccarlo. 
+<P><CODE>vlock</CODE> &egrave; un semplice programmino che vi permette di bloccare
+alcune o tutte le console virtuali del vostro Linux. Potete bloccarle tutte o
+solo quella che state usando. Se ne bloccate una sola, altri potranno venire
+ad usare le altre; semplicemente non potranno usare la vostra finch&eacute; non
+la sbloccate. <CODE>vlock</CODE> &egrave; distribuito con RedHat Linux, ma non 
+&egrave; detto che sia l'unica. 
+<P>Chiaramente bloccare la vostra console impedir&agrave; ad altri di manipolare
+il vostro lavoro, ma non di riavviare la macchina o distruggere il vostro
+lavoro in altri modi. Inoltre non evita che qualcuno acceda alla vostra 
+macchina dalla rete e causi problemi
+<P>Ancora pi&ugrave; importante, non impedisce che qualcuno esca da X e, passando
+a un normale prompt di login di una console virtuale o alla VC da cui X11 era
+stato avviato, lo sospenda, ottenendo cos&igrave; i vostri privilegi.
+<P>
+<H2><A NAME="ss3.5">3.5 Scoprire Infrazioni della Sicurezza Fisica</A>
+</H2>
+
+<P>La prima cosa da notare &egrave; quando la macchina &egrave; stata riavviata.
+Visto che Linux &egrave; un SO stabile e robusto, dovrebbe essere riavviato
+solo quando <EM>voi</EM> lo riavviate per aggiornamenti del SO, cambiamenti all'
+hardware, o cose del genere. Se la vostra macchina si &egrave; riavviata senza
+un vostro comando, potrebbe essere il segno della manomissione di un intrusore.
+Molti dei metodi di manomissione richiedono un riavvio o uno spegnimento del
+computer. 
+<P>Cercate segni di manomissione sul case o intorno al computer. Anche se molti
+intrusori cancellano le tracce della loro presenza dai log, &egrave; buona
+norma controllarli tutti e cercare delle discrepanze.
+<P>&Egrave; una buona idea anche tenere i log in un posto sicuro, come un log
+server dedicato all'interno di una rete ben protetta. Una volta che una
+macchina &egrave; stata compromessa, i log perdono utilit&agrave; perch&eacute;
+probabilmente sono anch'essi stati manomessi.
+<P>Il demone syslog pu&ograve; essere configurato per mandare automaticamente
+dati di log a un server syslog centralizzato, ma in genere viene mandato non
+crittato, permettendo a un intrusore di vedere i dati mentre vengono trasferiti
+. Questo pu&ograve; rivelare informazioni sulla vostra rete che non dovrebbero
+essere pubbliche. Ci sono anche demoni syslog che crittano i dati inviati. 
+<P>Tenete in conto anche del fatto che falsificare messaggi del syslog &egrave;
+facile -- con un exploit che &egrave; stato pubblicato.  Syslog accetta anche
+log di rete che dichiarino di venire da local host senza indicare la loro vera
+origine.
+<P>Alcune cose da controllare nei vostri log:
+<UL>
+<LI>Log brevi o incompleti.</LI>
+<LI>Log che contengano date improbabili.</LI>
+<LI>Log con permessi sbagliati. </LI>
+<LI>Registrazioni di riavvii o di servizi riavviati. </LI>
+<LI>Log mancanti. </LI>
+<LI>Uso fuori logo di <CODE>su</CODE> o login da posti strani. </LI>
+</UL>
+<P>Parleremo del controllo dei log pi&ugrave; avanti (
+<A HREF="Security-HOWTO-9.html#logs">Dati Account</A>) nell' HOWTO.
+<P>
+<HR>
+<A HREF="Security-HOWTO-4.html">Avanti</A>
+<A HREF="Security-HOWTO-2.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc3">Indice</A>
+</BODY>
+</HTML>

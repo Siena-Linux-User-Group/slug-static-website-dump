@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Disattivazione e disinstallazione di Sendmail</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Postfix" href="postfix.html">
+    <LINK rel="PREVIOUS" title="Configurazione di Postfix" href=
+    "configurazionepostfix.html">
+    <LINK rel="NEXT" title="Fetchmail" href="fetchmail.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "configurazionepostfix.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 5.
+          Postfix</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "fetchmail.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="DISATTIVAZIONESENDMAIL">5.2. Disattivazione
+      e disinstallazione di Sendmail</A></H1>
+
+      <P>Per disattivare sendmail date i seguenti comandi:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+mv /usr/sbin/sendmail /usr/sbin/sendmail.OFF
+mv /usr/bin/newaliases /usr/bin/newaliases.OFF
+mv /usr/bin/mailq /usr/bin/mailq.OFF
+chmod 755 /usr/sbin/sendmail.OFF /usr/bin/newaliases.OFF /usr/bin/mailq.OFF
+/usr/sbin/sendmail.OFF -q
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>L'ultimo comando serve a svuotare dalle eventuali email la coda
+      delle email, inviandole.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Per <EM>RedHat</EM> e <EM>Mandrake</EM>: se
+          installando <B class="KEYCAP">postfix</B> vi dice che c'è un
+          conflitto con <B class="KEYCAP">sendmail</B>, devete prima
+          rimuovere quest'ultimo, magari prima facendovi un backup dei suoi
+          file di configurazione, nel caso (ma quando mai! ;-) ) voleste
+          ritornare indietro. <B class="KEYCAP">Postfix</B> fornisce dei
+          <EM>wrapper</EM> per i comandi di <B class="KEYCAP">sendmail</B>,
+          quindi forzate la rimozione con l'opzione "<B class=
+          "KEYCAP">--nodeps</B>", per ignorare le dipendenze. Se volete
+          semplicemente disattivarlo, fate come mostrato poco fa, altrimenti
+          per disinstallarlo, date i seguenti comandi:</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+mkdir /root/sendmail-old
+cp /etc/aliases /root/sendmail-old/
+cp /etc/sendmail.cf /root/sendmail-old/
+cp /etc/sendmail.cw /root/sendmail-old/
+cp /etc/mail/* /root/sendmail-old/
+rpm -e sendmail sendmail-doc sendmail-cf --nodeps
+killall sendmail
+rpm -Uvh postfix-19990906_pl07.i586.rpm
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>(l'ultimo comando potrebbe essere diverso, nel caso abbiate una
+      versione più recente di <B class="KEYCAP">postfix</B>).</P>
+
+      <P>Se avevate un'installazione funzionante precedente di <B class=
+      "KEYCAP">sendmail</B>, potete importare i vecchi alias in <B class=
+      "KEYCAP">postfix</B> senza riscriverli tutti, copiando dal backup
+      precedente <B class="KEYCAP">/root/sendmail-old/aliases</B> in <B
+      class="KEYCAP">/etc/postfix/aliases</B> e dando il comando <B class=
+      "COMMAND">newaliases</B> per creare il file <B class=
+      "KEYCAP">aliases.db</B> necessario a postfix.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "configurazionepostfix.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "fetchmail.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Configurazione di
+          Postfix</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "postfix.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Fetchmail</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

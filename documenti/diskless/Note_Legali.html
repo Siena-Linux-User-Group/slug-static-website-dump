@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+   
+    <meta http-equiv="Content-Language" content="it">
+    <meta http-equiv="Content-Type" content=
+    "text/html; charset=windows-1252">
+    <title>Bootstrap remoto con macchine diskless HOWTO --- &copy;
+    Alessandro Illiano</title>
+    <p align="left"><a href="Introduzione_al_boot.html">Avanti</a> <a href="index.html">Indietro</a><a href="index.html"> Indice</a>
+    <hr>
+	<a name="note"></a>
+    <p align="left"><font size="5"><b>1. Note legali</b></font>
+    <p align="left">&nbsp;
+    <p align="left"><font size="4">1.1 Copyright</font>
+    <div align="left" style="width: 896; height: 174">
+      <font size="3" face="Times New Roman">(C)opyright 2003
+      Alessandro Illiano, Alotto, &lt;<a href="mailto:illiano@supereva.it">alotto@siena.linux.it</a>&gt;. Non si intende infrangere nessun copyright
+      con questa opera, realizzata a scopo prettamente educativo e
+      senza fini di lucro. Questo documento &egrave; copiabile in
+      ogni sua parte, mantenendo il copyright. Questo documento
+      &egrave; altres&igrave; distribuibile liberamente,
+      mantenendo</font>
+      <font size="3" face="Times New Roman">SEMPRE questa
+      sezione.</font> <font face="Times New Roman" size="3">La
+      distribuzione e l'utilizzo di questo documento, inoltre, sono
+      vincolati dai termini indicati nella versione 2 (o da
+      qualunque versione successiva) della</font> <font face=
+      "Times New Roman" size="3">GNU General Public License
+      pubblicata dalla Free Software Foundation.</font>
+<br>Questo documento viene distribuito con l'intento di essere
+      utile, ma SENZA ALCUNA GARANZIA, compreso quella implicita di
+      FUNZIONALITA' o di UTILITA' PER UN PARTICOLARE UTILIZZO.
+      Vedere la GNU General Public License per ulteriori dettagli.
+      &nbsp;<p><br>
+    </div>
+    <a name="feedback"></a>
+    <font size="4" face="Times New Roman">1.2 Feedback</font>
+    <div align="left">
+      <font face="Times New Roman" size="3">Inviate per favore
+      domande, commenti e suggerimenti a &lt;<a href=
+      "mailto:illiano@supereva.it">mailto:alotto@siena.linux.it</a>&gt;
+      (Alessandro Illiano). Sono pi&ugrave; che disposto</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">ad aiutare chiunque
+      abbia problemi direttamente collegati con questo HOWTO e
+      gradir&ograve; qualunque suggerimento riguardante
+      cambiamenti/modifiche</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">e/o
+      miglioramenti.</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">Tuttavia, avendo
+      configurato il mio laboratorio in maniera per me
+      soddisfacente, questo HOWTO non sar&agrave;
+      significativamente migliorato senza</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">suggerimenti da parte
+      dei lettori. Grazie</font>
+    </div>
+    <div align="left">
+      &nbsp;
+    </div>
+    <div align="left">
+	<a name="perche"></a>
+      <font size="4" face="Times New Roman">1.3 Perch&egrave;
+      questo how-to</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">Ho scritto questo HOWTO perché mi e' 
+      stato proposto di effettuare un progetto di laboratorio riconfigurabile 
+      via rete durante lo stage alla Yacme s.r.l. ( www.yacme.com).</font></div>
+    <div align="left">
+      &nbsp;
+    </div>
+    <div align="left">
+	<a name="ringrazia"></a>
+      <font size="4" face="Times New Roman">1.4
+      Ringraziamenti</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">Ringrazio di cuore la
+      Yacme s.r.l ( <a href=
+      "http://www.yacme.com">www.yacme.com</a> ) che mi ha dato
+      l'idea e la possibilit&agrave; di realizzare questo progetto.
+      GRAZIE!!!!!</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">Ringrazio, inoltre,
+      tutti coloro che hanno contribuito minimamente alla stesura
+      del testo dell'HOWTO, in particolar modo Pier Luigi Fiorini
+      (grazie gigi) e</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">Luca Bolcioni (grazie
+      Luca ). Preciso che anche Robert Nemkin e Al Dev hanno
+      inconsapevolmente contribuito a questa stesura</font>
+    </div>
+    <div align="left">
+      <font face="Times New Roman" size="3">Infine vorrei ringraziare Nigi 
+      Riccardo&nbsp; e Claudio Carloni che mi hanno accompagnato 
+      &quot;nell'avventura&quot; di Bologna :P .</font></div>
+    <div align="left">
+      &nbsp;
+    </div>
+    <div align="left">
+      &nbsp;</div>
+    <div align="left" style="width: 889; height: 38">
+      <hr>
+      <p><a href="Introduzione_al_boot.html">Avanti</a> <a href="index.html">Indietro Indice</a>
+    </div>
+    <div align="left">
+      &nbsp;
+    </div>
+    <p align="left">&nbsp;
+    <p align="left">&nbsp;

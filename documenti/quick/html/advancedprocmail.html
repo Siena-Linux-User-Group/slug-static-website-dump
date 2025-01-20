@@ -1,0 +1,391 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Usi avanzati e trucchetti</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Procmail" href="procmail.html">
+    <LINK rel="PREVIOUS" title="File di regole (esempi)" href=
+    "regoleprocmail.html">
+    <LINK rel="NEXT" title="Combattere lo SPAM" href="procmailantispam.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "regoleprocmail.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 7.
+          Procmail</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "procmailantispam.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="ADVANCEDPROCMAIL">7.4. Usi avanzati e
+      trucchetti</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="MLPROCMAIL">7.4.1. Gestione compatta delle
+        Mailing List</A></H2>
+
+        <P>Un grazie ad <B class="KEYCAP">Aldo Maggi (Turms)</B> per la prima
+        regola seguente! ;-) Potete sostituire le regole nel file <TT class=
+        "FILENAME">lists.rc</TT> con la sola regola seguente, elencando tra
+        le () tutte le mailing list che avete sottoscritto, separandole con
+        una pipe (|). Dovete inserire solo la parte dell'indirizzo email
+        della ML che compare prima della @ nel campo From delle email che
+        ricevete.</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+:0:
+* ^TO_\/(debian-lists|pluto-linux|lugroma|cslug|erlug)@
+* MATCH ?? ()\/[^@]+
+Lists/ML-$MATCH
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Se volete automatizzare ancora la gestione delle mailing list,
+        potete usare al posto della regola precedente le seguenti, che
+        cercano di intercettare gli header aggiuntivi che di solito vengono
+        aggiunti dai gestori di ML. Questi sono quelli che ho trovato io, se
+        per caso qualche email scappa a queste regole e finisce nella vostra
+        mailbox di default, non dovete fare altro che vedere quale altro
+        header usa il programma che gestisce la ML e aggiungere una nuova
+        regola simile alle seguenti:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+:0:
+* ^X-Mailing-List-Name: \/[^@]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+
+:0:
+* ^Sender: owner-\/[^@]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+
+:0:
+* ^X-BeenThere: \/[^@]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+
+:0:
+* ^Delivered-To: mailing list \/[^@]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+
+:0:
+* ^X-Mailing-List: &lt;\/[^@]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+
+:0:
+* ^X-Loop: \/[^@]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+
+:0:
+* ^X-List-ID: &lt;\/[^@\.]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+
+:0:
+* ^X-list: \/[^@\.]+
+Lists/`echo $MATCH | sed -e 's/[\/]/_/g'`
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="ALLEGATIPROCMAIL">7.4.2. Salvataggio
+        automatico degli allegati</A></H2>
+
+        <P>La regola seguente salva tutti gli allegati delle email in entrata
+        in una serie di sottodirectory di <TT class=
+        "FILENAME">$MAILDIR/attach/</TT>: le sottodirectory sono create in
+        base alla data, ma potete modificare molto semplicemente lo script
+        per salvarle in altri modi. <B class="KEYCAP">DATE</B> è definita
+        nello script <TT class="FILENAME">.procmailrc</TT> principale. Per
+        salvare TUTTI gli allegati, questa regola va messa in coda a <TT
+        class="FILENAME">general.rc</TT> La regola ha il flag <B class=
+        "KEYCAP">c</B>, quindi il messaggio poi procede normalmente
+        attraverso le regole seguenti.</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+DUMMY=`test -d $MAILDIR/attach || mkdir $MAILDIR/attach`
+DUMMY=`test -d $MAILDIR/attach/$DATE || mkdir $MAILDIR/attach/$DATE`
+METAMAIL_TMPDIR=$MAILDIR/attach/$DATE
+:0cbhHB:
+| metamail -q -w -x
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="AUTORESPONDERPROCMAIL">7.4.3. Risponditore
+        automatico</A></H2>
+
+        <P>Le regole seguenti creano dei risponditori automatici, che inviano
+        una email precreata in risposta ad un'altra email con un subject
+        fissato, evitando però di rispondere a mailing list o a messaggi
+        provenienti da noi stessi, e inviando un unico messaggio per persona,
+        anche in presenza di email multiple, usando una cache dei campi
+        From.</P>
+
+        <P>La seconda regola invece invia in automatico un file (se volete
+        sapere le novità dell'ultima versione del <EM>Quick&amp;Easy
+        Configuration HOWTO</EM>, mandatemi un'email con subject:
+        "qechowto-update", senza le virgolette e con body vuoto, tanto non lo
+        leggo, visto che vi sarà inviata una risposta automatica ;-) ),
+        conservando comunque l'email in un file nascosto, per sapere chi
+        richiede cosa...). L'ultima regola invia la vostra firma pubblica pgp
+        a chi la richiede.</P>
+
+        <P><B class="KEYCAP">=== file: autoreply.rc ===</B></P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+:0Whc: vacation.lock
+* $^To:.*\&lt;$\LOGNAME\&gt;
+* !^FROM_DAEMON
+* !^X-Loop: tuo.indirizzo@di.email
+| formail -rD 8192 vacation.cache
+  :0ehc
+  | (formail -rI"Precedence: junk" \
+       -A"X-Loop: tuo.indirizzo@di.email" ; \
+     echo "Ho ricevuto la tua email,"; \
+     echo "ma non sarò a casa prima di lunedì."; \
+     echo "-- "; cat $HOME/.signature \
+    ) | $SENDMAIL -oi -t
+
+:0
+* !^From +TUO_USERNAME
+* !^Subject:.*Re:
+* !^FROM_DAEMON
+* ^Subject:.*send-file
+| (formail -r ; cat filename) | $SENDMAIL -oi -t
+.richieste_file
+
+# invia in automatico la chiave pubblica pgp a chi
+# la richiede indicando nel Subject: "get pgp key"
+:0
+* !^Subject:.*Re:
+* !^FROM_DAEMON
+* ^Subject: get pgp key
+| (/usr/bin/formail -r ; cat $HOME/.pgp_publickey) | $SENDMAIL -oi -t
+.richieste_pgp
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PROCMAILFILEESISTENTE">7.4.4. Processare
+        via procmail una mailbox esistente</A></H2>
+
+        <P>Se dovete/volete far processare una mailbox esistente secondo le
+        regole che avete stabilito per procmail, potete usare il seguente
+        script, preso dai docs ufficiali. Sostituite il percorso di ORGMAIL
+        con quello del vostro effettivo spool o della mailbox da
+        trattare.</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+ORGMAIL=/var/spool/mail/$LOGNAME
+
+if cd $HOME &amp;&amp;
+  test -s $ORGMAIL &amp;&amp;
+  lockfile -r0 -l1024 .newmail.lock 2&gt;/dev/null
+then
+  trap "rm -f .newmail.lock" 1 2 3 13 15
+  umask 077
+  lockfile -l1024 -ml
+  cat $ORGMAIL &gt;&gt;.newmail &amp;&amp;
+  cat /dev/null &gt;$ORGMAIL
+  lockfile -mu
+  formail -s procmail &lt;.newmail &amp;&amp;
+  rm -f .newmail
+  rm -f .newmail.lock
+fi
+exit 0
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>oppure usare il semplice comando:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+cat nome-file-mbox | formail -s procmail
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PROCMAILMUTT">7.4.5. Killing form
+        Mutt</A></H2>
+
+        <P>Questo tip è una semplificazione di quello presente in <B class=
+        "KEYCAP">Linux Gazette N. 62</B>. Le regole seguenti, insieme a 2
+        macro per <SPAN class="APPLICATION">mutt</SPAN> e a uno script perl,
+        permettono di implementare velocemente un sistema di <B class=
+        "KEYCAP">kill</B> con una semplice combinazioni di tasti, in modo
+        simile alla macro <EM>onekey-score.sl</EM> del newsreader <SPAN
+        class="APPLICATION">slrn</SPAN>. Aggiungete queste 2 righe al file
+        <TT class="FILENAME">.muttrc</TT> nella vostra HOME:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+macro index \ek "| formail -x From: | addysort &gt;&gt; ~/Mail/.Pm/black.lst\n"
+macro pager \ek "| formail -x From: | addysort &gt;&gt; ~/Mail/.Pm/black.lst\n"
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>In questo modo, con un semplice <B class="KEYCAP">&lt;ESC&gt;
+        k</B> aggiungerete il mittente dell'email attualmente visualizzata o
+        evidenziata in <SPAN class="APPLICATION">mutt</SPAN> alla
+        <EM>black-list</EM>, cioè un file che viene poi usato da <SPAN class=
+        "APPLICATION">procmail</SPAN> nelle volte successive per filtrare le
+        email indesiderate, inviandole in una mailbox per lo spam o
+        direttamente su <TT class="FILENAME">/dev/null</TT>, a voi la scelta.
+        Lo script perl <B class="KEYCAP">addysort</B> è il seguente
+        (copiatelo in qualche directory compresa nel vostro $PATH, e
+        rendetelo eseguibile con un <B class="COMMAND">chmod 755
+        addysort</B>):</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+#!/usr/bin/perl -wn
+# Estrae l'indirizzo email dall'attuale riga "From:"
+
+unless (/\&lt;/) { print; } else { print /&lt;([^&gt;]+)/, "\n"; }
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>La regola che filtra tramite la black-list l'ho aggiunta al file
+        <TT class="FILENAME">spam.rc</TT> visto prima, quindi andate a
+        leggerla direttamente in quella sezione, e in pratica confronta gli
+        header che indicano la destinazione finale con i campi "From"
+        contenuti nel file della black-list. Le ultime 5 regole del file <TT
+        class="FILENAME">spam.rc</TT> servono a intercettare altre possibili
+        fonti di spam.</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PROCMAILMIMEERRATI">7.4.6. Correzione tipi
+        MIME errati</A></H2>
+
+        <P>La regola seguente preconverte le email testuali in arrivo, che
+        dovessero essere in formato <EM>base64</EM> o
+        <EM>quoted-printed</EM>, in un più semplicemente gestibile formato
+        <EM>8bit</EM>.</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+:0
+* ^Content-Type: *text/plain
+{
+  :0 fbw
+  * ^Content-Transfer-Encoding: *quoted-printable
+  | mimencode -u -q
+
+    :0 Afhw
+    | formail -I "Content-Transfer-Encoding: 8bit"
+
+  :0 fbw
+  * ^Content-Transfer-Encoding: *base64
+  | mimencode -u -b
+
+    :0 Afhw
+    | formail -I "Content-Transfer-Encoding: 8bit"
+}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "regoleprocmail.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "procmailantispam.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">File di regole
+          (esempi)</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "procmail.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Combattere lo SPAM</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

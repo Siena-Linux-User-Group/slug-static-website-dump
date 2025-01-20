@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Nozioni Generali</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Partizioni" href="partizioni.html">
+    <LINK rel="PREVIOUS" title="Introduzione" href=
+    "introduzionepartizioni.html">
+    <LINK rel="NEXT" title="Filesystem" href="filesystem.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "introduzionepartizioni.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 1.
+          Partizioni</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "filesystem.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="NOZIONIGENERALI">1.2. Nozioni
+      Generali</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="COSASONO">1.2.1. Cosa sono le
+        partizioni</A></H2>
+
+        <P>Le partizioni, come dice la parola stessa, sono una suddivisione
+        dello spazio disponibile su un hard-disk (in effetti si hanno dei
+        metodi per avere una partizione suddivisa su più hard-disk, tramite i
+        sistemi <EM>RAID</EM>, ma questo esula dallo scopo di questo
+        documento). Esistono 2 tipi principali di partizioni, quelle primarie
+        e quelle estese. Le partizioni primarie sono quelle da cui i sistemi
+        operativi possono effettuare il boot e contengono un file-system. Le
+        informazioni sul numero e tipo di partizioni sono contenute nella
+        parte finale dell'MBR (Master Boot Record, cilindro 0, lato 0,
+        settore 1 dell'hard-disk), e dato lo spazio ridotto, non è possibile
+        avere più di 4 partizioni primarie. Questo limite impone di usare le
+        partizioni estese per suddividere ulteriormente l'hard-disk. Può
+        esistere una sola partizione estesa su un hard-disk, e se presente il
+        numero di partizioni primarie possibili si riduce a 3 (la somma tra
+        primarie ed estesa non può superare 4). Le partizioni estese non
+        possono contenere file-system, ma servono solo per contenere
+        ulteriori suddivisioni in drive (volumi) logici. Tutte queste
+        suddivisioni devono poi essere identificate: il DOS utilizza
+        l'identificazione tramite lettere dell'alfabeto seguite da ":" (a:,
+        c:, x:, ecc.). Le limitazioni di questo approccio sono evidenti, le
+        lettere sono solo 26... (di cui le prime 2, a: e b: sono riservate ai
+        dispositivi floppy). Oltretutto, l'assegnazione delle lettere è
+        dettata da un astruso algoritmo, per cui basta non caricare, ad
+        esempio, il driver del cd per avere le lettere seguenti scalate di
+        una, o partizionare un secondo hard-disk per vedere completamente
+        scombussolate le lettere delle partizioni del primo.</P>
+
+        <P>Linux e tutti gli Unix in generale usano invece un metodo più
+        avanzato per indicare le partizioni, tramite 4 caratteri: i primi due
+        indicano il tipo di unità (hd: ide/eide, sd: scsi, fd: floppy), il 3°
+        indica il canale cui è collegato il dispositivo fisico (a per il
+        primary ide, b il secondary, ecc., e in modo equivalente per gli
+        scsi, mentre per i floppy si usano 0 e 1, senza il quarto carattere),
+        e l'ultimo carattere è un numero, che indica il numero della
+        partizione (da 1 a 4 le primarie e le estese, da 5 in poi i volumi
+        logici). Quindi anche se staccate il cd o un hard-disk, perdete solo
+        l'accesso a dette unità, ma non vi cambia l'assegnazione per i drive
+        rimasti.</P>
+
+        <DIV class="NOTE">
+          <BLOCKQUOTE class="NOTE">
+            <P><B>Nota:</B> Questo schema cambierà con i kernel della serie
+            2.4, appena ne so di più aggiornerò questa sezione.</P>
+          </BLOCKQUOTE>
+        </DIV>
+
+        <P>L'MBR contiene un puntatore ad una delle partizioni primarie,
+        detta avviabile. Il firmware del <EM>BIOS</EM> del pc, dopo il
+        <EM>POST</EM> (il controllo di sistema fatto all'accensione del pc),
+        passa il controllo all'MBR che lo passa al settore di boot della
+        partizione avviabile o al kernel del sistema operativo. A causa di un
+        difetto nei BIOS, questi non riescono ad accedere a partizioni poste
+        oltre il 1024° cilindro, e ciò può creare problemi a Linux, in
+        particolare a <EM>LILO</EM>, il boot-loader usato di solito (quindi
+        se partite da un floppy di avvio o usate LOADLIN per partire da DOS,
+        non avete questo problema, come anche se usate GRUB). Altri problemi
+        con Lilo sono che DEVE essere sul primo canale IDE (quindi su hda o
+        hdb) o se SCSI su ID 0 o 1. Al problema del 1024° cilindro si può
+        ovviare modificando i parametri dell'hard-disk nel BIOS, ad esempio
+        dimezzando i cilindri e raddoppiando le testine o i settori, o
+        creando una partizione più piccola (di solito compresa tra i 16 e i
+        32 Mbyte), più prossima all'inizio dell'hard-disk, da usare per
+        effettuare il mount della directory <B class="KEYCAP">/boot</B>, che
+        contiene il kernel e i moduli. Dopo che il kernel ha preso il
+        controllo del pc, il 1024° cilindro non rappresenta più un problema.
+        In genere, se si crea un'unica partizione di grosse dimensioni, più
+        grande di 1024 cilindri, NON è detto che <B class="KEYCAP">/boot</B>
+        sia all'inizio, quindi conviene comunque creargli una partizione
+        apposta. In Linux non esistono lettere di unità, come abbiamo detto,
+        ed esiste un unico filesystem, in cui sono presenti anche le altre
+        periferiche hardware del sistema, in genere sotto <B class=
+        "KEYCAP">/dev</B>. Se vogliamo accedere a un'altra unità (cd,
+        hard-disk, file-system condiviso via NFS), dobbiamo effettuarne
+        l'<EM>innesto</EM> (mount), in un punto del file-system principale
+        (mount point). Questo permette anche di suddividere il file-system
+        principale in più parti (e partizioni), che verranno montate durante
+        la procedura di avvio o secondo necessità.</P>
+
+        <DIV class="NOTE">
+          <BLOCKQUOTE class="NOTE">
+            <P><B>Nota:</B> dalla versione 0.21.4.2 Lilo non avrà più il
+            problema del 1024° cilindro, grazie ad un'apposita patch.</P>
+          </BLOCKQUOTE>
+        </DIV>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PERCHEPARTIZIONARE">1.2.2. Perché
+        (ri)partizionare: partizioni e buonsenso</A></H2>
+
+        <P>Tre sono i motivi principali per cui è bene partizionare un
+        hard-disk:</P>
+
+        <OL type="1">
+          <LI>
+            <P><EM>Organizzazione</EM>: permette di suddividere il sistema
+            dalle applicazioni e dai dati; si possono installare diversi
+            sistemi operativi in differenti partizioni; avere i dati in una
+            partizione a sè stante facilità le operazioni di backup e rende
+            più facile la (re)installazione di un sistema operativo; è
+            possibile condividere in rete una partizione contenente dati,
+            senza dare accesso anche al sistema.</P>
+          </LI>
+
+          <LI>
+            <P><EM>Ottimizzazione</EM>: si recupera fino al 30/40% di spazio
+            grazie a cluster di dimensioni minori; si può mettere il file di
+            swap di Windows in una partizione dedicata, riducendo la
+            frammentazione (Linux usa addirittura una partizione di swap, più
+            efficiente del semplice file, che comunque è possibile usare); se
+            i dati sono separati, la deframmentazione delle applicazioni è
+            più rapida; si può mantenere una partizione FAT16 per i dati,
+            compatibile con molti sistemi operativi (OS/2, Linux, Windows
+            NT).</P>
+          </LI>
+
+          <LI>
+            <P><EM>Sicurezza</EM>: si separano i dati da applicazioni e
+            sistema operativo; una singola partizione può contenere dati
+            riservati, nascondendola con utility apposite o non montandola
+            nel file-system principale; diversi sistemi operativi operano in
+            diverse partizioni, riducendo i danni derivanti da aree comuni;
+            si può testare software instabile con tranquillità; si può
+            mantenere il vecchio sistema operativo fino a quando non ci si
+            sente a proprio agio in quello nuovo (questo è l'uso preferito
+            dai pinguini ;-) ); è possibile mantenere copia dei file di
+            sistema importanti o di un immagine dell'hard-disk per un rapido
+            ripristino.</P>
+          </LI>
+        </OL>
+
+        <P>Quando si vuole installare Linux, nasce la necessità di creargli
+        spazio: i <EM>credenti</EM> piallano senza ritegno le eventuali
+        partizioni esistenti di altri SO, mentre i nuovi <EM>adepti</EM> di
+        solito fannno convivere Linux con Windows finchè non se ne ha più
+        bisogno. Se la quantità di dati presenti nella partizione Windows non
+        è elevata (diciamo che con un gigabyte libero si può avere tutto,
+        anche l'ambiente grafico e di sviluppo, mentre se ci si limita alla
+        sola console a caratteri anche mezzo giga basta, avendo comunque
+        molto più di quello che si ha col semplice DOS, ad esempio server
+        web, DB, email, news e altro), si può cercare di ridurre lo spazio
+        occupato, liberandolo alla fine dell'hard-disk, per poi usare lo
+        spazio vuoto per le partizioni <EM>EXT2</EM> (Linux native, type
+        0x83), e in genere 64 Mbyte per la partizione di <EM>swap</EM> (Linux
+        swap, type 0x82, si va da un minimo utile di 16 a un massimo
+        consentito di 128 per i kernel 2.0.xx, mentre i kernel 2.2.xx
+        consentono un massimo di 2 Gbyte). Un esempio tipico di partizioni
+        per Linux è il seguente:</P>
+
+        <UL>
+          <LI>
+            <P>16 Mb per la partizione <B class="KEYCAP">/boot</B>, tenendosi
+            mooolto larghi (anche 5 vanno bene, ma le potenze di 2 fanno più
+            fico ;-) ). Deve essere possibilmente la prima ad essere creata,
+            in modo che sia al di sotto del 1024° cilindro, per evitare
+            problemi con Lilo (per altre informazioni, guardate la sezione di
+            Loadlin).</P>
+          </LI>
+
+          <LI>
+            <P>Tra i 50 e i 100 Mb per la partizione root ("<B class=
+            "KEYCAP">/</B>", da NON confondere con <B class=
+            "KEYCAP">/root</B>, che è la directory home dell'utente
+            amministratore del sistema).</P>
+          </LI>
+
+          <LI>
+            <P>Per la partizione <B class="KEYCAP">/usr</B> , tra i 300 e i
+            700 Mb se create partizioni autonome per <B class=
+            "KEYCAP">/usr/src</B> e <B class="KEYCAP">/usr/local</B>,
+            altrimenti tra 500 Mb e 1 Gb , a seconda di ciò che si vuole
+            installare, visto che la maggior parte dei programmi finisce qui;
+            in un sistema ormai stabilizzato, potrebbe essere anche montata a
+            sola lettura.</P>
+          </LI>
+
+          <LI>
+            <P>50 Mb minimo per ogni utente che si vuole avere, da montare
+            sotto <B class="KEYCAP">/home</B>.</P>
+          </LI>
+        </UL>
+
+        <P>Altre partizioni che potrebbero essere utili sono:</P>
+
+        <UL>
+          <LI>
+            <P><B class="KEYCAP">/usr/local</B>, in cui installare il
+            software <EM>locale</EM> alla macchina e che in genere non fa
+            parte direttamente della distribuzione, assegnandogli spazio
+            secondo necessità (diciamo tra i 100 e i 200 Mb, a tenersi
+            larghi); conviene crearla se <B class="KEYCAP">/usr</B> è a sola
+            lettura.</P>
+          </LI>
+
+          <LI>
+            <P><B class="KEYCAP">/usr/src</B>, in cui installare i sorgenti,
+            utile in caso si ricompili spesso, ad esempio il kernel (anche
+            qui tra i 100 e i 200 Mb).</P>
+          </LI>
+
+          <LI>
+            <P><B class="KEYCAP">/tmp</B>, per i file temporanei, in un
+            sistema multiutente con traffico intenso sarebbe meglio averla in
+            un'altra partizione, se non addirittura hard-disk, mentre in una
+            macchina con pochi utenti non serve spostarla (potete anche
+            creare un symlink da <B class="KEYCAP">/tmp</B> --&gt; <B class=
+            "KEYCAP">/var/tmp</B>).</P>
+          </LI>
+
+          <LI>
+            <P><B class="KEYCAP">/opt</B>, usata da alcuni programmi,
+            potrebbe anche essere un semplice link simbolico a <B class=
+            "KEYCAP">/usr</B> o <B class="KEYCAP">/usr/local</B>.</P>
+          </LI>
+
+          <LI>
+            <P><B class="KEYCAP">/var</B>, che contiene gli spool di stampa e
+            di email, e i log di sistema. Conviene crearla solo su sistemi
+            multiutente o comunque server, assegnandole 500 Mb circa. Il
+            crearla comunque velocizza molto l'uso intensivo di mail e news,
+            specie se la si crea su un hard-disk separato. Gli utenti Debian
+            tengano presente che questa distribuzione, tramite il suo tool
+            apt-get, tiene in <B class="KEYCAP">/var/cache/apt</B> tutti i
+            file .deb che vengono scaricati durante l'aggiornamento del
+            sistema o l'aggiunta di altre applicazioni, e che quindi <B
+            class="KEYCAP">/var</B> può crescere a dismisura! Sarebbe
+            consigliabile quindi fare un'altra partizione separata per <B
+            class="KEYCAP">/var/cache</B>.</P>
+          </LI>
+        </UL>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "introduzionepartizioni.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "filesystem.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Introduzione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "partizioni.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Filesystem</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

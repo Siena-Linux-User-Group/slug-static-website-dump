@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Sicurezza di Rete</TITLE>
+ <LINK HREF="Security-HOWTO-9.html" REL=next>
+ <LINK HREF="Security-HOWTO-7.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc8" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-9.html">Avanti</A>
+<A HREF="Security-HOWTO-7.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc8">Indice</A>
+<HR>
+<H2><A NAME="network-security"></A> <A NAME="s8">8. Sicurezza di Rete</A></H2>
+
+<P>La sicurezza di rete diventa sempre pi&ugrave; importante perch&eacute; il
+tempo di connessione ad Internet &egrave; sempre maggiore. Compromettere la
+sicurezza di rete &egrave; spesso molto pi&ugrave; facile che compromettere la
+sicurezza fisica o locale ed &egrave; anche molto pi&ugrave; comune. 
+<P>Esiste una serie di buoni strumenti per aiutare nella sicurezza di rete e molti
+nuovi vengono inclusi nelle distribuzioni Linux. 
+<P>
+<P>
+<H2><A NAME="ss8.1">8.1 Sniffer di Pacchetti</A>
+</H2>
+
+<P>Uno dei modi pi&ugrave; comuni con cui gli intrusori entrano in molti sistemi
+della vostra rete &egrave; l'uso di uno sniffer di pacchetti su un host gi&agrave;
+compromesso. Questo "sniffer" aspetta sulla porta Ethernet dati come <CODE>passwd</CODE>, <CODE>login</CODE> e <CODE>su</CODE> nel flusso dei dati e quindi registra il
+traffico successivo. In questo modo chi lo usa ottiene le password di sistemi
+a cui non hanno neppure tentato un attacco. Le password in chiaro sono molto
+vulnerabili a questo tipo di attacco. 
+<P>Esempio: L'host A &egrave; stato compromesso. L'attaccante installa uno sniffer.
+Lo sniffer intercetta l'amministratore mentre fa un login dall'host B al C.
+Ottiene la password personale dell'amministratore. Poi, l'amministratore usa
+<CODE>su</CODE> per risolvere un problema. Ora si conosce anche la password di root
+per l'host B. Pi&ugrave; tardi l'amministratore lascia che dal suo acconto 
+qualcuno usi telnet per connettersi all'host Z. Ora l'attaccante ha il login e
+la password per l'host Z. 
+<P>Oggi l'attaccante non ha neanche pi&ugrave; bisogno di compromettere un sistema
+per usare questa tecnica: potrebbe semplicemente portare un portatile o un PC
+nell'edificio e connettersi alla vostra rete. 
+<P>Usare <CODE>ssh</CODE> o altri metodi di crittografia delle password blocca questo
+attacco. Anche cose come APOP per gli account POP lo impediscono (I normali
+login POP sono molto vulnerabili a questo attacco, come ogni cosa che mandi
+password in chiaro su una rete).
+<P>
+<P>
+<H2><A NAME="ss8.2">8.2 Servizi di sistema e tcp_wrappers</A>
+</H2>
+
+<P>Prima di mettere un sistema Linux su <CODE>QUALSIASI</CODE> rete la prima cosa da
+sapere &egrave; quali servizi volete offrire. I servizi che non volete devono
+essere disabilitati, cos&igrave; da avere una cosa in meno di cui preoccuparsi
+e un possibile buco in meno per un intrusore. 
+<P>Ci sono molti modi per disabilitare i servizi sotto Linux. Potete leggere il
+vostro <CODE>/etc/inetd.conf</CODE> e vedere quali servizi vengono offerti dal
+vostro <CODE>inetd</CODE>. Potete disabilitare tutti quelli che non vi servono
+commentandoli (<CODE>#</CODE> all'inizio della linea), e quindi mandando al
+processo inetd un SIGHUP. 
+<P>Potreste rimuovere (o commentare) servizi nel vostro <CODE>/etc/services</CODE>.
+Questo impedir&agrave; l'uso del servizio anche da client locali (cio&egrave;
+se rimuovete <CODE>ftp</CODE> e provate a connettervi con ftp ad un host remoto
+da quella macchina otterrete solo un messaggio di "servizio sconosciuto").
+In genere il gioco non vale la candela, visto che non d&agrave; ulteriori 
+garanzie. Se qualcuno volesse usare <CODE>ftp</CODE> anche se l'avete commentato,
+potrebbe farsi un proprio client che usi la porta FTP e funzionerebbe benone.  
+<P>Alcuni servizi che dovreste lasciare disponibili sono:
+<P>
+<UL>
+<LI><CODE>ftp</CODE></LI>
+<LI><CODE>telnet</CODE> (o <CODE>ssh</CODE>)</LI>
+<LI>mail, come <CODE>pop-3</CODE> o <CODE>imap</CODE></LI>
+<LI><CODE>identd</CODE></LI>
+</UL>
+<P>Se sapete che non vi serve un pacchetto potete anche cancellarlo del tutto.
+<CODE>rpm -e <I>nome_pacchetto</I></CODE> nella distribuzione RedHat cancella
+un pacchetto intero. Nella Debian <CODE>dpkg --remove</CODE> fa lo stesso. 
+<P>Inoltre, dovreste davvero evitare che le utility rsh/rlogin/rcp, inclusi
+login (usato da <CODE>rlogin</CODE>), shell (usato da <CODE>rcp</CODE>) ed exec (usato
+da <CODE>rsh</CODE>) siano eseguite da <CODE>/etc/inetd.conf</CODE>.
+Questi protocolli sono molto insicuri e sono stati l'origine di exploit in
+passato.
+<P>Dovreste controllare <CODE>/etc/rc.d/rc[0-9].d</CODE> (sulla Red Hat;
+<CODE>/etc/rc[0-9].d</CODE> sulla Debian), e vedere se vengono avviati server che
+non sono necessari. I file in quelle directory sono link simbolici ai file 
+nella directory <CODE>/etc/rc.d/init.d</CODE> (sulla Red Hat; <CODE>/etc/init.d</CODE>
+sulla Debian). Rinominare i file nella directory <CODE>init.d</CODE> blocca tutti
+i link simbolici che puntano a quel file. Se volete solo disabilitare un
+servizio per un particolare runlevel, rinominate il giusto link simbolico
+sostituendo la <CODE>S</CODE> maiuscola con una minuscola, cos&igrave;:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+       root#  cd /etc/rc6.d
+       root#  mv S45dhcpd s45dhcpd
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>Se avete file rc <CODE>rc</CODE> in stile BSD, controllate in <CODE>/etc/rc*</CODE>
+se ci sono programmi che non servono.
+<P>Con molte distribuzioni Linux viene distribuito un tcp_wrapper che "incapsula"
+tutti i vostri servizi TCP. Un tcp_wrapper(<CODE>tcpd</CODE>) viene invocato da
+<CODE>inetd</CODE> al posto del vero server. Quindi <CODE>tcpd</CODE> controlla 
+l'host che sta richiedendo il servizio ed esegue il server o nega l'accesso
+all'host.<CODE>tcpd</CODE> permette di bloccare l'accesso ai vostri servizi TCP.
+dovreste creare un file <CODE>/etc/hosts.allow</CODE> e aggiungervi solo gli host
+che devono avere accesso ai servizi della macchina. 
+<P>Se avete una connessione telefonica casalinga dovreste negarli TUTTI. Inoltre
+<CODE>tcpd</CODE> segna nei log i tentativi falliti di accedere ai servizi, per
+avvertirvi se siete sotto attacco. Se aggiungete nuovi servizi dovreste 
+configurarli per usare i tcp_wrapper se usano TCP. Per esempio, un normale
+utente telefonico pu&ograve; impedire ad altri di connettersi alla propria
+macchina, conservando l'accesso alla posta e ad Internet. Per farlo, potreste
+aggiungere le linee seguenti al vostro <CODE>/etc/hosts.allow</CODE>:
+<P>ALL: 127.
+<P>E ovviamente /etc/hosts.deny dovrebbe contenere:
+<P>ALL: ALL
+<P>che bloccher&agrave; connessioni esterne alla macchina, ma permetter&agrave;
+la connessione a server su Internet.
+<P>Ricordatevi che i tcp_wrapper proteggono solo i servizi eseguiti da <CODE>inetd</CODE>,
+e pochi altri. Ci potrebbero benissimo essere altri servizi in esecuzione sulla
+vostra macchina. Potete usare <CODE>netstat -ta</CODE> per avere una lista di tutti
+i servizi offerti dalla vostra macchina.
+<P>
+<P>
+<H2><A NAME="ss8.3">8.3 Verificare i vostri DNS</A>
+</H2>
+
+<P>Tenere aggiornate le informazioni dei DNS su tutti gli host della vostra rete
+aiuta ad aumentare la sicurezza. Se un host non autorizzato si connette alla
+rete, potete riconoscerlo dalla sua mancata presenza sul DNS. Molti servizi
+possono essere configurati per negare l'accesso ad host che non sono elencati
+dal DNS.
+<P>
+<P>
+<H2><A NAME="ss8.4">8.4 <CODE>identd</CODE></A>
+</H2>
+
+<P><CODE>identd</CODE> &egrave; un piccolo programma che in genere &egrave; eseguito
+dal vostro <CODE>inetd</CODE>. Tiene nota di quale utente sta usando quale servizio
+e quindi fa rapporto a chi lo richiede. 
+<P>Molte persone non capiscono l'utilit&agrave; di <CODE>identd</CODE> e quindi lo
+disabilitano o bloccano tutte le richieste provenienti dall'esterno. <CODE>identd</CODE>
+non &egrave; al servizio di siti remoti. Non c'&egrave; modo di saper se i dati
+che ricevete da un <CODE>identd</CODE> remoto siano corretti o no. Non c'&egrave;
+autenticazione nelle richieste ad <CODE>identd</CODE>. 
+<P>Perch&eacute; eseguirlo allora? Perch&eacute; aiuta <EM>voi</EM>, ed &egrave;
+un'informazione in pi&ugrave; quando indagate. Se il vostro <CODE>identd</CODE>
+&egrave; integro, sapete che rivela ad altri l'user-name o l'uid di chi usa
+servizi TCP. Se l'amministratore di una rete remota viene a dire che un certo
+utente ha provato ad intromettersi nella sua rete, potrete facilmente prendere
+provvedimenti contro l'utente. Se non aveste eseguito <CODE>identd</CODE>, avreste
+dovuto leggere log su log, capire chi era nel sistema alla tal ora e in
+generale sprecare molto tempo a trovare l'utente.
+<P>L'<CODE>identd</CODE> distribuito con molte distribuzioni si pu&ograve; configurare
+pi&ugrave; di quanto molti pensino. Potete disabilitarlo per utenti specifici,
+(con un file <CODE>.noident</CODE>), potete avere i log di tutte le richieste a
+<CODE>identd</CODE> (&Egrave; raccomandato), potete persino far s&igrave; che
+identd risponda con l'uid di un utente o persino con NO-USER.
+<P>
+<P>
+<H2><A NAME="ss8.5">8.5 SATAN, ISS, e altri scanner di rete</A>
+</H2>
+
+<P>C'&egrave; una serie di differenti pacchetti software che fanno scansioni di
+porte e servizi su macchine o reti intere. SATAN, ISS, SAINT e Nessus sono
+alcuni dei pi&ugrave; conosciuti. Questo software si connette con la macchina
+bersaglio (o tutte le macchine bersaglio su una rete) su tutte le porte
+possibili e tentano di capire che servizio &egrave; attivo. Basandosi su queste
+informazioni si capisce se la macchina &egrave; vulnerabile ad un particolare
+exploit. 
+<P>SATAN (Security Administrator's Tool for Analyzing Networks) &egrave; un port
+scanner con un'interfaccia web. Pu&ograve; essere configurato per eseguire
+controlli leggeri, medi o pesanti su una macchina o una rete. &Egrave; una
+buona idea usare SATAN sulla vostra rete e sistemare i problemi che trova.
+Assicuratevi di avere la copia di SATAN da 
+<A HREF="http://metalab.unc.edu/pub/packages/security/Satan-for-Linux/">metalab</A> o da un sito FTP o web affidabile. &Egrave; stata distribuita 
+in rete una copia trojan di SATAN. 
+<A HREF="http://www.trouble.org/~zen/satan/satan.html">http://www.trouble.org/~zen/satan/satan.html</A>. Notate che SATAN
+non &egrave; stato aggiornato da molto tempo, ed altri strumenti potrebbero avere risultati migliori. 
+<P>ISS (Internet Security Scanner) &egrave; un altro port scanner. &Egrave; pi&ugrave;
+veloce di Satan, quindi potrebbe essere migliore per grandi reti. Comunque
+Satan in genere fornisce pi&ugrave; informazioni. 
+<P>Abacus &egrave; una suite di strumenti che fornisce sicurezza agli host e 
+rilevamento delle intrusioni. Leggete la home page sul web per ulteriori
+informazioni. 
+<A HREF="http://www.psionic.com/abacus">http://www.psionic.com/abacus/</A> 
+<P>SAINT &egrave; una versione aggiornata di SATAN. &Egrave; basata sul web ed
+ha molti pi&ugrave; test aggiornati di SATAN. Potete saperne di pi&ugrave; presso:
+<A HREF="http://www.wwdsi.com/saint">http://www.wwdsi.com/~saint</A><P>Nessus &egrave; uno scanner di sicurezza libero. Ha una interfaccia grafica GTK
+per semplicit&agrave; d'uso. Inoltre &egrave; basato su una struttura a plug-in
+per aggiungere nuovi test. Per ulteriori informazioni, date un'occhiata a:
+<A HREF="http://www.nessus.org/">http://www.nessus.org</A><P>
+<H3>Rilevare Scansioni delle Porte</H3>
+
+<P>Esistono strumenti progettati per avvisarvi di scansioni da parte di SATAN, ISS
+ed altri software di scansione. Comunque se usate molto i tcp_wrapper e leggete
+spesso i vostri log dovreste notare certe scansioni. Anche al settaggio
+inferiore SATAN lascia tracce nei log di un sistema RedHat "di serie". 
+<P>Esistono anche port scanner "silenziosi". Un pacchetto con il bit TCP ACK attivo
+(come si fa per le connessioni stabilite) probabilmente passerebbe un
+firewall che filtri i pacchetti. Il pacchetto RST in risposta da una porta che
+<EM>_non aveva comunicazioni in corso_</EM> viene preso come una prova di vita
+su quella porta. Non penso che i tcp_wrapper lo rilevino.
+<P>
+<P>
+<H2><A NAME="ss8.6">8.6 <CODE>sendmail</CODE>, <CODE>qmail</CODE> e MTA (Agenti di Trasporto di Posta)</A>
+</H2>
+
+<P>Uno dei servizi pi&ugrave; importanti che potete fornire &egrave; il server di
+posta. Sfortunatamente, &egrave; anche uno dei pi&ugrave; vulnerabili agli 
+attacchi, a causa del numero di compiti che esegue e dei privilegi che di
+solito richiede. 
+<P>Se state usando <CODE>sendmail</CODE> &egrave; molto importante tenerlo aggiornato.<CODE>sendmail</CODE> ha una lunga, lunga storia di exploit di sicurezza.
+Assicuratevi di eseguire sempre l'ultima versione da:
+<A HREF="http://www.sendmail.org/">http://www.sendmail.org</A>.
+<P>Ricordatevi che sendmail non deve per forza essere in esecuzione per spedire
+posta. Se siete un utente casalingo potete disabilitare del tutto sendmail e
+usare semplicemente il vostro client di posta per spedire. Potreste anche
+togliere l'opzione "-bd" da file di avvio di sendmail, disabilitando l'arrivo
+di richieste di posta. In altre parole, potete eseguire sendmail dal vostro
+script di avvio usando il seguente comando:
+<BLOCKQUOTE><CODE>
+<PRE>
+                # /usr/lib/sendmail -q15m
+</PRE>
+</CODE></BLOCKQUOTE>
+
+In questo modo sendmail riprocesser&agrave; ogni 15 minuti i messaggi nella
+coda di stampa che non erano stati precedentemente consegnati.
+<P>Molti amministratori non usano sendmail, e al suo posto scelgono uno degli
+altri MTA. Potreste passare a <CODE>qmail</CODE>.<CODE>qmail</CODE> &egrave; stato
+progettato da zero tenendo a mente la sicurezza. &Egrave; veloce, stabile e
+sicuro. Qmail si trova presso 
+<A HREF="http://www.qmail.org">http://www.qmail.org</A><P>In diretta competizione con qmail si pone "postfix", scritto da Wietse Venema,
+l'autore di tcp_wrapper ed altri strumenti di sicurezza. Precedentemente
+intitolato vmailer, e sponsorizzato da IBM, anche questo &egrave; un MTA 
+fatto da zero per la sicurezza. Troverete altre informazioni su postfix presso
+<A HREF="http:/www.postfix.org">http://www.postfix.org</A><P>
+<P>
+<H2><A NAME="ss8.7">8.7 Attacchi di Denial of Service (Negazione di un Servizio)</A>
+</H2>
+
+<P>Un "Denial of Service" (DoS) &egrave; un attacco con cui un aggressore tenta di
+rendere una risorsa troppo occupata per rispondere a richieste legittime o di
+negare a utenti legittimi l'accesso ad una macchina.
+<P>Questi attacchi sono molto aumentati negli ultimi anni. Sotto sono elencati 
+alcuni dei pi&ugrave; comuni o recenti. Notate per&ograve; che ne nascono in
+continuazione, quindi questi sono solo esempi. Leggete le liste di sicurezza di
+Linux e le liste di bugtraq per informazioni aggiornate.
+<P>
+<UL>
+<LI><B>SYN Flooding</B> - Il SYN flooding ("Inondazione di SYN") &egrave; un
+attacco DoS di rete. Sfrutta un buco nel modo in cui sono create le connessioni
+TCP. Gli ultimi kernel di Linux (2.0.30 e seguenti) hanno diverse opzioni
+configurabili per evitare che attacchi del genere neghino l'accesso alle
+vostre macchine. Vedi 
+<A HREF="Security-HOWTO-7.html#kernel-security">Sicurezza del Kernel</A> a proposito delle opzioni
+adeguate. 
+<P>
+</LI>
+<LI><B>Il Bug "F00F" nei Pentium</B> - Si &egrave; scoperto recentemente
+che una serie di codici assembly mandati ad un Pentium originale Intel 
+riavvierebbero la macchina. Questo bug affligge tutte le macchine Pentium (non
+i cloni, i Pentium Pro o i PII), a prescindere dal sistema operativo. I kernel
+Linux 2.0.32 e successivi contengono un rimedio che impedisce alla macchina di
+bloccarsi. Il kernel 2.0.33 ha una versione migliore rispetto al 2.0.32. Se
+usate un Pentium, aggiornate subito il kernel!
+<P>
+</LI>
+<LI><B>Ping Flooding</B> - Il ping flooding ("Inondazione di ping") &egrave; un
+attacco DoS basato sulla forza bruta. L'aggressore manda un'inondazione di
+pacchetti ICMP alla vostra macchina. Se lo fa da un host con un'ampiezza di
+banda maggiore della vostra, la vostra macchina non potr&agrave; mandare niente
+sulla rete. Un variazione di questo attacco, chiamato "smurfing", manda ad un
+host pacchetti ICMP con il <EM>vostro</EM> IP, permettendo loro di attaccarvi
+in modo quasi anonimo. Potete trovare altre informazioni circa lo "smurf"
+presso 
+<A HREF="http://www.quadrunner.com/~chuegen/smurf.txt"> http://www.quadrunner.com/~chuegen/smurf.txt</A>
+<P>Se venite attaccati in questo modo, usate uno strumento come <CODE>tcpdump</CODE>
+per determinare da dove provengono i pacchetti (o da dove sembrano venire),
+quindi contattate il vostro provider con queste informazioni. I ping flood
+possono essere fermati facilmente all'altezza del router o usando un firewall.
+<P>
+</LI>
+<LI><B>Ping della Morte</B> - Il Ping della Morte manda pacchetti ICMP ECHO
+REQUEST che sono troppo grandi per entrare nelle strutture dati del kernel
+che li dovrebbero contenere. Poich&eacute; mandare un solo grande ping
+(65,510 byte) causa il blocco o il crash di molti sistemi, questo problema fu
+subito soprannominato "Ping della Morte". Il fatto &egrave; stato risolto da
+tempo, e non &egrave; pi&ugrave; preoccupante.
+<P>
+</LI>
+<LI><B>Teardrop / New Tear</B> - Uno dei pi&ugrave; recenti exploit coinvolge
+un bug presente nel codice di frammentazione IP sulle piattaforme Linux e 
+Windows. &Egrave; stato risolto nel kernel 2.0.33 e non richiede la selezione di
+alcuna opzione di compilazione. Linux non sembra essere vulnerabile al nuovo
+exploit "newtear".
+<P>
+</LI>
+</UL>
+
+Potete trovare il codice della maggior parte degli exploit e una pi&ugrave;
+approfondita descrizione del loro funzionamento presso
+<A HREF="http://www.rootshell.com">http://www.rootshell.com</A> usando il loro motore di ricerca.
+<P>
+<P>
+<H2><A NAME="ss8.8">8.8 Sicurezza del NFS (Network File System). </A>
+</H2>
+
+<P>NFS &egrave; un protocollo di condivisione di file molto diffuso. Permette a
+server che eseguano <CODE>nfsd</CODE> e <CODE>mountd</CODE> di "esportare" interi
+filesystem verso altre macchine usando il supporto per il filesystem NFS compilato
+nel kernel (o qualche altro client se non sono macchine Linux).
+<CODE>mountd</CODE> tiene traccia dei filesystem montati in <CODE>/etc/mtab</CODE>,
+e li mostra con <CODE>showmount</CODE>. 
+<P>Molti siti usano NFS per fornire le home directory agli utenti di modo che
+abbiano i loro file da qualunque macchina si colleghino.
+<P>&Egrave; possibile avere un po' di sicurezza quando si esportano filesystem.
+Potete far mappare a <CODE>nfsd</CODE> l'utente root remoto (uid=0) sull'utente
+<CODE>nobody</CODE>, negando l'accesso totale ai filesystem esportati. Comunque,
+visto che i singoli utenti hanno accesso ai propri file (o almeno a quelli con
+la stessa uid), l'utente root remoto pu&ograve; fare un login o su con il
+loro account ed avere accesso totale ai loro file. Questo &egrave; solo un
+piccolo ostacolo per un aggressore che ha i privilegi per montare i filesystem
+remoti.
+<P>Se dovete usare NFS, assicuratevi di esportare solo verso quelle macchine che
+lo richiedono. Non esportate mai la vostra intera directory root; esportate
+solo il necessario.
+<P>Leggete il NFS HOWTO per ulteriori informazioni su  NFS, disponibile presso
+<A HREF="http://metalab.unc.edu/mdw/HOWTO/NFS-HOWTO.html">http://metalab.unc.edu/mdw/HOWTO/NFS-HOWTO.html</A><P>
+<P>
+<H2><A NAME="ss8.9">8.9 NIS (Network Information Service) (gi&agrave; YP). </A>
+</H2>
+
+<P>Network Information service (servizio di informazione di rete) &egrave; un modo
+di distribuire informazioni ad un gruppo di macchine. Il master NIS tiene le
+tabelle di informazioni e le converte in file mappa di NIS. Queste mappe vengono
+distribuite nella rete, permettendo ai client di ottenere informazioni di
+login, password, home directory e shell (tutte le informazioni che in genere
+stanno in un normale <CODE>/etc/passwd</CODE>). Questo permette agli utenti di
+cambiare la loro password una volta per tutte le macchine sul dominio NIS.
+<P>NIS non &egrave; affatto sicuro. Non ha mai voluto esserlo. Doveva solo essere
+comodo ed utile. Chiunque possa indovinare il nome del vostro dominio NIS
+(ovunque sia nella rete) pu&ograve; ottenere una copia del file delle password
+ed usare Crack o John the Ripper contro le password. Se dovete usare NIS siate
+consapevoli dei pericoli. 
+<P>Esiste un sostituto molto sicuro di NIS, chiamato NIS+. Controllate il NIS
+HOWTO: 
+<A HREF="http://metalab.unc.edu/mdw/HOWTO/NIS-HOWTO.html">http://metalab.unc.edu/mdw/HOWTO/NIS-HOWTO.html</A> 
+<P>
+<P>
+<H2><A NAME="ss8.10">8.10 Firewall</A>
+</H2>
+
+<P>I Firewall sono un mezzo per controllare quali informazioni vengono lasciate
+entrare ed uscire dalla vostra rete locale. Tipicamente l'host firewall &egrave;
+connesso ad Internet e alla LAN locale, ed &egrave; l'unico accesso ad Internet
+dalla LAN; in questo modo controlla cosa entra ed esce.
+<P>Ci sono molti tipi di firewall e metodi di impostarli. Le macchine Linux sono
+ottimi firewall. Il codice del firewall pu&ograve; essere compilato all'interno
+dei kernel 2.0 e superiori. Gli strumenti utente <CODE>ipfwadm</CODE> per i kernel
+2.0 e <CODE>ipchains</CODE> per i kernel 2.2, vi permettono di cambiare al volo i
+tipi di traffico di rete permessi. 
+<P>I firewall sono un'utilissima ed importante tecnica per la sicurezza di rete.
+Comunque, non pensate mai che solo perch&eacute; avete un firewall non
+sia necessaria la sicurezza delle macchine che copre. Sarebbe un errore fatale.
+Controllate l'ottimo <CODE>Firewall-HOWTO</CODE> presso l'archivio metalab per
+avere pi&ugrave; informazioni sui firewall e Linux. 
+<A HREF="http://metalab.unc.edu/mdw/HOWTO/Firewall-HOWTO.html">http://metalab.unc.edu/mdw/HOWTO/Firewall-HOWTO.html</A><P>Si trovano altre informazioni anche nell'IP-Masquerade mini-howto: 
+<A HREF="http://metalab.unc.edu/mdw/HOWTO/mini/IP-Masquerade.html">http://metalab.unc.edu/mdw/HOWTO/mini/IP-Masquerade.html</A> 
+<P>Altre informazioni su <CODE>ipfwadm</CODE> (lo strumento per cambiare impostazioni
+al firewall) si trovano presso: 
+<A HREF="http://www.xos.nl/linux/ipfwadm/">http://www.xos.nl/linux/ipfwadm/</A><P>Se non avete esperienza con i firewall e volete metterne su uno per un piano
+di sicurezza che non sia superficiale, leggere "Firewalls" di O'Reilly and
+Associates o qualche altro documento online sui firewall &egrave; obbligatorio.
+Troverete altre informazioni su 
+<A HREF="http://www.ora.com">http://www.ora.com</A>.  Il National Institute of Standards and Technology
+(Istituto Nazionale degli Standard e della Tecnologia) ha scritto un eccellente
+documento sui firewall. Anche se datato 1995, &egrave; sempre abbastanza buono.
+Potete trovarlo anche 
+<A HREF="http://csrc.nist.gov/nistpubs/800-10/main.html">http://csrc.nist.gov/nistpubs/800-10/main.html</A>.
+<P>
+<UL>
+<LI> Il progetto Freefire -- una lista di strumenti firewall liberi,
+disponibili presso 
+<A HREF="http://sites.inka.de/sites/lina/freefire-l/index_en.html">http://sites.inka.de/sites/lina/freefire-l/index_en.html</A> </LI>
+<LI> SunWorld Firewall Design -- scritto dagli autori del libro della
+O'Reilly, d&agrave; una introduzione di base ai differenti tipi di firewall.
+&Egrave; disponibile presso 
+<A HREF="http://www.sunworld.com/swol-01-1996/swol-01-firewall.html">http://www.sunworld.com/swol-01-1996/swol-01-firewall.html</A> </LI>
+<LI>Mason - il costruttore automatico di firewall per Linux. &Egrave; uno
+script di firewall che impara cosa vi serve mentre lo fate. Altre informazioni
+presso: 
+<A HREF="http://www.pobox.com/~wstearns/mason/">http://www.pobox.com/~wstearns/mason/</A></LI>
+</UL>
+<P>
+<P>
+<H2><A NAME="ss8.11">8.11 IP Chains - Firewall per Linux Kernel 2.2.x</A>
+</H2>
+
+<P>IP Firewalling Chains &egrave; un aggiornamento dal codice di firewalling
+del kernel 2.0 al 2.2. Ha molte pi&ugrave; caratteristiche delle versioni
+precedenti, inclusi:
+<UL>
+<LI> Manipolazioni dei pacchetti pi&ugrave; flessibili.</LI>
+<LI> Accounting pi&ugrave; complesso.</LI>
+<LI> Sono istantanei i semplici cambiamenti di impostazioni.</LI>
+<LI> I frammenti possono essere esplicitamente bloccati, rifiutati ecc.</LI>
+<LI> I pacchetti sospetti vengono segnati in un log.</LI>
+<LI> Pu&ograve; gestire protocolli non ICMP/TCP/UDP. </LI>
+</UL>
+<P>Se state usando <CODE>ipfwadm</CODE> con il vostro kernel 2.0, sono disponibili
+degli script per convertire il formato di <CODE>ipfwadm</CODE> nel formato che usa
+<CODE>ipchains</CODE>.
+<P>Assicuratevi di leggere l'IP Chains HOWTO per altre informazioni. &Egrave;
+disponibile presso 
+<A HREF="http://www.rustcorp.com/linux/ipchains/HOWTO.html">http://www.rustcorp.com/linux/ipchains/HOWTO.html</A><P>
+<P>
+<H2><A NAME="ss8.12">8.12 VPN - Virtual Private Networks (Reti Private Virtuali)</A>
+</H2>
+
+<P>Le VPN sono un modo per stabilire una rete "virtuale" su una rete esistente.
+Questa rete virtuale &egrave; spesso crittata e passa il traffico solo a e da
+entit&agrave; conosciute. Le VPN sono spesso usate per connettere attraverso
+Internet qualcuno che lavora a casa a un rete interna di una compagnia. 
+<P>Se eseguite un firewall/masquerading con Linux dovete passare pacchetti di 
+MS PPTP (un prodotto VPN punto-a-punto della Microsoft), c'&egrave; una patch
+per il kernel di Linux fatta apposta. Leggete: 
+<A HREF="ftp://ftp.rubyriver.com/pub/jhardin/masquerade/ip_masq_vpn.html">ip-masq-vpn</A>.
+<P>Esistono diverse soluzioni VPN per Linux:
+<UL>
+<LI> vpnd. Leggete 
+<A HREF="http://sunsite.auc.dk/vpnd/">http://sunsite.auc.dk/vpnd/</A>.</LI>
+<LI> Free S/Wan, disponibile presso 
+<A HREF="http://www.xs4all.nl/~freeswan/">http://www.xs4all.nl/~freeswan/</A></LI>
+<LI> ssh pu&ograve; essere usato per costruire una VPN. Leggete il VPN
+mini-howto per altre informazioni.</LI>
+<LI> vps (virtual private server) presso 
+<A HREF="http://www.strongcrypto.com">http://www.strongcrypto.com</A>.</LI>
+</UL>
+<P>Controllate anche la sezione su IPSEC per altre bibliografie e informazioni.
+<P>
+<P>
+<HR>
+<A HREF="Security-HOWTO-9.html">Avanti</A>
+<A HREF="Security-HOWTO-7.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc8">Indice</A>
+</BODY>
+</HTML>

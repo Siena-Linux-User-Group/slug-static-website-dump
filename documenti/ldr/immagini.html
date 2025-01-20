@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr11.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr13.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr13.html">[successivo]</A>
+<A HREF="ldr11.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 9. &nbsp; <A NAME="title516"></A><A NAME="anchor544"></A>Immagini</H1>
+
+<H2>9.1 &nbsp; <A NAME="title517"></A><A NAME="anchor545"></A>
+ Generalit&agrave; </H2>
+
+<P><STRONG>9.1.1)&nbsp;&nbsp;<A NAME="title518"></A><A NAME="anchor546"></A>
+ Come si crea l'immagine di una partizione? <A NAME="index2327"></A> <A NAME="index2328"></A> <A NAME="index2329"></A> </STRONG></P>
+
+<P>Per fare l'immagine di un disco o di una partizione di un disco, si pu&ograve; utilizzare il comando <SAMP>cat</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cat /dev/<VAR>partizione</VAR> &gt; <VAR>filedest</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="immagini.html#footnote1" NAME="footnote-ref1">(1)</A></SUP></P>
+
+<P>Per innestare al <A NAME="index2330"></A>file&nbsp;system l'immagine appena creata a scopo di verifica la si potr&agrave; montare nella seguente maniera:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -o loop <VAR>filedest </VAR> /mnt/<VAR>directory</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="immagini.html#footnote2" NAME="footnote-ref2">(2)</A></SUP></P>
+
+<P>Invece di <SAMP>cat</SAMP> si pu&ograve; utilizzare anche <SAMP>tar</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>tar czf <VAR>filedest </VAR>.tar.gz /dev/<VAR>partizione</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="immagini.html#footnote3" NAME="footnote-ref3">(3)</A></SUP></P>
+
+<P><STRONG>9.1.2)&nbsp;&nbsp;<A NAME="title519"></A><A NAME="anchor547"></A>
+ Come si crea l'immagine di un dischetto? <A NAME="index2332"></A> </STRONG></P>
+
+<P>Per creare l'immagine di un dischetto si adopera il comando <SAMP>dd</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>dd if=/dev/fd0 of=<VAR>immagine</VAR>.img</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="immagini.html#footnote4" NAME="footnote-ref4">(4)</A></SUP></P>
+
+<P><STRONG>9.1.3)&nbsp;&nbsp;<A NAME="title520"></A><A NAME="anchor548"></A>
+ Come si copia un'immagine su un dischetto? <A NAME="index2333"></A> </STRONG></P>
+
+<P>Per ripristinare il contenuto di un'immagine in un dischetto, si utilizzer&agrave; il comando <SAMP>dd</SAMP></P>
+
+<P>Con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>dd if=<VAR>immagine</VAR>.img of=/dev/fd0</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="immagini.html#footnote5" NAME="footnote-ref5">(5)</A></SUP></P>
+
+<P><STRONG>9.1.4)&nbsp;&nbsp;<A NAME="title521"></A><A NAME="anchor549"></A>
+ Come si visualizza il contenuto di un'immagine? <A NAME="index2334"></A> </STRONG></P>
+
+<P>Per visualizzare il contenuto di un'immagine sar&agrave; possibile innestarla (<EM>montarla</EM>) al <A NAME="index2335"></A>file&nbsp;system come se si trattasse di un disco o una partizione normale, utilizzando l'opzione <SAMP>-o loop</SAMP>. Il comando sar&agrave;:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>mount -o loop -t ext2 <VAR>immagine</VAR>.img /mnt/floppy</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="immagini.html#footnote6" NAME="footnote-ref6">(6)</A></SUP></P>
+
+<P>L'esempio appena illustrato vale ovviamente se l'immagine ha un <A NAME="index2337"></A>file&nbsp;system <A NAME="index2338"></A>Ext2; se dovesse avere un <A NAME="index2339"></A>file&nbsp;system diverso sar&agrave; sufficiente sostituire <SAMP>ext2</SAMP> con, il tipo desiderato.</P>
+
+<P><STRONG>9.1.5)&nbsp;&nbsp;<A NAME="title522"></A><A NAME="anchor550"></A>
+ Come si pu&ograve; inserire file in un'immagine? <A NAME="index2340"></A> <A NAME="index2341"></A> </STRONG></P>
+
+<P>Non &egrave; possibile inserire in un'immagine un file. Occorrer&agrave; prima di tutto copiare in una directory temporanea il contenuto di un'immagine e, una volta aggiunto il file, ricreare l'immagine della directory stessa.</P>
+
+<P><STRONG>9.1.6)&nbsp;&nbsp;<A NAME="title523"></A><A NAME="anchor551"></A>
+ Si pu&ograve; aggiungere un file ad un'immagine ISO 9660? <A NAME="index2342"></A> <A NAME="index2343"></A> </STRONG></P>
+
+<P>Non &egrave; possibile aggiungere contenuto ad un'immagine; occorrer&agrave; espandere il contenuto di essa e costruirsi un'altra immagine. Si potr&agrave; procedere come segue, inserendo, qualora ancora non lo fosse, il supporto per il dispositivo <SAMP>loop</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod loop</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Una volta dato questo comando<SUP><A HREF="immagini.html#footnote7" NAME="footnote-ref7">(7)</A></SUP>, si proceder&agrave; ad innestare (<EM>montare</EM> il contenuto dell'immagine in una directory:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -o loop <VAR> immagine.iso</VAR> <VAR>/mnt</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Fatto questo si copier&agrave; il contenuto della directory <CODE>/mnt/</CODE> (perch&eacute; a sola lettura) in una directory temporanea (ad esempio <CODE>temp</CODE>) al fine di aggiungere altri file. In conclusione si dovr&agrave; ricreare l'immagine dalla directory temporanea.</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="immagini.html#footnote-ref1" NAME="footnote1">1)</A> dove <VAR>partizione</VAR> assume valori come <SAMP>hda1</SAMP>, <SAMP>hdb3</SAMP>, <SAMP>sda1</SAMP>, <SAMP>sdb2</SAMP>, ecc. e <VAR>filedest</VAR> &egrave; il nome dell'immagine</P>
+
+<P><A HREF="immagini.html#footnote-ref2" NAME="footnote2">2)</A> dove <VAR>filedest</VAR> &egrave; il nome dell'immagine e <VAR>directory</VAR> il punto di innesto nel <A NAME="index2331"></A>file&nbsp;system</P>
+
+<P><A HREF="immagini.html#footnote-ref3" NAME="footnote3">3)</A> dove <VAR>partizione</VAR> assume valori come <SAMP>hda1</SAMP>, <SAMP>hdb3</SAMP>, <SAMP>sda1</SAMP>, <SAMP>sdb2</SAMP>, ecc. e <VAR>filedest</VAR> &egrave; il nome dell'immagine</P>
+
+<P><A HREF="immagini.html#footnote-ref4" NAME="footnote4">4)</A> dove <CODE>/dev/fd0</CODE> &egrave; il nome del dispositivo associato al lettore di dischetti e <VAR>immagine</VAR> &egrave; il nome dell'immagine da creare</P>
+
+<P><A HREF="immagini.html#footnote-ref5" NAME="footnote5">5)</A> dove <CODE>/dev/fd0</CODE> &egrave; il nome del dispositivo associato al lettore di dischetti e <VAR>immagine</VAR> &egrave; il nome dell'immagine da creare</P>
+
+<P><A HREF="immagini.html#footnote-ref6" NAME="footnote6">6)</A> In particolare, in questa riga di comando, l'immagine <CODE><VAR>immagine</VAR>.img</CODE> verr&agrave; innestata al <A NAME="index2336"></A>file&nbsp;system in corrispondenza della directory <CODE>/mnt/floppy</CODE></P>
+
+<P><A HREF="immagini.html#footnote-ref7" NAME="footnote7">7)</A> non necessario se il supporto per il suddetto dispositivo <SAMP>loop</SAMP> era gi&agrave; stato caricato come modulo in precedenza o se era stato incluso tra le componenti del <A NAME="index2344"></A>kernel</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="immagini.html">immagini.html</A></P>
+<P>
+<A HREF="ldr13.html">[successivo]</A>
+<A HREF="ldr11.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

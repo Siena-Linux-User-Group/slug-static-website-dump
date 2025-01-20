@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Tasti principali</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Mutt" href="mutt.html">
+    <LINK rel="PREVIOUS" title="Mutt e gli Hooks" href="mutthooks.html">
+    <LINK rel="NEXT" title="Grepmail e Mutt" href="grepmail.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "mutthooks.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 14.
+          Mutt</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "grepmail.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="TASTIMUTT">14.3. Tasti principali</A></H1>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+Note:
+1. I cursori funzionano in maniera diversa dal default, modificato per
+   consentire di scorrere la lista dei messaggi anche durante la lettura.
+2. ^ sta per CTRL, &lt;qualcosa&gt; sta per il tasto indicato
+3. I comandi sono case-sensitive, maiuscole e minuscole sono diverse.
+
+Movimenti:
+&lt;Up&gt;          (NELL'INDICE) spostati alla voce precedente
+&lt;Down&gt;        (NELL'INDICE) spostati alla voce successiva
+&lt;Up&gt;          (DURANTE LA LETTURA MESSAGGI) spostati alla voce precedente
+&lt;Down&gt;        (DURANTE LA LETTURA MESSAGGI) spostati alla voce successiva
+&lt;Left&gt;        (DURANTE LA LETTURA MESSAGGI) spostati al messaggio precedente
+&lt;Right&gt;       (DURANTE LA LETTURA MESSAGGI) spostati al messaggio successivo
+&lt;PageUp&gt;      spostati alla pagina precedente
+&lt;PageDown&gt;    spostati alla pagina successiva
+&lt;Tab&gt;         salta al successivo messaggio nuovo
+&lt;Esc&gt;&lt;Tab&gt;    salta al precedente messaggio nuovo
+^N            salta al thread successivo
+^P            salta al thread precedente
+=             spostati alla prima voce
+*             spostati all'ultima voce
+
+Modifiche:
+o             ordina i messaggi
+O             ordina i messaggi in ordine inverso
+c             apri un altro folder
+d             cancella la voce corrente
+u             de-cancella la voce corrente
+D             cancella i messaggi corrispondenti al modello
+U             de-cancella i messaggi corrispondenti al modello
+^D            cancella tutti i messaggi nel thread
+^U            de-cancella tutti i messaggi nel thread
+w             imposta un flag di stato su un messaggio
+W             cancella il flag di stato da un messaggio
+t             (de)segna la voce corrente
+T             segna i messaggi corrispondenti al modello
+^T            togli il segno ai messaggi corrispondenti al modello
+l             mostra solo i messaggi corrispondenti al modello
+^R            segna il thread corrente come gia` letto
+&lt;Esc&gt;t        segna il thread corrente
+F             (dis)attiva il flag 'importante' del messaggio
+N             (dis)attiva il flag 'nuovo' di un messaggio
+;             applica la prossima funzione ai messaggi segnati
+
+Ricerche:
+&lt;Esc&gt;b        cerca all'interno dei Body dei messaggi
+&lt;Esc&gt;b        (ELIMINANDO ~b ) cerca nei subject dei messaggi
+/             cerca una espressione regolare
+&lt;Esc&gt;/        cerca all'indietro una espressione regolare
+n             cerca la prossima corrispondenza
+
+Messaggi:
+&lt;Return&gt;      visualizza un messaggio
+&lt;Space&gt;       visualizza un messaggio
+@             visualizza l'indirizzo completo del mittente
+h             visualizza il messaggio con gli header completi
+m             componi un nuovo messaggio
+r             rispondi a un messaggio
+L             rispondi alla mailing list indicata
+g             rispondi a tutti i destinatari
+b             rispedisci un messaggio a un altro utente
+f             inoltra un messaggio con i commenti
+R             richiama un messaggio rimandato
+e             modifica il messaggio corrente per rispedirlo
+v             mostra gli allegati MIME
+&lt;Esc&gt;C        fai una copia decodificata (text/plain)
+C             copia un messaggio in un file/mailbox
+s             salva in un file un messaggio/allegato
+a             crea un alias dal mittente del messaggio
+&lt;Tab&gt;         permette di accedere all'elenco degli alias durante la composizione
+              quando viene richiesto di inserire il destinatario, il cc o il bcc
+
+Varie:
+&lt;F1&gt;          mostra la documentazione di Mutt
+?             aiuto sui tasti
+&lt;NUM&gt;         salta a un al messaggio NUM
+p             stampa la voce corrente
+$             salva i cambiamenti alla mailbox
+q             salva i cambiamenti alla mailbox ed esci
+x             esci da questo menu
+^L            cancella e ridisegna lo schermo
+:             inserisci un comando di muttrc
+|             manda un messaggio/allegato a un comando della shell con una pipe
+^B            richiama URLVIEW per estrarre le URL dal messaggio
+V             mostra il numero di versione e la data di Mutt
+&lt;Esc&gt;k        inserisce il mittente nella Black List (per procmail)
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>E ora divertitevi ad usarlo!</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "mutthooks.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "grepmail.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Mutt e gli Hooks</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "mutt.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Grepmail e Mutt</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

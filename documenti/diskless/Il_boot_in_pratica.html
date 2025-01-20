@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+   
+    <meta http-equiv="Content-Language" content="it">
+    <meta http-equiv="Content-Type" content=
+    "text/html; charset=windows-1252">
+    <title>Bootstrap remoto con macchine diskless HOWTO --- &copy;
+    Alessandro Illiano</title>
+    <p align="left"><a href="Conf_server.htm">Avanti</a>
+    <a href="Introduzione_al_boot.html">Indietro</a> <a href="index.html">Indice</a>
+    <hr>
+    <p><font size="5"><b>3. Il bootstrap via rete in
+    pratica</b></font>
+    <p>&nbsp;
+	<a name="conf"></a>
+    <p><font size="4">3.1 Configurazione del laboratorio</font>
+    <p style="MARGIN-BOTTOM: 0cm" align="left">&nbsp;
+    <p style="MARGIN-BOTTOM: 0cm" align="left">&nbsp;
+    <p style="MARGIN-BOTTOM: 0cm" align="left"><img border="0" src=
+    "IMMAGINECOMPUTER.GIF" width="600" height=
+    "400"><br>
+    &nbsp;
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+    <font size="3">La macchina prescelta come SERVER dovra'
+    assumere le seguenti funzioni:</font>
+    <div style="margin-left: 2em">
+      <ul>
+        <li>
+          <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align=
+          "left"><font size="3">SERVER DHCP (per attribuire una
+          identit&agrave; ai client)</font>
+        <li>
+          <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align=
+          "left"><font size="3">SERVER TFTP (per fornire una
+          immagine del kernel ai client)</font>
+        <li>
+          <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align=
+          "left"><font size="3">SERVER NFS (per dare un filesystem
+          funzionante ai client)</font>
+      </ul>
+    </div>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+    <br>
+    <font size="3">I client, invece, devono essere istruiti
+    attraverso un floppy di boot (nel nostro caso); questo si puo'
+    creare con 'etherboot' (www.etherboot.org), che e' un software
+    in grado di creare immagini ROM, e quindi capace di far
+    bootstrappare le macchine attraverso la rete.</font>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+    <font size="3">Preciso inoltre che per il nostro laboratorio
+    sono state utilizzate le seguenti distribuzioni:</font>
+    <ul>
+      <li>
+        <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align=
+        "left"><font size="3">Per il SERVER: <i>RedHat
+        7.3</i></font>
+      <li>
+        <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align=
+        "left"><font size="3">Per il CLIENT: <i>Slackware
+        9.0</i></font>
+    </ul>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+    <font size="3">Inutile dire che ogni configurazione verra'
+    eseguita solo dal lato SERVER (i client saranno avviati da un
+    floppy di boot e quindi non hanno bisogno di configurazioni
+    fatta eccezione per LA CREAZIONE DEL FLOPPY DI AVVIO, che
+    vedremo pi&ugrave; avanti).</font>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+    &nbsp;<hr>
+    <p style="MARGIN-BOTTOM: 0cm; FONT-STYLE: normal" align="left">
+    <a href="Conf_server.htm">Avanti</a> <a href="Introduzione_al_boot.html">Indietro</a>
+    <a href="index.html">Indice</a>
+    <p>&nbsp;
+    <p>&nbsp;

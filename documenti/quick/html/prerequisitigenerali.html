@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Prerequisiti generali</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Partizioni" href="partizioni.html">
+    <LINK rel="PREVIOUS" title="Filesystem" href="filesystem.html">
+    <LINK rel="NEXT" title="FIPS" href="fips.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "filesystem.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 1.
+          Partizioni</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "fips.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="PREREQUISITIGENERALI">1.4. Prerequisiti
+      generali</A></H1>
+
+      <P>Prima di tutto createvi un dischetto di boot con un minimo di
+      utility d'emergenza. Inserite un floppy da 1.44" vuoto e dal prompt
+      date il comando: <B class="COMMAND">format a:/u/s</B>. Alla fine
+      copiateci dentro dalla directory <B class=
+      "KEYCAP">c:\windows\command</B> oppure <B class="KEYCAP">c:\dos</B> i
+      file: <B class="COMMAND">fdisk.exe</B>, <B class=
+      "COMMAND">format.com</B> e <B class="COMMAND">sys.com</B></P>
+
+      <P>Prima di iniziare (escludiamo naturalmente il ripartizionamento
+      distruttivo e il caso di hard-disk nuovo o comunque vuoto, nel cui caso
+      si può procedere come esposto nella prima parte), l'hard-disk va
+      preparato. Prima di tutto è bene controllare che non ci siano errori
+      sul disco, con (in ordine dal programma peggiore al migliore) <B class=
+      "COMMAND">Chkdsk</B>, <B class="COMMAND">Scandisk</B>, <B class=
+      "COMMAND">Ndd</B> (Norton Disk Doctor). I primi due fanno parte del DOS
+      (scandisk dalla versione 6, mi sembra), il terzo fa parte delle Norton
+      Utilities. DOVETE fare il test della superficie, è per essere sicuri
+      che non ci siano settori danneggiati, o almeno che essi vengano
+      individuati e annotati nella FAT.</P>
+
+      <P>Poi un bel backup, che male non fa mai, quindi cogliete l'attimo e
+      salvatevi le cose importanti (anche nel caso di più partizioni di cui
+      una dedicata apposta ai dati, conviene sempre fare un backup su floppy,
+      zip o meglio CD-R o CD-RW).</P>
+
+      <P>Ancora, opzionalmente, una bella passata di antivirus non farebbe
+      male, l'importante è che lo lanciate da floppy DOPO AVER SPENTO il pc
+      (non semplicemente ctrl-alt-canc). Naturalmente l'antivirus DEVE essere
+      aggiornato frequentemente e serve a poco installarlo su un pc già
+      infetto, per questo lo si deve installare su un pc SICURAMENTE sano e
+      crearsi i dischetti di emergenza al più presto (chiaramente se
+      aggiornate l'antivirus sul pc dovete ricreare i dischetti).</P>
+
+      <P>Se non vengono segnalati errori, si procede alla deframmentazione.
+      ALT! Credevate di cavarvela così facilmente? Allora non conoscete il
+      DOS (e il suo figlio illeggittimo Windows ;-) )! Se avete solo il DOS
+      potrebbe (POTREBBE) andarvi anche bene, ma con Windows è tutto un altro
+      paio di maniche. Vediamo i possibili problemi:</P>
+
+      <UL>
+        <LI>
+          <P>DOVETE disattivare la memoria virtuale, per poi riattivarla dopo
+          che la procedura è conclusa. In Windows 9x ciò si fa così: click
+          destro su <B class="KEYCAP">Risorse del Computer</B> / <B class=
+          "KEYCAP">Proprietà</B> / click sulla linguetta <B class=
+          "KEYCAP">Prestazioni</B> / click su <B class="KEYCAP">Memoria
+          Virtuale</B> / click su <B class="KEYCAP">Impostazione manuale
+          della memoria virtuale</B> / selezione di <B class=
+          "KEYCAP">Disattiva memoria virtuale</B> / poi premere <B class=
+          "KEYCAP">Invio</B>fino al riavvio. In Win 3.x la voce dovrebbe
+          essere nella sezione 386 Enhanched del Pannello di Controllo (non
+          uso Win 3.1 da 4 anni, potrei toppare ;-) ).</P>
+        </LI>
+
+        <LI>
+          <P>Naturalmente uscite da qualsiasi ambiente multitasking, DOVETE
+          essere in puro e semplice DOS, possibilmente senza Smartdrive o
+          altre cache software del disco (date dal prompt un bel <B class=
+          "COMMAND">smartdrv /c</B> o equivalente per eseguire il flush della
+          cache).</P>
+        </LI>
+
+        <LI>
+          <P>Potrebbero essere stati creati dei file nascosti e di sistema
+          nell'ultimo settore dell'hard-disk, in particolare Mirror (DOS) e
+          Image (Norton) lo usano per metterci un puntatore ai file che fanno
+          da immagine del vostro hard-disk. DOVETE cancellarli, tanto
+          verranno ricreati la prossima volta che lancerete i rispettivi
+          comandi. Per poterli cancellare date dal prompt: <B class=
+          "COMMAND">attrib -r -s -h image.idx</B> oppure <B class=
+          "COMMAND">attrib -r -s -h mirorsav.fil</B> e poi cancellateli
+          normalmente.</P>
+        </LI>
+
+        <LI>
+          <P>Potrebbero esserci altri file nascosti/di sistema: bisogna
+          permettere che essi possano essere spostati (ATTENZIONE a quello
+          che fate in questa sezione). Chiudete le finestre (ehm, uscite da
+          Windows ;-) ) e dal prompt date i seguenti comandi:</P>
+
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+cd \
+dir /s /b /a:h &gt;&gt;t.bat
+dir /s /b /a:s &gt;&gt;t.bat
+edit t.bat
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <DIV class="WARNING">
+            <TABLE class="WARNING" border="1" width="90%">
+              <TR>
+                <TD align="CENTER"><B>Attenzione</B></TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT">
+                  <P>IMPORTANTE: prima di procedere, eliminate dal file <B
+                  class="KEYCAP">t.bat</B> TUTTE le righe che riportano <B
+                  class="KEYCAP">c:\io.sys</B> e <B class=
+                  "KEYCAP">c:\msdos.sys</B> oppure <B class=
+                  "KEYCAP">c:\ibmbio.com</B> e <B class=
+                  "KEYCAP">c:\ibmdos.com</B> (dovrebbero esserci 2 righe per
+                  ognuno dei file elencati). Se saltate questo punto e
+                  deframmentate, è probabile che al riavvio il sistema non
+                  parta più (se comunque dovesse succedere, se avete creato
+                  il disco di avvio come vi ho detto in precedenza basta che
+                  partiate con quello e diate <B class="COMMAND">a:sys c:</B>
+                  dal prompt).</P>
+                </TD>
+              </TR>
+            </TABLE>
+          </DIV>
+
+          <P>Sostituite nel file <B class="KEYCAP">t.bat</B> tutte le
+          occorrenze di <B class="KEYCAP">c:\</B> con <B class=
+          "KEYCAP">attrib -r -s -h c:\</B>, uscite da Edit salvando e
+          lanciate dal prompt il file <B class="COMMAND">t.bat</B>. Questo
+          elimina gli attributi che potrebbere creare problemi a Defrag.</P>
+        </LI>
+
+        <LI>
+          <P>Disattivate TUTTE le opzioni di ottimizzazione del programma di
+          deframmentazione (in particolare disattivate da Windows 98
+          l'opzione "<EM>Riorganizza i file dei programmi per un avvio più
+          rapido</EM>"), perché con la scusa di ottimizzare l'avvio (usando i
+          dati contenuti nella directory nascosta <B class=
+          "KEYCAP">c:\windows\applog</B>) spesso vengono lasciati dati
+          nell'ultima parte del disco (esperienza personale). Per Norton
+          Speedisk regolatevi di conseguenza, ricordando che le versioni
+          anteriori alla 4 non supportano la suddetta directory Applog,
+          quindi con Windows 98 rischiate di vedervelo rallentare invece di
+          velocizzare. Dopo aver ripartizionato, potrete rieffettuare la
+          deframmentazione riattivando le opzioni disattivate.</P>
+        </LI>
+
+        <LI>
+          <P>Un'ultima nota: conviene deframmentare dalla <EM>Modalità
+          provvisoria</EM>, così sarete certi che non ci siano processi in
+          background che potrebbero far ripartire Defrag nel caso essi si
+          mettessero in attività, o peggio che andassero a scrivere nella
+          zona appena deframmentata, o alla fine del disco, vanificando il
+          tutto.</P>
+        </LI>
+      </UL>
+
+      <P>A questo punto partite in modalità provvisoria e deframmentate,
+      finalmente! Un ultimo consiglio: quando Defrag ha finito il suo lavoro,
+      anche se la procedura può sembrare poco ortodossa, conviene aspettare
+      una decina di secondi e se la luce dell'hard-disk non da segni di vita
+      (non dovrebbe, non essendoci niente in background né attiva la memoria
+      virtuale) conviene RESETTARE, invece di chiudere Defrag e Sessione per
+      riavviare. Questo perché Windows in fase di chiusura potrebbe andare a
+      riscrivere nella zona appena deframmentata (esperienza personale).</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>ATTENZIONE: io ho eseguito questa procedura più volte senza
+              riscontrare problemi, nemmeno la partenza di Scandisk, ma il
+              Reset potrebbe causare danni al file-system esistente se non
+              anche all'hard-disk in rari casi. Il sottoscritto non si assume
+              alcuna responsabilità per eventuali danni provocati da questa
+              procedura: se temete di fare danno chiudete normalmente Windows
+              e incrociate le dita (d'altronde, tutta la procedura di mettere
+              mano al file-system è pericolosa, quindi...).</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P>Ancora una cosa: il DOS standard stabilisce che non ci sia più di
+      una partizione primaria, anche se nella pratica ciò è tollerato e
+      permette di realizzare un sistema multiboot come ho esposto
+      all'inizio.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "filesystem.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "fips.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Filesystem</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "partizioni.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">FIPS</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

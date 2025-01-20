@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Scorefile</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Leafnode" href="leafnode.html">
+    <LINK rel="PREVIOUS" title="Configurazione" href=
+    "configurazioneleafnode.html">
+    <LINK rel="NEXT" title="Leafnode+" href="leafnodeplus.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "configurazioneleafnode.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 8.
+          Leafnode</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "leafnodeplus.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="SCOREFILE">8.2. Scorefile</A></H1>
+
+      <P>Con <B class="KEYCAP">leafnode</B> potete anche impostare dei filtri
+      per evitare di scaricare del tutto degli articoli che non vi
+      interessano. Quello che segue è un esempio di <B class=
+      "KEYCAP">killfile</B> creato da <A href=
+      "http://members.xoom.com/alberanid" target="_top">Davide Alberani</A>
+      (un grazie 1000 a lui!), e per attivarlo modificatelo e copiatelo nel
+      file <TT class="FILENAME">/etc/leafnode/filterfile</TT> e decommentate
+      la riga apposita nel file <TT class=
+      "FILENAME">/etc/leafnode/config</TT> (per una spiegazione della
+      sintassi delle <EM>espressioni regolari</EM> presenti, fate riferimento
+      alla sezione apposita del <EM>Quick&amp;Easy Configuration HOWTO</EM>
+      nella pagina di <B class="KEYCAP">Procmail</B>):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#
+# File di filtro per leafnode di Davide Alberani
+#
+# Aggiornato al 12 aprile 2001
+#
+# Leafnode puo` essere scaricato da:
+# http://www.leafnode.org
+#
+# Formato principalmente durante la frequentazione dei gruppi:
+# it.comp.os.linux.*
+# it.cultura.ateismo
+# it.comp.os.dibattiti
+# it.comp.sicurezza.varie
+# it.news.gruppi
+# it.arti.cinema
+#
+#
+# Nota:
+# probabilmente vi conviene cancellare o commentare alcune righe
+# nella sezione Subject, a seconda di quali sono i vostri interessi.
+# Per quanto riguarda le entry nella sezione From, NON rompete le
+# gonadi: c'e` finito chi - a mio *insindacabile* giudizio - ha rotto
+# troppo le scatole, e` troppo stupido per perdere tempo a leggero
+# o semplicemente si e` fatto trascinare troppe volte in discussioni
+# con cerebrolesi.
+# Qualcuno puo` anche esserci finito per errore, capita.
+#
+#
+# L'angolo polemico:
+# Ho ricevuto lamentele da persone che, avendo trovato un proprio
+# indirizzo e-mail in questa lista, mi hanno richiesto di eliminare
+# l'intero filtro (il tutto perche`, per un qualche motivo, non mi si
+# voleva indicare l'indirizzo in questione).
+# Ora, immagino che nella mente di qualcuno cio` possa essere
+# perfettamente sensato, magari tirando in causa la famosa ed
+# abusatissima legge sulla privacy (675/96).
+# Naturalmente nutro seri dubbi che tale legge possa limitare il
+# mio diritto (che discende dalla costituzione) di pubblicare un
+# banale elenco di persone/indirizzi/subject che mi stanno antipatici,
+# ricordando che tutte le voci sono tratte da post Usenet pubblicamente
+# disponibili.
+# Mi ero peraltro - e ripeto, per pura sensibilita` personale, non
+# certo perche` stia violando qualche legge - reso disponibile ad
+# eliminare la *singola* voce interessata, specie nel caso essa
+# contenesse un cognome/nome.  Non avendo mai ricevuto indicazione
+# di quale fosse la riga "incriminata", a questo punto ritiro la
+# mia disponibilita`.
+# 
+# Corollario di MrShark: siccome il tizio in questione non ha MAI
+# fornito l'indirizzo email da eliminare, ma ha trolleggiato per
+# una settimana accampando diritti che non ha, abbiamo inserito
+# anche i due suoi nuovi indirizzi email con i quali ha rotto le
+# balle sul NG del net-abuse, perche` se non era troll prima e
+# non meritava di finire nel killfile, sicuramente l'ha meritato
+# dopo i suoi exploit, vincendo un mongolino d'oro! Tie'! ;-)
+#
+# Killare un dato subject solo in un dato newsgroup:
+# Ne avevo discusso tempo fa con Derfel; a quanto mi ricordo,
+# dall'ultima volta che ho controllato i sorgenti, leafnode passa le
+# varie linee dell'header separatamente alla funzione che ne controlla
+# eventuali match, quindi non sarebbe possibile farlo.
+# Derfel pero` era giunto a questa soluzione:
+#
+# (?-im)Newsgroups:.*IL.NEWSGROUP\nSubject: IL SUBJECT.*\n
+#
+# Che pare funzionare.
+# Io pero` ci credo ancora il giusto. :-)
+# Aggiornamento: da quanto ho capito questa regola funziona usando
+# il comando applyfilter, che pero` non e` come vorrei usare io il
+# filtro... :-)
+#
+# More info:
+# Se volete maggiori informazioni sulle regular expression, leggetevi:
+# man 7 pcre
+# man 7 regex
+# man 1 egrep
+#
+# Enjoy.
+#
+
+
+####################
+# Subject generici #
+####################
+
+# killa *tutti* i subject completamente maiuscoli (a parte l'eventuale Re:)
+# togliere il commento (#) se si vuole attivare questa regola
+#^Subject: (Re: |R: )*[^a-z]*$
+
+# i post con troppi '!', '?' o '$'
+(?im)^Subject:.*\!\!\!\!
+(?im)^Subject:.*\?\?\?\?
+(?im)^Subject:.*\$\$\$.*
+# subject eccessivamente generici
+(?im)^Subject: (Re: |R: )*non legge[rt]e *[\?\!]*$
+(?im)^Subject: (Re: |R: )*aiuto+ *[\?\!]*$
+(?im)^Subject: (Re: |R: )*he+l+p+ *[\?\!]*$
+(?im)^Subject: (Re: |R: )*prov[ae] *[\?\!]*$
+(?im)^Subject: (Re: |R: )*problem[ai] *[\?\!]*$
+(?im)^Subject: (Re: |R: )*test *[\?\!]*$
+(?im)^Subject: (Re: |R: )*domand[ae] *[\?\!]*$
+# post periodici del GCN
+^Subject:.*benvenuto su Usenet\!
+(?im)^Subject: RFD, CFV e it\.news\.gruppi
+(?im)^Subject: Usenet e news - dove saperne di piu\`
+(?im)^Subject: Istruzioni per la creazione di gruppi della gerarchia it
+(?im)^Subject: \[HOWTO\] COME PORRE DOMANDE IN QUESTO GRUPPO
+(?im)^Subject: Come funzionano le news: il crosspost e\` Male
+(?im)^Subject: \[MANIFESTO\] it\.news\.gruppi
+(?im)^Subject: I gruppi Usenet it\.\* - istruzioni per l\'uso
+(?im)^Subject: E Quali sono i gruppi della gerarchia it\.\* \?
+
+
+##################################
+# Subject per it.comp.os.linux.* #
+##################################
+
+(?im)^Subject:.*sb[ -]*64
+(?im)^Subject:.*winlinux
+(?im)^Subject:.*emacs
+(?im)^Subject:.*system\.map
+(?im)^Subject:.*iomega
+(?im)^Subject:.*sb pci
+(?im)^Subject:.*toshiba
+(?im)^Subject:.*vmware
+(?im)^Subject:.*banshee
+(?im)^Subject:.*isdn
+(?im)^Subject:.*slrn
+(?im)^Subject:.*star.*office
+(?im)^Subject:.*sb.*live
+(?im)^Subject:.*blaster.*live
+(?im)^Subject:.*suse
+(?im)^Subject:.*red[ -]*hat
+(?im)^Subject:.*caldera
+(?im)^Subject:.*mandrake
+(?im)^Subject:.*tnt2
+(?im)^Subject:.*trio.*3d
+(?im)^Subject:.*3dfx
+(?im)^Subject:.*samba
+(?im)^Subject:.*kppp
+(?im)^Subject:.*voo?doo?
+(?im)^Subject:.*rh ?[567]
+(?im)^Subject:.*nvidia
+(?im)^Subject:.*i740
+(?im)^Subject:.*virge
+(?im)^Subject:.*matrox
+(?im)^Subject:.*x11amp
+(?im)^Subject:.*mp3
+(?im)^Subject:.*yamaha
+(?im)^Subject:.*slac?kware
+(?im)^Subject:.*sound ?blaster
+# i post periodici su it.comp.os.linux.*
+(?im)^Subject:.*FAQ: Le mailing list italiane
+^Subject:.*\[FAQ\] RISPOSTE ALLE DOMANDE PIU\` FREQUENTI
+^Subject: REGOLE BASE DI \"it\.comp\.os\.linux\.iniziare\"
+^From: autoposter &lt;autoposter@autoposter.invalid&gt;
+^From: autoposter &lt;autopost_nospam@linuxfan.com&gt;
+^From: gz@indirizzo.non.valido.it \(AUTOPOSTER-AMF\)
+#(?im)^Subject:.*cazz.*linux
+#^Subject: REGOLE BASE DI it\.comp\.os\.linux\.iniziare
+#^Subject: \[NEW\] REGOLE BASE DI \"it\.comp\.os\.linux\.iniziare\"
+#(?im)^Subject: Quali sono i gruppi della gerarchia  it\.\* \?
+
+
+########
+# From #
+########
+#
+# La suddivisione in sezioni potrebbe essere inesatta...
+#
+
+########
+# VS©s #
+########
+
+^From:.*VS©
+^From:.*vs\.ru
+^From:.*&gt;&gt;FoX&lt;&lt;
+^From:.*Gek©
+^From:.*glm
+^From:.*tommygun.*@freemail.it
+#^From:.*Frank
+
+############
+# Raeliani #
+############
+
+^From:.*exdor@tin.it
+^From:.*kenpatera@tin.it
+
+###############################
+# From per it.comp.os.linux.* #
+###############################
+
+^From:.*KiLLa
+^From:.*kurty@libero.it
+^From:.*kaig@wappi.com
+^From:.*deditor@libero.it
+^From:.*Marco Bertini
+^From:.*geqbm@tin.it
+^From:.*pigo@ahoooo.libero.it
+^From:.*nobady@nobady.com
+^From:.*butindaro@tiscalinet.it
+^From:.*jalessa@tin.it
+^From:.*lorciao@tiscalinet.it
+^From:.*giochio@inwind.it
+^From:.*plucky@libero.it
+^From:.*nme106@hotmail.com
+^From:.*oivluf@libero.it
+^From:.*henrywinter
+^From:.*BeavisandButthead@usa.net
+^From:.*Windows®2000
+^From:.*sevenofnine@freemail.it
+^From:.*dark\.tower@iol.it
+^From:.*BLUKLEIN@iol.it
+^From:.*m\.lore@tiscalinet.it
+^From:.*suppo@katamail.com
+^From:.*newsoft@nsoft.it
+^From:.*errebi@fiscalinet.it
+^From:.*a\.sevi@katamail.com
+^From:.*kingz@tiscalinet.it
+^From:.*nkoffr@tin.it
+^From:.*giovannad\'arco@tiscalinet.it
+^From:.*gaucie@tin.it
+^From:.*borisnospam@hotmail.com.com
+^From:.*io@io.it
+^From:.*junfan
+^From:.*ziocan@fica.it
+^From:.*ciberneta@libero.it
+^From:.*junfan77@libero.it
+^From:.*maandateacagher@dicorsa.gulp
+^From:.*madQ
+^From:.*XPDCVwtw
+^From:.*geremia@mclink.it
+^From:.*info@aroundstore.com
+^From:.*woody_hesse@iol.it
+^From:.*a_capelli@hotmail.com
+^From:.*aes-mail@freenet.hut.fi
+^From:.*grog@tin.it
+^From:.*jacline@dueffe.it
+^From:.*urihel@mmp2.iol.it
+^From:.*acia@tin.it
+^From:.*alexievi?c?@tin.it
+^From:.*liberal73@iname.com
+^From:.*tznt0078@pt.tizeta.it
+^From:.*paolocl@netmail.com
+^From:.*fedrox@libero.it
+^From:.*fdonline@iname.com
+^From:.*maga@provincia.ps.it
+^From:.*inaj@freemail.it
+^From:.*hot@warm.bo
+^From:.*npole@_REMOVE_bigfoot.com
+^From:.*hastaluego99@.*hotmail.com
+^From:.*bluesedelica@iol.it
+^From:.*cbu_ut@hotmail.com
+^From:.*massj@BUDDAflashmail.com
+^From:.*new@life.now
+^From:.*debian@matsumanga.co.jp
+^From:.*as.ps@flashnet.it
+^From:.*C_Zambo@iol.it
+^From:.*club.italia.milano@iol.it
+^From:.*juretto@tin.it
+^From:.*gattoone@hotmail.com
+^From:.*mariafrf@tin.it
+^From:.*tamarica@tin.it
+^From:.*nathing@tin.it
+^From:.*andreap@instation.it
+^From:.*stephendedalus1@yahoo.com
+^From:.*dpmarc@tin.it
+^From:.*torque_@hotmail.com
+^From:.*giulio_bottini@bigfoot.com
+^From:.*FOX99@mail.asianet.it
+^From:.*mpolve@tin.it
+^From:.*nino@affaritaliani.it
+^From:.*alxcost@tin.it
+^From:.*eghiani@etruria.net
+^From:.*microgest@microgest.it
+^From:.*aiax@excite.com
+^From:.*jodyrm@hotmail.com
+^From:.*menthos@posta.alinet.it
+^From:.*hongkongmail@iname.com
+^From:.*taexpo.*@idirect.ca
+^From:.*vendicator@hell.com
+^From:.*S&amp;F@tin.it
+^From:.*rick\.sabbadini@iol.it
+^From:.*condon@hotpop.com
+^From:.*wiwaxia@bigfoot.com
+#^From:.*maxadamo@tin.it
+
+######################
+# From per it.news.* #
+######################
+
+^From:.*lustfemale
+^From:.*bamoo*@sexmagnet.com
+^From:.*robcn@ibm.net
+^From:.*alessandro\.villetti@usa.net
+^From:.*f.varoli@antilink.prolink.replica.it
+^From:.*crpraolini@.*libero.it
+^From:.*jojo@arcanet.it
+^From:.*pxqpas@tin.it
+^From:.*roxana@flashnet.it
+^From:.*nstdvd@nospamtin.it
+^From:.*blisset@i.am
+^From:.*mat66@arc.it
+^From:.*pod@pineto.net
+^From:.*nicola@netstation.org
+^From:.*rcaudan@whitepower.com
+^From:.*nsj@iname.com
+^From:.*tipfkam.*@hotmail.com
+^From:.*fuoripista@altavista.net
+^From:.*fuoripista@yahoo.it
+# Pirotti.  Un uomo, un mito.
+^From:.*pirotti@ngweb.it
+^From:.*pr[ou]sper.*@.*ctonline.it
+^From:.*pirotti@tiscalinet.it
+^From:.*prpiro@tin.it
+^From:.*prosperopirotti@tin.it
+^From:.*stamink@armando.com
+
+
+###############################
+# From per it.cultura.ateismo #
+###############################
+
+^From:.*canali.massimo@tiscalinet.it
+^From:.*tito_tazio@hotmail.com
+^From:.*rcaudan@mankind.org
+^From:.*pasquale.tufano@libero.it
+^From:.*cavaliereverde@tiscalinet.it
+^From:.*botti\.d@tiscalinet.it
+^From:.*med.nat@transports.it
+^From:.*barabb\.a@iol\.it
+^From:.*Club\.italia\.milano@iol.it
+^From:.*Pietro_Buttiglione@insieme.net
+^From:.*spiritologia@iol.it
+^From:.*spiritologia@supereva.it
+^From:.*whole\.lotta@lo.ve
+^From:.*w6130370@inwind.it
+^From:.*saccoforino@yahoo.com
+^From:.*chief@etruria.net
+^From:.*mlagatt@tin.it
+^From:.*thats\.the\.way@do.it
+^From:.*shermin93@hotmail.com
+^From:.*ad549379@silab.dsi.unimi.it
+^From:.*auro\.zac@tiscalinet.it
+^From:.*picardismy@life.sbam
+^From:.*trekkers@forever.slump
+# Gianfranco Bruno.  Cerca di insidiare i record del Pirotti.
+^From:.*gbruno@webaq.it
+^From:.*vicolo_connery@yahoo.com
+^From:.*supergiaf@libero.it
+^From:.*supergiaf@tiscalinet.it
+
+
+#############################
+# Vari e ben poco eventuali #
+#############################
+
+^From:.*titanio@freemail.it
+^From:.*aledumas@libero.it
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>That's all folks!</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "configurazioneleafnode.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "leafnodeplus.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Configurazione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "leafnode.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Leafnode+</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

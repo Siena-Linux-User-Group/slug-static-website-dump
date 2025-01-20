@@ -1,0 +1,1173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type"
+content="text/html;charset=iso-8859-1" />
+<style type="text/css">
+<!--
+a:link { text-decoration; color: #cc3333 }
+a:visited { text-decoration; color: #cc3333 }
+a:active { text-decoration: underline; color: #ff0000 }
+a:hover { text-decoration: underline; color: #ff0000  }
+.testata {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 9pt; font-style: normal; color: #000000; background-color: #E8ECEC}
+.sezione {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-weight: bolder; font-variant: small-caps; color: #000000; background-color: #E8ECEC}
+.testo {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; font-style: normal; font-weight: normal; color: #000000}
+.piede {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; font-style: normal; font-weight: normal; color: #000000}
+-->
+</style>
+</head>
+
+<body>
+<table width="100%">
+<tbody>
+<tr>
+<td class="sezione"><table border="0" cellpadding="0" cellspacing="0" align="right"><tr><td><a href="http://www.apogeonline.com">www.apogeonline.com</a>&#160;</td></tr></table>Codice Libero - Capitolo 9
+</td></tr>
+
+<tr><td>
+<br>
+<table cellspacing="0" cellpadding="2"><tr align=left valign=top>
+<td>&nbsp;&nbsp;&nbsp;</td><td class="testo">
+<div class="chapter">
+<div class="titlepage">
+<div>
+<h3 class="title"><a id="IDANZIW" name="IDANZIW"></a>La GNU General Public License</h3>
+</div>
+</div>
+
+<p>Con l&#8217;arrivo della primavera 1985 Richard Stallman aveva
+posto la prima pietra miliare del progetto GNU -- la versione
+libera dell&#8217;Emacs basata su Lisp. Un obiettivo raggiunto
+dopo aver superato due grossi scogli. Prima di tutto aveva dovuto
+ricostruire l&#8217;Emacs in modo da renderlo autonomo da
+qualsiasi piattaforma. Secondo, si era reso necessario procedere
+a un&#8217;analoga revisione della Comune dell&#8217;Emacs.</p>
+
+<p>La disputa con la UniPress aveva evidenziato un difetto nel
+contratto sociale applicato all&#8217;interno di tale Comune.
+Quando gli utenti facevano pieno affidamento
+sull&#8217;esperienza tecnica di Stallman, vigeva il rispetto
+delle norme interne. In quelle aree in cui egli non conservava
+pi&#249; la posizione di hacker-leader -- ad esempio, i sistemi
+Unix anteriori al 1984 -- i singoli e le aziende erano di liberi
+di creare regole proprie.</p>
+
+<p>La tensione tra la libert&#224; di modifica e quella di
+imporre i privilegi dell&#8217;autore esisteva in epoca
+antecedente all&#8217;arrivo del GOSMACS. Il Copyright Act del
+1976 aveva riscritto le norme vigenti negli Stati Uniti,
+estendendo all&#8217;ambito del software la tutela legale del
+copyright. Secondo la Sezione 102(b) della legislazione, a
+singoli e aziende veniva garantita la protezione della
+&#8220;espressione&#8221; di un programma ma non quella relativa
+a &#8220;processi e metodi concreti utilizzati&#8221; nello
+stesso.<sup>[<a id="IDASZIW" name="IDASZIW"
+href="11.html#ftn.IDASZIW">84</a>]</sup> In altri termini, programmatori
+e aziende potevano ora trattare il software al pari di un testo
+letterario o di una canzone. L&#8217;opera avrebbe ispirato altri
+sviluppatori, ma per produrne una copia diretta o derivati
+non-satirici occorreva prima ottenere l&#8217;autorizzazione del
+creatore originale. Nonostante la nuova normativa garantisse che
+anche i programmi privi di apposito avviso fossero comunque
+tutelati, i programmatori furono lesti ad affermare i propri
+diritti, apponendo specifiche postille sul copyright per ogni
+software realizzato.</p>
+
+<p>Inizialmente Stallman consider&#242; con allarmismo quelle
+diciture. Era raro il caso di un programma che non prendesse in
+prestito parti di codice da un qualche software precedente, e
+tuttavia era bastata la firma del Presidente e la volont&#224;
+del Congresso per consentire a programmatori e aziende di
+affermare la propriet&#224; individuale su quella comune nella
+scrittura dei programmi. Ci&#242; introdusse inoltre una buona
+dose di formalismo all&#8217;interno di un sistema
+precedentemente del tutto informale. Anche quando gli hacker
+potevano dimostrare che il codice di un certo programma risaliva
+in realt&#224; a qualche anno addietro, se non spesso a decenni,
+le risorse e il denaro necessari per controbattere legalmente la
+veridicit&#224; di ogni dicitura relativa al copyright superavano
+di gran lunga i mezzi a loro disposizione. Per dirla in maniera
+semplice, le dispute una volta risolte faccia a faccia tra gli
+hacker venivano ora passate ai rispettivi avvocati. In questo
+tipo di sistema erano le aziende, non i singoli programmatori, a
+trovarsi automaticamente in una posizione di vantaggio.</p>
+
+<p>I sostenitori del copyright per il software avevano dalla loro
+qualche buon argomento: senza quella tutela, le opere potevano
+scivolare nel dominio pubblico. L&#8217;apposizione delle
+relative note serviva anche come una sorta di bollino di
+qualit&#224;. I programmatori o le aziende che associavano il
+proprio nome al copyright mettevano anche in gioco la propria
+reputazione. Si trattava infine di un contratto e di
+un&#8217;affermazione di propriet&#224;. Usando il copyright come
+una forma di licenza elastica, l&#8217;autore poteva concedere
+alcuni diritti in cambio di determinati comportamenti imposti
+all&#8217;utente. Ad esempio, un autore poteva decidere di
+rinunciare al diritto di sopprimere copie non autorizzate del
+programma se in cambio l&#8217;utente si dichiarava
+d&#8217;accordo a non crearne derivati commerciali.</p>
+
+<p>Si deve a quest&#8217;ultima posizione un certo alleggerimento
+finale della resistenza di Stallman alle note sul copyright
+apposte in calce al software. Ripensando a quegli anni
+preparatori al progetto GNU, egli sostiene di avere iniziato a
+percepire la natura benefica del copyright all&#8217;incirca nel
+periodo in cui venne diffuso l&#8217;Emacs 15.0, ultimo
+aggiornamento significativo del programma precedente al progetto
+GNU. &#8220;Avevo notato dei messaggi e-mail contenenti diciture
+sul copyright con l&#8217;aggiunta di semplici licenze tipo
+&#8216;consentita la copia letterale&#8217;&#8221; ricorda
+Stallman. &#8220;Ci&#242; mi fu di grande ispirazione.&#8221;</p>
+
+<p>Per l&#8217;Emacs 15.0, Stallman butt&#242; gi&#249; una
+postilla sul copyright in cui si consentiva agli utenti il
+diritto di produrre e distribuire copie, comprese le versioni
+modificate, ma non quello di reclamare la propriet&#224;
+esclusiva di tali versioni, come nel caso del GOSMACS.</p>
+
+<p>Pur risultando d&#8217;aiuto nella stesura del contratto
+sociale per la Comune dell&#8217;Emacs, quel testo si
+dimostr&#242; eccessivamente &#8220;informale&#8221; per gli
+obiettivi del progetto GNU, spiega Stallman. Qualche tempo dopo
+l&#8217;avvio della realizzazione di GNU Emacs, egli inizi&#242;
+a consultarsi con gli altri membri della Free Software Foundation
+sul modo di migliorare il linguaggio di quella licenza. Si
+consigli&#242; anche con i legali che l&#8217;avevano assistito
+nel lancio della stessa FSF.</p>
+
+<p>Mark Fischer, avvocato di Boston specializzato sulle questioni
+relative alla propriet&#224; intellettuale, ricorda le
+discussioni con Stallman di quel periodo. &#8220;Richard aveva
+un&#8217;opinione assai precisa sulle modalit&#224; di
+funzionamento&#8221;, afferma Fischer. &#8220;Partiva da due
+principi di base. Primo, fare in modo che il software rimanesse
+il pi&#249; aperto possibile. Secondo, incoraggiare gli altri ad
+adottare le medesime procedure sulle licenze.&#8221;</p>
+
+<p>Quest&#8217;ultimo punto significava tappare le falle da cui
+erano emerse le diverse versioni private dell&#8217;Emacs. Per
+farlo, Stallman e i colleghi del software libero trovarono una
+soluzione: gli utenti sarebbero stati liberi di modificare il GNU
+Emacs fin tanto che ne pubblicavano ogni cambiamento. Inoltre, le
+opere &#8220;derivate&#8221; avrebbero mantenuto l&#8217;identica
+licenza apposta in calce a quel programma.</p>
+
+<p>Occorrer&#224; tempo prima di rendersi pienamente conto della
+natura rivoluzionaria insita in quest&#8217;ultima norma. Allora,
+aggiunge Fischer, egli aveva considerato la licenza
+dell&#8217;Emacs per GNU come un semplice contratto. Metteva il
+cartellino del prezzo sull&#8217;utilizzo del programma.
+Anzich&#233; denaro, Stallman imponeva agli utenti il pieno
+accesso alle modifiche successive. Ci&#242; detto, per&#242;,
+Fischer non manca di sottolineare l&#8217;originalit&#224; dei
+termini contrattuali.</p>
+
+<p>&#8220;Credo che il fatto di chiedere agli altri di accettare
+di quel prezzo costituisse qualcosa di veramente insolito, se non
+proprio unico, per quell&#8217;epoca&#8221;, rammenta.</p>
+
+<p>La licenza fece il suo debutto nel 1985 in occasione della
+diffusione del GNU Emacs. In quella circostanza Stallman
+incoraggi&#242; i commenti della comunit&#224; hacker in generale
+su eventuali miglioramenti da apportare al linguaggio della
+licenza. A farsi avanti fu John Gilmore, hacker allora consulente
+per la Sun Microsystems e futuro attivista a sostegno del
+software libero. Come parte del suo lavoro di consulenza, Gilmore
+aveva adattato l&#8217;Emacs per il SunOS, versione locale di
+Unix. Nel corso del processo, ne aveva pubblicato i cambiamenti
+seguendo i dettati della relativa licenza. Anzich&#233;
+considerare quest&#8217;ultima un&#8217;affermazione di
+responsabilit&#224;, la intese come chiara e concisa espressione
+dell&#8217;ethos tipico degli hacker. &#8220;Fino ad allora gran
+parte delle licenze ricorrevano a un linguaggio decisamente
+informale&#8221;, spiega Gilmore.</p>
+
+<p>E cita come esempio una nota sul copyright, risalente agli
+anni &#8216;80, relativa a <span
+class="emphasis"><em>trn</em></span>, una utility Unix scritta da
+Larry Wall, futuro creatore dell&#8217;utlity &#8220;patch&#8221;
+per Unix nonch&#233; del linguaggio di scripting Perl. Nella
+speranza di mantenere un certo equilibrio fra la cortesia tipica
+di un hacker e il suo diritto di creatore a stabilire le
+modalit&#224; ci pubblicazione del software, Wall inser&#236;
+nell&#8217;allegato file README la seguente dicitura sul
+copyright:</p>
+
+<blockquote class="blockquote">
+<p>Copyright (c) 1985, Larry Wall</p>
+
+<p>Potete copiare il kit trn per intero o in parte, senza
+per&#242; cercare di guadagnarci oppure di fingere di averlo
+scritto voi.<sup>[<a id="IDAI0IW" name="IDAI0IW"
+href="11.html#ftn.IDAI0IW">85</a>]</sup></p>
+</blockquote>
+
+<p>Simili annotazioni, pur se in sintonia con l&#8217;etica
+hacker, riflettono anche la difficolt&#224; di tradurre la natura
+agile e informale di tale etica nel linguaggio rigido e legale
+del copyright. Stilando il testo per la licenza dell&#8217;Emacs
+versione GNU, Stallman fece qualcosa in pi&#249; che bloccare la
+fuga verso derivati proprietari. Riusc&#236; a esprimere
+l&#8217;etica hacker in maniera comprensibile sia per gli
+avvocati sia per gli stessi hacker.</p>
+
+<p>Non pass&#242; molto tempo, aggiunge Gilmore, che altri hacker
+iniziarono a discutere le modalit&#224; per adattare tale licenza
+ai propri programmi. Stimolato da un&#8217;analoga conversazione
+su Usenet, nel novembre 1986 Gilmore invi&#242; una e-mail a
+Stallman suggerendo alcune modifiche:</p>
+
+<blockquote class="blockquote">
+<p>Forse dovresti eliminare dal testo &#8220;EMACS&#8221; per
+sostituirlo con &#8220;SOFTWARE&#8221; o qualcosa di simile.
+Presto, speriamo, l&#8217;Emacs cesser&#224; di essere la parte
+pi&#249; consistente del sistema GNU, e la licenza va invece
+applicata al sistema per intero.<sup>[<a id="IDAR0IW"
+name="IDAR0IW" href="11.html#ftn.IDAR0IW">86</a>]</sup></p>
+</blockquote>
+
+<p>Gilmore non si mostr&#242; l&#8217;unico a suggerire un
+approccio pi&#249; generalizzato. Alla fine del 1986, lo stesso
+Stallman era tutto preso dalla successiva pietra miliare del
+progetto GNU, un &#8220;debugger&#8221; per codice sorgente e
+stava cercando di rivedere la licenza dell&#8217;Emacs in modo da
+poterla applicare a entrambi i programmi. Soluzione: eliminare
+ogni specifico riferimento all&#8217;Emacs per convertirla in un
+copyright generico che abbracciasse l&#8217;intero progetto GNU.
+Nacque cos&#236; la GNU General Public License, meglio nota con
+l&#8217;acronimo GPL.</p>
+
+<p>In questo caso Stallman ader&#236; alla convenzione di
+ricorrere ai numeri decimali per indicare le versioni
+sperimentali e ai numeri interi per quelle pi&#249; stabili. La
+versione 1.0 venne pubblicata nel 1989 e proposta come licenza
+ufficiale di GNU Emacs e di GNU debugger, il secondo importante
+successo di Stallman nel regno della programmazione Unix. La
+licenza si apriva con un preambolo a chiarimento delle
+prospettive politiche:</p>
+
+<blockquote class="blockquote">
+<p>La General Public License &#232; redatta in modo da garantire
+la libert&#224; di regalare o vendere copie di software libero,
+di ricevere o ottenere il codice sorgente desiderato, di
+modificare il software o usarne parti all&#8217;interno di nuovi
+programmi liberi; e di informare l&#8217;utente su tutto
+ci&#242;.</p>
+
+<p>A tutela dei diritti dell&#8217;utente, dobbiamo stabilire
+delle restrizioni in modo da impedire a chicchessia di negarvi
+tali diritti o chiedervi di rinunciarvi. Queste restrizioni
+comportano determinate responsabilit&#224; a vostro carico nel
+caso vogliate distribuire copie del software, oppure apportarvi
+delle modifiche.<sup>[<a id="IDAY0IW" name="IDAY0IW"
+href="11.html#ftn.IDAY0IW">87</a>]</sup></p>
+</blockquote>
+
+<p>Mentre lavorava alla stesura del testo, Stallman fu costretto
+a rivedere ulteriormente le linee-guida informali relative alla
+vecchia Comune dell&#8217;Emacs. Laddove una volta chiedeva a
+ogni aderente di pubblicarne tutti i cambiamenti apportati, ora
+la richiesta si limitava soltanto a quei casi in cui i
+programmatori facevano circolare le versioni derivate
+all&#8217;interno del medesimo ambito pubblico in cui operava
+Stallman. In altri termini, i programmatori che modificavano
+l&#8217;Emacs puramente a uso privato non dovevano pi&#249;
+metterlo a conoscenza del nuovo codice. In quello che sarebbe
+divenuto un raro compromesso nella dottrina del software libero,
+decise in tal modo di ridurne drasticamente il prezzo. Gli utenti
+avrebbero potuto introdurre innovazioni senza il suo consenso
+fintanto che non ponevano alcun divieto allo stesso Stallman e al
+resto della comunit&#224; hacker per quanto riguardava i
+successivi scambi del medesimo programma.</p>
+
+<p>Guardando indietro, Stallman ritiene che il compromesso sulla
+GPL fosse dovuto alla propria insoddisfazione per la connotazione
+da Grande Fratello del contratto sociale originario della Comune
+dell&#8217;Emacs. Per quanto gli piacesse curiosare nei sistemi
+altrui, la possibilit&#224; che qualcuno incaricato del
+mantenimento del codice di un programma potesse usare tale potere
+in maniera distorta lo convinse a moderare i toni della GPL.</p>
+
+<p>&#8220;Non mi sembrava giusto imporre la pubblicazione di
+tutti i cambiamenti&#8221;, sostiene Stallman. &#8220;Era
+sbagliato richiederne l&#8217;inoltro a un unico sviluppatore
+privilegiato. Quel tipo di centralizzazione e di prerogativa
+riservata a un singolo individuo faceva a pugni con una
+societ&#224; in cui vigono uguali diritti per tutti.&#8221;</p>
+
+<p>&#200; cos&#236; che la GPL rimane una delle migliori creature
+partorite da Stallman. Grazie a essa, venne a crearsi un sistema
+di propriet&#224; condivisa all&#8217;interno dei normali confini
+della legislazione sul copyright. Fatto ancor pi&#249;
+importante, questo mise in evidenza la somiglianza intellettuale
+tra il codice legale e quello del software. Il preambolo della
+GPL conteneva un profondo messaggio implicito: anzich&#233;
+considerare con sospetto le norme sul copyright, gli hacker
+avrebbero dovuto interpretarle come un ulteriore contesto su cui
+poter intervenire.</p>
+
+<p>&#8220;La GPL prese forma in maniera analoga a qualsiasi
+programma di software libero, facendo affidamento su
+un&#8217;ampia comunit&#224; che ne discuteva la struttura, sul
+rispetto delle posizioni contrarie, sulla necessit&#224; di
+addolcirla e anche di trovare un compromesso per garantirne la
+maggiore accettazione possibile&#8221;, sostiene Jerry Cohen, un
+altro avvocato che aiut&#242; Stallman nella messa a punto della
+licenza. &#8220;Il procedimento funzion&#242; molto bene e nelle
+successive versioni della GPL si &#232; passati da una reazione
+diffusamente scettica e talvolta ostile a un&#8217;accettazione
+assai vasta.&#8221;</p>
+
+<p>In un&#8217;intervista apparsa nel 1986 sulla rivista <span
+class="emphasis"><em>Byte</em></span>, Stallman sintetizza la GPL
+in toni coloriti. Oltre a una dichiarazione dei valori hacker,
+disse, i lettori dovrebbero considerarla anche &#8220;come una
+forma di jujitsu intellettuale, dove il sistema legale impostato
+dai magnati del software si ritorce contro di
+loro&#8221;.<sup>[<a id="IDAF1IW" name="IDAF1IW"
+href="11.html#ftn.IDAF1IW">88</a>]</sup> Qualche anno dopo, Stallman ne
+avrebbe descritto la creazione in termini meno duri. &#8220;Mi
+trovai a riflettere su diverse questioni a livello etico,
+politico e legale&#8221;, spieg&#242;. &#8220;Dovevo cercare di
+mettere insieme qualcosa che potesse rientrare nell&#8217;attuale
+sistema legale. Lo spirito del lavoro voleva porre le basi
+normative per una societ&#224; di tipo nuovo ma, visto che non
+rappresentavo alcun governo, in realt&#224; non potevo modificare
+alcuna normativa. Dovevo provarci tenendo conto dei sistemi
+legali attualmente in vigore, i quali non prevedevano nulla di
+simile.&#8221;</p>
+
+<p>Mentre Stallman rifletteva sulle questioni etiche, politiche e
+legali legate al software libero, un hacker californiano
+rispondente al nome di Don Hopkins gli risped&#236; un manuale
+per il microprocessore 68000. Hopkins, specializzato in Unix e
+amante della fantascienza, lo aveva ricevuto in prestito da
+Stallman tempo addietro. In segno di riconoscenza, Hopkins
+decor&#242; la busta con adesivi presi a un incontro locale sulla
+fantascienza. Uno di questi cattur&#242; l&#8217;attenzione di
+Stallman. Diceva, &#8220;Copyleft (L), All Rights Reversed&#8221;
+(Copyleft (L), tutti i diritti rovesciati).<sup>[<a id="IDAS1IW"
+name="IDAS1IW" href="11.html#ftn.IDAS1IW">89</a>]</sup></p>
+
+<p>Con la diffusione della prima versione della GPL, egli decise
+di adattarvi quella dicitura, dando alla licenza sul software
+libero il soprannome di &#8220;Copyleft&#8221;. Col tempo, tale
+soprannome e il relativo simbolo, una &#8220;C&#8221; rovesciata,
+sarebbero divenuti il sinonimo ufficiale apposto dalla stessa
+Free Software Foundation a ogni tipo di copyright &#8220;che
+vuole che ogni programma sia &#8216;software libero&#8217; e che
+lo stesso valga per tutte le sue versioni modificate e
+ampliate&#8221;.</p>
+
+<p>Una volta il sociologo tedesco Max Weber avanz&#242; il
+sospetto che tutte le grandi religioni siano fondate sulla
+&#8220;routinizzazione&#8221; o
+l&#8217;&#8220;istituzionalizzazione&#8221; del carisma. Ogni
+religione di successo, sosteneva Weber, converte il carisma o il
+messaggio del leader originario in un apparato sociale, politico
+ed etico pi&#249; facilmente traducibile nel passaggio tra le
+varie epoche e culture.</p>
+
+<p>Pur se di natura tutt&#8217;altro che religiosa, la GPL si
+pone certamente come interessante esempio di un analogo
+&#8220;processo di routinizzazione&#8221; attivato
+all&#8217;interno dell&#8217;ambito moderno e decentralizzato
+tipico dello sviluppo del software. Fin dalla sua diffusione, i
+programmatori e le aziende che si erano dimostrati poco fedeli o
+leali nei confronti di Stallman optarono per l&#8217;immediata
+accettazione dei termini previsti dalla GPL. Per alcuni essa si
+&#232; addirittura trasformata in un meccanismo preventivo per la
+tutela dei propri programmi. Anche quanti la rifiutano
+ritenendola un contratto che comporta obblighi eccessivi non
+possono fare a meno di confermarne l&#8217;importanza.</p>
+
+<p>Uno degli hacker che rientra in quest&#8217;ultimo gruppo
+&#232; Keith Bostic, impiegato presso la University of California
+all&#8217;epoca in cui venne diffusa la GPL 1.0. Il dipartimento
+in cui lavorava, il Computer Systems Research Group, ha
+partecipato allo sviluppo di Unix a partire dalla fine degli anni
+&#8216;70 ed era responsabile di numerose parti-chiave del
+sistema, tra cui il protocollo di rete TCP/IP, pietra miliare
+delle attuali comunicazioni via Internet.</p>
+
+<p>Al tramonto degli anni '80, la AT&amp;T, proprietario
+originario del marchio Unix, avvi&#242; la fase di
+commercializzazione del sistema e inizi&#242; a considerare la
+Berkeley Software Distribution, o BSD, versione accademica dello
+stesso of Unix sviluppato da Bostic e dai colleghi di Berkeley,
+come elemento chiave per la messa a punto della tecnologia
+commerciale.</p>
+
+<p>Sebbene il codice della BSD venisse condiviso tra ricercatori
+e programmatori commerciali tramite un&#8217;apposita licenza,
+l&#8217;operazione presentava un problema. Il codice della
+Berkeley Software Distribution era inframmezzato con il codice
+proprietario della AT&amp;T. Di conseguenza le distribuzioni
+della prima erano disponibili soltanto per quelle istituzioni
+gi&#224; in possesso di una licenza della AT&amp;T. Quando
+quest&#8217;ultima decise di alzare i prezzi, tale soluzione,
+inizialmente considerata innocua, apparve sempre pi&#249;
+onerosa.</p>
+
+<p>Assunto nel 1986, Bostic si era incaricato di trasportare la
+BSD sul computer PDP-11 della Digital Equipment Corporation. Fu
+in questo periodo, spiega lo stesso Bostic, che si trov&#242; in
+stretto contatto con Stallman durante le occasionali visite di
+quest&#8217;ultimo in California. &#8220;Ricordo particolarmente
+le animate discussioni sul copyright, seduti davanti ai terminali
+del Computer Systems Research Group&#8221;, afferma Bostic.
+&#8220;Discussioni che continuavamo poi a cena.&#8221;</p>
+
+<p>Alla fine le diverse posizioni portarono a qualcosa di
+concreto, sebbene in una direzione diversa da quella auspicata da
+Stallman. Nel giugno 1989, la Berkeley Software Distribution
+separ&#242; il proprio codice di rete dal resto del sistema
+operativo di propriet&#224; della AT&amp;T e inizi&#242; a
+distribuirlo sotto una licenza rilasciata dalla University of
+California. I termini del contratto sembravano alquanto aperti.
+Tutto quello che si richiedeva all&#8217;utente era di dare
+esplicito riconoscimento all&#8217;Universit&#224; nelle
+eventuali inserzioni pubblicitarie previste per i programmi
+derivati.<sup>[<a id="IDA41IW" name="IDA41IW"
+href="11.html#ftn.IDA41IW">90</a>]</sup> Al contrario della GPL,
+venivano consentite le derivazioni proprietarie. La rapida
+adozione di tale licenza fu frenata per&#242; da
+un&#8217;importante limitazione: la versione della BSD non era un
+sistema operativo completo. Se ne poteva studiare il codice, ma
+questo funzionava soltanto se integrato in altri programmi
+proprietari.</p>
+
+<p>Nel corso degli anni successivi, Bostic e altri programmatori
+della University of California lavorarono alla sostituzione dei
+componenti mancanti, trasformando cos&#236; la BSD in un sistema
+operativo completo e liberamente distribuibile. Pur se in ritardo
+per via di una disputa legale avviata dalla Unix Systems
+Laboratories -- la sussidiaria della AT&amp;T che rilev&#242; la
+propriet&#224; del marchio Unix -- quello sforzo avrebbe prodotto
+frutti all&#8217;alba degli anni '90. Ma ancor prima, parecchie
+utility incluse nella BSD erano gi&#224; finite nel progetto GNU
+di Stallman.</p>
+
+<p>&#8220;Non credo che saremmo mai riusciti ad andare cos&#236;
+forte senza l&#8217;influenza di GNU&#8221;, sostiene Bostic,
+ripensando a quel periodo. &#8220;Era chiaramente un progetto in
+cui in credevano molto e l&#8217;idea piacque anche a
+noi.&#8221;</p>
+
+<p>Fu verso la fine degli anni &#8217;80 che la GPL inizi&#242; a
+esercitare un effetto gravitazionale sulla comunit&#224; del
+software libero. Non occorreva che un programma usasse quella
+licenza per ottenere la qualifica di software libero -- lo
+testimoniano le utility della BSD -- ma aderendovi avrebbe
+diffuso un preciso messaggio. &#8220;Direi che l&#8217;esistenza
+stessa della GPL ispir&#242; molta gente a chiedersi se il
+software su cui stavano lavorando fosse davvero libero e quale
+fosse la licenza pi&#249; adeguata sotto cui distribuirlo&#8221;,
+sostiene Bruce Perens, creatore di Electric Fence, nota utility
+Unix, e futuro leader del gruppo di sviluppo di Debian per
+GNU/Linux. Qualche anno dopo la diffusione della GPL, Perens
+rammenta di aver abbandonato la licenza prevista per Electric
+Fence, preferendo adottare quella pi&#249; corretta a livello
+legale messa a punto da Stallman. &#8220;In realt&#224; si
+rivel&#242; un&#8217;operazione assai semplice&#8221;, ricorda
+Perens.</p>
+
+<p>Rich Morin, un programmatore che aveva preso l&#8217;annuncio
+iniziale di Stallman con un certo scetticismo, ricorda di essere
+rimasto impressionato dal software che inizi&#242; a raggrupparsi
+sotto l&#8217;egida della GPL. Nella posizione di leader di uno
+user group dedicato a SunOS, uno dei compiti primari di Morin
+negli anni &#8217;80 riguardava la distribuzione di nastri
+contenenti le migliori utility freeware o free software.
+Un&#8217;attivit&#224; che lo obbligava a contattare gli autori
+originari per verificare se i loro programmi fossero protetti da
+copyright oppure di dominio pubblico. Fu intorno al 1989, afferma
+Morin, che inizi&#242; a notare come il miglior software
+rientrasse generalmente sotto la licenza GPL. &#8220;Nella mia
+posizione di distributore di software, non appena vedevo la firma
+GPL la considerato una sicura garanzia&#8221;, ricorda Morin.</p>
+
+<p>A copertura del lavoro necessario per la distribuzione di quei
+nastri ai membri del Sun User Group, Morin era solito chiedere
+loro un rimborso. Ora, con il passaggio dei programmi sotto la
+GPL, si trovava improvvisamente a mettere insieme quelle raccolte
+in met&#224; tempo, ottenendo perfino qualche minimo profitto.
+Intuendo l&#8217;opportunit&#224; commerciale, Morin
+trasform&#242; l&#8217;hobby in attivit&#224; imprenditoriale
+sotto il nome di Prime Time Freeware.</p>
+
+<p>Iniziative commerciali del genere rientravano pienamente nei
+confini progettuali del software libero. &#8220;Quando parliamo
+di software libero ci riferiamo alla libert&#224;, non al valore
+monetario&#8221;, spiegava Stallman nel preambolo alla GPL. A
+partire dagli anni &#8217;90, raffin&#242; il concetto con una
+battuta pi&#249; semplice: &#8220;Non pensiamo a
+&#8216;free&#8217; (libero o gratuito) come in &#8216;free
+beer&#8217; (birra gratis), ma piuttosto come in &#8216;free
+speech&#8217; (libert&#224; d&#8217;espressione)&#8221;.</p>
+
+<p>Per lo pi&#249; le aziende ignorarono le puntualizzazioni di
+Stallman. Eppure per alcuni imprenditori il termine
+&#8220;freedom&#8221; (libert&#224;) associato al software libero
+rivestiva un significato identico a quello di &#8220;free
+market&#8221; (libero mercato). Eliminiamo la propriet&#224; del
+software dall&#8217;equazione commerciale e avremo una situazione
+in cui perfino la pi&#249; piccola delle aziende si sentir&#224;
+libera di competere contro giganti come l&#8217;IBM e la
+Digital.</p>
+
+<p>Uno dei primi imprenditori ad appropriarsi di una simile idea
+fu Michael Tiemann, programmatore e laureando presso la Stanford
+University. Durante gli anni &#8216;80, Tiemann aveva seguito il
+progetto GNU come un aspirante musicista jazz segue
+l&#8217;artista preferito. Dovette tuttavia attendere la
+distribuzione del GNU Compiler C (GCC) del 1987 prima di poter
+afferrare in pieno le potenzialit&#224; del software libero.
+Definendolo &#8220;una bomba&#8221;, Tiemann ritiene la sola
+esistenza di quel programma sufficiente a evidenziare la
+determinazione di Stallman nelle vesti di programmatore.</p>
+
+<p>&#8220;Proprio come ogni scrittore sogna di scrivere un grande
+romanzo, cos&#236; negli anni &#8217;80 ogni programmatore non
+parlava d&#8217;altro se non di realizzare un grande
+compilatore&#8221;, rammenta Tiemman. &#8220;Improvvisamente
+Stallman ci era riuscito. Fu una cosa umiliante.&#8221;</p>
+
+<p>&#8220;Se vogliamo isolare un solo punto di svolta, quello fu
+il GCC&#8221;, concorda Bostic. &#8220;Prima del suo lancio,
+nessuno poteva vantarsi di avere un compilatore.&#8221;</p>
+
+<p>Anzich&#233; competere con Stallman, Tiemann decise di
+costruire qualcosa a partire dal suo lavoro. La versione
+originale del compilatore occupava 110.000 righe di codice, ma
+Tiemann lo ricorda come sorprendentemente semplice da capire. Era
+talmente semplice che in realt&#224; gli ci vollero meno di
+cinque giorni per impararlo e un&#8217;ulteriore settimana per
+adattarlo a una nuova piattaforma hardware, il microchip 32032
+della National Semiconductor. Nel corso dell&#8217;anno
+successivo, Tiemann inizi&#242; a giocare con il codice, finendo
+col creare un compilatore nativo per il linguaggio C++. Un
+giorno, intervenendo a un evento presso i Bell Labs, Tiemann
+venne a sapere che alcuni sviluppatori della AT&amp;T erano alle
+prese con un identico progetto.</p>
+
+<p>&#8220;In sala c&#8217;erano 40 o 50 persone, e chiesi se
+qualcuno stesse lavorando a quel compilatore&#8221;, ricorda.
+&#8220;Uno di loro rispose che si trattava di
+un&#8217;informazione riservata, aggiungendo per&#242; che una
+semplice occhiata in giro sarebbe stata sufficiente a fornirmi il
+quadro della situazione.&#8221;</p>
+
+<p>Comunque sia, l&#8217;idea giusta prese corpo qualche tempo
+dopo. &#8220;Lavoravo a quel progetto ormai da sei mesi. Pensai,
+&#8216;non so se dipende da me o dal codice, ma il livello di
+efficacia raggiunto &#232; tale da potersi aspettare qualche tipo
+di ricompensa dal libero mercato&#8217;&#8221;, chiarisce
+Tiemann.</p>
+
+<p>Un&#8217;ulteriore fonte d&#8217;ispirazione giunse dal
+Manifesto GNU il cui testo, pur ferendo la cupidigia di alcuni
+rivenditori, ne incoraggia altri a considerare i vantaggi del
+software libero dal punto di vista del consumatore. Eliminando il
+potere del monopolio dall&#8217;ambito del software commerciale,
+la GPL consente infatti ai distributori pi&#249; accorti di
+competere efficacemente nell&#8217;ambito dei servizi e della
+consulenza, le due aree pi&#249; redditizie di quel mercato.</p>
+
+<p>In un saggio redatto nel 1999, Tiemann ricorda l&#8217;impatto
+del Manifesto di Stallman. &#8220;[...] in superficie pu&#242;
+apparire polemica socialista, ma io vi ho trovato qualcosa di
+diverso. Nascosto tra le righe vi ho intravisto un progetto
+commerciale.&#8221;<sup>[<a id="IDAU2IW" name="IDAU2IW"
+href="11.html#ftn.IDAU2IW">91</a>]</sup></p>
+
+<p>In collaborazione con John Gilmore, altro entusiasta del
+progetto GNU, Tiemann lanci&#242; cos&#236; un servizio di
+consulenza dedicato alla personalizzazione di programmi GNU. Con
+il nome di Cygnus Support, la societ&#224; firm&#242; il suo
+primo contratto nel febbraio 1990. A fine anno ne aveva raccolti
+per un valore complessivo pari a 725.000 dollari.</p>
+
+<p>GNU Emacs, GDB e GCC erano i &#8220;tre grandi&#8221; tra gli
+strumenti per sviluppatori, ma non furono gli unici messi a punto
+da Stallman durante i primi cinque anni del progetto GNU. Entro
+il 1990, Stallman aveva realizzato anche la versione GNU della
+Bourne Shell (ribattezzata Bourne Again Shell, o BASH), YACC
+(rinominata Bison), e awk (gawk). Al pari di GCC, ciascun
+programma GNU era studiato per girare su molteplici sistemi, non
+unicamente sulla piattaforma di un solo produttore. Con
+l&#8217;intento di fornire maggiore elasticit&#224; a quei
+programmi, spesso Stallman e i suoi collaboratori finivano per
+renderli anche pi&#249; utili.</p>
+
+<p>Riferendosi all&#8217;approccio universale di GNU, Morin della
+Prime Time Freeware sottolinea in particolare un pacchetto,
+importante pur se di portata ridotta, chiamato <span
+class="emphasis"><em>hello</em></span>. &#8220;Si tratta di un
+programma composto da cinque righe in C, organizzato come fosse
+una distribuzione GNU&#8221;, spiega Morin. &#8220;In tal modo
+riusc&#236; a conquistarsi moduli tipo il &#8216;Texinfo&#8217; e
+il &#8216;configure&#8217;. Per consentire al software di
+adattarsi facilmente ad ambienti diversi, si &#232; cio&#232;
+avvalso di tutti gli altri accessori utilizzati dal progetto GNU.
+Si tratta di un&#8217;operazione di estrema importanza che
+fin&#236; per estendersi non soltanto a tutto il software [di
+Stallman] ma anche a quello del progetto GNU.&#8221;</p>
+
+<p>Secondo Stallman, il miglioramento dei programmi rappresentava
+un&#8217;attivit&#224; secondaria rispetto alla loro scrittura.
+&#8220;Non ero affatto certo di essere in grado di perfezionare
+questo o quel programma&#8221;, spieg&#242; nell&#8217;intervista
+a <span class="emphasis"><em>Byte</em></span>. &#8220;Quando ci
+riuscivo, in un certo senso a beneficiarne era la procedura di
+re-implementazione, operazione che tende in ogni caso a
+migliorare le prestazioni di ogni sistema. D&#8217;altra parte,
+ci&#242; pu&#242; accadere perch&#233; &#232; da molto tempo che
+lavoro su sistemi diversi, di conseguenza mi vengono buone idee
+per adattarli al meglio.&#8221;<sup>[<a id="IDAA3IW"
+name="IDAA3IW" href="11.html#ftn.IDAA3IW">92</a>]</sup></p>
+
+<p>Comunque sia, mentre sul finire degli anni &#8217;80 gli
+strumenti GNU iniziavano a lasciare il segno, la reputazione
+acquisita da Stallman all&#8217;epoca del laboratorio di
+intelligenza artificiale, per quanto riguarda l&#8217;eccessiva
+pignoleria progettuale, divenne leggendaria nell&#8217;intera
+comunit&#224; degli sviluppatori.</p>
+
+<p>Jeremy Allison, allora utente Sun e programmatore destinato a
+lanciare un decennio pi&#249; avanti un proprio progetto di
+software libero, Samba, rammenta quella reputazione ridendoci
+sopra. Durante gli ultimi anni '80, Allison inizi&#242; a usare
+l&#8217;Emacs. Ispirato dal modello di sviluppo comunitario, dice
+di aver inviato a Stallman il proprio contributo solo per
+vederselo rifiutare.</p>
+
+<p>&#8220;Si pu&#242; riassumere il tutto con un titolo della
+testata satirica online <span
+class="emphasis"><em>Onion</em></span>&#8221;, scherza Allison.
+&#8220;Qualcosa tipo, &#8216;Dio dice no alle preghiere di un
+fanciullo.&#8217;&#8221;</p>
+
+<p>La crescente statura di Stallman come programmatore veniva
+tuttavia controbilanciata dai problemi in cui si dibatteva nelle
+vesti di project manager. Anche se GNU passava di successo in
+successo nella creazione di strumenti per lo sviluppo,
+l&#8217;incapacit&#224; di generare un kernel funzionante -- il
+programma di controllo centrale di tutti i sistemi Unix capace di
+determinare quali periferiche e applicazioni debbano avere
+accesso al microprocessore e quando -- anche prima della fine
+degli anni &#8217;80 stava provocando qualche mugugno di
+delusione.</p>
+
+<p>Come per gli altri componenti del progetto GNU, Stallman ne
+aveva iniziato lo sviluppo cercando un programma gi&#224; in
+circolazione da modificare. Secondo la &#8220;GNUsletter&#8221;
+della fine degli anni &#8217;80, questo approccio, come il
+tentativo iniziale di costruire GCC partendo da Pastel, era
+tutt&#8217;altro che ottimale. Una GNUsletter del gennaio 1987
+riporta che il progetto GNU stava lavorando al rifacimento di
+TRIX, un kernel Unix realizzato al MIT.</p>
+
+<p>Nel febbraio del 1987, una newsletter segnala che il progetto
+aveva spostato l&#8217;attenzione su Mach, un
+&#8220;micro-kernel&#8221; leggero sviluppato presso la Carnegie
+Mellon. Ci&#242; nonostante, il lavoro effettivo sul kernel del
+progetto GNU non prese ufficialmente il via prima del
+1990.<sup>[<a id="IDAK3IW" name="IDAK3IW"
+href="11.html#ftn.IDAK3IW">93</a>]</sup></p>
+
+<p>Un simile ritardo rappresentava soltanto una delle numerose
+preoccupazioni che incombevano su Stallman in quel periodo. Nel
+1989, la Lotus Development Corporation avvi&#242; una azione
+legale contro un&#8217;azienda rivale, la Paperback Software
+International, per aver copiato i comandi del menu presenti nel
+popolare spreadsheet Lotus 1-2-3. La denuncia della Lotus, in
+aggiunta alla battaglia Apple-Microsoft sull&#8217;aspetto tipico
+delle applicazioni, provoc&#242; una ricaduta problematica per il
+progetto GNU. Anche se le due vicende giudiziarie esulavano dagli
+obiettivi perseguiti da tale progetto, entrambe riguardavano
+sistemi operatavi e applicazioni realizzate per il personal
+computer -- non per sistemi compatibili con Unix -- minacciavano
+comunque di propagare un micidiale effetto a catena
+sull&#8217;intera cultura degli sviluppatori. Deciso a far
+qualcosa, Stallman incaric&#242; alcuni amici programmatori di
+realizzare un&#8217;inserzione pubblicitaria per alcune riviste
+per opporsi alle due vertenze. Prosegu&#236; poi avviando
+l&#8217;organizzazione di un gruppo di protesta contro simili
+iniziative delle corporation. Sotto il nome di League of
+Programming Freedom (Lega per la libert&#224; di programmazione),
+il gruppo tenne dimostrazioni di protesta davanti agli uffici
+della Lotus e all&#8217;aula giudiziaria di Boston che ospitava
+il processo.</p>
+
+<p>Proteste che ottennero una certa visibilit&#224;,<sup>[<a
+id="IDAR3IW" name="IDAR3IW" href="11.html#ftn.IDAR3IW">94</a>]</sup>
+poich&#233; documentavano la natura in continua evoluzione
+dell&#8217;industria del software. Le applicazioni avevano
+silenziosamente sostituito i sistemi operativi come principale
+campo di battaglia delle grandi aziende. Nella sua ricerca senza
+esito di costruire un sistema operativo di software libero, il
+progetto GNU sembrava per&#242; perdere irrimediabilmente il
+passo con i tempi. Anzi, agli occhi di alcuni osservatori,
+proprio il fatto che Stallman avesse ritenuto necessario mettere
+insieme un gruppo completamente nuovo per opporsi alle azioni
+legali non faceva altro che rafforzare l&#8217;idea di una certa
+obsolescenza in atto.</p>
+
+<p>Nel 1990, la John D. &amp; Catherine T. MacArthur Foundation
+riconobbe il genio di Stallman assegnandogli un riconoscimento in
+denaro. Il premio, una ricompensa di 240.000 dollari per il
+lancio del progetto GNU e per aver dato voce alla filosofia del
+software libero, risolse alcune preoccupazioni a breve termine.
+Per prima cosa consent&#236; a Stallman, dipendente non
+stipendiato della FSF il cui sostentamento era unicamente basato
+su contratti di consulenza, di dedicare maggior tempo alla
+scrittura del codice GNU.<sup>[<a id="IDA13IW" name="IDA13IW"
+href="11.html#ftn.IDA13IW">95</a>]</sup></p>
+
+<p>Ironicamente, il riconoscimento permise inoltre a Stallman di
+esercitare il diritto di voto. Qualche mese prima un incendio
+aveva distrutto i suoi pochi possedimenti terreni. Ufficialmente
+risultava perci&#242; &#8220;senza fissa dimora&#8221;,<sup>[<a
+id="IDA43IW" name="IDA43IW" href="11.html#ftn.IDA43IW">96</a>]</sup>
+residente al 545 di Technology Square. &#8220;[L&#8217;ufficio
+elettorale] non volle accettare quell&#8217;indirizzo come mio
+domicilio&#8221;, avrebbe ricordato successivamente Stallman.
+&#8220;Ma cambiarono idea subito dopo la pubblicazione su un
+quotidiano di un articolo in cui si parlava del premio
+assegnatomi dalla MacArthur Foundation.&#8221;<sup>[<a
+id="IDAE4IW" name="IDAE4IW" href="11.html#ftn.IDAE4IW">97</a>]</sup></p>
+
+<p>Fatto ancora pi&#249; importante, quel denaro gli garant&#236;
+maggiore libert&#224; di movimento. Gi&#224; completamente
+immerso nelle tematiche relative al software libero, pot&#233;
+cos&#236; incrementare i viaggi a sostegno della missione del
+progetto GNU.</p>
+
+<p>&#200; interessante notare come il definitivo successo di tale
+progetto e pi&#249; in generale del movimento del software libero
+prese avvio da uno di questi viaggi. Nel 1990 Stallman
+visit&#242; il Politecnico di Helsinki, in Finlandia. Tra il
+pubblico sedeva anche il ventunenne Linus Torvalds, futuro
+sviluppatore del kernel Linux, destinato a colmare il vuoto di
+maggiori proporzioni presente nel progetto GNU.</p>
+
+<p>Allora studente presso la vicina Universit&#224;, Torvalds
+osserv&#242; Stallman non senza meraviglia. &#8220;Per la prima
+volta in vita mia, eccomi davanti allo stereotipo
+dell&#8217;hacker con i capelli lunghi e la barba&#8221;, scrive
+Torvalds nella sua autobiografia del 2001, <span
+class="emphasis"><em>Rivoluzionario per caso</em></span>.
+&#8220;Era difficile imbattersi in gente simile a
+Helsinki.&#8221;<sup>[<a id="IDAL4IW" name="IDAL4IW"
+href="11.html#ftn.IDAL4IW">98</a>]</sup></p>
+
+<p>Pur se lontano dalle posizioni &#8220;sociopolitiche&#8221; di
+Stallman, Torvalds consider&#242; comunque positiva la logica che
+lo motivava: nessun programmatore scrive codice privo di errori.
+Grazie alla condivisione del software, per gli hacker il
+miglioramento di un programma diviene la molla prioritaria
+rispetto a motivazioni individuali quali cupidigia o egoismo.</p>
+
+<p>Come molti programmatori della propria generazione, Torvalds
+non si era formato sui mainframe tipo l&#8217;IBM 7094,
+bens&#236; su un vasto assortimento di sistemi fatti in casa.
+Seguendo i corsi universitari, era passato dalla programmazione
+su PC a Unix, usando il MicroVAX dell&#8217;universit&#224;.
+Questa crescita progressiva gli aveva offerto una diversa
+prospettiva sugli ostacoli che si frapponevano all&#8217;accesso
+alle macchine. Per Stallman, gli scogli maggiori erano costituiti
+da burocrazia e privilegi interni. Per Torvalds si trattava
+invece della geografia e del gelido inverno di Helsinki.
+Costretto ad attraversare i viali dell&#8217;Universit&#224; di
+quella citt&#224; unicamente per avere accesso al proprio account
+Unix, Torvalds inizi&#242; presto a cercare un modo per farlo dal
+calduccio del proprio appartamento situato fuori dal campus.</p>
+
+<p>Una ricerca che lo condusse presto al sistema operativo Minix,
+versione leggera di Unix sviluppata a scopo didattico dal
+professore universitario olandese Andrew Tanenbaum. Il programma
+stava nei limiti della memoria di un PC 386, la macchina pi&#249;
+potente che Torvalds potesse permettersi, ma difettava ancora di
+alcune componenti essenziali. Mancava soprattutto
+l&#8217;emulazione di terminale, funzione che poteva consentirgli
+di emulare quello universitario, rendendo cos&#236; possibile il
+collegamento al MicroVAX direttamente da casa.</p>
+
+<p>Nell&#8217;estate 1991 Torvalds inizi&#242; cos&#236; a
+riscrivere da capo Minix, aggiungendovi nello stesso tempo nuove
+funzioni. A fine estate parlava del suo lavoro come &#8220;del
+GNU/Emacs degli emulatori di terminale&#8221;.<sup>[<a
+id="IDAT4IW" name="IDAT4IW" href="11.html#ftn.IDAT4IW">99</a>]</sup>
+Sentendosi sicuro, chiese al newsgroup Minix copie degli standard
+POSIX, il software di base che stabiliva la compatibilit&#224; di
+un programma con Unix. E qualche settimana dopo fece girare
+online un messaggio stranamente analogo al testo originario
+relativo a GNU, diffuso da Stallman nel 1983:</p>
+
+<blockquote class="blockquote">
+<p>Un saluto a tutti coloro che usano minix</p>
+
+<p>Sto lavorando su un sistema operativo (libero), giusto per
+hobby, nulla di grande e professionale come gnu, per i cloni AT
+386 (486). &#200; in costruzione da aprile, e si pu&#242; dire
+quasi pronto. Vorrei ricevere commenti su quello che vi piace o
+non vi piace in minix, poich&#233; il mio sistema operativo gli
+assomiglia parecchio (tra le altre cose ha la stessa
+configurazione fisica del file-system, per motivi
+pratici).<sup>[<a id="IDAZ4IW" name="IDAZ4IW"
+href="11.html#ftn.IDAZ4IW">100</a>]</sup></p>
+</blockquote>
+
+<p>Il messaggio attir&#242; una valanga di risposte e, nel giro
+di un mese, Torvalds inseriva su un sito FTP la versione 0.01 del
+sistema operativo -- ovvero, la prima stesura che fosse possibile
+sottoporre a revisioni esterne. Nel frattempo aveva anche trovato
+un nome per il nuovo sistema. Sul disco fisso del PC, lo aveva
+salvato come Linux, in omaggio alla consuetudine di chiamare ogni
+variazione di Unix con un nome che finisse in X. Ritenendo
+per&#242; quel nome troppo &#8220;egocentrico&#8221;, Torvalds
+decise di sostituirlo con Freax, solo per poi scoprire che il
+gestore del sito FTP l&#8217;aveva riportato al nome
+originario.</p>
+
+<p>Anche se animati dall&#8217;intenzione di costruire un vero e
+proprio sistema operativo, sia Torvalds che altri programmatori
+erano al corrente della disponibilit&#224; di gran parte degli
+strumenti operativi necessari, grazie all&#8217;opera di GNU, BSD
+e di altri sviluppatori di software libero. Uno dei primi
+applicativi da cui il gruppo di lavoro su Linux trasse vantaggio
+fu il GNU C Compiler, strumento che rese possibile
+l&#8217;elaborazione di programmi scritti in C.</p>
+
+<p>L&#8217;integrazione del GCC miglior&#242; le prestazioni di
+Linux. Ma sollev&#242; anche problemi. Nonostante i poteri
+&#8220;virali&#8221; della GPL non avessero nulla a che fare con
+il nuovo kernel, la decisione di Torvalds di prendere in prestito
+il GCC per il proprio sistema operativo libero stava a indicare
+un certo obbligo a permettere che altri utenti facessero lo
+stesso. Come dice lo stesso Torvalds: &#8220;Mi ero arrampicato
+sulle spalle di giganti.&#8221;<sup>[<a id="IDAB5IW"
+name="IDAB5IW" href="11.html#ftn.IDAB5IW">101</a>]</sup> Inevitabilmente
+inizi&#242; a pensare a cosa sarebbe accaduto quando qualcun
+altro gli avesse avanzato una richiesta analoga. Dieci anni dopo
+quella decisione, Torvalds riecheggia la posizione di Robert
+Chassel della Free Software Foundation nel riassumere le proprie
+riflessioni in quella circostanza:</p>
+
+<blockquote class="blockquote">
+<p>Dopo aver speso sei mesi della tua vita in quel lavoro, decidi
+di metterlo a disposizione di tutti, anche per tirarci fuori
+qualcosa, ma non vuoi che altri se ne approfittino. Volevo che la
+gente potesse prenderne visione e apportarvi modifiche e
+migliorie a piacimento. Ma dovevo anche assicurarmi di poter
+verificare tali modifiche. Volevo garantirmi l&#8217;accesso
+continuato al codice, in modo da poter sempre riprendere le
+eventuali migliorie altrui.<sup>[<a id="IDAI5IW" name="IDAI5IW"
+href="11.html#ftn.IDAI5IW">102</a>]</sup></p>
+</blockquote>
+
+<p>Quando giunse il momento di distribuire la versione 0.12 di
+Linux, la prima a contenere una versione pienamente integrata del
+GCC, Torvalds decise di rendere esplicita la propria lealt&#224;
+al movimento del software libero. Gett&#242; via la licenza del
+vecchio kernel per sostituirla con la GPL. La decisione diede
+vita a una miriade di adattamenti aggiuntivi, con Torvalds e i
+vari collaboratori alla ricerca di altri programmi GNU da
+inserire nell&#8217;emergente calderone di Linux. Nel giro di tre
+anni, gli sviluppatori erano pronti a distribuire il primo vero
+sistema, Linux 1.0, che comprendeva le versioni pienamente
+modificate di GCC e GDB oltre a un&#8217;ampia serie di strumenti
+BSD.</p>
+
+<p>Entro il 1994, il sistema operativo cos&#236; amalgamato aveva
+guadagnato sufficiente considerazione nel mondo hacker, tanto che
+alcuni osservatori si chiesero se Torvalds non avesse fatto male
+ad abbracciare la GPL nella fase iniziale del progetto. Nel primo
+numero della rivista <span class="emphasis"><em>Linux
+Journal</em></span>, l&#8217;editore Robert Young tenne
+un&#8217;intervista a quattr&#8217;occhi con Torvalds. Alla
+domanda se non si fosse pentito di aver rinunciato alla
+propriet&#224; privata del codice, il programmatore finlandese
+rispose di no. &#8220;Anche con il senno di poi&#8221;, questa la
+replica di Torvalds, considerava l&#8217;adesione alla GPL
+&#8220;una delle decisioni migliori&#8221; prese durante i primi
+passi del progetto Linux.<sup>[<a id="IDAO5IW" name="IDAO5IW"
+href="11.html#ftn.IDAO5IW">103</a>]</sup></p>
+
+<p>Una decisione, non certo presa per rispetto o deferenza nei
+confronti di Stallman e della Free Software Foundation, che
+testimonia la crescente portabilit&#224; della GPL. Anche se ci
+vollero alcuni anni prima che Stallman se ne rendesse conto,
+l&#8217;esplosione dello sviluppo di Linux ricreava
+l&#8217;analogo scenario dell&#8217;Emacs. Stavolta, tuttavia,
+l&#8217;innovazione alla base di tale esplosione non era una
+trovata come il Control-R quanto piuttosto la novit&#224; di far
+girare un sistema simile a Unix sull&#8217;architettura di un PC.
+Ma anche con motivazioni diverse il risultato finale rifletteva
+in pieno le caratteristiche etiche di base: un sistema operativo
+pienamente funzionale composto interamente di software
+libero.</p>
+
+<p>Come indicava quella prima e-mail inviata al newsgroup
+comp.os.minix, per alcuni mesi Torvalds consider&#242; Linux poco
+pi&#249; che una sorta di intermezzo, fino a quando gli
+sviluppatori GNU non avessero realizzato il kernel HURD. Questa
+volont&#224; iniziale di non valutare Linux in termini politici
+rappresenta un grosso colpo inferto alla Free Software
+Foundation.</p>
+
+<p>A livello personale Torvalds non era altro che l&#8217;ultimo
+di una lunga fila di ragazzi interessati semplicemente a smontare
+e rimontare le cose per puro divertimento. Ci&#242; nonostante,
+sintetizzando il successo di un progetto che altrettanto
+facilmente avrebbe potuto rimanere per sempre sul disco fisso di
+un computer abbandonato, egli attribuisce alla propria giovinezza
+il merito di aver avuto la saggezza di lasciar perdere ogni
+controllo per accettare invece quanto proposto dalla GPL.</p>
+
+<p>&#8220;Forse non ho visto la luce&#8221;, scrive Torvalds
+riflettendo su quell&#8217;intervento di Stallman al Politecnico
+e sulla successiva decisione di aderire alla GPL. &#8220;Ma direi
+che qualcosa del suo discorso mi era rimasto
+dentro.&#8221;<sup>[<a id="IDAX5IW" name="IDAX5IW"
+href="11.html#ftn.IDAX5IW">104</a>]</sup></p>
+
+<div class="footnotes"><br />
+<hr width="100" align="left" />
+<div class="footnote">
+<p><sup>[<a id="ftn.IDASZIW" name="ftn.IDASZIW"
+href="11.html#IDASZIW">84</a>]</sup> Si veda Hal Abelson, Mike Fischer
+&amp; Joanne Costello, &#8220;Software and Copyright Law&#8221;,
+versione aggiornata (1998). <a
+href="http://www.swiss.ai.mit.edu/6805/articles/int-prop/software-copyright.html"
+ target="_top">http://www.swiss.ai.mit.edu/6805/articles/int-prop/software-copyright.html</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAI0IW" name="ftn.IDAI0IW"
+href="11.html#IDAI0IW">85</a>]</sup> Si veda Trn Kit README. <a
+href="http://www.za.debian.org/doc/trn/trn-readme"
+target="_top">http://www.za.debian.org/doc/trn/trn-readme</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAR0IW" name="ftn.IDAR0IW"
+href="11.html#IDAR0IW">86</a>]</sup> Si veda John Gilmore, citazione
+tratta da una sua e-mail all&#8217;autore del libro.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAY0IW" name="ftn.IDAY0IW"
+href="11.html#IDAY0IW">87</a>]</sup> Si veda Richard Stallman, et al.,
+&#8220;GNU General Public License: Version 1&#8221;, (febbraio
+1989). <a href="http://www.gnu.org/copyleft/copying-1.0.html"
+target="_top">http://www.gnu.org/copyleft/copying-1.0.html</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAF1IW" name="ftn.IDAF1IW"
+href="11.html#IDAF1IW">88</a>]</sup> Si veda David Betz &amp; Jon
+Edwards, &#8220;Richard Stallman discute con i redattori di Byte
+il proprio sistema di pubblico dominio [sic] compatibile con
+Unix&#8221;, <span class="emphasis"><em>Byte</em></span> (luglio
+1996). (Ripubblicata sul sito del progetto GNU: <a
+href="http://www.gnu.org/gnu/byte-interview.html"
+target="_top">http://www.gnu.org/gnu/byte-interview.html</a>.)</p>
+
+<p>L&#8217;intervista getta un&#8217;interessante, per non dire
+candida, luce sulle posizioni politiche di Stallman
+all&#8217;alba del progetto GNU. Risulta inoltre d&#8217;aiuto
+nel tracciare l&#8217;evoluzione della sua retorica.</p>
+
+<p>Descrivendo l&#8217;obiettivo della GPL, Stallman sostiene:
+&#8220;Sto cercando di cambiare l&#8217;approccio alla conoscenza
+e all&#8217;informazione in generale. Secondo me, ogni tentativo
+di rendere proprietaria tale conoscenza, di limitarne o meno
+l&#8217;utilizzo da parte dei singoli, oppure di impedire ad
+altri di condividerla, va considerato un sabotaggio&#8221;.</p>
+
+<p>Confrontiamo simili posizioni con un&#8217;affermazione resa
+dallo stesso Stallman all&#8217;autore del libro
+nell&#8217;agosto 2000: &#8220;Vi esorto a non usare il termine
+&#8216;propriet&#224; intellettuale&#8217; nelle vostre
+riflessioni. Ci&#242; potrebbe ingenerare equivoci, perch&#233;
+quel termine suggerisce un&#8217;eccessiva generalizzazione tra
+copyright, brevetti e marchi commerciali. Si tratta di elementi
+dagli effetti talmente diversi tra loro che &#232; del tutto
+folle discuterne come di un unico insieme. Se qualcuno parla di
+propriet&#224; intellettuale senza virgolette, vuol dire che
+difetta di chiarezza, e allora &#232; meglio lasciar
+perdere&#8221;.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAS1IW" name="ftn.IDAS1IW"
+href="11.html#IDAS1IW">89</a>]</sup> Il gioco di parole fra
+&#8220;reserved&#8221; (riservati) e &#8220;reversed&#8221;
+(rovesciati) &#232; intraducibile. [<span
+class="emphasis"><em>N.d.R.</em></span>]</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDA41IW" name="ftn.IDA41IW"
+href="11.html#IDA41IW">90</a>]</sup> Quella &#8220;odiosa clausola
+pubblicitaria&#8221; della University of California in seguito si
+sarebbe rivelata un problema. Alla ricerca di
+un&#8217;alternativa meno restrittiva della GPL, alcuni hacker
+ricorsero a tale clausola, sostituendo la dicitura
+&#8220;University of California&#8221; con il nome della propria
+istituzione. Risultato: i programmi di software libero che
+utilizzavano parti prese da decine di altri programmi dovevano
+citare decine di entit&#224;. Nel 1999, dopo circa dieci anni di
+insistenze da parte di Stallman, la University of California si
+trov&#242; d&#8217;accordo a eliminare quella clausola. Si veda
+&#8220;The BSD License Problem&#8221;: <a
+href="http://www.gnu.org/philosophy/bsd.html"
+target="_top">http://www.gnu.org/philosophy/bsd.html</a>.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAU2IW" name="ftn.IDAU2IW"
+href="11.html#IDAU2IW">91</a>]</sup> Si veda Michael Tiemann, &#8220;Il
+futuro della Cygnus Solutions: resoconto di un
+imprenditore&#8221;, <span class="emphasis"><em>Open
+Sources</em></span>, Apogeo, 1999, p. 78.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAA3IW" name="ftn.IDAA3IW"
+href="11.html#IDAA3IW">92</a>]</sup> Si veda Richard Stallman, Byte
+(1986).</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAK3IW" name="ftn.IDAK3IW"
+href="11.html#IDAK3IW">93</a>]</sup> Si veda &#8220;HURD History&#8221;,
+<a href="http://www.gnu.org/software/hurd/history.html"
+target="_top">http://www.gnu.org/software/hurd/history.html</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAR3IW" name="ftn.IDAR3IW"
+href="11.html#IDAR3IW">94</a>]</sup> Secondo un comunicato della League
+of Programming Freedom, le proteste attirarono
+l&#8217;attenzione, perch&#233; costituivano il primo esempio di
+strofe di protesta esadecimali:</p>
+
+<blockquote class="blockquote">
+<div class="literallayout">
+<p><br />
+ 1-2-3-4,&#160;toss&#160;the&#160;lawyers&#160;out&#160;the&#160;door;&#160;(1-2-3-4,&#160;butta&#160;fuori&#160;l&#8217;avvocato)&#160;
+<br />
+ 5-6-7-8,&#160;innovate&#160;don&#8217;t&#160;litigate;&#160;(5-6-7-8,&#160;innovazione&#160;non&#160;cause&#160;legali)
+<br />
+ 9-A-B-C,&#160;1-2-3&#160;is&#160;not&#160;for&#160;me;&#160;(9-A-B-C,&#160;1-2-3&#160;non&#160;fa&#160;per&#160;me)
+<br />
+ D-E-F-O,&#160;look&#160;and&#160;feel&#160;have&#160;got&#160;to&#160;go&#160;(D-E-F-O,&#160;l&#8217;aspetto&#160;tipico&#160;pu&#242;&#160;restare)
+<br />
+</p>
+</div>
+</blockquote>
+
+<p><a
+href="http://lpf.ai.mit.edu/Links/prep.ai.mit.edu/demo.final.release"
+ target="_top">http://lpf.ai.mit.edu/Links/prep.ai.mit.edu/demo.final.release</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDA13IW" name="ftn.IDA13IW"
+href="11.html#IDA13IW">95</a>]</sup> Qui il termine &#8220;
+scrivere&#8221; va inteso in senso lato. Pi&#249; o meno in
+concomitanza con il premio della MacArthur, Stallman inizi&#242;
+a soffrire di dolori cronici alle mani e quindi a dettare il suo
+lavoro ai dattilografi della FSF. Qualcuno pensava che potesse
+trattarsi dei tipici dolori dovuti a stress ripetitivi (RSI),
+problema comune tra i programmatori, ma Stallman non ne appare
+convinto al 100%: &#8220;Non era la sindrome del tunnel carpale,
+poich&#233; il problema era nella mani e non nei polsi&#8221;. Da
+allora ha imparato a fare a meno dei dattilografi, utilizzando
+una tastiera che richiede una minore pressione delle dita.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDA43IW" name="ftn.IDA43IW"
+href="11.html#IDA43IW">96</a>]</sup> Si veda Reuven Lerner,
+&#8220;Stallman wins &#36;240,000 MacArthur award&#8221;, MIT, The
+Tech (18 luglio 1990). <a
+href="http://the-tech.mit.edu/V110/N30/rms.30n.html"
+target="_top">http://the-tech.mit.edu/V110/N30/rms.30n.html</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAE4IW" name="ftn.IDAE4IW"
+href="11.html#IDAE4IW">97</a>]</sup> Si veda Michael Gross,
+&#8220;Richard Stallman: High School Misfit, Symbol of Free
+Software, MacArthur-certified Genius&#8221; (1999).</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAL4IW" name="ftn.IDAL4IW"
+href="11.html#IDAL4IW">98</a>]</sup> Si veda Linus Torvalds &amp; David
+Diamond, <span class="emphasis"><em>Rivoluzionario per
+caso</em></span>. Milano, Garzanti, 2001.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAT4IW" name="ftn.IDAT4IW"
+href="11.html#IDAT4IW">99</a>]</sup> Ibid.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAZ4IW" name="ftn.IDAZ4IW"
+href="11.html#IDAZ4IW">100</a>]</sup> Si veda &#8220;Linux 10th
+Anniversary&#8221;. <a href="http://www.linux10.org/history/"
+target="_top">http://www.linux10.org/history/</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAB5IW" name="ftn.IDAB5IW"
+href="11.html#IDAB5IW">101</a>]</sup> Si veda Linus Torvalds &amp; David
+Diamond, <span class="emphasis"><em>Rivoluzionario per
+caso</em></span>. Milano, Garzanti, 2001.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAI5IW" name="ftn.IDAI5IW"
+href="11.html#IDAI5IW">102</a>]</sup> Ibid.</p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAO5IW" name="ftn.IDAO5IW"
+href="11.html#IDAO5IW">103</a>]</sup> Si veda Robert Young,
+&#8220;Interview with Linus, the Author of Linux&#8221;, Linux
+Journal (1 marzo 1994). <a
+href="http://www.linuxjournal.com/article.php?sid=2736"
+target="_top">http://www.linuxjournal.com/article.php?sid=2736</a></p>
+</div>
+
+<div class="footnote">
+<p><sup>[<a id="ftn.IDAX5IW" name="ftn.IDAX5IW"
+href="11.html#IDAX5IW">104</a>]</sup> Si veda Linus Torvalds &amp; David
+Diamond, <span class="emphasis"><em>Rivoluzionario per
+caso</em></span>, Milano, Garzanti, 2001.</p>
+</div>
+</div>
+</div>
+</td></tr></table>
+</td></tr>
+</table>
+</p>
+
+<hr size="2" noshade align="left">
+
+<table width="60%" border="0" cellpadding="5" cellspacing="0" align="center"><tr>
+<td class="testo" align="left">&lt;&#160;&#160;<a href="10.html">indietro</a>&#160;</td>
+<td class="testo" align="center">&#160;|&#160;&#160;<a href="index.html#sommario">sommario</a>&#160;&#160;|&#160;</td>
+<td class="testo" align="right">&#160;<a href="12.html">avanti</a>&#160;&#160;&gt;</td>
+</tr></table>
+
+</body>
+</html>
+

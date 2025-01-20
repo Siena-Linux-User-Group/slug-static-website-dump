@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Combattere lo SPAM</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Procmail" href="procmail.html">
+    <LINK rel="PREVIOUS" title="Usi avanzati e trucchetti" href=
+    "advancedprocmail.html">
+    <LINK rel="NEXT" title="Sintassi delle espressioni regolari" href=
+    "sintassiregexp.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "advancedprocmail.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 7.
+          Procmail</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "sintassiregexp.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="PROCMAILANTISPAM">7.5. Combattere lo
+      SPAM</A></H1>
+
+      <P>Vediamo ora come filtrare eventuale <B class="KEYCAP">UCE/UBE</B>
+      (<EM>Unsolicited Commercial/Bulk Email</EM>, cioè spam o posta
+      indesiderata). Ci sono vari metodi e programmi, ma io uso <B class=
+      "KEYCAP">SpamBouncer</B>, prelevabile da <A href=
+      "http://www.spambouncer.org" target=
+      "_top">http://www.spambouncer.org</A>, cioè una serie di file rc
+      contenenti un insieme di regole per <SPAN class=
+      "APPLICATION">procmail</SPAN> che permettono di fare varie cose
+      sfiziose ;-), individuando lo spam cercando tra gli spammer conosciuti,
+      siti e domini noti, ISP irresponsabili, header e body con contenuti
+      riferibili a spam. In base a come impostato, permette di fare le
+      seguenti cose:</P>
+
+      <UL>
+        <LI>
+          <P>marcare con un header aggiuntivo le email, rispedendole al
+          normale flusso delle regole di procmail, potendo così fare il
+          filtraggio direttamente dal mailreader</P>
+        </LI>
+
+        <LI>
+          <P>marcare le email sospette, inviandole in una mailbox separata, e
+          cancellando quelle che sono sicuramente spam</P>
+        </LI>
+
+        <LI>
+          <P>inviare un "bounce" simulato di tipo <B class=
+          "KEYCAP">MAILER-DAEMON</B>, che a volte fa pensare a un indirizzo
+          email errato, portando alla cancellazione del medesimo dalla ML (ma
+          non sperateci molto...)</P>
+        </LI>
+
+        <LI>
+          <P>contattare gli ISP degli spammer lamentandosi per lo spam
+          ricevuto</P>
+        </LI>
+
+        <LI>
+          <P>notificare gli spammer che le loro email sono state bloccate,
+          fornendo loro una password per aggirare il blocco (gli spammer
+          raramente lo fanno, ma qualche vostro conoscente eventualmente
+          bloccato potrebbe averne bisogno)</P>
+        </LI>
+      </UL>
+
+      <P>Nell'ultimo caso, gli indirizzi email di quelli che vi rispondono
+      vengono aggiunti al file indicato dalla direttiva <B class=
+      "KEYCAP">NOBOUNCE</B>, e non verranno più bloccati in futuro. Tenete
+      presente che comunque il tutto è gestito automaticamente, quindi è
+      normale che salti fuori l'eccezione che confermi la regola... Scaricate
+      il file: <A href="http://www.spambouncer.org/sb.zip" target=
+      "_top">http://www.spambouncer.org/sb.zip</A> e date i comandi seguenti
+      per scompattare il tutto:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cd $HOME/Mail/.Pm
+mkdir sb &amp;&amp; cd sb
+cp /percorso/verso/il/file/sb.zip .
+unzip sb.zip
+rm -f sb.zip 
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Si consiglia di filtrare lo spam nell'ultima parte, in particolare
+      dopo il trattamento delle mailing list. Il file principale è <TT class=
+      "FILENAME">sb.rc</TT>, che contiene tutte le impostazioni per il
+      filtro, e che viene richiamato dal file <TT class=
+      "FILENAME">spam2.rc</TT> seguente:</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>I due file di regole <TT class="FILENAME">spam.rc</TT> e <TT
+              class="FILENAME">spam2.rc</TT> sono attualmente alternativi!
+              Infatti molte delle cose presenti nel primo file sono fatte
+              anche da <B class="KEYCAP">SpamBouncer</B>, e per filtri
+              specifici potete sempre usare la Black-List. Attivatene quindi
+              un solo file in <TT class="FILENAME">.procmailrc</TT>!</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P><B class="KEYCAP">=== file: spam2.rc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# filtro tramite black-list
+:0
+* ? formail -x"From" -x"From:" -x"Sender:" -x"Reply-To:" -x"Return-Path:" -x"To:" | egrep -is -f $PMDIR/black.lst
+spam
+
+# impostazioni per spambouncer
+ADMINFOLDER=${MAILDIR}/IN.admin  # email bounced, da root, postmaster, abuse, etc.
+
+BULKFOLDER=${MAILDIR}/IN.bulk    # per bulk email, che sembra leggittima
+
+MYEMAIL=${PMDIR}/.myemail        # posizione del file contenente tutti i vostri
+                                 # indirizzi email, elencati uno per riga
+
+ALTFROM=otheremail@othersite.com # un indirizzo email alternativo, ma comunque valido,
+                                 # per non far sapere agli spammer la tua vera email,
+                                 # quando invii messaggi in cui ti lamenti dello spam
+
+BLOCKFOLDER=${MAILDIR}/IN.block  # email sospette, ma possibilmente non spam
+
+BLOCKREPLY=SILENT                # SILENT per filtrare semplicemente le email bloccate
+                                 # NOTIFY per informare l'autore che l'email e' stata
+                                 # bloccata, e informarlo su come oltrepassare il
+                                 # blocco se pensano di essere leggittimati a farlo
+
+BYPASSWD=zeugma                  # password per le persone che si vedono bloccate le
+                                 # loro email legittime da Spam Bouncer. Permette di
+                                 # aggirare il filtro. CAMBIARLA SPESSO!!!
+
+NOBOUNCE=${PMDIR}/.nobounce      # posizione del file NOBOUNCE, contenente una per
+                                 # riga le email delle persone che non devono MAI
+                                 # essere bloccate. E' un normale file di testo,
+                                 # quindi non usate escape per il punto, tipo \. !!!
+                                 # Viene anche aggiornato in automatico da SB stesso.
+
+NOLOOP=${ALTFROM}                # email usata nel campo X-Loop: per prevenire i loop
+
+PATTERNMATCHING=SILENT           # abilita il filtro Pattern Matching di Spam Bouncer
+                                 # NONE lo disattiva; SILENT filtra le email senza
+                                 # avvertire il mittente; NOTIFY filtra e avverte il
+                                 # mittente che la sua email e' stata bloccata
+
+SBDIR=${PMDIR}/sb                # directory contenente i filtri di SpamBouncer
+
+SPAMFOLDER=${MAILDIR}/spam       # mailbox che ricevera' lo spam, cambiare in /dev/null
+                                 # per eliminarla definitivamente
+
+SPAMREPLY=SILENT                 # SILENT per filtrare ma non autolamentarsi.
+                                 # BOUNCE per inviare al mittente un messaggio bounce
+                                 # di tipo "MAILER-DAEMON". COMPLAIN per inviare un
+                                 # messaggio di lamentela all'abuse del mittente. BOTH
+                                 # per inviare il bounce e lamentarsi con l'abuse
+
+DULCHECK=no                      # se impostata a "yes", effettua un controllo con le
+                                 # liste MAPS DUL. Questo riduce significativamente lo
+                                 # spam, ma puo' crearvi problemi se corrispondete con
+                                 # molta gente che usa uno Unix e un proprio mailserver.
+                                 # Consiglio in questo caso di attivare la variabile
+                                 # BLOCKREPLY=NOTIFY, in modo da consentire al mittente
+                                 # di aggiungere il proprio indirizzo all'elenco dei
+                                 # NOBOUNCE, usando la password contenute in $BYPASSWD.
+
+ORBSCHECK=no                     # stesse considerazioni di DULCHECK, ma per l'ORBS.
+
+RSSCHECK=no                      # stesse considerazioni di DULCHECK, ma per il MAPS RSS.
+
+RBLCHECK=yes                     # questa invece puo' essere attivata tranquillamente,
+                                 # visto che l'RBL lista spammer e siti certificati :-)
+
+INCLUDERC=${SBDIR}/sb.rc         # ATTIVA SPAMBOUNCER!!!
+
+# Le regole seguenti inviano le email indirizzate a uno dei vostri indirizzi email
+# nello spool di default, spostando quelle che non hanno voi nei campi To: o Cc:,
+# o che vi sono state inviate in Bcc: in un altro folder. Viene usato il file indicato
+# in precedenza nella variabile $MYEMAIL, quindi create questo file indicando tutti
+# gli indirizzi email in cui ricevete posta, elencandoli uno per riga
+:0:
+* ? test -f ${MYEMAIL} &amp;&amp; \
+    (${FORMAIL} -zxFrom: -zxReply-To: |\
+    fgrep -i -f ${MYEMAIL})
+| ${FORMAIL} -A"X-Folder: Default" &gt;&gt;${DEFAULT}
+
+:0:
+| ${FORMAIL} -A"X-Folder: Bulk" &gt;&gt;${BULKFOLDER}
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Il file è ampliamente commentato, quindi leggetelo direttamente e
+      modificate dove necessario.</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>Si consiglia inoltre di tradurre i due file <TT class=
+              "FILENAME">spam</TT> e <TT class="FILENAME">notify</TT>, che
+              contengono rispettivamente i messaggi automatici usati per
+              lamentarsi con l'ISP dello spammer, e il messaggio inviato a
+              chi si vede bloccate le proprie email per avvisarlo su come
+              aggirare il blocco tramite una password. Nella tarball dei
+              FILES ci sono le versioni che uso io, già tradotte.</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Per aggiornare il tutto, controllate le novità sul
+          sito indicato in precedenza, e scompattate il nuovo file come fatto
+          prima, a sovrascrivere la vecchia versione. Consiglio di
+          sottoscrivere la mailing list che annuncia le nuove versioni, tanto
+          è a bassissimo traffico.</P>
+        </BLOCKQUOTE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "advancedprocmail.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "sintassiregexp.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Usi avanzati e
+          trucchetti</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "procmail.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Sintassi delle
+          espressioni regolari</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

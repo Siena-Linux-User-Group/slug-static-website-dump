@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Cosa Fare Durante e Dopo un'Intrusione</TITLE>
+ <LINK HREF="Security-HOWTO-11.html" REL=next>
+ <LINK HREF="Security-HOWTO-9.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc10" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-11.html">Avanti</A>
+<A HREF="Security-HOWTO-9.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc10">Indice</A>
+<HR>
+<H2><A NAME="after-breakin"></A> <A NAME="s10">10. Cosa Fare Durante e Dopo un'Intrusione</A></H2>
+
+<P>Avete seguito alcuni di questi consigli e avete rilevato un'intrusione?
+La prima cosa da fare &egrave; restare calmi. Azioni affrettate possono causare
+pi&ugrave; danni dell'aggressore stesso.  
+<P>
+<P>
+<H2><A NAME="ss10.1">10.1 Compromissione della Sicurezza in Corso.</A>
+</H2>
+
+<P>Rilevare una compromissione in corso &egrave; una situazione molto tesa. Come
+reagite avr&agrave; grandi conseguenze.
+<P>Se la compromissione &egrave; fisica probabilmente avete colto qualcuno che
+si &egrave; intrufolato in casa vostra, in ufficio o nel laboratorio.
+Dovreste avvisare le autorit&agrave; competenti. In un laboratorio potreste
+aver visto qualcuno che provava ad aprire un case o riavviare una macchina.
+A seconda della vostra autorit&agrave; e delle procedure, potreste farli
+desistere o chiamare direttamente la sicurezza. 
+<P>Se avete preso un utente locale che tentava di compromettere la sicurezza la 
+prima cosa da fare &egrave; confermare che sia davvero chi credete. Controllate
+il posto da cui si connettono. &Egrave; da dove si connettono normalmente? No?
+Allora usate un mezzo di comunicazione non elettronico. Per esempio, chiamatelo
+al telefono o andate nel suo ufficio/appartamento e parlateci. Se ammette il
+fatto, chiedetegli spiegazioni su quel che sta succedendo. Se non c'entra e non
+sa di cosa stiate parlando, probabilmente dovrete investigare ulteriormente.
+Investigate e procuratevi molte informazioni prima di accusare qualcuno. 
+<P>Se avete rilevato un attacco di rete la prima cosa da fare (se possibile) &egrave;
+disconnettere la rete. Se sono connessi via modem, staccate il doppino; se via
+Ethernet, staccate il cavo Ethernt. Questo impedir&agrave; loro di fare altri
+danni e peneranno ad un problema di rete piuttosto che ad un rilevamento. 
+<P>Se non potete staccare la rete (se avete un sito trafficato o non avete il
+controllo fisico sulle vostre macchine), il prossimo miglior passo &egrave;
+usare qualcosa come i <CODE>tcp_wrapper</CODE> o <CODE>ipfwadm</CODE> per negare
+l'accesso dal sito dell'intrusore. 
+<P>Se non potete rifiutare tutte le connessioni dal sito dell'intrusore, vi dovete
+accontentare di disattivare l'account dell'utente. Farlo per&ograve; non &egrave;
+semplice. Dovete tenere a mente i file <CODE>.rhosts</CODE>, l'accesso FTP, e
+una montagna di possibili backdoor.
+<P>Una volta preso uno dei provvedimenti sopra (disconnesso la rete, negato 
+l'accesso dal suo sito e o disabilitato il suo account), dovete uccidere tutti
+i suoi processi ed espellerli. 
+<P>Dovete controllare bene il vostro sito nei minuti seguenti, perch&eacute; 
+l'aggressore tenter&agrave; di rientrare. Forse usando un account differente, o
+da un altro indirizzo di rete. 
+<P>
+<P>
+<H2><A NAME="ss10.2">10.2 La sicurezza &egrave; gi&agrave; stata compromessa.</A>
+</H2>
+
+<P>Avete trovato una manomissione gi&agrave; avvenuta o avete rilevato e chiuso
+fuori (si spera) l'intrusore. E ora?
+<P>
+<P>
+<H3>Chiudere il Buco</H3>
+
+<P>Se siete capaci di determinare in che modo l'aggressore &egrave; entrato,
+dovreste tentare di chiudere quel buco. Per esempio, forse troverete diverse
+voci FTP subito prima del login dell'utente. Disabilitate il servizio FTP e
+controllate se esiste una versione aggiornata o se qualche lista conosce un
+rimedio. 
+<P>Controllate tutti i log, e visitate le liste di sicurezza e controllate se ci
+sono exploit che potete riparare. Trovate gli aggiornamenti di sicurezza di
+Caldera presso 
+<A HREF="http://www.caldera.com/tech-ref/security/">http://www.caldera.com/tech-ref/security/</A>. Red Hat non ha ancora
+separato i propri aggiornamenti di sicurezza da quelli dei bug, ma l'errata
+corrige della loro distribuzione si trova presso 
+<A HREF="http://www.redhat.com/errata">http://www.redhat.com/errata</A><P>Debian ha ora una mailing list sulla sicurezza e una pagina web. Visitate
+<A HREF="http://www.debian.org/security/">http://www.debian.org/security/</A> per altre informazioni. 
+<P>&Egrave; molto probabile che se un distributore Linux ha rilasciato un 
+aggiornamento lo abbiano fatto anche gli altri.
+<P>Esiste un progetto di sondaggio della sicurezza di Linux. Passano metodicamente
+tutti programmi utente e cercano exploit e overflow. Dal loro annuncio:
+<P>
+<BLOCKQUOTE>
+"Stiamo tentando un sondaggio sistematico dei sorgenti di Linux con l'obiettivo
+di renderlo sicuro come OpenBSD. Abbiamo gi&agrave; scoperto (e riparato)
+alcuni problemi, ma altro aiuto &egrave; benvenuto. La lista non &egrave;
+moderata  e rappresenta anche una buona fonte di discussioni generiche sulla
+sicurezza. L'indirizzo della lista &egrave; security-audit@ferret.lmh.ox.ac.uk
+Per iscriversi, mandate una e-mail a:
+security-audit-subscribe@ferret.lmh.ox.ac.uk"
+</BLOCKQUOTE>
+<P>Se non chiudete fuori l'aggressore, probabilmente torner&agrave;. Non solo
+sulla vostra macchina, ma forse da qualche parte nella vostra rete. Se avesse
+eseguito uno sniffer, ci sono buone probabilit&agrave; che abbia accesso ad
+altre macchine locali.
+<P>
+<P>
+<H3>Stimare il Danno</H3>
+
+<P>La prima cosa &egrave; stimare il danno. Cosa &egrave; stato compromesso?
+Se stavate eseguendo un test di integrit&agrave; come <CODE>Tripwire</CODE>, 
+potete usarlo per eseguire un controllo; dovrebbe aiutare a capire cosa &egrave;
+stato compromesso. Altrimenti dovrete controllare tutti i dati importanti. 
+<P>Visto che i sistemi Linux diventano sempre pi&ugrave; semplici da istallare
+potreste considerare di salvare i file di configurazione, vuotare i dischi,
+reinstallare e quindi ripristinare i file degli utenti e di configurazione dai
+backup. Questo vi assicura un sistema nuovo e pulito. Se doveste ripristinare
+dei file dal sistema compromesso siate molto cauti con ogni binario che
+ripristinate, perch&eacute; potrebbe essere un cavallo di Troia messo l&igrave;
+dall'intrusore.
+<P>La reinstallazione dovrebbe essere considerata obbligatoria se un intrusore
+ottenesse l'accesso di root. Inoltre, potreste voler tenere le prove lasciate,
+quindi avere un disco vuoto a disposizione pu&ograve; essere sensato.
+<P>Ora dovete preoccuparvi del tempo passato dalla compromissione e se i backup
+possono contenere lavoro danneggiato. Segue un approfondimento sui backup.
+<P>
+<P>
+<H3>Backup, Backup, Backup!</H3>
+
+<P>Avere backup regolari &egrave; una manna per i problemi di sicurezza. Se il
+sistema venisse compromesso, potreste ripristinare i dati dai backup. Ovvio che
+alcuni dati hanno valore anche per l'aggressore e non solo li distrugger&agrave;
+ma li ruber&agrave; e si far&agrave; le sue copie; ma per lo meno li avrete
+anche voi. 
+<P>Dovreste controllare backup anche molto vecchi, prima di ripristinare un file
+che &egrave; stato manomesso. L'intrusore potrebbe aver compromesso i file
+molto tempo fa e potreste aver fatto molti backup del file gi&agrave; compromesso!
+<P>Ovviamente, c'&egrave; una serie di problemi di sicurezza con i backup.
+Assicuratevi di tenerli in un posto sicuro. Sappiate chi vi ha accesso. (Se
+l'aggressore ottiene i vostri backup, ha accesso a tutti i vostri dati senza
+che neanche lo sappiate.) 
+<P>
+<P>
+<H3>Rintracciare l'Intrusore.</H3>
+
+<P>Bene, avete chiuso fuori l'intrusore e ripristinato il sistema, ma non avete
+ancora finito. Anche se &egrave; improbabile che l'intrusore venga preso,
+dovreste notificare l'attacco.
+<P>Dovreste notificarlo all'amministratore del sito da cui proveniva l'attacco.
+Potete trovare questo contatto con <CODE>whois</CODE> o sul database dell'Internic.
+Potreste mandare una e-mail con tutte le voci, le date e le ore dei log 
+inerenti. Se aveste notato qualcosa di particolare nell'intrusore dovreste
+menzionarlo. Dopo aver mandato l'e-mail dovreste, se volete, far seguire una
+telefonata. Se l'amministratore a sua volta vedesse l'aggressore potrebbe
+parlare con l'amministratore del sito da cui proviene e via cos&igrave;. 
+<P>I bravi cracker usano spesso diversi sistemi intermedi, alcuni (o molti) dei
+quali non sanno neanche di essere stati compromessi. Provare a inseguire un
+cracker fino al suo sistema base sar&agrave; difficile. Essere gentili con gli
+amministratori con cui parlate aiuta molto ad avere la loro collaborazione. 
+<P>Dovreste anche dare notizia anche ad ogni organizzazione di sicurezza di cui
+fate parte (il 
+<A HREF="http://www.cert.org/">CERT</A> o simili), oltre
+al distributore del vostro sistema Linux.
+<P>
+<P>
+<HR>
+<A HREF="Security-HOWTO-11.html">Avanti</A>
+<A HREF="Security-HOWTO-9.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc10">Indice</A>
+</BODY>
+</HTML>

@@ -1,0 +1,17 @@
+H1 {
+    text-align: right
+    color: rgb(230, 100,180)
+}
+P.syntax {
+    text-align: left
+}
+P.caption {
+    text-align: left
+    font-style: italic
+}
+P.command {
+    text-align: left
+}
+P {
+    text-align: justify
+}

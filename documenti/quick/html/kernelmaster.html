@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Compilazione del kernel per il riconoscimento del
+    masterizzatore</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Masterizzazione" href="masterizzazione.html">
+    <LINK rel="PREVIOUS" title="Introduzione" href=
+    "introduzionemasterizzazione.html">
+    <LINK rel="NEXT" title=" Procedura di masterizzazione CDR " href=
+    "masterizzarecdr.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "introduzionemasterizzazione.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 16.
+          Masterizzazione</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "masterizzarecdr.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="KERNELMASTER">16.2. Compilazione del kernel
+      per il riconoscimento del masterizzatore</A></H1>
+
+      <P>Questa sezione non vuole essere esaustiva. Per maggiori informazioni
+      rimando all'ottimo <EM>CD-Writing HOWTO</EM> di Winfried Trümper. Sotto
+      Linux sono supportati masterizzatori SCSI, EIDE e per porta parallela
+      (PP nel seguito). Non sono ancora supportati gli USB, per questi si
+      comincerà a vedere qualcosa *forse* con i kernel 2.4.*. La prossima
+      tabella la copio sfacciatamente dall'howto sopra-citato:</P>
+
+      <UL>
+        <LI>
+          <P>con <B class="KEYCAP">Y</B> si intende che l'abilitazione deve
+          far parte integrante del kernel</P>
+        </LI>
+
+        <LI>
+          <P>con <B class="KEYCAP">M</B> si intende che l'abilitazione deve
+          avvenire come modulo</P>
+        </LI>
+
+        <LI>
+          <P>con <B class="KEYCAP">Y/M</B> si intende che si può scegliere
+          indifferentemente un modo o l'altro</P>
+        </LI>
+      </UL>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+       Sez.  Descrizione                 Modulo   SCSI  IDE   PP
+       ------------------------------------------------------------
+       BLOCK  Enhanced IDE/MFM/RLL...                     Y
+       BLOCK  IDE/ATAPI CDROM             ide-cd          M       *** NOTA
+       BLOCK  SCSI hostadaptor emulation  ide-scsi        M       *** NOTA
+       BLOCK  Loopback device             loop       M    M     M
+
+       PARIDE Parallel port IDE device    paride               Y/M
+       PARIDE Parallel port ATAPI CD-ROMs                       M
+       PARIDE Parallel port generic ATAPI                       M
+       PARIDE (select a low-level driver)                       Y
+
+       SCSI   SCSI support                scsi_mod  Y/M  Y/M      *** NOTA
+       SCSI   SCSI CD-ROM support         sr_mod    Y/M  Y/M      *** NOTA
+       SCSI     Enable vendor-specific               Y    Y
+       SCSI   SCSI generic support        sg        Y/M  Y/M      *** NOTA
+       SCSI   (select a low-level driver)            Y
+
+       FS     ISO 9660 CDROM filesystem   iso9660   Y/M  Y/M   Y/M
+       FS     Microsoft Joliet cdrom...   joliet     Y    Y     Y
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Se tutto va bene, al successivo riavvio, con un <B class=
+      "COMMAND">dmesg | less</B> potrete vedere che il kernel ha riconosciuto
+      la periferica... e comincia l'avventura!</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Per chi usa un masterizzatore EIDE:</P>
+
+          <OL type="1">
+            <LI>
+              <P>se si opta per l'uso dei moduli è importante aggiungere i
+              seguenti parametri nel vostro <TT class=
+              "FILENAME">/etc/lilo.conf</TT></P>
+
+              <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+                <TR>
+                  <TD>
+<PRE class="PROGRAMLISTING">
+...
+image=/boot/vmlinuz-2.2.18
+    label=2.2.18
+    read-only
+    root=/dev/hda3
+    append="hdc=ide-scsi hdd=ide-scsi"  &lt;--------questo
+...
+           
+</PRE>
+                  </TD>
+                </TR>
+              </TABLE>
+
+              <P>in modo da indicare a linux che quelle periferiche devono
+              essere "viste" attraverso il modulo ide-scsi. Naturalmente,
+              adattate il codice al vostro caso. Ricordatevi poi di
+              reinstallare lilo, con:</P>
+
+              <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+                <TR>
+                  <TD>
+<PRE class="PROGRAMLISTING">
+# /sbin/lilo
+           
+</PRE>
+                  </TD>
+                </TR>
+              </TABLE>
+            </LI>
+
+            <LI>
+              <P>se qualcosa non funziona usando i moduli provate ad
+              accorpare nel kernel le voci una per una, a cominciare dalla
+              voce IDE/SCSI, altrimenti detta "Emulazione SCSI". L'emulazione
+              SCSI con i kernel della serie 2.2.* e superiori impone
+              necessariamente che anche gli eventuali lettori cd rom eide
+              presenti sulla macchina siano visti come periferiche SCSI, è
+              quindi inutile (e talvolta produce errori) abilitare nel kernel
+              il modulo ide-cd.</P>
+            </LI>
+          </OL>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Generalmente le periferiche SCSI, oltre alla maggiore affidabilità
+      caratteristica di questa tecnologia, danno minori problemi di
+      riconoscimento/compatibilità col pinguino, se quindi potete
+      permettervelo, un masterizzatore SCSI è la scelta migliore.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Ultima precisazione: qualche volta (è successo a
+          me) un masterizzatore EIDE non ne vuole sapere di andare se non è
+          il master del suo canale, ergo, se non funziona come slave provate
+          ad impostarlo come master. L'impostazione migliore pare essere
+          quella di lasciare i drive sorgenti (hard-disk che ospiterà le
+          immagini ISO9660 e lettore cd-rom) come unità rispettivamente
+          master e slave sul canale primario EIDE, e il masterizzatore come
+          unità master sul canale secondario EIDE, cui nel caso affiancare un
+          eventuale secondo hard-disk. Questo garantisce che le unità
+          funzionino al massimo delle loro possibilità. Utile anche attivare
+          sugli hard-disk e cdrom/cdr/cdrw EIDE (NON gli SCSI!), le
+          funzionalità avanzate permesse, tipo accesso al disco a 32 bit, DMA
+          e altro, tramite il comando <B class="COMMAND">hdparm</B>.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>L'uso di <B class="COMMAND">hdparm</B> può essere
+              PERICOLOSO! Fate SEMPRE le prove prima e dopo ogni comando <B
+              class="COMMAND">hdparm</B> che date, con: <B class=
+              "COMMAND">hdparm -tT /dev/hdX</B>, sostituendo a X le varie
+              unità. Questo vi fornirà dei test per valutare l'aumento o meno
+              delle prestazioni con le varie opzioni impostate. In genere le
+              opzioni da impostare sono: <B class="KEYCAP">-d1</B> (usa DMA)
+              e <B class="KEYCAP">-c3</B> (usa accesso al disco a 32bit, con
+              sync sequence). Altre possono essere <B class="KEYCAP">-u1</B>
+              e <B class="KEYCAP">-m...</B> (leggete la man-page di <B class=
+              "COMMAND">hdparm</B>, per calcolare il valore di m). Tenete
+              inoltre presente che se il supporto ide-scsi è compilato come
+              modulo, quando questo viene scaricato dalla memoria, si perdono
+              le impostazioni di hdparm. Per aggirare l'ostacolo, potete
+              aggiungere al vostro file <TT class=
+              "FILENAME">/etc/modules.conf</TT> una riga tipo:</P>
+
+              <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+                <TR>
+                  <TD>
+<PRE class="PROGRAMLISTING">
+post-install ide-scsi /sbin/hdparm ...
+       
+</PRE>
+                  </TD>
+                </TR>
+              </TABLE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P>Per vedere come vengono riconosciute le nostre periferiche dal
+      kernel si può dare, come utente root, il comando: <B class=
+      "COMMAND">cdrecord -scanbus</B>. Io ho un masterizzatore come master ed
+      un lettore come slave nel secondo canale EIDE, ed ecco il mio
+      output:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+[tty5][root@gondor /home/rjval]# cdrecord -scanbus
+Cdrecord 1.9 (i686-pc-linux-gnu) Copyright (C) 1995-2000 Jörg Schilling
+Linux sg driver version: 2.1.39
+Using libscg version 'schily-0.1'
+scsibus0:
+        0,0,0     0) 'SAMSUNG ' 'CD-R/RW SW-208B ' 'BS01' Removable CD-ROM
+        0,1,0     1) 'GoldStar' 'CD-ROM CRD-8322B' '1.02' Removable CD-ROM
+        0,2,0     2) *
+        0,3,0     3) *
+        0,4,0     4) *
+        0,5,0     5) *
+        0,6,0     6) *
+        0,7,0     7) *
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Come si può vedere il masterizzatore ha le "coordinate" (non mi
+      dilungo sulla loro descrizione) <B class="KEYCAP">0,0,0</B>, mentre il
+      lettore ha <B class="KEYCAP">0,1,0</B>. Dal momento in cui le
+      periferiche sono riconosciute dal kernel come SCSI, il loro
+      posizionamente in <B class="KEYCAP">/dev</B> sarà (nel mio caso):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+/dev/scd0 per il master
+/dev/scd1 per lo slave
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>se, quindi, nella nostra <B class="KEYCAP">/dev</B> ci sono di link
+      di nome <B class="KEYCAP">cdrom</B>, <B class="KEYCAP">cdrom1</B> che
+      puntano rispettivamente a <B class="KEYCAP">/dev/hdc</B> (secondary
+      master), <B class="KEYCAP">/dev/hdd</B> (secondary slave) questi vanno
+      rimossi e rimpiazzati da link che puntano a queste altre periferiche
+      (aggiustate il tutto alla vostra situazione!), come utente root:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# cd /dev
+# rm cdrom
+# rm cdrom1
+# ln -s scd0 cdrom
+# ln -s scd1 cdrom1
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Se invece la vostra distro non usa questi links ricordati di
+      cambiare il vostro <TT class="FILENAME">/etc/fstab</TT>, altrimenti non
+      riuscirete più a montare i cdrom.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "introduzionemasterizzazione.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "masterizzarecdr.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Introduzione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "masterizzazione.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Procedura di
+          masterizzazione CDR</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

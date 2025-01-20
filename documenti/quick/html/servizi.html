@@ -1,0 +1,611 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Servizi</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title=" Procedura di masterizzazione On The Fly "
+    href="onthefly.html">
+    <LINK rel="NEXT" title="Wheel Mouse" href="wheelmouse.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "onthefly.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "wheelmouse.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="SERVIZI">Capitolo 17. Servizi</A></H1>
+
+      <P>In questa sezione vediamo un elenco di buona parte dei possibili
+      <EM>demoni</EM> di sistema di un sistema Linux. In Linux, e negli Unix
+      in generale, i <EM>demoni</EM> sono dei processi che vengono avviati di
+      solito durante l'avvio del sistema e continuano a girare in background
+      senza richiedere intervento da parte dell'utente, in attesa che qualche
+      altro programma o processo ne richieda i servizi. L'elenco seguente può
+      esservi utile per vedere quanti di essi vi sono realmente necessari, e
+      se non sia il caso di disabilitare o disinstallare del tutto il
+      pacchetto relativo al servizio.</P>
+
+      <DIV class="VARIABLELIST">
+        <DL>
+          <DT><B class="KEYCAP">acpid</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: demone per la gestione
+            dell'alimentazione elettrica</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>:
+            /usr/share/doc/acpid-[versione]</P>
+          </DD>
+
+          <DT><B class="KEYCAP">anacron</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: una versione particolare
+            del demone <EM>cron</EM>. <EM>cron</EM> avvia delle elaborazioni
+            a orari programmati, ma li salta se il sistema non è in funzione
+            all'orario prestabilito. <EM>anacron</EM> invece controlla in
+            fase di avvio tutte le elaborazioni che sarebbero dovute essere
+            eseguite da <EM>cron</EM> e le esegue. Può essere utile in caso
+            di macchine che non rimangono accese perennemente.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man anacron</P>
+          </DD>
+
+          <DT><B class="KEYCAP">apmd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: controlla l'<EM>Advanced
+            Power Management</EM> del BIOS. Utile solo se avete un portatile
+            o un computer che supporti lo standrad ATX di alimentazione
+            elettrica, permettendo di spegnerlo via software.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man apmd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">arpwatch</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: tiene traccia delle coppie
+            di indirizzi <EM>ethernet/IP</EM>. Di solito non è abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man arpsnmp</P>
+          </DD>
+
+          <DT><B class="KEYCAP">atd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: il demone <EM>at</EM>,
+            gestisce alcune elaborazioni a orari programmati. Correlato a
+            <EM>cron</EM>.</P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man atd, man at</P>
+          </DD>
+
+          <DT><B class="KEYCAP">autofs</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: gestisce il demone
+            <EM>automount</EM> (che non ha niente a che fare con
+            <EM>supermount</EM>!). Di solito è disabilitato. Utile se si
+            vogliono montare in automatico dei volumi condivisi in rete.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man autofs, man
+            automount</P>
+          </DD>
+
+          <DT><B class="KEYCAP">bootparamd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: serve a fornire le
+            informazioni di boot a client senza disco. Di solito
+            disabilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man bootparamd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">crond</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: il demone <EM>cron</EM>
+            gestisce compiti ripetitivi. Correlato a <EM>atd</EM></P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man crond, man cron</P>
+          </DD>
+
+          <DT><B class="KEYCAP">cups</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: è un moderno sistema di
+            stampa, essenziale se lo usate al posto di <EM>lpd</EM></P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man cups</P>
+          </DD>
+
+          <DT><B class="KEYCAP">drakfont</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: permette la gestione
+            automatica dei font True-Type da parte del sistema, nei sistemi
+            <EM>Linux-Mandrake</EM>.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man drakfont</P>
+          </DD>
+
+          <DT><B class="KEYCAP">gpm</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: il demone <EM>General
+            Purpose Mouse</EM>. Necessario solo se volete usare il mouse in
+            console (non negli xterm). Se lavorate quasi sempre in X, è
+            meglio disattivarlo, in quanto sono note incompatibilità con il
+            sistema X-window.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man gpm</P>
+          </DD>
+
+          <DT><B class="KEYCAP">harddrake</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: riconosce e configura
+            hardware nuovo/cambiato, nei sistemi <EM>Linux-Mandrake</EM>.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>:
+            /usr/share/doc/harddrake-[versione]</P>
+          </DD>
+
+          <DT><B class="KEYCAP">httpd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: questo demone è necessario
+            per il funzionamento del server web <EM>Apache</EM>. Se non
+            intendete tenere in funzione un server web, disattivatelo: usa
+            infatti una considerevole quantità di risorse di sistema e rende
+            il sistema vulnerabile a possibili attacchi esterni se non
+            configurato adeguatamente.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man httpd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">identd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: fornisce informazioni su
+            utenti/processi (di solito è avviato da inetd - è il processo
+            <EM>auth</EM>).</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man identd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">inetd - xinetd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: gestiscono i servizi
+            <EM>dial-in</EM>, tipo imap, nntp, finger, ftp, pop3 e telnet
+            (gli ultimi tre di solito sono attivi). <EM>inetd</EM> è la
+            versione precedente del demone, ultimamente in via di
+            sostituzione con <EM>inetd</EM>, che gestisce in modo migliore il
+            controllo delle connessioni (anche se ha ancora qualche
+            difficoltà con <EM>UDP</EM> e <EM>RPC</EM>), rispetto
+            all'accoppiata <EM>inetd+tcpd</EM>. Se non dovete offrire questo
+            tipi di servizi, o usate solo collegamenti in <EM>dial-out</EM>,
+            disattivateli! Con le impostazioni di default, infatti,
+            permettono a chiunque conosca il vostro IP di sferrare attacchi
+            ai vostri danni. Se volete comunque usarli, controllate e
+            impostate i file: <TT class="FILENAME">/etc/inetd.conf</TT>, <TT
+            class="FILENAME">/etc/hosts.allow</TT>, <TT class=
+            "FILENAME">/etc/hosts.deny</TT> e installate i
+            <EM>tcp-wrappers</EM> (<EM>tcpd</EM>).</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man inetd, man xinetd,
+            man hosts_access and man tcpd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">ipchains</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: gestisce il
+            <EM>firewall-masquerading</EM> di sistema. Può essere sostituito
+            con uno script apposito.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man ipchains</P>
+          </DD>
+
+          <DT><B class="KEYCAP">keytable</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: carica la mappa di tastiera
+            selezionata, in base all'impostazione del file <TT class=
+            "FILENAME">/etc/sysconfig/keyboard</TT>. Di solito è abilitato.
+            Essenziale per tastiere diverse da quelle americane.</P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man loadkeys</P>
+          </DD>
+
+          <DT><B class="KEYCAP">kheader</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: rigenera il file <TT class=
+            "FILENAME">/boot/kernel.h</TT></P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>:
+            /etc/rc.d/init.d/kheader</P>
+          </DD>
+
+          <DT><B class="KEYCAP">kudzu</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: rileva e configura in fase
+            di avvio l'hardware nuovo o che è cambiato. Conviene disattivarlo
+            per velocizzare il processo d'avvio e nel caso usarlo
+            direttamente da linea di comando. Di solito è abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man kudzu</P>
+          </DD>
+
+          <DT><B class="KEYCAP">ldap</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: usato per accedere a
+            servizi gateway X.500. In genere non è necessario.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man ldapd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">linuxconf</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: serve al programma di
+            configurazione <EM>LinuxConf</EM>. Di solito è abilitato. Utile
+            se non si vogliono modificare a mano i vari file di
+            configurazione di sistema.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>:
+            /usr/lib/linuxconf/help</P>
+          </DD>
+
+          <DT><B class="KEYCAP">lpd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: il demone <EM>Line Printer
+            Spooler</EM>. Necessario per la stampa (al suo posto potete usare
+            <EM>cups</EM>). Di solito è abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man lpd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">mysql</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: sistema di database
+            relazionale avanzato</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man mysql</P>
+          </DD>
+
+          <DT><B class="KEYCAP">netfs</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: <EM>Network Filesystem
+            Mounter</EM>. Serve solo se in fase d'avvio si vogliono montare
+            condivisioni di tipo <EM>NFS</EM>, <EM>SMB</EM> e
+            <EM>NCP</EM>.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man mount</P>
+          </DD>
+
+          <DT><B class="KEYCAP">network</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: attiva le interfacce di
+            rete durante la fare di avvio, richiamando gli script presenti in
+            <EM>/etc/sysconfig/network-scripts</EM>. Di solito è
+            abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man ifconfig e la
+            documentazione relativa a ciascun tipo di interfaccia usata.</P>
+          </DD>
+
+          <DT><B class="KEYCAP">nfslock</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: avvia e arresta il servizio
+            di blocco dei file NFS. Se non sapete cosa sia, disabilitatelo.
+            Di solito è abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man nfs</P>
+          </DD>
+
+          <DT><B class="KEYCAP">numlock</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: attiva il tasto
+            <EM>NumLock</EM> al cambio di runlevel. Di solito è
+            abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: boh!</P>
+          </DD>
+
+          <DT><B class="KEYCAP">pcmcia</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: attiva l'interfaccia
+            <EM>PCMCIA</EM>. Utile solo agli utenti di sistemi portatili.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: lo script stesso</P>
+          </DD>
+
+          <DT><B class="KEYCAP">portmap</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: necessario per le
+            <EM>Remote Procedure Calls</EM>. Lasciatelo abilitato se usate
+            <EM>GNOME</EM> o avete bisogno di <EM>RPC</EM> per qualche altro
+            motivo. Di solito è abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man portmap</P>
+          </DD>
+
+          <DT><B class="KEYCAP">postfix</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: è un <EM>MTA</EM> (<EM>Mail
+            Transport Agent</EM>), simile a sendmail ma molto più sicuro. Se
+            usate <EM>Netscape Mail</EM> o <EM>Kmail</EM> o altri programmi
+            che contattano direttamente un SMTP esterno, non ne avete
+            bisogno. Di solito è abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man postfix,
+            '/usr/doc/postfix-[version]/html/index.html'</P>
+          </DD>
+
+          <DT><B class="KEYCAP">random</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: genera numeri casuali,
+            fornendoli a vari programmi. Necessario per la sicurezza.</P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man 4 random</P>
+          </DD>
+
+          <DT><B class="KEYCAP">rawdevices</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: permette accesso diretto ai
+            dischi (usato da oracle)</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>:
+            /etc/rc.d/init.d/rawdevices</P>
+          </DD>
+
+          <DT><B class="KEYCAP">routed</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: si occupa degli
+            instradamenti di rete. Non ne avete bisogno se usate connessioni
+            dial-up.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man routed</P>
+          </DD>
+
+          <DT><B class="KEYCAP">rstatd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: genera statistiche sul
+            kernel (utile per gestioni avanzate di rete). Di solito non è
+            abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man rpc.rstatd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">rusersd - rwalld - rwhod</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: fornisce diversi servizi
+            utili quando si gestisce un server. Di solito non è
+            abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: le loro man-pages</P>
+          </DD>
+
+          <DT><B class="KEYCAP">smb</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: necessario per far
+            furnzionare <EM>SAMBA</EM>, il server per il <EM>Server Message
+            Block Protocol</EM>. Permette di fornire servizi di rete a client
+            Windows e di accedere ad essi da GNU/Linux. Di solito non è
+            abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man samba, il libro
+            "Using Samba" della O'Reilly, disponibile in rete</P>
+          </DD>
+
+          <DT><B class="KEYCAP">sshd</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: è un demone che permette di
+            gestire connessioni protette verso il server, da usare
+            preferibilmente al posto di <EM>telnet</EM>. Può essere
+            disabilitato se si usano solo connessioni dial-up.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man sshd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">syslog</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: si occupa dei log si
+            sistema.</P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man sysklogd</P>
+          </DD>
+
+          <DT><B class="KEYCAP">usb</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: serve per le periferiche su
+            <EM>Universal Serial Bus</EM>. Se non avete periferiche di questo
+            tipo, potete disabilitarlo. Di solito è abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>:
+            /usr/src/linux/drivers/usb</P>
+          </DD>
+
+          <DT><B class="KEYCAP">xfs</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: è l'<EM>X Font Server</EM>.
+            Se non lo caricate, dovrete impostare a mano i percorsi dei font
+            nel file <TT class="FILENAME">/etc/X11/XF86Config</TT> e usare un
+            font server esterno, come <EM>xfstt</EM>. Di solito è
+            abilitato.</P>
+
+            <P><B class="KEYCAP">Stato</B>: essenziale su usate X</P>
+
+            <P><B class="KEYCAP">Documentazione</B>: man xfs</P>
+          </DD>
+
+          <DT><B class="KEYCAP">zope</B></DT>
+
+          <DD>
+            <P><B class="KEYCAP">Descrizione</B>: un linguaggio di
+            programmazione object oriented per creare siti web dinamici</P>
+
+            <P><B class="KEYCAP">Stato</B>: opzionale</P>
+
+            <P><B class="KEYCAP">Documentazione</B>:
+            /home/httpd/html/zopedocs</P>
+          </DD>
+        </DL>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "onthefly.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "wheelmouse.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Procedura di
+          masterizzazione On The Fly</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Wheel Mouse</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

@@ -1,0 +1,263 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Bootstrap remoto con macchine diskless HOWTO --- © Alessandro Illiano</title>
+</head>
+     <p align="left"><a href="Conf_client.htm">Avanti</a>
+     <a href="Il_boot_in_pratica.html">Indietro</a> <a href="index.html">Indice
+     </a>
+    <hr>
+<body>
+
+<p align="left"><font size="5"><b>4. Configurazione del server</b></font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><font size="4"><a name="dhcp"></a>4.1 Installazione e configurazione del&nbsp; DHCP
+server</font> </p>
+<p align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">Abbiamo visto
+dunque quale e' il compito di un server DHCP. Ma adesso passiamo alla parte
+pratica.</p>
+<p style="margin-bottom: 0cm" align="left"><br>
+<i>INSTALLAZIONE E CONFIGURAZIONE DAL LATO <b>SERVER</b></i>: </p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">- Innanzitutto
+bisogna installare il pacchetto relativo al dhcp (nel nostro caso il pacchetto
+e' il seguente:</p>
+<ul>
+  <p style="margin-bottom: 0cm" align="left"><i>dhcp-2.0pl5-8</i></p>
+</ul>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal">- Il
+file sul quale bisogna agire e' </span><i>/etc/dhcpd.conf, </i>
+<span style="font-style: normal">il quale contiene la configurazione del
+servizio DHCP. Se dopo aver installato il pacchetto relativo al dhcp-server
+(cambia da distribuzione a distribuzione) il file non dovesse essere presente
+basta editarlo (con un editor a vostra scelta) nel percorso citato sopra.</span></p>
+<p style="margin-bottom: 0cm" align="left">- La configurazione del file è la
+seguente:</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">#dhcpd.conf</p>
+<p style="margin-bottom: 0cm" align="left">#</p>
+<p style="margin-bottom: 0cm" align="left">default-lease-time 600;</p>
+<p style="margin-bottom: 0cm" align="left">max-lease-time 7200;</p>
+<p style="margin-bottom: 0cm" align="left">#</p>
+<p style="margin-bottom: 0cm" align="left">use-host-decl-names on;</p>
+<p style="margin-bottom: 0cm" align="left">#</p>
+<p style="margin-bottom: 0cm" align="left">subnet 172.16.0.0 netmask 255.255.0.0
+</p>
+<p style="margin-bottom: 0cm" align="left">{</p>
+<p style="margin-bottom: 0cm" align="left">filename “vmlinuz.prova”;</p>
+<p style="margin-bottom: 0cm" align="left">range 172.16.0.51 172.16.0.100;</p>
+<p style="margin-bottom: 0cm" align="left">option broadcast-address
+172.16.0.255;</p>
+<p style="margin-bottom: 0cm" align="left">option routers 172.16.0.10;</p>
+<p style="margin-bottom: 0cm" align="left">option tftp-server-name 172.16.1.1;</p>
+<p style="margin-bottom: 0cm" align="left">}</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">Bisogna
+specificare che questa e' la configurazione generica di dhcpd.conf, infatti
+potremmo configurare al meglio questo file specificando i parametri per ogni
+nostra macchina nel seguente modo:</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left"><br>
+#dhcpd.conf</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">#</p>
+<p style="margin-bottom: 0cm" align="left">default-lease-time 600;</p>
+<p style="margin-bottom: 0cm" align="left">max-lease-time 7200;</p>
+<p style="margin-bottom: 0cm" align="left">#</p>
+<p style="margin-bottom: 0cm" align="left">subnet 172.16.0.0 netmask 255.255.0.0
+</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">host 486 </p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">{</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">hardware ethernet
+00:10:A7:13:6F:25;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">fixed-address
+172.16.0.51;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">filename
+vmlinuz.prova”; </p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">}</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">e cosi' via per
+ogni altro client.</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">Bisogna dare
+delle spiegazioni però;</p>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal">---&gt;
+<b>filename “vmlinuz.prova”</b>; </span>indica il percorso dell'immagine del
+kernel (che ancora abbiamo da creare -- quindi per il momento potete pure
+lasciare vuoto il campo, e riempirlo solo a creazione effettuata). Il percorso
+dell'immagine dipende dalla configurazione del server TFTP (che vedremo piu'
+avanti --- <b>fate attenzione quindi alla configurazione di questo parametro</b>);</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">---&gt;hardware ethernet
+00:10:A7:13:6F:25; qua va inserito il MAC Adress della scheda di rete del CLIENT;</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">---&gt;default-lease-time 600;
+max-lease-time 7200; questi parametri indicano rispettivamente il tempo
+predefinito e il tempo massimo per la scadenza tra nodo e indirizzo IP
+assegnato;</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">---&gt;use-host-decl-names on; </p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">---&gt;subnet 172.16.0.0 netmask
+255.255.0.0; indicano rispettivamente la sottorete e la maschera di rete</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">---&gt;range 172.16.0.51 172.16.0.100;
+indica l'intervallo di indirizzi IP uilizzabili in modo dinamico. Piu intervalli
+separati possono essere indicati utilizzando piu volte questo tipo di parametro</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">---&gt;option broadcast-address
+172.16.0.255; permette di definire l'indirizzo di broadcast</p>
+<p style="margin-bottom: 0cm" align="left"><br>
+---&gt;option routers 172.16.0.10; permette di indicare l'indirizzo IP del nostro
+gateway (facoltativo se non si utilizza una connessione a internet)<br>
+&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">---&gt;option tftp-server-name
+172.16.1.1; permette di impostare l'indirizzo IP del nostro TFTP SERVER<br>
+&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">Ricordo che ci sono opzioni che sono
+state tralasciate in questa guida, quindi per ogni altro dubbio consultare il
+manuale della configurazione del dhcpd.conf (man dhcpd.conf).</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="center"><font size="3"><i>@@@ CONTROLLARE
+SE IL SERVIZIO DI DHCPD PARTE ALL'AVVIO @@@</i></font></p>
+<p>&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left"><font size="4"><a name="tftp"></a>4.2 Installazione e configurazione del&nbsp; TFTP
+server</font> </p>
+<p align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left"><i>INSTALLAZIONE E CONFIGURAZIONE DAL
+LATO <b>SERVER</b></i><span style="font-style: normal">: </span><br>
+&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">- Innanzitutto
+bisogna installare il pacchetto relativo al tftp (nel nostro caso il pacchetto
+e' il seguente: </p>
+<ul>
+  <p style="margin-bottom: 0cm" align="left"><i>tftp-0.28-2</i></p>
+</ul>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal">- Il
+file sul quale bisogna agire e' </span><i>/etc/xinet.d/tftp</i><span style="font-style: normal">,
+il quale contiene la configurazione del servizio TFTP.</span></p>
+<p style="margin-bottom: 0cm" align="left"><br>
+La configurazione del file e' la seguente:</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">service TFTP</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">{</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">socket-type =
+dgram</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">protocol = udp</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">wait = yes</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">user = root</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">server = /usr/sbin/in.tftpd</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left"><b>server_args =
+-s tftpboot</b></p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">disable = no</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">per_source = 11</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">cps = 100 2</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">}</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">- A questo punto
+e' possibile riavviare il servizio<br>
+&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal"><b>
+IMPORTANTE</b> : la stringa “<b>server_args = -s tftpboot</b>” indica la
+directory del server nella quale si trova il client all'avvio, quindi e'
+importante specificare nella configurazione del DHCP server (dhcpd.conf) il
+percorso dell'immagine del kernel (parametro ---&gt; 'filename “vmlinuz.prova”;')</span>
+<b>relativamente a questa directory (/tftpboot) .</b></p>
+<p style="margin-bottom: 0cm" align="left">La mia situazione e' la seguente:</p>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal">
+server_args = -s tftpboot</span> (TFTP) ---&gt; il client quindi di default si
+trovera' nella directory /tftpboot/</p>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal">
+filename vmlinuz.prova”; (DHCP) ---&gt; indica il percorso del'immagine del kernel
+a partire dalla directory specificata nella stringa “server_args = -s tftpboot</span>”;</p>
+<p style="margin-bottom: 0cm" align="left">Quindi se tralasciamo l'opzione -s
+tftpboot nel filename dobbiamo specificare /tftpboot/vmlinuz.prova ;</p>
+<p style="margin-bottom: 0cm" align="left">altrimenti possiamo inserire
+l'opzione -s tftpboot e gia' di defaults il client si troverà nella directory
+desiderata e per questo basta scrivere vmlinuz.prova.<br>
+&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">Ricordo che ci sono opzioni che sono
+state tralasciate in questa guida, quindi per ogni altro dubbio consultare il
+manuale della configurazione del in.tftpd (man in.tftpd).</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="center"><font size="3"><i>@@@ CONTROLLARE
+SE IL SERVIZIO DI TFTP PARTE ALL'AVVIO @@@</i></font></p>
+<p>&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left"><font size="4"><a name="nfs"></a>4.3 Installazione e configurazione del&nbsp; NFS
+server</font> </p>
+<p align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left"><i>INSTALLAZIONE E CONFIGURAZIONE DAL
+LATO <b>SERVER</b></i><font size="4"><span style="font-style: normal">:</span></font><br>
+&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">- Innanzitutto
+bisogna installare il pacchetto relativo all'nfs (nel nostro caso il pacchetto
+e' il seguente:</p>
+<ul>
+  <p style="margin-bottom: 0cm" align="left">
+  <i>nfs-utils-0.3.3-5</i></a></p>
+</ul>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">- Controllare se
+e' stato compilato il kernel con il supporto per l'nfs; per vedere cio' basta
+fare un</p>
+<ul>
+  <p style="margin-bottom: 0cm" align="left"><i>cat /proc/filesystem</i></p>
+</ul>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">- Controllare se
+il kernel consente di gestire la funzionalità di server NFS;</p>
+<ul>
+  <p style="margin-bottom: 0cm" align="left"><i>cat /proc/net/rpc/nfsd</i></p>
+</ul>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal">-
+Dalla parte dell'elaboratore server e' necessario che oltre al Portmapper siano
+in funzione alcuni demoni, avviati secondo l'ordine seguente: </span><i>
+rpc.mountd, rpc.nfsd, rpc.statd, rpc.lockd</i><span style="font-style: normal">;</span></p>
+<ul>
+  <p style="margin-bottom: 0cm" align="left"><i>rpcinfo -p</i></p>
+</ul>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">Se tutto e' 
+apposto editare il file <i>/etc/exports </i>che consente di condividere delle 
+directory con i client</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">/tftpboot 
+172.16.0.51 (rw, <b>no_root_squash</b>)</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left"><br>
+oppure per condividere la directory con tutti i client della mia rete:</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">/tftpboot 
+172.16.0.* (rw, <b>no_root_squash</b>)</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">Se vogliamo 
+possiamo anche configurare i files <i>/etc/hosts.allow </i>e <i>/etc/hosts.deny
+</i>per consentire o proibire l'accesso a determinati client.</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">Dobbiamo 
+riavviare il servizio</p>
+<p style="font-style: normal; margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left"><span style="font-style: normal">
+Infine controllate con </span><i>showmount -e </i>
+<span style="font-style: normal">se si condividono le directory desiderate</span>.</p>
+<p style="margin-bottom: 0cm" align="left">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="left">Devo precisare che l'opzione “<span style="font-style: normal"><b>no_root_squash</b>” 
+non effettua la trasformazione dell'UID root e ciò e' necessario quando si 
+utilizzano client NFS senza disco fisso (il nostro caso)</span></p>
+<p style="margin-bottom: 0cm" align="left">Ricordo che ci sono opzioni che sono 
+state tralasciate in questa guida, quindi per ogni altro dubbio consultare il 
+manuale della configurazione di /etc/exports (man exports).</p>
+<p style="margin-bottom: 0cm" align="center">&nbsp;</p>
+<p style="margin-bottom: 0cm" align="center"><font size="3"><i>@@@ CONTROLLARE 
+SE IL SERVIZIO DI NFS PARTE ALL'AVVIO @@@</i></font></p>
+<p style="margin-bottom: 0cm" align="center">&nbsp;</p>
+<hr>
+<p style="margin-bottom: 0cm" align="left"><a href="Conf_client.htm">Avanti</a>
+<a href="Il_boot_in_pratica.html">Indietro</a> <a href="index.html">Indice </a>
+</p>
+<p style="margin-bottom: 0cm" align="center">&nbsp;</p>
+<p>&nbsp;</p>
+<p align="left">&nbsp;</p>
+
+</body>
+
+</html>

@@ -1,0 +1,645 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr6.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr8.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr8.html">[successivo]</A>
+<A HREF="ldr6.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 4. &nbsp; <A NAME="title420"></A><A NAME="anchor443"></A><A NAME="index1920"></A>X</H1>
+
+<H2>4.1 &nbsp; <A NAME="title421"></A><A NAME="anchor444"></A>
+ Avvio, conclusione, configurazione e risoluzione </H2>
+
+<P><STRONG>4.1.1)&nbsp;&nbsp;<A NAME="title422"></A><A NAME="anchor445"></A>
+ Come si cambia <A NAME="index1921"></A>desktop&nbsp;manager in una distribuzione GNU/Linux <A NAME="index1922"></A>Red&nbsp;Hat? </STRONG></P>
+
+<P>Una distribuzione GNU/Linux <A NAME="index1923"></A>Red&nbsp;Hat dispone dell'eseguibile <SAMP>switchdesk</SAMP> che permette di scegliere il <A NAME="index1924"></A>desktop&nbsp;manager preferito.</P>
+
+<P><STRONG>4.1.2)&nbsp;&nbsp;<A NAME="title423"></A><A NAME="anchor446"></A>
+ Come si fa a sapere la versione del <A NAME="index1925"></A>server <A NAME="index1926"></A>X? </STRONG></P>
+
+<P>Con il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>X -version</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando restituisce versione, data di rilascio, sistema operativo, <A NAME="index1927"></A>driver supportati, ecc.</P>
+
+<P><STRONG>4.1.3)&nbsp;&nbsp;<A NAME="title424"></A><A NAME="anchor447"></A>
+ Come si abilita e disabilita il <A NAME="index1928"></A> login grafico? <A NAME="index1929"></A> <A NAME="index1930"></A> </STRONG></P>
+
+<P>Per fare in modo che all'avvio di GNU/Linux, non compaia il <A NAME="index1931"></A>login dall'ambiente grafico X si deve disabilitare <SAMP>xdm</SAMP> o <SAMP>gdm</SAMP>; se si utilizza una distribuzione <A NAME="index1932"></A>Debian GNU/Linux, si faccia riferimento alla LDR <A HREF="ldr7.html#anchor448">4.1.4</A>. Se si &egrave; in possesso di un'altra distribuzione, un modo per farlo &egrave; modificare il file <CODE>/etc/inittab</CODE> e dove c'&egrave; scritto:</P>
+<BLOCKQUOTE>
+
+<PRE>id:5:initdefault:</PRE>
+
+</BLOCKQUOTE>
+
+<P>occorrer&agrave; sostituire il 5 con un 3:</P>
+<BLOCKQUOTE>
+
+<PRE>id:3:initdefault:</PRE>
+
+</BLOCKQUOTE>
+
+<P>per cambiare <A NAME="index1933"></A>livello di esecuzione (<EM>runlevel</EM>).</P>
+
+<P><STRONG>4.1.4)&nbsp;&nbsp;<A NAME="title425"></A><A NAME="anchor448"></A>
+ Come si abilita e disabilita il <A NAME="index1934"></A>login grafico di una distribuzione GNU/Linux <A NAME="index1935"></A>Debian? <A NAME="index1936"></A> <A NAME="index1937"></A> <A NAME="index1938"></A> </STRONG></P>
+
+<P>In <A NAME="index1939"></A>Debian non occorre cambiare il <A NAME="index1940"></A>livello di esecuzione (<EM>runlevel</EM>) per eliminare la modalit&agrave; grafica. La modalit&agrave; grafica automatica si attiva o disattiva rispettivamente installando o rimuovendo il pacchetto che gestisce il <A NAME="index1941"></A>login grafico stesso (che a scelta pu&ograve; essere <SAMP>xdm</SAMP>, <SAMP>gdm</SAMP> o <SAMP>wdm</SAMP>).</P>
+
+<P><STRONG>4.1.5)&nbsp;&nbsp;<A NAME="title426"></A><A NAME="anchor449"></A>
+ Perch&eacute; l'utente <SAMP>root</SAMP> non riesce a lanciare applicazioni grafiche se il <A NAME="index1942"></A>server <A NAME="index1943"></A>X &egrave; stato lanciato da utente comune? <A NAME="index1944"></A> <A NAME="index1945"></A> </STRONG></P>
+
+<P>Qualsiasi utente che lancia un'applicazione grafica da un <A NAME="index1946"></A>server <A NAME="index1947"></A>X di un altro utente ricever&agrave; un messaggio simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>Xlib: connection to ":0.0" refused by server
+Xlib: Client is not authorized to connect to Server
+
+Gtk-WARNING **: cannot open display: :0.0</PRE>
+
+</BLOCKQUOTE>
+
+<P>Questo accade per motivi di sicurezza. L'utente proprietario del <A NAME="index1948"></A>server <A NAME="index1949"></A>X dovr&agrave; concedere il permesso di utilizzo del <A NAME="index1950"></A>server agli altri utenti. L'autorizzazione viene concessa mediante il comando <SAMP>xhost</SAMP>. Quest'ultimo comando utilizzato con il carattere <SAMP>+</SAMP> conceder&agrave; l'autorizzazione a tutti gli elaboratori e a tutti gli utenti:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xhost +</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Se invece si desiderasse concedere l'autorizzazione esclusivamente a una macchina o a un utente, si utilizzer&agrave; la seguente sintassi:</P>
+
+<P class="syntax"><TT><STRONG><BIG>[</BIG></STRONG>+<STRONG><BIG>]</BIG></STRONG><VAR>nome</VAR>
+</TT></P>
+
+<P>dove <VAR>nome</VAR> &egrave; il nome della macchina o dell'utente cui vogliamo concedere l'utilizzo dello schermo.</P>
+
+<P><STRONG>4.1.6)&nbsp;&nbsp;<A NAME="title427"></A><A NAME="anchor450"></A>
+ Come si pu&ograve; lanciare un'applicazione che gira sotto <A NAME="index1951"></A>X senza attivare il <A NAME="index1952"></A>gestore delle finestre? <A NAME="index1953"></A> <A NAME="index1954"></A> </STRONG></P>
+
+<P>Per lanciare un'applicazione in <A NAME="index1955"></A>X senza che in quest'ultimo venga caricato il gestore delle finestre si dovr&agrave; utilizzare il comando <SAMP>xinit</SAMP> seguito dal nome dell'applicazione. Se ad esempio si volesse avviare solo <A NAME="index1956"></A>Mozilla, si dar&agrave; il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xinit mozilla</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr7.html#footnote1" NAME="footnote-ref1">(1)</A></SUP></P>
+
+<P><STRONG>4.1.7)&nbsp;&nbsp;<A NAME="title428"></A><A NAME="anchor451"></A>
+ Come si lancia solamente <A NAME="index1957"></A>X, senza <A NAME="index1958"></A>gestori delle finestre? <A NAME="index1959"></A> <A NAME="index1960"></A> </STRONG></P>
+
+<P>Si pu&ograve; far partire il <A NAME="index1961"></A>server <A NAME="index1962"></A>X sullo sfondo senza <A NAME="index1963"></A>gestori delle finestre permettendo cos&igrave; di avviare le applicazioni grafiche dalla <A NAME="index1964"></A>console e mantenendo molto libero in termini di memoria l'ambiente grafico.</P>
+
+<P>Per ottenere questo scopo, si dovr&agrave; innanzitutto avviare sullo sfondo X:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>X &amp;</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Si dovr&agrave; poi tornare, mediante la combinazione di tasti [<KBD>Ctrl+Alt+F[1-6]</KBD>] alla <A NAME="index1965"></A>console da cui si era impartito il comando e esportare la variabile <SAMP>DISPLAY</SAMP> con il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>export DISPLAY=:0</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>a questo punto si avr&agrave; l'autorizzazione per avviare applicazione grafiche. Si potr&agrave; digitare ad esempio:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xterm &amp;</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>per veder comparire un <A NAME="index1966"></A>terminale grafico in X.</P>
+
+<P><STRONG>4.1.8)&nbsp;&nbsp;<A NAME="title429"></A><A NAME="anchor452"></A>
+ Come si possono catturare le immagini in GNU/Linux? <A NAME="index1967"></A> <A NAME="index1968"></A> <A NAME="index1969"></A> <A NAME="index1970"></A> <A NAME="index1971"></A> <A NAME="index1972"></A> <A NAME="index1973"></A> <A NAME="index1974"></A> <A NAME="index1975"></A> <A NAME="index1976"></A> <A NAME="index1977"></A> <A NAME="index1978"></A> </STRONG></P>
+
+<P>Per catturare le immagini in X si possono utilizzare diversi programmi ed applicativi. <A NAME="index1979"></A>Gimp <SUP><A HREF="ldr7.html#footnote2" NAME="footnote-ref2">(2)</A></SUP> ad esempio, permette di farlo attraverso il men&ugrave; File e scegliendo <SAMP>Acquisizione</SAMP> e poi <SAMP>Screenshot...</SAMP>. Esistono per&ograve; varie versioni di <A NAME="index1980"></A>Gimp e la disposizione del comando di acquisizione potrebbe variare.</P>
+
+<P>Oltre <A NAME="index1981"></A>Gimp si deve ricordare <A NAME="index1982"></A>MagiCapture <SUP><A HREF="ldr7.html#footnote3" NAME="footnote-ref3">(3)</A></SUP>, <A NAME="index1983"></A>XVidCap <SUP><A HREF="ldr7.html#footnote4" NAME="footnote-ref4">(4)</A></SUP> e l'applicativo di pannello di <A NAME="index1984"></A>Gnome <A NAME="index1985"></A>ScreenShooter.</P>
+
+<TABLE ID="anchor453" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="22.jpg" ALT="figure/magicapture" HEIGHT="396"></P>
+
+<P class="caption"> Figura <A HREF="ldr7.html#anchor453">4.1</A>. MagiCapture </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor454" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="23.jpg" ALT="figure/xvidcap" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr7.html#anchor454">4.2</A>. XVidCap </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor455" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="24.jpg" ALT="figure/gimp_screenshot" WIDTH="566" ></P>
+
+<P class="caption"> Figura <A HREF="ldr7.html#anchor455">4.3</A>. Gimp </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor456" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="25.jpg" ALT="figure/gnome_panel_screenshot" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr7.html#anchor456">4.4</A>. L'applicativo ScreenShooter del pannello di Gnome </P>
+
+</TD></TR>
+</TABLE>
+
+<P>Per quanto riguarda i comandi da utilizzare per catturare lo schermo da <A NAME="index1986"></A>console, si deve ricordare <SAMP>xwd</SAMP> (<A NAME="index1987"></A>X Windows Dump). Ecco un esempio del suo utilizzo:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xwd -root &gt; <VAR>nome</VAR>.xwd</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr7.html#footnote5" NAME="footnote-ref5">(5)</A></SUP></P>
+
+<P>Questo comando cattura l'intero schermo. Si deve utilizzare <SAMP>xwud</SAMP><SUP><A HREF="ldr7.html#footnote6" NAME="footnote-ref6">(6)</A></SUP> per vedere le immagini:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xwud -in <VAR>nome</VAR>.xwd</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Un altro programma per <A NAME="index1989"></A>console &egrave; <A NAME="index1990"></A>scrot <SUP><A HREF="ldr7.html#footnote7" NAME="footnote-ref7">(7)</A></SUP> .</P>
+
+<P><STRONG>4.1.9)&nbsp;&nbsp;<A NAME="title430"></A><A NAME="anchor457"></A>
+ Come si fa se i caratteri appaiono troppo piccoli in <A NAME="index1991"></A>X ad alte risoluzioni? <A NAME="index1992"></A> <A NAME="index1993"></A> </STRONG></P>
+
+<P>Il problema nasce dal fatto che X usa, in maniera predefinita, una risoluzione di 75 dpi (<EM>Dot Per Inch</EM>), mentre i <EM>monitor</EM> sono ottimizzati per una risoluzione di 96 dpi.</P>
+
+<P>Un modo per ovviare al problema &egrave; passare ad una risoluzione di 100 dpi. Si accede come utente <SAMP>root</SAMP>, e si controlla di avere il pacchetto <SAMP>100dpi-fonts</SAMP> installato. Nel caso di una distribuzione <A NAME="index1994"></A>Debian ad esempio, si dar&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -l | grep 100</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>che, in caso di esito positivo restituir&agrave; un <EM>output</EM> simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>ii  xfonts-100dpi  3.3.6-2        100 dpi fonts for X</PRE>
+
+</BLOCKQUOTE>
+
+<P>oppure, se si possiede una distribuzione <A NAME="index1995"></A>Red Hat, si dar&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -qa | grep 100</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Nel caso il pacchetto non risultasse presente, si dovr&agrave; procedere alla sua installazione.</P>
+
+<P>Per prima cosa si dovr&agrave; aprire il file <CODE>/etc/X11/fs/config</CODE> o a seconda delle versioni <CODE>/etc/X11/xfs/config</CODE> con un <A NAME="index1996"></A>editor, al fine di visualizzare le seguenti righe:</P>
+<BLOCKQUOTE>
+
+<PRE>/usr/X11R6/lib/X11/fonts/75dpi:unscaled,
+/usr/X11R6/lib/X11/fonts/100dpi:unscaled,</PRE>
+
+</BLOCKQUOTE>
+
+<P>A questo punto si dovr&agrave; invertire l'ordine delle due righe ottenendo quindi:</P>
+<BLOCKQUOTE>
+
+<PRE>/usr/X11R6/lib/X11/fonts/100dpi:unscaled,
+/usr/X11R6/lib/X11/fonts/75dpi:unscaled,</PRE>
+
+</BLOCKQUOTE>
+
+<P>Ecco inoltre altre modifiche da fare al file <CODE>/etc/X11/fs/config</CODE>, in cui la sezione con:</P>
+<BLOCKQUOTE>
+
+<PRE>#100 x 100 and 75 x 75
+default-resolutions = 75,75,100,100</PRE>
+
+</BLOCKQUOTE>
+
+<P>dovr&agrave; essere sostituita con:</P>
+<BLOCKQUOTE>
+
+<PRE>#100 x 100 and 75 x 75
+default-resolutions=100,100,75,75</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>4.1.10)&nbsp;&nbsp;<A NAME="title431"></A><A NAME="anchor458"></A>
+ Come si pu&ograve; risolvere il blocco di <A NAME="index1997"></A>X senza riavviare il sistema? <A NAME="index1998"></A> <A NAME="index1999"></A> <A NAME="index2000"></A> </STRONG></P>
+
+<P>Se il <A NAME="index2001"></A>server X si blocca, si pu&ograve; provare ad ucciderne il processo da un'altra <A NAME="index2002"></A>console virtuale. Un altro metodo consiste nel premere la combinazione di tasti [<KBD>Ctrl+Alt+Backspace</KBD>] che dovrebbe uccidere il processo di X tornando alla <A NAME="index2003"></A>console da cui esso &egrave; stato lanciato.</P>
+
+<P>In genere queste due indicazioni sono sufficienti a gestire il blocco di X. Si deve per&ograve; ricordare anche <A NAME="index2004"></A>JSR (&lt;<EM><A HREF="http://www.geocities.com/CapeCanaveral/Lab/7731/jsr.html">http://www.geocities.com/CapeCanaveral/Lab/7731/jsr.html</A></EM>&gt;) che serve per chiudere il <A NAME="index2005"></A>server <A NAME="index2006"></A>X o per riavviare il sistema tramite i tasti del <A NAME="index2007"></A>joystick.</P>
+
+<P>Oltre <A NAME="index2008"></A>JSR, ricordiamo che &egrave; possibile includere durante la ricompilazione del <A NAME="index2009"></A>kernel, il supporto per il tasto <SAMP>magic SysRQ key</SAMP> ([<KBD>sysrq</KBD>]). Questo tasto, sulle piattaforme <SAMP>i386</SAMP> corrisponde al tasto [<KBD>Stamp</KBD>] o [<KBD>Print Screen</KBD>]. La combinazione di questo tasto con altri, permette di eseguire operazioni particolari. Ad esempio:</P>
+
+<UL>
+
+<LI>
+
+<P> [<KBD>Alt+sysrq+b</KBD>] permetter&agrave; di riavviare il sistema immediatamente senza scaricare la <A NAME="index2010"></A>memoria cache o <A NAME="index2011"></A>smontare i dischi; </P>
+</LI>
+
+<LI>
+
+<P> [<KBD>Alt+sysrq+s</KBD>] permetter&agrave; di scaricare nei dischi il contenuto della <A NAME="index2012"></A>memoria cache. Questa operazione &egrave; caldamente consigliata prima di impartire [<KBD>Alt+sysrq+b</KBD>] per limitare al massimo la perdita dei dati; </P>
+</LI>
+
+<LI>
+
+<P> [<KBD>Alt+sysrq+u</KBD>] smonter&agrave; tutti i <A NAME="index2013"></A>file system. Questa operazione andrebbe eseguita prima di impartire [<KBD>Alt+sysrq+b</KBD>] e dopo [<KBD>Alt+sysrq+s</KBD>]. In genere infatti, in casi di emergenza, si utilizza la sequenza: [<KBD>Alt+sysrq+s</KBD>], [<KBD>Alt+sysrq+u</KBD>] e [<KBD>Alt+sysrq+b</KBD>]; </P>
+</LI>
+
+<LI>
+
+<P> [<KBD>Alt+sysrq+k</KBD>] uccider&agrave; tutti i programmi presenti sulla <A NAME="index2014"></A>console virtuale; </P>
+</LI>
+</UL>
+
+<P>Fare in ogni caso riferimento al file <CODE>/usr/src/linux/Documentation/sysrq.txt</CODE>.</P>
+
+<P><STRONG>4.1.11)&nbsp;&nbsp;<A NAME="title432"></A><A NAME="anchor459"></A>
+ C'&egrave; un modo per aumentare le prestazioni del <A NAME="index2015"></A>server  <A NAME="index2016"></A>X? <A NAME="index2017"></A> <A NAME="index2018"></A> </STRONG></P>
+
+<P>Si pu&ograve; procedere nel modo seguente:</P>
+
+<OL>
+
+<LI>
+
+<P>si determina l'indirizzo in memoria del <EM>buffer</EM> video esaminando i messaggi del <A NAME="index2019"></A>server <A NAME="index2020"></A>X che appaiono durante l'avvio:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>startx 2&gt; <VAR>messaggi</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr7.html#footnote8" NAME="footnote-ref8">(8)</A></SUP></P>
+
+<P>L'indirizzo si trova in una riga del tipo:</P>
+
+<PRE>       S3: PCI: trio32/64 rev 54 linear FB 0xe4000000
+       </PRE>
+
+<P>in questo caso di esempio &egrave; 0xe4000000;</P>
+</LI>
+
+<LI>
+
+<P>In qualit&agrave; di utente <SAMP>root</SAMP> si lancia il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>echo "base=0xe4000000 size=0x200000&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; type=write-combining" &gt; /proc/mtrr</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Il campo <SAMP>size</SAMP> &egrave; l'ammontare di memoria video (per il <EM>frame buffer</EM>) della vostra scheda video.</P>
+</LI>
+</OL>
+
+<P>Fare in ogni caso riferimento al file <CODE>/usr/src/linux/Documentation/mtrr.txt</CODE>.</P>
+
+<P><STRONG>4.1.12)&nbsp;&nbsp;<A NAME="title433"></A><A NAME="anchor460"></A>
+ Come si possono capire gli errori del <A NAME="index2023"></A>server <A NAME="index2024"></A>X? <A NAME="index2025"></A> </STRONG></P>
+
+<P>Molte volte risulta difficile visualizzare gli errori che possono apparire in corrispondenza dell'invocazione del <A NAME="index2026"></A>server X. In questi casi risulta utile indirizzare tali errori su un file. Ecco un esempio:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>startx 2&gt; <VAR>errori</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr7.html#footnote9" NAME="footnote-ref9">(9)</A></SUP></P>
+
+<P>Per visualizzarlo, utilizziamo il comando <SAMP>cat</SAMP> (o il <SAMP>less</SAMP>):</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cat <VAR>errori</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>4.1.13)&nbsp;&nbsp;<A NAME="title434"></A><A NAME="anchor461"></A>
+ Come si imposta la risoluzione predefinita di <A NAME="index2027"></A>X? <A NAME="index2028"></A> <A NAME="index2029"></A> </STRONG></P>
+
+<P>Per ottenere questo risultato occorre modificare il file <CODE>/etc/XF86Config</CODE> in modo tale che la risoluzione desiderata sia, in corrispondenza della profondit&agrave; di colore prescelta, la prima. Se ad esempio si disponesse del seguente <CODE>/etc/XF86Config</CODE>:</P>
+
+<PRE>Section "Screen"
+  Driver        "accel"
+  Device        "Primary Card"
+  Monitor       "Primary Monitor"
+  DefaultColorDepth     16
+  SubSection "Display"
+    Depth       8
+    Modes       "1600x1200" "1280x1024" "1152x864" "1024x768" "800x600"
+  EndSubSection
+  SubSection "Display"
+    Depth       16
+    Modes       "1024x768" "800x600" "640x480"
+    Virtual     1024 768
+  EndSubSection
+EndSection</PRE>
+
+<P>la profondit&agrave; di colori predefinita risulta essere 16 (<SAMP>DefaultColorDepth = 16</SAMP>). La risoluzione predefinita sar&agrave; allora 1024x768 come indicato dal primo valore della direttiva <SAMP>Modes</SAMP>.</P>
+
+<P><STRONG>4.1.14)&nbsp;&nbsp;<A NAME="title435"></A><A NAME="anchor462"></A>
+ Come si regola la profondit&agrave; dei colori in <A NAME="index2030"></A>X? <A NAME="index2031"></A> <A NAME="index2032"></A> </STRONG></P>
+
+<P>Si pu&ograve; impostare il valore della profondit&agrave; di colore predefinito mediante la direttiva <SAMP>DefaultColorDepth</SAMP> presente in <CODE>/etc/X11/XF86Config</CODE>. Se ad esempio tale file sar&agrave; composto dalle seguenti righe:</P>
+
+<PRE>Section "Screen"
+    Driver      "svga"
+    Device      "Chips &amp; Technologies CT65550"
+    Monitor     "DSTN"
+    DefaultColorDepth 16
+    Subsection "Display"
+        Depth       8
+[...]
+    EndSubsection
+    Subsection "Display"
+        Depth       16
+[...]
+    EndSubsection</PRE>
+
+<P>la profondit&agrave; dei colori sar&agrave; 16 bpp (<EM>bit per pixel</EM>).</P>
+
+<P>Se invece si desiderasse impostare saltuariamente una profondit&agrave; di colori diversa, si potr&agrave; farlo invocando il <A NAME="index2033"></A>server X mediante l'opzione <SAMP>-- -bpp</SAMP>:</P>
+
+<UL>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>startx -- -bpp 16</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>startx -- -bpp 24</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>startx -- -bpp 32</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+</UL>
+
+<P>Questi comandi imposteranno la profondit&agrave; di colore del <A NAME="index2034"></A>server X rispettivamente a 16, 24 e 32 bpp.</P>
+
+<P>Un altro metodo ancora consiste nel modificare il file <CODE>/etc/X11/xdm/Xservers</CODE> (o <CODE>/etc/X11/Xserver</CODE>); nell'ultima riga si pu&ograve; impostare la profondit&agrave; mediante l'opzione <SAMP>-bpp</SAMP>:</P>
+
+<PRE>:0 local /usr/X11R6/bin/X -bpp 32</PRE>
+
+<P><STRONG>4.1.15)&nbsp;&nbsp;<A NAME="title436"></A><A NAME="anchor463"></A>
+ Come si elimina lo schermo virtuale? <A NAME="index2035"></A> <A NAME="index2036"></A> </STRONG></P>
+
+<P>Per eliminare lo schermo virtuale occorrer&agrave; modificare il file <CODE>/etc/X11/XF86Config</CODE> e commentare la riga <SAMP>Virtual</SAMP> presente nella sottosezione <A NAME="index2037"></A>Display della sezione <A NAME="index2038"></A>Screen.</P>
+
+<P><STRONG>4.1.16)&nbsp;&nbsp;<A NAME="title437"></A><A NAME="anchor464"></A>
+ Come si passa da una modalit&agrave; all'altra dello schermo virtuale? <A NAME="index2039"></A> <A NAME="index2040"></A> </STRONG></P>
+
+<P>Per cambiare le modalit&agrave; dello schermo virtuale si dovr&agrave; utilizzare la combinazione di tasti [<KBD>Ctrl+Alt+num(+)</KBD>] per passare dalla risoluzione attuale alla successiva e [<KBD>Ctrl+Alt+num(-)</KBD>] per passare a quella precedente.</P>
+
+<P><STRONG>4.1.17)&nbsp;&nbsp;<A NAME="title438"></A><A NAME="anchor465"></A>
+ L'immagine in <A NAME="index2041"></A>X &egrave; decentrata, come posso risolvere questo problema? <A NAME="index2042"></A> <A NAME="index2043"></A> </STRONG></P>
+
+<P>Si pu&ograve; modificare la posizione dell'immagine all'interno dell'area del <EM>monitor</EM> mediante il programma <SAMP>xvidtune</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>xvidtune</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>4.1.18)&nbsp;&nbsp;<A NAME="title439"></A><A NAME="anchor466"></A>
+ Come si apre una console testuale da <A NAME="index2044"></A>X? <A NAME="index2045"></A> <A NAME="index2046"></A> <A NAME="index2047"></A> <A NAME="index2048"></A> </STRONG></P>
+
+<P>Dopo essere entrati in ambiente grafico, &egrave; possibile aprire una <A NAME="index2049"></A>console testuale mediante la combinazione di tasti [<KBD>Ctrl+Alt+F<VAR>n</VAR></KBD>]<SUP><A HREF="ldr7.html#footnote10" NAME="footnote-ref10">(10)</A></SUP> Per effettuare operazioni da riga di comando occorre ricordare che la <A NAME="index2051"></A>console testuale da cui si &egrave; invocato il <A NAME="index2052"></A>server X risulter&agrave; occupata dal processo di X stesso.</P>
+
+<P><STRONG>4.1.19)&nbsp;&nbsp;<A NAME="title440"></A><A NAME="anchor467"></A>
+ Come si ritorna alla console grafica (<A NAME="index2053"></A>X) dopo avere aperto una console testuale? <A NAME="index2054"></A> <A NAME="index2055"></A> <A NAME="index2056"></A> <A NAME="index2057"></A> </STRONG></P>
+
+<P>Per ritornare alla modalit&agrave; grafica dopo essere entrati in una <A NAME="index2058"></A>console testuale, si dovr&agrave; utilizzare la combinazione di tasti [<KBD>Ctrl+Alt+F<VAR>n</VAR></KBD>] dove [<KBD>F<VAR>n</VAR></KBD>] sar&agrave; il tasto funzione successivo a quello dell'ultima <A NAME="index2059"></A>console testuale. Generalmente sono presenti 6 <A NAME="index2060"></A>console testuali per cui il tasto funzione corrispondente alla modalit&agrave; grafica &egrave; [<KBD>F7</KBD>]. Per valutare in ogni caso il numero di <A NAME="index2061"></A>console testuali, occorrer&agrave; visualizzare il file <CODE>/etc/inittab</CODE>.</P>
+
+<H2>4.2 &nbsp; <A NAME="title441"></A><A NAME="anchor468"></A>
+ <A NAME="index2062"></A>Gnome <A NAME="index2063"></A> </H2>
+
+<P><STRONG>4.2.1)&nbsp;&nbsp;<A NAME="title442"></A><A NAME="anchor469"></A>
+ Come si chiude contemporaneamente <A NAME="index2064"></A>Enlightenment e <SAMP>gnome-panel</SAMP>? <A NAME="index2065"></A> <A NAME="index2066"></A> </STRONG></P>
+
+<P>Per uscire correttamente da <A NAME="index2067"></A>Gnome  ed <A NAME="index2068"></A>Enlightenment si dispone di due possibilit&agrave;. Ambedue riguardano il contenuto del file <CODE>~/.xinitrc</CODE>:</P>
+
+<OL>
+
+<LI>
+
+<P>o si indica <SAMP>gnome-session</SAMP>;</P>
+</LI>
+
+<LI>
+
+<P>oppure si inserisce qualcosa simile a:</P>
+
+<PRE>    
+        enlightenment &amp;
+        gmc &amp;
+        panel</PRE>
+
+<P>L'importante &egrave; che <SAMP>panel</SAMP> sia l'ultimo ad essere chiamato e che non sia lanciato in secondo piano (con <SAMP>&amp;</SAMP>).</P>
+</LI>
+</OL>
+
+<P><STRONG>4.2.2)&nbsp;&nbsp;<A NAME="title443"></A><A NAME="anchor470"></A>
+ Come si configura in <A NAME="index2069"></A>Gnome l'associazione tra file <A NAME="index2070"></A>HTML e le applicazioni deputate a visionarle? <A NAME="index2071"></A> </STRONG></P>
+
+<P>Qualora si utilizzasse il GNU Midnight Commander (l'edizione <A NAME="index2072"></A>Gnome del <A NAME="index2073"></A>file manager) e si volesse utilizzare <SAMP>lynx</SAMP> in un terminale grafico (<SAMP>xterm</SAMP>) al posto del navigatore predefinito (generalmente <A NAME="index2074"></A>Netscape o <A NAME="index2075"></A>Mozilla) per visualizzare le pagine <CODE>.html</CODE> si dovr&agrave; procedere nel modo seguente:</P>
+
+<P>Si dovr&agrave; aprire il <A NAME="index2076"></A> GNOME Contro Center, selezionare <SAMP>Tipi MIME</SAMP> modificare la voce <SAMP>text/html</SAMP> ed inserire nella voce <SAMP>Apri</SAMP> la riga:</P>
+<BLOCKQUOTE>
+
+<PRE>xterm -e lynx %f</PRE>
+
+</BLOCKQUOTE>
+
+<H2>4.3 &nbsp; <A NAME="title444"></A><A NAME="anchor471"></A>
+ <A NAME="index2077"></A>X - <A NAME="index2078"></A>Gestori delle finestre (<EM>window manager</EM>) </H2>
+
+<P><STRONG>4.3.1)&nbsp;&nbsp;<A NAME="title445"></A><A NAME="anchor472"></A>
+ Come si impostano i temi di <A NAME="index2079"></A>Enlightenment? <A NAME="index2080"></A> <A NAME="index2081"></A> <A NAME="index2082"></A> </STRONG></P>
+
+<P>Occorre decomprimere il tema in <CODE>~/.englightenment.themes</CODE> oppure in <CODE>/usr/share/enlightenment/themes</CODE> e poi sceglierlo dal men&ugrave; di configurazione di <A NAME="index2083"></A>Enlightenment.</P>
+
+<P><STRONG>4.3.2)&nbsp;&nbsp;<A NAME="title446"></A><A NAME="anchor473"></A>
+ Come si richiamano le finestre nascoste in <A NAME="index2084"></A>Window&nbsp;Maker? <A NAME="index2085"></A> <A NAME="index2086"></A> </STRONG></P>
+
+<P>Se si utilizza <A NAME="index2087"></A>Window&nbsp;Maker e si hanno pi&ugrave; finestre aperte, &egrave; possibile passare da una ad un'altra mediante la combinazione di tasti [<KBD>Alt+Tab</KBD>]. Se le finestre che si desidera attivare sono minimizzate e le icone sono coperte dalla finestra corrente, si dovr&agrave; aggiungere:</P>
+
+<PRE>NoWindowOverIcons = YES;</PRE>
+
+<P>nel file <CODE>~/GNUstep/Defaults/WindowMaker</CODE>.</P>
+
+<P>Inoltre &egrave; possibile fare apparire l'elenco delle finestre premendo sullo sfondo il pulsante centrale del mouse (o i due pulsanti del mouse insieme). Questa operazione far&agrave; apparire l'elenco delle finestre attive. Se si sposta questo elenco in basso sulla scrivania lasciando in evidenza solamente il titolo di questo elenco, sar&agrave; possibile <EM>sollevarlo</EM> ogni volta che ci passa sopra il puntatore del mouse. Inoltre questo elenco &egrave; sempre in primo piano. Si otterr&agrave; quindi un elenco delle finestre a scomparsa.</P>
+
+<P><STRONG>4.3.3)&nbsp;&nbsp;<A NAME="title447"></A><A NAME="anchor474"></A>
+ Come si impostano i temi di <A NAME="index2088"></A>Window&nbsp;Maker? <A NAME="index2089"></A> <A NAME="index2090"></A> </STRONG></P>
+
+<P>Per installare un tema in <A NAME="index2091"></A>Window&nbsp;Maker, si dovr&agrave; decomprimere il relativo pacchetto all'interno di <CODE>~/GNUstep/Library/WindowMaker/Themes</CODE>.</P>
+
+<P><STRONG>4.3.4)&nbsp;&nbsp;<A NAME="title448"></A><A NAME="anchor475"></A>
+ Come si configura <A NAME="index2092"></A>IceWM? <A NAME="index2093"></A> <A NAME="index2094"></A> <A NAME="index2095"></A> <A NAME="index2096"></A> </STRONG></P>
+
+<P>I file di configurazione di <A NAME="index2097"></A>IceWM sono <CODE>menu</CODE>, <CODE>preferences</CODE>, <CODE>taskbar</CODE>, <CODE>toolbar</CODE> e <CODE>winoptions</CODE> presenti nella directory <CODE>$HOME/.icewm</CODE><SUP><A HREF="ldr7.html#footnote11" NAME="footnote-ref11">(11)</A></SUP>.</P>
+
+<P><STRONG>4.3.5)&nbsp;&nbsp;<A NAME="title449"></A><A NAME="anchor476"></A>
+ Come si aggiungono pulsanti sulla barra di <A NAME="index2098"></A>IceWM? <A NAME="index2099"></A> </STRONG></P>
+
+<P>Occorre modificare il file <CODE>toolbar</CODE> presente in <CODE>$HOME/.icewm</CODE><SUP><A HREF="ldr7.html#footnote12" NAME="footnote-ref12">(12)</A></SUP>. La sintassi di questo file &egrave; abbastanza intuitiva. Eccone un esempio:</P>
+<BLOCKQUOTE>
+
+<PRE>prog XTerm xterm xterm -ls -fg white -bg black -fn 7x14
+prog Mutt xterm xterm -fn 10x20 -T "Mutt" -e /usr/bin/mutt
+prog ppp ppp pppd
+prog Var vlm xterm -e tail -f /var/log/messages
+prog gftp ftp gftp
+prog gimp gimp gimp
+prog gv gv gv
+prog gVIM gvim gvim
+prog Halt halt shutdown -h now
+prog Reboot riavvio shutdown -r now
+prog Xconsole xcon xconsole -fn 6x10 
+          -geometry 485x100+470+0 -file /dev/xconsole &amp;</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>4.3.6)&nbsp;&nbsp;<A NAME="title450"></A><A NAME="anchor477"></A>
+ Come si imposta lo sfondo di <A NAME="index2100"></A>IceWM? <A NAME="index2101"></A> <A NAME="index2102"></A> <A NAME="index2103"></A> </STRONG></P>
+
+<P>Per impostare un'immagine di sfondo utilizzando <A NAME="index2104"></A>IceWM, occorrer&agrave; modificare il file <CODE>preferences</CODE> presente nella directory <CODE>$HOME/.icewm</CODE>. In questo file saranno presenti tra le altre due variabili, la prima:</P>
+
+<PRE>DesktopBackgroundImage="./immagini/sfondo.xpm"</PRE>
+
+<P>utilizzata per dichiarare il nome dell'immagine di sfondo e la seconda:</P>
+
+<PRE>#  Display desktop background centered and not tiled
+DesktopBackgroundCenter=0 # 0/1</PRE>
+
+<P>da utilizzare per centrare o meno l'immagine stessa. Se si volesse utilizzare un programma esterno per impostare l'immagine di sfondo, occorrer&agrave; lasciare vuoto il parametro cos&igrave;:</P>
+
+<PRE>DesktopBackgroundImage=""</PRE>
+
+<H2>4.4 &nbsp; <A NAME="title451"></A><A NAME="anchor478"></A>
+ Terminale grafico (<SAMP>xterm</SAMP>) </H2>
+
+<P><STRONG>4.4.1)&nbsp;&nbsp;<A NAME="title452"></A><A NAME="anchor479"></A>
+ Perch&eacute; le applicazioni lanciate da un terminale grafico scompaiono alla chiusura del terminale stesso? <A NAME="index2105"></A> <A NAME="index2106"></A> <A NAME="index2107"></A> </STRONG></P>
+
+<P> Durante la sua &laquo;vita&raquo;, un processo pu&ograve; allocare molte risorse (memoria, finestre, aprire file ecc.). Il sistema tiene traccia di tutto ci&ograve; che &egrave; legato ad un processo e, quando questo termina, si preoccupa anche di liberare le risorse eventualmente dimenticate dal processo stesso. Questo &egrave; utilissimo ad esempio quando un programma genera un <SAMP>segmentation fault</SAMP>; dal momento che il processo &egrave; terminato in modo anomalo, lascerebbe in giro molta &laquo;sporcizia&raquo; che viene pulita dal sistema operativo. &Eacute; il bello di <A NAME="index2108"></A>UNIX: ecco perch&eacute; &egrave; possibile avere una macchina che gira per anni senza doverla mai spegnere: perch&eacute; il sistema si occupa di mantenere pulito s&eacute; stesso. Ad esempio, quando dall'interprete dei comandi si impartisce il comando <SAMP>ls</SAMP>, il processo dell'interprete dei comandi lancia un sotto-processo &laquo;ls&raquo;. Tecnicamente, si dice che l'interprete dei comandi esegue una <SAMP>fork()</SAMP> con <SAMP>ls</SAMP>. Dal momento che l'interprete dei comandi &egrave; un processo come un altro, se questo viene chiuso, il sistema si occupa di chiudere tutti i sotto processi ad esso collegati, quindi anche eventuali comandi lanciati con l'opzione di spawn (&amp;).</P>
+
+<P>Per evitare che un sotto-processo termini alla chiusura del &laquo;genitore&raquo;, esiste il comando <SAMP>nohup</SAMP> (<EM>No Hang-Up</EM>) che assegna come padre del sotto-processo, non l'interprete dei comandi dal quale il sotto processo &egrave; stato lanciato, ma <SAMP>init</SAMP> (processo 1) che non pu&ograve; mai essere chiuso, in quanto &egrave; il padre di tutti i processi. Per avere un riscontro di tutto ci&ograve; si pu&ograve; utilizzare <SAMP>pstree</SAMP>.</P>
+
+<P><STRONG>4.4.2)&nbsp;&nbsp;<A NAME="title453"></A><A NAME="anchor480"></A>
+ Come &egrave; possibile conferire le stesse impostazioni della <A NAME="index2109"></A>console testuale ai terminali grafici? <A NAME="index2110"></A> <A NAME="index2111"></A> </STRONG></P>
+
+<P>Per mantenere le stesse impostazioni della <A NAME="index2112"></A>console testuale anche nei terminali grafici, occorrer&agrave; lanciare il terminale grafico stesso con l'opzione <SAMP>-ls</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xterm -ls</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando invocher&agrave; la shell come una shell di login (fare riferimento alla LDR <A HREF="ldr4.html#anchor125">1.9.3</A>).</P>
+
+<P><STRONG>4.4.3)&nbsp;&nbsp;<A NAME="title454"></A><A NAME="anchor481"></A>
+ Come si fa a lanciare un'applicazione da terminale grafico dopo avere assunto l'identit&agrave; di un altro utente? <A NAME="index2113"></A> <A NAME="index2114"></A> </STRONG></P>
+
+<P>Lanciando un'applicazione grafica in qualit&agrave; di utente diverso dall'utente proprietario del <A NAME="index2115"></A> server X, si riceve un messaggio simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>Xlib: connection to ":0.0 " refused by server
+Xlib: Client is not authorized to connect to Server
+******: cannot connect to x server :0</PRE>
+
+</BLOCKQUOTE>
+
+<P>Ogni utente per motivi di sicurezza ha un file nella sua directory personale (<CODE>~</CODE>) che si chiama <CODE>.Xauthority</CODE>. Quest'ultimo contiene le informazioni per accedere ai vari <A NAME="index2116"></A> display locali e remoti che richiedono autenticazione. Se non si da all'utente che lancia l'applicativo, il permesso di accedere al <A NAME="index2117"></A>display egli verr&agrave; respinto dal <A NAME="index2118"></A>server stesso in quanto non &egrave; in grado di autenticarsi a questo. Il metodo da adottare in questi casi &egrave; quello di utilizzare <SAMP>xauth</SAMP> per esportare la chiave di autenticazione nel file <CODE>~/.Xauthority</CODE>.</P>
+
+<P>Supponendo che l'utente proprietario del <A NAME="index2119"></A>display sia <SAMP>tizio</SAMP> e che la sua directory personale (<CODE>~</CODE>) sia <CODE>/home/tizio/</CODE>, si dovr&agrave; estrarre la chiave da <CODE>/home/tizio/.Xauthority</CODE> e metterla in <CODE>/root/.Xauthority</CODE>. Il tutto si traduce nel comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>xauth -f /home/tizio/.Xauthority extract - :0|xauth merge -</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>In questo modo l'utente <SAMP>root</SAMP> sar&agrave; in grado di avviare applicazioni grafiche dal <A NAME="index2120"></A>display di <SAMP>tizio</SAMP>.</P>
+
+<P>Gli utilizzatori della distribuzione <A NAME="index2121"></A> Mandrake devono tenere presente che il file <CODE>.Xauthority</CODE> degli utenti, che ha permessi 600 per motivi di sicurezza, dopo questo comando diventa di propriet&agrave; di <SAMP>root</SAMP>, quindi l'utente che &egrave; proprietario del <A NAME="index2122"></A>display non pu&ograve; pi&ugrave; autenticarsi e non riesce pi&ugrave; ad avviare le applicazioni grafiche. Su questa distribuzione quindi, oltre al comando sopracitato &egrave; necessario il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>chown tizio.<VAR> gruppo_di_tizio</VAR> /home/tizio/.Xauthority</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>4.4.4)&nbsp;&nbsp;<A NAME="title455"></A><A NAME="anchor482"></A>
+ Come si impostano i colori del terminale grafico? <A NAME="index2123"></A> <A NAME="index2124"></A> </STRONG></P>
+
+<P>Si utilizzano le opzioni <SAMP>-fg</SAMP> e <SAMP>-bg</SAMP> per cambiare rispettivamente il colore dei caratteri e dello sfondo. Ecco un esempio:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xterm -fg white -bg black </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>4.4.5)&nbsp;&nbsp;<A NAME="title456"></A><A NAME="anchor483"></A>
+ Come si impostano in maniera predefinita i colori del terminale grafico? <A NAME="index2125"></A> <A NAME="index2126"></A> <A NAME="index2127"></A> <A NAME="index2128"></A> <A NAME="index2129"></A> </STRONG></P>
+
+<P>Per conferire al terminale grafico un determinato aspetto (colori del testo, colori dello sfondo, tipo di carattere) si dovranno mettere nel file <CODE>~/.Xresources</CODE> le seguenti righe, indicando i valori desiderati:</P>
+
+<PRE>XTerm*foreground: white
+XTerm*background: black
+XTerm*font: -*-lucidatypewriter-medium-r-normal-sans-14-140-75-75-m-90-*-*</PRE>
+
+<P><STRONG>4.4.6)&nbsp;&nbsp;<A NAME="title457"></A><A NAME="anchor484"></A>
+ Perch&eacute; non funzionano pi&ugrave; i terminali grafici? <A NAME="index2130"></A> </STRONG></P>
+
+<P>Pu&ograve; capitare che i terminali grafici cessino di funzionare correttamente nelle distribuzioni <A NAME="index2131"></A>Red&nbsp;Hat versione 6.0.</P>
+
+<P>Il problema risiede nel file <CODE>/etc/fstab</CODE>:</P>
+
+<PRE>/dev/hda3               /                       ext2    defaults        1 1
+/dev/hda4               swap                    swap    defaults        0 0
+/dev/fd0                /mnt/floppy             ext2    noauto          0 0
+/dev/cdrom              /mnt/cdrom              iso9660 noauto,ro       0 0
+none                    /proc                   proc    defaults        0 0
+none                    /dev/pts                devpts  mode=0622       0 0</PRE>
+
+<P>Probabilmente &egrave; stata omessa l'ultima riga (none /dev/pts devpts ecc.) </P>
+
+<P><STRONG>4.4.7)&nbsp;&nbsp;<A NAME="title458"></A><A NAME="anchor485"></A>
+ Come imposto il comportamento del tasto [<KBD>Canc</KBD>] nel terminale grafico? <A NAME="index2132"></A> <A NAME="index2133"></A> <A NAME="index2134"></A> </STRONG></P>
+
+<P>Per cambiare il comportamento del tasto &laquo;Canc&raquo; nei terminali grafici (<SAMP>xterm</SAMP>) se ad esempio avesse lo stesso comportamento del tasto &laquo;Backspace&raquo;, si dovr&agrave; utilizzare <SAMP>xmodmap</SAMP>. Lanciandolo con l'opzione <SAMP>-pke</SAMP> e dirigendo l'output su un file si sar&agrave; in grado di visualizzare i codici di tutti i tasti.</P>
+
+<P>Trovato il codice di interesse, si dar&agrave; il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>xmodmap -e "keycode <VAR>xxx</VAR>=KP_Delete"</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dove <VAR>xxx</VAR> &egrave; il numero di codice ottenuto. Per trovare il codice tasto si pu&ograve; anche usare <SAMP>xev</SAMP> premendo poi il tasto interessato e leggendo il numero restituito.</P>
+
+<P><STRONG>4.4.8)&nbsp;&nbsp;<A NAME="title459"></A><A NAME="anchor486"></A>
+ Come funziona il <SAMP>copia ed incolla</SAMP> in <A NAME="index2135"></A>X? <A NAME="index2136"></A> <A NAME="index2137"></A> <A NAME="index2138"></A> <A NAME="index2139"></A> </STRONG></P>
+
+<P>Per effettuare operazioni di <SAMP>copia ed incolla</SAMP> in <A NAME="index2140"></A>X, si dovr&agrave; evidenziare con il tasto sinistro del mouse il testo interessato e premere il tasto centrale (se si dispone di un mouse a due tasti si dovranno premere questi due insieme) nel punto di destinazione.</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="ldr7.html#footnote-ref1" NAME="footnote1">1)</A> ammesso che <SAMP>mozilla</SAMP> sia il nome dell'eseguibile dell'applicazione. Indicare eventualmente il percorso qualora non sia risolto automaticamente.</P>
+
+<P><A HREF="ldr7.html#footnote-ref2" NAME="footnote2">2)</A> <STRONG>Gimp</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="ldr7.html#footnote-ref3" NAME="footnote3">3)</A> <STRONG>MagiCapture</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="ldr7.html#footnote-ref4" NAME="footnote4">4)</A> <STRONG>XVidCap</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="ldr7.html#footnote-ref5" NAME="footnote5">5)</A> <VAR>nome</VAR> sar&agrave; il nome del file in formato <CODE>.xwd</CODE>.</P>
+
+<P><A HREF="ldr7.html#footnote-ref6" NAME="footnote6">6)</A> se non si disponesse di pacchetti quali <A NAME="index1988"></A>Gimp o simili.</P>
+
+<P><A HREF="ldr7.html#footnote-ref7" NAME="footnote7">7)</A> <STRONG>scrot</STRONG> &nbsp; BSD</P>
+
+<P><A HREF="ldr7.html#footnote-ref8" NAME="footnote8">8)</A> dove <VAR>messaggi</VAR> conterr&agrave; l'output del <A NAME="index2021"></A>server <A NAME="index2022"></A>X.</P>
+
+<P><A HREF="ldr7.html#footnote-ref9" NAME="footnote9">9)</A> dove <VAR>errori</VAR> &egrave; il file in cui vengono indirizzati gli errori.</P>
+
+<P><A HREF="ldr7.html#footnote-ref10" NAME="footnote10">10)</A> dove <VAR>n</VAR> &egrave; un numero che generalmente va da 1 a 6. (Verificare il file <CODE>/etc/inittab</CODE> per il numero di <A NAME="index2050"></A>console virtuali.</P>
+
+<P><A HREF="ldr7.html#footnote-ref11" NAME="footnote11">11)</A>  In questo modo le configurazioni saranno esclusivamente proprie dell'utente. Se si volessero rendere effettive le modifiche per tutti gli utenti del sistema si dovranno modificare i file presenti in <CODE>/usr/X11R6/lib/X11/icewm</CODE></P>
+
+<P><A HREF="ldr7.html#footnote-ref12" NAME="footnote12">12)</A> o <CODE>/usr/X11R6/lib/X11/icewm</CODE> per estendere le modifiche a tutto il sistema</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="x.html">x.html</A></P>
+<P>
+<A HREF="ldr8.html">[successivo]</A>
+<A HREF="ldr6.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

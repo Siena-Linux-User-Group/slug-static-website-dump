@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Varie macro per SLRN</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Slrn" href="slrn.html">
+    <LINK rel="PREVIOUS" title="Tasti principali" href="tastislrn.html">
+    <LINK rel="NEXT" title="Masterizzazione" href="masterizzazione.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "tastislrn.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 15.
+          Slrn</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "masterizzazione.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="MACROSLRN">15.4. Varie macro per
+      SLRN</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="COLORSLRN">15.4.1. macro:
+        "color.sl"</A></H2>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+% This file implements a function called 'edit_colors' that may be used for
+% designing a color scheme interactively.  You can define a keybinding for it
+% (e.g. "ESC e c") by putting a line like this in your slrnrc file:
+%
+% setkey article edit_colors "\eec"
+%
+% The macro illustrates several things:
+%
+%   * How to create and use a linked list in the S-Lang language
+%   * Interaction with files
+%   * The slrn select_list_box function
+
+variable Color_List_Root = NULL;
+
+define color_save_colors_to_file ()
+{
+   variable file;
+   variable fp;
+   variable x;
+
+   if (Color_List_Root == NULL)
+     return;
+
+#ifdef UNIX
+   file = ".slrnrc";
+#else
+   file = "slrn.rc";
+#endif
+
+   if (1 != get_yes_no_cancel ("Save colors"))
+     return;
+
+   file = make_home_filename (file);
+   file = read_mini ("Save colors to", "", file);
+   !if (strlen (file))
+     return;
+
+   fp = fopen (file, "a");
+   if (fp == NULL)
+     verror ("Unable to open %s", file);
+
+   x = Color_List_Root;
+   while (x != NULL)
+     {
+    if ((x.fg != NULL) and (x.bg != NULL))
+      () = fputs (sprintf ("color\t%s\t%s\t%s\n", x.obj, x.fg, x.bg), fp);
+    x = x.next;
+     }
+   
+   () = fclose (fp);
+}
+
+define color_store_color (obj, fg, bg)
+{
+   variable x;
+
+   x = Color_List_Root;
+   while (x != NULL)
+     {
+    if (x.obj == obj)
+      break;
+    
+    x = x.next;
+     }
+   if (x == NULL) 
+     {
+    x = struct { obj, fg, bg, next };
+    x.next = Color_List_Root;
+    Color_List_Root = x;
+    x.obj = obj;
+     }
+
+   x.fg = fg;
+   x.bg = bg;
+}
+
+
+
+define color_get_color_for_object (title)
+{
+   variable n;
+
+   n = _stkdepth ();
+   return select_list_box (title,
+               "black",
+               "red",
+               "green",
+               "brown",
+               "blue",
+               "magenta",
+               "cyan",
+               "lightgray",
+               "gray",
+               "brightred",
+               "brightgreen",
+               "yellow",
+               "brightblue",
+               "brightmagenta",
+               "brightcyan",
+               "white",
+               "default",
+               _stkdepth () - n - 1,
+               0);
+}
+
+define edit_colors ()
+{
+   variable n, fg, bg;
+   variable obj;
+
+   forever 
+     {
+    n = _stkdepth ();
+    obj = select_list_box ("Object",    %  title
+                   "EXIT",
+                   "article",
+                   "author",
+                   "boldtext",
+                   "box",
+                   "cursor",
+                   "date",
+                   "description",
+                   "error",
+                   "frame",
+                   "from_myself",
+                   "group",
+                   "grouplens_display",
+                   "header_name",
+                   "header_number",
+                   "headers",
+                   "high_score",
+                   "italicstext",
+                   "menu",
+                   "menu_press",
+                   "neg_score",
+                   "normal",
+                   "pgpsignature",
+                   "pos_score",
+                   "quotes",
+                   "quotes1",
+                   "quotes2",
+                   "quotes3",
+                   "quotes4",
+                   "quotes5",
+                   "quotes6",
+                   "quotes7",
+                   "response_char",
+                   "selection",
+                   "signature",
+                   "status",
+                   "subject",
+                   "thread_number",
+                   "tilde",
+                   "tree",
+                   "underlinetext",
+                   "unread_subject",
+                   "url",
+                   "verbatim",
+                   _stkdepth () - n - 1,
+                   0);
+
+    if ((obj == "EXIT") or (obj == ""))
+      break;
+    
+    fg = color_get_color_for_object ("Foreground color for " + obj);
+    if (fg == "") break;
+
+    bg = color_get_color_for_object ("Background color for " + obj);
+    if (bg == "") break;
+    
+    set_color (obj, fg, bg);
+    color_store_color (obj, fg, bg);
+    call ("redraw");
+     }
+
+   color_save_colors_to_file ();
+}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="NEWSEARCHSLRN">15.4.2. macro:
+        "new-search.sl"</A></H2>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+% -*- mode: slang; mode: fold -*-
+
+% new-search.sl - a replacement for search.sl that comes with slrn
+
+% Copyright (C) 2000, 2001 Thomas Schultz &lt;tststs@gmx.de&gt;
+% set_preference() mechanism borrowed from J.B. Nicholson-Owens
+% 
+% This file may be redistributed and / or modified under the terms of the
+% GNU General Public License, version 2, as published by the Free Software
+% Foundation.
+
+#iffalse % Documentation %{{{
+Description:
+
+This file is meant as a replacement for the file search.sl that comes with
+slrn. It also searches through the articles in the current newsgroup, but
+has nicer features: It leaves threads in their collapsed / uncollapsed
+status, optionally starts the search at the beginning of the buffer or
+wraps around the end of the article list.
+
+Installation:
+
+The interface consists of two functions: search_first() starts a new
+search, search_next() finds subsequent matches of the same regexp. You can
+bind them in your slrnrc like this:
+
+  setkey article NewSearch-&gt;search_first "$"
+  setkey article NewSearch-&gt;search_next "&amp;"
+
+Preferences:
+
+You can use the set_preference() function to customize the behaviour of
+the macro. To do this, put calls to this function in a file and load it
+after this file is loaded. The following examples show the default values:
+
+NewSearch-&gt;set_preference("start_at_bob", 0);
+
+  If set to a non-zero value, start the search at the beginning of the
+  buffer, not at the current article.
+
+NewSearch-&gt;set_preference("wrap_search", 0);
+
+  If set to a non-zero value, the search will wrap around the end of the
+  article list.
+#endif %}}}
+
+implements ("NewSearch");
+
+private variable
+  Prev_Search_Str = "",
+  Starting_Point = "",
+  Prefs = Assoc_Type [];
+
+% Set preferences %{{{
+Prefs["start_at_bob"] = 0;
+Prefs["wrap_search"] = 0;
+%}}}
+
+static define set_preference (preference, value) %{{{
+{
+   !if (assoc_key_exists (Prefs, preference))
+     error ("Preference does not exist: " + string (preference));
+   variable desired_type = typeof (Prefs[preference]);
+   if (typeof (value) != desired_type)
+     verror ("Wrong type for %s: This preference wants %s not %s",
+             string (preference),
+             string (desired_type),
+             string (typeof (value)));
+   Prefs[preference] = value;
+} %}}}
+
+private define search_here(search_str, wrapped) %{{{
+{
+   if (wrapped)
+     if (Starting_Point == extract_article_header("Message-Id"))
+       error ("Not found.");
+
+   variable flags = get_header_flags ();
+   if (re_search_article(search_str))
+     {
+    pop ();
+    return 1;
+     }
+   set_header_flags(flags);
+   call ("hide_article");
+   return 0;
+}%}}}
+
+private define is_at_end_of_thread ()%{{{
+{
+   variable starting_point = extract_article_header ("Message-Id");
+
+   EXIT_BLOCK
+     {
+        () = locate_header_by_msgid (starting_point, 0);
+     }
+
+   collapse_thread (); % goes to the first article in the thread
+   uncollapse_thread ();
+   () = header_down (thread_size () - 1);
+   return (extract_article_header ("Message-ID") == starting_point);
+}%}}}
+
+private define search_articles(search_str, wrapped) %{{{
+{
+   variable
+     was_thread_collapsed = is_thread_collapsed(),
+     was_metamail = get_variable_value("use_metamail");
+   set_integer_variable("use_metamail", 0); % Turn off metamail while searching
+
+   ERROR_BLOCK
+     {
+    () = locate_header_by_msgid(Starting_Point, 0);
+     }
+
+   EXIT_BLOCK
+     {
+    set_integer_variable("use_metamail", was_metamail);
+     }
+
+   if (search_here(search_str, wrapped)) % Is the next match right here?
+     return(0);
+
+   !if (_is_article_visible() &amp; 2)
+     {
+    call ("article_line_up");
+    if (search_here(search_str, wrapped))
+      return(0);
+     }
+
+   forever % loop through articles
+     {
+    loop (thread_size () - 1)
+      {
+         () = header_down(1);
+         if (search_here(search_str, wrapped)) return(0);
+      }
+    
+    if (is_at_end_of_thread())
+      {
+         if (was_thread_collapsed) collapse_thread();
+         !if (header_down(1)) break;
+         was_thread_collapsed = is_thread_collapsed ();
+         if (search_here(search_str, wrapped)) return(0);
+      }
+    else
+      {
+         !if (header_down(1)) break;
+         if (search_here(search_str, wrapped)) return(0);
+      }
+     }
+
+   EXECUTE_ERROR_BLOCK;
+   return(-1);
+}%}}}
+
+private define perform_search(search_str) %{{{
+{
+   Starting_Point = extract_article_header("Message-Id");
+   if (search_articles(search_str, 0) == -1) 
+     {
+    if (Prefs["wrap_search"])
+      {
+         call("header_bob");
+         if (search_articles(search_str, 1) == -1)
+           error("Not found.");
+      }
+    else
+      error("Not found.");
+     }
+}%}}}
+
+static define search_first() %{{{
+{
+   if (is_group_mode ())
+     error (_function_name () + " doesn\'t work in group mode!");
+
+   variable search_str = read_mini ("Search for regexp", Prev_Search_Str, "");
+   if (search_str == "")
+     return;
+   Prev_Search_Str = search_str;
+   if (Prefs["start_at_bob"])
+     call("header_bob");
+   perform_search(search_str);
+}%}}}
+
+static define search_next() %{{{
+{
+   if (is_group_mode ())
+     error (_function_name () + " doesn\'t work in group mode!");
+
+   if (Prev_Search_Str == "")
+     search_first();
+   else
+     perform_search(Prev_Search_Str);
+}%}}}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="ONEKEYSLRN">15.4.3. macro:
+        "onekey-score.sl"</A></H2>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+% -*- mode: slang; mode: fold -*-
+
+% onekey-score.sl - create scorefile entries by pressing one single key
+
+% Copyright (C) 1999-2000 Thomas Schultz &lt;tststs@gmx.de&gt;
+% set_preference() mechanism borrowed from J.B. Nicholson-Owens
+% 
+% This file may be redistributed and / or modified under the terms of the
+% GNU General Public License, version 2, as published by the Free Software
+% Foundation.
+
+#iffalse % Documentation %{{{
+Description:
+
+This file contains macros that allow you to create scorefile entries based
+one the current article via a single function call / keystroke. Two
+interfaces are available - the first is very simple and can be used to
+watch or ignore subthreads. The second is more complex, but also more
+versatile: It can put a score on subjects, "From:" lines or references.
+
+If you regularly use these functions, your scorefile will become quite
+large, so I recommend the perl-script cleanscore that can automatically
+remove expired entries. You may also want to use the patch that makes slrn
+generate scorefile marks, so cleanscore can tell easier which comments
+belong to which entry.
+
+Installation:
+
+To use the simple interface, bind the functions watch_subthread() and/or
+ignore_subthread() to whatever keys you prefer. The corresponding lines in
+your slrnrc file should look like this:
+
+  setkey article OneKeyScore-&gt;ignore_subthread "^K"
+  setkey article OneKeyScore-&gt;watch_subthread "^W"
+
+If you do not only want to watch or ignore a subthread, you can use the
+more complex interface by calling create_score() directly (the two simpler
+functions are really wrappers around it). An example would be:
+
+  setkey article "OneKeyScore-&gt;create_score('f', -100, 't', 30, 1);" "^X"
+
+Please note that it is important to quote the second argument of setkey in
+this case. You can pass the following options to create_score():
+
+  1. score type - can be 's' for "Subject", 'f' for "From" or 'r' for
+     "References"
+  2. score value - the score for the entry
+  3. scope - 't' if the entry should apply to the current ("This") group,
+     'a' if it should have an effect in all groups.
+  4. date of expiry - can either be a date string (in format MM/DD/YYYY or
+     DD-MM-YYYY) or an integer. If it is an integer, it will be
+     interpreted as how long from now (in days) the entry should remain
+     valid; if it is zero (or negative), the entry will never expire.
+  5. apply immediately - if non-zero, the scorefile is reloaded, so the
+     new entry is applied immediately.
+
+Thus, the example above would put a score of -100 on the author of the
+current article for 30 days from now, but only in the current group; the
+new entry would be applied immediately.
+
+Preferences:
+
+You can use the set_preference() function to customize the behaviour of
+the simple interface. To do this, put calls to this function in a file and
+load it after this file is loaded. The following examples show the default
+values:
+
+OneKeyScore-&gt;set_preference("ignore_value", -1000);
+OneKeyScore-&gt;set_preference("watch_value", 250);
+
+  The score ignore_subthread() and watch_subthread() will assign to the
+  current subthread when they are called.
+
+OneKeyScore-&gt;set_preference("ignore_expiry", 14);
+OneKeyScore-&gt;set_preference("watch_expiry", 21);
+
+  How long (in days from date of creation) the new scorefile entries will
+  be active.
+
+OneKeyScore-&gt;set_preference("ignore_immediately", 0);
+OneKeyScore-&gt;set_preference("watch_immediately", 0);
+
+  If set to a non-zero value, the scorefile will be applied immediately
+  when a new entry was created.
+#endif %}}}
+
+implements ("OneKeyScore");
+
+private variable
+  Prefs = Assoc_Type [];
+
+% Set preferences %{{{
+Prefs["ignore_value"] = -1000;
+Prefs["watch_value"] = 250;
+Prefs["ignore_expiry"] = 14;
+Prefs["watch_expiry"] = 21;
+Prefs["ignore_immediately"] = 0;
+Prefs["watch_immediately"] = 0;
+%}}}
+
+static define set_preference (preference, value) %{{{
+{
+   !if (assoc_key_exists (Prefs, preference))
+     error ("Preference does not exist: " + string (preference));
+   variable desired_type = typeof (Prefs[preference]);
+   if (typeof (value) != desired_type)
+     verror ("Wrong type for %s: This preference wants %s not %s",
+             string (preference),
+             string (desired_type),
+             string (typeof (value)));
+   Prefs[preference] = value;
+} %}}}
+
+static define create_score (type, score, scope, expiry, apply) %{{{
+{
+   if (is_group_mode ())
+     error (_function_name () + " doesn\'t work in group mode!");
+
+   % Some basic sanity checks...
+   if (typeof(type) == UChar_Type)
+     type = sprintf("%c", type);
+   if (typeof(scope) == UChar_Type)
+     scope = sprintf("%c", scope);
+   type = typecast(type, String_Type);
+   !if (is_substr("sfr",strlow(type)))
+     error ("Unknown score type: " + type);
+   !if (is_substr("ta",scope))
+     error ("Unknown score scope: " + scope);
+   
+   if (apply)
+     apply = "y";
+   else
+     apply = "n";
+   
+   if (typeof(expiry) == Integer_Type) 
+     {
+    if (expiry &gt; 0) 
+      {
+         variable expiry_date = localtime(_time() + expiry * 24 * 3600);
+         expiry = string(expiry_date.tm_mon+1)+"/"+
+                  string(expiry_date.tm_mday)+"/"+
+                  string(expiry_date.tm_year+1900);
+      }
+    else
+      expiry = "";
+     }
+   
+   set_input_string (string(score) + "\n" + expiry);
+   set_input_chars (type + scope + apply);
+   call ("create_score");
+   
+   message_now("");
+}%}}}
+
+static define ignore_subthread () %{{{
+{
+   create_score("r", Prefs["ignore_value"], "t", Prefs["ignore_expiry"],
+        Prefs["ignore_immediately"]);
+}%}}}
+
+static define watch_subthread () %{{{
+{
+   create_score("r", Prefs["watch_value"], "t", Prefs["watch_expiry"],
+        Prefs["watch_immediately"]);
+}%}}}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PREFERENCESSLRN">15.4.4. macro:
+        "preferences.sl"</A></H2>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+NewSearch-&gt;set_preference("start_at_bob", 1);
+
+OneKeyScore-&gt;set_preference("ignore_value", -100);
+OneKeyScore-&gt;set_preference("watch_value", 100);
+OneKeyScore-&gt;set_preference("ignore_expiry", 30);
+OneKeyScore-&gt;set_preference("watch_expiry", 45);
+OneKeyScore-&gt;set_preference("ignore_immediately", 1);
+OneKeyScore-&gt;set_preference("watch_immediately", 1);
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="SCREENRESIZESLRN">15.4.5. macro:
+        "screen-resize.sl"</A></H2>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+% Redefines header_window size.
+% Change int number for better suiting your needs.
+define resize_screen_hook ()
+{
+        set_article_window_size (SCREEN_HEIGHT - 20);
+}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Siete pronti per il mondo di <EM>Usenet</EM>, ma prima leggetevi
+        qualche documento sulla Netiquette!</P>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "tastislrn.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "masterizzazione.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Tasti principali</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "slrn.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Masterizzazione</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

@@ -1,0 +1,692 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Configurazione di Bind</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="DNS" href="dns.html">
+    <LINK rel="PREVIOUS" title="DNS" href="dns.html">
+    <LINK rel="NEXT" title="Chrooting Bind" href="chrootingbind.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "dns.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 10.
+          DNS</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "chrootingbind.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CONFIGURAZIONEBIND">10.1. Configurazione di
+      Bind</A></H1>
+
+      <P>Io a casa ho 2 PC, <EM>Pingu</EM> e <EM>Pinga</EM>, collegati in
+      rete locale. Su <EM>Pingu</EM> a volte gira <B class=
+      "KEYCAP">VmWare</B>, cui in rete virtuale è assegnato l'IP 192.168.0.3.
+      Inoltre accedo a Internet via modem analogico. Senza entrare nei
+      dettagli, scopiazzatevi 'sti file e andate in pace (per altri dettagli
+      leggete il <B class="KEYCAP">DNS-Howto</B> o gli <EM>immarcescibili
+      &amp; insostituibili</EM> <B class="KEYCAP">Appunti di Informatica
+      Libera</B>, gli ex <EM>Appunti Linux</EM>). Potete cambiare i nomi
+      (DOVETE anzi, se no <EM>Pingu</EM> e <EM>Pinga</EM> s'incavolano!) o
+      aggiungerne altri, variando solo l'ultimo numero dell'IP, mentre per il
+      resto lasciate tutto com'è, a meno di sapere dove mettere le mani.
+      Anche se non avete una rete locale, i file vanno bene ugualmente, vi
+      ritroverete con qualcosa in più che non pregiudicherà alcunchè, e vi
+      spingerà al prossimo cambio di PC a tenervi quello attuale e collegarlo
+      al nuovo, tanto più che non spendereste più di centomila lire tra
+      schede di rete e cavi. Per prima cosa impostate il nome del vostro
+      <EM>Linux-Box</EM>. Se non sapete cosa fare, sappiate che dovrete
+      inventarvi un nome per il vostro PC e per il vostro dominio
+      (consigliato NON sceglierne uno esistente, al massimo cambiate la parte
+      finele, tipo: da yahoo.com a yahoo.cxm se proprio non avete
+      fantasia...). Da utente <B class="KEYCAP">root</B> date il seguente
+      comando:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+hostname nome-macchina
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>ad esempio nel mio caso: <B class="COMMAND">hostname pingu</B>
+      (d'ora in poi ogni volta che vedete <EM>pingu.mrshark.home</EM> o
+      simili, sostituiteli con i nomi scelti da voi). Impostate anche il file
+      <TT class="FILENAME">/etc/HOSTNAME</TT> come segue (alcune
+      distribuzioni usano <TT class="FILENAME">/etc/hostname</TT>):</P>
+
+      <P><B class="KEYCAP">=== file: /etc/HOSTNAME ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+pingu
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>oppure:</P>
+
+      <P><B class="KEYCAP">=== file: /etc/hostname ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+pingu
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Nel caso abbiate una <B class="KEYCAP">RedHat</B> o derivate (<B
+      class="KEYCAP">Mandrake</B>, <B class="KEYCAP">Turbolinux</B> ecc.),
+      modificate il file <TT class="FILENAME">/etc/sysconfig/network</TT>
+      nella parte relativa a <B class="KEYCAP">HOSTNAME</B> e <B class=
+      "KEYCAP">DOMAINNAME</B>, altrimenti ad ogni riavvio l'hostname
+      ritornerà <EM>localhost.localdomain</EM> :</P>
+
+      <P><B class="KEYCAP">=== file: /etc/sysconfig/network ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+...
+HOSTNAME=pingu
+DOMAINNAME=mrshark.home
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Segue il file <TT class="FILENAME">/etc/hosts</TT>, in questa
+      versione già pronto per il protocollo ipv6. Dovreste cambiare solo gli
+      elementi della riga 192.168.0.1. Il primo campo è l'IP della macchina,
+      il secondo il nome completo, il terzo degli alias. NON ELIMINATE la
+      riga <B class="KEYCAP">127...</B>: serve per l'interfaccia di
+      <EM>loopback</EM>, ossia un'interfaccia di rete fittizia che vi
+      permette di collegarvi al vostro stesso PC come se fosse un normale
+      computer di rete. Segue il file:</P>
+
+      <P><B class="KEYCAP">=== file: /etc/hosts ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+127.0.0.1       localhost.localdomain     localhost
+192.168.0.1     pingu.mrshark.home        pingu 
+::1             ip6-localhost             ip6-loopback
+fe00::0         ip6-localnet
+ff00::0         ip6-mcastprefix
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+ff02::3         ip6-allhosts
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Nel file <TT class="FILENAME">/etc/host.conf</TT> inserite:</P>
+
+      <P><B class="KEYCAP">=== file: /etc/host.conf ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+order hosts,bind
+multi on
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Nel file <TT class="FILENAME">named.conf</TT> inserite quanto segue,
+      cambiando i due <EM>mrshark.home</EM> alla fine con il vostro dominio,
+      e inserendo nella sezione <EM>forwarders</EM> gli IP dei DNS del
+      provider che usate.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Per conoscere in Windows gli IP dei DNS (in caso
+          vengano assegnati in automatico), per poterli inserire in Linux,
+          che invece li richiede obbligatoriamente, eseguite (tramite la voce
+          <B class="KEYCAP">Esegui...</B> del Menu d'Avvio o Start) il
+          comando <B class="COMMAND">winipcfg</B> DOPO esservi collegati a
+          internet, poi cliccate su <B class="KEYCAP">Dettagli &gt;&gt;</B> e
+          guardate la seconda voce (DNS) della schermata che vi trovate
+          davanti: quello che vedete è l'IP del DNS primario del provider che
+          state usando, mentre premendo il tasto con i 2 punti ".." avrete
+          l'IP del DNS secondario. Io ho messo 4 IP, visto che uso
+          alternativamente 2 ISP diversi, ma dovrebbe funzionare anche con 2
+          soli IP, dato che di solito i DNS hanno libero accesso, e quindi
+          potete contattare quelli di un ISP anche se ne usate un altro.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Commentate le 4 righe della direttiva <EM>forwarders</EM> e le 4
+      righe di zone "<B class="KEYCAP">.</B>"... se avete solo una rete
+      locale e non accedete a internet (ci sono delle differenze per alcune
+      directory nella distribuzione <B class="KEYCAP">Debian</B>, quindi
+      seguono 2 file, usate quello che si addice alla vostra distribuzione;
+      in particolare <B class="KEYCAP">Debian</B> tiene il file <TT class=
+      "FILENAME">named.conf</TT> nella directory <TT class=
+      "FILENAME">/etc/bind/</TT>, mentre quasi tutte le altre distribuzioni
+      lo tengono in <TT class="FILENAME">/etc/</TT>):</P>
+
+      <P><B class="KEYCAP">=== file: /etc/named.conf REDHAT ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+options {
+    directory "/var/named";
+    allow-transfer {
+        127.0.0.1;
+        192.168.0.0/24;
+    };
+    allow-query {
+        127.0.0.1;
+        192.168.0.0/24;
+    };
+    forward first;
+    forwarders {
+        193.70.152.25;
+        193.70.192.25;
+        195.130.224.18;
+        195.130.225.129;
+    };
+};
+logging {
+    category lame-servers { null; };
+    category cname { null; };
+};
+zone "." {
+        type hint;
+        file "/var/named/db.root";
+};
+zone "localhost" {
+        type master;
+        file "/var/named/db.local";
+};
+zone "127.in-addr.arpa" {
+        type master;
+        file "/var/named/db.127";
+};
+zone "0.in-addr.arpa" {
+        type master;
+        file "/var/named/db.0";
+};
+zone "255.in-addr.arpa" {
+        type master;
+        file "/var/named/db.255";
+};
+zone "mrshark.home" {
+    type master;
+    file "/var/named/mrshark.home";
+};
+zone "0.168.192.in-addr.arpa" {
+    type master;
+    file "/var/named/mrshark.home.rev";
+};
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etc/bind/named.conf DEBIAN ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+options {
+    directory "/var/cache/bind";
+    allow-transfer {
+        127.0.0.1;
+        192.168.0.0/24;
+    };
+    allow-query {
+        127.0.0.1;
+        192.168.0.0/24;
+    };
+    forward first;
+    forwarders {
+        193.70.152.25;
+        193.70.192.25;
+        195.130.224.18;
+        195.130.225.129;
+    };
+};
+logging {
+    category lame-servers { null; };
+    category cname { null; };
+};
+zone "." {
+        type hint;
+        file "/etc/bind/db.root";
+};
+zone "localhost" {
+        type master;
+        file "/etc/bind/db.local";
+};
+zone "127.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.127";
+};
+zone "0.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.0";
+};
+zone "255.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.255";
+};
+zone "mrshark.home" {
+    type master;
+    file "/etc/bind/mrshark.home";
+};
+zone "0.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/mrshark.home.rev";
+};
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> TUTTI i file seguenti vanno inseriti in una stessa
+          directory, che è <TT class="FILENAME">/var/named/</TT> nel caso di
+          <B class="KEYCAP">RedHat</B>, o <TT class=
+          "FILENAME">/etc/bind/</TT> nel caso di <B class=
+          "KEYCAP">Debian</B>. Quindi riporto i file senza fare riferimento
+          alle dir, sta a voi inserirli nel punto giusto in base alla vostra
+          distribuzione. Naturalmente dovete cambiare, dovunque li vedete, il
+          nome "<EM>mrshark.home</EM>" con quello del dominio che avete
+          scelto di usare, e <EM>pingu</EM>, <EM>pinga</EM> e <EM>win</EM>
+          con i nomi dei vostri pc.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Dovrete ora creare il file <TT class="FILENAME">db.root</TT>. Questo
+      file contiene gli indirizzi IP dei server DNS principali di Internet.
+      Copiate il seguente (NON cambiate niente):</P>
+
+      <P><B class="KEYCAP">=== file: db.root ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+;       This file holds the information on root name servers needed to
+;       initialize cache of Internet domain name servers
+;       (e.g. reference this file in the "cache .  &lt;file&gt;"
+;       configuration file of BIND domain name servers).
+;
+;       This file is made available by InterNIC registration services
+;       under anonymous FTP as
+;           file                /domain/named.root
+;           on server           FTP.RS.INTERNIC.NET
+;       -OR- under Gopher at    RS.INTERNIC.NET
+;           under menu          InterNIC Registration Services (NSI)
+;              submenu          InterNIC Registration Archives
+;           file                named.root
+;
+;       last update:    Aug 22, 1997
+;       related version of root zone:   1997082200
+;
+;
+; formerly NS.INTERNIC.NET
+;
+.                        3600000  IN  NS    A.ROOT-SERVERS.NET.
+A.ROOT-SERVERS.NET.      3600000      A     198.41.0.4
+;
+; formerly NS1.ISI.EDU
+;
+.                        3600000      NS    B.ROOT-SERVERS.NET.
+B.ROOT-SERVERS.NET.      3600000      A     128.9.0.107
+;
+; formerly C.PSI.NET
+;
+.                        3600000      NS    C.ROOT-SERVERS.NET.
+C.ROOT-SERVERS.NET.      3600000      A     192.33.4.12
+;
+; formerly TERP.UMD.EDU
+;
+.                        3600000      NS    D.ROOT-SERVERS.NET.
+D.ROOT-SERVERS.NET.      3600000      A     128.8.10.90
+;
+; formerly NS.NASA.GOV
+;
+.                        3600000      NS    E.ROOT-SERVERS.NET.
+E.ROOT-SERVERS.NET.      3600000      A     192.203.230.10
+;
+; formerly NS.ISC.ORG
+;
+.                        3600000      NS    F.ROOT-SERVERS.NET.
+F.ROOT-SERVERS.NET.      3600000      A     192.5.5.241
+;
+; formerly NS.NIC.DDN.MIL
+;
+.                        3600000      NS    G.ROOT-SERVERS.NET.
+G.ROOT-SERVERS.NET.      3600000      A     192.112.36.4
+;
+; formerly AOS.ARL.ARMY.MIL
+;
+.                        3600000      NS    H.ROOT-SERVERS.NET.
+H.ROOT-SERVERS.NET.      3600000      A     128.63.2.53
+;
+; formerly NIC.NORDU.NET
+;
+.                        3600000      NS    I.ROOT-SERVERS.NET.
+I.ROOT-SERVERS.NET.      3600000      A     192.36.148.17
+;
+; temporarily housed at NSI (InterNIC)
+;
+.                        3600000      NS    J.ROOT-SERVERS.NET.
+J.ROOT-SERVERS.NET.      3600000      A     198.41.0.10
+;
+; housed in LINX, operated by RIPE NCC
+;
+.                        3600000      NS    K.ROOT-SERVERS.NET.
+K.ROOT-SERVERS.NET.      3600000      A     193.0.14.129
+;
+; temporarily housed at ISI (IANA)
+;
+.                        3600000      NS    L.ROOT-SERVERS.NET.
+L.ROOT-SERVERS.NET.      3600000      A     198.32.64.12
+;
+; housed in Japan, operated by WIDE
+;
+.                        3600000      NS    M.ROOT-SERVERS.NET.
+M.ROOT-SERVERS.NET.      3600000      A     202.12.27.33
+; End of File
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>I due file seguenti corrispondono all'interfaccia di loopback e suo
+      reverse, non hanno bisogno di essere modificati:</P>
+
+      <P><B class="KEYCAP">=== file: db.local ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@   IN  SOA localhost. root.localhost. (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
+;
+@   IN  NS  localhost.
+@   IN  A   127.0.0.1
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: db.127 ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL    604800
+@   IN  SOA localhost. root.localhost. (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
+;
+@   IN  NS  localhost.
+1.0.0   IN  PTR localhost.
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>I due file seguenti corrispondono all'indirizzo di broadcast e suo
+      reverse, non hanno bisogno di essere modificati:</P>
+
+      <P><B class="KEYCAP">=== file: db.0 ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+;
+; BIND data file for broadcast zone
+;
+$TTL    604800
+@   IN  SOA localhost. root.localhost. (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
+;
+@   IN  NS  localhost.
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: db.255 ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+;
+; BIND reverse data file for broadcast zone
+;
+$TTL    604800
+@   IN  SOA localhost. root.localhost. (
+                  1     ; Serial
+             604800     ; Refresh
+              86400     ; Retry
+            2419200     ; Expire
+             604800 )   ; Negative Cache TTL
+;
+@   IN  NS  localhost.
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>I due file seguenti corrispondono alla zona su cui il vostro dns
+      avrà autorità e suo reverse, modificate ovunque vedete nomi riferiti ai
+      miei pc:</P>
+
+      <P><B class="KEYCAP">=== file: mrshark.home ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+$ORIGIN mrshark.home.
+$TTL 1D
+@       IN      SOA     pingu.mrshark.home. root.pingu.mrshark.home. (
+        1    ; Serial
+        8H   ; Refresh
+        2H   ; Retry
+        4W   ; Expire
+        1D ) ; Default TTL
+;
+@           IN  MX  10  pingu.mrshark.home.
+@           IN  NS      pingu.mrshark.home.
+@           IN  A       192.168.0.1
+
+pingu       IN  A       192.168.0.1 
+pinga       IN  A       192.168.0.2
+win         IN  A       192.168.0.129
+localhost   IN  A       127.0.0.1
+
+www         IN  CNAME   pingu
+ftp         IN  CNAME   pingu
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: mrshark.home.rev ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+$ORIGIN 0.168.192.in-addr.arpa.
+$TTL 1D
+@       IN      SOA     pingu.mrshark.home. root.pingu.mrshark.home. (
+        1    ; Serial
+        8H   ; Refresh
+        2H   ; Retry
+        4W   ; Expire
+        1D ) ; Default TTL
+
+@           IN  NS      pingu.mrshark.home.
+1           IN  PTR     pingu.mrshark.home.
+2           IN  PTR     pinga.mrshark.home.
+129         IN  PTR     win.mrshark.home.
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>L'ultimo file è quello che dice al sistema a quale dns rivolgersi,
+      modificate i due domini indicati:</P>
+
+      <P><B class="KEYCAP">=== file: resolv.conf ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+search mrshark.home
+domain mrshark.home
+nameserver 127.0.0.1
+nameserver 192.168.0.1
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Salvate tutto, riavviate il sistema o riavviate <B class=
+      "KEYCAP">BIND</B> (da utente <B class="KEYCAP">root</B>: <B class=
+      "COMMAND">/etc/rc.d/init.d/named restart</B> per <B class=
+      "KEYCAP">RedHat</B>, <B class="COMMAND">/etc/init.d/bind restart</B>
+      per <B class="KEYCAP">Debian</B>). Ora incominciate a fare le vostre
+      prove. Esempi di prove per il mio PC sono (dal prompt di <B class=
+      "KEYCAP">nslookup</B> "<B class="KEYCAP">&gt;</B>"):
+      <EM>192.168.0.1</EM>, <EM>192.168.0.2</EM>, <EM>www.mrshark.home</EM>,
+      <EM>ftp.mrshark.home</EM>, <EM>pingu.mrshark.home</EM>,
+      <EM>pinga.mrshark.home</EM>, <EM>pingu</EM>, <EM>pinga</EM>. Se date
+      l'IP dovete ottenere il nome e viceversa. Dopo esservi connessi a
+      Internet, provate anche a fare qualche risoluzione di nomi di siti,
+      p.e. <EM>www.yahoo.it</EM> o <EM>www.mrshark.it</EM> ;-).</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Nota per l'uso di programmi che gestiscono in
+          automatico il file <B class="KEYCAP">/etc/resolv.conf</B>, tipo
+          <SPAN class="APPLICATION">kppp</SPAN> o <SPAN class=
+          "APPLICATION">wvdial</SPAN>: se avete impostato e testato
+          completamente il vostro DNS, nelle impostazioni di questi
+          programmi, invece di indicare il dominio e gli IP dei DNS che vi
+          vengono forniti dal provider, inserite il <EM>VOSTRO</EM> dominio e
+          come IP del DNS inserite <B class="KEYCAP">127.0.0.1</B>,
+          ricordando però di inserire i VERI IP dei DNS del provider nella
+          sezione <B class="KEYCAP">forwarders</B> del file <TT class=
+          "FILENAME">named.conf</TT>, in modo che il vostro DNS possa
+          interrogare quelli esterni nel caso non riesca a gestire in proprio
+          la risoluzione dei nomi.</P>
+        </BLOCKQUOTE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "dns.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "chrootingbind.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">DNS</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "dns.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Chrooting Bind</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

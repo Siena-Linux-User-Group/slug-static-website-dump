@@ -1,0 +1,381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Mutt e gli Hooks</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Mutt" href="mutt.html">
+    <LINK rel="PREVIOUS" title="File di configurazione .muttrc" href=
+    "configurazionemutt.html">
+    <LINK rel="NEXT" title="Tasti principali" href="tastimutt.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "configurazionemutt.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 14.
+          Mutt</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "tastimutt.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="MUTTHOOKS">14.2. Mutt e gli Hooks</A></H1>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Questa sezione nasce da una serie di scambi di
+          email con <B class="KEYCAP">Franco Vite</B> (<B class=
+          "KEYCAP">Caparossa</B>, del LUG di Firenze), cui va il merito della
+          parte della descrizione seguente relativa ai "send-hook", anche se
+          rielaborata in alcuni punti. Grazie mille quindi a Caparossa!
+          ;-)</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Gli "hooks" (uncini) sono il metodo usato all'interno di <SPAN
+      class="APPLICATION">mutt</SPAN> per impostare delle opzioni specifiche
+      per un dato folder/header/email/altro, scavalcando le impostazioni
+      predefinite nel file di configurazione. Ne esistono diversi tipi:</P>
+
+      <UL>
+        <LI>
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+folder-hook [!]regexp comando [; altro-comando]
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P>dove regexp è un'espressione regolare per identificare la
+          mailbox o comunque l'oggetto su cui applicare il comando successivo
+          (il <B class="KEYCAP">!</B> nega la regexp). <B class=
+          "KEYCAP">folder-hook</B> permette di definire impostazioni in base
+          al singolo folder (ad esempio un diverso ordinamento per la mailbox
+          <EM>mutt</EM>, ottenibile con <B class="KEYCAP">folder-hook mutt
+          set sort=threads</B>). Ricordate però che non viene ripristinato il
+          precedente valore quando si cambia mailbox, ma si continua ad usare
+          l'ultimo valore assegnato, quindi si deve definire un comportamento
+          di default, tramite un comando simile a: <B class=
+          "KEYCAP">folder-hook . set sort=date-sent</B>. Se dovete
+          specificare più di un comando da eseguire su uno stesso folder,
+          potete specificarli separandoli con <B class="KEYCAP">;</B>. Se la
+          vostra regexp contiene spazi, racchiudetela tra virgolette.</P>
+        </LI>
+
+        <LI>
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+mbox-hook [!]regexp mailbox
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P><B class="KEYCAP">mbox-hook</B> permette di definire una mailbox
+          in cui spostare i messaggi letti da una mailbox (che soddisfa la
+          regexp) in un altra mailbox, automaticamente al cambio di folder o
+          all'uscita del programma. Serve ad aggirare l'mbox predefinita,
+          specificata nel file di configurazione. Infatti, viene usato il
+          primo mbox-hook che si trova (in ordine di apparizione) e di cui
+          viene soddisfatta la regexp, e se non ne può soddisfare nessuno, si
+          usa l'mbox predefinita. Questo comando agisce su intere mailbox,
+          non su singoli messaggi! Quindi TUTTI i messaggi della mailbox che
+          soddisfa la regexp finiscono nella seconda mailbox, non è possibile
+          spostare alcuni messaggi in una mailbox e altri in un'altra (ho
+          chiesto sulla ML il perché di questo comportamento e se è possibile
+          fare qualcosa che funzioni sul SINGOLO messaggio invece dell'intera
+          mailbox, appena ne so di più, modificherò questa parte...). Se la
+          vostra regexp contiene spazi, racchiudetela tra virgolette.</P>
+        </LI>
+
+        <LI>
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+save-hook [!]regexp nomefile 
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P><B class="KEYCAP">save-hook</B> serve a specificare il nome del
+          file predefinito in cui salvare i messaggi che soddisfano la
+          regexp. Il salvataggio, a differenza degli altri hook, è un'azione
+          da fare esplicitamente: mentre un mbox-hook avviene ad esempio in
+          automatico, voi dovete specificare esplicitamente che volete
+          salvare un messaggio in un file (per backup o per altro motivo), e
+          ciò non influenza comunque lo stato della mailbox, i cui messaggi
+          non vengono alterati. Per default, l'hook si attiva se il campo
+          From: di un messaggio soddisfa la regexp, o se il messaggio ha voi
+          come mittente e il destinatario soddisfa la regexp in uno dei campi
+          To: o Cc:. Se la vostra regexp contiene spazi, racchiudetela tra
+          virgolette. Gli specificatori ~X sono spiegati di seguito in questa
+          sezione.</P>
+        </LI>
+
+        <LI>
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+fcc-hook [!]regexp mailbox
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P><B class="KEYCAP">fcc-hook</B> permette di specificare una
+          mailbox alternativa a quella definita nel file di configurazione,
+          nella direttiva <B class="KEYCAP">$record</B>, in cui salvare in
+          automatico una copia dei messaggi in uscita. Vengono controllati in
+          ordine i vari fcc-hook, e se non se ne trovano di soddisfacenti,
+          viene usata la mailbox definita in <B class="KEYCAP">$record</B>.
+          Se la vostra regexp contiene spazi, racchiudetela tra virgolette.
+          Gli specificatori ~X sono spiegati di seguito in questa
+          sezione.</P>
+        </LI>
+
+        <LI>
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+send-hook [!]regexp comando [; altro-comando]
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P><B class="KEYCAP">send-hook</B> permette di rispondere ad un
+          dato indirizzo email (spesso mailing List) impostando comandi di
+          configurazione specifici per quell'indirizzo (di solito si
+          personalizza il campo From: e la firma da apporre in coda). Per
+          esempio:</P>
+
+          <OL type="1">
+            <LI>
+              <P>Di default sono <EM>paperino@paperino.it</EM>, con la firma:
+              ~/.signature</P>
+            </LI>
+
+            <LI>
+              <P>ma sono anche <EM>pippo@pippo.it</EM> e con questo indirizzo
+              uso la firma ~/.signature.pippo</P>
+            </LI>
+
+            <LI>
+              <P>ma ho anche <EM>pluto@pluto.it</EM>, a cui vi associo la
+              firma: ~/.signature.pluto</P>
+            </LI>
+          </OL>
+
+          <P>Poniamo che nel secondo caso sia iscritto alla ML
+          <EM>linux@linux.it</EM>, mentre nel terzo caso sia iscritto alla ML
+          <EM>linux@siena.it</EM>. <SPAN class="APPLICATION">Mutt</SPAN>
+          permette di usare l'indirizzo e la firma del secondo esempio per
+          <EM>linux@linux.it</EM>, e quelli del terzo esempio per
+          <EM>linux@siena.it</EM>, e le impostazioni di default per tutti gli
+          altri casi, impostando i seguenti send-hook:</P>
+
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+send-hook . "set signature=~/.signature ; \
+    my_hdr From: Paperino &lt;paperino@paperino.it&gt;"
+
+send-hook linux@linux.it "set signature=~/.signature.pippo ; \
+    my_hdr From: Pippo &lt;pippo@pippo.it&gt;"
+
+send-hook linux@siena.it "set signature=~/.signature.pluto ; \
+    my_hdr From: Pluto &lt;pluto@pluto.it&gt;"
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P>La prima riga, fondamentale, dice a <SPAN class=
+          "APPLICATION">mutt</SPAN> di tornare alle impostazioni di default
+          tutte le volte che non è stata usata una regola send-hook.
+          Altrimenti viene usata sempre l'ultima regola applicata. Nel
+          secondo caso, tutte le volte che facciamo un reply o un post alla
+          lista <EM>linux@linux.it</EM>, alla quale, come abbiamo detto
+          prima, siamo iscritti con l'indirizzo <EM>pippo@pippo.it</EM>,
+          viene usato quest'ultimo indirizzo e come firma quella inerente
+          all'utente pippo. Nel caso scrivessimo alla lista
+          <EM>bsd@bsd.it</EM>, verrebbero usati indirizzo e firma di default
+          (paperino, nel nostro esempio). Nel terzo caso, per concludere,
+          essendo iscritti alla lista <EM>linux@siena.it</EM> con l'indirizzo
+          <EM>pluto@pluto.it</EM>, facciamo sì che <SPAN class=
+          "APPLICATION">mutt</SPAN> usi indirizzo e firma adeguati per post e
+          reply. Come sempre, se la vostra regexp contiene spazi,
+          racchiudetela tra virgolette. Gli specificatori ~X sono spiegati di
+          seguito in questa sezione.</P>
+        </LI>
+
+        <LI>
+          <TABLE border="0" bgcolor="#E0E0E0" width="90%">
+            <TR>
+              <TD>
+<PRE class="PROGRAMLISTING">
+message-hook [!]regexp comando [; altro-comando]
+         
+</PRE>
+              </TD>
+            </TR>
+          </TABLE>
+
+          <P><B class="KEYCAP">message-hook</B> permette di impostare dei
+          comandi specifici prima di visualizzare o formattare un messaggio.
+          Se la vostra regexp contiene spazi, racchiudetela tra virgolette.
+          Gli specificatori ~X sono spiegati di seguito in questa
+          sezione.</P>
+        </LI>
+
+        <LI>
+          <P>e altri meno usati, come <B class="KEYCAP">pgp-hook</B>, <B
+          class="KEYCAP">charset-hook</B>, <B class="KEYCAP">iconv-hook</B>,
+          <B class="KEYCAP">account-hook</B>, <B class=
+          "KEYCAP">fcc-save-hook</B>. L'ultimo è una forma breve per unire un
+          fcc-hook e un save-hook.</P>
+        </LI>
+      </UL>
+
+      <P>Tutte le regexp sottintendono un hook di default (appunto
+      default_hook, impostato col comando <B class="KEYCAP">set default_hook
+      = "..."</B> del file di configurazione e che ha come valore predefinito
+      "~f %s !~P | (~P ~C %s)", che "matcha" messaggi con mittente %s ma non
+      creati da te oppure messaggi creati da te e inviati a %s in To: o
+      Cc:).</P>
+
+      <P>Dovunque si possa specificare un pattern (dove lecito e logico...)
+      si possono usare i seguenti specificatori per restringere la ricerca a
+      ciò che si vuole:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+~A              tutti i messaggi
+~b EXPR         messaggi contenenti EXPR nel corpo del messaggio
+~B EXPR         messaggi contenenti EXPR nell'intero messaggio
+~c USER         messaggi inviati in Cc all'USER
+~C EXPR         messaggi inviati a EXPR in To: o Cc:
+~D              messaggi cancellati
+~d [MIN]-[MAX]  messaggi con ``date-sent'' nell'intervallo indicato
+~E              messaggi scaduti (spirati...)
+~e EXPR         messaggi contenenti EXPR nel campo ``Sender''
+~F              messaggi con il FLAG impostato
+~f USER         messaggi con mittente USER
+~g              messaggi segnati con PGP
+~G              messaggi codificati con PGP
+~h EXPR         messages contenenti EXPR negli header del messaggio
+~k              messaggi contenenti una chiave PGP
+~i ID           messaggi con ID nel campo ``Message-ID''
+~L EXPR         messaggi originato o ricevuto da EXPR
+~l              messaggi indirizzati a una mailing list conosciuta
+~m [MIN]-[MAX]  messaggi nell'intervallo MIN-MAX *)
+~n [MIN]-[MAX]  messages con un punteggio nell'intervallo MIN-MAX *)
+~N              messaggi nuovi
+~O              messaggi vecchi
+~p              messaggi indirizzati a te (consulta $alternates)
+~P              messaggi creati da te (consulta $alternates)
+~Q              messaggi cui si è risposto
+~R              messaggi letti
+~r [MIN]-[MAX]  messaggi con ``date-received'' nell'intervallo indicato
+~S              messaggi supersede (eliminati dal server...)
+~s SUBJECT      messaggi con SUBJECT nel campo ``Subject''
+~T              messaggi con un tag
+~t USER         messaggi indirizzati all'USER
+~U              messaggi non letti
+~v              messaggio parte di un thread collassato
+~x EXPR         messaggi contenenti EXPR nel campo ``References''
+~y EXPR         messaggi contenenti EXPR nel campo ``X-Label''
+~z [MIN]-[MAX]  messaggi con dimensione nell'intervallo MIN-MAX *)
+
+*) Sono permesse anche le forme &lt;[MAX], &gt;[MIN], [MIN]- e -[MAX].
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Si possono concatenare più pattern in successione, che funzioneranno
+      in <B class="KEYCAP">AND</B> logico ("<EM>~t mutt ~f elkins</EM>"
+      selezionerà i messaggi inviati a "mutt" da "elkins"). Gli altri
+      operatori logici sono: <B class="KEYCAP">! (NOT)</B>, <B class=
+      "KEYCAP">| (OR)</B>, e le parentesi tonde <B class="KEYCAP">()</B> per
+      raggruppare ("<EM>!(~t mutt|~c mutt) ~f elkins</EM>" selezionerà i
+      messaggi che non hanno "mutt" nei campi To: o Cc: e creati da
+      "elkins").</P>
+
+      <P>Le ricerche per data DEVONO essere nel formato GG/MM/AA (mese e anno
+      sono opzionali, e assumono come valori predefiniti quelli del mese e
+      anno correnti). Ad esempio: "~d 20/1/95-31/10". Se ometti la prima data
+      (MIN), indicando solo ``-GG/MM/AA'', verranno selezionati tutti i
+      messaggi prima di quella data. Se ometti la seconda data (MAX), e
+      specifichi solo ``DD/MM/YY-'', verranno selezionati tutti i messaggi
+      dopo quella data. Se indichi solo una singola data senza il trattino
+      (``-''), verranno selezionati solo i messaggi di quella specifica data.
+      Altre info nel manuale ufficiale.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "configurazionemutt.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "tastimutt.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">File di configurazione
+          .muttrc</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "mutt.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Tasti principali</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

@@ -1,0 +1,394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Sicurezza dei File e dei Filesystem</TITLE>
+ <LINK HREF="Security-HOWTO-6.html" REL=next>
+ <LINK HREF="Security-HOWTO-4.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc5" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-6.html">Avanti</A>
+<A HREF="Security-HOWTO-4.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc5">Indice</A>
+<HR>
+<H2><A NAME="file-security"></A> <A NAME="s5">5. Sicurezza dei File e dei Filesystem</A></H2>
+
+<P>Alcuni minuti di preparazione e pianificazione prima di mettere in funzione
+i vostri sistemi pu&ograve; aiutare a proteggere loro e i loro dati.
+<UL>
+<LI>Non ci dovrebbe essere alcuna ragione per cui le home directory degli utenti
+permettano di usare programmi SUID/SGID. Usate l'opzione <CODE>nosuid</CODE>
+<CODE>/etc/fstab</CODE> per partizioni scrivibili da chi non &egrave; root. Forse
+vorrete anche usare <CODE>nodev</CODE> e <CODE>noexec</CODE> sulle partizioni home
+degli utenti e su <CODE>/var</CODE>, proibendo cos&igrave; l'uso di programmi
+e la creazioni di character o block device, che comunque non dovrebbe mai 
+essere necessaria. </LI>
+<LI>Se esportate filesystem usando NFS, siate sicuri di configurare
+<CODE>/etc/exports</CODE> con l'accesso pi&ugrave; restrittivo possibile. Questo
+significa non usare wildcard, non permettere accesso in scrittura di root,
+e esportare solo in lettura quando &egrave; possibile.</LI>
+<LI>Configurate l'<CODE>umask</CODE> di creazione dei file dei vostri utenti in modo
+che sia pi&ugrave; restrittiva possibile.
+Cfr. 
+<A HREF="Security-HOWTO-5.html#umask">settaggi di umask</A>.</LI>
+<LI>Se montate filesystem usando un filesystem di rete come NFS, siate sicuri di 
+configurare  /etc/exports con restrizioni adeguate. Tipicamente, usare nodev,
+nosuid, e magari noexec, &egrave; consigliabile.</LI>
+<LI>Impostate limiti per il filesystem invece di lasciarlo <CODE>illimitato</CODE> 
+come di default. Potete controllare i limiti per utente usando il modulo
+PAM per la limitazione delle risorse e <CODE>/etc/pam.d/limits.conf</CODE>.
+Per esempio, i limiti per il gruppo <CODE>users</CODE> potrebbero essere:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+                @users     hard  core    0
+                @users     hard  nproc   50
+                @users     hard  rss     5000
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>Cos&igrave; si proibisce la creazione di file core, si limita il numero
+di processi a 50 e la memoria disponibile ad ogni utente a 5 MB.
+<P>
+</LI>
+<LI>I file <CODE>/var/log/wtmp</CODE> e <CODE>/var/run/utmp</CODE> contengono i record
+di login per tutti gli utenti del sistema. La loro integrit&agrave; deve 
+essere conservata perch&eacute; possono essere usati per determinare quando
+e da dove un utente (o un potenziale intrusore) &egrave; entrato nel sistema.
+Questi file dovrebbero avere i permessi <CODE>644</CODE>, senza limitare il 
+normale uso del sistema.
+<P>
+</LI>
+<LI>Il bit immutable pu&ograve; essere usato per prevenire la cancellazione o 
+sovrascrittura accidentale di un file che deve essere protetto. Inoltre
+evita che qualcuno crei un link simbolico al file (questi link simbolici
+sono stati l'origine di attacchi che hanno cancellato <CODE>/etc/passwd</CODE>
+o <CODE>/etc/shadow</CODE>).
+Cfr. la man page <CODE>chattr</CODE>(1) per informazioni sul bit immutable.
+<P>
+</LI>
+<LI>
+I file SUID e SGID sono un potenziale rischio, e dovrebbero essere tenuti 
+d'occhio. Visto che questi programmi danno speciali privilegi all'utente che 
+li esegue, &egrave; necessario assicurarsi che non vengano istallati programmi
+insicuri.  Un trucco molto diffuso fra i cracker &egrave; sfruttare programmi
+con SUID-root, quindi lasciare un programma SUID a fare da backdoor per 
+entrare la prossima volta, anche se il buco originale viene chiuso.
+<P>Trovate tutti i programmi SUID/SGID sul vostro sistema, e tenete appunti su
+cosa sono, cos&igrave; da essere al corrente di qualsiasi cambiamento che
+potrebbe indicare un eventuale intrusore. Usate questo comando per trovare
+tutti i programmi con  SUID/SGID sul vostro sistema:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+                root#  find / -type f \( -perm -04000 -o -perm -02000 \)
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>La distribuzione Debian esegue un job ogni sera per determinare quali file con
+SUID esistano. Quindi li compara con quelli della sera precedente. Potete 
+cercare questo log in <CODE>/var/log/setuid*</CODE>.
+<P>Potete togliere i permessi SUID o SGID da un programma sospetto con <CODE>chmod</CODE>,
+quindi rimetterli se pensate che siano assolutamente necessari.
+<P>
+</LI>
+<LI>I file scrivibili da tutti, soprattutto i file di sistema, possono essere un
+buco nella sicurezza se un cracker accede al vostro sistema e li modifica.
+Inoltre, le directory scrivibili da tutti sono pericolose: permettono a un
+cracker di aggiungere o cancellare file come vuole. Per trovare tutti i file
+di libera scrittura sul vostro sistema, usate il comando:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+                root# find / -perm -2 ! -type l -ls
+</PRE>
+</CODE></BLOCKQUOTE>
+
+e assicuratevi di sapere perch&eacute; quei file sono scrivibili. Durante l'uso
+normale alcuni file saranno liberamente scrivibili, inclusi alcuni da <CODE>/dev</CODE>,
+e i link simbolici, da cui il <CODE>! -type l</CODE>
+che li esclude dal comando <CODE>find</CODE>.
+</LI>
+<LI><P>Dei file senza un proprietario possono indicare che qualcuno &egrave; entrato
+nel vostro sistema. Potete trovare i file senza proprietario, o senza gruppo,
+col comando:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+                root# find / -nouser -o -nogroup -print
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>
+</LI>
+<LI>Cercare file <CODE>.rhosts</CODE> dovrebbe essere uno dei vostri compiti di
+amministratore , visto che questi file non dovrebbero essere permessi sul
+vostro sistema. Ricordate che a un cracker basta un solo account insicuro
+per poter avere accesso a tutta la rete. Potete trovare tutti i file
+<CODE>.rhosts</CODE> sul vostro sistema col seguente comando:
+<BLOCKQUOTE><CODE>
+<PRE>
+               root# find /home -name .rhosts -print
+</PRE>
+</CODE></BLOCKQUOTE>
+</LI>
+<LI><P>Per finire, prima di cambiare i permessi su un qualsiasi file di sistema,
+siate certi di sapere quello che fate. Non cambiate mai i permessi di un file
+perch&eacute; sembra la via pi&ugrave; facile di far funzionare le cose.
+Determinate sempre la ragione per cui quel file ha quei permessi prima di
+cambiarli.
+<P>
+</LI>
+</UL>
+<H2><A NAME="umask"></A> <A NAME="ss5.1">5.1 Settaggi di Umask</A>
+</H2>
+
+<P>Il comando <CODE>umask</CODE> pu&ograve; essere usato per stabilire la modalit&agrave;
+standard di creazione dei file. &Egrave; il complementare ottale della modalit&agrave;
+desiderata. Se i file venissero creati senza tenere in conto i settaggi dei
+loro permessi, un utente potrebbe inavvertitamente dare permessi di lettura o
+scrittura a qualcuno che non li dovrebbe avere. I tipici settaggi di
+<CODE>umask</CODE> includono <CODE>022</CODE>, <CODE>027</CODE>, e <CODE>077</CODE> (che 
+&egrave; il pi&ugrave; restrittivo). Normalmente la umask viene impostata in
+<CODE>/etc/profile</CODE>, cos&igrave; che abbia effetto su tutti gli utenti sul
+sistema. La maschera di creazione dei file si calcola sottraendo da 777 il 
+valore desiderato. In altre parole, una umask di 777 farebbe in modo che i 
+file creati non contengano permessi di lettura, scrittura o esecuzione per
+nessuno. Una maschera di 666 creerebbe nuovi file con permessi 111.
+Per esempio, potreste avere una linea di questo genere: 
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+                # Imposta la maschera di default degli utenti
+                umask 033
+</PRE>
+</CODE></BLOCKQUOTE>
+
+In questo caso, le nuove directory avrebbero permesso 744, ottenuto dalla
+sottrazione di 033 da 777. I nuovi file avrebbero permesso 644.
+Siate sicuri che la umask di root sia <CODE>077</CODE>, che impedir&agrave; la
+lettura, scrittura e esecuzione ad altri utenti, eccetto che per quei file
+che siano stati esplicitamente cambiati con chmod <CODE>chmod</CODE>.
+<P>Se usate RedHat, e aderite al loro schema di creazione di ID di utenti e gruppi
+(User Private Groups), sar&agrave; sufficiente usare <CODE>002</CODE> per la vostra
+<CODE>umask</CODE>. Questo &egrave; dovuto al fatto che la configurazione di default
+&egrave; di utente per gruppo.
+<P>
+<H2><A NAME="ss5.2">5.2 Permessi dei File</A>
+</H2>
+
+<P>&Egrave; importante assicurarsi che i vostri file di sistema non siano aperti
+da utenti e gruppi che non dovrebbero fare manutenzione di sistema.
+<P>Unix separa il controllo di accesso ai file e alle directory secondo tre 
+caratteristiche: proprietario, gruppo e altri. C'&egrave; sempre un solo
+proprietario, un numero variabile di membri del gruppo, e tutti gli altri.
+<P>Ecco un veloce spiegazione dei permessi di Unix:
+<P>Propriet&agrave;     - Quale/i utente/i e gruppo/i ha controllo sui permessi
+del nodo.
+<P>Permessi      - Bit che possono essere settati o resettati per concedere certi
+tipi di accesso. I permessi delle directory possono avere
+significati diversi dai corrispondenti permessi sui file.
+<P><B>Lettura:</B>
+<UL>
+<LI>Poter vedere i contenuti del file</LI>
+<LI>Poter aprire la directory</LI>
+</UL>
+<P><B>Scrittura:</B>
+<UL>
+<LI>Poter aggiungere parti o fare modifiche a un file</LI>
+<LI>Poter cancellare o spostare i file in una directory</LI>
+</UL>
+<P><B>Esecuzione:</B>
+<UL>
+<LI>Poter eseguire un programma binario o script di shell</LI>
+<LI>Poter eseguire una ricerca nella directory, nel cao abbia il permesso di lettura</LI>
+</UL>
+<P>
+<DL>
+<DT><B>Attributo Save Text: (Per le directory)</B><DD><P>Lo "sticky bit" ha anche un significato diverso quando applicato a directory
+e quando a file. Se lo sticky bit \ impostato per una directory, allora 
+un utente pu&ograve; solo cancellare file di cui &egrave; proprietario o di cui
+ha espliciti permessi di scrittura, anche se ha accesso in scrittura alla
+directory. Ci&ograve; &egrave; stato progettato per directory come <CODE>/tmp</CODE>,
+che sono scrivibili a tutti, ma in cui si preferisce che non tutti possano
+cancellare file a volont&agrave;. Lo sticky bit &egrave; segnato come una
+<CODE>t</CODE> nel listato di una directory.
+</DL>
+<P>
+<DL>
+<DT><B>Attributo SUID: (Per i  file)</B><DD><P>Descrive permessi set-user-id sul file. Quando la modalit&agrave; di accesso
+set user ID &egrave; impostata nei permessi del proprietario, e il file &egrave;
+eseguibile, i processi che lo eseguono hanno accesso alle risorse di sistema
+basati sul proprietario del file, invece che sull'utente che ha creato il
+processo. Questa &egrave; la causa di molti exploit basati sul buffer overflow.
+</DL>
+
+<DL>
+<DT><B>Attributo SGID: (Per i file)</B><DD><P>Se impostato nei permessi del gruppo, questo bit controlla lo stato "set group
+id" di un file. In pratica si comporta come SUID, escluso che si basa sul
+gruppo. Il file deve essere eseguibile perch&eacute; questo abbia un effetto.
+</DL>
+<P>
+<DL>
+<DT><B>Attributo SGID: (Per le directory)</B><DD><P>Se impostate il bit SGID su una directory (con <CODE>chmod g+s <I>directory</I></CODE>),
+I file creati in quella directory avranno il gruppo impostato sul gruppo della
+directory.
+</DL>
+<P>Voi          - Il proprietario del file
+<P>Gruppo        - Il gruppo a cui appartenete
+<P>Tutti     - Chiunque non sia il proprietario o membro del gruppo
+<P>
+<P><B>File Esempio:</B>
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+        -rw-r--r--  1 kevin  users         114 Aug 28  1997 .zlogin
+        1° bit - directory?                       (no)
+         2° bit - lettura per il proprietario?     (yes, per kevin)
+          3° bit - scrittura per il proprietario?   (yes, per kevin)
+           4° bit - esecuzione per il proprietario?  (no)
+            5° bit - lettura per il gruppo?           (yes, per users)
+             6° bit - scrittura per il gruppo?         (no)
+              7° bit - esecuzione per il gruppo?        (no)
+               8° bit - lettura per tutti?               (yes, per tutti)
+                9° bit - scrittura per tutti?             (no)
+                 10° bit - esecuzione per tutti?           (no)
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>Le seguenti linee sono esempi dei permessi minimi richiesti per l'accesso a 
+lato. Forse vorrete dare pi&ugrave; permessi di quanto vedete qui, ma questo
+mostra solo ci&ograve; che questi permessi minimi fanno:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+
+-r--------  Permette accesso in lettura al file per il proprietario
+--w-------  Permette al proprietario di modificare o cancellare il file
+            (Notate che chiunque con permesso di scrittura alla directory
+            in cui si trova il file ha lo stesso privilegio)
+---x------  Il proprietario pu&ograve; eseguire questo programma, ma non script
+            della shell, che hanno bisogno anche del permesso in lettura
+---s------  Il file verr&agrave; eseguito con User ID = utente
+--------s-  Il file verr&agrave; eseguito con Group ID = gruppo
+-rw------T  Non viene segnata l'ultima modifica. Usato spesso per file di swap
+---t------  Nessun effetto.  (Era lo sticky bit)
+</PRE>
+</CODE></BLOCKQUOTE>
+
+<B>Esempio di directory:</B>
+<BLOCKQUOTE><CODE>
+<PRE>
+
+        drwxr-xr-x  3 kevin  users         512 Sep 19 13:47 .public_html/
+        1° bit - directory?                       (si, contiene molti file)
+         2° bit - lettura per il proprietario?      (si, per kevin)
+          3° bit - scrittura per il proprietario?   (si, per kevin)
+           4° bit - esecuzione per il proprietario?  (si, per kevin)
+            5° bit - lettura per il gruppo?           (si, per users)
+             6° bit - scrittura per il gruppo?         (no)
+              7° bit - esecuzione per il gruppo?        (si, per users)
+               8° bit - lettura per tutti?               (si, per tutti)
+                9° bit - scrittura per tutti?             (no)
+                 10° bit - esecuzione per tutti?            (si, per tutti)
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>Le seguenti linee sono esempi dei permessi minimi richiesti per l'accesso a 
+lato. Forse vorrete dare pi&ugrave; permessi di quanto vedete qui, ma questo
+mostra solo ci&ograve; che questi permessi minimi fanno:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+
+dr--------  I contenuti possono essere listati, ma gli attributi dei file non
+            possono essere letti
+d--x------  La directory pu&ograve; essere aperta e usata nei percorsi di
+            esecuzione
+dr-x------  Gli attributi dei file possono essere letti dal proprietario
+d-wx------  I file possono essere creati/cancellati, anche se la directory non
+            &egrave; quella corrente
+d------x-t  Impedisce che i file siano cancellati da chi ha i permessi in 
+            scrittura. Usato su /tmp
+d---s--s--  Nessun effetto
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>I file di configurazione del sistema (di solito in <CODE>/etc</CODE>) sono in genere
+in modo <CODE>640</CODE> (<CODE>-rw-r-----</CODE>), e propriet&agrave; di root. A
+seconda delle necessit&agrave; di sicurezza del vostro sistema potreste cambiare
+questa impostazione. Non lasciate mai che dei file di sistema siano scrivibili
+da un gruppo o da tutti.  Alcuni file di configurazione, incluso <CODE>/etc/shadow</CODE>,
+dovrebbero essere leggibili solo da root, e le directory in <CODE>/etc</CODE> 
+non dovrebbero essere accessibili da altri.
+<P>
+<DL>
+<DT><B>Script della Shell con SUID </B><DD><P>Gli script della shell con SUID sono un serio rischio per la sicurezza, per
+cui il kernel non li considerer&agrave;. A prescindere da quanto pensate che lo
+script sia sicuro, pu&ograve; essere sfruttato per dare a un cracker una shell
+di root
+</DL>
+<P>
+<H2><A NAME="ss5.3">5.3 Controllo dell'Integrit&agrave;</A>
+</H2>
+
+<P>Un altro ottimo modo per rilevare attacchi locali (e anche di rete) &egrave;
+eseguire un programma che faccia un controllo d'integrit&agrave; come <CODE>Tripwire</CODE>,
+<CODE>Aide</CODE> o <CODE>Osiris</CODE>.
+Questi programmi eseguono una serie di controlli su tutti i vostri binari 
+importanti e sui file di configurazione e li compara con un database di valori
+precedenti che si presumono corretti. In questo modo, ogni cambiamento nei file
+verr&agrave; segnalato.
+<P>&Egrave; una buona idea installare questo tipo di programmi in un floppy e
+quindi proteggerlo fisicamente dalla scrittura. Cos&igrave; degli intrusori non
+potranno sabotare il programma per il controllo o cambiare i database. Una 
+volta che avrete impostato una programma del genere, &egrave; una buona idea
+eseguirlo come parte dei vostri compiti amministrativi di routine per vedere se
+qualcosa &egrave; cambiato.
+<P>Potreste persino aggiungere un elemento al <CODE>crontab</CODE> per eseguire il 
+controllo ogni  notte e inviarvi un e-mail con i risultati al mattino.
+Qualcosa come:
+<BLOCKQUOTE><CODE>
+<PRE>
+                # imposta mailto
+                MAILTO=kevin
+                # esegui Tripwire
+                15 05 * * * root /usr/local/adm/tcheck/tripwire 
+</PRE>
+</CODE></BLOCKQUOTE>
+
+vi spedir&agrave; un rapporto ogni mattina alle 5:15. 
+<P>I controlli d'integrit&agrave; possono essere una manna dal cielo per rilevare
+in tempi brevi un intrusore. Visto che molti file cambiano su un sistema
+normale, fate attenzione a cosa &egrave; l'attivit&agrave; di un cracker e cosa
+&egrave; la vostra attivit&agrave;. 
+<P>Potete trovare la versione open source e gratuita di <CODE>Tripwire</CODE> presso
+<A HREF="http://www.tripwire.org">http://www.tripwire.org</A>. 
+Manuali e supporto sono invece a pagamento.
+<P><CODE>Aide</CODE> si trova presso 
+<A HREF="http://www.cs.tut.fi/~rammer/aide.html">http://www.cs.tut.fi/~rammer/aide.html</A>. 
+<P><CODE>Osiris</CODE> si trova presso 
+<A HREF="http://www.shmoo.com/osiris/">http://www.shmoo.com/osiris/</A>.
+<P>
+<H2><A NAME="ss5.4">5.4 Cavalli di Troia</A>
+</H2>
+
+<P>"Cavalli di Troia" prende il nome dal famoso inganno nell'Iliade di Omero.
+Il concetto &egrave; che un cracker distribuisce  un programma o un binario che
+sembra attraente, e incita altre persone a scaricarlo ed eseguirlo come root.
+A quel punto il programma pu&ograve; compromettere il loro sistema mentre non 
+se lo aspettano. Mentre pensano che il programma che hanno preso faccia una
+cosa (e magari la fa davvero), compromette anche la sicurezza del sistema. 
+<P>Dovreste controllare quali programmi installate sulla vostra macchina. RedHat
+fornisce checksum MD5 e firme PGP sui suoi pacchetti RPM perch&eacute; possiate
+verificare ci&ograve; che installate. Altre distribuzioni hanno metodi simili.
+Non dovreste mai eseguire binari che non conoscete, di cui non avete il
+sorgente, come root! Ovviamente pochi intrusori rilasciano il codice sorgente
+al pubblico.
+<P>Per quanto pu&ograve; essere complesso, prendete sempre i sorgenti di un
+programma dal suo vero sito di distribuzione. Se il programma deve essere 
+eseguito da root, controllate i sorgenti o fateli controllare da qualcuno di 
+cui vi fidate.
+<P>
+<P>
+<HR>
+<A HREF="Security-HOWTO-6.html">Avanti</A>
+<A HREF="Security-HOWTO-4.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc5">Indice</A>
+</BODY>
+</HTML>

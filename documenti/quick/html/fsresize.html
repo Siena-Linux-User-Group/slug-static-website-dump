@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>FSRESIZE</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Partizioni" href="partizioni.html">
+    <LINK rel="PREVIOUS" title="FIPS" href="fips.html">
+    <LINK rel="NEXT" title="Loadlin" href="loadlin.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "fips.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 1.
+          Partizioni</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "loadlin.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="FSRESIZE">1.6. FSRESIZE</A></H1>
+
+      <P><B class="COMMAND">Fsresize</B> è un tool per Linux abbastanza
+      recente (attualmente in versione 0.08) che permette di modificare le
+      dimensioni delle partizioni FAT16 e 32 in modo veloce e senza bisogno
+      di deframmentare prima il file-system. Ha quindi grosse potenzialità,
+      ma alcuni pesanti difetti: infatti, poichè non può cambiare il tipo di
+      FAT in uso, il numero di cluster deve rimanere costante, e in caso di
+      allargamento della partizione il numero non può eccedere quello
+      stabilito dalla FAT (es.: se anche aveste 4 GB liberi, ma usate FAT16,
+      non potete avere una partizione di più di 2 GB). Prima di usarlo,
+      valgono sempre le considerazioni fatte in precedenza, fate un dosfsck o
+      una scandisk e un bel backup. Esempi d'uso (tratti dalla man page):</P>
+
+      <DIV class="VARIABLELIST">
+        <DL>
+          <DT><B class="COMMAND">fsresize /dev/hda9 -i</B></DT>
+
+          <DD>
+            <P>mostra delle informazioni sulla partizione specificata</P>
+          </DD>
+
+          <DT><B class="COMMAND">fsresize /dev/hda2 324M
+          --backup=dosc.backup</B></DT>
+
+          <DD>
+            <P>esegue il resize della partizione specificata impostandola a
+            324 MB e facendo il backup nel file indicato</P>
+          </DD>
+
+          <DT><B class="COMMAND">fsresize /dev/hda1 5654k</B></DT>
+
+          <DD>
+            <P>esegue il resize della partizione specificata impostandola a
+            5654 KB senza fare il backup</P>
+          </DD>
+
+          <DT><B class="COMMAND">fsresize /dev/hda3 2545</B></DT>
+
+          <DD>
+            <P>esegue il resize della partizione specificata impostandola a
+            2545 KB senza fare il backup (se non si specifica M o m, oppure K
+            o k, il default è k, per kilobytes)</P>
+          </DD>
+
+          <DT><B class="COMMAND">fsresize /dev/hda5 --restore
+          dosd.backup</B></DT>
+
+          <DD>
+            <P>ripristina la partizione specificata a partire dal file
+            indicato</P>
+          </DD>
+        </DL>
+      </DIV>
+
+      <P>Usate SEMPRE l'opzione <EM>--backup</EM>, che in caso di errori
+      permette tramite <EM>--restore</EM> di ripristinare il tutto. È
+      possibile che LILO non funzioni al riavvio, quindi prima di riavviare
+      date <B class="COMMAND">/sbin/lilo</B> da root per risistemarlo.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "fips.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "loadlin.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">FIPS</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "partizioni.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Loadlin</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

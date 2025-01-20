@@ -1,0 +1,455 @@
+<html>
+<head>
+   <title>SLUG - Siena Linux User Group - Portsentry</title>
+</head>
+<body bgcolor="#BBDDFF">
+<CENTER>
+	<HR NOSHADE>
+	<TABLE width="100%" border=0 cellspacing=0 cellpadding=0 bgcolor="#BBDDFF">
+	<TR><TD align="LEFT">
+	<a href="../../siena.linux.it/index.html">
+	<IMG SRC="../img/logo.jpg" ALT="Cor Magis Tibi Sena Pandit" border=0 valign=middle>
+	</a>
+	</TD>
+	<TD align="RIGHT" VALIGN="TOP" width="99%">
+	<a href="../../siena.linux.it/index.html">
+	<img src="../img/scritta.jpg" alt="SLUG - Siena.Linux.User.Group" border=0></a>
+        </TD>
+	</TR>
+	</TABLE>
+        <HR NOSHADE>
+
+
+<BR><BR>
+<center>
+<font size=+4>PORTSENTRY</font></center>
+<BR><BR>
+<center>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="60%" BGCOLOR="#000000">
+<tr>
+   <td aligh = "center">
+<p align = "center"> <font color = "#FFFFFF"> <B> Il testo, estratto dalla Mailing List dello Slug, e' una trattazione del programma Portsentry, a seguito di un lungo Thread incentrato sulla sicurezza,
+che ha appassionato l'intero User Group. La riportiamo per intero, con lo stile letterario libero, ma efficace, in uso comunemente nelle Mailing List </font> </b>
+</p> </td> </tr>
+
+<tr>
+   <td aligh = "left" BGCOLOR="#FFFFFF">
+   <PRE>
+
+Nel thread sullo smurf di qualche settimana fa parlavo di un programma di
+cui avevo sentito parlare, ovvero PORTSENTRY. Me lo sono procurato e me lo
+sono un po' studiato. Qua faccio un breve resoconto per chi potesse essere
+interessato.
+
+- Innanzi tutto a cosa serve e cosa puo' fare.
+PORTSENTRY serve per vedere e bloccare portscan del computer, o, piu' in
+generale, per controllare certe porte e reagire in vari modi se tentativi 
+di connessione avvengono su queste porte.
+PORTSENTRY puo' controllare sia porte TCP che porte UDP in tre modalita', 
+specificabili tramite un parametro sulla riga di comando o tramite il file di
+configurazione startup.conf (sezioni TCP_MODE e UDP_MODE). Le tre modalita' 
+sono:
+  = Basic mode (-tcp o -udp): PORTSENTRY apre le porte specificate nel file
+  portsentry.conf e le controlla, reagendo seguendo la configurazione.
+  = Stealth mode (-stcp o -sudp): PORTSENTRY non apre nessuna porta, invece
+  crea un socket raw per controllare ogni pacchetto in entrata e, se è
+  diretto verso una delle porte specificate, regisce in base alla
+  configurazione.
+  = Advanced Stealth Mode (-atcp o -audp): E' sicuramente la modalita' che
+  garantisce maggior sicurezza dato che si comporta come nello Stealth Mode,
+  ma reagisce a connessioni che avvengano su tutte le porte specificate in
+  un certo range escluse quelle specificate nel file portsentry.conf. In
+  questo modo possiamo configurare che accedano al PC solo i client
+  interessati ai servizi effettivamente forniti. 
+
+- PORTSENTRY "reagisce"? Ovvero?
+Quando PORTSENTRY identifica che da un certo IP provengono connessioni non
+autorizzate:
+  = scrive una riga di log tramite la syslog facility
+  = scrive l'IP sul file portsentry.blocked. Questo file viene aggiunto in
+  coda al file di history alla partenza di portsentry e poi svuotato,
+  cosicche' a ogni esecuzione di PORTSENTRY gli IP bloccati nelle precendenti
+  esecuzioni vengono ignorati
+  = impedisce al pacchetto di tornare all'IP incriminato
+  = esegue un comando (specificabile nel portsentry.conf) che permetta di
+  ignorare quell'IP. Questo puo' essere fatto aggiungendo l'IP a hosts.deny
+  (usando quindi i TCP wrappers) o, ancora meglio, specificando l'IP in una
+  catena di REJECT a ipchains.
+
+- Configurazione di PORTSENTRY
+La configurazione di PORTSENTRY viene effettuata da dei file presenti nella
+directory /etc/portsentry/. Analizziamoli in dettaglio
+  portsentry.conf
+    File principale di configurazione di PORTSENTRY
+    E' suddiviso in sezioni:
+    = TCP_PORTS: lista di porte TCP da controllare in basic e stealth mode
+    = UDP_PORTS: come sopra per UDP
+    = ADVANCED_PORTS_TCP: numero della piu' alta porta TCP da controllare
+    (Default: 1024)
+    = ADVANCED_PORTS_UDP: come sopra per UDP
+    = ADVANCED_EXCLUDE_TCP: Porte TCP da escludere in advanced stealth mode
+    = ADVANCED_EXCLUDE_UDP: come sopra per UDP
+    = IGNORE_FILE: file con gli IP da ignorare
+    = BLOCKED_FILE: file con gli IP bloccati
+    = BLOCK_TCP: blocca connessioni TCP?
+    = BLOCK_UDP: blocca connessioni UDP?
+    = KILL_ROUTE: comando per "droppare" la connessione incriminata. 
+    = KILL_HOSTS_DENY: riga da scrivere nel file hosts.deny
+    = KILL_RUN_CMD: comando da eseguire prima di "droppare" la connessione
+    incriminata
+    = SCAN_TRIGGER: numero di connessioni da un host prima di attivare la
+    reazione di PORTSENTRY
+    = PORT_BANNER: testo da mostrare alla persona che cerca di connettersi
+    su una porta protetta (solo in Basic Mode)
+  startup.conf
+    Modalita' all'avvio di PORTSENTRY, letto se il programma viene lanciato
+    da /etc/init.d/portsentry.
+    E' diviso in due sezioni:
+    = TCP_MODE: modalita' di cntrollo delle porte TCP
+    puo' essere tcp, stcp, atcp
+    = UDP_MODE: modalita' di controllo delle porte UDP
+    puo' essere udp, sudp, audp
+  portsentry.ignore.static
+    Contiene una lista di IP che all'avvio di PORTSENTRY saranno messi nel
+    file portsentry.ignore, ovvero IP che non dovrebbero mai essere bloccati.
+    Generalmente ci si puo' mettere 127.0.0.1 (localhost), 0.0.0.0 e gli IP
+    locali (se si e' in una LAN).
+
+
+- OK. E quindi?
+Quindi? Fate voi... Qua ci sono i miei file di configurazione di portsentry.
+------------------ portsentry.conf ------------------
+# PortSentry Configuration
+#
+# $Id: portsentry.htm,v 1.1.1.1 2006/04/16 16:13:49 pragma Exp $
+# 
+# Original portsentry.conf by Craig H. Rowland <crowland@psionic.com>
+# modified for Debian by Guido Guenther <guido.guenther@uni-konstanz.de>
+#
+# IMPORTANT NOTE: You CAN NOT put spaces between your port arguments.
+# 
+# The default ports will catch a large number of common probes
+#
+# All entries must be in quotes.
+
+
+#######################
+# Port Configurations #
+#######################
+#
+#
+# Some example port configs for classic and basic Stealth modes
+#
+# I like to always keep some ports at the "low" end of the spectrum.
+# This will detect a sequential port sweep really quickly and usually
+# these ports are not in use (i.e. tcpmux port 1)
+#
+# ** X-Windows Users **: If you are running X on your box, you need to be sure
+# you are not binding PortSentry to port 6000 (or port 2000 for OpenWindows users). 
+# Doing so will prevent the X-client from starting properly. 
+#
+# These port bindings are *ignored* for Advanced Stealth Scan Detection Mode.
+#
+
+# Un-comment these if you are really anal:
+#TCP_PORTS=	"1,7,9,11,15,70,79,80,109,110,111,119,138,139,143,512,513,514,515,540,635,
+	    	1080,1524,2000,2001,4000,4001,5742,6000,6001,6667,12345,12346,20034,30303,
+		32771,32772,32773,32774,31337,40421,40425,49724,54320"
+#UDP_PORTS=	"1,7,9,66,67,68,69,111,137,138,161,162,474,513,517,518,635,640,641,666,700,
+		2049,32770,32771,32772,32773,32774,31337,54321"
+#
+# Use these if you just want to be aware:
+TCP_PORTS=	"1,11,15,79,111,119,143,540,635,1080,1524,2000,5742,6667,12345,12346,20034,
+		31337,32771,32772,32773,32774,40421,49724,54320"
+UDP_PORTS="1,7,9,69,161,162,513,635,640,641,700,32770,32771,32772,32773,32774,31337,54321"
+#
+# Use these for just bare-bones
+#TCP_PORTS=	"1,11,15,110,111,143,540,635,1080,524,2000,12345,12346,20034,32771,32772,
+		32773,32774,49724,54320"
+#UDP_PORTS=	"1,7,9,69,161,162,513,640,700,32770,32771,32772,32773,32774,31337,54321"
+
+###########################################
+# Advanced Stealth Scan Detection Options #
+###########################################
+#
+# This is the number of ports you want PortSentry to monitor in Advanced mode.
+# Any port *below* this number will be monitored. Right now it watches 
+# everything below 1023. 
+# 
+# On many Linux systems you cannot bind above port 61000. This is because
+# these ports are used as part of IP masquerading. I don't recommend you
+# bind over this number of ports. Realistically: I DON'T RECOMMEND YOU MONITOR 
+# OVER 1023 PORTS AS YOUR FALSE ALARM RATE WILL ALMOST CERTAINLY RISE. You've been
+# warned! Don't write me if you have have a problem because I'll only tell
+# you to RTFM and don't run above the first 1023 ports.
+#
+#
+#ADVANCED_PORTS_TCP="1023"
+#ADVANCED_PORTS_UDP="1023"
+ADVANCED_PORTS_TCP="10000"
+ADVANCED_PORTS_UDP="1023"
+#
+# This field tells PortSentry what ports (besides listening daemons) to
+# ignore. This is helpful for services like ident that services such 
+# as FTP, SMTP, and wrappers look for but you may not run (and probably 
+# *shouldn't* IMHO). 
+#
+# By specifying ports here PortSentry will simply not respond to
+# incoming requests, in effect PortSentry treats them as if they are
+# actual bound daemons. The default ports are ones reported as 
+# problematic false alarms and should probably be left alone for
+# all but the most isolated systems/networks.
+#
+# Default TCP ident and NetBIOS service
+#ADVANCED_EXCLUDE_TCP="113,139"
+ADVANCED_EXCLUDE_TCP="21,23,6000"
+#111 portmapper ???  113 ident
+# Default UDP route (RIP), NetBIOS, bootp broadcasts.
+#ADVANCED_EXCLUDE_UDP="520,138,137,67"
+ADVANCED_EXCLUDE_UDP="520"
+
+
+######################
+# Configuration Files#
+######################
+#
+# Hosts to ignore
+IGNORE_FILE="/etc/portsentry/portsentry.ignore"
+# Hosts that have been denied (running history)
+HISTORY_FILE="/var/lib/portsentry/portsentry.history"
+# Hosts that have been denied this session only (temporary until next restart)
+BLOCKED_FILE="/var/lib/portsentry/portsentry.blocked"
+
+###################
+# Response Options#
+###################
+# Options to dispose of attacker. Each is an action that will 
+# be run if an attack is detected. If you don't want a particular
+# option then comment it out and it will be skipped.
+#
+# The variable $TARGET$ will be substituted with the target attacking
+# host when an attack is detected. The variable $PORT$ will be substituted
+# with the port that was scanned. 
+#
+##################
+# Ignore Options #
+##################
+# These options allow you to enable automatic response
+# options for UDP/TCP. This is useful if you just want
+# warnings for connections, but don't want to react for  
+# a particular protocol (i.e. you want to block TCP, but
+# not UDP). To prevent a possible Denial of service attack
+# against UDP and stealth scan detection for TCP, you may 
+# want to disable blocking, but leave the warning enabled. 
+# I personally would wait for this to become a problem before
+# doing though as most attackers really aren't doing this.
+# The third option allows you to run just the external command
+# in case of a scan to have a pager script or such execute
+# but not drop the route. This may be useful for some admins
+# who want to block TCP, but only want pager/e-mail warnings
+# on UDP, etc.
+#
+# 
+# 0 = Do not block UDP/TCP scans.
+# 1 = Block UDP/TCP scans.
+# 2 = Run external command only (KILL_RUN_CMD)
+
+BLOCK_UDP="1"
+BLOCK_TCP="1"
+
+###################
+# Dropping Routes:#
+###################
+# This command is used to drop the route or add the host into
+# a local filter table. 
+#
+# The gateway (333.444.555.666) should ideally be a dead host on 
+# the *local* subnet. On some hosts you can also point this at
+# localhost (127.0.0.1) and get the same effect. NOTE THAT
+# 333.444.555.66 WILL *NOT* WORK. YOU NEED TO CHANGE IT!!
+#
+# All KILL ROUTE OPTIONS ARE COMMENTED OUT INITIALLY. Make sure you
+# uncomment the correct line for your OS. If you OS is not listed
+# here and you have a route drop command that works then please
+# mail it to me so I can include it. ONLY ONE KILL_ROUTE OPTION
+# CAN BE USED AT A TIME SO DON'T UNCOMMENT MULTIPLE LINES.
+#
+# NOTE: The route commands are the least optimal way of blocking
+# and do not provide complete protection against UDP attacks and
+# will still generate alarms for both UDP and stealth scans. I
+# always recommend you use a packet filter because they are made
+# for this purpose.
+#
+
+# Generic 
+#KILL_ROUTE="/sbin/route add $TARGET$ 333.444.555.666"
+
+# Generic Linux 
+#KILL_ROUTE="/sbin/route add -host $TARGET$ gw 333.444.555.666"
+
+# Newer versions of Linux support the reject flag now. This 
+# is cleaner than the above option.
+#KILL_ROUTE="/sbin/route add -host $TARGET$ reject"
+
+# Generic BSD (BSDI, OpenBSD, NetBSD, FreeBSD)
+#KILL_ROUTE="/sbin/route add $TARGET$ 333.444.555.666"
+
+# Generic Sun 
+#KILL_ROUTE="/usr/sbin/route add $TARGET$ 333.444.555.666 1"
+
+# NEXTSTEP
+#KILL_ROUTE="/usr/etc/route add $TARGET$ 127.0.0.1 1"
+
+# FreeBSD (Not well tested.)
+#KILL_ROUTE="route add -net $TARGET$ -netmask 255.255.255.255 127.0.0.1 -blackhole"
+
+# Digital UNIX 4.0D (OSF/1 / Compaq Tru64 UNIX)
+#KILL_ROUTE="/sbin/route add -host -blackhole $TARGET$ 127.0.0.1"
+
+# Generic HP-UX
+#KILL_ROUTE="/usr/sbin/route add net $TARGET$ netmask 255.255.255.0 127.0.0.1"
+
+##
+# Using a packet filter is the preferred method. The below lines
+# work well on many OS's. Remember, you can only uncomment *one*
+# KILL_ROUTE option.
+##
+
+# For those of you running Linux with ipfwadm installed you may like
+# this better as it drops the host into the packet filter.
+# You can only have one KILL_ROUTE turned on at a time though.
+# This is the best method for Linux hosts.
+#
+#KILL_ROUTE="/sbin/ipfwadm -I -i deny -S $TARGET$ -o"
+#
+# This version does not log denied packets after activation
+#KILL_ROUTE="/sbin/ipfwadm -I -i deny -S $TARGET$"
+#
+# New ipchain support for Linux kernel version 2.102+
+KILL_ROUTE="/sbin/ipchains -I input -s $TARGET$ -j DENY -l"
+#
+# For those of you running FreeBSD (and compatible) you can
+# use their built in firewalling as well. 
+#
+#KILL_ROUTE="/sbin/ipfw add 1 deny all from $TARGET$:255.255.255.255 to any"
+
+###############
+# TCP Wrappers#
+###############
+# This text will be dropped into the hosts.deny file for wrappers
+# to use. There are two formats for TCP wrappers:
+#
+# Format One: Old Style - The default when extended host processing
+# options are not enabled.
+#
+KILL_HOSTS_DENY="ALL: $TARGET$"
+#
+# Format Two: New Style - The format used when extended option
+# processing is enabled. You can drop in extended processing
+# options, but be sure you escape all '%' symbols with a backslash
+# to prevent problems writing out (i.e. \%c \%h )
+#
+#KILL_HOSTS_DENY="ALL: $TARGET$ : DENY"
+
+###################
+# External Command#
+###################
+# This is a command that is run when a host connects, it can be whatever
+# you want it to be (pager, etc.). This command is executed before the 
+# route is dropped. I NEVER RECOMMEND YOU PUT IN RETALIATORY ACTIONS
+# AGAINST THE HOST SCANNING YOU. TCP/IP is an *unauthenticated protocol*
+# and people can make scans appear out of thin air. The only time it
+# is reasonably safe (and I *never* think it is reasonable) to run
+# reverse probe scripts is when using the "classic" -tcp mode. This
+# mode requires a full connect and is very hard to spoof.
+#
+#KILL_RUN_CMD="/some/path/here/script $TARGET$ $PORT$"
+#see /usr/doc/portsentry/expamples/kill_cmd for an example script
+
+#####################
+# Scan trigger value#
+#####################
+# Enter in the number of port connects you will allow before an 
+# alarm is given. The default is 0 which will react immediately.
+# A value of 1 or 2 will reduce false alarms. Anything higher is 
+# probably not necessary. This value must always be specified, but
+# generally can be left at 0. 
+#
+# NOTE: If you are using the advanced detection option you need to
+# be careful that you don't make a hair trigger situation. Because
+# Advanced mode will react for *any* host connecting to a non-used
+# below your specified range, you have the opportunity to really 
+# break things. (i.e someone innocently tries to connect to you via 
+# SSL [TCP port 443] and you immediately block them). Some of you
+# may even want this though. Just be careful.
+#
+
+SCAN_TRIGGER="0"
+
+######################
+# Port Banner Section#
+######################
+#
+# Enter text in here you want displayed to a person tripping the PortSentry.
+# I *don't* recommend taunting the person as this will aggravate them.
+# Leave this commented out to disable the feature
+#
+# Stealth scan detection modes don't use this feature
+#
+#PORT_BANNER=	"** UNAUTHORIZED ACCESS PROHIBITED *** YOUR CONNECTION ATTEMPT 
+		HAS BEEN LOGGED. GO AWAY."
+
+# EOF
+-----------------------------------------------------
+
+
+------------------ startup.conf ------------------
+# /etc/portsentry/startup.conf
+#  
+# this file is read by the init scrip (/etc/init.d/portsentry)
+# see manpage portsentry.8 for details
+# the options in the file refer to commandline arguments(all in lowercase).
+# use only one tcp and udp mode at a time.
+#
+# by Guido Guenther <guido.guenther@uni-konstanz.de>
+
+TCP_MODE="atcp"
+UDP_MODE="audp"
+----------------------------------------------------
+
+
+
+------------ portsentry.ignore.static ----------------
+# /etc/portsentry/portsentry.ignore.static
+# put hosts in here you never want blocked. This includes STATIC IPs of all 
+# local interfaces on this host.
+# Keep 127.0.0.1 and 0.0.0.0 to keep people from playing games.
+# upon start of portsentry(8) this file will be merged into portsentry.ignore.
+127.0.0.1
+0.0.0.0
+------------------------------------------------------
+
+
+
+- Si', ma il thread parlava di SMURF...
+evabbe'... PORTSENTRY evita i portscan e le connessioni non autorizzate al
+PC... e' utile, no? 
+
+
+Ciao!
+----------------------------------------------------      .~.
+     @§=- RedLance  -  The Light Paladin  -=§@            /V\
+ EMail: redlance@libero.it  ICQ# 28677408  PGP Key       // \\
+ SLUG: http://go.to/slug  (Siena Linux User Group)      /(   )\
+E la volpe disse al piccolo principe "Addomesticami"     ^^-^^ 
+----------------------------------------------------   LINUX USER
+
+<Pre>
+</center>
+</td>
+</tr>
+</table>
+
+<br>
+</body>
+</html>

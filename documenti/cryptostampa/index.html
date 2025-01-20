@@ -1,0 +1,1231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>Stampa e tunnel criptati micro HOWTO</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 1.0.1  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Stefano Rizzetto">
+	<META NAME="CREATED" CONTENT="20020927;9383900">
+	<META NAME="CHANGEDBY" CONTENT="Stefano Rizzetto">
+	<META NAME="CHANGED" CONTENT="20021022;9583204">
+	<META NAME="DESCRIPTION" CONTENT="Come stampare in ambienti misti Linux Windows utilizzando tunnel criptati ZeBedee">
+	<!-- saved from url=(0045)http://siena.linux.it/documenti/cryptostampa/ -->
+	<STYLE>
+	<!--
+		H1 { margin-bottom: 0.21cm }
+		H1.western { font-family: "Albany", sans-serif; font-size: 16pt }
+		H1.cjk { font-size: 16pt }
+		H1.ctl { font-size: 16pt }
+		P { margin-bottom: 0.21cm }
+		H4 { margin-bottom: 0.21cm }
+		H4.western { font-family: "Albany", sans-serif; font-size: 11pt; font-style: italic }
+		H4.cjk { font-size: 11pt; font-style: italic }
+		H4.ctl { font-size: 11pt; font-style: italic }
+		P.numerazione-1 { margin-left: 0.5cm; text-indent: -0.5cm }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="it-IT">
+<P ALIGN=CENTER STYLE="margin-top: 0.42cm"><BR><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-top: 0.42cm"><BR><BR>
+</P>
+<HR>
+<P ALIGN=CENTER STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=5><B>Stampa
+e tunnel criptati micro HOWTO</B></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=4><B>(ovvero
+HOWTO*10^-6)</B></FONT></FONT></P>
+<HR>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H4 CLASS="western">Autore: ZioPino <A HREF="mailto:metaluxisdn@tiscalinet.it">metaluxisdn@tiscalinet.it</A></H4>
+<H4 CLASS="western">Data stesura: 02.10.2002</H4>
+<H4 CLASS="western">Data modifica: 22.10.2002</H4>
+<H4 CLASS="western">Versione originale documento: 0.1c</H4>
+<H4 CLASS="western">Versione modificata: 01d</H4>
+<H4 CLASS="western">Licenza d'uso: GPL 
+</H4>
+<P STYLE="margin-top: 0.42cm"><B><FONT SIZE=2><FONT FACE="Albany, sans-serif">(
+for more information see: <A HREF="http://www.gnu.org/licenses/gpl.html">http://www.gnu.org/licenses/gpl.html</A>
+)</FONT></FONT></B></P>
+<H1 CLASS="western"><BR><BR>
+</H1>
+<H1 CLASS="western" STYLE="page-break-before: always">Contenuti:</H1>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<OL TYPE=I>
+	<LI><P CLASS="numerazione-1">Perch&eacute; un altro HOWTO sulla
+	stampa</P>
+	<LI><P CLASS="numerazione-1">Strumenti sw provati ed utilizzati</P>
+	<LI><P CLASS="numerazione-1">Casi della vita</P>
+	<LI><P CLASS="numerazione-1">Note &ldquo;a latere&rdquo;</P>
+	<LI><P CLASS="numerazione-1">Appendici</P>
+</OL>
+<P STYLE="margin-top: 0.42cm"><BR><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: always">I) Perch&eacute;
+un altro HOWTO sulla stampa</H1>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Di
+certo non se ne sentiva il bisogno; tuttavia ho voluto mettere a
+disposizione di quei (pochi) che ne avessero bisogno tutte le
+esperienze fatte da me su lavoro per quanto riguarda i canali
+criptati e le stampe in remoto.</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">L'esigenza
+nasce dalla necessit&agrave; di connettersi dalla rete pubblica ad un
+server (unix o windows indifferentemente) utilizzare una applicazione
+residente sul server (anche con logica client-server) e stampare
+sulla stampante fisicamente connessa al client o su di una stampante
+alla quale l'utente del client possa facilmente accedere. Il tutto
+con la sicurezza che deriva dall'uso di un canale criptato e quindi
+ragionevolmente al sicuro da potenziali e maliziosi &ldquo;sniffamenti&rdquo;.</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H1 CLASS="western"><BR><BR>
+</H1>
+<H1 CLASS="western" STYLE="page-break-before: always">II) Strumenti
+sw provati ed utilizzati</H1>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H4 CLASS="western">Strumenti free con licenza GPL</H4>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">OpenSSH
+(shell remota criptata)</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Credo
+che non ci sia bisogno di presentazione. Anche se periodicamente
+questo demone &egrave; afflitto da bachi o da troiani resta il non
+plus ultra delle shell remote criptate</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">OpenSSH
+per Unix/linux </FONT><A HREF="http://www.openssh.org/"><FONT FACE="Timmons">http://www.openssh.org</FONT></A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">OpenSSH
+per Windows </FONT><A HREF="http://www.networksimplicity.com/openssh"><FONT FACE="Timmons">http://www.networksimplicity.com/openssh</FONT></A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">ZebeDee
+(tunnelling criptato per tcp/udp)</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Grandissima
+utility che premette veramente di tutto. E' simile (nello spirito) a
+CIPE ma in user space (quindi &egrave; pi&ugrave; semplice da
+configurare ed installare) e dalla funzionalit&agrave; ottima sia in
+Windows che in Unix/linux.</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">ZeBeDee
+per Windows/Unix </FONT><A HREF="http://www.winton.org.uk/zebedee"><FONT FACE="Timmons">http://www.winton.org.uk/zebedee</FONT></A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">rlpr
+(un client enhanced per lpd)</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Un'altra
+utility salvavita. Si comporta come lpr con in pi&ugrave; la
+possibilit&agrave; di indirizzare stampanti remote non descritte in
+/etc/printcap e di interagire con demoni lpd che possono rispondere
+anche su porte <B>diverse</B> da 515/tcp.</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">rlpr
+per Unix </FONT><A HREF="ftp://truffula.com/pub/rlpr-2.04.tar.gz"><FONT FACE="Timmons">ftp://truffula.com/pub/rlpr-2.04.tar.gz</FONT></A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><SPAN STYLE="text-decoration: none">rdesktop</SPAN><U>
+(Terminal client)</U></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm">Un piccolo Terminal client
+tutto sommato usabile</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm">rdesktop per Unix/Linux
+<A HREF="http://www.rdesktop.org/">http://www.rdesktop.org/</A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H4 CLASS="western">Strumenti free con licenza BSD</H4>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Putty
+(telnet-ssh client per Windows)</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Il
+client telnet free per eccellenza</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Putty +
+plink </FONT><A HREF="http://www.chiark.greenend.org.uk/~sgtatham/putty"><FONT FACE="Timmons">http://www.chiark.greenend.org.uk/~sgtatham/putty</FONT></A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H4 CLASS="western">Strumenti a pagamento con licenza proprietaria</H4>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">SmarTerm
+(telnet-ssh client + LPD server)</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Client
+telnet e (da poco) anche ssh il cui unico pregio &egrave; quello di
+fornire nel prezzo pagato anche un demone lpd per Windows con
+discrete funzionalit&agrave;.</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">SmarTerm
+</FONT><A HREF="http://www.esker.com/esker_com/products/smarterm_home.html"><FONT FACE="Timmons">http://www.esker.com/esker_com/products/smarterm_home.html</FONT></A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H1 CLASS="western" STYLE="page-break-before: always">III) Casi della
+vita</H1>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Sono
+un strenuo sostenitore del metodo socratico, perci&ograve; elencher&ograve;
+una serie (il pi&ugrave; possibile esaustiva) di casi pratici
+cercando di spiegare pi&ugrave; chiaramente possibile le soluzioni da
+me adottate per la risoluzione del problema.</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><B>1)
+Servente host NT/W2000 con IP statico + client W9x/Me/XP/2000 con
+stampante fisicamente connessa al client. </B>L'applicazione sia
+residente sull'Host</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">La
+situazione &egrave; schematizzata al meglio dal seguente grafico:</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<PRE><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">   [host/server]NT/W2000 +APP &lt;=====&gt; [client] W9x/Me/XP/2000--&gt; [printer]</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">        IP = 10.0.0.10 (statico) | IP = ? (fornito dal provider)</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                                 +</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                     rete pubblica (insicura)</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                                 +</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                        tunnelling criptato</FONT></FONT></PRE><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<FONT FACE="Timmons"><FONT SIZE=3>La nostra necessit&agrave; &egrave;
+naturalmente utilizzare l'applicazione sull'host e stampare sul
+client veicolando il tutto con un tunnel criptato.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Soluzione
+a)</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Uso
+di Terminal server + OpenSSH su [host/server] e Putty + Terminal
+client su [client] </FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Configurazione
+del canale criptato:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<UL>
+	<LI><P CLASS="numerazione-1">Installare e configurare OpenSSH
+	sull'host (le doc a corredo sono sufficienti);</P>
+	<LI><P CLASS="numerazione-1">per il client usare putty (o meglio
+	plink se la shell non interessa) per veicolare il protocollo
+	terminal server su porta locale;</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Esempio</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Se
+sull'host il servizio Terminal Server sta su 163/TCP sul client
+baster&agrave; lanciare, a connessione con il provider avvenuta, il
+seguente comando (uso plink data la sua affinit&agrave; con il
+comando unix ssh):</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>plink
+-ssh -L 163:10.0.0.10:163 10.0.0.10</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Ovviamente
+le porte possono essere anche diverse i.e. -L 3000:10.0.0.10:2048 e
+cos&igrave; via, basta solo ricordare che il primo valore rappresenta
+la porta locale (ossia quella sul client) mentre l'ultimo rappresenta
+la porta sul server che interessa veicolare.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>A
+questo punto tutto quello che ci resta da fare &egrave; lanciare sul
+nostro client il Terminal client e usando come host il localhost
+(127.0.0.1) e come porta quella che ci ci siamo scelta (163, 3000
+etc)</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>per
+vederci comparire la login di NT/W2000 e lanciare il nostro utente e
+le nostre app.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">E la
+stampante? B&egrave; in questo caso Zio Bill ci fa un regalo (lo so
+non &egrave; da lui ma forse gli &egrave; scappato :)) il protocollo
+Terminal server veicola le stampati del client e le fa comparire come
+stampanti di sistema sull'host; i nomi di queste posso essere
+singolari ma normalmente contengono cose del tipo
+<B>\\Prima-Sessione\</B></FONT><B>HPColor</B> dove HPcolor &egrave;
+la nostra stampante.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">A livello tecnico il
+tutto pu&ograve; essere spiegato dal fatto che Terminal server
+trasporta in modo trasparente il NetBios e quindi anche le
+Print-Share.</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Soluzione
+b)</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Uso
+di Terminal server + ZebeDee su [host/server] e Terminal client +
+ZeBeDee su [client] </FONT></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Nel
+caso OpenSSH non si possa/voglia usare si pu&ograve; ricorrere
+all'uso di ZeBeDee.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Passiamo
+direttamente alla configurazione del canale criptato prendendo spunto
+dall'esempio descritto sopra</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Installato
+ZeBeDee su server lo si esegue con i seguenti parametri:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-s 10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>In
+sintesi si mette in ascolto come server (-s) e mette a disposizione
+il servizio 163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>(Naturalmente
+pu&ograve; anche essere permanentemente in ascolto)</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Installato
+ZeBeDee su client dopo la connessione al provider lo si esegue con i
+seguenti parametri</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+163:10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>In
+sintesi zebedee come client veicola il servizio 163 residente su
+10.0.0.10 in localhost 163 (zebedee ha anche delle opzioni che gli
+permettono di scegliere l'ip su cui fare il bind, qui non usate per
+semplicit&agrave;)</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Si
+usa ora il Terminal Client nel modo descritto sopra e il gioco &egrave;
+fatto.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Piccola
+nota su ZeBeDee.</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Questo
+sw permette cose egregie; per semplicit&agrave; didattica &egrave;
+stato invocato via linea comando ma, pu&ograve; essere installato
+come servizio, legge le configurazioni da file ed anche in grado di
+effettuare un port-forwarding su macchine differenti da quelle dove
+risiede. Veramente un coltellino svizzero (Swiss knife) per i
+tunnelling criptati. E' anche possibile usare per l'autenticazione
+dei client il meccanismo chiave pubblica/privata. Consiglio prima
+dell'utilizzo brutale di leggersi attentamente le doc del pacchetto
+si avr&agrave; cos&igrave; modo di apprezzare la grande versatilit&agrave;
+di questo piccolo pezzo di Open-Source</FONT>.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3><B>2)
+Servente host NT/W2000 con IP statico + client Unix/Linux con
+stampante fisicamente connessa al client</B>.L'applicazione sia
+residente sull'Host.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>La
+situazione &egrave; schematizzata al meglio dal seguente grafico:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<PRE><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">   [host/server]NT/W2000 +APP &lt;=====&gt; [client] Unix/Linux--&gt; [printer]</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">        IP = 10.0.0.10 (statico) | IP = ? (fornito dal provider)</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                                 +</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                     rete pubblica (insicura)</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                                 +</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                        tunnelling criptato</FONT></FONT></PRE><P ALIGN=LEFT STYLE="margin-bottom: 0cm">
+<FONT FACE="Timmons"><FONT SIZE=3>La nostra necessit&agrave; &egrave;
+naturalmente utilizzare l'applicazione sull'host e stampare sul
+client veicolando il tutto con un tunnel criptato.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Soluzione
+a)</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Uso
+di Terminal server + OpenSSH +Lpr (lpd client) su [host/server] e ssh
++ XFree86 + rdesktop + Lpd su [client] </FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Configurazione
+del canale criptato:</FONT></FONT></P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">installare
+	OpenSSH server sull</FONT>'host;</P>
+</UL>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">installare Lpr
+	sull'host; normalmente questo client viene fornito di default con le
+	installazioni di W2000 lo si deve configurare come se il server Lpd
+	rispondesse su localhost (127.0.0.1) (in realt&agrave; sar&agrave;
+	veicolato sulla macchina client)</P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">installare ssh
+	(almeno la parte client), xfree86, lpd (o anche CUPS a patto di
+	configurare una stampante come BSD) e rdesktop sul client</P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Esempio
+</B></FONT></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Per
+configurare il client lpr su W2000 rimando agli Help del sistema
+suddetto bisogna fare solo attenzione a questi 2 semplici fatti:</FONT></FONT></P>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>il
+	nome della coda deve coincidere sia sul client che sul server; i.e.
+	<B>\\127.0.0.1\HPColor</B> in W2000 e HPColor in /etc/printcap su
+	Unix/Linux</FONT></FONT></P>
+</UL>
+<UL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Il
+	driver di stampa deve risiedere o in W2000 o in Unix/Linux; se &egrave;
+	presente in entrabi i lati o se &egrave; assente in entrambi le
+	stampe possibili saranno solo quelle di testo (e occhio alla
+	conversione LF/CR)</FONT></FONT></P>
+</UL>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Sul
+client Unix</FONT> una volta connessi al provider si user&agrave; ssh</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>ssh
+-L 163:10.0.0.10:163 -R515:127.0.0.1:515 10.0.0.10</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Cosa
+s'&egrave; fatto qui? Semplicemente abbiamo detto al client ssh di
+aprire 2 canali di cui il primo (-L) veicola il servizio Terminal
+Server dal server W2000 al client unix , il secondo (-R) veicola il
+servizio LPD dal client unix al server W2000</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Lanciando
+rdesktop dal nostro client con il nome dell'host 127.0.0.1 comparir&agrave;
+il login di W2000 e se stamperemo sulla stampante di sistema W2000
+<B>\\127.0.0.1\HPColor</B> la stampa arriver&agrave; sul nostro
+client (tempi di trasferimento permettendo :)).</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Soluzione
+b)</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Uso
+di Terminal server + ZeBeDee +Lpr (lpd client) su [host/server] e
+ZeBeDee + XFree86 + rdesktop + Lpd su [client] </FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Quello
+che s'&egrave; appena fatto con OpenSSH &egrave; naturalmente
+possibile farlo anche usando ZeBeDee solamente che in questo caso la
+configurazione del tunnel criptato sar&agrave; pi&ugrave; complicata.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Procediamo
+con una configurazione d'esempio come al solito</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Per veicolare il servizio
+Terminal server (che, nel nostro esempio, sta su 163/tcp) sull'host
+W2000 si lancer&agrave;:</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">zebedee -s -T20000
+10.0.0.10:163</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">In sintesi zebedee come
+server (-s) rimane in ascolto su porta 20000/tcp (-T) per la
+connessione a zebedee client e mette a disposizione il servizio
+(porta) 163/tcp</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Mentre sul client unix 
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">zebedee -T20000
+163:10.0.0.10:163</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Credo che il significato
+sia ormai chiaro</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Per veicolare il servizio
+Lpd (che, va ricordato, sta su 515/tcp sul client Unix) sull'host
+W2000 si lancer&agrave;:</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">zebedee -l -T20001
+515:*:515</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">In sintesi qui zebedee &egrave;
+usato come client (ricordo che lpd sta sul client unix) in listen
+mode (-l) ossia aspetta che sia un server ad iniziare il colloquio
+rimane in ascolto su porta 20001/tcp (-T) inoltre attende una
+connessione da qualunque indirizzo ip (*) per il servizio 515/tcp</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Sul client unix</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">zebedee -d -c 10.0.0.10
+-T20001 127.0.0.1:515</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">In sintesi zebedee come
+server (-d) cerca la connessione con un client (-c) in 10.0.0.10
+utilizzando la porta 20001/tcp (-T) e mette a disposizione il
+servizio 515/tcp.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Una volta connessi si
+procede come descritto nella Soluzione a)</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><B>3)
+Servente host Unix/Linux con IP statico + client W9x/Me/XP/2000 con
+stampante fisicamente connessa al client</B>. L'applicazione sia
+residente sull'Host</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">La
+situazione &egrave; schematizzata al meglio dal seguente grafico:</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<PRE><FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt"> [host/server]Unix/linux +APP &lt;=====&gt; [client]W9x/Me/XP/2000--&gt; [printer]</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">        IP = 10.0.0.10 (statico) | IP = ? (fornito dal provider)</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                                 +</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                     rete pubblica (insicura)</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                                 +</FONT></FONT>
+<FONT FACE="Courier New, monospace"><FONT SIZE=2 STYLE="font-size: 11pt">                        tunnelling criptato</FONT></FONT></PRE><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">
+<BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>La
+nostra necessit&agrave; &egrave; naturalmente utilizzare
+l'applicazione sull'host e stampare sul client veicolando il tutto
+con un tunnel criptato. In questo caso specifico le applicazioni
+residenti su Unix non richiedono l'uso di Xfree86 (nel mio caso erano
+semplicemente dei programmi di calcolo) richiedono semplicemente un
+client di tipo telnet</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Soluzione
+a)</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>ZebeDee
++ rlpr + telnetd su [host/server] e ZeBedee + SmarTerm +lpd su
+[client]</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>SmarTerm
+&egrave; stato usato solo per la presenza in bundle di un demone lpd
+dalle discrete prestazioni che trasforma le stampanti di sistema
+Windows in code di stampa con nomi a piacere. E' ovvio che avendo a
+disposizione un altro demone lpd per esempio quello che forniscono
+con alcuni Xserver su W9x/ Me (su XP/2000 Client esiste un server lpd
+installabile) il client telnet potrebbe essere qualunque anche quello
+minimale presente nelle installazioni di W9x/Me/XP/2000</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>La
+configurazione del lato server non presenta particolari problemi
+ricalcando quelle che abbiamo gi&agrave; visto con una particolarit&agrave;
+che adesso illustrer&ograve;:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Per veicolare il servizio
+telnet che sull'host unix/linux si lancer&agrave;:</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">zebedee -s -T20000
+10.0.0.10:23</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Per veicolare il servizio
+Lpd (che, va ricordato, sta su 515/tcp sul client Unix) sull'host
+Unix/Linux si lancer&agrave;:</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">zebedee -l -T20001
+515:*:515</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Nel
+caso esista gi&agrave; un servizio lpd locale all'host Unix/linux la
+riga sopra andr&agrave; cos&igrave; modificata:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-l -T20001 2048:*:515</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>In
+sintesi la porta locale su cui sar&agrave; veicolato lpd del client
+diventer&agrave; la porta 2048 ed il comando di stampa da dare sar&agrave;
+del tipo:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">rlpr
+-&ndash;port=2048 -H</FONT>localhost -PnomecodastampanteWindows file
+.....</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">rlpr agisce come il
+comando lpr senza per&ograve; la necessit&agrave; di avere in
+/etc/printcap una entry per la stampante invocata e soprattutto
+permettendo di specificare una porta qualunque per arrivare al demone
+lpd</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Naturalmente dettagli
+maggiori su questo potranno essere trovati sulle doc di rlpr (pagine
+man)</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Nel
+client W9x/Me/2000/XP avremo:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-T20000 23:10.0.0.10:23</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>ed
+inoltre per lpd:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-s -c 10.0.0.10 -T20001 127.0.0.1:515</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Il
+significato &egrave; stato gi&agrave; spiegato precedentemente.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>Soluzione
+b)</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>ZebeDee
++ Samba + telnetd su [host/server] e ZeBedee + Putty su [client]</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>E'
+la soluzione pi&ugrave; complicata perch&egrave; si basa sull'idea di
+propagare attraverso ZeBeDee gli share Netbios. E' anche la soluzione
+che funziona peggio non tanto dal punto di vista prestazionale quanto
+da quello dell'affidabilit&agrave;. Questo deriva senz'altro dal
+numero di esperimenti limitato che ho potuto fare e con non mi hanno
+permesso a tutt'oggi di formalizzare in modo chiaro la soluzione.
+Insomma per dirla breve alle volte va alle volte no e, per quanto
+abbia un idea del perch&egrave;, non sono ancora sicuro di come
+risolvere compiutamente la cosa. Quanto descritto in seguito va
+perci&ograve; preso con beneficio d'inventario in attesa che la
+situazione mi si chiarisca completamente.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Per
+propagare gli share NetBios abbiamo bisogno di lavorare sulle porte
+seguenti:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>137/tcp
+&ndash; 137/udp, 138/tcp - 138/udp, 139/tcp - 139/udp </FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Dal
+lato server dopo aver configurato samba possiamo lanciare zebedee con
+i seguenti parametri:</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-l -U 137-139/tcp,137-139/udp:*:137-139/tcp,137-139/udp</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm">Dal lato client</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-s -U -c 10.0.0.10 127.0.0.1:137-139/tcp,137-139/udp</FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>A
+questo punto se tutto &egrave; andato bene con smbprint (uno script
+che invoca smbclient) posso arrivare alla stampante del lato client a
+patto che abbia configurato la medesima come stampante condivisa.
+Anche qui occhio ai driver che vanno installati correttamente sul
+lato client, altrimenti gli unici file stampabili sono quelli di
+testo.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3><B>4)
+Servente host Unix/Linux con IP statico + client Unix/linux con
+stampante</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Questo
+ed ultimo caso &egrave; risolvibile come combinazione degli altri gi&agrave;
+citati. In questo caso i demoni di stampa saranno (presumibilmente)
+entrambi lpd e quindi nel tunnelling si dovr&agrave; tener conto di
+spostare la porta remota in una delle tante porte alte aperte
+disponibili.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H1 CLASS="western"><BR><BR>
+</H1>
+<H1 CLASS="western" STYLE="page-break-before: always">IV) Note &ldquo;a
+latere&rdquo;</H1>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Tutti
+i casi menzionati sono stati realmente provati ossia non esiste alcun
+esempio che, almeno per breve tempo, non sia stato funzionante.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Per
+esigenze di sintesi non mi sono sono soffermato sul problema
+utenti/permessi che, tra l'altro, &egrave; gestito in maniera
+differente tra W9x,Me,W2000, e Unix/Linux.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Ho
+sorvolato anche sulla crittografia che ritengo argomento noto
+comunque approfondibile compiutamente consultanto la documentazione
+dei pacchetti citati e senz'altro documenti in rete.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<H1 CLASS="western"><BR><BR>
+</H1>
+<H1 CLASS="western" STYLE="page-break-before: always">V) Appendici</H1>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>5.1
+File di configurazione di ZeBeDee</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Come
+accennato ZebeDee pu&ograve; leggersi la configurazione oltre che da
+linea comando anche da file (parametro -f) qui di seguito riporto i
+file relativi a alcuni esempi citati con ovvia estensione per gli
+altri:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>linea
+comando:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-s 10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>equivalente
+con file di configurazione (il nome del file &egrave; anch'esso un
+esempio; pu&ograve; essere infatti qualunque):</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-f server.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>struttura
+di server.zbd (E' un file ascii editabile manualmente)</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+Sample Zebedee server configuration file</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+This shows the use of many, but not all, of the configuration file</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+options available for use by a server.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+$Id: index.html,v 1.1.1.1 2006/04/16 16:13:49 pragma Exp $</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>verbosity
+3 # Slightly more than basic messages</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+Comment out the following line once you have read the comments</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+in this file and enabled or disabled the appropriate options!</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>message
+&quot;Terminal Server redirector&quot;</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>detached
+false # You will probably want this 'true' for normal</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+use but I want to make sure that you see the</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+preceding message if you haven't edited this.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>server
+true # Yes, it's a server!</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>compression
+zlib:9 # Allow maximum zlib compression</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>keylength
+256 # Allow keys up to 256 bits</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>keylifetime
+36000 # Shared keys last 10 hours</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>maxbufsize
+16383 # Allow maximum possible buffer size</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+Uncomment the following line to log messages to a local file.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>logfile
+'./server.log'</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+Or to log to the system logging facility uncomment this:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+logfile SYSLOG (solo per unix)</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>keygenlevel
+2 # Generate maximum strength private keys</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+Uncomment the following line if you want to use a fixed private</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+key stored in a static file. The file should contain a line of</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+the form &quot;privatekey hexadecimal-key-string&quot;. This file
+should</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+be readable by the user running Zebedee but no-one else.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+include 'server.key'</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+To validate the identity of clients use a line something like</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+the following:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+checkidfile './clients.id'</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+The &quot;redirect&quot; expression can be use to set the default
+ports</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+allowed when a target specification consists of a hostname but</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+no other ports. The &quot;redirect none&quot; statement prohibits</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+tunnelling anywhere by default.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>redirect
+none</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+Set up allowed targets. Note that there are NO targets allowed</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+by this file by default. You must explicitly edit it to enable</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+them.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>target
+10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+end</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Per
+il client</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>lienea
+comando:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+163:10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<FONT FACE="Timmons"><FONT SIZE=3>equivalente con file di
+configurazione:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-f client.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>struttura
+di client.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">#
+Saranno qui per brevit&agrave;</FONT> indicate solo le opzioni che
+variano</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>message
+&quot;Terminal Server client&quot;</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>detached
+true # You will probably want this 'true' for normal use</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>server
+false #</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Serverhost
+10.0.0.10</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>tunnel
+163:10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+end</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Passiamo
+ad un ulteriore caso</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>linea
+comando</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-s -T20000 10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>equivalente
+con file di configurazione:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-f server1.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>struttura
+di server1.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">#
+Saranno qui per brevit&agrave;</FONT> indicate solo le opzioni che
+variano</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>message
+&quot;Terminal Server&quot;</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>detached
+true # You will probably want this 'true' for normal use</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>server
+true </FONT></FONT>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>serverport
+20000</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>target
+10.0.0.10:23</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+end</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>linea
+comando</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-T20000 163:10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>equivalente
+con file di configurazione:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-f client1.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>message
+&quot;Terminal Client&quot;</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>detached
+true # You will probably want this 'true' for normal use</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>server
+false</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>serverport
+20000</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Serverhost
+10.0.0.10</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>tunnel
+163:10.0.0.10:163</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+end</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<FONT FACE="Timmons"><FONT SIZE=3>Linea comando (N.B. anche se agisce
+da client zebedee &egrave; invocato dal server):</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-l -T20001 515:*:515</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>equivalente
+con file di configurazione:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-f server2.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>message
+&quot;Lpd Client&quot;</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>detached
+true # You will probably want this 'true' for normal use</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>server
+false</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>serverport
+20001</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>listenmode
+true</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>tunnel
+515:*:515</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+end</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Linea
+comando ( N.B. anche se agisce da server zebedee &egrave; invocato
+dal client):</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-s -c 10.0.0.10 -T20001 127.0.0.1:515</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>equivalente
+con file di configurazione:</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-f client2.zbd</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>message
+&quot;Lpd Server&quot;</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>detached
+true # You will probably want this 'true' for normal use</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>server
+true</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>serverport
+20001</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>clienthost
+10.0.0.10</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>target
+127.0.0.1:515</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#
+end</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Spero
+che questi esempi siano chiarificatrici della sintassi dei file
+ZeBeDee. Un'ultima caratteristica che mi preme evidenziare &egrave;
+che quando ZeBeDee agisce come client oppure come server in
+clienthost (e deve quindi avere un client in listenmode) pu&ograve;
+veicolare la sua connessione in http tunnelling e quindi passando
+attraverso un httpproxy (molto comodo!) perfora de facto il proxy
+stesso (operazione intrinsecamente pericolosa riflettendoci ;-)).</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Riga
+di configurazione (da aggiungere ad un file conf di ZeBeDee):</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>#</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>httpproxy
+ipproxy:proxyport</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"># per esempio</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"># httpproxy
+10.10.1.10:8080</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"># oppure 
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"># httpproxy
+proxy.pino.org:3128</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P STYLE="margin-top: 0.42cm; page-break-before: always"><FONT FACE="Albany, sans-serif"><FONT SIZE=2><B>5.2
+Uso di TightVNC e ZeBeDee</B></FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">TightVNC
+(<A HREF="http://www.tightvnc.com/"> <FONT FACE="Timmons">http://www.tightvnc.com
+</FONT></A>) &egrave; una versione migliorata di VNC
+(<A HREF="http://www.uk.research.att.com/vnc/">http://www.uk.research.att.com/vnc/</A>).</FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>In
+che senso migliorata?</FONT></FONT></P>
+<OL>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Usa
+	estensivamente la zlib e la compressione jpeg permettendo cos&igrave;
+	l'uso agevole di connessioni con limitata banda passante (buoni
+	risultati si ottengono gi&agrave; con una connessione ISDN a 64Kbits
+	o V92 a 56kbits);</FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>rimane
+	perfettamente compatibile con l'avo VNC permettendo cos&igrave; a
+	client e server differenti il colloquio anche se le caratteristiche
+	aggiuntive sono disabilitate;</FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>abilita
+	la connessione anche su localhost permettendo cos&igrave; l'uso di
+	tunnel crittografici tipo ZeBeDee ed altri;</FONT></FONT></P>
+	<LI><P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>il
+	minuscolo web server interno (tecnologia Java) &egrave; stato
+	adeguato cosicch&egrave; anche l'uso via browser ora beneficia dei
+	miglioramenti introdotti.</FONT></FONT></P>
+</OL>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Per
+brevit&agrave; ecco qui di seguito</FONT> un esempio di
+configurazione.</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">(Il test &egrave; stato
+fatto con macchine Windows ma &egrave; replicabile su macchine *nix
+dal momento che i sw utilizzati lavorano ottimamente su entrambe le
+piattaforme sw)</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Lato server (nell'esempio
+IP Host = 10.0.0.10 come al solito)</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Per
+ZeBeDee</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>zebedee
+-s 10.0.0.10:5800-5999</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<HR>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Per
+TightVNC (snapshot di $win)</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><IMG SRC="Cripto_stampa_html_e31dee4.png" NAME="Immagine1" ALIGN=LEFT BORDER=0><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>E
+le caratteristiche avanzate (snapshot di $win):</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><IMG SRC="Cripto_stampa_html_m422d76e3.png" NAME="Immagine2" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<HR>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>Per
+il lato client</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">zebedee
+</FONT>5800-5999:10.0.0.10:5800-5999</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Per TightVNC <FONT FACE="Timmons">(snapshot
+di $win)</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><IMG SRC="Cripto_stampa_html_m31fc6ef0.png" NAME="Immagine3" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm; page-break-before: always">
+<FONT FACE="Timmons"><FONT SIZE=3>E le caratteristiche avanzate
+(snapshot di $win):</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><IMG SRC="Cripto_stampa_html_m2edcc6da.png" NAME="Immagine4" ALIGN=LEFT BORDER=0><BR CLEAR=LEFT><BR>
+</P>
+<HR>
+<P><B>Stunnel e servizi pop3, imap, smtp, lpd</B></P>
+<P STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P>Per completezza voglio accennare ad un altro tunnel crittografico
+che usavo prima di venire a conoscenza di ZeBeDee. Stunnel
+(<A HREF="http://www.stunnel.org/">http://www.stunnel.org</A>) &egrave;
+un canale criptato molto interessante e pu&ograve; essere usato per
+veicolare quei servizi che non hanno o per vari motivi contingenti
+non possono avere tale capacit&agrave;. Tecnicamente parlando si
+appoggia al TSL di OpenSSL.</P>
+<P>Anche in questo caso il tunnel presenta pregi e difetti:</P>
+<P>Pregi</P>
+<OL>
+	<LI><P>semplice da configurare ed installare;</P>
+	<LI><P>multipiattaforma (*nix e Win$);</P>
+	<LI><P>&egrave; possibile usare sia un file di configurazione che
+	una serie di switch via linea comando.</P>
+</OL>
+<P><BR><BR>
+</P>
+<P>Difetti</P>
+<OL>
+	<LI><P>non permette di avere un client in listenmode (come ZeBeDee)
+	e quindi di veicolare dei servizi senza conoscere a priori gli IP;</P>
+	<LI><P>non riesce a veicolare il servizio FTP (mentre ZeBeDee lo pu&ograve;
+	fare) dal momento che FTP daemon utilizza (specialmente in PASV
+	mode) pi&ugrave; porte per il data transfer;</P>
+	<LI><P>non usa compressione del protocollo;</P>
+	<LI><P>non permette l'http-tunnelling e quindi non connette
+	attraverso un http-proxy.</P>
+</OL>
+<P STYLE="margin-left: 2.2cm"><BR><BR>
+</P>
+<P><FONT SIZE=3>Qui di seguito c'&egrave; una traccia del suo file di
+configurazione generico (ossia quello del tarball) e poi un esempio
+che uso (usavo :-)) al lavoro.</FONT></P>
+<P># Sample stunnel configuration file</P>
+<P># Copyright by Michal Trojnara 2002</P>
+<P># Comment it out on Win32</P>
+<P>cert = /etc/stunnel/mail.pem</P>
+<P>chroot = /var/run/stunnel/</P>
+<P># PID is created inside chroot jail</P>
+<P>pid = /stunnel.pid</P>
+<P>setuid = nobody</P>
+<P>setgid = nogroup</P>
+<P><BR><BR>
+</P>
+<P># Authentication stuff</P>
+<P>#verify = 2</P>
+<P># don't forget about c_rehash CApath</P>
+<P># it is located inside chroot jail:</P>
+<P>#CApath = /certs</P>
+<P># or simply use CAfile instead:</P>
+<P>#CAfile = @prefix@/etc/stunnel/certs.pem</P>
+<P># Some debugging stuff</P>
+<P>#debug = 7</P>
+<P>#output = stunnel.log</P>
+<P><BR><BR>
+</P>
+<P># Use it for client mode</P>
+<P>#client = yes</P>
+<P><BR><BR>
+</P>
+<P># Service-level configuration</P>
+<P>[pop3s]</P>
+<P>accept = 995</P>
+<P>connect = 110</P>
+<P><BR><BR>
+</P>
+<P>[imaps]</P>
+<P>accept = 993</P>
+<P>connect = 143</P>
+<P><BR><BR>
+</P>
+<P>[ssmtp]</P>
+<P>accept = 465</P>
+<P>connect = 25</P>
+<P><BR><BR>
+</P>
+<P>[s1]</P>
+<P>accept = 5000</P>
+<P>connect = mail.osw.pl:110</P>
+<P># delay = yes</P>
+<P><BR><BR>
+</P>
+<P>[s2]</P>
+<P>accept = 5001</P>
+<P>connect = mail.osw.pl:25</P>
+<P><BR><BR>
+</P>
+<P>#[https]</P>
+<P>#accept = 443</P>
+<P>#connect = 80</P>
+<P>#TIMEOUTclose = 0</P>
+<P><BR><BR>
+</P>
+<P>Uso di un pop3 server su host 10.0.0.10</P>
+<P>per il server (conf via linea comando):</P>
+<P>stunnel -d 110 -r 10.0.0.10:110</P>
+<P><BR><BR>
+</P>
+<P>per il client (conf via linea comando):</P>
+<P><FONT SIZE=3>stunnel -c -d pop3 10.0.0.10:110</FONT></P>
+<P><BR><BR>
+</P>
+<P><FONT SIZE=3>Lascio ad una lettura della man page il significato
+delle opzioni via linea comando (peralto intuibili)</FONT></P>
+<HR>
+<P STYLE="margin-bottom: 0cm">Spero che il tutto sia stato abbastanza
+chiaro e divertente (che &egrave; poi la cosa sempre pi&ugrave;
+importate).</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons"><FONT SIZE=3>In
+futuro a mano a mano che le mie prove progrediranno aggiorner&ograve;
+il tutto.</FONT></FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><FONT FACE="Timmons">Per
+dubbi, consigli, pernacchie ed insulti (pochi spero ;-)),
+ringraziamenti, donazioni in solido, suggerimenti e correzioni
+scrivete a ZioPino &lt;</FONT><A HREF="mailto:metaluxisdn@tiscalinet.it"><FONT FACE="Timmons">metaluxisdn@tiscalinet.it</FONT></A><FONT FACE="Timmons">&gt;</FONT></P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm">Ad maiora!!!!!!!!!</P>
+<P ALIGN=JUSTIFY STYLE="margin-bottom: 0cm"><BR>
+</P>
+</BODY>
+</HTML>

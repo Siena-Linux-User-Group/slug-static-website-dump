@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Prologo</TITLE>
+ <LINK HREF="Security-HOWTO-3.html" REL=next>
+ <LINK HREF="Security-HOWTO-1.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc2" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-3.html">Avanti</A>
+<A HREF="Security-HOWTO-1.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc2">Indice</A>
+<HR>
+<H2><A NAME="s2">2. Prologo</A></H2>
+
+<P>Questo documento  prover&agrave; a spiegare alcune procedure e il software usato
+comunemente per migliorare la sicurezza del proprio sistema Linux. &Egrave;
+importante prima di cominciare discutere alcuni dei concetti di base e descrivere i fondamenti
+della sicurezza informatica.
+<H2><A NAME="ss2.1">2.1 Perch&eacute; c'&egrave; bisogno di sicurezza?</A>
+</H2>
+
+<P>Nel mondo continuamente in movimento delle comunicazioni globali, delle
+connessioni ad Internet gratuite, e del veloce sviluppo del software, 
+la sicurezza sta diventando sempre pi&ugrave; un fattore da considerare. La sicurezza
+&egrave; un requisito basilare perch&eacute; l'informatizzazione globale &egrave;
+intrinsecamente inaffidabile.  Mentre i dati vanno dal punto A al punto B su 
+Internet, per esempio, possono passare attraverso molti altri punti lungo il
+tragitto, lasciando ad altri la possibilit&agrave; di intercettarli, e persino
+alterarli. Anche altri utenti sul vostro sistema possono maliziosamente
+trasformare i vostri dati in qualcosa che non vorreste. Degli intrusori, detti
+"cracker" possono ottenere l'accesso al vostro sistema, e poi usare le loro 
+approfondite conoscenze per impersonarvi, rubarvi informazioni o anche negarvi
+l'accesso ai vostri stessi dati. Se vi state chiedendo qual &egrave; la
+differenza fra un "Hacker" e un "Cracker", leggete il documento di Eric Raymond
+"How to Become A Hacker" ("Come Diventare Un Hacker"), reperibile a 
+<A HREF="http://www.netaxs.com/~esr/faqs/hacker-howto.html">http://www.netaxs.com/~esr/faqs/hacker-howto.html</A>.
+<P>
+<H2><A NAME="ss2.2">2.2 Quanta sicurezza mi d&agrave; la sicurezza?</A>
+</H2>
+
+<P>Primo, ricordatevi che nessun sistema informatico potr&agrave; mai essere
+completamente sicuro. Tutto quello che potete fare &egrave; rendere sempre pi&ugrave;
+difficile per gli altri compromettere il vostro sistema. Per l'utente medio
+di un sistema Linux casalingo non serve molto per tenere a bada un cracker
+occasionale. Al contrario, per sistemi Linux di alto profilo (banche, compagnie
+di telecomunicazioni, etc), &egrave; necessario molto pi&ugrave; impegno.
+<P>Un altro fattore da tenere in considerazione &egrave; che pi&ugrave; il vostro
+sistema &egrave; sicuro, pi&ugrave; la sicurezza diventa intrusiva. Dovete 
+decidere a quale punto di equilibrio il vostro sistema sar&agrave; ancora
+utilizzabile ma sicuro, relativamente all'uso che ne fate. Per esempio,
+potreste esigere che chiunque tenti di fare un login via telefono col
+vostro sistema usi un modem che lo richiami a casa, stabilendo cos&igrave;
+la vera connessione. Questo d&agrave; pi&ugrave; sicurezza, ma se qualcuno non
+&egrave; a casa sar&agrave; difficile che possa connettersi. Potreste anche
+configurare il vostro sistema Linux senza connessione a Internet, ma questo ne
+limiterebbe l'utilit&agrave;.
+<P>Se avete un sito medio o grande, dovreste stabilire una politica di sicurezza
+che definisca quanto deve essere sicuro il vostro sito e quale utenza &egrave;
+autorizzata all'accesso. Potete trovare un famoso esempio di politica di
+sicurezza su 
+<A HREF="http://www.faqs.org/rfcs/rfc2196.html">http://www.faqs.org/rfcs/rfc2196.html</A>.  Il sito &egrave; stato recentemente
+aggiornato, e contiene un'ottima guida per stabilire una politica di sicurezza
+per la vostra compagnia.
+<P>
+<P>
+<H2><A NAME="ss2.3">2.3 Cosa volete proteggere?</A>
+</H2>
+
+<P>Prima di tentare di rendere sicuro il vostro sistema, dovete decidere contro 
+che tipo di attacco proteggervi, quali rischi dovreste o non dovreste correre,
+e quanto vulnerabile ne risulterebbe il sistema. Dovreste analizzare il sistema per
+sapere cosa state proteggendo, perch&eacute; lo state proteggendo, quanto vale
+e chi ne ha la responsabilit&agrave;.
+<P>
+<UL>
+<LI>Il <EM>rischio</EM> &egrave; la possibilit&agrave; che un intrusore riesca nel
+tentativo di accedere al vostro computer. Un intrusore pu&ograve; leggere o
+scrivere file, o eseguire programmi che potrebbero fare danno?  Pu&ograve; 
+cancellare dei dati? Pu&ograve; bloccare il lavoro vostro e della vostra
+compagnia? Non dimenticate: qualcuno che ha accesso al vostro account, o al
+vostro sistema, pu&ograve; anche impersonarvi.
+<P>Inoltre, avere un account insicuro nel vostro sistema pu&ograve; compromettere
+l'intera rete.  Se permettete anche ad un solo utente di fare un login usando
+un file <CODE>.rhosts</CODE>, o di usare un servizio insicuro come <CODE>tftp</CODE>,
+rischiate di permettere ad un intrusore di "aprire una breccia".  Una volta che
+l'intrusore ha un account sul vostro sistema, o sul sistema di qualcun altro,
+pu&ograve; usarlo per avere accesso ad un altro sistema, o un altro account.
+<P>
+</LI>
+<LI>Una <EM>minaccia</EM> viene tipicamente da qualcuno con un movente per cercare
+di avere accesso non autorizzato alla vostra rete o computer.  Dovete decidere
+di chi potete fidarvi, e che tipo di minaccia potrebbe rappresentare.
+<P>Ci sono diversi tipi di intrusori, ed &egrave; utile tenere a mente le loro
+caratteristiche quando configurate le difese del vostro sistema.
+<P>
+<UL>
+<LI><B>Il Curioso</B> - Questo tipo di intrusore &egrave; principalmente
+interessato nel capire che tipo di dati e di sistema avete.</LI>
+<LI><B>Il Malizioso</B> - Questo tipo di intrusore in genere tenta di
+mettere fuori uso il vostro sistema, o sfregiare la vostra pagina web, o
+altrimenti di farvi perdere tempo e denaro per riparare i danni che causa. </LI>
+<LI><B>L'Intrusore di Alto Profilo</B> - Questo tipo di intrusore tenta
+di usare il vostro sistema per guadagnare popolarit&agrave; o fama. Potrebbe
+usare il vostro sistema di alto profilo per pubblicizzare le sue abilit&agrave;</LI>
+<LI><B>La Concorrenza</B> - Questo tipo di intrusore ha interesse nei dati
+che avete sul vostro sistema.  Potrebbe essere qualcuno che pensa che abbiate
+qualcosa di cui potrebbe beneficiare, finanziariamente o in altro modo.</LI>
+<LI><B>Lo Sfruttatore</B> - Questo tipo di intrusore &egrave; interessato a
+sfruttare il vostro sistema e ad usare le sue risorse per i propri fini.
+In genere eseguir&agrave; server di chat o irc, siti con archivi porno o 
+addirittura server DNS. </LI>
+<LI><B>Il Passafrontiere</B> - Questo tipo di intrusore &egrave;
+interessato al vostro computer per usarlo come trampolino per entrare in altri sistemi.
+Se il vostro sistema ha una buona connessione o &egrave; il passaggio verso 
+molti altri host, &egrave; probabile che vi troviate ad affrontare questo tipo
+di intrusore.</LI>
+</UL>
+<P>
+</LI>
+<LI>La vulnerabilit&agrave; esprime quanto bene il vostro computer &egrave; protetto dalle
+altre reti, e la possibilit&agrave; che qualcuno ottenga senza permesso 
+l'accesso.
+<P>Cosa &egrave; in gioco se qualcuno entra nel vostro sistema? Ovviamente le
+preoccupazioni di un utente casalingo con un IP dinamico saranno diverse da
+quelle di una compagnia che si connetta ad Internet o ad un'altra grande rete.
+<P>Quanto tempo richiederebbe recuperare/ricreare dei dati andati persi? Un
+investimento di tempo ora pu&ograve; risparmiare dieci volte tanto in seguito,
+se doveste recuperare dati perduti. Avete controllato il vostro sistema di
+backup  recentemente e avete verificato i vostri dati?
+</LI>
+</UL>
+<P>
+<H2><A NAME="ss2.4">2.4 Sviluppare una politica di sicurezza.</A>
+</H2>
+
+<P>Create una strategia semplice e generica per il vostro sistema che gli utenti
+possano facilmente capire e seguire. Dovrebbe proteggere, oltre ai dati a cui
+tenete, anche la privacy degli utenti. Alcune cose che potrete considerare sono:
+chi ha accesso al sistema (Il mio amico pu&ograve; usare il mio account?),
+a chi \ permesso di installare programmi, chi possiede quali dati,
+recupero di "disastri" e uso appropriato del sistema.
+<P>Una strategia di sicurezza generalmente approvata comincia col motto:
+<P>
+<BLOCKQUOTE>
+<B>             Quello che non &egrave; permesso &egrave; proibito</B>
+</BLOCKQUOTE>
+<P>Questo significa che almeno che non abbiate permesso a un utente l'accesso a un
+servizio, quell'utente non dovrebbe usare quel servizio finch&eacute; non lo
+permettete. Assicurate che la vostra strategia funzioni davvero sull'account
+dell'utente normale. Dire, "Ah, non riesco a risolvere questo problema di
+privilegi, lo far&ograve; da root." pu&ograve; portare a buchi nella sicurezza
+evidenti, o persino ad altri che non sono ancora stati scoperti. 
+<P>
+<A HREF="ftp://www.faqs.org/rfcs/rfc1244.html">rfc1244</A>
+&egrave; un documento che spiega come creare una vostra strategia di sicurezza
+di rete.
+<P>
+<A HREF="ftp://www.faqs.org/rfcs/rfc1281.html">rfc1281</A>
+&egrave; un documento che mostra una strategia di esempio con  descrizioni
+dettagliate di ogni passo. 
+<P>In fine potreste dare un'occhiata all'archivio COAST presso 
+<A HREF="ftp://coast.cs.purdue.edu/pub/doc/policy">ftp://coast.cs.purdue.edu/pub/doc/policy</A> come sono delle strategie
+applicabili alla pratica.  
+<P>
+<H2><A NAME="ss2.5">2.5 Mezzi per proteggere il vostro sito</A>
+</H2>
+
+<P>Questo documento discuter&agrave; diversi mezzi con cui potete mettere al
+sicuro la struttura per cui avete lavorato duro: la vostra macchina locale,
+i vostri dati, i vostri utenti, la vostra rete, persino la vostra reputazione.
+Cosa succederebbe alla vostra reputazione se un intrusore cancellasse dati dei
+vostri utenti?  O sfregiasse il vostro sito?  O pubblicasse il piano
+corporativo della vostra societ&agrave; per la prossima stagione? Se state 
+pianificando l'installazione di una rete, ci sono diversi fattori da considerare
+prima di aggiungere una singola macchina.
+<P>Anche se avete un solo account PPP, o appena un piccolo sito, questo non 
+significa che gli intrusori non saranno interessati a voi. Grandi sistemi di
+alto profilo non sono i soli bersagli -- molti intrusori vogliono solo passare
+la sicurezza di pi&ugrave; siti possibile, ignorando le loro dimensioni.
+Inoltre, possono usare un buco nella sicurezza del vostro sistema per riuscire
+ad entrare in altri siti a cui siete connessi.
+<P>Questi individui hanno tutto il tempo che vogliono, e possono evitare di
+capire come avete protetto il vostro sistema semplicemente provando tutte le
+possibilit&agrave;.  C'&egrave; inoltre una serie di ragioni per cui un
+intrusore pu&ograve; interessarsi ai vostri sistemi, che discuteremo
+pi&ugrave; avanti.
+<P>
+<P>
+<H3>Sicurezza dell'Host</H3>
+
+<P>Forse l'area di sicurezza su cui gli amministratori si concentrano di
+pi&ugrave; &egrave; la sicurezza dei singoli host. Questo in genere implica
+di assicurarsi che il proprio sistema sia sicuro, e di sperare che tutti gli
+altri nella rete faccia lo stesso. Scegliere buone password, rendere sicuri
+i sevizi di rete del vostro host locale, tenere buoni log degli account,
+e aggiornare i programmi che notoriamente hanno buchi di sicurezza sono fra
+le cose di cui un amministratore &egrave; responsabile. Anche se questo
+&egrave; assolutamente necessario, pu&ograve; diventare un compito pesante
+quando la vostra rete diventa pi&ugrave; estesa di qualche macchina.
+<P>
+<H3>Sicurezza della rete locale </H3>
+
+<P>La sicurezza della rete &egrave; necessaria quanto quella dei singoli host.
+Con centinaia, migliaia, o pi&ugrave; computer nella stessa rete,
+non potete sperare che ognuno di essi sia sicuro. Assicurarsi che solo utenti
+autorizzati possano accedere al sistema, alzare firewall, usare molto la 
+crittografia, e evitare che non ci siano macchine pericolose (cio&egrave;
+insicure) nella vostra rete sono tutti compiti dell'amministratore della
+sicurezza di rete.
+<P>Questo documento discuter&agrave; le tecniche usate per rendere sicuro il
+vostro sito e mostrer&agrave; alcuni modi per impedire che un intrusore
+riesca ad accedere a quello che state tentando di proteggere.
+<P>
+<H3>Sicurezza attraverso la discrezione</H3>
+
+<P>Un tipo di sicurezza che deve essere discusso &egrave; la "sicurezza attraverso la discrezione". Questo significa, per esempio, spostare un servizio che 
+&egrave; notoriamente "fragile" per la sicurezza verso una porta non standard
+nella speranza che chi vi attacca non noti che &egrave; l&igrave; e non lo 
+sfrutti. State certi che lo possono trovare e sfruttare. La sicurezza
+attraverso la discrezione non &egrave; assolutamente sicurezza. Semplicemente
+perch&eacute; avete un piccolo sito, o di profilo relativamente basso, non 
+significa che un intrusore non sar&agrave; interessato da quello che avete. 
+Discuteremo cosa proteggere nelle prossime sezioni. 
+<P>
+<H2><A NAME="ss2.6">2.6 Organizzazione di questo documento</A>
+</H2>
+
+<P>Questo documento &egrave; stato diviso in una serie di sezioni. Trattano 
+diversi argomenti riguardanti la sicurezza. Il primo, 
+<A HREF="Security-HOWTO-3.html#physical-security">Sicurezza concreta</A>,
+tratta della protezione dalle intrusioni. Il secondo, 
+<A HREF="Security-HOWTO-4.html#local-security">Sicurezza Locale</A>, descrive come
+proteggere il sistema dagli utenti locali. Il terzo, 
+<A HREF="Security-HOWTO-5.html#file-security">Sicurezza dei File e dei Filesystem</A>,
+mostra come configurare il filesystem e i privilegi sui file.
+Il successivo, 
+<A HREF="Security-HOWTO-6.html#password-security">Sicurezza delle Password e Crittografia</A>, discute come usare la crittografia per rendere pi&ugrave; 
+sicura la vostra macchina e la vostra rete. 
+<A HREF="Security-HOWTO-7.html#kernel-security">Sicurezza del Kernel</A> discute quali opzioni
+del kernel dovreste attivare o conoscere per un sistema pi&ugrave; sicuro. 
+<A HREF="Security-HOWTO-8.html#network-security">Sicurezza della Rete</A>, descrive come rendere
+il vostro sistema Linux pi&ugrave; difficile da attaccare via rete. 
+<A HREF="Security-HOWTO-9.html#secure-prep">Preparare la Sicurezza</A>, discute come preparare 
+le vostre macchine prima di metterle in rete. Quindi, 
+<A HREF="Security-HOWTO-10.html#after-breakin">Cosa Fare Durante e Dopo un'Intrusione</A>,
+tratta cosa fare quando scoprite una compromissione in atto o una successa
+recentemente. In 
+<A HREF="Security-HOWTO-11.html#sources">Risorse per la Sicurezza</A>, sono citate alcune importanti risorse per la
+sicurezza. La sezione D e R 
+<A HREF="Security-HOWTO-13.html#q-and-a">Domande Frequenti </A>, risponde ad alcune domande frequenti, e in fine troverete una conclusione in
+<A HREF="Security-HOWTO-14.html#conclusion">Conclusione</A>.
+<P>I due problemi da tenere a mente leggendo questo documento sono: 
+<P>
+<UL>
+<LI>conoscere il vostro sistema. Controllate i log di sistema, come
+<CODE>/var/log/messages</CODE>, tenete d'occhio il vostro sistema, e  </LI>
+<LI>tenete aggiornato il vostro sistema assicurandovi di avere installato le
+versioni aggiornate del software.
+Gi&agrave; questi accorgimenti renderanno decisamente pi&ugrave; sicuro il vostro 
+sistema.</LI>
+</UL>
+<P>
+<HR>
+<A HREF="Security-HOWTO-3.html">Avanti</A>
+<A HREF="Security-HOWTO-1.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc2">Indice</A>
+</BODY>
+</HTML>

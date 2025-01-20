@@ -1,0 +1,587 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>File di configurazione .muttrc</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Mutt" href="mutt.html">
+    <LINK rel="PREVIOUS" title="Mutt" href="mutt.html">
+    <LINK rel="NEXT" title="Mutt e gli Hooks" href="mutthooks.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "mutt.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 14.
+          Mutt</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "mutthooks.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CONFIGURAZIONEMUTT">14.1. File di
+      configurazione .muttrc</A></H1>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+##########################################################################
+## OPZIONI PERSONALI
+
+# elenco degli indirizzi personali (puo' essere un espressione regolare)
+set alternates = pippo@libero.it,pippo@tiscalinet.it,pippo.pluto@tin.it
+
+# attiva l'accodamento di @$hostname agli indirizzi locali
+set use_domain = yes
+
+# il from dei vostri messaggi (anche se verra' aggirato dai my_hdr...)
+set from = mrshark@libero.it
+
+# dominio da accodare agli indirizzi locali
+set hostname = "mrshark.home"
+
+# vero nome personale da usare nelle email
+set realname = "Antonio Fragola - MrShark"
+
+# non generare il campo From: (usa invece i my_hdr)
+set use_from = no
+
+# non generare il campo User_Agent: (usa invece i my_hdr)
+set user_agent = no
+
+# attiva l'uso degli header personali 'my_hdr'
+set hdrs = yes
+
+# header personali - potete crearne quanti ne volete - non esagerate!
+my_hdr From: Antonio Fragola - MrShark &lt;mrshark@libero.it&gt;
+my_hdr Reply-To: mrshark@libero.it
+my_hdr X-Operating-System: Debian GNU/Linux 2.2 Potato - Kernel 2.2.18 
+my_hdr X-Disclaimer: Linux - The choice of a GNU generation!
+my_hdr X-Mailer: Mutt/1.3.20i http://www.mutt.org
+my_hdr X-Editor: Vim/5.7.19 http://www.vim.org
+my_hdr X-URL: http://www.mrshark.it http://cslug.linux.it
+#my_hdr X-Organization: Dark Half SoftWare
+my_hdr X-GPG-Keyserver: http://www.keyserver.net
+my_hdr X-GPG-Keynumber: 0x1503ADAB
+my_hdr X-GPG-Fingerprint: E4E0 8B1A CDB1 09FA 692E  3E7F F82A 612B 1503 ADAB
+
+# ordine di visualizzazione degli header
+unhdr_order *
+hdr_order Subject: From: Reply-To: Date: To: CC: BCC: Organization: \
+X-Organization: X-Operating-System: X-Mailer: User-Agent: \
+X-Disclaimer:
+
+# header da visualizzare
+ignore *
+unignore Subject: From: Date: To: Reply-To: CC: BCC: Organization: \
+X-Organization: X-Operating-System: X-Mailer: User-Agent: \
+X-Disclaimer:
+
+##########################################################################
+## DIRECTORY E MAILBOX
+
+# posizione della directory contenente le Mailbox. Un '+' o '=' all'inizio
+# di un nome di percorso, in seguito, verra' sostituito con questo valore
+set folder = $HOME/Mail
+
+# file principale dove arrivano le email
+set spoolfile = $HOME/Mail/inbox
+
+# maschera per l'elenco dei file nel browser-file (.* = tutti)
+set mask = ".*"
+
+# directory in cui verranno spostati dallo spool principale i messaggi letti
+# create la directory!
+set mbox = "+Read/read-`date +%m-%Y`"
+
+# non chiede conferma per creare una nuova mailbox
+set confirmcreate = no
+
+# chiede in uscita da una mailbox se si vogliono spostare i messaggi letti
+set move = ask-no
+
+# tipo di mailbox
+set mbox_type = mbox
+
+##########################################################################
+## OPZIONI PER GLI ALIAS
+
+# visualizza il nome reale dell'autore dell'email preso dai propri alias
+set reverse_alias = yes
+
+# file contenente gli alias - si DEVE fare il source del file
+# NdA: preferisco tenere i file accessori di configurazione nella maildir
+set alias_file = +.Mutt/mutt_aliases
+source +.Mutt/mutt_aliases
+
+# formato degli alias
+set alias_format = "%2n %t %-10a   %r"
+
+# ordina gli alias in base all'alias (oppure address)
+set sort_alias = alias
+
+##########################################################################
+## OPZIONI GENERALI
+
+# indicazione del tipo di localizzazione
+set locale = "it_IT.ISO-8859-1"
+
+# insieme di caratteri ammessi
+set charset = iso-8859-1
+
+# formato della data
+set date_format = "%d%m%y, %H:%M"
+
+# hook di default
+set default_hook = "~f %s !~P | (~P ~C %s)"
+
+# imposta la directory per i file temporanei (consiglio per la privacy:
+# impostare TMPDIR come indicato in .bash_profile nella sezione BASH del
+# Quick&amp;Easy Configuration Howto e creare la directory: $HOME/.tmp)
+set tmpdir = $TMPDIR
+
+# disattiva il CTRL-Z per la sospensione di mutt
+set suspend = no
+
+##########################################################################
+## MENU PRINCIPALE
+
+# usa caratteri ASCII per indicare le relazioni tra messaggi
+set ascii_chars = yes
+
+# emetti un suono in caso di errori
+set beep = yes
+
+# emetti un suono all'arrivo di nuovi messaggi
+set beep_new = yes
+
+# attiva la visualizzazione della riga di aiuto
+set help = yes
+
+# attiva la visualizzazione di una 'O' di fianco ai vecchi messaggi non letti
+set mark_old = yes
+
+# formato dell'indice
+set index_format = "%3C %Z %{%b %d} %-25.25n (%3l) %s"
+
+# numero di secondi tra i controlli di arrivo nuovi messaggi
+set mail_check = 5
+
+# chiede conferma prima di cancellare definitivamente i messaggi
+set delete = ask-yes
+
+# ordinamento primario in base ai thread
+set sort = threads
+
+# ordinamento secondario in base alla data di invio
+set sort_aux = date-sent
+
+# evita di dover premere ";" prima di applicare un comando a una serie di
+# messaggi gia' marcati. Se sono marcati in piu' di uno, applica a tutti
+set auto_tag = yes
+
+# non collassare i thread se contengono messaggi non letti
+set collapse_unread = no
+
+# formato della finestra dei folder
+set folder_format = "%2C %t %N %-25.25f %8s %d"
+
+##########################################################################
+## OPZIONI PER LA VISUALIZZAZIONE MESSAGGIO
+
+# attiva il ritorno a capo delle righe piu' lunghe dello schermo
+set smart_wrap = yes
+
+# attiva la visualizzazione di un '+' all'inizio delle righe mandate a capo
+set markers = yes
+
+# attiva la visualizzazione di una o piu' '~' alla fine del messaggio
+set tilde = yes
+
+# impedisce che PageDown porti al messaggio successivo quando si raggiunge
+# la fine di quello attuale
+set pager_stop = yes
+
+# numero di righe della pagina precedente da visualizzare durante lo scorrimento
+set pager_context = 2
+
+# numero di voci di indice dei messaggi da visualizzare durante la lettura
+set pager_index_lines = 4
+
+##########################################################################
+## OPZIONI DI COMPOSIZIONE
+
+# chiede se si vuole inserire un campo BCC per un nuovo messaggio
+set askbcc = no
+
+# chiede se si vuole inserire un campo CC per un nuovo messaggio
+set askcc = yes
+
+# inizia a creare o modificare un messaggio e POI visualizza il menu
+set autoedit = yes
+
+# imposta l'uso di '-- ' prima della firma
+set sig_dashes = yes
+
+# chiede se si vuole posporre un messaggio che non si vuole inviare subito
+set postpone = ask-yes
+
+# chiede se si vuole richiamare un messaggio posposto quando se ne crea uno
+set recall = ask-yes
+
+# imposta l'editor da usare (in questo caso preso da .bash_profile)
+#set editor=$EDITOR
+# io invece uso vim in questo modo:
+set editor = "vim -c 'set nobackup' -c '/^$/+1'"
+
+# modifica gli headers insieme al messaggio
+set edit_headers = yes
+
+# se deve aggiungere un campo bcc agli header
+set write_bcc = no
+
+# directory in cui conservare i messaggi posposti
+set postponed = +outbox
+
+# file contenente la firma
+set signature = $HOME/.signature
+
+##########################################################################
+## OPZIONI PER LE RISPOSTE
+
+# formato dell'attribuzione all'autore
+#set attribution = "* %d, %n scrive:"
+set attribution = "* %n &lt;%a&gt; [%d]:"
+
+# stringa da preporre al testo quotato
+set indent_string = "&gt; "
+
+# chiede se includere il messaggio originale nelle risposte
+set include = ask-yes
+
+# chiede se si vuole usare il campo 'reply-to' del messaggio originale
+set reply_to = ask-yes
+
+# espressione regolare per riconoscere le risposte ai messaggi
+set reply_regexp = "^(([Rr]e?):[ \t]*)+"
+
+# espressione regolare per riconoscere il testo quotato nei messaggi
+set quote_regexp = "^([ \t]*[|&gt;:}#])+"
+
+# attiva il list-reply (tasto "L") per rispondere a una mailing list
+set ignore_list_reply_to = yes
+
+# formato dei forward di messaggi
+set forward_format = "[(fwd): %s]"
+
+##########################################################################
+## OPZIONI PER L'INVIO
+
+# permette l'uso dell'insieme di caratteri a 8 bit
+set allow_8bit
+
+# disattivare l'uso di 'Delivered-To' se si usa postfix
+set bounce_delivered = no
+
+# salva una copia dei messaggi in uscita
+set copy = yes
+
+# mailbox in cui salvare una copia dei messaggi in uscita. In questo caso
+# sono file del tipo 'sent-aprile-2000' nella directory 'Sent' nella propria
+# maildir. (create la directory!)
+set record = "+Sent/sent-`date +%m-%Y`"
+
+# posizione di sendmail
+set sendmail = "/usr/sbin/sendmail -oem -oi"
+
+#posizione di mutt_dotlock 
+set dotlock_program = "/usr/bin/mutt_dotlock"
+
+##########################################################################
+## MAILCAP E MIME
+
+# percorso del file 'mailcap'
+set mailcap_path = ~/.mailcap:/etc/mailcap:/usr/etc/mailcap:/usr/local/etc/mailcap
+
+##########################################################################
+## MAILING-LIST E MAILBOX
+
+# elenco delle  mailing-list cui si partecipa
+# in questo caso sono contenute in $folder/Lists/
+# L'elencare qui le ML frequentate permette di rispondere inviando
+# il messaggio alla ML tramite il tasto "L" (maiuscola)
+lists ML-vim ML-pluto-ildp ML-it-li-org
+
+# elenco delle mailbox che si vogliono controllare (gli apici sono inversi!).
+# Sarete quindi avvisati da Mutt se arriva posta in queste mailbox.
+# L'ultima e' una via breve per monitorare tutte le mailing-list
+mailboxes ! +Friends/pippo +IN.admin
+mailboxes `echo $HOME/Mail/Lists/*`
+
+# queste sono quelle che frequento io, quelle sottoscritte (subscribe) si
+# differenziano dalle altre dal fatto che permettono anche l'invio di
+# messaggi (quelle che non lo permettono si chiamano newsletter, di solito)
+lists cslug freshmeat html-it it-li-org softwarelibero
+lists pluto-ildp tubero ziobudda circolo annunci
+
+subscribe cslug it-li-org pluto-ildp tubero softwarelibero
+
+mailboxes +admin +inbox +mrshark +spam +Lists/softwarelibero +Lists/annunci
+mailboxes ! +Lists/cslug +Lists/freshmeat +Lists/html-it +Lists/it-li-org
+mailboxes +Lists/pluto-ildp +Lists/tubero +Lists/ziobudda +Lists/circolo
+
+
+##########################################################################
+## OPZIONI DI STAMPA
+
+# comando di stampa (io uso muttprint, presente su http://freshmeat.net)
+set print_command = "muttprint"
+
+# chiede conferma prima di stampare
+set print = ask-no
+
+# invia i messaggi separatamente al filtro
+set print_split = yes
+
+########################################################################
+## ASSOCIAZIONI DI TASTI
+
+bind    index   &lt;up&gt;    previous-entry
+bind    index   &lt;down&gt;  next-entry
+bind    pager   &lt;up&gt;    previous-line
+bind    pager   &lt;down&gt;  next-line
+bind    pager   &lt;left&gt;  previous-entry
+bind    pager   &lt;right&gt; next-entry
+
+# macro personali
+macro index \ek "| formail -x From: | addysort &gt;&gt; ~/Mail/.Pm/black.lst\n"
+macro pager \ek "| formail -x From: | addysort &gt;&gt; ~/Mail/.Pm/black.lst\n"
+
+########################################################################
+## CONFIGURAZIONE GnuPG 
+
+# decommentare la riga seguente se si usa mutt con versione &lt; 1.3.x
+#set pgp_sign_micalg=pgp-sha1 # default for DSS keys
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor \
+    --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 \
+    --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg -v --batch --output - \
+    --encrypt --textmode --armor --always-trust -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 -v --batch \
+    --output - --encrypt --sign %?a?-u %a? --armor --always-trust -- -r %r -- %f"
+set pgp_import_command="gpg --no-verbose --import -v %f"
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r"
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r"
+set pgp_getkeys_command=""
+
+########################################################################
+## COMBINAZIONI DI COLORI
+
+# schermi in bianco e nero
+mono normal     none            # testo normale
+mono indicator  reverse         # messaggio attuale
+mono tree       none            # frecce dei thread
+mono status     reverse         # riga di stato
+mono error      bold            # errori
+mono message    none            # messaggi di informazione
+mono quoted     bold            # testo quotato
+mono signature  none            # firma
+mono attachment underline       # allegati MIME
+mono search     reverse         # ricerche
+mono tilde      none            # ~ alla fine dei messaggi
+mono markers    bold            # + all'inizio delle righe mandate a capo
+mono hdrdefault none            # righe degli header
+mono bold       bold            # evidenziazione in grassetto nei body
+mono underline  underline       # evidenziazione sottolineato nei body
+mono header     bold            "^(from|subject):"
+mono body       underline       "((ftp|http|https)://|(file|mailto|news):|www\\.)[-a-zA-Z0-9_.:]\
+*[a-zA-Z0-9](/[^][{} \t\n\r\"&lt;&gt;()]*[^][{} \t\n\r\"&lt;&gt;().,:!])?/?"
+mono body       underline       "[-a-zA-Z_0-9.]+@[-a-zA-Z_0-9.]+"
+mono body       bold            "(^| )\\*[-a-zA-Z0-9äöüß*]+\\*[,.?]?[ \n]"
+mono body       underline       "(^| )_[-a-zA-Z0-9äöüß_]+_[,.?]?[ \n]"
+
+# schermi a colori
+color normal     brightwhite    black   # testo normale
+color indicator  brightcyan     blue    # messaggio attuale
+color tree       brightred      black   # frecce dei thread
+color status     brightyellow   blue    # riga di stato
+color error      brightred      black   # errori
+color message    brightyellow   black   # messaggi di informazione
+color signature  red            black   # firma
+color attachment blue           cyan    # allegati MIME
+color search     brightyellow   red     # ricerche
+color tilde      blue           black   # ~ alla fine dei messaggi
+color markers    brightred      black   # + all'inizio delle righe mandate a capo
+color hdrdefault blue           black   # righe degli header
+color bold       green          black   # evidenziazione in grassetto nei body
+color underline  yellow         black   # evidenziazione sottolineato nei body
+color quoted     cyan           black   # testo quotato
+color quoted1    yellow         black
+color quoted2    magenta        black
+color quoted3    red            black
+color quoted4    red            black
+color quoted5    red            black
+color quoted6    red            black
+color quoted7    red            black
+color quoted8    red            black
+color quoted9    red            black
+color header     brightyellow   black  "^(from|subject):"
+color body       brightgreen    black  "((ftp|http|https)://|(file|mailto|news):|www\\.)[-a-zA-Z0-9_.:]\
+*[a-zA-z0-9](/[^][{} \t\n\r\"&lt;&gt;()]*[^][{} \t\n\r\"&lt;&gt;().,:!])?/?"
+color body       brightred      black  "[-a-zA-Z_0-9.+]+@[-a-zA-Z_0-9.]+"
+color body       red            black  "(^| )\\*[-a-zA-Z0-9äöüß*]+\\*[,.?]?[ \n]"
+color body       green          black  "(^| )_[-a-zA-Z0-9äöüß_]+_[,.?]?[ \n]"
+color index      blue           black  ~F               # impostato
+color index      brightgreen    black  ~N               # nuovo
+color index      magenta        black  ~T               # segnato
+color index      cyan           black  ~D               # cancellato
+
+# URL
+#color body       cyan           black  "(finger|ftp|http|news|telnet)://[^ &gt;]*"                   # generica
+#color body       cyan           black  "&lt;URL:[^ ]*&gt;"                                              # generica
+#color body       white          blue   "https://[^ &gt;]*"                                           # https
+#color body       cyan           black  "ftp://[^ ]*"                                              # ftp
+#color body       green          black  "[[:alnum:]][-+.#_[:alnum:]]*@[-+.[:alnum:]]*[[:alnum:]]"  # http
+#color body       brightred      black  "mailto: *[^ ]+\(\\?subject=[^ ]+\)?"                      # mailto
+
+# Percorsi, nomi file e variabili
+#color body       brightgreen    black  "\\~?\(/[-_.,a-zA-Z0-9{}]+\)+"                             # nomi file
+#color body       brightgreen    black  "[a-z]:[-_.a-zA-Z0-9\]+"                                   # nomi file DOS/WIN
+#color body       brightred      black  "\(/[-_.a-zA-Z0-9]+\)+/"                                   # percorsi
+#color body       brightmagenta  black  "\\$[a-zA-Z][-_a-zA-Z]+"                                   # variabili
+
+# Varie
+#color body       red            black  "^[*] .*:$"                                                # riga attribution
+#color body       brightred      black  "[*/_]+ *[- &amp;[:alnum:]]+ *[*/_]+"                          # testo enfatizzato
+#color body       yellow         black  "[;:8]-?[)/(|PpDO]"                                        # smilies vari :-)
+#color body       blue           red    "&lt;[Vv]?[Bb]?[Ee]?[Gg]&gt;"                                    # grin vari &lt;G&gt;
+#color body       green          black  "\( *[-+=#*~_]\){4,}"                                      # righe di bordo
+#color body       red            white  "[!?]{3,}"                                                 # esclamazioni ripetute
+#color body       brightgreen    black  "[.0-9]+ ?%"                                               # percentuali
+#color body       white          blue   "[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}\.[0-9]{0,3}"           # indirizzi IP
+
+########################################################################
+## ALTRO
+
+# aliases MUAs corrotti
+charset-hook US-ASCII     ISO-8859-1
+charset-hook x-unknown    ISO-8859-1
+charset-hook windows-1250 CP1250
+charset-hook windows-1251 CP1251
+charset-hook windows-1252 CP1252
+charset-hook windows-1253 CP1253
+charset-hook windows-1254 CP1254
+charset-hook windows-1255 CP1255
+charset-hook windows-1256 CP1256
+charset-hook windows-1257 CP1257
+charset-hook windows-1258 CP1258
+
+# auto_view configuration
+# richiede la configurazione del mailcap, guardare nell'howto!
+auto_view text/html application/msword
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per quanto riguarda l'ultimissima parte, l'auto_view permette di
+      vedere direttamente dentro <SPAN class="APPLICATION">mutt</SPAN> gli
+      allegati per i quali esista un convertitore dal loro formato nativo in
+      formato testo puro (anche in più passaggi, questo è il bello delle
+      pipe! ;-) ). Io ho impostato solo HTML e WORD quì, ma voi potete
+      aggiungerne quanti volete. Nella direttiva auto_view dovete specificare
+      tutti i tipi MIME per i quali volete sia attiva la decodifica
+      automatica degli allegati. Questi tipi MIME devono esistere nel vostro
+      file <TT class="FILENAME">/etc/mime.types</TT>, e se non presenti,
+      create il file <TT class="FILENAME">.mime.types</TT> seguendo il file
+      principale come esempio e aggiungeteli voi (devono comunque essere tipi
+      MIME accettabili, cioè standard!). Infine, create o modificate il file
+      <TT class="FILENAME">.mailcap</TT>, aggiungendo in fondo le righe
+      seguenti (<SPAN class="APPLICATION">links</SPAN> e <SPAN class=
+      "APPLICATION">antiword</SPAN> devono essere installati nel sistema,
+      <SPAN class="APPLICATION">lynx</SPAN> è analogo ma rende molto meno
+      bene le tabelle - vecchie versioni di <SPAN class=
+      "APPLICATION">links</SPAN> non supportano il "-dump"!):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+text/html; links -dump %s; copiousoutput
+application/msword; antiword %s; copiousoutput
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Fatto questo, vedrete i file HTML e WORD direttamente come testo
+      dentro <SPAN class="APPLICATION">mutt</SPAN>. Se non vi piace come li
+      visualizza, potete sempre premere "v" per passare al menu degli
+      allegati, salvarli e vederli con altri programmi.</P>
+
+      <P>Per usare <A href="http://www.gnupg.org" target="_top">GnuPG</A> da
+      dentro <SPAN class="APPLICATION">mutt</SPAN>, dovete aver generato la
+      vostra coppia di chiavi pubblica e privata con il comando: <B class=
+      "COMMAND">gpg --gen-key</B> (seguite le istruzioni, e consultate
+      qualche howto apposito, ma se volete usarlo, saprete già a cosa serve,
+      spero...). Per accedere al semplice menu per l'uso di GPG sui vostri
+      messaggi, premete <B class="KEYCAP">p</B> SUBITO PRIMA di premere <B
+      class="KEYCAP">y</B> per inviarlo! Potrete quindi scegliere di
+      codificare o firmare il messaggio (anche entrambe le cose), e
+      altro.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "mutt.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "mutthooks.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Mutt</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "mutt.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Mutt e gli Hooks</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

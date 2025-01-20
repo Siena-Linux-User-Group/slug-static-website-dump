@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Sicurezza nel Kernel </TITLE>
+ <LINK HREF="Security-HOWTO-8.html" REL=next>
+ <LINK HREF="Security-HOWTO-6.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc7" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-8.html">Avanti</A>
+<A HREF="Security-HOWTO-6.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc7">Indice</A>
+<HR>
+<H2><A NAME="kernel-security"></A> <A NAME="s7">7. Sicurezza nel Kernel </A></H2>
+
+<P>Questa &egrave; una descrizione delle opzioni del kernel che riguardano la
+sicurezza, una spiegazione di ci&ograve; che fanno e di come si usano.
+<P>Visto che il kernel controlla il networking del vostro computer, &egrave; 
+importante che sia molto sicuro e non venga compromesso. Per evitare alcuni dei
+recenti attacchi via rete dovreste tentare di mantenere aggiornato il vostro
+kernel. Potete trovare nuovi kernel presso 
+<A HREF="ftp://ftp.kernel.org">ftp://ftp.kernel.org</A> o
+dal distributore del vostro sistema.
+<P>Esiste anche un gruppo internazionale che fornisce una singola patch 
+crittografica per il kernel principale di Linux. Questa patch fornisce il
+supporto per una serie di sottosistemi crittografici e caratteristiche che non
+possono essere incluse nel kernel principale per limiti di esportazione.
+Per ulteriori informazioni visitate la loro pagina web presso: 
+<A HREF="http://www.kerneli.org">http://www.kerneli.org</A><P>
+<P>
+<H2><A NAME="ss7.1">7.1 2.0 Kernel Compile Options</A>
+</H2>
+
+<P>Per i kernel 2.0.x, si applicano le seguenti opzioni. Dovreste trovare le 
+seguenti opzioni durante il processo di configurazione del kernel. Molti dei
+commenti qui vengono da <CODE>./linux/Documentation/Configure.help</CODE>, che 
+&egrave; lo stesso documento che leggete usando l'Help durante la fase
+<CODE>make config</CODE> della compilazione del kernel. 
+<P>
+<UL>
+<LI>Network Firewalls
+(CONFIG_FIREWALL)
+<P>Questa opzione dovrebbe essere attivata se volete usare qualche tipo di
+firewall o masquerading sulla vostra macchina. Se sar&agrave; solo un semplice client,
+potete rispondere no.
+<P>
+</LI>
+<LI>IP: forwarding/gatewaying
+(CONFIG_IP_FORWARD)
+<P>Se abilitate L'IP forwarding, la macchina, potr&agrave; assumere le funzioni di un router.
+Se la vostra macchina &egrave; su una rete, potreste inoltrare dati da una rete
+ad un'altra e forse potreste pregiudicare un firewall che era stato messo l&igrave;
+proprio per evitarlo. Chi si connette con un modem pu&ograve; farne a meno, e gli
+altri dovrebbero riflettere sulle implicazioni di sicurezza. I computer che
+fanno da firewall lo abiliteranno e lo useranno insieme con un firewall.
+<P>Potete abilitare dinamicamente l'IP forwarding usando il seguente comando:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+        root#  echo 1 > /proc/sys/net/ipv4/ip_forward
+</PRE>
+</CODE></BLOCKQUOTE>
+
+e disabilitarlo con il comando:
+<BLOCKQUOTE><CODE>
+<PRE>
+        root#  echo 0 > /proc/sys/net/ipv4/ip_forward
+</PRE>
+</CODE></BLOCKQUOTE>
+
+Ricordate che i file in /proc sono "virtuali" e le dimensioni mostrate dal file
+potrebbero non riflettere i dati che contiene. 
+<P>
+</LI>
+<LI>IP: syn cookies
+(CONFIG_SYN_COOKIES)
+<P>Un "Attacco SYN" &egrave; un attacco di denial of service (DoS), o negazione di
+servizio, che consuma tutte le risorse della vostra macchina, obbligandola al
+riavvio. Non c'&egrave; una ragione per cui non dovreste abilitare questa
+opzione. Nei kernel 2.2.x questa opzione si limita a permettere i syn cookies,
+ma non li abilita. Per abilitarli, dovete digitare:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+                root# echo 1 > /proc/sys/net/ipv4/tcp_syncookies &lt;P>
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>
+</LI>
+<LI>IP: Firewalling
+(CONFIG_IP_FIREWALL)
+<P>Questa opzione &egrave; necessaria se volete usare la vostra macchina come
+firewall, usare il masquerading o se volete proteggere il vostro sistema
+da qualcuno che entri attraverso l'interfaccia di composizione PPP.
+<P>
+<P>
+</LI>
+<LI>IP: firewall packet logging
+(CONFIG_IP_FIREWALL_VERBOSE)
+<P>Questa opzione vi d&agrave; informazioni (come origine, destinazione, porta
+ecc.) sui pacchetti ricevuti dal firewall.
+</LI>
+<LI>IP: Drop source routed frames
+(CONFIG_IP_NOSR)
+<P>Questa opzione dovrebbe essere abilitata. Questi pacchetti contengono l'intero
+percorso verso o la loro destinazione all'interno. Questo significa che i
+router da cui passa il pacchetto non lo controllano, lo inoltrano solamente.
+Questo potrebbe portare nel vostro sistema dati che potrebbero essere un
+exploit.
+<P>
+</LI>
+<LI>IP: masquerading
+(CONFIG_IP_MASQUERADE)
+Se uno dei computer sulla rete locale per cui il vostro server Linux fa da
+firewall volesse mandare fuori dei pacchetti, il vostro server potrebbe
+"recitare la parte" di questa macchina, cio&egrave; inoltrare il traffico
+verso la destinazione richiesta, ma facendolo sembrare proveniente dal firewall
+stesso. Controllate 
+<A HREF="http://www.indyramp.com/masq">http://www.indyramp.com/masq</A> se volete altre informazioni.
+<P>
+</LI>
+<LI>IP: ICMP masquerading
+(CONFIG_IP_MASQUERADE_ICMP)
+Questa opzione aggiunge il masquerading ICMP alla precedente opzione che
+maschera solo il traffico TCP o UDP.
+<P>
+</LI>
+<LI>IP: transparent proxy support
+(CONFIG_IP_TRANSPARENT_PROXY)
+Questa scelta abilita il vostro firewall Linux a ridirigere in modo trasparente
+tutto il traffico dalla vostra rete destinato ad un host remoto verso un server
+locale, detto "server proxy trasparente". Questo fa credere ai computer locali
+di parlare con l'host remoto, mentre sono connessi al proxy locale. Leggete 
+l'IP-Masquerading HOWTO e 
+<A HREF="http://www.indyramp.com/masq">http://www.indyramp.com/masq</A> per ulteriori informazioni.
+<P>
+</LI>
+<LI>IP: always defragment
+(CONFIG_IP_ALWAYS_DEFRAG)
+<P>In genere questa opzione &egrave; disabilitata ma se state costruendo un
+firewall o un host di masquerading, la dovreste abilitare. Quando vengono
+mandati dei dati fra un host ed un altro, non sempre vengono spediti come un
+singolo pacchetto di dati, ma piuttosto vengono scomposti in vari pezzi.
+Il problema di questo processo &egrave; che i numeri delle porte sono scritti
+solo nel primo frammento. Questo significa che qualcuno potrebbe inserire
+nei rimanenti pacchetti informazioni che non dovrebbero esserci. Questa opzione
+protegge da attacchi del genere anche se rivolti contro una macchina interna che non abbia
+ancora questa protezione.
+<P>
+</LI>
+<LI>Packet Signatures
+(CONFIG_NCPFS_PACKET_SIGNING)
+<P>Questa opzione, disponibile nei kernel 2.2.x, firma i pacchetti NCP per avere
+pi&ugrave; sicurezza. Normalmente potete lasciarla fuori, ma rimane nel caso 
+servisse.
+<P>
+</LI>
+<LI>IP: Firewall packet netlink device
+(CONFIG_IP_FIREWALL_NETLINK)
+<P>Questa utile opzione vi permette di analizzare i primi 128 byte dei pacchetti
+con un programma, per determinare se accettare o respingere il pacchetto a
+seconda della sua validit&agrave;.
+</LI>
+</UL>
+<P>
+<P>
+<H2><A NAME="ss7.2">7.2 2.2 Kernel Compile Options</A>
+</H2>
+
+<P>Per i kernel 2.2.x molte opzioni sono rimaste uguali, ma ne sono state aggiunte
+di nuove. Molti dei commenti vengono da <CODE>./linux/Documentation/Configure.help</CODE>, Che &egrave; lo stesso documento che leggete quando usate l'Help
+nella fase <CODE>make config</CODE> della compilazione del kernel. Sono segnate
+qui solo le opzioni nuove. Consultate la descrizione del 2.0 per avere una
+lista di altre opzioni necessarie. Il cambiamento pi&ugrave; significativo nei kernel 2.2.x &egrave; il codice del firewall IP. Ora viene usato il programma
+<CODE>ipchains</CODE> per istallare il firewall, invece del <CODE>ipfwadm</CODE>
+usato nei kernel 2.0.
+<P>
+<UL>
+<LI>Socket Filtering
+(CONFIG_FILTER)
+<P>Per la maggior parte delle persone, dire no &egrave; una scelta sicura. Questa
+opzione vi permette di connettere un filtro a qualsiasi socket e determinare se
+i pacchetti debbano essere accettati o respinti. A meno che non abbiate una
+necessit&agrave; particolare e siate capaci di programmare un tale filtro,
+dovreste dire di no. Notate anche che, quando &egrave; stato scritto questo
+documento, erano supportati tutti i protocolli tranne il TCP. 
+<P>
+</LI>
+<LI>Port Forwarding
+Il Port Forwarding (Inoltro di una porta) &egrave; un'aggiunta all'IP
+Masquerading che permette di inoltrare pacchetti dall'esterno all'interno di 
+un firewall su certe porte. Torna utile se, per esempio, volete eseguire un
+web server dietro un firewall e lasciare che quel server sia accessibile al
+mondo esterno. Un client esterno manda una richiesta alla porta 80 sul
+firewall, questo inoltra la richiesta al server web che risponde alla
+richiesta attraverso il firewall. Il client penser&agrave; che sia l'host
+del firewall ad eseguire il web server. Potete usare questa caratteristica
+anche per bilanciare il traffico se avete una serie di web server identici
+dietro al firewall.
+
+Informazioni su questa opzione si trovano presso:
+
+http://www.monmouth.demon.co.uk/ipsubs/portforwarding.html (per accedere al
+WWW dovete avere accesso ad una macchina su Internet che abbia un programma
+come lynx o netscape). Per informazioni generali leggete:
+ftp://ftp.compsoc.net/users/steve/ipportfw/linux21/
+<P>
+</LI>
+<LI>Socket Filtering
+(CONFIG_FILTER)
+Usando questa opzione, certi programmi possono porre un filtro ad un socket
+qualsiasi e quindi dire al kernel di bloccare o far passare certi dati
+attraverso quel socket. Il filtraggio dei socket per ora funziona su tutti i
+tipi di socket, TCP escluso. Leggete il file <CODE>./linux/Documentation/networking/filter.txt</CODE> per ulteriori informazioni.
+<P>
+</LI>
+<LI>IP: Masquerading
+Il masquerading del kernel 2.2 &egrave; stato migliorato. Fornisce supporto
+addizionale per special protocolli di masquerading ecc. Assicuratevi di leggere
+l'IP Chains HOWTO per ulteriori informazioni.</LI>
+</UL>
+<P>
+<P>
+<H2><A NAME="ss7.3">7.3 Device nel Kernel</A>
+</H2>
+
+<P>Nel kernel ci sono alcuni device a blocchi e a caratteri che vi aiuteranno
+con la sicurezza.
+<P>I due device <CODE>/dev/random</CODE> e <CODE>/dev/urandom</CODE> sono forniti dal
+kernel per avere sempre a disposizione dati casuali.
+<P>Sia <CODE>/dev/random</CODE> che <CODE>/dev/urandom</CODE> dovrebbero essere abbastanza
+sicuri da essere usati per generare chiavi PGP, autenticazioni <CODE>ssh</CODE> ed
+altre applicazioni in cui servono numeri casuali sicuri. Un attaccante non dovrebbe essere capace di predire il numero seguente, data una qualsiasi sequenza
+di numeri da queste sorgenti. &Egrave; stato fatto un grande sforzo perch&eacute;
+i numeri ottenuti da questi device siano casuali in ogni senso della parola.
+<P>L'unica differenza fra i due device &egrave; che <CODE>/dev/random</CODE> finisce
+i byte casuali e vi fa aspettare finch&eacute; non ce ne sono di nuovi. Notate
+che su alcuni sistemi potrebbe bloccarsi per molto tempo in attesa che nuova
+entropia sia generata dagli utenti. Quindi riflettete prima di usare 
+<CODE>/dev/random</CODE>. (Forse la miglior cosa da fare &egrave; usarlo quando
+generate dovete generare codice importante: dite agli utenti di scrivere molto
+sulle tastiere fino a quando dite "Ok, basta".)
+<P><CODE>/dev/random</CODE> &egrave; entropia di qualit&agrave;, generata dalla misura
+dei tempi fra gli interrupt ecc. Si blocca finch&eacute; non ha abbastanza bit
+casuali di dati.
+<P><CODE>/dev/urandom</CODE> &egrave; simile, ma quando la riserva di entropia sta
+finendo fornisce una replica crittograficamente forte di ci&ograve; che rimane.
+Non &egrave; altrettanto sicuro, ma basta per la maggior parte delle applicazioni.
+<P>Potete leggere da questi device con qualcosa del genere:
+<P>
+<BLOCKQUOTE><CODE>
+<PRE>
+        root#  head -c 6 /dev/urandom | mimencode
+</PRE>
+</CODE></BLOCKQUOTE>
+
+Questo comando visualizza otto caratteri casuali sulla console, adatti per la
+generazione di password. Potete trovare <CODE>mimencode</CODE> nel pacchetto
+<CODE>metamail</CODE>.
+<P>Leggete <CODE>/usr/src/linux/drivers/char/random.c</CODE> per la descrizione dell'algoritmo.
+<P>Grazie a Theodore Y. Ts'o, Jon Lewis, e altri sviluppatori del kernel per
+avere aiutato me (Dave) in questo.
+<P>
+<P>
+<HR>
+<A HREF="Security-HOWTO-8.html">Avanti</A>
+<A HREF="Security-HOWTO-6.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc7">Indice</A>
+</BODY>
+</HTML>

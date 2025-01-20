@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr9.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr11.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr11.html">[successivo]</A>
+<A HREF="ldr9.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 7. &nbsp; <A NAME="title495"></A><A NAME="anchor523"></A>Editoria</H1>
+
+<H2>7.1 &nbsp; <A NAME="title496"></A><A NAME="anchor524"></A>
+Conversione tra formati</H2>
+
+<P><STRONG>7.1.1)&nbsp;&nbsp;<A NAME="title497"></A><A NAME="anchor525"></A>
+ Come si pu&ograve; convertire un file <A NAME="index2236"></A>HTML in txt? <A NAME="index2237"></A> <A NAME="index2238"></A> <A NAME="index2239"></A> <A NAME="index2240"></A> </STRONG></P>
+
+<P>Per trasformare le pagine da formato <A NAME="index2241"></A> HTML a formato testo si utilizzare <A NAME="index2242"></A>Lynx:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>lynx -dump pagina.html &gt; pagina.txt</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<H2>7.2 &nbsp; <A NAME="title498"></A><A NAME="anchor526"></A>
+I file <A NAME="index2243"></A>PostScript (<CODE>.ps</CODE>)</H2>
+
+<P><STRONG>7.2.1)&nbsp;&nbsp;<A NAME="title499"></A><A NAME="anchor527"></A>
+ Come si visualizzano i file <A NAME="index2244"></A>PostScript in MS-Windows? <A NAME="index2245"></A> <A NAME="index2246"></A> <A NAME="index2247"></A> <A NAME="index2248"></A> <A NAME="index2249"></A> <A NAME="index2250"></A> <A NAME="index2251"></A> </STRONG></P>
+
+<P>Esistono versioni di <A NAME="index2252"></A>Ghostscript per i vari sistemi operativi. Esiste ad esempio <A NAME="index2253"></A>Ghostview per MS-Windows.</P>
+
+<P>I siti di riferimento sono: &lt;<EM><A HREF="http://www.cs.wisc.edu/~ghost/gsview/index.html">http://www.cs.wisc.edu/~ghost/gsview/index.html</A></EM>&gt; o &lt;<EM><A HREF="http://www.research.att.com/~jba/ghost/win95.html">http://www.research.att.com/~jba/ghost/win95.html</A></EM>&gt;.</P>
+
+<H2>7.3 &nbsp; <A NAME="title500"></A><A NAME="anchor528"></A>
+I file <CODE>.pdf</CODE></H2>
+
+<P><STRONG>7.3.1)&nbsp;&nbsp;<A NAME="title501"></A><A NAME="anchor529"></A>
+ Perch&eacute; in GNU/Linux con <A NAME="index2254"></A>Xpdf i file <A NAME="index2255"></A>PDF vengono visualizzati male? <A NAME="index2256"></A> <A NAME="index2257"></A> </STRONG></P>
+
+<P>Se, nel tentare di aprire un file <A NAME="index2258"></A>PDF si dovesse riscontrare un'incongruenza nell'ambito dei caratteri, si dovr&agrave; propendere per l'ipotesi che non ci sono sul sistema i caratteri adatti per visualizzarlo. In genere conviene usare caratteri convenzionali per aumentare la compatibilit&agrave;, oppure installare anche i caratteri <A NAME="index2259"></A>TrueType sotto GNU/Linux. Si deve inoltre ricordare che quando si converte da <CODE>.dvi</CODE> a <A NAME="index2260"></A>PDF &egrave; bene utilizzare caratteri <SAMP>Type1</SAMP> con il <SAMP>tfm</SAMP> (<EM>TeX font metric</EM>) ricompilato a dovere. Generalmente vengono usati i caratteri <SAMP>Type3</SAMP> che sono <SAMP>bitmap</SAMP> e non vettoriali e da questi segue l'effetto sgranato quando si vedono i documenti <A NAME="index2261"></A> PDF con <SAMP>xpdf</SAMP>.</P>
+
+<H2>7.4 &nbsp; <A NAME="title502"></A><A NAME="anchor530"></A>
+I File <CODE>.sgml</CODE></H2>
+
+<P><STRONG>7.4.1)&nbsp;&nbsp;<A NAME="title503"></A><A NAME="anchor531"></A>
+ Perch&eacute; con <SAMP>sgml2txt</SAMP> si trovano spesso parole con lettere ripetute? Si tratta di un'interpretazione scorretta? <A NAME="index2262"></A> <A NAME="index2263"></A> </STRONG></P>
+
+<P>Se nell'utilizzo del comando <SAMP>sgml2txt</SAMP> si dovessero riscontrare alcune parti di testo con lettere ripetute, occorrer&agrave; aggiungere l'opzione <SAMP>-f</SAMP> al comando <SAMP>sgml2txt</SAMP>.</P>
+
+<H2>7.5 &nbsp; <A NAME="title504"></A><A NAME="anchor532"></A>
+I file <CODE>.doc</CODE></H2>
+
+<P><STRONG>7.5.1)&nbsp;&nbsp;<A NAME="title505"></A><A NAME="anchor533"></A>
+ Come si leggono e stampano i documenti <A NAME="index2264"></A>Microsoft&nbsp;Word in GNU/Linux? <A NAME="index2265"></A> <A NAME="index2266"></A> <A NAME="index2267"></A> <A NAME="index2268"></A> <A NAME="index2269"></A> <A NAME="index2270"></A> <A NAME="index2271"></A> <A NAME="index2272"></A> <A NAME="index2273"></A> <A NAME="index2274"></A> <A NAME="index2275"></A> <A NAME="index2276"></A> </STRONG></P>
+
+<P>Per leggere documenti <A NAME="index2277"></A>Microsoft&nbsp;Word (<CODE>.DOC</CODE>) esistono in GNU/Linux diversi applicativi.</P>
+
+<P>Per <A NAME="index2278"></A>Gnome esiste <A NAME="index2279"></A>AbiWord <SUP><A HREF="editoria.html#footnote1" NAME="footnote-ref1">(1)</A></SUP> un applicativo grafico molto promettente;</P>
+
+<P>da riga di comando si pu&ograve; utilizzare <SAMP>catdoc</SAMP> <SUP><A HREF="editoria.html#footnote2" NAME="footnote-ref2">(2)</A></SUP> che si limita ad una conversione. Ne esiste anche un visualizzatore <A NAME="index2280"></A>Tcl/Tk;</P>
+
+<P>sempre per la riga di comando troviamo <SAMP>wv</SAMP> <SUP><A HREF="editoria.html#footnote3" NAME="footnote-ref3">(3)</A></SUP> spesso noto come <SAMP>mswordview</SAMP> che in pratica non &egrave; altro che una libreria che interpreta documenti <A NAME="index2281"></A>Microsoft&nbsp;Word 2&nbsp;000, 97, 95 e 6. Viene utilizzato da <A NAME="index2282"></A>AbiWord per importare i documenti. Questo programma inoltre converte in <A NAME="index2283"></A> HTML;</P>
+
+<P>troviamo inoltre <A NAME="index2284"></A>Antiword <SUP><A HREF="editoria.html#footnote4" NAME="footnote-ref4">(4)</A></SUP> che esiste anche per sistemi <A NAME="index2285"></A>BeOS e <A NAME="index2286"></A> RISC OS. Questo programma converte i documenti in formato <A NAME="index2287"></A>Microsoft&nbsp;Word 2&nbsp;000, 97, 7 e 6 in formato testo o in <A NAME="index2288"></A>Postscript.</P>
+
+<P>Occorre senza dubbio ricordare che un modo per aumentare la compatibilit&agrave; &egrave; in ogni caso usare il formato <A NAME="index2289"></A>RTF e non il <CODE>.DOC</CODE>. Il formato <A NAME="index2290"></A>RTF &egrave; liberamente accessibile da programmi appositi quali ad esempio <A NAME="index2291"></A>Ted <SUP><A HREF="editoria.html#footnote5" NAME="footnote-ref5">(5)</A></SUP>.</P>
+
+<H2>7.6 &nbsp; <A NAME="title506"></A><A NAME="anchor534"></A>
+Compatibilit&agrave; formati GNU/Linux-Dos</H2>
+
+<P><STRONG>7.6.1)&nbsp;&nbsp;<A NAME="title507"></A><A NAME="anchor535"></A>
+ Perch&eacute; aprendo con <A NAME="index2292"></A>Emacs alcuni file di testo creati con programmi Dos, compaiono una serie di <SAMP>^M</SAMP> alla fine di ogni riga? <A NAME="index2293"></A> <A NAME="index2294"></A> </STRONG></P>
+
+<P>Il carattere di fine riga in sistemi GNU/Linux &egrave; il carattere <SAMP>LF</SAMP>, mentre nel Dos &egrave; la coppia di caratteri <SAMP>CR</SAMP> e <SAMP>LF</SAMP>. Quando si importano file di testo dal Dos si dovr&agrave; usare il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>mcopy -t <VAR>file_dos.txt</VAR> <VAR>nuovo_nome.txt</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Il parametro &laquo;<SAMP>-t</SAMP>&raquo; informa il comando <SAMP>mcopy</SAMP> che il file da copiare &egrave; testuale, cos&igrave; nel trasferimento verranno messi a posto i caratteri di fine riga.</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="editoria.html#footnote-ref1" NAME="footnote1">1)</A> <STRONG>AbiWord</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="editoria.html#footnote-ref2" NAME="footnote2">2)</A> <STRONG>catdoc</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="editoria.html#footnote-ref3" NAME="footnote3">3)</A> <STRONG>wv</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="editoria.html#footnote-ref4" NAME="footnote4">4)</A> <STRONG>Antiword</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="editoria.html#footnote-ref5" NAME="footnote5">5)</A> <STRONG>Ted</STRONG> &nbsp; GPL</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="editoria.html">editoria.html</A></P>
+<P>
+<A HREF="ldr11.html">[successivo]</A>
+<A HREF="ldr9.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

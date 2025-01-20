@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Introduzione</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Procmail" href="procmail.html">
+    <LINK rel="PREVIOUS" title="Procmail" href="procmail.html">
+    <LINK rel="NEXT" title="File di configurazione" href=
+    "configurazioneprocmail.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "procmail.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 7.
+          Procmail</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "configurazioneprocmail.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="INTRODUZIONEPROCMAIL">7.1.
+      Introduzione</A></H1>
+
+      <P><B class="KEYCAP">Procmail</B> è il programma che si occupa di
+      smistare in diverse caselle le email che arrivano dai vostri account
+      pop o direttamente dal sistema. È forse il più complicato tra i
+      programmi che dovrete configurare per la gestione della vostra posta
+      elettronica. Prima di tutto alcune precisazioni su alcune convenzioni
+      che uso: le caselle che contengono email in entrata io le chiamo per
+      comodità <B class="KEYCAP">IN-qualchecosa</B>, mentre quelle in uscita
+      sono ovviamente <B class="KEYCAP">OUT-qualcosaltro</B>, e le
+      mailing-lists con <B class="KEYCAP">ML-ancoraqualcosa</B>. I nomi di
+      file sono interamente in minuscolo, mentre le directory iniziano con
+      una lettera Maiuscola. I file accessori di <TT class=
+      "FILENAME">.procmailrc</TT> finiscono con "<B class="KEYCAP">.rc</B>".
+      Per mia comodità tengo di solito i file di configurazione ausiliari
+      nelle directory di pertinenza del servizio, quindi i file richiamati da
+      <TT class="FILENAME">.procmailrc</TT> sono in <B class=
+      "KEYCAP">$HOME/Mail/.Pm</B> (mentre i file di <B class=
+      "KEYCAP">Mutt</B> sono in <B class="KEYCAP">$HOME/Mail/.Mutt</B>, i
+      file di <B class="KEYCAP">Slrn</B> sono in <B class=
+      "KEYCAP">$HOME/News/.Slrn</B>, ecc). Il punto iniziale delle directory
+      serve per nasconderle mentre sfoglio i miei spool con <SPAN class=
+      "APPLICATION">mutt</SPAN> o <SPAN class="APPLICATION">slrn</SPAN>, per
+      mail e news. Per sicurezza TUTTA la posta in arrivo viene accodata in
+      un file di backup (mostrerò anche come mantenere questo file in formato
+      compresso <SPAN class="APPLICATION">gzip</SPAN>, per ridurre gli
+      sprechi di spazi), verranno estratte dal flusso in ingresso le email
+      provenienti da persone conosciute (per riinviarle in un file apposito),
+      e quelle provenienti da mailing list (inviate in file univoci per
+      ciascuna), lasciando le email rimanenti nello spool principale.</P>
+
+      <P>Il file di configurazione di <B class="KEYCAP">Procmail</B> (<TT
+      class="FILENAME">.procmailrc</TT>, nella vostra directory <B class=
+      "KEYCAP">HOME</B>) è suddiviso in due parti distinte: la prima è la
+      configurazione vera e propria del programma, con variabili e path vari;
+      la seconda invece è fatta dall'insieme delle regole che permettono di
+      smistare la posta nei diversi file mailbox. In particolare, per la
+      seconda parte, è più comodo suddividere le regole in file distinti (da
+      includere nel file principale con la direttiva <B class=
+      "KEYCAP">INCLUDERC</B>), in base al loro uso: ad esempio un file con le
+      regole per le mailing-list, un file per le email da amici, un file per
+      lo spam, e così via. Questa comunque è la strada seguito nel
+      <EM>Quick&amp;Easy Configuration HOWTO</EM>. <B class=
+      "KEYCAP">Procmail</B> processa messaggi nell'ordine in cui sono scritte
+      le regole, all'interno del file <TT class="FILENAME">.procmailrc</TT> o
+      nei file in esso inclusi, e se non trova alcuna regola adatta accoda il
+      messaggio allo spool principale (ecco perché, senza alcun file .<TT
+      class="FILENAME">procmailrc</TT>, i messaggi finiscono in <B class=
+      "KEYCAP">/var/spool/mail/nomeutente</B>, in genere mailbox di default
+      di un sistema Linux). Le regole di <B class="KEYCAP">procmail</B> sono
+      composte da espressioni regolari (la sintassi è nella sezione
+      apposita), e possono essere divise in tre parti:</P>
+
+      <OL type="1">
+        <LI>
+          <P>una linea di inizio (con possibili flag), <B class=
+          "KEYCAP">:0</B>, seguito da una serie di flags che ne indicano il
+          comportamento (alcune vengono spiegate nel seguito, le altre
+          possono essere trovate in <B class="COMMAND">man procmailrc</B>).
+          Il secondo "<B class="KEYCAP">:</B>" indica che si vuole usare un
+          <EM>lockfile</EM> sulla mailbox durante il processo, in modo da
+          prevenire una possibile corruzione della stessa in caso di accesso
+          contemporaneo da altri programmi (pensate alla possibile
+          cancellazione di un messaggio con il vostro client mail mentre la
+          mailbox è in fase di elaborazione da procmail). Dopo il "<B class=
+          "KEYCAP">:</B>" si può indicare un nome per il file di lock,
+          altrimenti verrà generato in automatico da procmail.</P>
+        </LI>
+
+        <LI>
+          <P>una o più condizioni, identificate da <B class="KEYCAP">*</B>
+          come primo carattere</P>
+        </LI>
+
+        <LI>
+          <P>una linea di smistamento, che può essere un file, una directory
+          o una linea che inizia con <B class="KEYCAP">|</B> (<EM>pipe</EM>),
+          che permette di inviare il messaggio in input ad un programma
+          esterno per una qualche elaborazione, o ancora una linea che inizia
+          per <B class="KEYCAP">!</B>, che permette di inviare una copia del
+          messaggio a ciascun indirizzo email indicato dopo il <B class=
+          "KEYCAP">!</B>. Altre possibilità sono elencate in <B class=
+          "COMMAND">man procmailrc</B>.</P>
+        </LI>
+      </OL>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "procmail.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "configurazioneprocmail.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Procmail</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "procmail.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">File di
+          configurazione</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

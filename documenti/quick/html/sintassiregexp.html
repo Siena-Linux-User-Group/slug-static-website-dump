@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Sintassi delle espressioni regolari</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Procmail" href="procmail.html">
+    <LINK rel="PREVIOUS" title="Combattere lo SPAM" href=
+    "procmailantispam.html">
+    <LINK rel="NEXT" title="Leafnode" href="leafnode.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "procmailantispam.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 7.
+          Procmail</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "leafnode.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="SINTASSIREGEXP">7.6. Sintassi delle
+      espressioni regolari</A></H1>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> La sintassi proviene da quella del comando <B
+          class="COMMAND">egrep</B>.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">^</B> inizio della linea</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">$</B> fine della linea</P>
+        </LI>
+
+        <LI>
+          <P>ogni <EM>singolo carattere</EM> corrisponde a sè stesso (se si
+          tratta di un carattere <EM>speciale</EM>, per fare il confronto lo
+          si deve far precedere da <B class="KEYCAP">\</B> , quindi: <B
+          class="KEYCAP">\?</B>, <B class="KEYCAP">\+</B>, <B class=
+          "KEYCAP">\{</B>, <B class="KEYCAP">\|</B>, <B class=
+          "KEYCAP">\(</B>, <B class="KEYCAP">\)</B>, ecc.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">.</B> qualsiasi carattere eccetto il
+          <EM>fine-linea</EM></P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">[12a-e-]</B> un carattere tra quelli racchiusi
+          tra parentesi. In questo caso può essere: <B class="KEYCAP">1</B>,
+          <B class="KEYCAP">2</B>, <B class="KEYCAP">a</B>, <B class=
+          "KEYCAP">b</B>, <B class="KEYCAP">c</B>, <B class="KEYCAP">d</B>,
+          <B class="KEYCAP">e</B>, <B class="KEYCAP">-</B>. Gruppi
+          consecutivi di caratteri si identificano con il primo, seguito da
+          <B class="KEYCAP">-</B> e dall'ultimo (<B class="KEYCAP">a-e</B>=<B
+          class="KEYCAP">abcde</B>). Se il primo carattere è <B class=
+          "KEYCAP">^</B>, si intende qualsiasi carattere <EM>ESCLUSI</EM>
+          quelli tra parentesi. Per includere il simbolo <B class=
+          "KEYCAP">]</B> lo si deve mettere per primo, mentre per inserire il
+          simbolo <B class="KEYCAP">^</B> lo si deve mettere da qualsiasi
+          parte <EM>TRANNE</EM> che all'inizio, e per il carattere <B class=
+          "KEYCAP">-</B> deve essere l'<EM>ULTIMO</EM> prima della parentesi
+          quadra.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">*</B> il carattere precedente può essere
+          presente <B class="KEYCAP">0</B> o <B class="KEYCAP">più</B>
+          volte</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">+</B> il carattere precedente può essere
+          presente <B class="KEYCAP">1</B> o <B class="KEYCAP">più</B>
+          volte</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">?</B> il carattere precedente può essere
+          presente <B class="KEYCAP">0</B> o <B class="KEYCAP">1</B> volte
+          <EM>al massimo</EM></P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">{n}</B> il carattere precedente può essere
+          presente <EM>esattamente</EM> <B class="KEYCAP">n</B> volte</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">{n,}</B> il carattere precedente può essere
+          presente <EM>almeno</EM> <B class="KEYCAP">n</B> volte</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">{n,m}</B> il carattere precedente può essere
+          presente <EM>almeno</EM> <B class="KEYCAP">n</B> volte e <EM>al
+          massimo</EM> <B class="KEYCAP">m</B></P>
+        </LI>
+
+        <LI>
+          <P>due espressioni regolari possono essere <EM>concatenate</EM>,
+          ottenendone un'altra generata dalla <EM>concatenazione</EM> dei
+          risultati delle <EM>sottostringhe</EM></P>
+        </LI>
+
+        <LI>
+          <P>due espressioni regolari <EM>separate</EM> da <B class=
+          "KEYCAP">|</B> diventano alternative</P>
+        </LI>
+
+        <LI>
+          <P>la <EM>ripetizione</EM> ha precedenza più alta rispetto alla
+          <EM>concatenazione</EM>, che a sua volta ha precedenza più alta
+          rispetto all'<EM>alternatività</EM> (usate le parentesi tonde per
+          modificare questo comportamento)</P>
+        </LI>
+
+        <LI>
+          <P>per eseguire il confronto con una <EM>parola intera</EM> invece
+          che con una <EM>sottostringa</EM>, racchiudetela tra <B class=
+          "KEYCAP">\&lt;</B> e <B class="KEYCAP">\&gt;</B>: ad esempio <B
+          class="KEYCAP">\&lt;test\&gt;</B> riconoscerà "<EM>test</EM>" ma
+          non "<EM>testing</EM>"</P>
+        </LI>
+
+        <LI>
+          <P>di solito i confronti non sono <EM>sensibili a maiuscole o
+          minuscole</EM>, quindi un piccolo errore sarà perdonato!</P>
+        </LI>
+      </UL>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "procmailantispam.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "leafnode.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Combattere lo SPAM</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "procmail.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Leafnode</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

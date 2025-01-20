@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Informazioni base</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Prefazione" href="prefazione.html">
+    <LINK rel="PREVIOUS" title="Prefazione" href="prefazione.html">
+    <LINK rel="NEXT" title="Altre informazioni" href="altreinfo.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "prefazione.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Prefazione</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "altreinfo.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="INFOBASE">1. Informazioni base</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="COPYRIGHT">1.1. Copyright</A></H2>
+
+        <P><EM>English</EM> - Permission is granted to copy, distribute
+        and/or modify this document under the terms of the <EM>GNU Free
+        Documentation License</EM>, Version 1.1 or any later version
+        published by the <EM>Free Software Foundation</EM>; with no Invariant
+        Sections, with no Front-Cover Texts, and no Back-Cover Texts. A copy
+        of the license is included in the section entitled <EM>GNU Free
+        Documentation License</EM>.</P>
+
+        <P><EM>Italiano</EM> - È garantito il permesso di copiare,
+        distribuire e/o modificare questo documento seguendo i termini della
+        <EM>GNU Free Documentation License</EM>, Versione 1.1 o ogni versione
+        successiva pubblicata dalla Free Software Foundation; senza Sezioni
+        non Modificabili, con nessun Testo Copertina, e con nessun Testo
+        Retro di Copertina. Una copia della licenza è acclusa nella sezione
+        intitolata <EM>GNU Free Documentation License</EM>.</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="LIBERATORIA">1.2. Liberatoria</A></H2>
+
+        <P>Il <EM>Quick&amp;Easy Configuration HOWTO</EM> è una
+        documentazione gratuita, fornita così com'è, senza alcuna garanzia,
+        né implicita, né esplicita di adeguatezza ad un uso particolare o di
+        commerciabilità. Non mi assumo alcuna responsabilità per eventuali
+        danni provocati da quanto segue: leggete, confrontate, scopiazzate,
+        ma <EM>nun me citate</EM> in tribunale, che vi do una lisciata alla
+        coda con lo schioppo caricato a sale grosso! ;-)</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="INFORMAZIONI">1.3. Informazioni</A></H2>
+
+        <P>Salve a tutti i pinguini! Chi l'avrebbe detto che anch'io avrei
+        fatto un Howto? Io per primo no, e invece... ;-) Il
+        <EM>Quick&amp;Easy Configuration HOWTO</EM> nasce per aiutare i
+        giovani pinguini con ancora le piumine pre-muta, e vuole essere una
+        raccolta di consigli su come configurare in un battibaleno una
+        workstation Linux per uso personale. Verrà spiegato come configurare
+        posta elettronica, dns, firewall, newsgroup, true-type fonts, fax,
+        proxy+spamkiller, connessione internet, una rete base e quant'altro
+        mi verrà in mente di aggiungere man mano. Il tutto sarà improntato
+        alla massima praticità, quindi niente configurazioni meticolose e
+        approfondite, verrà fornito quanto basta per essere attivi e
+        produttivi SUBITO, mentre per le cose più avanzate si rimanderà a
+        pagine man, siti e documenti vari. Il tutto è corredato da una serie
+        di script funzionanti (salvo piccole modifiche), ampiamente
+        commentati, che potranno anche essere <EM>taglincollati</EM>
+        direttamente nel vostro sistema per avere una base immediata di
+        applicazione.</P>
+
+        <P>Un avvertimento: in genere i file che iniziano con un punto "." e
+        finiscono con "rc" sono file di configurazione degli utenti e vanno
+        quindi nelle loro home-directory. Ogni utente deve avere i propri
+        file personali (es.: un file <B class="KEYCAP">.fetchmailrc</B> per
+        ognuno, cambiando i rispettivi parametri) e saranno i demoni di
+        sistema ad occuparsi di fare tutto il lavoro leggendo i vari file e
+        assecondando le preferenze di ognuno. Per i programmi, in genere
+        presuppongo che in una maniera o l'altra li abbiate installati
+        (compilandoli dai sorgenti o installando un package precompilato), e
+        quindi NON do informazioni su come compilarli o installarli. Al
+        massimo mi limito a dire cosa serve in determinati casi. Tutte le
+        prove sono state fatte con la distribuzione <EM>Mandrake</EM> 7.0,
+        quindi si adattano anche a Redhat. Dal 2001 su PINGU sono passato a
+        <EM>Debian</EM>, e quindi ora molte cose sono anche specificate per
+        questa distribuzione. Invece sul portatile ora uso <EM>Mandrake</EM>
+        8.0. Un ultimo avvertimento, prima di interpellarmi eventualmente per
+        email:</P>
+
+        <DIV class="WARNING">
+          <TABLE class="WARNING" border="1" width="100%">
+            <TR>
+              <TD align="CENTER"><B>Attenzione</B></TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT">
+                <P>NON fate taglia e incolla dai documenti, perché la
+                conversione da sgml potrebbe introdurre caratteri non
+                desiderati o errati. TUTTI i file indicati si possono trovare
+                belli e pronti in area Download del mio sito, in un pacchetto
+                apposito. In particolare, se mi scrivete perché trovate dei
+                file con le righe che terminano con ^M, v'accoppo! Idem se il
+                vostro Netschiappa vi fa vedere caratteri strani invece di
+                scaricare i file: usate un download manager con le palle, ed
+                evitate di scaricare da win i file testuali, è isso che
+                introduce i ^M!</P>
+              </TD>
+            </TR>
+          </TABLE>
+        </DIV>
+        <BR>
+        <BR>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "prefazione.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "altreinfo.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Prefazione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "prefazione.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Altre informazioni</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

@@ -1,0 +1,1203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Parametri</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Kernel" href="kernel.html">
+    <LINK rel="PREVIOUS" title="Prerequisiti" href="prerequisitikernel.html">
+    <LINK rel="NEXT" title="Compilazione e installazione" href=
+    "compilazioneinstallazione.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "prerequisitikernel.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 3.
+          Kernel</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "compilazioneinstallazione.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="PARAMETRIKERNEL">3.2. Parametri</A></H1>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="CODEMATURITY">3.2.1. Code maturity level
+        options</A></H2>
+
+        <UL>
+          <LI>
+            <P>Prompt for development and/or incomplete code/drivers: 'y'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PROCESSORTYPE">3.2.2. Processor type and
+        features</A></H2>
+
+        <UL>
+          <LI>
+            <P>Processor family: selezionate il vostro processore. Nel caso
+            di Intel Pentium Pro, Pentium II, Celeron o superiori, oppure
+            Cyrix 6x86 o Cyrix_mii, scegliete PPro/6x86MX</P>
+          </LI>
+
+          <LI>
+            <P>Maximum Physical Memory: scegliete 1GB se avete meno di 1 GB,
+            2GB altrimenti</P>
+          </LI>
+
+          <LI>
+            <P>Math emulation: 'n' ('y' solo se avete un 386 o 486 sx senza
+            coprocessore)</P>
+          </LI>
+
+          <LI>
+            <P>MTRR (Memory Type Range Register) support: 'y', anche se il
+            vostro processore non lo supporta</P>
+          </LI>
+
+          <LI>
+            <P>Symmetric multi-processing support: 'y' solo se avete più
+            processori (nello STESSO computer!)</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="LOADABLEMODULE">3.2.3. Loadable module
+        support</A></H2>
+
+        <UL>
+          <LI>
+            <P>Enable loadable module support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Set version information on all symbols for modules: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Kernel module loader: 'y'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="GENERALSETUP">3.2.4. General
+        setup</A></H2>
+
+        <UL>
+          <LI>
+            <P>Networking support: 'y' SEMPRE, serve almeno per il
+            dispositivo di loopback. least need it for loopback interface</P>
+          </LI>
+
+          <LI>
+            <P>PCI support: 'y', tranne se avete vecchi PC senza bus PCI</P>
+          </LI>
+
+          <LI>
+            <P>PCI access mode: Any</P>
+          </LI>
+
+          <LI>
+            <P>PCI quirks: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>PCI bridge optimization (experimental): 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Backward-compatible /proc/pci: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>MCA support: 'n', tranne che per vecchi PC IBM con bus
+            Microchannel</P>
+          </LI>
+
+          <LI>
+            <P>SGI Visual Workstation support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>System V IPC: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>BSD Process Accounting: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Sysctl support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Kernel support for a.out binaries: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Kernel support for ELF binaries: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Kernel support for MISC binaries: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Kernel support for JAVA binaries (obsolete): 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Parallel port support: 'y' or 'm', a scelta.</P>
+          </LI>
+
+          <LI>
+            <P>PC-style hardware: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Support foreign hardware: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Advanced Power Management BIOS support: 'y' solo nei portatili
+            (nei PC Desktop potrebbe causare kernel panic e OOPS). Tutte le
+            opzioni che seguono sono disponibili solo se questa opzione è
+            'y'</P>
+          </LI>
+
+          <LI>
+            <P>Ignore USER SUSPEND: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Enable PM at boot time: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Make CPU Idle calls when idle: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Enable console blanking using APM: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Power off on shutdown: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Ignore multiple suspend: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Ignore multiple suspend/resume cycle: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>RTC stores time in GMT: 'y' solo se il PC è impostato sull'ora
+            di Greenwich invece di quella locale</P>
+          </LI>
+
+          <LI>
+            <P>Allow interrupts during APM BIOS calls: 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PLUGANDPLAY">3.2.5. Plug and Play
+        support</A></H2>
+
+        <UL>
+          <LI>
+            <P>Plug and Play support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Auto-probe for parallel devices: 'm' se avete periferiche su
+            porta parallela, altrimenti 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="BLOCKDEVICE">3.2.6. Block devices</A></H2>
+
+        <UL>
+          <LI>
+            <P>Normal PC floppy disk support: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Enhanced IDE/MFM/RLL disk/cdrom/tape/floppy support: 'y' se si
+            hanno periferiche IDE</P>
+          </LI>
+
+          <LI>
+            <P>Use old disk-only driver on primary interface: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Include IDE/ATA-2 DISK support: 'y' se avete pariferiche IDE
+            da cui volete fare il boot (se avete dischi IDE ma partite da
+            SCSI, mettete 'm')</P>
+          </LI>
+
+          <LI>
+            <P>Include IDE/ATAPI CDROM support: 'm' se avete un CDROM IDE</P>
+          </LI>
+
+          <LI>
+            <P>Include IDE/ATAPI TAPE support: 'y' o 'm' solo se avete
+            periferiche di backup a nastro IDE</P>
+          </LI>
+
+          <LI>
+            <P>Include IDE/ATAPI FLOPPY support: 'y' o 'm' solo se avete
+            periferiche floppy IDE, tipo ZIP</P>
+          </LI>
+
+          <LI>
+            <P>SCSI emulation support: 'm' se avete un masterizzatore IDE</P>
+          </LI>
+
+          <LI>
+            <P>CMD640 chipset bugfix/support: 'y' se avete questo chip ('n'
+            se avete solo periferiche SCSI)</P>
+          </LI>
+
+          <LI>
+            <P>CMD640 enhanced support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>RZ1000 chipset bugfix/support: 'y' se avete questo chip ('n'
+            se avete solo periferiche SCSI)</P>
+          </LI>
+
+          <LI>
+            <P>Generic PCI IDE chipset support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Generic PCI bus-master DMA support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Boot off-board chipsets first support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Use DMA by default when available: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: attivate le varie opzioni in base al vostro PC (in
+            genere, 'n' a tutte)</P>
+          </LI>
+
+          <LI>
+            <P>Loopback device support: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Network block device support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Multiple devices driver support: 'n' a meno che non vogliate
+            provare il RAID software (leggete il RAID-HOWTO)</P>
+          </LI>
+
+          <LI>
+            <P>RAM disk support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>XT hard disk support: 'n' -- what, you still have disks like
+            this? :)</P>
+          </LI>
+
+          <LI>
+            <P>Parallel port IDE device support: 'm' se avete qualche
+            periferica IDE su porta parallela, tipo CDROM (e selezionate il
+            driver opportuno), 'n' altrimenti</P>
+          </LI>
+
+          <LI>
+            <P>Compaq SMART2 support: 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="NETWORKINGOPTIONS">3.2.7. Networking
+        options</A></H2>
+
+        <UL>
+          <LI>
+            <P>Packet socket: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Kernel/User netlink socket: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Routing messages: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Netlink device emulation: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Network firewalls: 'y' se volete abilitare il supporto per il
+            firewalling e masquerading</P>
+          </LI>
+
+          <LI>
+            <P>Socket filtering: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>UNIX domain sockets: 'y' altrimenti X-window non si
+            avvierà</P>
+          </LI>
+
+          <LI>
+            <P>TCP/IP networking: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>IP: multicasting: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>IP: advanced router: 'y' se volete usare il PC come router o
+            per fare il masquerading di una rete locale verso Internet</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+
+          <LI>
+            <P>IP: firewalling: 'y' se volete configurare firewall e
+            masquerading. Se volete attivare quest'ultimo, DOVETE rispondere
+            'y' anche a "IP: always defragment", "IP: masquerading" e "IP:
+            ICMP masquerading"</P>
+          </LI>
+
+          <LI>
+            <P>IP: firewall packet netlink device: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>IP: transparent proxy support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>IP: masquerading: 'y' per attivare il masquerading</P>
+          </LI>
+
+          <LI>
+            <P>IP: ICMP masquerading: 'y' per attivare il masquerading</P>
+          </LI>
+
+          <LI>
+            <P>IP: masquerading special modules support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>IP: optimize as router not host: 'y' per attivare il
+            masquerading e il router</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+
+          <LI>
+            <P>IP: TCP syncookie support: 'y' per prevenire il D.O.S. da
+            SYN-FLOOD</P>
+          </LI>
+
+          <LI>
+            <P>IP: Reverse ARP: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>IP: Allow large windows (not recommended if &lt;16MB of
+            memory): 'y'</P>
+          </LI>
+
+          <LI>
+            <P>CPU is too slow to handle full bandwidth: 'n', tranne se siete
+            connessi a interfacce a larga banda (gigabit Ethernet, FDDI,
+            etc.)</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte, tranne se dovete
+            collegarvi a reti Novell, nel qual caso attivate "The IPX
+            protocol"</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="QOSFAIR">3.2.8. QoS and/or fair
+        queueing</A></H2>
+
+        <UL>
+          <LI>
+            <P>QoS and/or fair queueing: 'n' (il resto è disabilitato di
+            conseguenza)</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="TELEFONYSUPPORT">3.2.9. Telephony
+        Support</A></H2>
+
+        <UL>
+          <LI>
+            <P>Linux Telephony Support: 'n' (il resto è disabilitato di
+            conseguenza)</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="SCSISUPPORT">3.2.10. SCSI support</A></H2>
+
+        <UL>
+          <LI>
+            <P>SCSI support: 'y' se avete uno o più adattatori e periferiche
+            SCSI oppure un drive ZIP parallelo o un masterizzatore, 'n'
+            altrimenti.</P>
+          </LI>
+
+          <LI>
+            <P>SCSI disk support: 'y' (e non 'm') per se fate il boot da un
+            disco SCSI, altrimenti non riuscirete ad avviare il sistema!</P>
+          </LI>
+
+          <LI>
+            <P>SCSI tape support: 'm' se avete periferiche a nastro SCSI</P>
+          </LI>
+
+          <LI>
+            <P>SCSI CDROM support: 'm' se avete CDROM SCSI</P>
+          </LI>
+
+          <LI>
+            <P>Enable vendor-specific extensions (for SCSI CDROM): 'y' se
+            avete CDROM SCSI Nec, Toshiba o masterizzatori HP</P>
+          </LI>
+
+          <LI>
+            <P>SCSI generic support: 'm' se avete un masterizzatore, IDE o
+            SCSI</P>
+          </LI>
+
+          <LI>
+            <P>Probe all LUNs on each SCSI device: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Verbose SCSI error reporting (kernel size +=12K): 'n'</P>
+          </LI>
+
+          <LI>
+            <P>SCSI logging facility: 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="SCSILOWLEVEL">3.2.11. SCSI low-level
+        drivers</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte, tranne che per il vostro
+            eventuale adattatore SCSI</P>
+          </LI>
+
+          <LI>
+            <P>IOMEGA parallel port (ppa - older drives): 'm' se avete uno
+            dei primi modelli di ZIP parallelo</P>
+          </LI>
+
+          <LI>
+            <P>IOMEGA parallel port (imm - newer drives): 'm' se avete uno
+            degli ultimi modelli di ZIP parallelo</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte, tranne che per il vostro
+            eventuale adattatore SCSI</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="NETWORKDEVICE">3.2.12. Network device
+        support</A></H2>
+
+        <UL>
+          <LI>
+            <P>Network device support: 'y' se avete una scheda di rete o per
+            collegarvi a Internet</P>
+          </LI>
+
+          <LI>
+            <P>Dummy net driver support: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+
+          <LI>
+            <P>PLIP (parallel port) support: 'm' se volete creare una rete
+            con cavi paralleli PLIP, altrimenti 'n'</P>
+          </LI>
+
+          <LI>
+            <P>PPP (point-to-point) support: 'y' o 'm' se volete collegarvi a
+            Internet via modem</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="ARCNET">3.2.13. ARCnet devices</A></H2>
+
+        <UL>
+          <LI>
+            <P>ARCnet devices: 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="ETHERNET10100">3.2.14. Ethernet (10 or
+        100Mbit)</A></H2>
+
+        <UL>
+          <LI>
+            <P>ETHERNET (10 or 100Mbit): 'y' se avete uno o più adattatori di
+            rete Ethernet</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne che per il vostro
+            modello di scheda</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="ETHERNET1000">3.2.15. Ethernet (1000
+        Mbit)</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="APPLETALK">3.2.16. Appletalk
+        devices</A></H2>
+
+        <UL>
+          <LI>
+            <P>Dovrebbe essere disattivato, altrimenti 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="TOKENRING">3.2.17. Token ring
+        devices</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="WANINTERFACE">3.2.18. Wan
+        interfaces</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="AMATEURRADIO">3.2.19. Amateur Radio
+        support</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="IRDASUBSYSTEM">3.2.20. IrDA subsystem
+        support</A></H2>
+
+        <UL>
+          <LI>
+            <P>IrDA subsystem support: 'y' o 'm' se avete una porta a
+            infrarossi (tipicamente i portatili)</P>
+          </LI>
+
+          <LI>
+            <P>IrLAN protocol: 'y' o 'm' se avete abilitato IrDA e avete un
+            sistema di emulazione di rete Ethernet</P>
+          </LI>
+
+          <LI>
+            <P>IrCOMM protocol: 'y' o 'm' se avete abilitato IrDA e avete un
+            sistema di emulazione di porta seriale</P>
+          </LI>
+
+          <LI>
+            <P>IrLPT protocol: 'y' o 'm' se avete abilitato IrDA e avete un
+            sistema di emulazione di porta parallela, e abilitate il supporto
+            client o server</P>
+          </LI>
+
+          <LI>
+            <P>IrDA protocol options: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Cache last LSAP: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Fast RRs: 'n' (guardate l'help)</P>
+          </LI>
+
+          <LI>
+            <P>Debug information; 'n'</P>
+          </LI>
+
+          <LI>
+            <P>IrLAP compression: 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="INFRAREDPORT">3.2.21. Infrared-port device
+        drivers</A></H2>
+
+        <UL>
+          <LI>
+            <P>IrTTY (uses Linux serial driver): 'y' o 'm'</P>
+          </LI>
+
+          <LI>
+            <P>IrPORT (IrDA serial driver): 'y' o 'm'</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne che per il vostro
+            modello di chip</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="ISDNSUBSYSTEM">3.2.22. ISDN
+        subsystem</A></H2>
+
+        <UL>
+          <LI>
+            <P>ISDN support: 'y' se avete un adattatore ISDN interno</P>
+          </LI>
+
+          <LI>
+            <P>Support synchronous PPP: 'y' se vi connettete a Internet</P>
+          </LI>
+
+          <LI>
+            <P>Use VJ-compression with synchronous PPP: chiedete al provider
+            se è supportata</P>
+          </LI>
+
+          <LI>
+            <P>Support generic MP (RFC 1717): 'n' (guardate l'help)</P>
+          </LI>
+
+          <LI>
+            <P>Support audio via ISDN: 'n' (guardate l'help)</P>
+          </LI>
+
+          <LI>
+            <P>Support ISDN diversion services: 'n' (guardate l'help) e nel
+            caso abilitate "Support AT-FAX Class 2 commands"</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne che per il vostro
+            modello di scheda</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="OLDCDROM">3.2.23. Old CD-ROM drivers (not
+        SCSI, not IDE)</A></H2>
+
+        <UL>
+          <LI>
+            <P>Old CD-ROM drivers (not SCSI, not IDE): 'n', tranne che per
+            vecchi modelli di CDROM con interfaccia proprietaria</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="CHARACTERDEVICES">3.2.24. Character
+        devices</A></H2>
+
+        <UL>
+          <LI>
+            <P>Virtual terminal: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Support for console on virtual terminal: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Standard/generic (dumb) serial support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Support for console on serial port: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Extended dumb serial driver options: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Non-standard serial port support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Unix98 PTY support: 'y' e lasciate il valore "Maximum number
+            of Unix98 PTYs in use (0-2048)" al default, 256</P>
+          </LI>
+
+          <LI>
+            <P>Parallel printer support: 'm' se avete una stampante
+            parallelaif you have a parallel port printer</P>
+          </LI>
+
+          <LI>
+            <P>Support IEEE1284 status readback: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Mouse Support (not serial mice): 'y' in genere, ma guardate
+            l'help e attenti ai laptop. Se avete un mouse seriale, scegliete
+            'n'</P>
+          </LI>
+
+          <LI>
+            <P>QIC-02 tape support: 'y' se avete un sistema di backup a
+            nastro non SCSI (esclusi quelli su controller floppy, altre
+            informazioni nel seguito)</P>
+          </LI>
+
+          <LI>
+            <P>Watchdog Timer Support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>/dev/nvram support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>Enhanced Real Time Clock Support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Double Talk PC internal speech card support: 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="MICE">3.2.25. Mice</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne che per il vostro
+            modello di mouse (esclusi i seriali, guardate sopra)</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="JOYSTICKS">3.2.26. Joysticks</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne che se volete il
+            supporto per i joystick, e sceglietene il modello</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="WATCHDOG">3.2.27. Watchdog Cards</A></H2>
+
+        <UL>
+          <LI>
+            <P>Dovrebbe essere disattivato, altrimenti 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="VIDEO4LINUX">3.2.28. Video For
+        Linux</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne che se volete il
+            supporto per una scheda di acquisizione video, radio o Quickcam,
+            e sceglietene il modello</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="FTAPEFLOPPY">3.2.29. Ftape, the floppy
+        tape device driver</A></H2>
+
+        <UL>
+          <LI>
+            <P>Ftape (QIC-80/Travan) support: 'y' se avete un drive a nastro
+            connesso al controller dei floppy disk</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="FILESYSTEMSTYPE">3.2.30.
+        Filesystems</A></H2>
+
+        <UL>
+          <LI>
+            <P>Quota support: 'n' tranne che se volete stabilire delle quote
+            di disco per gli utenti (in genere sui server)</P>
+          </LI>
+
+          <LI>
+            <P>Kernel automounter support: 'n' tranne se volete che i device
+            vengano montati in automatico</P>
+          </LI>
+
+          <LI>
+            <P>ADFS filesystem support (read only) (EXPERIMENTAL): 'n' tranne
+            se volete accedere a filesystem Acorn</P>
+          </LI>
+
+          <LI>
+            <P>Amiga FFS filesystem support: 'n' tranne se volete accedere a
+            filesystem Amiga</P>
+          </LI>
+
+          <LI>
+            <P>Apple Macintosh filesystem support (experimental): 'n' tranne
+            se volete accedere a filesystem Macintosh</P>
+          </LI>
+
+          <LI>
+            <P>DOS FAT fs support: 'y' or 'm' per poter accedere a dischi o
+            partizioni MS-DOS/Windows da Linux</P>
+          </LI>
+
+          <LI>
+            <P>MSDOS fs support: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>UMSDOS: Unix-like filesystem on top of standard MSDOS
+            filesystem: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>VFAT (Windows-95) fs support: 'm' (comprende il supporto a
+            FAT32)</P>
+          </LI>
+
+          <LI>
+            <P>ISO 9660 CDROM filesystem support: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Microsoft Joliet CDROM extensions: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Minix fs support: 'n'</P>
+          </LI>
+
+          <LI>
+            <P>NTFS filesystem support (read only): 'n' tranne se volete
+            accedere a filesystem Windows NT (il supporto in scrittura è
+            PERICOLOSO)</P>
+          </LI>
+
+          <LI>
+            <P>OS/2 HPFS filesystem support (read only): 'n' tranne se volete
+            accedere a filesystem OS/2</P>
+          </LI>
+
+          <LI>
+            <P>/proc filesystem support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>/dev/pts filesystem for Unix98 PTYs: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>QNX filesystem support (EXPERIMENTAL): 'n' tranne se volete
+            accedere a filesystem QNX</P>
+          </LI>
+
+          <LI>
+            <P>Second extended fs support: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="NETWORKFILESYSTEM">3.2.31. Network File
+        Systems</A></H2>
+
+        <UL>
+          <LI>
+            <P>Coda filesystem support (advanced network fs): 'n'</P>
+          </LI>
+
+          <LI>
+            <P>NFS filesystem support: 'y' se il vostro PC è un client
+            NFS</P>
+          </LI>
+
+          <LI>
+            <P>NFS server support: 'y' se il vostro PC è un server NFS, e nel
+            caso lasciate a 'n' "Emulate SUN NFS server"</P>
+          </LI>
+
+          <LI>
+            <P>SMB filesystem support (to mount WfW shares etc.): 'y' se
+            volete montare partizioni di rete da server Windows (9x o NT).
+            NON serve per creare un server Samba (per questo serve appunto
+            Samba), ma solo per accedere ad altre partizioni</P>
+          </LI>
+
+          <LI>
+            <P>NCP filesystem support (to mount NetWare volumes): 'y' se
+            volete montare partizioni di rete da server Novel NetWare,
+            altrimenti 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="PARTITIONTYPES">3.2.32. Partition
+        Types</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="NATIVELANGUAGE">3.2.33. Native Language
+        Support</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne a quelle
+            seguenti:</P>
+          </LI>
+
+          <LI>
+            <P>Codepage 437 (United States, Canada): 'm'</P>
+          </LI>
+
+          <LI>
+            <P>Codepage 850 (Europe): 'm'</P>
+          </LI>
+
+          <LI>
+            <P>NLS ISO 8859-1: 'm'</P>
+          </LI>
+
+          <LI>
+            <P>NLS ISO 8859-15: 'm'</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="CONSOLEDRIVERS">3.2.34. Console
+        drivers</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte tranne a quelle
+            seguenti:</P>
+          </LI>
+
+          <LI>
+            <P>VGA text console: 'y'</P>
+          </LI>
+
+          <LI>
+            <P>Video mode selection support: 'y' se volete usare il
+            framebuffer (per accedere alle schede video VESA non supportate
+            altrimenti e per avere un pinguino al boot ;-) ). Serve comunque
+            un X-Server</P>
+          </LI>
+
+          <LI>
+            <P>Support for frame buffer devices (EXPERIMENTAL): 'y' se volete
+            attivare il framebuffer</P>
+          </LI>
+
+          <LI>
+            <P>VESA VGA graphics console: 'y' se volete attivare il
+            framebuffer</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="SOUNDSUBSYSTEM">3.2.35. Sound</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tuttetranne a quelle
+            seguenti:</P>
+          </LI>
+
+          <LI>
+            <P>Sound card support: 'm' se avete una scheda audio, e
+            selezionate il driver opportuno</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="LOWLEVELSOUND">3.2.36. Additional low
+        level sound drivers</A></H2>
+
+        <UL>
+          <LI>
+            <P>[...VARIE]: in genere, 'n' a tutte, o selezionate il driver
+            opportuno</P>
+          </LI>
+        </UL>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="KERNELHACKING">3.2.37. Kernel
+        hacking</A></H2>
+
+        <UL>
+          <LI>
+            <P>Magic SysRq key: 'n'</P>
+          </LI>
+        </UL>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "prerequisitikernel.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "compilazioneinstallazione.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Prerequisiti</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "kernel.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Compilazione e
+          installazione</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

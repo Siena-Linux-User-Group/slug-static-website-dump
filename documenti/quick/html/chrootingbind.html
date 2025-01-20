@@ -1,0 +1,678 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Chrooting Bind</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="DNS" href="dns.html">
+    <LINK rel="PREVIOUS" title="Configurazione di Bind" href=
+    "configurazionebind.html">
+    <LINK rel="NEXT" title="Wwwoffle" href="wwwoffle.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "configurazionebind.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 10.
+          DNS</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "wwwoffle.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CHROOTINGBIND">10.2. Chrooting Bind</A></H1>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>La trattazione del CHROOT si riferisce <B class=
+              "KEYCAP">esclusivamente</B> a <SPAN class="APPLICATION">BIND
+              v8.X</SPAN>!</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P>Creare un ambiente <B class="KEYCAP">chroot</B> per un qualche
+      servizio/demone significa creargli un mini filesystem, su cui si
+      applicherà il comando <B class="COMMAND">chroot</B>, che renderà la
+      directory che lo contiene la sua directory root <TT class=
+      "FILENAME">/</TT>: se anche riuscissero a violare il servizio, si
+      ritroverebbero un sistema minimo in cui potranno fare ben poco. Di
+      solito si assegnano i file in questa directory a un utente creato
+      appositamente e senza alcun privilegio. Per portare il vostro <B class=
+      "KEYCAP">Bind</B> in un ambiente chroot, dovrete ricompilare dai
+      sorgenti... quindi dovrete avere tutti i tool e librerie necessarie,
+      fate riferimento alla documentazione presente nei sorgenti di <B class=
+      "KEYCAP">Bind</B>, che potete e dovete scaricare da: <A href=
+      "http://www.isc.org/bind.html" target=
+      "_top">http://www.isc.org/bind.html</A>, cercate il file <TT class=
+      "FILENAME">bind-src.tar.gz</TT>. Per prima cosa create la struttura
+      delle directory che accoglierà il vostro nuovo e fiammante Dns. Io ho
+      usato <TT class="FILENAME">/chroot/named/</TT>, con la seguente
+      struttura risultante:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+  /chroot
+    +-- /named
+          +-- /bin
+          +-- /dev
+          +-- /etc
+                +-- /bind          
+          +-- /lib
+          +-- /var
+                +-- /run
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Quindi date i seguenti comandi:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+mkdir /chroot
+mkdir /chroot/named
+mkdir /chroot/named/bin
+mkdir /chroot/named/dev
+mkdir /chroot/named/etc
+mkdir /chroot/named/lib
+mkdir /chroot/named/etc/bind
+mkdir /chroot/named/var
+mkdir /chroot/named/var/run
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ora creiamo l'utente e il gruppo, io ho usato UID e GID 200, che
+      sulla mia <B class="KEYCAP">Debian</B> erano liberi, voi controllate
+      che effettivamente sul vostro sistema non siano già assegnati, e <B
+      class="KEYCAP">fate attenzione quando usate la redirezione!!! Se vi
+      scappa un singolo &gt; invece di &gt;&gt;, potete dire addio ai vostri
+      utenti e gruppi!!!</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+echo 'named:x:200:200:Nameserver:/chroot/named:/bin/false' &gt;&gt; /etc/passwd
+echo 'named:x:200:' &gt;&gt; /etc/group
+echo 'named:x:200:' &gt; /chroot/named/etc/group
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ora copiate i file della precedente configurazione di <SPAN class=
+      "APPLICATION">bind</SPAN> nella nuova directory (se avete usato i miei
+      file, vanno tutti in <TT class="FILENAME">/chroot/named/etc/bind/</TT>,
+      tranne <TT class="FILENAME">named.conf</TT> che va in <TT class=
+      "FILENAME">/chroot/named/etc/</TT>). In seguito quest'ultimo file andrà
+      modificato in minima parte per indicare i nuovi percorsi.</P>
+
+      <P>Siccome vorrete dei bei log, se non avete una versione recente di
+      <SPAN class="APPLICATION">syslogd</SPAN> che supporti l'opzione <TT
+      class="PARAMETER"><I>-a</I></TT> (non dovreste avere problemi con le
+      moderne distribuzioni, ma comunque controllate la manpage di syslogd
+      per accertarvene) in modo da poter fare ascoltare il vostro demone
+      syslog già presente anche su un altro socket, avete a questo punto due
+      strade da seguire: installare <SPAN class=
+      "APPLICATION">holelogd</SPAN>, prelevabile presso: <A href=
+      "ftp://ftp.obtuse.com/pub/utils/utils-1.0.tar.gz" target=
+      "_top">ftp://ftp.obtuse.com/pub/utils/utils-1.0.tar.gz</A>,
+      configurandolo seguendo le sue istruzioni e avviandolo dallo script con
+      cui avviate <SPAN class="APPLICATION">bind</SPAN>, prima di questo
+      naturalmente, con un comando simile al seguente:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+daemon /usr/local/sbin/holelogd /chroot/named/dev/log
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>(guardate negli script alla fine, le righe sono commentate), oppure
+      configurare <SPAN class="APPLICATION">bind</SPAN> per fare il log su
+      file invece che via <SPAN class="APPLICATION">syslog</SPAN>.</P>
+
+      <P>Facciamo appartenere i file all'utente creato in precedenza:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+chown -R named:named /chroot/named/etc/bind
+chown named:named /chroot/named/var/run
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e copiamo nelle directory di pertinenza alcuni file di supporto,
+      come la libreria <B class="KEYCAP">C</B>, ricreando anche la sua
+      cache:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cd /chroot/named/lib
+cp -p /lib/libc-2.*.so .
+ln -s libc-2.*.so libc.so.6
+cp -p /lib/ld-2.*.so .
+ln -s ld-2.*.so ld-linux.so.2
+cp /sbin/ldconfig /chroot/named/bin/
+chroot /chroot/named /bin/ldconfig -v
+cp /etc/localtime /chroot/named/etc/
+mknod /chroot/named/dev/null c 1 3
+chmod 666 /chroot/named/dev/null
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Con questo avete finito di preparare il filesystem base, ora
+      passiamo alla configurazione e compilazione dei sorgenti, nel momento
+      in cui scrivo erano disponibili in versione 8.2.4:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+mkdir /usr/local/src/bind
+cd /usr/local/src/bind
+tar xvzf /percorso/dei/sorgenti/bind-src.tar.gz
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>dovete modificare alcune opzioni nel file <TT class=
+      "FILENAME">src/port/linux/Makefile.set</TT>, in particolare cambiare la
+      riga:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+DESTRUN=/var/run
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>in modo che diventi:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+DESTRUN=/chroot/named/var/run
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e cambiare tutti i percorsi <TT class="FILENAME">/usr/...</TT> in
+      <TT class="FILENAME">/usr/local/...</TT>, nello stesso file. Ora
+      modificate il file <TT class="FILENAME">src/bin/named/named.h</TT>,
+      cercando la riga:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#include "pathnames.h"
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e trasformandola come segue, commentandola e aggiungendo altre cose
+      che serviranno durante la compilazione:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+/*
+#include "pathnames.h"
+*/
+#define _PATH_NDCSOCK    "/var/run/ndc"
+#define _PATH_CONF       "/etc/named.conf"
+#define _PATH_DEBUG      "named.run"
+#define _PATH_XFERTRACE  "xfer.trace"
+#define _PATH_XFERDDT    "xfer.ddt"
+#define _PATH_XFER       "/bin/named-xfer"
+#define _PATH_DUMPFILE   "named_dump.db"
+#define _PATH_STATS      "named.stats"
+#define _PATH_MEMSTATS   "named.memstats"
+#define _PATH_PIDFILE    "/var/run/named.pid"
+#define _PATH_TMPXFER    "xfer.ddt.XXXXXX"
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>A questo punto potete compilare:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cd src
+make clean
+make depend
+make
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">NON</B> date il <B class="COMMAND">make
+      install</B>, in quanto a questo punto dovete rimuovere la vostra
+      precedente installazione di <SPAN class="APPLICATION">bind</SPAN>!
+      Provvedete, usando il metodo adatto alla vostra distribuzione, ma solo
+      DOPO aver fatto una copia di backup dello script che viene usato per
+      avviare il DNS, che dopo modificheremo per adattarlo alla nuova
+      situazione. Di solito questo script è <TT class=
+      "FILENAME">/etc/rc.d/init.d/named</TT> nelle distribuzioni tipo <B
+      class="KEYCAP">RedHat</B> o <B class="KEYCAP">Mandrake</B>, o <TT
+      class="FILENAME">/etc/init.d/bind</TT> in <B class="KEYCAP">Debian</B>.
+      Ora potete dare il <B class="COMMAND">make install</B> per installare i
+      tool accessori. Gli unici file binari che dovranno finire nell'ambiente
+      chroot sono <TT class="FILENAME">named</TT> e <TT class=
+      "FILENAME">named-xfer</TT>, e per sicurezza facciamo in modo che il
+      programma <TT class="FILENAME">named</TT> appena installato in <TT
+      class="FILENAME">/usr/local/sbin/</TT> non possa essere avviato:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cp src/bin/named/named /chroot/named/bin
+cp src/bin/named-xfer/named-xfer /chroot/named/bin
+chmod 000 /usr/local/sbin/named
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ora cercate lo script di avvio del demone <SPAN class=
+      "APPLICATION">syslogd</SPAN> (di solito nella directory <TT class=
+      "FILENAME">/etc/init.d/</TT> o simile) e modificatelo nelle opzioni di
+      avvio, in modo da aggiungere a quelle giè presenti (di solito "-m 0")
+      anche l'opzione:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+-a /chroot/named/dev/log
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e riavviate <SPAN class="APPLICATION">syslogd</SPAN>. Dopo il suo
+      riavvio, dovreste trovare il nuovo file <TT class=
+      "FILENAME">/chroot/named/dev/log</TT> con caratteristiche simili alle
+      seguenti:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+srw-rw-rw-   1 root     root            0 Mar 13 20:58 log
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ora modifichiamo lo script di avvio di <SPAN class=
+      "APPLICATION">bind</SPAN> di cui prima avete fatto una copia di riserva
+      (perché l'avete fatto, vero? ;-) ). Seguono 2 versioni di script, per
+      <B class="KEYCAP">RedHat</B> e <B class="KEYCAP">Debian</B>, se usate
+      altre distribuzioni, adattateli, tenendo presente che le opzioni da
+      aggiungere sono: <TT class="PARAMETER"><I>-t /chroot/named -u named -g
+      named</I></TT>.</P>
+
+      <P><B class="KEYCAP">=== Script di avvio per RedHat ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+#
+# named           This shell script takes care of starting and stopping
+#                 named (BIND DNS server).
+#
+# chkconfig: 345 55 45
+# description: named (BIND) is a Domain Name Server (DNS) \
+# that is used to resolve host names to IP addresses.
+# probe: true
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] &amp;&amp; exit 0
+
+[ -f /chroot/named/bin/named ] || exit 0
+
+[ -f /chroot/named/etc/named.conf ] || exit 0
+
+#echo -n "Starting holelogd: "
+#daemon /usr/local/sbin/holelogd /chroot/named/dev/log
+#echo "."
+
+# See how we were called.
+case "$1" in
+  start)
+        # Start daemons.
+        echo -n "Starting named: "
+        daemon /chroot/named/bin/named -u named -g named -t /chroot/named
+        echo
+        touch /var/lock/subsys/named
+        ;;
+  stop)
+        # Stop daemons.
+        echo -n "Shutting down named: "
+        killproc named
+        rm -f /var/lock/subsys/named
+        echo
+        ;;
+  status)
+        /usr/local/sbin/ndc status
+        exit $?
+        ;;
+  restart)
+        /usr/local/sbin/ndc -n /chroot/named/bin/named "restart -u named -g named -t /chroot/named"
+        exit $?
+        ;;
+  reload)
+        /usr/local/sbin/ndc reload
+        exit $?
+        ;; 
+  probe)
+        # named knows how to reload intelligently; we don't want linuxconf
+        # to offer to restart every time
+        /usr/local/sbin/ndc reload &gt;/dev/null 2&gt;&amp;1 || echo start
+        exit 0
+        ;;
+
+  *)
+        echo "Usage: named {start|stop|status|restart}"
+        exit 1
+esac
+
+exit 0
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== Script di avvio per Debian ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+test -x /chroot/named/bin/named || exit 0
+
+#echo -n "Starting holelogd: "
+#daemon /usr/local/sbin/holelogd /chroot/named/dev/log
+#echo "."
+
+case "$1" in
+  start)
+    echo -n "Starting domain name service: named"
+    start-stop-daemon --start --quiet  \
+        --exec /chroot/named/bin/named -- -g named -u named -t /chroot/named
+    echo "."    
+    ;;
+
+  stop)
+    echo -n "Stopping domain name service: named"
+    start-stop-daemon --stop --quiet --pidfile /chroot/named/var/run/named.pid  \
+        --exec /chroot/named/bin/named -- -g named -u named -t /chroot/named
+    echo "."    
+    ;;
+
+  restart)
+    /usr/local/sbin/ndc -n /chroot/named/bin/named "restart -u named -g named -t /chroot/named"
+    ;;
+    
+  reload)
+    /usr/local/sbin/ndc reload
+    ;;
+
+  force-reload)
+        $0 restart
+    ;;
+
+  *)
+    echo "Usage: /etc/init.d/bind {start|stop|reload|restart|force-reload}" &gt;&amp;2
+    exit 1
+    ;;
+esac
+
+exit 0
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Le ultime modifiche riguardano il file <TT class=
+      "FILENAME">/chroot/named/etc/named.conf</TT>, per indicare le nuove
+      posizioni dei file. Ecco il file modificato:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+options {
+    directory "/etc/bind";
+    pid-file "/var/run/named.pid";
+    named-xfer "/bin/named-xfer";
+    #query-source address * port 53;
+    allow-transfer {
+        127.0.0.1;
+        192.168.0.0/24;
+    };
+    allow-query {
+        127.0.0.1;
+        192.168.0.0/24;
+    };
+    forward first;
+    forwarders {
+        193.70.152.25;
+        193.70.192.25;
+        195.130.224.18;
+        195.130.225.129;
+    };
+};
+
+// extra block for ndc to work in chroot jail - maybe redundant
+controls {
+    unix "/var/run/ndc" perm 0600 owner 0 group 0;
+};
+
+// reduce log verbosity on issues outside our control
+logging {
+    category lame-servers { null; };
+    category cname { null; };
+};
+
+// prime the server with knowledge of the root servers
+zone "." {
+        type hint;
+        file "/etc/bind/db.root";
+};
+
+// be authoritative for the localhost forward and reverse zones, and for
+// broadcast zones as per RFC 1912
+zone "localhost" {
+        type master;
+        file "/etc/bind/db.local";
+};
+
+zone "127.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.127";
+};
+
+zone "0.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.0";
+};
+
+zone "255.in-addr.arpa" {
+        type master;
+        file "/etc/bind/db.255";
+};
+
+// local area network
+zone "mrshark.home" {
+    type master;
+    file "/etc/bind/mrshark.home";
+};
+zone "0.168.192.in-addr.arpa" {
+    type master;
+    file "/etc/bind/mrshark.home.rev";
+};
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Con questo, dopo aver riavviato, dovreste avere il vostro DNS
+      funzionante in ambiente Chroot! Un ultimo consiglio: ogni tanto saltano
+      fuori bug anche rilevanti in questo software, quindi vorrete
+      sicuramente aggiornare all'ultima versione disponibile per risolverli.
+      NON dovete rifare tutto da capo! Dovete seguire solo i passi per la
+      modifica dei sorgenti di <SPAN class="APPLICATION">bind</SPAN>, la sua
+      ricompilazione e la sua installazione/copia di file nell'ambiente
+      Chroot. Il resto dei passaggi vanno fatti solo alla prima
+      installazione! ;-) Per provare che tutto sia andato bene, controllate
+      nei file di <SPAN class="APPLICATION">syslog</SPAN> ci siano le
+      chiamate di avvio di <SPAN class="APPLICATION">named</SPAN> e
+      dell'avvenuto chroot e cambio di UID/GID, e usate <B class=
+      "COMMAND">lsof</B> per controllare che i socket relativi al DNS
+      appartengono agli UID/GID del vostro <SPAN class=
+      "APPLICATION">named</SPAN>. Dovreste avere un output <EM>simile</EM> al
+      seguente:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+Aug 17 07:46:12 pingu named[1066]: starting (/etc/named.conf).  named 8.2.4-REL Thu Jul 12 16:14:49 CEST 2001 ^Iroot@pingu:/usr/local/src/bind-8.2.4/src/bin/named
+Aug 17 07:46:12 pingu named[1066]: hint zone "" (IN) loaded (serial 0)
+Aug 17 07:46:12 pingu named[1066]: master zone "localhost" (IN) loaded (serial 1)
+Aug 17 07:46:12 pingu named[1066]: master zone "127.in-addr.arpa" (IN) loaded (serial 1)
+Aug 17 07:46:12 pingu named[1066]: master zone "0.in-addr.arpa" (IN) loaded (serial 1)
+Aug 17 07:46:12 pingu named[1066]: master zone "255.in-addr.arpa" (IN) loaded (serial 1)
+Aug 17 07:46:12 pingu named[1066]: master zone "mrshark.home" (IN) loaded (serial 1)
+Aug 17 07:46:12 pingu named[1066]: master zone "0.168.192.in-addr.arpa" (IN) loaded (serial 1)
+Aug 17 07:46:12 pingu named[1066]: listening on [127.0.0.1].53 (lo)
+Aug 17 07:46:12 pingu named[1066]: listening on [192.168.0.1].53 (eth0)
+Aug 17 07:46:12 pingu named[1066]: listening on [151.26.33.74].53 (ppp0)
+Aug 17 07:46:12 pingu named[1066]: Forwarding source address is [0.0.0.0].1049
+Aug 17 07:46:12 pingu named[1067]: chrooted to /chroot/named
+Aug 17 07:46:12 pingu named[1067]: group = named
+Aug 17 07:46:12 pingu named[1067]: user = named
+Aug 17 07:46:12 pingu named[1067]: Ready to answer queries.
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "configurazionebind.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "wwwoffle.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Configurazione di
+          Bind</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "dns.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Wwwoffle</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

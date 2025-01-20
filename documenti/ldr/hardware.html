@@ -1,0 +1,1718 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr16.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr18.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr18.html">[successivo]</A>
+<A HREF="ldr16.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 14. &nbsp; <A NAME="title590"></A><A NAME="anchor631"></A>Hardware</H1>
+
+<H2>14.1 &nbsp; <A NAME="title591"></A><A NAME="anchor632"></A>
+Processori</H2>
+
+<P><STRONG>14.1.1)&nbsp;&nbsp;<A NAME="title592"></A><A NAME="anchor633"></A>
+ Come si comporta il processore <A NAME="index2654"></A>AMD K6 con Linux? <A NAME="index2655"></A> <A NAME="index2656"></A> </STRONG></P>
+
+<P>Il K6 III sembra avere dei problemi con i <A NAME="index2657"></A>kernel 2.0.x e i primi 2.2.x.</P>
+
+<H2>14.2 &nbsp; <A NAME="title593"></A><A NAME="anchor634"></A>
+Monitor</H2>
+
+<P><STRONG>14.2.1)&nbsp;&nbsp;<A NAME="title594"></A><A NAME="anchor635"></A>
+ Come si pu&ograve; impostare il risparmio energetico per il monitor? <A NAME="index2658"></A> <A NAME="index2659"></A> </STRONG></P>
+
+<P>Occorre inserire nel file <CODE>~/.xinitrc</CODE>, prima della riga deputata al caricamento del gestore delle finestre, le righe:</P>
+
+<PRE>xset dpms 420 540 900
+xset +dpms</PRE>
+
+<H2>14.3 &nbsp; <A NAME="title595"></A><A NAME="anchor636"></A>
+Dispositivi video (scheda, telecamera, ecc.)</H2>
+
+<P><STRONG>14.3.1)&nbsp;&nbsp;<A NAME="title596"></A><A NAME="anchor637"></A>
+ Sono supportate le schede TV e le schede di acquisizione video in GNU/Linux? <A NAME="index2660"></A> <A NAME="index2661"></A> <A NAME="index2662"></A> <A NAME="index2663"></A> <A NAME="index2664"></A> </STRONG></P>
+
+<P>Attualmente le schede TV con i <A NAME="index2665"></A>chipset <SAMP>BT8xx</SAMP> sono quasi tutte compatibili.</P>
+
+<P>Per informazioni sui <A NAME="index2666"></A>driver <SAMP>BTTV</SAMP>, fare riferimento alla pagina: &lt;<EM><A HREF="http://www.metzlerbros.de/bttv.html">http://www.metzlerbros.de/bttv.html</A></EM>&gt;</P>
+
+<P>Tra i programmi per vedere la televisione e catturare le immagini troviamo <A NAME="index2667"></A>XawTV <SUP><A HREF="hardware.html#footnote1" NAME="footnote-ref1">(1)</A></SUP> reperibile presso &lt;<EM><A HREF="http://bytesex.org/xawtv/index.html">http://bytesex.org/xawtv/index.html</A></EM>&gt;.</P>
+
+<P>Ovviamente la risoluzione che offrono &egrave; quella di uno schermo TV</P>
+
+<P>Sul fronte delle schede Matrox sono nati dei progetti che stanno dando ottimi risultati. Per la <A NAME="index2668"></A>Rainbow Runner infatti si possono usare i <A NAME="index2669"></A>driver scaricabili dal sito &lt;<EM><A HREF="http://www.cis.ohio-state.edu/~cmcurtin/dvd/mgavideo/">http://www.cis.ohio-state.edu/~cmcurtin/dvd/mgavideo/</A></EM>&gt;.</P>
+
+<P>Per quello che la riguarda la Marvel si possono avere informazioni al sito: &lt;<EM><A HREF="ftp://ftp.rwii.com/pub/linux/system/Meteor/meteorman.html">ftp://ftp.rwii.com/pub/linux/system/Meteor/meteorman.html</A></EM>&gt;.</P>
+
+<P>Esistono anche progetti (che stanno portando i loro frutti) per schede di qualit&agrave; superiore.  Per le schede <A NAME="index2670"></A>Mir&ograve; <A NAME="index2671"></A>DC1 e <A NAME="index2672"></A> DC1Plus le informazioni sono reperibili presso: &lt;<EM><A HREF="http://www.net4you.net/users/scherr/dc1plus/index.html">http://www.net4you.net/users/scherr/dc1plus/index.html</A></EM>&gt;. Per la <A NAME="index2673"></A>DC30: &lt;<EM><A HREF="http://stud3.tuwien.ac.at/~e8125426/dc30/">http://stud3.tuwien.ac.at/~e8125426/dc30/</A></EM>&gt;.</P>
+
+<P>Anche per <A NAME="index2674"></A>Iomega <A NAME="index2675"></A>BUZZ esistono i <A NAME="index2676"></A>driver: &lt;<EM><A HREF="http://www.lysator.liu.se/~gz/buz/">http://www.lysator.liu.se/~gz/buz/</A></EM>&gt;.</P>
+
+<P>Esiste poi un hardware dedicato a GNU/Linux: la scheda <A NAME="index2677"></A>LML33 prodotto da <A NAME="index2678"></A>LinuxMedialabs: &lt;<EM><A HREF=" http://www.linuxmedialabs.com/"> http://www.linuxmedialabs.com/</A></EM>&gt;.</P>
+
+<P>Per maggiori dettagli sui <A NAME="index2679"></A>driver per la cattura dei fotogrammi occorre tenere sott'occhio il sito: &lt;<EM><A HREF="http://www.atlantek.com.au/">http://www.atlantek.com.au/</A></EM>&gt;.</P>
+
+<P>Tutti i progetti sono raccolti nel <A NAME="index2680"></A>Video4Linux: &lt;<EM><A HREF="http://roadrunner.swansea.uk.linux.org/v4l.shtml">http://roadrunner.swansea.uk.linux.org/v4l.shtml</A></EM>&gt;.</P>
+
+<P>Da tenere sotto controllo gli sviluppi di <SAMP>Trinity</SAMP> (licenza: GPL) &lt;<EM><A HREF="http://members.nbci.com/NicholasF/"&gt; e ">http://members.nbci.com/NicholasF/"&gt; e </A></EM>&gt;<SAMP>Vstream</SAMP> (licenza: GPL) &lt;<EM><A HREF="http://www.ee.up.ac.za/~justin/bttv/">http://www.ee.up.ac.za/~justin/bttv/</A></EM>&gt;</P>
+
+<P>Per chi ha bisogno di sottotitolare i propri film, &egrave; possibile utilizzare <SAMP>b@k@sub</SAMP> (licenza: GPL) reperibile presso: &lt;<EM><A HREF="http://www.allusion.net/bakasub/">http://www.allusion.net/bakasub/</A></EM>&gt;.</P>
+
+<P><STRONG>14.3.2)&nbsp;&nbsp;<A NAME="title597"></A><A NAME="anchor638"></A>
+ Si pu&ograve; utilizzare la scheda video <A NAME="index2681"></A>Matrox G200 AGP in GNU/Linux? <A NAME="index2682"></A> <A NAME="index2683"></A> </STRONG></P>
+
+<P>Per la scheda video <A NAME="index2684"></A>Matrox <A NAME="index2685"></A>G200, nelle versioni da 8 e da 16&nbsp;Mibyte di RAM, occorre aprire il file <CODE>/etc/X11/XF86Config</CODE> (se non risiede in questa directory cercalo nel <A NAME="index2686"></A>file&nbsp;system perch&eacute; purtroppo la sua posizione varia da distribuzione a distrubuzione) ed inserire questa sezione:</P>
+<BLOCKQUOTE>
+
+<PRE> Section "Device"
+     Identifier  "G200"
+     VendorName  "Matrox"
+     BoardName   "AGP" 
+     VideoRam 8192
+ EndSection</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>14.3.3)&nbsp;&nbsp;<A NAME="title598"></A><A NAME="anchor639"></A>
+ Si pu&ograve; utilizzare la scheda video <A NAME="index2687"></A>SiS 6326 in GNU/Linux? <A NAME="index2688"></A> <A NAME="index2689"></A> </STRONG></P>
+
+<P>La scheda <A NAME="index2690"></A>SiS 6326 &egrave; gestita solo al 50% delle possibilit&agrave; almeno fino all'<A NAME="index2691"></A>XFree86 3.3.5. Per gestire questa scheda in maniera opportuna bisogna aggiungere in <CODE>XF86Config</CODE>, nella sezione <SAMP>Device</SAMP>:</P>
+<BLOCKQUOTE>
+
+<PRE>Section "Device"
+    Identifier  "Silicon Integrated Systems [SiS]|86C326"
+    VendorName  "Unknown"
+    BoardName   "Unknown"
+    #VideoRam    4096 
+    Option "no_accel" 
+    Option "sw_cursor" 
+    Option "no_imageblt"
+    # Option "no_bitblt"
+    Option "fast_vram"
+    Option "pci_burst_on"
+EndSection</PRE>
+
+</BLOCKQUOTE>
+
+<P>Qualora si riscontrassero problemi, si prover&agrave; a eliminare il commento (#) davanti a <SAMP>no_bitblt</SAMP>. </P>
+
+<H2>14.4 &nbsp; <A NAME="title599"></A><A NAME="anchor640"></A>
+ Tastiera <A NAME="index2692"></A> </H2>
+
+<P><STRONG>14.4.1)&nbsp;&nbsp;<A NAME="title600"></A><A NAME="anchor641"></A>
+ Come si possono utilizzare i tasti accessori della tastiera in GNU/Linux? <A NAME="index2693"></A> <A NAME="index2694"></A> </STRONG></P>
+
+<P>Alcune tastiere dispongono di parecchi tasti aggiuntivi. In ambiente MS-Windows parte di questi tasti servono per controllare l'audio e il CD-ROM. Altri sono programmabili per potere avviare determinati programmi.</P>
+
+<P>Con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>showkey -k</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>&egrave; possibile controllare quali tasti sono gi&agrave; associati a un codice tasto: premendo i vari pulsanti &egrave; possibile rilevare il numero decimale corrispondente<SUP><A HREF="hardware.html#footnote2" NAME="footnote-ref2">(2)</A></SUP>.</P>
+
+<P>Se alcuni tasti non restituiscono il codice, occorrer&agrave; ripetere l'operazione con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>showkey -s</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>I tasti accessori di MS-Windows infatti risultano in genere assegnati a 125, 126, 127, mentre i tasti aggiuntivi (sole nascente, mezza luna, e accensione) sono generalmente muti. Con showkey -s si possono ottenere invece da questi ultimi tasti i seguenti valori:</P>
+<BLOCKQUOTE>
+
+<PRE>0xe0 0x63 
+0xe0 0xe3 </PRE>
+
+</BLOCKQUOTE>
+
+<P>per la pressione e rilascio del tasto col sole nascente,</P>
+
+<PRE>0xe0 0x5f 
+0xe0 0xdf </PRE>
+
+<P>per la pressione e rilascio del tasto con la mezza luna, </P>
+
+<PRE>0xe0 0x5e 
+0xe0 0xde </PRE>
+
+<P>per la pressione e rilascio del tasto col simbolo di accensione.</P>
+
+<P>Per assegnare un codice a tali tasti, si impartir&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>setkeycodes <VAR>scancode</VAR> <VAR>keycode</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Es.:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>setkeycodes e063 122</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Attenzione: non si deve utilizzare una mappa della tastiera gi&agrave; utilizzata. Meglio controllare prima l'organizzazione della tastiera attiva.</P>
+
+<P>Si proceder&agrave; poi a modificare la mappa della tastiera per assegnare le funzioni che desiderate ai nuovi tasti. Si possono anche inserire delle stringhe contenenti i comandi da eseguire. Se ad esempio si desidera spegnere la macchina col tasto accensione, si dovr&agrave; modificare il file <CODE>/etc/kbd/default.map.gz</CODE> (o il file relativo alla mappa della tastiera utilizzata nella propria distribuzione) nel seguente modo:</P>
+
+<PRE>[...]
+keycode 124 = F69
+[...]</PRE>
+
+<P>e pi&ugrave; avanti:</P>
+
+<PRE>[...]
+string F69 = "shutdown -h 1 &amp;\n"
+[...]</PRE>
+
+<P>&egrave; stato inserito un ritardo di un minuto in modo da avere il tempo di cancellare il processo di spegnimento della macchina in caso di pressioni accidentali. Baster&agrave; spegnere il <A NAME="index2695"></A>monitor e andarsene, se &egrave; attivo il supporto per la gestione avanzata dell'alimentazione (<EM>APM</EM>) nel <A NAME="index2696"></A>kernel.</P>
+
+<P>N.B.: si devono concludere le stringhe con &laquo;\n&raquo;. Con questa procedura la pressione di un tasto speciale viene interpretata come la battitura della stringa corrispondente, e come per ogni comando, &egrave; necessario impartire anche il ritorno carrello (invio).</P>
+
+<P><STRONG>14.4.2)&nbsp;&nbsp;<A NAME="title601"></A><A NAME="anchor642"></A>
+ Come si imposta la tastiera italiana? <A NAME="index2697"></A> <A NAME="index2698"></A> <A NAME="index2699"></A> <A NAME="index2700"></A> </STRONG></P>
+
+<P>Ecco i passaggi da seguire per impostare la tastiera italiana nella propria macchina. Occorre innanzitutto posizionarsi all'interno della directory <CODE>/usr/lib/kbd/keymaps/</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cd /usr/lib/kbd/keymaps</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>qui sono presenti diverse sottodirectory (a seconda della piattaforma di utilizzo). Occorre posizionarsi nella directory corrispondente alla propria piattaforma. Nel caso di piattaforma <A NAME="index2701"></A>Intel la directory sar&agrave; <CODE>i386</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cd i386</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>In questa directory &egrave; presente un'ulteriore struttura che presenta tante sottodirectory quanti sono i modelli di tastiera. In genere, il modello pi&ugrave; diffuso &egrave; <SAMP>qwerty</SAMP><SUP><A HREF="hardware.html#footnote3" NAME="footnote-ref3">(3)</A></SUP>.</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cd qwerty</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>a questo punto, tramite il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ls it*</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>&egrave; possibile verificare che esista il file di configurazione corrispondente alla lingua italiana. Le scelte dovrebbero in genere ricadere tra <CODE>it-ibm.kmap.gz</CODE>, <CODE>it.kmap.gz</CODE> e <CODE>it2.kmap.gz</CODE>. Di solito <CODE>it.kmap.gz</CODE> dovrebbe andar bene, salvo casi particolari. Per installare tale tipo di tastiera, eseguire il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>loadkeys it</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>che restituir&agrave; il seguente <A NAME="index2702"></A>output:</P>
+
+<PRE>Loading it.kmap.gz</PRE>
+
+<P>Se volessimo verificare l'impostazione della tastiera si potr&agrave; usare il comando <SAMP>dumpkeys</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dumpkeys</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>o meglio, redirigere l'<A NAME="index2703"></A>output di tale comando in un file, visto che &egrave; piuttosto prolisso:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> dumpkeys &gt; <VAR>tastiera.txt</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote4" NAME="footnote-ref4">(4)</A></SUP></P>
+
+<P>questi passi dovrebbero consentire di configurare la tastiera per la console testuale.</P>
+
+<P>Per <A NAME="index2704"></A>X si dovr&agrave; modificare il file <CODE>/etc/X11/Xf86Setup</CODE>.</P>
+
+<P><STRONG>14.4.3)&nbsp;&nbsp;<A NAME="title602"></A><A NAME="anchor643"></A>
+ Come si impostano le tastiere estere? <A NAME="index2705"></A> <A NAME="index2706"></A> </STRONG></P>
+
+<P>Qualcuno sa come impostare le tastiera estere?</P>
+
+<P>La tastiera si imposta con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>loadkeys <VAR>nome-file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dove nome-file &egrave; il file di mappa della tastiera, normalmente reperibile nella directory <CODE>/usr/share/keytables/</CODE> o in <CODE>/usr/share/keymaps/</CODE>. Tali file hanno estensione <CODE>.map</CODE> o <CODE>.kmap</CODE> o <CODE>.kmap.gz</CODE> e hanno un nome abbastanza significativo, tipo <CODE>it.map</CODE>, <CODE>it2.map</CODE>, <CODE>us.kmap.gz</CODE>, <CODE>us-latin1.kmap.gz</CODE>, ecc.</P>
+
+<P><STRONG>14.4.4)&nbsp;&nbsp;<A NAME="title603"></A><A NAME="anchor644"></A>
+ &Egrave; possibile generare i caratteri accentati su una tastiera statunitense? <A NAME="index2707"></A> </STRONG></P>
+
+<P>Per quanto riguarda X la cosa &egrave; molto semplice, basta modificare il file <CODE>/etc/X11/XF86Config</CODE> (v. 3.3.x) mettendo la riga:</P>
+
+<PRE>XkbLauout "us_intl"</PRE>
+
+<P>Ecco un esempio di file:</P>
+<BLOCKQUOTE>
+
+<PRE> Section "Keyboard"
+    Protocol        "Standard"
+    AutoRepeat      500 30
+    LeftAlt         Meta
+    RightAlt        Meta
+    ScrollLock      Compose
+    RightCtl        Control
+    XkbKeycodes     "xfree86"
+    XkbTypes        "default"
+    XkbCompat       "default"
+    XkbSymbols      "us(pc102)"
+    XkbGeometry     "pc"
+    XkbRules        "xfree86"
+    XkbModel        "pc102"
+    XkbLayout       "us_intl"
+ EndSection</PRE>
+
+</BLOCKQUOTE>
+
+<P>Per quanto riguarda il terminale si pu&ograve; risolvere il problema utilizzando il file <CODE>us-acent.kmap.gz</CODE>.<SUP><A HREF="hardware.html#footnote5" NAME="footnote-ref5">(5)</A></SUP>. Con questa configurazione infatti se si vuole fare il carattere &laquo;&egrave;&raquo; baster&agrave; premere in sequenza [<KBD>`</KBD>] ed [<KBD>e</KBD>]. Non si &egrave; limitati inoltre ai caratteri accentati minuscoli ma &egrave; possibile generare:</P>
+
+<UL>
+
+<LI>
+
+<P> &laquo;&Egrave;&raquo; tramite la combinazione [<KBD>'</KBD>] ed [<KBD>E</KBD>]</P>
+</LI>
+
+<LI>
+
+<P> &laquo;&Egrave;&raquo; tramite la combinazione [<KBD>'</KBD>] ed [<KBD>E</KBD>]</P>
+</LI>
+
+<LI>
+
+<P> &laquo;&euml;&raquo; tramite la combinazione [<KBD>"</KBD>] ed [<KBD>e</KBD>]</P>
+</LI>
+
+<LI>
+
+<P> &laquo;&atilde;&raquo; tramite la combinazione [<KBD>~</KBD>] ed [<KBD>a</KBD>]</P>
+</LI>
+</UL>
+
+<H2>14.5 &nbsp; <A NAME="title604"></A><A NAME="anchor645"></A>
+Mouse</H2>
+
+<P><STRONG>14.5.1)&nbsp;&nbsp;<A NAME="title605"></A><A NAME="anchor646"></A>
+ Come si configura un mouse PS/2? <A NAME="index2708"></A> <A NAME="index2709"></A> </STRONG></P>
+
+<P>Il dispositivo per il mouse PS/2 &egrave; <CODE>/dev/psaux</CODE> al contrario dei dispositivi seriali che sono generalmente <CODE>/dev/ttyS<VAR>x</VAR></CODE> <SUP><A HREF="hardware.html#footnote6" NAME="footnote-ref6">(6)</A></SUP>.</P>
+
+<P>Segue una porzione del file <CODE>XF86Config</CODE> (X 3.3.x) che indica che si dispone di un mouse di tipo PS/2.</P>
+<BLOCKQUOTE>
+
+<PRE>Section "Pointer"
+        Device          "/dev/psaux"
+        Protocol        "PS/2"
+        Emulate3Buttons
+        ZAxisMapping    4 5
+EndSection</PRE>
+
+</BLOCKQUOTE>
+
+<P>Segue una porzione del file <CODE>XF86Config-4</CODE> (X 4.0.3) che indica che si dispone di un mouse di tipo PS/2.</P>
+<BLOCKQUOTE>
+
+<PRE>Section "InputDevice"
+        Identifier  "Mouse0"
+        Driver      "mouse"
+        Option      "Protocol" "PS/2"
+        Option      "Device" "/dev/mouse"
+        Option  "Emulate3Buttons" "yes"
+EndSection</PRE>
+
+</BLOCKQUOTE>
+
+<P><CODE>/dev/mouse</CODE> &egrave; un collegamento simbolico a <CODE>/dev/psaux</CODE>. Si pu&ograve; inserire direttamente tale file oppure creare il collegamento simbolico.</P>
+
+<P><STRONG>14.5.2)&nbsp;&nbsp;<A NAME="title606"></A><A NAME="anchor647"></A>
+ Come si abilita l'utilizzo della rotellina del mouse? <A NAME="index2710"></A> <A NAME="index2711"></A> <A NAME="index2712"></A> </STRONG></P>
+
+<P>Occorre utilizzare <A NAME="index2713"></A>imwheel <SUP><A HREF="hardware.html#footnote7" NAME="footnote-ref7">(7)</A></SUP>. La pagina di tale programma &egrave; &lt;<EM><A HREF="http://jonatkins.org/imwheel/">http://jonatkins.org/imwheel/</A></EM>&gt;. Il programma ora &egrave; in una forma sufficientemente stabile.</P>
+
+<P>Una volta installato l'eseguibile dovr&agrave; essere modificato il file di configurazione di X. La sezione <SAMP>Pointer</SAMP> in <CODE>/etc/X11/XF86Config</CODE> dovr&agrave; essere simile alla seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>Section "Pointer"
+    Protocol    "IntelliMouse"
+    Device      "/dev/mouse"
+    ZAxisMapping    4 5
+# When using XQUEUE, comment out the above two lines, and uncomment
+# the following line.
+
+#    Protocol   "Xqueue"
+
+# Baudrate and SampleRate are only for some Logitech mice
+
+#    BaudRate   9600
+#    SampleRate 150
+
+# Emulate3Buttons is an option for 2-button Microsoft mice
+# Emulate3Timeout is the timeout in milliseconds (default is 50ms)
+
+#    Emulate3Buttons
+#    Emulate3Timeout    50
+
+# ChordMiddle is an option for some 3-button Logitech mice
+
+#    ChordMiddle
+
+EndSection</PRE>
+
+</BLOCKQUOTE>
+
+<H2>14.6 &nbsp; <A NAME="title607"></A><A NAME="anchor648"></A>
+Disco fisso</H2>
+
+<P><STRONG>14.6.1)&nbsp;&nbsp;<A NAME="title608"></A><A NAME="anchor649"></A>
+ Perch&eacute; i <A NAME="index2714"></A>controller UltraATA non vengono riconosciuti? <A NAME="index2715"></A> <A NAME="index2716"></A> <A NAME="index2717"></A> </STRONG></P>
+
+<P>Se dovessero comparire messaggi di errore relativi all'interfaccia IDE/EIDE durante l'installazione di una distribuzione GNU/Linux, si deve ricordare che i dischi <A NAME="index2718"></A>UltraDMA 66 (detti anche <A NAME="index2719"></A>UltraATA) utilizzano un <A NAME="index2720"></A>controller speciale che permette una velocit&agrave; di trasferimento di picco di 66&nbsp;Mibyte/s, (<A NAME="index2721"></A>HPT366). I <A NAME="index2722"></A>kernel della serie 2.2.x non gestiscono questa caratteristica. Bisogna quindi utilizzare il <A NAME="index2723"></A>kernel 2.4.x o i <A NAME="index2724"></A>kernel sperimentali (l'<A NAME="index2725"></A>HPT366 &egrave; supportato dalla versione 2.3.12).</P>
+
+<P>Ne va da s&eacute; che tentando di installare una distribuzione che abbia un <A NAME="index2726"></A>kernel obsoleto su di un disco <A NAME="index2727"></A>UltraATA 66, questa operazione risulter&agrave; non possibile.</P>
+
+<H2>14.7 &nbsp; <A NAME="title609"></A><A NAME="anchor650"></A>
+CD-ROM e masterizzatori</H2>
+
+<P><STRONG>14.7.1)&nbsp;&nbsp;<A NAME="title610"></A><A NAME="anchor651"></A>
+ Come si configura un CD-ROM esterno parallelo in GNU/Linux? <A NAME="index2728"></A> <A NAME="index2729"></A> </STRONG></P>
+
+<P>Occorrer&agrave; fare un <A NAME="index2730"></A>collegamento simbolico che fa puntare <CODE>/dev/cdrom</CODE> alla porta <CODE>/dev/tty<VAR>??</VAR></CODE> della parallela.</P>
+
+<P><STRONG>14.7.2)&nbsp;&nbsp;<A NAME="title611"></A><A NAME="anchor652"></A>
+ Perch&eacute; ho problemi con il CD-ROM all'avvio del <A NAME="index2731"></A>server <A NAME="index2732"></A>X? <A NAME="index2733"></A> </STRONG></P>
+
+<P>Se all'atto di lanciare il <A NAME="index2734"></A>server grafico si riscontrasse sulla <A NAME="index2735"></A>console di avvio questo errore:</P>
+<BLOCKQUOTE>
+
+<PRE>VFS: busy inodes on changed media.
+Atapi device hdd:
+ 
+Error : Not ready -- (Sense key = 0x02)
+(reserved error code) -- ( osc = 0x3a,ascq =0x02)
+The failed "Test unit Ready" packet command was:
+"00 00 00 00 00 00 00 00 00 00 00 00 "</PRE>
+
+</BLOCKQUOTE>
+
+<P>Si dovr&agrave; provare a disabilitare l'utilit&agrave; di auto <A NAME="index2736"></A>montaggio in <A NAME="index2737"></A>Gnome Control Center.</P>
+
+<P><STRONG>14.7.3)&nbsp;&nbsp;<A NAME="title612"></A><A NAME="anchor653"></A>
+ Come si configura un masterizzatore connesso all'interfaccia IDE/EIDE? <A NAME="index2738"></A> <A NAME="index2739"></A> <A NAME="index2740"></A> <A NAME="index2741"></A> </STRONG></P>
+
+<P>Occorre ricompilare il <A NAME="index2742"></A>kernel con il supporto emulazione SCSI. All'atto di ricompilare il <A NAME="index2743"></A>kernel si dovr&agrave; selezionare (con <SAMP>Y</SAMP>) nella sezione <EM>Block Devices</EM> l'opzione <EM>SCSI emulation support</EM>. Questo vale per i <A NAME="index2744"></A>kernel della versione 2.2.x. Per quelli della versione 2.4.x l'opzione <EM>SCSI emulation support</EM> si trova nella sezione <EM>ATA/IDE/MFM/RLL support</EM> e poi in <EM>IDE, ATA and ATAPI Block devices</EM> come si vede in figura.</P>
+
+<TABLE ID="anchor654" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="39.jpg" ALT="figure/scsiemulation-24" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor654">14.1</A>. Il supporto per l'emulazione SCSI nei kernel 2.4.x. </P>
+
+</TD></TR>
+</TABLE>
+
+<P>Selezionare poi dal men&ugrave; principale <EM>SCSI support</EM> scegliendo (con <SAMP>Y</SAMP>), l'opzione <EM>SCSI generic support</EM> e <EM>SCSI CD-ROM support</EM>.</P>
+
+<P>Salvare e compilare il <A NAME="index2745"></A>kernel (se ovviamente gli altri parametri erano rimasti invariati). I CD-ROM connessi all'interfaccia IDE/EIDE verranno riconosciuti automaticamente. come periferiche SCSI e si dovr&agrave; modificare il file <CODE>/etc/fstab</CODE> di conseguenza. Dovr&agrave; risultare qualcosa del tipo:</P>
+<BLOCKQUOTE>
+
+<PRE>/dev/scd0 /cdrom iso9660 ro,noauto,user 0 0</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>14.7.4)&nbsp;&nbsp;<A NAME="title613"></A><A NAME="anchor655"></A>
+ Qual &egrave; il nome del dispositivo generalmente associato a un masterizzatore connesso all'interfaccia IDE/EIDE? <A NAME="index2746"></A> </STRONG></P>
+
+<P>Se il <A NAME="index2747"></A>kernel riconosce il masterizzatore connesso all'interfaccia IDE/EIDE, si deve ricordare che il dispositivo che lo identifica &egrave; in genere<CODE>/dev/hd<VAR>n</VAR></CODE>, dove <VAR>n</VAR> assume valori quali a, b, c, d, ecc. Dipende da dove &egrave; stato connesso, e segue la stessa regola dei dischi fissi:</P>
+
+<OL>
+
+<LI>
+
+<P>prima interfaccia IDE/EIDE:</P>
+
+<UL>
+
+<LI>
+
+<P><A NAME="index2748"></A>master = <CODE>/dev/hda</CODE></P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2749"></A>slave = <CODE>/dev/hdb</CODE></P>
+</LI>
+</UL>
+</LI>
+
+<LI>
+
+<P>seconda interfaccia IDE/EIDE:</P>
+
+<UL>
+
+<LI>
+
+<P><A NAME="index2750"></A>master = <CODE>/dev/hda</CODE></P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2751"></A>slave = <CODE>/dev/hdb</CODE></P>
+</LI>
+</UL>
+</LI>
+</OL>
+
+<P>Se non si &egrave; a conoscenza di come &egrave; stato connesso, si effettuino tentativi tralasciando i dispositivi che corrispondono ai dischi fissi e al CD-ROM.</P>
+
+<P>Es.: inserire un CD-ROM nel masterizzatore, creare la directory di innesto (<EM>mount</EM>):</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mkdir /mnt/masterizzatore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Si provi ora a <A NAME="index2752"></A>montare il CD-ROM presente nel masterizzatore:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -t iso9660 /dev/hdb /mnt/masterizzatore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>se vengono segnalati errori, provare con un'altra lettera. Per provare a vedere il contenuto della directory principale del CD-ROM nel masterizzatore impartire il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ls -la /mnt/masterizzatore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>se la directory appare vuota, allora il CD non &egrave; stato montato.</P>
+
+<P><STRONG>14.7.5)&nbsp;&nbsp;<A NAME="title614"></A><A NAME="anchor656"></A>
+ Come si utilizza in GNU/Linux un masterizzatore SCSI? <A NAME="index2753"></A> <A NAME="index2754"></A> </STRONG></P>
+
+<P>Per fare riconoscere al <A NAME="index2755"></A>kernel un masterizzatore SCSI, si dovranno includere le seguenti opzioni:</P>
+
+<UL>
+
+<LI>
+
+<P><SAMP>ATA/IDE/MFM/RLL support</SAMP></P>
+
+<OL>
+
+<LI>
+
+<P><EM>Enhanced IDE/MFM/RLL</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>IDE Atapi cd rom</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>SCSI HostAdaptor emulation</EM></P>
+</LI>
+</OL>
+
+<TABLE ID="anchor657" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="40.jpg" ALT="figure/kernelscsi2" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor657">14.2</A>. ATA/IDE/MFM/RLL support </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><EM>Block devices</EM></P>
+
+<OL>
+
+<LI>
+
+<P><EM>Loopback device</EM></P>
+</LI>
+</OL>
+
+<TABLE ID="anchor658" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="41.jpg" ALT="figure/kernelscsi3" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor658">14.3</A>. Block devices </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><EM>SCSI support</EM></P>
+
+<OL>
+
+<LI>
+
+<P><EM>SCSI support</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>SCSI cd rom support</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>Enable vendor specific</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>Scsi generic support</EM></P>
+</LI>
+</OL>
+
+<TABLE ID="anchor659" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="42.jpg" ALT="figure/kernelscsi" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor659">14.4</A>. SCSI support </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><SAMP>File systems</SAMP></P>
+
+<OL>
+
+<LI>
+
+<P><EM>ISO 9660 cdrom filesystem</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>Microsoft Joliet</EM></P>
+</LI>
+</OL>
+
+<TABLE ID="anchor660" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="43.jpg" ALT="figure/kernelscsi4" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor660">14.5</A>. File systems </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+</UL>
+
+<P><STRONG>14.7.6)&nbsp;&nbsp;<A NAME="title615"></A><A NAME="anchor661"></A>
+ Qual &egrave; il nome del dispositivo generalmente associato a un masterizzatore SCSI? <A NAME="index2756"></A> <A NAME="index2757"></A> </STRONG></P>
+
+<P>Pare che il mio <A NAME="index2758"></A>kernel abbia riconosciuto il mio masterizzatore SCSI ma ora come accedo? Quale &egrave; il nome del dispositivo? /dev/cosa?</P>
+
+<P>Generalmente &egrave; uno dei dispositivi <CODE>/dev/scd<VAR>n</VAR></CODE> dove <VAR>n</VAR> assume valori quali 0, 1, 2, 3, ecc..</P>
+
+<P>Es.: inserire un CD-ROM nel masterizzatore, creare la directory di innesto (<EM>mount</EM>):</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mkdir /mnt/masterizzatore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Si provi ora a <A NAME="index2759"></A>montare il CD-ROM presente nel masterizzatore:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -t iso9660 /dev/scd0 /mnt/masterizzatore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>se vengono segnalati errori, provare con un'altro numero. Per provare a vedere il contenuto della directory principale del CD-ROM nel masterizzatore impartire il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ls -la /mnt/masterizzatore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>se la directory appare vuota, allora il CD-ROM non &egrave; stato montato.</P>
+
+<H2>14.8 &nbsp; <A NAME="title616"></A><A NAME="anchor662"></A>
+ Schede di rete <A NAME="index2760"></A> </H2>
+
+<P><STRONG>14.8.1)&nbsp;&nbsp;<A NAME="title617"></A><A NAME="anchor663"></A>
+ Come si utilizzano schede di rete NE2000 compatibili in GNU/Linux? <A NAME="index2761"></A> <A NAME="index2762"></A> </STRONG></P>
+
+<P>Occorre dichiarare come modulo (<SAMP>M</SAMP>) o inserire in maniera monolitica (<SAMP>Y</SAMP>) il supporto per questa scheda all'interno del <A NAME="index2763"></A>kernel. Si deve innanzitutto identificare se si tratta di una scheda ISA o PCI. Nella scelta delle opzioni da inserire all'interno del <A NAME="index2764"></A>kernel, si dovr&agrave; selezionare nell'ambito di <EM>Network device support</EM> e nella fattispecie <EM>Ethernet (10 or 100 Mbit)</EM></P>
+
+<TABLE ID="anchor664" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="44.jpg" ALT="figure/ne2000pci" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor664">14.6</A>. Selezionare una scheda di rete NE 2000 PCI </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor665" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="45.jpg" ALT="figure/ne2000isa" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor665">14.7</A>. Selezionare una scheda di rete NE 2000 ISA </P>
+
+</TD></TR>
+</TABLE>
+
+<P>Una volta ricompilato il <A NAME="index2765"></A>kernel, se la scheda &egrave; di tipo PCI, si dovr&agrave; caricare il modulo relativo<SUP><A HREF="hardware.html#footnote8" NAME="footnote-ref8">(8)</A></SUP> con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe ne2k-pci</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Se la scheda &egrave; ISA si dovr&agrave; dare il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod ne io=0x300H</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>inserendo l'indirizzo opportuno rilevabile tramite il software che di solito accompagna la scheda o tramite i ponticelli presenti sulla scheda stessa. Qualora si rilevino errori, si provi ad inserire prima il modulo <SAMP>8310</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod 8310</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<H2>14.9 &nbsp; <A NAME="title618"></A><A NAME="anchor666"></A>
+Scheda audio</H2>
+
+<P><STRONG>14.9.1)&nbsp;&nbsp;<A NAME="title619"></A><A NAME="anchor667"></A>
+ Come si fa a rilevare le schede audio <A NAME="index2766"></A>Plug &amp; Play in GNU/Linux? <A NAME="index2767"></A> <A NAME="index2768"></A> <A NAME="index2769"></A> <A NAME="index2770"></A> </STRONG></P>
+
+<P>Prima di tutto il <A NAME="index2771"></A>kernel dovr&agrave; essere stato compilato con il supporto per i moduli <A NAME="index2772"></A>OSS oltre che per quelli specifici della scheda in questione. Si devono inoltre innanzitutto scaricare gli eventuali moduli audio presenti in memoria, altrimenti il riconoscimento delle periferiche <A NAME="index2773"></A>Plug &amp; Play potrebbe venire compromesso.</P>
+
+<P>Questa momentanea <EM>depurazione</EM> la si ottiene con il seguente <A NAME="index2774"></A>script:</P>
+<BLOCKQUOTE>
+
+<PRE>cat /proc/modules|gawk '/^uar/{print $1}'|xargs -i rmmod {} 
+cat /proc/modules|gawk '/^snd/{print $1}'|xargs -i rmmod {} 
+cat /proc/modules|gawk '/^opl/{print $1}'|xargs -i rmmod {} 
+cat /proc/modules|gawk '/^ad/{print $1}'|xargs -i rmmod {} 
+cat /proc/modules|gawk '/^sound/{print $1}'|xargs -i rmmod {} 
+cat /proc/modules|gawk '/^mpu/{print $1}'|xargs -i rmmod {} 
+cat /proc/modules|gawk '/^isa/{print $1}'|xargs -i rmmod {} </PRE>
+
+</BLOCKQUOTE>
+
+<P>Una volta eseguito tale <A NAME="index2775"></A>script, si deve creare il file <CODE>isapnpNEW.conf</CODE> per ottenere il file di configurazione generico delle periferiche <A NAME="index2776"></A>Plug &amp; Play<SUP><A HREF="hardware.html#footnote9" NAME="footnote-ref9">(9)</A></SUP>. Il comando per ottenere tale file &egrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>pnpdump --config &gt; isapnpNEW.conf</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Una volta creato il file lo si potr&agrave; caricare mediante::</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>isapnp isapnpNEW.conf</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Occorrer&agrave; poi inserire i moduli <SAMP>soundcore</SAMP> e <SAMP>sound</SAMP> con i seguenti comandi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod soundcore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod sound</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Fatto questo dovr&agrave; essere inserito il modulo della scheda audio.</P>
+
+<TABLE BORDER="3" WIDTH="100%">
+<TR><TD>
+
+<P>L'elenco dei moduli, le sequenze e le modalit&agrave; di inserimento cambiano da scheda a scheda. Le indicazioni sono presenti in genere nei documenti della directory <CODE>/usr/src/linux/Documentation/sound/</CODE> per cui &egrave; consigliabile fare riferimento prima a tale documentazione.</P>
+
+</TD></TR>
+</TABLE>
+
+<P><STRONG>14.9.2)&nbsp;&nbsp;<A NAME="title620"></A><A NAME="anchor668"></A>
+ Come si fa a rilevare una scheda audio OPTi 82C931 presente su un alloggiamento ISA? <A NAME="index2777"></A> <A NAME="index2778"></A> </STRONG></P>
+
+<P>La scheda funziona con i moduli <A NAME="index2779"></A>OSS: occorre attivarla con <A NAME="index2780"></A>Isapnptools e inserire i moduli nel corretto ordine. Si consiglia di fare riferimento alla documentazione presente nella directory di documentazione del <A NAME="index2781"></A>kernel (<CODE>/usr/src/linux/Documentation/sound/Opti</CODE>).</P>
+
+<P>Innanzitutto si consiglia di utilizzare almeno <SAMP>isapnptools-1.13</SAMP> o superiore. Mediante <SAMP>pnpdump</SAMP> si rileveranno le informazioni della scheda. Il risultato di questa rilevazione dovr&agrave; essere modificato al fine di evidenziare ed utilizzare le opzioni che interessano. Una volta modificato, il file verr&agrave; generalmente installato come <CODE>/etc/isapnp.conf</CODE>.</P>
+
+<P>Segue una porzione del file <CODE>/etc/conf.modules</CODE> che permette il funzionamento di questa scheda:</P>
+<BLOCKQUOTE>
+
+<PRE>alias mixer0 mad16
+alias audio0 mad16
+alias midi0  mad16
+alias synth0 opl3
+options sb mad16=1
+options mad16 irq=10 dma=0 dma16=1 io=0x530 joystick=1 cdtype=0
+options opl3 io=0x388
+post-install mad16 /sbin/ad1848_mixer_reroute 14 8 15 3 16 6</PRE>
+
+</BLOCKQUOTE>
+
+<P>Occorrer&agrave; impostare i corretti valori degli indirizzi.</P>
+
+<P><STRONG>14.9.3)&nbsp;&nbsp;<A NAME="title621"></A><A NAME="anchor669"></A>
+ Come si fa ad utilizzare una scheda audio <A NAME="index2782"></A>Sound Blaster Live! con GNU/Linux? <A NAME="index2783"></A> <A NAME="index2784"></A> </STRONG></P>
+
+<P>I possessori della scheda audio <A NAME="index2785"></A>Sound Blaster Live! potranno utilizzare normalmente la scheda con un <A NAME="index2786"></A>kernel di versione 2.4.x o superiore.</P>
+
+<TABLE ID="anchor670" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="46.jpg" ALT="figure/sblive" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor670">14.8</A>. Inserimento del supporto per la Sound Blaster Live! all'atto della ricompilazione del kernel </P>
+
+</TD></TR>
+</TABLE>
+
+<P>Gli utenti che disponessero di un <A NAME="index2787"></A>kernel della serie 2.2.x potranno utilizzare il pacchetto <CODE>emu10k1<VAR>xxx</VAR>.tar.gz</CODE><SUP><A HREF="hardware.html#footnote10" NAME="footnote-ref10">(10)</A></SUP> prelevabili dal sito della Creative Labs<SUP><A HREF="hardware.html#footnote11" NAME="footnote-ref11">(11)</A></SUP>. In questo caso occorrer&agrave; attenersi alle indicazioni del file <CODE>README</CODE> allegate al pacchetto.</P>
+
+<P><STRONG>14.9.4)&nbsp;&nbsp;<A NAME="title622"></A><A NAME="anchor671"></A>
+ Perch&eacute; il sistema restituisce un errore di <SAMP>device busy</SAMP> relativo alla <A NAME="index2789"></A>SoundBlaster PCI 128? <A NAME="index2790"></A> <A NAME="index2791"></A> <A NAME="index2792"></A> </STRONG></P>
+
+<P>Qualora si verificasse un errore del genere si consiglia di includere il supporto di tale scheda in maniera monolitica e non come modulo. Inoltre si consiglia di verificare se gli <EM>irq</EM> della scheda non sia in conflitto con qualche altro dispositivo (la porta parallela ad esempio).</P>
+
+<P><STRONG>14.9.5)&nbsp;&nbsp;<A NAME="title623"></A><A NAME="anchor672"></A>
+ Come si configura una <A NAME="index2793"></A>SoundBlaster PCI 64V in GNU/Linux? <A NAME="index2794"></A> <A NAME="index2795"></A> </STRONG></P>
+
+<P>Si deve inserire il supporto per le seguenti componenti nel <A NAME="index2796"></A>kernel:</P>
+
+<P>Nella sezione <EM>Sound</EM> si dovranno abilitare le seguenti opzioni <SUP><A HREF="hardware.html#footnote12" NAME="footnote-ref12">(12)</A></SUP>:</P>
+
+<UL>
+
+<LI>
+
+<P><EM>Sound card support</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>Ensoniq AudioPCI (ES1370)</EM> o <EM>Creative Ensoniq AudioPCI97 (ES1371)</EM></P>
+
+<TABLE ID="anchor673" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="47.jpg" ALT="figure/soundblaster64vkernel" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor673">14.9</A>. Inserimento del supporto per la SoundBlaster&gt; PCI 64V all'atto della ricompilazione del kernel </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><EM>OSS sound modules</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>100% Sound Blaster compatibles (SB16/32/64, ESS, Jazz16) support</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>AWE32 synth</EM><SUP><A HREF="hardware.html#footnote13" NAME="footnote-ref13">(13)</A></SUP></P>
+</LI>
+
+<LI>
+
+<P><EM>Generic OPL2/OPL3 FM synthesizer support</EM></P>
+</LI>
+
+<LI>
+
+<P><EM>FM synthesizer (YM3812/OPL-3) support</EM></P>
+</LI>
+</UL>
+
+<P><STRONG>14.9.6)&nbsp;&nbsp;<A NAME="title624"></A><A NAME="anchor674"></A>
+ Come si configura una scheda audio <A NAME="index2797"></A>Yamaha OPL3-SA<VAR>x</VAR> in GNU/Linux? <A NAME="index2798"></A> <A NAME="index2799"></A> </STRONG></P>
+
+<P>Incluso il supporto per la scheda in questione nel <A NAME="index2800"></A>kernel, si dovr&agrave; utilizzare <A NAME="index2801"></A>Isapnptools (controllare la LDR <A HREF="ldr17.html#anchor667">14.9.1</A>). Una volta creato il file di configurazione con <A NAME="index2802"></A>Isapnptools, si daranno i seguenti comandi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe mpu401</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe ad1848</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe opl3sa2 io=0x370 mss_io=0x530 mpu_io=0x330 irq=5 dma=0 dma2=1</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote14" NAME="footnote-ref14">(14)</A></SUP></P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe opl3 io=0x388</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote15" NAME="footnote-ref15">(15)</A></SUP></P>
+
+<P>Per utilizzare invece questa scheda con <A NAME="index2803"></A>ALSA si dar&agrave; il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe snd-card-opl3sa2 snd_port=0x370 snd_wss_port=0x530 \ snd_midi_port=0x300 snd_fm_port=0x388 snd_irq=5 \ snd_dma1=0 snd_dma1_size=4 snd_dma2=1 snd_dma2_size=4</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote16" NAME="footnote-ref16">(16)</A></SUP></P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe snd-pcm1-oss.o</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe snd-mixer-oss.o</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>aumix -L</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.9.7)&nbsp;&nbsp;<A NAME="title625"></A><A NAME="anchor675"></A>
+ Come si configura una scheda Avance Logic ALS 110 in GNU/Linux? <A NAME="index2804"></A> <A NAME="index2805"></A> <A NAME="index2806"></A> </STRONG></P>
+
+<P>Per utilizzare una scheda audio Avance Logic ALS 110 si dovr&agrave; disabilitare (tramite i commenti &laquo;<SAMP>#</SAMP>&raquo;) il DMA 1 nel file di configurazione generato da <A NAME="index2807"></A>Isapnptools. Eccone un esempio:</P>
+<BLOCKQUOTE>
+
+<PRE>#/etc/als100.conf
+(READPORT 0x020b)
+(ISOLATE PRESERVE)
+(IDENTIFY *)
+(VERBOSITY 2)
+(CONFLICT (IO FATAL)(IRQ FATAL)(DMA FATAL)(MEM FATAL)) # or WARNING
+(CONFIGURE ALS0110/-1 (LD 0
+(IO 0 (BASE 0x220))
+(INT 0 (IRQ  5 (MODE +E)))
+(DMA 0 (CHANNEL  0))
+# (DMA 1 (CHANNEL 0))
+# volutamente commentato per conflitto dma
+ (NAME "ALS0110/-1[0]{PnP Sound Chip }")
+ (ACT Y)
+))
+(CONFIGURE ALS0110/-1 (LD 1
+ (NAME "ALS0110/-1[1]{PnP Sound Chip }")
+ (ACT Y)
+))
+(CONFIGURE ALS0110/-1 (LD 2
+ (NAME "ALS0110/-1[2]{PnP Sound Chip }")
+ (ACT Y)
+))
+(CONFIGURE ALS0110/-1 (LD 3
+(INT 0 (IRQ 9 (MODE +E)))
+ (NAME "ALS0110/-1[3]{PnP Sound Chip }")
+ (ACT Y)
+))
+(WAITFORKEY)</PRE>
+
+</BLOCKQUOTE>
+
+<P>Si dovranno commenta le righe di <CODE>/etc/conf.modules</CODE> e rimuovere i moduli audio caricati. In seguito si dar&agrave; il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>isapnp /etc/<VAR>als100.conf</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote17" NAME="footnote-ref17">(17)</A></SUP></P>
+
+<P>L'<A NAME="index2809"></A>output dovrebbe essere simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>Board 1 has Identity a3 ff ff ff ff 10 01 93 05:  ALS0110 Serial No -1
+[checksum a3]
+ALS0110/-1[0]{PnP Sound Chip      }: Port 0x220; IRQ5 DMA0 --- Enabled OK
+ALS0110/-1[1]{PnP Sound Chip      }: --- Enabled OK
+ALS0110/-1[2]{PnP Sound Chip      }: --- Enabled OK
+ALS0110/-1[3]{PnP Sound Chip      }: IRQ9 --- Enabled OK</PRE>
+
+</BLOCKQUOTE>
+
+<P>In seguito si provveder&agrave; ad inserire i moduli <SAMP>sound</SAMP>, <SAMP>uart401</SAMP> e <SAMP>sb</SAMP> come descritto in <CODE>/usr/src/linux/sound</CODE>.</P>
+
+<P><STRONG>14.9.8)&nbsp;&nbsp;<A NAME="title626"></A><A NAME="anchor676"></A>
+ Come si configura una scheda <A NAME="index2810"></A>Plug &amp; Play 16 bit ISA <A NAME="index2811"></A>SoundBlaster compatibile in GNU/Linux? <A NAME="index2812"></A> </STRONG></P>
+
+<P>Qualora si disponga di una scheda 16 bit ISA <A NAME="index2813"></A>SoundBlaster compatibile, si dovr&agrave; inserire all'interno del file <CODE>/etc/conf.modules</CODE> le seguenti righe deputate a caricamento dei moduli necessari:</P>
+<BLOCKQUOTE>
+
+<PRE>alias sound sb
+pre-install sound insmod sound dmabuf=1
+alias midi opl3
+options opl3 io=0x388
+options sb io=0x220 irq=5 dma=1 dma16=5 mpu_io=0x330</PRE>
+
+</BLOCKQUOTE>
+
+<P>nel file <CODE>/etc/modules</CODE> va inserita solamente la riga:</P>
+
+<PRE>auto </PRE>
+
+<P>Ovviamente il <A NAME="index2814"></A>kernel dovr&agrave; essere ricompilato prestando attenzione che nella sezione <SAMP>Loadable module support</SAMP> tutte e tre le opzioni siano abilitate. Gli indirizzi dovranno inoltre essere quelli corretti.</P>
+
+<P><STRONG>14.9.9)&nbsp;&nbsp;<A NAME="title627"></A><A NAME="anchor677"></A>
+ Come si fa riconoscere al sistema una scheda audio <A NAME="index2815"></A>SoundBlaster 16 <A NAME="index2816"></A>Plug &amp; Play? <A NAME="index2817"></A> <A NAME="index2818"></A> </STRONG></P>
+
+<P>Per utilizzare la scheda audio <A NAME="index2819"></A>SoundBlaster 16 Vibra <A NAME="index2820"></A>Plug &amp; Play, si dovranno seguire innanzitutto le istruzioni preliminari presenti nella LDR <A HREF="ldr17.html#anchor667">14.9.1</A> fino al punto in cui viene caricato con <SAMP>isapnp</SAMP> il file creato da <A NAME="index2821"></A>Isapnptools.</P>
+
+<P>In seguito si daranno i seguenti comandi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe sound</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod uart401</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod sb io=0x220 irq=5 dma=1 dma16=7</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote18" NAME="footnote-ref18">(18)</A></SUP></P>
+
+<P>Ecco un estratto del file <CODE>/usr/src/linux/Documentation/sound/Soundblaster</CODE>:</P>
+<BLOCKQUOTE>
+
+<PRE>modprobe sound
+insmod uart401
+insmod sb ...
+
+This loads the driver for the Sound Blaster and assorted clones. Cards that
+are covered by other drivers should not be using this driver.
+
+The Sound Blaster module takes the following arguments
+
+io              I/O address of the Sound Blaster chip (0x220,0x240,0x260,0x280)
+irq             IRQ of the Sound Blaster chip (5,7,9,10)
+dma             8-bit DMA channel for the Sound Blaster (0,1,3)
+dma16           16-bit DMA channel for SB16 and equivalent cards (5,6,7)
+mpu_io          I/O for MPU chip if present (0x300,0x330)</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>14.9.10)&nbsp;&nbsp;<A NAME="title628"></A><A NAME="anchor678"></A>
+ Come si configurano i <A NAME="index2822"></A>driver <A NAME="index2823"></A>ALSA per le schede audio <A NAME="index2824"></A>SoundBlaster PCI 64V integrate su scheda madre? <A NAME="index2825"></A> <A NAME="index2826"></A> </STRONG></P>
+
+<P>Se si dispone di una scheda audio <A NAME="index2827"></A>SoundBlaster PCI 64V, integrata su scheda madre, che non si riesce a far funzionare, sarebbe opportuno provare con i <A NAME="index2828"></A>driver <A NAME="index2829"></A>ALSA. Per fare questo, si dovr&agrave; ricompilare il <A NAME="index2830"></A>kernel con il solo supporto del suono, senza alcun <A NAME="index2831"></A>driver specifico. Si dovranno inoltre installare i <A NAME="index2832"></A>driver <A NAME="index2833"></A>ALSA, e modificare opportunamente il file /etc/conf.modules inserendo:</P>
+<BLOCKQUOTE>
+
+<PRE>       
+alias char-major-116 snd
+alias snd-card-0 snd-card-ens-1371
+       
+alias char-major-14 soundcore
+alias sound-slot-0 snd-card-0
+alias sound-service-0-0 snd-mixer-oss
+alias snd-service-0-1 snd-seq-oss
+alias snd-service-0-3 snd-pcm1-oss</PRE>
+
+</BLOCKQUOTE>
+
+<P>Una volta riavviato il sistema con queste modifiche all'atto di eseguire il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cat /proc/modules</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>si dovr&agrave; ottenere qualcosa del genere:</P>
+
+<PRE>snd-pcm1-oss           13260   0 (autoclean)
+snd-card-ens1371        2332   0 (autoclean)
+snd-ens1371             7824   0 (autoclean) [snd-card-ens1371]
+snd-pcm1               18108   0 (autoclean) [snd-pcm1-oss snd-ens1371]
+snd-timer               8380   0 (autoclean) [snd-pcm1]
+snd-ac97-codec         20384   0 (autoclean) [snd-ens1371]
+snd-mixer              26688   0 (autoclean) [...]
+snd-midi               13388   0 (autoclean) [...]
+snd-seq-device          3136   1 (autoclean) [...]
+snd-pcm                 8812   0 (autoclean) [...]
+snd                    34880   1 (autoclean) [...]</PRE>
+
+<P>Oltre a questo controllo, anche il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cat /proc/asound/cards</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dovrebbe restituire qualcosa di simile a:</P>
+
+<PRE>0 [card1          ]: AudioPCI - Ensoniq AudioPCI
+                     Ensoniq AudioPCI ES1371 at 0xe400, irq 11</PRE>
+
+<P>Occorre infine ricordare che ora il volume &egrave; impostato come muto. Fare riferimento alla LDR <A HREF="ldr14.html#anchor566">11.1.2</A> per risolvere il problema.</P>
+
+<H2>14.10 &nbsp; <A NAME="title629"></A><A NAME="anchor679"></A>
+Lettori ZIP</H2>
+
+<P><STRONG>14.10.1)&nbsp;&nbsp;<A NAME="title630"></A><A NAME="anchor680"></A>
+ Quale &egrave; il nome del dispositivo comunemente associato ad un lettore Iomega ZIP ATAPI installato sul canale <A NAME="index2834"></A>master della seconda interfaccia IDE/EIDE? <A NAME="index2835"></A> <A NAME="index2836"></A> </STRONG></P>
+
+<P>Il lettore ZIP in questione &egrave; generalmente associato al dispositivo <CODE>/dev/hdc4</CODE>. Esso potr&agrave; essere montato mediante il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -t ext2 /dev/hdc4 /<VAR>zip</VAR>/</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote19" NAME="footnote-ref19">(19)</A></SUP></P>
+
+<P><STRONG>14.10.2)&nbsp;&nbsp;<A NAME="title631"></A><A NAME="anchor681"></A>
+ Come si deve configurare il sistema per far riconoscere un lettore ZIP collegato alla porta parallela? <A NAME="index2837"></A> <A NAME="index2838"></A> <A NAME="index2839"></A> </STRONG></P>
+
+<P>In genere un lettore ZIP collegato alla porta parallela, &egrave; associato al dispositivo di sistema <CODE>/dev/sda4</CODE>. Prima per&ograve; di poterlo utilizzare, si dovr&agrave; ricompilare il <A NAME="index2840"></A>kernel con le opzioni adatte a poterlo gestire. Ecco cosa includere:</P>
+
+<P>Nella sezione <EM>SCSI support</EM>:</P>
+<BLOCKQUOTE>
+
+<PRE>SCSI support:        Yes
+SCSI disk support:   Yes</PRE>
+
+</BLOCKQUOTE>
+
+<P>Nella sezione <EM>SCSI low-level drivers</EM> si dovr&agrave; scegliere tra:</P>
+<BLOCKQUOTE>
+
+<PRE>IOMEGA parallel port (ppa - older drives):        Yes</PRE>
+
+</BLOCKQUOTE>
+
+<P>se si dispone di un lettore vecchio oppure:</P>
+<BLOCKQUOTE>
+
+<PRE>IOMEGA parallel port (imm - newer drives):        Yes</PRE>
+
+</BLOCKQUOTE>
+
+<P>se si dispone di un lettore nuovo o dello ZIP Plus. In genere se sul cavo fornito dal produttore compare la scritta <SAMP>AutoDetect</SAMP>, si dovr&agrave; utilizzare quest'ultima opzione.</P>
+
+<P>All'interno della sezione <EM>Character devices</EM> si dovr&agrave; selezionare invece:</P>
+<BLOCKQUOTE>
+
+<PRE>Parallel printer support:      Yes</PRE>
+
+</BLOCKQUOTE>
+
+<P>Dopo aver selezionato queste opzioni, sar&agrave; necessario ricompilare il <A NAME="index2841"></A>kernel. All'avvio con l'immagine ricompilata si dovr&agrave; verificare se il lettore ZIP &egrave; stato riconosciuto. Se i messaggi di avvio scorrono troppo velocemente, si possono visualizzare in seguito mediante il comando <SAMP>dmesg</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dmesg | less</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Se il lettore &egrave; stato riconosciuto si prover&agrave; ad innestare un dischetto per prova:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -t ext2 /dev/sda4 <VAR>punto_innesto</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote20" NAME="footnote-ref20">(20)</A></SUP></P>
+
+<P>In questo caso si cercher&agrave; di <A NAME="index2842"></A>innestare al <A NAME="index2843"></A>file&nbsp;system principale a livello della directory indicata da <VAR>punto_montaggio</VAR> un dischetto ZIP con <A NAME="index2844"></A>file&nbsp;system <SAMP>ext2</SAMP>.</P>
+
+<P>Per ulteriori informazioni consultare lo <EM>ZIP-Drive mini HOWTO</EM>.</P>
+
+<P><STRONG>14.10.3)&nbsp;&nbsp;<A NAME="title632"></A><A NAME="anchor682"></A>
+ Quali sono le differenze tra i moduli <SAMP>ppa</SAMP> e <SAMP>imm</SAMP> dei drive ZIP? <A NAME="index2845"></A> <A NAME="index2846"></A> </STRONG></P>
+
+<P>All'atto di ricompilare il <A NAME="index2847"></A>kernel per includere il supporto per il drive ZIP, si dovr&agrave; scegliere tra il modulo <EM>ppa</EM> e quello <EM>imm</EM>. Questi moduli si scelgono all'interno di <EM>SCSI support</EM> ed in particolare in <EM>SCSI low-level drivers</EM>.</P>
+
+<TABLE ID="anchor683" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="48.jpg" ALT="figure/zip" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor683">14.10</A>. La scelta del tipo di unit&agrave; ZIP. </P>
+
+</TD></TR>
+</TABLE>
+
+<P>Si deve ricordare che se lo ZIP &egrave; installato su porta parallela, si dovr&agrave; prevedere anche il supporto per la parallela stessa. Si dovr&agrave; selezionare infatti anche all'interno di <EM>General setup</EM> il supporto per la porta parallela (<EM>Parallel port support</EM> e <EM>PC-style hardware</EM>).</P>
+
+<P>In genere il dispositivo &egrave; <CODE>/dev/sdb4</CODE>.</P>
+
+<H2>14.11 &nbsp; <A NAME="title633"></A><A NAME="anchor684"></A>
+Nastri</H2>
+
+<P><STRONG>14.11.1)&nbsp;&nbsp;<A NAME="title634"></A><A NAME="anchor685"></A>
+ Come si utilizzano le unit&agrave; a nastro DAT? <A NAME="index2848"></A> <A NAME="index2849"></A> <A NAME="index2850"></A> </STRONG></P>
+
+<P>L'utilizzo di queste unit&agrave; a nastro, avviene mediante il comando <SAMP>tar</SAMP>. Il dispositivo generalmente associato all'unit&agrave; &egrave; <CODE>/dev/nst0</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>tar cvvf /dev/nst0 <VAR>file</VAR> <VAR>file</VAR> <VAR>directory</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote21" NAME="footnote-ref21">(21)</A></SUP></P>
+
+<P>Si ricordi che &egrave; possibile anche specificare la grandezza dei blocchi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>tar cvvbf <VAR>64</VAR> /dev/nst0 <VAR>file</VAR> <VAR>file</VAR> <VAR>directory</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Per riavvolgere il nastro si usa il comando <SAMP>mt</SAMP>. Se si utilizza sempre quel dispositivo, &egrave; possibile fare un <A NAME="index2851"></A>collegamento simbolico:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ln -s /dev/nst0 /dev/tape</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Gli altri comandi utilizzati frequentemente per gestire un'unit&agrave; a nastro sono:</P>
+
+<UL>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mt rewi</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>che serve per riavvolgere il nastro;</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mt offl</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>che riavvolge ed espelle il nastro;</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mt fsf</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>avanza di un archivio;</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mt fsf <VAR>n</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>avanza di <VAR>n</VAR> archivi;</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mt bsf</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>torna indietro di un archivio;</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mt bsf <VAR>n</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>torna indietro di <VAR>n</VAR> archivi.</P>
+</LI>
+</UL>
+
+<H2>14.12 &nbsp; <A NAME="title635"></A><A NAME="anchor686"></A>
+ RAM <A NAME="index2852"></A> </H2>
+
+<P><STRONG>14.12.1)&nbsp;&nbsp;<A NAME="title636"></A><A NAME="anchor687"></A>
+ Quanta RAM &egrave; utilizzata e quanta &egrave; disponibile? <A NAME="index2853"></A> </STRONG></P>
+
+<P>Per visualizzare quanta RAM viene utilizzata e quanta &egrave; disponibile si utilizzer&agrave; il comando <SAMP>free</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>free</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>L'<A NAME="index2854"></A>output del comando sar&agrave; simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>bigpaul@linuxfaq.it:~/LDR$ free
+             total    used    free  shared buffers     cached
+Mem:        126712  114520   12192       0    5920   55800
+-/+ buffers/cache:   52800   73912
+Swap:       136040          0     136040
+bigpaul@linuxfaq.it:~/LDR$ 
+</PRE>
+
+</BLOCKQUOTE>
+
+<P>Per sapere quanta RAM utilizza ogni singolo processo si utilizzer&agrave; <SAMP>top</SAMP>.</P>
+
+<PRE> 02:44:32 up  1:01,  2 users,  load average: 0.00, 0.00, 0.00
+55 processes: 53 sleeping, 2 running, 0 zombie, 0 stopped
+CPU states:   0.4% user,  52.9% system,   0.0% nice,  46.7% idle
+Mem:    126712K total,   114000K used,    12712K free,     5920K buffers
+Swap:   136040K total,        0K used,   136040K free,    55836K cached
+
+  PID USER     PRI  NI  SIZE  RSS SHARE STAT %CPU %MEM   TIME COMMAND
+    3 root      20   0     0    0     0 SW   52.3  0.0  48:03 kapm-idled
+  327 root       5 -10 20496  11M  2624 S &lt;   0.5  9.1   0:25 XFree86
+  811 bigpaul    9   0  5088 5088  2012 S     0.1  4.0   0:06 wish
+  949 bigpaul   10   0  1072 1072   852 R     0.1  0.8   0:00 top
+    1 root       8   0   524  524   460 S     0.0  0.4   0:03 init
+
+[...]
+
+  138 root       9   0   624  624   512 S     0.0  0.4   0:00 syslogd
+  141 root       9   0  1112 1112   436 S     0.0  0.8   0:00 klogd
+  157 root       9   0   668  668   512 S     0.0  0.5   0:00 cardmgr
+  164 root       9   0   548  548   480 S     0.0  0.4   0:00 inetd
+  170 root       9   0   600  600   508 S     0.0  0.4   0:00 lpd</PRE>
+
+<P><STRONG>14.12.2)&nbsp;&nbsp;<A NAME="title637"></A><A NAME="anchor688"></A>
+ Come si dichiara la quantit&agrave; di RAM oltre le 64&nbsp;Mibyte in proprio possesso? </STRONG></P>
+
+<P>Chi possiede pi&ugrave; di 64&nbsp;Mibyte di RAM, dovr&agrave; aggiungere nel file <CODE>/etc/lilo.conf</CODE> la seguente riga:</P>
+
+<PRE>append = "mem=quantitaramM" </PRE>
+
+<P>Es.: altre 64&nbsp;Mibyte di RAM richiederanno la seguente riga:</P>
+
+<PRE>append="mem=64M"</PRE>
+
+<P><STRONG>14.12.3)&nbsp;&nbsp;<A NAME="title638"></A><A NAME="anchor689"></A>
+ Perch&eacute; la dichiarazione della quantit&agrave; RAM superiore alle 64&nbsp;Mibyte non funziona? </STRONG></P>
+
+<P>Se ad esempio si disponesse di 160 Mibyte aggiuntive, e la riga:</P>
+
+<PRE>append="mem=96M"</PRE>
+
+<P>restituisse errore (o non permettesse il riconoscimento della RAM), si dovr&agrave; controllare l'eventuale esistenza di una scheda video integrata nella scheda madre. Se cos&igrave; fosse vanno sottratte dalle 96&nbsp;Mibyte, quelle che sono dedicate alla scheda video. Se la scheda video richiede 4&nbsp;Mibyte, allora la riga sar&agrave;:</P>
+
+<PRE>append="mem=92M"</PRE>
+
+<P><STRONG>14.12.4)&nbsp;&nbsp;<A NAME="title639"></A><A NAME="anchor690"></A>
+ Come si comporta il sistema se ci sono difetti nella RAM? <A NAME="index2855"></A> <A NAME="index2856"></A> </STRONG></P>
+
+<P>Se nel sistema c'&egrave; RAM difettosa, in corrispondenza di attivit&agrave; intensive (ad esempio la ricompilazione del <A NAME="index2857"></A>kernel) il sistema restituir&agrave; un messaggio di:</P>
+
+<PRE>SIGNAL 11</PRE>
+
+<H2>14.13 &nbsp; <A NAME="title640"></A><A NAME="anchor691"></A>
+Scanner</H2>
+
+<P><STRONG>14.13.1)&nbsp;&nbsp;<A NAME="title641"></A><A NAME="anchor692"></A>
+ Si pu&ograve; utilizzare uno scanner <A NAME="index2858"></A>HP 6100C in GNU/Linux? <A NAME="index2859"></A> <A NAME="index2860"></A> </STRONG></P>
+
+<P>Se si dispone di un scanner <A NAME="index2861"></A>HP 6100C, per farlo funzionare occorrer&agrave; modificare il file <CODE>/usr/src/linux/drivers/scsi/scsi.c</CODE>. In particolare occorre cercare le seguenti stringhe:</P>
+
+<PRE>    {"HP", "C1750A", "3226", BLIST_NOLUN},          /* scanjet iic */
+    {"HP", "C1790A", "", BLIST_NOLUN},              /* scanjet iip */
+[1] {"HP", "C2500A", "", BLIST_NOLUN},              /* scanjet iicx */</PRE>
+
+<P>ed aggiungere questa:</P>
+
+<PRE>[2] {"HP", "C2520A", "3644", BLIST_NOLUN},          /* scanjet 6100C */</PRE>
+
+<P>Queste informazioni sono tratte da MS-Windows. Una volta modificato il file <CODE>scsi.c</CODE>, si dovr&agrave; ricompilare il <A NAME="index2862"></A>kernel.</P>
+
+<P>Il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord -scanbus</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dovrebbe confermare il corretto funzionamento del dispositivo.</P>
+
+<H2>14.14 &nbsp; <A NAME="title642"></A><A NAME="anchor693"></A>
+Modem</H2>
+
+<P><STRONG>14.14.1)&nbsp;&nbsp;<A NAME="title643"></A><A NAME="anchor694"></A>
+ Si possono utilizzare i <A NAME="index2863"></A>Win-modem in GNU/Linux? <A NAME="index2864"></A> <A NAME="index2865"></A> <A NAME="index2866"></A> <A NAME="index2867"></A> </STRONG></P>
+
+<P>I <A NAME="index2868"></A>Win-modem<SUP><A HREF="hardware.html#footnote22" NAME="footnote-ref22">(22)</A></SUP> attualmente gestiti da Linux sono i <A NAME="index2869"></A>Lucent <SAMP>LT Chipset CL-MD5620DT</SAMP> e <SAMP>PCTel</SAMP>. Ulteriori informazioni presso: &lt;<EM><A HREF="http://www.linmodems.org/">http://www.linmodems.org/</A></EM>&gt;, &lt;<EM><A HREF="http://linmodems.org">http://linmodems.org</A></EM>&gt; e &lt;<EM><A HREF="http://www.geocities.com/SiliconValley/3217/Documents/WinModems.html">http://www.geocities.com/SiliconValley/3217/Documents/WinModems.html</A></EM>&gt;.</P>
+
+<P>Questi modem sono costituiti da un processore <A NAME="index2870"></A>DSP  (<STRONG><EM>Digital Signal Processor</EM></STRONG>) che elabora i segnali in modo da renderli uguali a quelli generati o ricevuti da un modem normale. Per fare questo c'&egrave; bisogno di <A NAME="index2871"></A>driver appropriati per funzionare e non ce ne sono sotto Linux, visto che le specifiche non vengono rese pubbliche.</P>
+
+<P><STRONG>14.14.2)&nbsp;&nbsp;<A NAME="title644"></A><A NAME="anchor695"></A>
+ Cosa si deve configurare per far riconoscere il modem al sistema? <A NAME="index2872"></A> <A NAME="index2873"></A> </STRONG></P>
+
+<P>Il modem non dovrebbe creare in genere problemi in Linux: la maggior parte dei modem sono <A NAME="index2874"></A>Hayes compatibili, ossia hanno una serie di istruzioni codificate e come tali poco importa quale sia la casa costruttrice.</P>
+
+<P>I problemi cominciano ad esserci qualora si utilizzino i <A NAME="index2875"></A>Win-modem<SUP><A HREF="hardware.html#footnote23" NAME="footnote-ref23">(23)</A></SUP> Sono pochissimi i modelli supportati. Fare riferimento alla LDR <A HREF="ldr17.html#anchor694">14.14.1</A> per ulteriori chiarimenti.</P>
+
+<P><STRONG>14.14.3)&nbsp;&nbsp;<A NAME="title645"></A><A NAME="anchor696"></A>
+ Come si configura il sistema per utilizzare un dispositivo <A NAME="index2876"></A>US Robotics ISDN TA? <A NAME="index2877"></A> <A NAME="index2878"></A> <A NAME="index2879"></A> <A NAME="index2880"></A> <A NAME="index2881"></A> </STRONG></P>
+
+<P>Prima di tutto occorre assicurarsi di avere avviato i seguenti moduli: <SAMP>ppp</SAMP>, <SAMP>shlc</SAMP> e <SAMP>bsd_comp</SAMP>. La configurazione &egrave; equivalente ad un normale <SAMP>ppp</SAMP>, le uniche cose da controllare sono, i moduli e le stringhe da inviare. Occorre verificare inoltre che non venga utilizzato in maniera predefinita l'<SAMP>hdlc</SAMP> ma l' <SAMP>async ppp to sync ppp</SAMP>.</P>
+
+<H2>14.15 &nbsp; <A NAME="title646"></A><A NAME="anchor697"></A>
+Stampante</H2>
+
+<P><STRONG>14.15.1)&nbsp;&nbsp;<A NAME="title647"></A><A NAME="anchor698"></A>
+ Quali sono le stampanti utilizzabili con GNU/Linux? <A NAME="index2882"></A> <A NAME="index2883"></A> </STRONG></P>
+
+<P>Un elenco completo delle stampanti utilizzabili con GNU/Linux &egrave; reperibile all'indirizzo &lt;<EM><A HREF="http://www.linuxprinting.org/printer_list.cgi">http://www.linuxprinting.org/printer_list.cgi</A></EM>&gt;.</P>
+
+<P><STRONG>14.15.2)&nbsp;&nbsp;<A NAME="title648"></A><A NAME="anchor699"></A>
+ Come si pu&ograve; stampare con una <A NAME="index2884"></A>HP Deskjet 720C? <A NAME="index2885"></A> <A NAME="index2886"></A> </STRONG></P>
+
+<P>Viene qui presentata una configurazione funzionante (non per il colore per&ograve;) per stampare con una stampante <A NAME="index2887"></A>HP Deskjet 720C. Il risultato &egrave; stato ottenuto mediante il pacchetto <SAMP>pbm2ppa</SAMP> scritto da Tim Norman. La stampa viene effettuata attraverso l'interfaccia <A NAME="index2888"></A>PostScript presente in <SAMP>pbm2ppa</SAMP>. Ecco il file <CODE>/etc/printcap</CODE> che &egrave; stato utilizzato:</P>
+<BLOCKQUOTE>
+
+<PRE>lp:\
+        :lp=/dev/lp1:\
+        :sd=/var/spool/lpd/lp:\
+        :lf=/var/spool/lpd/lp/log:\
+        :af=/var/spool/lpd/lp/acct:\
+        :if=/usr/local/bin/ps.if:\
+        :la:mx#0:\
+        :sh:sf:</PRE>
+
+</BLOCKQUOTE>
+
+<P> Ecco anche il filtro <CODE>ps.if</CODE>: </P>
+<BLOCKQUOTE>
+
+<PRE> #! /bin/sh
+ gs -sDEVICE=pbmraw -q -dNOPAUSE -r600 -sOutputFile= - | \
+ /usr/local/bin/pbm2ppa - -</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>14.15.3)&nbsp;&nbsp;<A NAME="title649"></A><A NAME="anchor700"></A>
+ Come si configura il file <CODE>/etc/printcap</CODE> se si utilizza una stampante <A NAME="index2889"></A>Epson <A NAME="index2890"></A>Stylus&nbsp;Color? <A NAME="index2891"></A> <A NAME="index2892"></A> </STRONG></P>
+
+<P>Qualora si disponga di una stampante <A NAME="index2893"></A>Epson <A NAME="index2894"></A>Stylus&nbsp;Color, si provi ad utilizzare il seguente file di configurazione <CODE>/etc/printcap</CODE>:</P>
+<BLOCKQUOTE>
+
+<PRE>lp|Stylus 360 dpi
+        :sd=/var/spool/lpd/lp
+        :sh
+        :rw
+        :lp=/dev/lp0
+        :mx#0
+        :if=/etc/magicfilter/stylus_color_360dpi-filter
+
+lp720|Stylus 720 dpi
+        :sd=/var/spool/lpd/lp720
+        :sh
+        :rw
+        :lp=/dev/lp0
+        :mx#0
+        :if=/etc/magicfilter/stylus_color_720dpi-filter</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>14.15.4)&nbsp;&nbsp;<A NAME="title650"></A><A NAME="anchor701"></A>
+ Cosa va impostato prima della ricompilazione del <A NAME="index2895"></A>kernel per permettere al sistema di stampare? <A NAME="index2896"></A> <A NAME="index2897"></A> </STRONG></P>
+
+<P>Quali opzioni in quali sezioni vanno impostate durante la compilazione del <A NAME="index2898"></A>kernel per far lavorare la stampante? Devo per caso, dopo la compilazione, modificare <A NAME="index2899"></A>LILO per passare parametri speciali al <A NAME="index2900"></A>kernel, oppure aggiungere qualche riga allo stesso?</P>
+
+<P>Per i <A NAME="index2901"></A>kernel della serie 2.0.<VAR>x</VAR> &egrave; sufficiente includere il modulo per la parallela (<SAMP>lp.o</SAMP>).</P>
+
+<P>Per quelli della serie 2.2.<VAR>x</VAR> si dovranno includere le seguenti opzioni:</P>
+
+<PRE>CONFIG_MODULES=y
+CONFIG_MODVERSIONS=y
+CONFIG_KMOD=y
+
+CONFIG_PARPORT=m
+CONFIG_PARPORT_PC=m
+CONFIG_PARIDE_PARPORT=m</PRE>
+
+<P>e si dovr&agrave; indicare nel file <CODE>/etc/conf.modules</CODE> la seguente porzione di testo:</P>
+
+<PRE>alias parport_lowlevel parport_pc
+options parport_pc io=0x378,0x278 irq=7,auto</PRE>
+
+<P>Per i <A NAME="index2902"></A>kernel della serie 2.4.<VAR>x</VAR> sar&agrave; necessario selezionare dal men&ugrave; principale di configurazione, l'opzione <SAMP>Parallel port support</SAMP>.</P>
+
+<TABLE ID="anchor702" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="49.jpg" ALT="figure/parallela" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor702">14.11</A>. Le opzioni per la porta parallela per il kernel 2.4.5. </P>
+
+</TD></TR>
+</TABLE>
+
+<H2>14.16 &nbsp; <A NAME="title651"></A><A NAME="anchor703"></A>
+ Periferiche SCSI <A NAME="index2903"></A> </H2>
+
+<P><STRONG>14.16.1)&nbsp;&nbsp;<A NAME="title652"></A><A NAME="anchor704"></A>
+ Come funziona l'emulazione SCSI per la gestione delle periferiche IDE/EIDE/ATAPI? <A NAME="index2904"></A> </STRONG></P>
+
+<P>L'emulazione SCSI &egrave; nata con uno scopo ben preciso, cio&egrave; quello di evitare di dover riscrivere i <A NAME="index2905"></A>driver per le periferiche ed i programmi che gi&agrave; esistono per il protocollo SCSI (masterizzatori, lettori ZIP, ecc.). In pratica quello che viene effettuato al caricamento del modulo <SAMP>ide-scsi</SAMP> &egrave; la creazione di una catena SCSI virtuale dove vengono innestate tutte le periferiche connesse ad un'interfaccia IDE/EIDE che non hanno supporto nativo nel <A NAME="index2906"></A>kernel caricato.</P>
+
+<P>In pratica, se si compila come modulo il supporto per i CD-ROM ATAPI, il supporto per l'emulazione <SAMP>ide-scsi</SAMP>, ed il supporto per il CDROM SCSI, quello che accade &egrave; questo:</P>
+
+<UL>
+
+<LI>
+
+<P>Se si carica il modulo IDE/EIDE del CD-ROM si otterr&agrave; il supporto IDE/EIDE per il CD-ROM;</P>
+</LI>
+
+<LI>
+
+<P>se si carica il modulo <SAMP>ide-scsi</SAMP> e tutte le periferiche IDE/EIDE sono supportate da un qualche <A NAME="index2907"></A>driver, allora sul bus SCSI virtuale non ci saranno periferiche;</P>
+</LI>
+
+<LI>
+
+<P>se si carica il modulo <SAMP>ide-scsi</SAMP> e poi si carica il modulo <SAMP>scd</SAMP> (supporto CD-ROM SCSI), si otterranno invece tutti CD-ROM SCSI.</P>
+</LI>
+</UL>
+
+<P>Se ad esempio si avesse la necessit&agrave;, per qualche ragione, di avere a disposizione i dischi come SCSI invece che come IDE/EIDE/ATAPI, allora si dovr&agrave; rimuovere il supporto per i dischi IDE/EIDE e caricare il supporto per quelli SCSI.</P>
+
+<P><STRONG>14.16.2)&nbsp;&nbsp;<A NAME="title653"></A><A NAME="anchor705"></A>
+ Quale opzione del <A NAME="index2908"></A>kernel bisogna selezionare se si possiede la scheda SCSI <A NAME="index2909"></A>Adaptec 2904? <A NAME="index2910"></A> <A NAME="index2911"></A> </STRONG></P>
+
+<P>Si dovr&agrave; selezionare <EM>AIC7xxx</EM><SUP><A HREF="hardware.html#footnote24" NAME="footnote-ref24">(24)</A></SUP>.</P>
+
+<TABLE ID="anchor706" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="50.jpg" ALT="figure/adaptec" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor706">14.12</A>. Le opzioni per i dispositivi Adaptec. </P>
+
+</TD></TR>
+</TABLE>
+
+<P>Il modulo si inserir&agrave; con il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe aic7xxx</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.16.3)&nbsp;&nbsp;<A NAME="title654"></A><A NAME="anchor707"></A>
+ Cosa si deve configurare per fare riconoscere al sistema il dispositivo SCSI <A NAME="index2912"></A>Adaptec 1510A? <A NAME="index2913"></A> </STRONG></P>
+
+<P>Qualora si disponga di una scheda SCSI <A NAME="index2914"></A>Adaptec 1510A, si dovr&agrave; selezionare l'opzione <EM>Adaptec AHA 152X/2825 support</EM> come si pu&ograve; vedere in figura <A HREF="ldr17.html#anchor706">14.12</A>. Per automatizzare il caricamento del supporto per tale scheda, si dovr&agrave; inserire nel file <CODE>/etc/lilo.conf</CODE> la riga:</P>
+<BLOCKQUOTE>
+
+<PRE>append="aha152x=0x340,11,7,1"</PRE>
+
+</BLOCKQUOTE>
+
+<P>Questa opzione equivale a scrivere sul <A NAME="index2915"></A>prompt di <A NAME="index2916"></A>LILO. Occorre ricordare che in ogni caso si dovr&agrave; lanciare di nuovo il comando <SAMP>lilo</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>/sbin/lilo</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.16.4)&nbsp;&nbsp;<A NAME="title655"></A><A NAME="anchor708"></A>
+ Cosa si deve configurare per fare riconoscere al sistema il dispositivo SCSI <A NAME="index2917"></A>Adaptec 1505? <A NAME="index2918"></A> <A NAME="index2919"></A> </STRONG></P>
+
+<P>Qualora si disponesse di un <A NAME="index2920"></A>controller <A NAME="index2921"></A>Adaptec 1505, si dovr&agrave; scegliere, all'atto della compilazione del <A NAME="index2922"></A>kernel, l'opzione <EM>Adaptec AHA 152X/2825 support</EM>.</P>
+
+<TABLE ID="anchor709" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="51.jpg" ALT="figure/adaptec1505" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr17.html#anchor709">14.13</A>. La descrizione dei dispositivi Adaptec AHA 152X/2825 support. </P>
+
+</TD></TR>
+</TABLE>
+
+<P>Come si pu&ograve; rilevare dalla figura <A HREF="ldr17.html#anchor709">14.16.4</A>, il supporto per la scheda in questione esiste ma occorrer&agrave; specificare manualmente i valori. Si dovranno innanzitutto specificare all'interno del file <CODE>/etc/conf.modules</CODE> queste due righe:</P>
+
+<PRE>options scsi_hostadapter aha152x=0x340,9,7,1,1 
+alias scsi_hostadapter aha152x</PRE>
+
+<P>Il comando per inserire il modulo sar&agrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>/sbin/modprobe aha152x.o aha152x=0x340,9,7,1,1</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.16.5)&nbsp;&nbsp;<A NAME="title656"></A><A NAME="anchor710"></A>
+ Cosa si deve configurare per fare riconoscere al sistema il dispositivo SCSI <A NAME="index2923"></A>Adaptec 152x? <A NAME="index2924"></A> <A NAME="index2925"></A> </STRONG></P>
+
+<P>Per questo tipo di <A NAME="index2926"></A>controller si utilizzino le stesse informazioni contenute nella LDR <A HREF="ldr17.html#anchor708">14.16.4</A>.</P>
+
+<P>Viene qui riportato lo schema dei ponticelli della scheda guardando la scheda con il pettine verso il basso:</P>
+<BLOCKQUOTE>
+
+<PRE> alt    j1  o o  =140h-15fh     o-o  =340h-35fh
+ i12    j2  o-o  =irq12
+ i11    j3  o-o  =irq11
+ i10    j4  o-o  =irq10
+ i9     j5  o-o  =irq9</PRE>
+
+</BLOCKQUOTE>
+
+<P>Si ricordi che uno solo dei ponticelli <SAMP>j2-j5</SAMP> deve essere chiuso. Se ad esempio si volesse l'IRQ 9 con indirizzo 340h, si dovr&agrave; chiudere <SAMP>j1</SAMP> e <SAMP>j5</SAMP> lasciando gli altri liberi.</P>
+
+<TABLE BORDER="3" WIDTH="100%">
+<TR><TD>
+
+<P>Si deve in ogni caso controllare di non avere altre periferiche con lo stesso IRQ.</P>
+
+</TD></TR>
+</TABLE>
+
+<P>Se al riavvio la scheda non &egrave; stata riconosciuta si dia il seguente comando direttamente da riga di comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>/sbin/modprobe aha152x.o aha152x=0x340,9,7,1,1</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote25" NAME="footnote-ref25">(25)</A></SUP></P>
+
+<H2>14.17 &nbsp; <A NAME="title657"></A><A NAME="anchor711"></A>
+ Unit&agrave; disco </H2>
+
+<P><STRONG>14.17.1)&nbsp;&nbsp;<A NAME="title658"></A><A NAME="anchor712"></A>
+ Cosa si deve configurare per fare riconoscere al sistema un'unit&agrave; <A NAME="index2927"></A>LS-120 interna? <A NAME="index2928"></A> <A NAME="index2929"></A> </STRONG></P>
+
+<P>Qualora si disponesse di un lettore <A NAME="index2930"></A>LS-120 interno (IDE/ATAPI) occorrer&agrave; assicurarsi di avere abilitato il supporto per <EM>ATAPI FLOPPY DRIVE</EM> nel <A NAME="index2931"></A>kernel; dopo averlo fatto, lo si potr&agrave; <A NAME="index2932"></A> innestare al <A NAME="index2933"></A>file system come un disco fisso normale. Es.:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -t vfat /dev/hdb /mnt/ls120</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote26" NAME="footnote-ref26">(26)</A></SUP></P>
+
+<H2>14.18 &nbsp; <A NAME="title659"></A><A NAME="anchor713"></A>
+ Periferiche <A NAME="index2937"></A>Plug &amp; Play </H2>
+
+<P><STRONG>14.18.1)&nbsp;&nbsp;<A NAME="title660"></A><A NAME="anchor714"></A>
+ Come si fa ad utilizzare periferiche <A NAME="index2938"></A>Plug &amp; Play in GNU/Linux? <A NAME="index2939"></A> <A NAME="index2940"></A> </STRONG></P>
+
+<P>Per gestire periferiche <A NAME="index2941"></A>Plug &amp; Play in GNU/Linux si dovr&agrave; utilizzare <A NAME="index2942"></A>Isapnptools. Esso &egrave; composto da <SAMP>isapnp</SAMP> e <SAMP>pnpdump</SAMP>. A grandi linee <SAMP>pnpdump</SAMP> legge le varie porte delle periferiche <A NAME="index2943"></A>Plug &amp; Play <SUP><A HREF="hardware.html#footnote27" NAME="footnote-ref27">(27)</A></SUP> e restituisce dei valori che possono essere reindirizzati su un file.</P>
+
+<P><SAMP>isapnp</SAMP> andr&agrave; a leggere i valori da tale file per attivare la periferica (scheda audio, rete o altro). Ecco un esempio:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>pnpdump &gt; <VAR>isapnp.conf</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>oppure con le ultime versioni:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>pnpdump --config &gt; isapnp.conf</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="hardware.html#footnote28" NAME="footnote-ref28">(28)</A></SUP></P>
+
+<P>Ecco un esempio per la scheda audio <A NAME="index2945"></A>Yamaha OPL3-sax<SUP><A HREF="hardware.html#footnote29" NAME="footnote-ref29">(29)</A></SUP>:</P>
+
+<PRE>#####
+#/etc/isapnp.conf
+(READPORT 0x0203)
+(ISOLATE PRESERVE)
+(IDENTIFY *)
+(VERBOSITY 2)
+(CONFLICT (IO FATAL)(IRQ FATAL)(DMA FATAL)(MEM FATAL)) # or WARNING
+
+(CONFIGURE YMH0030/2156265473 (LD 0
+
+[...]
+
+  (ACT Y)
+))
+(WAITFORKEY)
+##########</PRE>
+
+<P>A questo punto se il file &egrave; stato chiamato <CODE>/etc/isapnp.conf</CODE> come nell'esempio precedente, si utilizzer&agrave; <SAMP>isapnp</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>isapnp /etc/isapnp.conf</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>A seguito dell'esecuzione di questo comando, si dovrebbero avere stringhe di conferma simili a:</P>
+<BLOCKQUOTE>
+
+<PRE>ENABLED OK</PRE>
+
+</BLOCKQUOTE>
+
+<TABLE BORDER="3" WIDTH="100%">
+<TR><TD>
+
+<P>Attenzione: prima di eseguire <SAMP>isapnp</SAMP> non ci devono essere caricati moduli audio. Verificare eventualmente controllando il contenuto del file <CODE>/proc/modules</CODE>.</P>
+
+</TD></TR>
+</TABLE>
+
+<H2>14.19 &nbsp; <A NAME="title661"></A><A NAME="anchor715"></A>
+ Porte (seriale, parallela, PS/2, <A NAME="index2946"></A>USB, ecc.) </H2>
+
+<P><STRONG>14.19.1)&nbsp;&nbsp;<A NAME="title662"></A><A NAME="anchor716"></A>
+ Come si ricreano i dispositivi <CODE>/dev/ttyS0</CODE> e <CODE>/dev/ttyS1</CODE>? <A NAME="index2947"></A> <A NAME="index2948"></A> </STRONG></P>
+
+<P>Se si dovesse avere la necessit&agrave; di ricreare i dispositivi seriali (<CODE>/dev/ttyS0</CODE> e <CODE>/dev/ttyS0</CODE>) si dovranno impartire i seguenti comandi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cd /dev</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mknod -m 600 ttyS0 c 4 64</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mknod -m 600 ttyS1 c 4 65</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Eventualmente occorrer&agrave; ricreare il <A NAME="index2949"></A>collegamento simbolico del mouse. Se ad esempio il mouse &egrave; connesso alla prima porta seriale<SUP><A HREF="hardware.html#footnote30" NAME="footnote-ref30">(30)</A></SUP>, il comando sar&agrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ln -sf /dev/ttyS0 /dev/mouse</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.19.2)&nbsp;&nbsp;<A NAME="title663"></A><A NAME="anchor717"></A>
+ Come si ricrea il dispositivo <CODE>/dev/dsp</CODE>? <A NAME="index2950"></A> <A NAME="index2951"></A> </STRONG></P>
+
+<P>Il comando da utilizzare per ricreare tale dispositivo &egrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mknod -m 666 /dev/dsp c 14 3 </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.19.3)&nbsp;&nbsp;<A NAME="title664"></A><A NAME="anchor718"></A>
+ Perch&eacute; il sistema dice che i dispositivi <CODE>/dev/cua<VAR>n</VAR></CODE> sono obsoleti? <A NAME="index2952"></A> <A NAME="index2953"></A> </STRONG></P>
+
+<P>Qualora si cerchi di sostituire un <A NAME="index2954"></A>kernel molto vecchio (in genere presente in distribuzioni datate) si pu&ograve; incorrere nella segnalazione che indica di possedere dispositivi seriali antiquati. In particolare si indica che i dispositivi <CODE>/dev/cua<VAR>n</VAR></CODE><SUP><A HREF="hardware.html#footnote31" NAME="footnote-ref31">(31)</A></SUP> sono obsoleti e si chiede di sostituirli con i dispositivi <CODE>/dev/ttyS<VAR>n</VAR></CODE><SUP><A HREF="hardware.html#footnote32" NAME="footnote-ref32">(32)</A></SUP>.</P>
+
+<P>In questo caso non si dovr&agrave; fare altro che cambiare gli eventuali <A NAME="index2955"></A>collegamenti simbolici del mouse e del modem.</P>
+
+<P><STRONG>14.19.4)&nbsp;&nbsp;<A NAME="title665"></A><A NAME="anchor719"></A>
+ Come si ricrea <CODE>/dev/null</CODE>? <A NAME="index2956"></A> </STRONG></P>
+
+<P>Il dispositivo <CODE>/dev/null</CODE> si ricrea con il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mknod -m 666 /dev/null c 1 3</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.19.5)&nbsp;&nbsp;<A NAME="title666"></A><A NAME="anchor720"></A>
+ Come si ricreano i dispositivi <CODE>/dev/lp*</CODE>? <A NAME="index2957"></A> <A NAME="index2958"></A> </STRONG></P>
+
+<P>Per ricreare i dispositivi <CODE>/dev/lp0</CODE>, <CODE>/dev/lp1</CODE> e <CODE>/dev/lp2</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cd /dev</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mknod -m 660 lp0 c 6 0</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mknod -m 660 lp1 c 6 1</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mknod -m 660 lp2 c 6 2</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>chown root.daemon /dev/lp*</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>14.19.6)&nbsp;&nbsp;<A NAME="title667"></A><A NAME="anchor721"></A>
+ Come si possono individuare gli indirizzi di IRQ e di I/O? <A NAME="index2959"></A> <A NAME="index2960"></A> <A NAME="index2961"></A> </STRONG></P>
+
+<P>Si possono ottenere queste informazioni visualizzando il contenuto dei file <CODE>/proc/interrupts</CODE> e <CODE>/proc/ioports</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cat /proc/interrupts</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+<BLOCKQUOTE>
+
+<PRE>[root@localhost]:[Sat Dec 16]:[11:43:06]:[~]:
+--&gt; cat /proc/interrupts 
+           CPU0       
+  0:     537659          XT-PIC  timer
+  1:      24545          XT-PIC  keyboard
+  2:          0          XT-PIC  cascade
+  5:      13999          XT-PIC  soundblaster
+  9:      20694          XT-PIC  advansys, NE2000
+ 12:      37941          XT-PIC  PS/2 Mouse
+ 13:          1          XT-PIC  fpu
+ 14:     192411          XT-PIC  ide0
+NMI:          0
+ERR:          0</PRE>
+
+</BLOCKQUOTE>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cat /proc/ioports</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+<BLOCKQUOTE>
+
+<PRE>[root@localhost]:[Sat Dec 16]:[11:43:49]:[~]:
+--&gt; cat /proc/ioports    
+0000-001f : dma1
+0020-003f : pic1
+0040-005f : timer
+0060-006f : keyboard
+0080-008f : dma page reg
+00a0-00bf : pic2
+00c0-00df : dma2
+00f0-00ff : fpu
+01f0-01f7 : ide0
+0220-022f : soundblaster
+02f8-02ff : serial(auto)
+0330-0333 : MPU-401 UART
+0378-037a : parport0
+03c0-03df : vga+
+03f6-03f6 : ide0
+03f8-03ff : serial(auto)
+6800-681f : NE2000
+6c00-6c0f : advansys
+f000-f007 : ide0
+f008-f00f : ide1</PRE>
+
+</BLOCKQUOTE>
+<HR>
+
+<P><A HREF="hardware.html#footnote-ref1" NAME="footnote1">1)</A> <STRONG>XawTV</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="hardware.html#footnote-ref2" NAME="footnote2">2)</A> per uscire occorre attendere 10 sec. senza premere alcun tasto</P>
+
+<P><A HREF="hardware.html#footnote-ref3" NAME="footnote3">3)</A> dalle prime lettere della tastiera in alto a sinistra sotto i numeri e a destra del carattere di tabulazione</P>
+
+<P><A HREF="hardware.html#footnote-ref4" NAME="footnote4">4)</A> dove <VAR>tastiera.txt</VAR> &egrave; il file che conterr&agrave; il risultato di <SAMP>dumpkeys</SAMP>.</P>
+
+<P><A HREF="hardware.html#footnote-ref5" NAME="footnote5">5)</A> l'autore non &egrave; riuscito a trovare all'interno della propria distribuzione questo file per cui non ha potuto verificare quanto di seguito riportato.</P>
+
+<P><A HREF="hardware.html#footnote-ref6" NAME="footnote6">6)</A> dove <VAR>x</VAR> assume valori come 1, 2, 3 o 4.</P>
+
+<P><A HREF="hardware.html#footnote-ref7" NAME="footnote7">7)</A> <STRONG>imwheel</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="hardware.html#footnote-ref8" NAME="footnote8">8)</A> se invece il supporto &egrave; stato compilato in modo monolitico (<SAMP>Y</SAMP>) non sar&agrave; necessaria questo comando.</P>
+
+<P><A HREF="hardware.html#footnote-ref9" NAME="footnote9">9)</A> questo vale solo per le schede ISA, non per le PCI.</P>
+
+<P><A HREF="hardware.html#footnote-ref10" NAME="footnote10">10)</A>  dove <VAR>xxx</VAR> indica la versione.</P>
+
+<P><A HREF="hardware.html#footnote-ref11" NAME="footnote11">11)</A>  &egrave; possibile che la Creative Labs non fornisca pi&ugrave; tali file vista la possibilit&agrave; di gestire la scheda con la versione 2.4.x del <A NAME="index2788"></A>kernel.</P>
+
+<P><A HREF="hardware.html#footnote-ref12" NAME="footnote12">12)</A>  purtroppo capita spesso che alcune opzioni si trovano in altre sezioni, che abbiano cambiato nome o che siano state integrate da altre.</P>
+
+<P><A HREF="hardware.html#footnote-ref13" NAME="footnote13">13)</A> nei kernel non recentissimi presente nella sezione Additional low level sound drivers</P>
+
+<P><A HREF="hardware.html#footnote-ref14" NAME="footnote14">14)</A> occorrer&agrave; inserire i valori e gli indirizzi adeguati</P>
+
+<P><A HREF="hardware.html#footnote-ref15" NAME="footnote15">15)</A> occorrer&agrave; inserire i valori e gli indirizzi adeguati</P>
+
+<P><A HREF="hardware.html#footnote-ref16" NAME="footnote16">16)</A> occorrer&agrave; inserire i valori e gli indirizzi adeguati</P>
+
+<P><A HREF="hardware.html#footnote-ref17" NAME="footnote17">17)</A> se <VAR>als100.conf</VAR> &egrave; il file generato da <A NAME="index2808"></A>Isapnptools che si era modificato apponendo i commenti.</P>
+
+<P><A HREF="hardware.html#footnote-ref18" NAME="footnote18">18)</A> inserire opportunamente i valori corretti degli indirizzi e delle altre impostazioni.</P>
+
+<P><A HREF="hardware.html#footnote-ref19" NAME="footnote19">19)</A> dove <VAR>zip</VAR> &egrave; la directory di innesto desiderata.</P>
+
+<P><A HREF="hardware.html#footnote-ref20" NAME="footnote20">20)</A> dove <VAR>punto_innesto</VAR> &egrave; la directory di innesto desiderata.</P>
+
+<P><A HREF="hardware.html#footnote-ref21" NAME="footnote21">21)</A> dove <VAR>file</VAR> e <VAR>directory</VAR> rappresentano la possibilit&agrave; di indicare file e directory.</P>
+
+<P><A HREF="hardware.html#footnote-ref22" NAME="footnote22">22)</A> pi&ugrave; precisamente definibili come <SAMP>modem software</SAMP>.</P>
+
+<P><A HREF="hardware.html#footnote-ref23" NAME="footnote23">23)</A> pi&ugrave; precisamente definibili come <SAMP>modem software</SAMP>.</P>
+
+<P><A HREF="hardware.html#footnote-ref24" NAME="footnote24">24)</A> ci sono due versioni, una per i vecchi modelli</P>
+
+<P><A HREF="hardware.html#footnote-ref25" NAME="footnote25">25)</A> questo consente di accedere ad un'eventuale periferica rimovibile al momento opportuno anzich&eacute; tenerla accesa fin da prima dell'avvio.</P>
+
+<P><A HREF="hardware.html#footnote-ref26" NAME="footnote26">26)</A> se si tratta di un lettore <A NAME="index2934"></A>LS-120 installato come <A NAME="index2935"></A>slave primario e contenente un supporto con <A NAME="index2936"></A>file system <SAMP>vfat</SAMP>.</P>
+
+<P><A HREF="hardware.html#footnote-ref27" NAME="footnote27">27)</A> ammesso che la scheda madre gestisca le schede ISA <A NAME="index2944"></A> Plug &amp; Play</P>
+
+<P><A HREF="hardware.html#footnote-ref28" NAME="footnote28">28)</A> in questo secondo caso si ottiene un file gi&agrave; decommentato, nel primo invece occorrer&agrave; modificare a mano il file</P>
+
+<P><A HREF="hardware.html#footnote-ref29" NAME="footnote29">29)</A>  il file riportato non &egrave; completo</P>
+
+<P><A HREF="hardware.html#footnote-ref30" NAME="footnote30">30)</A> COM1 di Dos</P>
+
+<P><A HREF="hardware.html#footnote-ref31" NAME="footnote31">31)</A> dove <VAR>n</VAR> &egrave; un numero che va da 0 a 3.</P>
+
+<P><A HREF="hardware.html#footnote-ref32" NAME="footnote32">32)</A> dove <VAR>n</VAR> &egrave; un numero che va da 0 a 3.</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="hardware.html">hardware.html</A></P>
+<P>
+<A HREF="ldr18.html">[successivo]</A>
+<A HREF="ldr16.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

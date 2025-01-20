@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr15.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr17.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr17.html">[successivo]</A>
+<A HREF="ldr15.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 13. &nbsp; <A NAME="title586"></A><A NAME="anchor627"></A>Computer portatili</H1>
+
+<H2>13.1 &nbsp; <A NAME="title587"></A><A NAME="anchor628"></A>
+Problematiche di installazione</H2>
+
+<P><STRONG>13.1.1)&nbsp;&nbsp;<A NAME="title588"></A><A NAME="anchor629"></A>
+ Perch&eacute; non funziona l'audio sul portatile <A NAME="index2644"></A>Acer TM 312D? <A NAME="index2645"></A> <A NAME="index2646"></A> <A NAME="index2647"></A> <A NAME="index2648"></A> </STRONG></P>
+
+<P>Il portatile in questione dispone di una OPL3-Sax. Questa scheda pu&ograve; essere riconosciuta tramite <SAMP>pnpdump</SAMP>. Sar&agrave; necessario creare un nuovo file di configurazione tramite il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>pnpdump --config&gt;opl3sa.conf</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Il file di configurazione dovrebbe assomigliare a:</P>
+
+<PRE>######
+(READPORT 0x0203)
+(ISOLATE PRESERVE)
+(IDENTIFY *)
+(VERBOSITY 2)
+(CONFLICT (IO FATAL)(IRQ FATAL)(DMA FATAL)(MEM FATAL)) # or WARNING
+
+(CONFIGURE YMH0030/2156265473 (LD 0
+  (IO 0 (SIZE 16) (BASE 0x0220))
+  (IO 1 (SIZE 8) (BASE 0x0530))
+  (IO 2 (SIZE 8) (BASE 0x0388))
+  (IO 3 (SIZE 2) (BASE 0x0330))
+  (IO 4 (SIZE 2) (BASE 0x0370))
+  (INT 0 (IRQ 5 (MODE +E)))
+  (DMA 0 (CHANNEL 0))
+  (DMA 1 (CHANNEL 1))
+
+ (NAME "YMH0030/2156265473[0]{OPL3-SA3 Snd System }")
+  (ACT Y)
+))
+(CONFIGURE YMH0030/2156265473 (LD 1
+  (IO 0 (SIZE 1) (BASE 0x0201))
+
+ (NAME "YMH0030/2156265473[1]{OPL3-SA3 Snd System }")
+  (ACT Y)
+))
+(WAITFORKEY)
+########</PRE>
+
+<P>Per caricare il file di configurazione opportunamente modificato, si utilizzer&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>isapnp opl3sa.conf</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>ma occorre ricordare che nessun modulo audio deve essere caricato in quel momento. Occorre inserire poi i moduli nel corretto ordine come consigliato nella documentazione allegata ai sorgenti del <A NAME="index2649"></A>kernel:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe mpu401</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe ad1848</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe opl3sa2 io=0x370 mss_io=0x530 mpu_io=0x330 irq=5 dma=0 dma2=1</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe opl3 io=0x388</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>13.1.2)&nbsp;&nbsp;<A NAME="title589"></A><A NAME="anchor630"></A>
+ Perch&eacute; la tastiera del portatile alla fine dell'installazione di Linux risulta inutilizzabile? <A NAME="index2650"></A> <A NAME="index2651"></A> <A NAME="index2652"></A> </STRONG></P>
+
+<P>Qualora dopo l'avvio del sistema la tastiera risultasse inutilizzabile, occorre fare il tentativo di disabilitare i moduli relativi alla gestione delle periferiche PCMCIA. Per ovviare all'inconveniente, all'avvio di <A NAME="index2653"></A>LILO si potr&agrave; accedere in modalit&agrave; speciale tramite il comando:</P>
+
+<P class="command"><CODE>LILO boot: </CODE><STRONG><CODE>linux init 1</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>o:</P>
+
+<P class="command"><CODE>LILO boot: </CODE><STRONG><CODE>linux single</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Una volta ottenuto l'accesso al sistema, si dovr&agrave; disabilitare il caricamento del modulo che gestisce le periferiche PCMCIA eliminandone la chiamata dalla gerarchia <CODE>/etc/init.d</CODE> (o <CODE>/etc/rc.d/init./</CODE>). Baster&agrave; rinominare il file <CODE>pcmcia</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mv pcmcia pcmcia.old</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>A questo punto al riavvio del sistema i moduli non saranno caricati e si potr&agrave; operare normalmente.</P>
+
+<P>Un'altra metodica consiste nel controllare nel BIOS del portatile se nella voce <SAMP>pc card</SAMP> il <SAMP>controller mode</SAMP> &egrave; impostato a <SAMP>Cardbus/16 -bit</SAMP>. </P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM></DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="computer_portatili.html">computer_portatili.html</A></P>
+<P>
+<A HREF="ldr17.html">[successivo]</A>
+<A HREF="ldr15.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

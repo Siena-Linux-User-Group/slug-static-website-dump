@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Filesystem</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Partizioni" href="partizioni.html">
+    <LINK rel="PREVIOUS" title="Nozioni Generali" href=
+    "nozionigenerali.html">
+    <LINK rel="NEXT" title="Prerequisiti generali" href=
+    "prerequisitigenerali.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "nozionigenerali.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 1.
+          Partizioni</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "prerequisitigenerali.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="FILESYSTEM">1.3. Filesystem</A></H1>
+
+      <P>Il disco durante la formattazione viene suddiviso in settori e
+      tracce: possiamo immaginare le tracce come delle corone circolari
+      concentriche di disco, mentre i settori sono degli spicchi di disco.
+      Usando settore e traccia come coordinate è possibile individuare un
+      blocco, l'unità più piccola indirizzabile su un disco. A questo tipo di
+      suddivizione fanno eccezione i cdrom e i nastri: entrambi usano un tipo
+      di organizzazione sequenziale, i nastri per ovvie ragioni, mentre i
+      cdrom perché sono organizzati in una lunghissima spirale (veramente lo
+      sono solo i cd-r e cd-rw, per facilitare il percorso del laser, per i
+      cdrom normali è leggermente diverso). Nel caso dei cdrom però, la
+      presenza di un filesystem (di solito iso9660, magari arricchito con
+      estensioni joliet nei sistemi microsoft o rock-ridge nei sistemi linux,
+      per gestire nomi e path lunghi, o i permessi) permette di accedervi in
+      lettura in maniera diretta e casuale, come sui normali dischi
+      magnetici. Un filesystem è un sistema per organizzare i file nei
+      dispositivi in modo da avere un accesso diretto, senza il vincolo della
+      sequenzialità.</P>
+
+      <P>Un filesystem quindi contiene file, mantenendo un elenco di essi e
+      della loro posizione sul disco, eventualmente (quasi sempre...)
+      suddivisi in più settori del dispositivo. L'organizzazione è
+      gerarchica, specie in Unix, l'insieme di sistemi operativi di cui Linux
+      fa parte: esiste un punto d'innesto principale ("/", root), a cui sono
+      collegati altri punti di innesto secondari e così via. Questi punti di
+      innesto si chiamano directory, e non necessariamente devono risiedere
+      sullo stesso disco o addirittura sullo stesso computer. Infatti Unix
+      permette di <EM>montare</EM> (agganciare o innestare) al filesystem
+      principale altri filesystem, locali o remoti, che al termine devono
+      essere smontati per poter essere eventualmente rimossi, ad esempio per
+      floppy e cdrom. L'operazione di <EM>unmount</EM> (smontaggio) di un
+      dispositivo effettua inoltre il <EM>sync</EM> (sincronizzazione) del
+      suo contenuto, garantendo l'integrità dei dati. Infatti Unix non scrive
+      immediatamente le modifiche effettuate, ma aspetta che altri processi
+      più importanti rilascino risorse (tempo e % di occupazione della cpu)
+      per effettuare il sync. Le directory possono contenere altre directory
+      o file. Esiste quindi un'organizzazione ad albero, e per indicare un
+      file se ne specifica il suo <EM>path</EM> (percorso) all'interno del
+      filesystem principale, partendo da "/" e separando ogni nodo
+      (directory) con il simbolo "/", ad esempio: <B class=
+      "KEYCAP">/home/utente/testi/tesi.txt</B> . Il filesystem Unix permette
+      inoltre di avere informazioni aggiuntive sulla natura del file, tipo
+      permessi di lettura, scrittura ed esecuzione, utente e gruppo
+      proprietario, e genere del file in questione. Per sapere il tipo di
+      file, basta dare <B class="COMMAND">ls -la</B> e guardare il primo
+      carattere della riga del file in questione, ad esempio:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+..........
+drwxr-xr-x  2 utente   gruppo   1024 Mar 23   1999   docs 
+-rw-------  2 utente   gruppo   1024 Apr 12   2000   testo
+..........
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="TABLE">
+        <A name="AEN320"></A>
+
+        <P><B>Tabella 1-1. Elenco dei tipi di file (in base al primo
+        carattere)</B></P>
+
+        <TABLE border="1" class="CALSTABLE">
+          <TBODY>
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;-&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">&nbsp;&nbsp;file
+              regolare&nbsp;&nbsp;</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;d&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">
+              &nbsp;&nbsp;directory&nbsp;&nbsp;</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;l&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">&nbsp;&nbsp;link
+              (collegamento)&nbsp;&nbsp;</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;b&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">&nbsp;&nbsp;periferica a blocchi
+              con buffer&nbsp;&nbsp;</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;c&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">&nbsp;&nbsp;periferica a
+              caratteri con buffer&nbsp;&nbsp;</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;u&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">&nbsp;&nbsp;periferica a
+              caratteri senza buffer&nbsp;&nbsp;</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;p&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">&nbsp;&nbsp;pipe
+              FIFO&nbsp;&nbsp;</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP"><B class=
+              "KEYCAP">&nbsp;&nbsp;s&nbsp;&nbsp;</B> </TD>
+
+              <TD align="LEFT" valign="TOP">
+              &nbsp;&nbsp;socket&nbsp;&nbsp;</TD>
+            </TR>
+          </TBODY>
+        </TABLE>
+      </DIV>
+
+      <P>Le periferiche o dispositivi a caratteri permettono di accedervi
+      solo un carattere alla volta (es: console, porta seriale, ecc.), mentre
+      quelle a blocchi permettono di accedervi solo a blocchi di dimensioni
+      stabilite (es: dischi). Solo quest'ultimo tipo di periferiche o
+      dispositivi possono contenere un filesystem.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> I CD audio puri (o la sola parte audio di quelli
+          Mixed-mode) NON contengono filesystem, quindi non si possono
+          montare: per ascoltarli basta usare un lettore CD, sempre ammesso
+          di avere i permessi di accesso in lettura al dispositivo!</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Da notare che non necessariamente, per il solo fatto di essere un
+      dispositivo a blocchi, un disco deve contenere un filesystem. Un disco
+      può comunque essere usato alla <EM>vecchia maniera</EM> sequenziale:
+      infatti un disco senza filesystem è solo una serie di settori a partire
+      dalla prima testina del primo cilindro. In questo senso, a volte si
+      utilizzano i dischi come se fossero nastri, registrando e rileggendo i
+      dati nella stessa sequenza naturale di settori, testine e cilindri.
+      Tipici esempi sono i dischetti di avvio con l'immagine del kernel o i
+      dischi di archivio multivolume creati da tar. Ricordate che i dischi
+      senza filesystem non possono essere montati normalmente, ma necessitano
+      del cosiddetto <EM>loopback device</EM>, compilato insieme al kernel.
+      Le partizioni di <EM>swap</EM> sono gestite a blocchi, senza
+      filesystem.</P>
+
+      <P>La maggior parte delle distribuzioni Unix e Linux seguono il
+      <EM>Filesystem Structure Standard</EM> (<B class="KEYCAP">FSSTND</B>,
+      ora evolutosi in <B class="KEYCAP">FHS</B>, <EM>Filesystem Hierarchy
+      Standard</EM>), in modo da garantire una certa uniformità o
+      comparibilità. Il <B class="KEYCAP">FSSTND</B> parte dall'idea di
+      separare i file locali alla macchina da quelli condivisi (in rete
+      locale o altro), e quelli a sola lettura da quelli accessibili anche in
+      scrittura. Vediamo alcuni punti del FSSTND:</P>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">/</B> - è la directory principale che contiene
+          tutte le altre.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/boot</B> - contiene i file statici usati
+          durante l'avvio, compreso il kernel e i file di Lilo.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/home</B> - è la directory che contiene quelle
+          personali degli utenti.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/mnt</B> - di solito contiene i punti di
+          innesto dei dispositivi rimovibili (<B class=
+          "KEYCAP">/mnt/floppy</B>, <B class="KEYCAP">/mnt/cdrom</B>, <B
+          class="KEYCAP">/mnt/zip</B>, ecc.).</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/dev</B> - contiene i file speciali dei
+          dispositivi di sistema, a blocchi o a caratteri (ebbene sì, anche i
+          dispositivi fisici sono visti come file: mai sentito il detto
+          "<EM>In Unix tutto è un file</EM>"?).</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/etc</B> - contiene i file di configurazione
+          generali del sistema. Eventuali sottodirectory raggruppano file di
+          configurazione specifici di qualche programma o servizio, ad
+          esempio <B class="KEYCAP">/etc/X11</B> per il sistema grafico, <B
+          class="KEYCAP">/etc/ppp</B> per il demone ppp, <B class=
+          "KEYCAP">/etc/httpd</B> per apache, ecc. (anzi, /etc /etc ;-)
+          ).</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/lib</B> - contiene le librerie condivise,
+          usate in link dinamico dai programmi contenuti in <B class=
+          "KEYCAP">/bin</B> e <B class="KEYCAP">/usr/bin</B>. <B class=
+          "KEYCAP">/lib/modules</B> contiene i moduli caricati dinamicamente
+          dal kernel.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/proc</B> - è il punto d'innesto del
+          filesystem virtuale <EM>proc</EM>, che contiene informazioni varie
+          sul sistema in attività (viene infatti generato a runtime dal
+          kernel), oltre a possibili impostazioni da applicare ogni volta che
+          si avvia il sistema.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/sbin</B> - contiene i file principali per
+          l'avvio del sistema e per l'amministrazione da parte dell'utente
+          root. I programmi sono linkati staticamente, quindi non hanno
+          bisogno di accedere a <B class="KEYCAP">/lib</B>.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/bin</B> - contiene i file eseguibili che in
+          genere possono essere usati localmente anche dai comuni utenti.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/usr</B> - contiene i file condivisibili in
+          rete tra più macchine, e dovrebbe essere possibile montarla in sola
+          lettura, a sistema ormai stabilizzato, sempre nel caso che disponga
+          di una partizione separata. Contiene un sotto-filesystem: <B class=
+          "KEYCAP">/usr/bin</B> per i file eseguibili anche dagli utenti
+          comuni, <B class="KEYCAP">/usr/sbin</B> per quelli dell'utente
+          root, <B class="KEYCAP">/usr/doc</B> e <B class=
+          "KEYCAP">/usr/info</B> per la documentazione, <B class=
+          "KEYCAP">/usr/man</B> per le pagine di manuale, <B class=
+          "KEYCAP">/usr/X11R6</B> per il sistema grafico X11, <B class=
+          "KEYCAP">/usr/include</B> per gli header necessari per la
+          compilazione di programmi C, <B class="KEYCAP">/usr/lib</B> per le
+          librerie, <B class="KEYCAP">/usr/src</B> per i sorgenti (in
+          particolare <B class="KEYCAP">/usr/src/linux</B> per i sorgenti del
+          kernel), e <B class="KEYCAP">/usr/local</B> per programmi locali
+          alla macchina, ma aggiunti in seguito alla stabilizzazione del
+          sistema.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/var</B> - contiene i file variabili del
+          sistema (a differenza di <B class="KEYCAP">/usr</B>, che dovrebbe
+          poter essere montata a sola lettura). Contiene le directory di
+          spool del sistema (come <B class="KEYCAP">/var/spool/lpd</B> per la
+          stampa, <B class="KEYCAP">/var/spool/fax</B> per i fax, <B class=
+          "KEYCAP">/var/spool/mail</B> per la posta, <B class=
+          "KEYCAP">/var/spool/news</B> per i newsgroup, ecc.), la directory
+          dei log (registrazioni delle attività) del sistema (<B class=
+          "KEYCAP">/var/log/...</B>), la directory contenente i PID dei
+          processi in esecuzione (<B class="KEYCAP">/var/run/...</B>), la
+          directory delle cache (<B class="KEYCAP">/var/cache</B>), e
+          altro.</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">/tmp</B> - contiene i file temporanei generati
+          dagli utenti e dai programmi in esecuzione, ed è accessibile in
+          genere in lettura/scrittura/esecuzione a tutti gli utenti (può
+          anche essere un link simbolico a <B class=
+          "KEYCAP">/var/tmp</B>).</P>
+        </LI>
+      </UL>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "nozionigenerali.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "prerequisitigenerali.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Nozioni Generali</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "partizioni.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Prerequisiti
+          generali</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

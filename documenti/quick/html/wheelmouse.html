@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Wheel Mouse</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="Servizi" href="servizi.html">
+    <LINK rel="NEXT" title="Varie" href="varie.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "servizi.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "varie.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="WHEELMOUSE">Capitolo 18. Wheel Mouse</A></H1>
+
+      <P>A grande richiesta, vediamo come configurare un wheel-mouse in
+      Linux, in modo che funzioni col maggior numero di applicazioni. Un mio
+      consiglio personale è di lasciar perdere Imwheel, un programma che
+      serve proprio a questo, ma che crea a volte incompatibilità con alcuni
+      programmi: io ho configurato tutto senza di esso, e il wheel-mouse mi
+      funziona in X-Window, Kde, Gnome, Wmaker, Emacs, Netscape, Vim, Rxvt e
+      compagnia. A me l'uso contemporaneo di Gpm (per il mouse in console
+      pura) e X-Window creava dei problemi, funzionava "random". Ho risolto
+      facendo leggere in console su <TT class="FILENAME">/dev/gpmdata</TT>, e
+      in X-Window direttamente da <TT class="FILENAME">/dev/psaux</TT>.
+      Queste è la situazione dei device in <TT class=
+      "FILENAME">/dev/</TT>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+mrshark@pingu:~$ ls -l /dev/mouse /dev/gpmdata /dev/psaux
+prw-r--r--    1 root     root            0 feb  5 14:16 /dev/gpmdata
+lrwxrwxrwx    1 root     root            5 feb  5 14:26 /dev/mouse -&gt; psaux
+crw-------    1 root     root      10,   1 feb 12 07:48 /dev/psaux 
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Io uso wheel-mouse con porta PS/2, se avete info per altri tipi di
+      mouse, fatemi sapere! I mouse Logitech in versione OEM (bianchi con
+      logo nero), pare non funzionino. Seguono le sezioni relative al mouse
+      delle configurazioni per Xfree86 versioni 3 e 4 rispettivamente:</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>Il resto dei file è stato eliminato! C'è molta altra roba
+              all'interno di questi file! Non copiateli semplicemente al
+              posto di quelli che avete, altrimenti X non vi partirà più!
+              Siete avvisati! ;-) )</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P><B class="KEYCAP">=== file: /etx/X11/XF86Config ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+Section "Pointer"
+    Protocol    "imps/2"        # mouse ps/2
+#    Protocol    "intellimouse" # mouse seriale
+    Device      "/dev/psaux"
+    buttons     5
+    ZAxisMapping 4 5
+EndSection
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etx/X11/XF86Config-4 ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# questa e' la sezione originale del mio file, che uso ancora a volte
+# quando non ho voglia di attaccare il wheel-mouse al portatile
+Section "InputDevice"
+    Identifier  "Mouse1"
+    Driver      "mouse"
+    Option "Protocol"    "PS/2"
+    Option "Device"      "/dev/psaux"
+    Option "Emulate3Buttons" "on"
+    Option "Emulate3Timeout" "50"
+EndSection
+
+# questa invece e' la nuova sezione che ho aggiunto per il wheel-mouse
+Section "InputDevice"
+    Identifier  "Mouse2"
+    Driver      "mouse"
+    Option "Protocol"    "IMPS/2"        # mouse ps/2
+#    Option "Protocol"    "INTELLIMOUSE" # mouse seriale
+    Option "Device"      "/dev/psaux"
+    Option "Emulate3Buttons" "off"
+    Option "ZAxisMapping" "4 5"
+EndSection
+
+# in questa sezione dovete specificare quale dei 2 mouse impostati
+# precedentemente volete usare nelle vostre sessioni X-Window; la
+# riga che vi interessa e' la InputDevice... 
+Section "ServerLayout"
+    Identifier "layout1"
+    Screen     "screen1"
+#    InputDevice "Mouse1" "CorePointer"
+    InputDevice "Mouse2" "CorePointer"
+    InputDevice "Keyboard1" "CoreKeyboard"
+EndSection
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Con queste dovreste essere a posto per X-Window, e quindi il mouse
+      dovrebbe già funzionare anche nei vari Window manager (a me già così
+      funziona in tutti i programmi Kde 1 e 2, Gnome e i suoi WM, e con
+      Wmaker). Provate, riavviando X.</P>
+
+      <P>Ora passiamo a <SPAN class="APPLICATION">Gpm</SPAN>. Quella che
+      segue è la configurazione di <B class="KEYCAP">Pingu</B>, la mia
+      Linuxbox <B class="KEYCAP">Debian</B>, che ha un file apposito per le
+      opzioni di <SPAN class="APPLICATION">Gpm</SPAN>, quindi se usate altre
+      distribuzioni dovrete inserire nello script che lo avvia le opzioni
+      indicate di seguito ( -m /dev/psaux -t imps2 ):</P>
+
+      <P><B class="KEYCAP">=== file: /etc/gpm.conf ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+device=/dev/psaux
+responsiveness=
+repeat_type=
+type=imps2
+append=""
+# eventualmente mettili sulla riga di comando di gpm se non usi debian
+# le uniche 2 opzioni che uso sono m e t, come segue da "ps aux | grep gpm":
+# /usr/sbin/gpm -m /dev/psaux -t imps2
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Seguono ora le righe da <B class="KEYCAP">aggiungere</B> al vostro
+      file <TT class="FILENAME">~/.Xdefaults</TT> per abilitare lo scroll in
+      <SPAN class="APPLICATION">Netscape</SPAN>, 5 :</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>Il mouse in <SPAN class="APPLICATION">Netscape</SPAN>
+              funziona solo se avete il <B class="KEYCAP">NumLock</B> del
+              tastierino numerico disattivato! Ma con questo disattivato,
+              <SPAN class="APPLICATION">Rxvt</SPAN> fa casini... a voi la
+              palla...</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P><B class="KEYCAP">=== file: ~/.Xdefaults ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+Netscape*drawingArea.translations:  #replace    \
+&lt;Btn1Down&gt;:           ArmLink()   \n\
+&lt;Btn2Down&gt;:           ArmLink()   \n\
+~Shift&lt;Btn1Up&gt;:       ActivateLink()  \n\
+~Shift&lt;Btn2Up&gt;:       ActivateLink(new-window)  \
+DisarmLink()    \n\
+Shift&lt;Btn1Up&gt;:        ActivateLink(save-only)  \
+DisarmLink()    \n\
+Shift&lt;Btn2Up&gt;:        ActivateLink(save-only)  \
+DisarmLink()    \n\
+&lt;Btn1Motion&gt;:             DisarmLinkIfMoved()  \n\
+&lt;Btn2Motion&gt;:             DisarmLinkIfMoved()  \n\
+&lt;Btn3Motion&gt;:             DisarmLinkIfMoved()  \n\
+&lt;Motion&gt;:             DescribeLink()  \n\
+&lt;Btn3Down&gt;:           xfeDoPopup()    \n\
+&lt;Btn3Up&gt;:             ActivatePopup() \n\
+Ctrl&lt;Btn4Down&gt;: PageUp()\n\
+Ctrl&lt;Btn5Down&gt;: PageDown()\n\
+Shift&lt;Btn4Down&gt;: LineUp()\n\
+Shift&lt;Btn5Down&gt;: LineDown()\n\
+None&lt;Btn4Down&gt;: LineUp()LineUp()LineUp()LineUp()LineUp()LineUp()\n\
+None&lt;Btn5Down&gt;: 
+LineDown()LineDown()LineDown()LineDown()LineDown()LineDown()\n\
+Alt&lt;Btn4Down&gt;: xfeDoCommand(forward)\n\
+Alt&lt;Btn5Down&gt;: xfeDoCommand(back)\n
+
+Netscape*globalNonTextTranslations: #override\n\
+Shift&lt;Btn4Down&gt;: LineUp()\n\
+Shift&lt;Btn5Down&gt;: LineDown()\n\
+None&lt;Btn4Down&gt;:LineUp()LineUp()LineUp()LineUp()LineUp()LineUp()\n\
+None&lt;Btn5Down&gt;:LineDown()LineDown()LineDown()LineDown()LineDown()LineDown()\n\
+Alt&lt;Btn4Down&gt;: xfeDoCommand(forward)\n\
+Alt&lt;Btn5Down&gt;: xfeDoCommand(back)\n
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Con le righe seguenti, da <B class="KEYCAP">aggiungere</B> in <TT
+      class="FILENAME">~/.emacs</TT>, abiliterete la rotella anche per
+      Emacs:</P>
+
+      <P><B class="KEYCAP">=== file: ~/.emacs ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+(defun up-slightly () (interactive) (scroll-up 5))
+(defun down-slightly () (interactive) (scroll-down 5))
+(global-set-key [mouse-4] 'down-slightly)
+(global-set-key [mouse-5] 'up-slightly)
+
+(defun up-one () (interactive) (scroll-up 1))
+(defun down-one () (interactive) (scroll-down 1))
+(global-set-key [S-mouse-4] 'down-one)
+(global-set-key [S-mouse-5] 'up-one)
+
+(defun up-a-lot () (interactive) (scroll-up))
+(defun down-a-lot () (interactive) (scroll-down))
+(global-set-key [C-mouse-4] 'down-a-lot)
+(global-set-key [C-mouse-5] 'up-a-lot)
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Con le righe seguenti, sempre da <B class="KEYCAP">aggiungere</B> in
+      <TT class="FILENAME">~/.emacs</TT>, abiliterete invece la rotella anche
+      per XEmacs:</P>
+
+      <P><B class="KEYCAP">=== file: ~/.emacs ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+(define-key global-map 'button4
+  '(lambda (&amp;rest args)
+    (interactive) 
+    (let ((curwin (selected-window)))
+      (select-window (car (mouse-pixel-position)))
+      (scroll-down 5)
+      (select-window curwin)
+)))
+(define-key global-map [(shift button4)]
+  '(lambda (&amp;rest args)
+    (interactive) 
+    (let ((curwin (selected-window)))
+      (select-window (car (mouse-pixel-position)))
+      (scroll-down 1)
+      (select-window curwin)
+)))
+(define-key global-map [(control button4)]
+  '(lambda (&amp;rest args)
+    (interactive) 
+    (let ((curwin (selected-window)))
+      (select-window (car (mouse-pixel-position)))
+      (scroll-down)
+      (select-window curwin)
+)))
+(define-key global-map 'button5
+  '(lambda (&amp;rest args)
+    (interactive) 
+    (let ((curwin (selected-window)))
+      (select-window (car (mouse-pixel-position)))
+      (scroll-up 5)
+      (select-window curwin)
+)))
+(define-key global-map [(shift button5)]
+  '(lambda (&amp;rest args)
+    (interactive) 
+    (let ((curwin (selected-window)))
+      (select-window (car (mouse-pixel-position)))
+      (scroll-up 1)
+      (select-window curwin)
+)))
+(define-key global-map [(control button5)]
+  '(lambda (&amp;rest args)
+    (interactive) 
+    (let ((curwin (selected-window)))
+      (select-window (car (mouse-pixel-position)))
+      (scroll-up)
+      (select-window curwin)
+)))
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Altre informazioni nel documento indicato nella sezione "Links"</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "servizi.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "varie.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Servizi</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Varie</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr10.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr12.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr12.html">[successivo]</A>
+<A HREF="ldr10.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 8. &nbsp; <A NAME="title508"></A><A NAME="anchor536"></A>I Caratteri (<EM>font</EM>)</H1>
+
+<H2>8.1 &nbsp; <A NAME="title509"></A><A NAME="anchor537"></A>
+Impostazioni</H2>
+
+<P><STRONG>8.1.1)&nbsp;&nbsp;<A NAME="title510"></A><A NAME="anchor538"></A>
+ Come si fa a cambiare i caratteri del <A NAME="index2295"></A>prompt? <A NAME="index2296"></A> <A NAME="index2297"></A> <A NAME="index2298"></A> </STRONG></P>
+
+<P>Avendo installato <SAMP>kbd</SAMP> e/o <SAMP>console-tools</SAMP> e <SAMP>console-data</SAMP>, occorrer&agrave; utilizzare i comandi <SAMP>setfont</SAMP> o <SAMP>consolechars</SAMP> seguiti dal nome del carattere da utilizzare.</P>
+
+<P><STRONG>8.1.2)&nbsp;&nbsp;<A NAME="title511"></A><A NAME="anchor539"></A>
+ <SAMP>Removing unix/:7101 from the valid list of fontpaths</SAMP> <A NAME="index2299"></A> </STRONG></P>
+
+<P>Se all'avvio di X si dovesse ricevere questo messaggio di errore:</P>
+
+<PRE>Removing unix/:7101 from the valid list of fontpaths
+Removing /usr/X11R6/lib/X11/fonts/Speedo/ from the valid list of fontpaths
+Warning: locale not supported by C library, locale unchanged
+Warning: locale not supported by C library, locale unchanged
+Warning: locale not supported by C library, locale unchanged
+Killed</PRE>
+
+<P>occorrer&agrave; aggiungere al file <CODE>/etc/profile</CODE> la riga:</P>
+
+<PRE> export LC_ALL=POSIX</PRE>
+
+<P>dopo la dichiarazione della variabile <SAMP>LANG</SAMP>:</P>
+
+<PRE> export LANG=it_IT</PRE>
+
+<P>se ancora non dovesse funzionare, si consiglia di provare a sostituire le suddette righe con la seguente:</P>
+
+<PRE> localedef -f ISO-8859-1 -i it_IT IT</PRE>
+
+<P><STRONG>8.1.3)&nbsp;&nbsp;<A NAME="title512"></A><A NAME="anchor540"></A>
+ Come si possono utilizzare i caratteri <A NAME="index2300"></A>TrueType  con <A NAME="index2301"></A>XFree86 4? <A NAME="index2302"></A> <A NAME="index2303"></A> </STRONG></P>
+
+<P><A NAME="index2304"></A>XFree86 4 gestisce i <A NAME="index2305"></A>TrueType &laquo;nativamente&raquo; senza <SAMP>xfs</SAMP>, la soluzione pi&ugrave; semplice &egrave; eliminare <SAMP>xfs</SAMP>. I caratteri <A NAME="index2306"></A>TrueType vanno in una directory e poi occorre mettere in <CODE>/etc/XF86Config</CODE> (o dove troviamo questo file nel <A NAME="index2307"></A>file&nbsp;system, ad es. in <CODE>/etc/X11/XF86Config</CODE>) il percorso dei caratteri a mano e togliere la riga &laquo;unix:/1&raquo;;</P>
+
+<PRE>  -----------------------------------------------------
+  FontPath /usr/X11R6/lib/X11/fonts/TrueType
+  FontPath /usr/X11R6/lib/X11/fonts/100dpi
+  FontPath /usr/X11R6/lib/X11/fonts/Speedo
+  FontPath /usr/X11R6/lib/X11/fonts/misc
+  FontPath /usr/X11R6/lib/X11/fonts/PEX
+  -----------------------------------------------------</PRE>
+
+<P> e cos&igrave; via per qualunque altra directory dei caratteri. Togliendo &laquo;unix:/1&raquo; si mette fuori causa <SAMP>xfs</SAMP>. Quindi ricapitolando <A NAME="index2308"></A>X 4.0 gestisce autonomamente i caratteri <A NAME="index2309"></A>TrueType a differenza delle versioni precedenti del <A NAME="index2310"></A>server grafico. &Eacute; possibile a questo punto disinstallare <SAMP>Xfstt</SAMP> e <SAMP>xfs</SAMP>. </P>
+
+<P><STRONG>8.1.4)&nbsp;&nbsp;<A NAME="title513"></A><A NAME="anchor541"></A>
+ Come si utilizzano in Linux i caratteri <A NAME="index2311"></A>TrueType (<A NAME="index2312"></A>XFree86 3.xx)? <A NAME="index2313"></A> <A NAME="index2314"></A> <A NAME="index2315"></A> <A NAME="index2316"></A> </STRONG></P>
+
+<P>Per utilizzare i caratteri <A NAME="index2317"></A>TrueType, disponendo di una versione di <A NAME="index2318"></A>XFree86 3.<VAR>x</VAR>.<VAR>x</VAR>, occorrer&agrave; innanzitutto installare <SAMP>xfs</SAMP>.</P>
+
+<P>I caratteri <A NAME="index2319"></A>TrueType andranno inseriti in una directory <CODE>ttfonts</CODE> da creare appositamente:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cd /usr/X11R6/lib/X11/fonts</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mkdir ttfonts</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Potrebbe essere necessario, convertire i nomi dei caratteri in minuscolo.</P>
+
+<P>Dopo essersi posizionati nella directory appena creata si impartiranno i seguenti due comandi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ttmkfdir -o fonts.scale </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ttmkfdir -o fonts.dir </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questi due comandi dovranno essere ripetuti ogni qual volta si aggiungeranno nuovi caratteri alla directory sopra indicata.</P>
+
+<P>Adesso occorrer&agrave; configurare il <A NAME="index2320"></A>server dei caratteri. Si dovr&agrave; modificare la seguente sezione del file <CODE>/etc/X11/fs/config</CODE> (o <CODE>/etc/X11/xfs/config</CODE> a seconda delle distribuzioni) in modo che la prima riga punti alla directory dove abbiamo messo i caratteri:</P>
+
+<PRE>catalogue = /usr/X11R6/lib/X11/fonts/ttfonts,
+            /usr/X11R6/lib/X11/fonts/misc:unscaled,
+            /usr/X11R6/lib/X11/fonts/75dpi:unscaled,
+            /usr/X11R6/lib/X11/fonts/100dpi:unscaled,
+            /usr/X11R6/lib/X11/fonts/misc,
+            /usr/X11R6/lib/X11/fonts/Type1,
+            /usr/X11R6/lib/X11/fonts/Speedo,
+            /usr/share/fonts/default/Type1,
+            /usr/X11R6/lib/X11/fonts/75dpi,
+            /usr/X11R6/lib/X11/fonts/100dpi,</PRE>
+
+<P>In seguito si dovr&agrave; fare in modo che <SAMP>xfs</SAMP> venga eseguito automaticamente ad ogni avvio della macchina:</P>
+
+<P>Ora si dovr&agrave; configurare il <A NAME="index2321"></A>server <A NAME="index2322"></A>X:</P>
+
+<P>Occorrer&agrave; apri per la modifica il file <CODE>/etc/X11/XF86Config</CODE> e controllare che nella sezione sottostante, se ci sono pi&ugrave; righe dedicate a <SAMP>FontPath</SAMP>, quella con l'istruzione <STRONG>unix/:-1</STRONG>, sia la prima:</P>
+
+<PRE>Section "Files"
+
+    RgbPath     "/usr/X11R6/lib/X11/rgb"
+    FontPath   "unix/:-1"
+
+EndSection</PRE>
+
+<P><STRONG>8.1.5)&nbsp;&nbsp;<A NAME="title514"></A><A NAME="anchor542"></A>
+ Da quale pacchetto derivano i file <CODE>FS.h</CODE> e <CODE>FSprolo.h</CODE>? Risultano mancanti durante la compilazione di <SAMP>xfstt</SAMP>? <A NAME="index2323"></A> <A NAME="index2324"></A> </STRONG></P>
+
+<P>Se all'atto dell'installazione di <SAMP>xfstt</SAMP>, il processo di installazione lamentasse la mancanza dei file <CODE>FS.h</CODE> e <CODE>FSprolo.h</CODE>:</P>
+
+<PRE>c++ -g -Well - pedantic -DMAGNIFY=0 -c xfstt.cpp
+-I/usr/X11R6/include/X11/fonts \ -I/usr/X11R6/include/
+
+xfstt.cpp:47: X11/fonts/FS.h: no such file o directory
+xfstt.cpp:48: X11/fonts/FSprolo.h: no such file o directory</PRE>
+
+<P>occorrer&agrave; installare il pacchetto <SAMP>xlib6g-dev</SAMP></P>
+
+<P><STRONG>8.1.6)&nbsp;&nbsp;<A NAME="title515"></A><A NAME="anchor543"></A>
+ Come si pu&ograve; richiamare <SAMP>xfstt</SAMP> all'avvio di GNU/Linux? <A NAME="index2325"></A> <A NAME="index2326"></A> </STRONG></P>
+
+<P>Per fare partire automaticamente <SAMP>xfstt</SAMP> all'avvio di GNU/Linux si potr&agrave; aggiungere al file <CODE>/etc/rc.d/init.d/xfs</CODE> la riga che possa invocare <SAMP>xfstt</SAMP>:</P>
+
+<PRE>xfstt --daemon</PRE>
+
+<P>Questa riga andr&agrave; posizionata sotto la riga deputata al caricamento di <SAMP>xfs</SAMP>:</P>
+
+<PRE>...
+start)
+        echo -n "Starting X Font Server: "
+        rm -fr /tmp/.font-unix
+        daemon xfs -droppriv -daemon -port -1
+        xfstt -daemon  #nuova riga
+        touch /var/lock/subsys/xfs
+        echo
+
+stop)
+        echo -n "Shutting down X Font Server: "
+        killproc xfs
+        killproc xfstt  #nuova riga
+        rm -f /var/lock/subsys/xfs</PRE>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM></DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="i_caratteri_font.html">i_caratteri_font.html</A></P>
+<P>
+<A HREF="ldr12.html">[successivo]</A>
+<A HREF="ldr10.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

@@ -1,0 +1,768 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr5.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr7.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr7.html">[successivo]</A>
+<A HREF="ldr5.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 3. &nbsp; <A NAME="title361"></A><A NAME="anchor384"></A>Programmi</H1>
+
+<H2>3.1 &nbsp; <A NAME="title362"></A><A NAME="anchor385"></A>
+ Installazione ed esecuzione programmi </H2>
+
+<P><STRONG>3.1.1)&nbsp;&nbsp;<A NAME="title363"></A><A NAME="anchor386"></A>
+ Come si installano i programmi? <A NAME="index1784"></A> </STRONG></P>
+
+<P>I programmi o le applicazioni che si intende installare possono essere confezionate in vari modi (vedi sezione <A HREF="ldr6.html#anchor400">3.3</A>). Sempre pi&ugrave; frequentemente infatti lo stesso programma viene distribuito in forma di pacchetto specifico per ogni distribuzione, pacchetto che contiene oltre agli eseguibili e a tutte le componenti necessarie per il funzionamento anche tutte le informazioni su come e dove esso debba essere installato.</P>
+
+<P>Se ad esempio si dispone di una distribuzione <A NAME="index1785"></A>Debian GNU/Linux sar&agrave; opportuno cercare gli applicativi desiderati sotto forma di pacchetto <SAMP>deb</SAMP>. Si faccia riferimento alla sezione <A HREF="ldr6.html#anchor415">3.5</A> per le indicazioni su come gestire questo tipo di pacchetti.</P>
+
+<P>Lo stesso discorso vale per le distribuzioni basate su pacchetti RPM (<A NAME="index1786"></A>Red Hat, <A NAME="index1787"></A>Mandrake, ecc.). A tal proposito si faccia riferimento alla sezione <A HREF="ldr6.html#anchor426">3.6</A>.</P>
+
+<P>Spesso si trovano per&ograve; i sorgenti degli applicativi che interessano. Essi vengono generalmente distribuiti sotto forma di pacchetti sorgenti <SAMP>tar.gz</SAMP> o <SAMP>tgz</SAMP>. All'interno di tali pacchetti non sono presenti gli eseguibili ma i sorgenti, il che rende possibile compilare tali programmi per le piattaforme che ci interessano. All'interno di un pacchetto sorgente sono presenti, oltre ai file di installazione, la documentazione, il <A NAME="index1788"></A>file-make (<EM>makefile</EM>), e alcuni <A NAME="index1789"></A>script. Fare riferimento alla sezione <A HREF="ldr6.html#anchor405">3.4</A> per la spiegazione delle metodiche di installazione.</P>
+
+<TABLE BORDER="3" WIDTH="100%">
+<TR><TD>
+
+<P>Talvolta accade che i pacchetti <SAMP>tar.gz</SAMP> (o <SAMP>tgz</SAMP>) contengano gi&agrave; gli eseguibili. In quel caso questi ultimi potranno essere utilizzati subito dopo la decompressione del pacchetto.</P>
+
+</TD></TR>
+</TABLE>
+
+<P>Bisogna ricordare infine che altri pacchetti possono essere distribuiti in forma diversa ad esempio compressi con <SAMP>bzip2</SAMP>, con <SAMP>gzip</SAMP>, con <SAMP>pkzip</SAMP>, ecc. In questi casi si dovr&agrave; utilizzare i relativi programmi di utilit&agrave; (fare riferimento alla sezione <A HREF="ldr6.html#anchor437">3.7</A>).</P>
+
+<P><STRONG>3.1.2)&nbsp;&nbsp;<A NAME="title364"></A><A NAME="anchor387"></A>
+ Come si evita di mettere sempre <CODE>./</CODE> davanti al nome di un eseguibile? <A NAME="index1790"></A> <A NAME="index1791"></A> </STRONG></P>
+
+<P>Si pu&ograve; evitare di apporre <CODE>./</CODE> davanti al nome dell'eseguibile presente nella directory corrente aggiungendo alla dichiarazione della variabile <SAMP>PATH</SAMP> la directory corrente che &egrave; identificata dal punto (<CODE>.</CODE>). Se ad esempio la variabile <SAMP>PATH</SAMP> dichiarata in <CODE>.bash_profile</CODE> &egrave; la seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11"</PRE>
+
+</BLOCKQUOTE>
+
+<P>essa diventer&agrave;:</P>
+<BLOCKQUOTE>
+
+<PRE>PATH=".:/usr/local/bin:/usr/bin:/bin:/usr/bin/X11"</PRE>
+
+</BLOCKQUOTE>
+
+<P>Per rendere effettive le modifiche si dovr&agrave; esportare la variabile appena dichiarata con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>export PATH</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Occorre per&ograve; ricordare che questa procedura potrebbe risultare dannosa facilitando infatti l'esecuzione di <A NAME="index1792"></A>script potenzialmente pericolosi.</P>
+
+<P><STRONG>3.1.3)&nbsp;&nbsp;<A NAME="title365"></A><A NAME="anchor388"></A>
+ Come si fa a non far chiudere i programmi lanciati da un terminale grafico alla chiusura del terminale stesso? <A NAME="index1793"></A> <A NAME="index1794"></A> </STRONG></P>
+
+<P>Innanzitutto il programma va lanciato apponendo dopo il comando il carattere <SAMP>&amp;</SAMP>. Questo carattere serve a inviare sullo sfondo il programma lanciato e a poter continuare ad utilizzare quel terminale grafico. Se a questo punto, al <A NAME="index1795"></A>prompt della <A NAME="index1796"></A>shell, si impartisce il comando <SAMP>exit</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>exit</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>il terminale grafico si chiuder&agrave; mentre il programma continuer&agrave; a funzionare. Utilizzando [<KBD>Ctrl+D</KBD>] si otterr&agrave; lo stesso effetto.</P>
+
+<P><STRONG>3.1.4)&nbsp;&nbsp;<A NAME="title366"></A><A NAME="anchor389"></A>
+ Come si fa a chiudere il terminale grafico nel momento del lancio di un eseguibile o di un'applicazione? <A NAME="index1797"></A> <A NAME="index1798"></A> </STRONG></P>
+
+<P>Come si pu&ograve; intuire dalla LDR <A HREF="ldr6.html#anchor388">3.1.3</A> se si desidera far scomparire repentinamente il terminale grafico dopo avere lanciato un'applicazione o un eseguibile si dovr&agrave; utilizzare il seguente comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE><VAR>applicazione</VAR> &amp; exit</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote1" NAME="footnote-ref1">(1)</A></SUP></P>
+
+<P><STRONG>3.1.5)&nbsp;&nbsp;<A NAME="title367"></A><A NAME="anchor390"></A>
+ Dove risiedono realmente nel <A NAME="index1799"></A>file&nbsp;system gli eseguibili? <A NAME="index1800"></A> <A NAME="index1801"></A> </STRONG></P>
+
+<P>Per sapere dove risiede un eseguibile (i programmi, le applicazioni) nel <A NAME="index1802"></A>file&nbsp;system si dovr&agrave; utilizzare il comando <SAMP>which</SAMP>. Ecco un esempio:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>which pppd</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote2" NAME="footnote-ref2">(2)</A></SUP></P>
+<BLOCKQUOTE>
+
+<PRE>/usr/sbin/pppd</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>3.1.6)&nbsp;&nbsp;<A NAME="title368"></A><A NAME="anchor391"></A>
+ Come si applicano le <EM>patch</EM> (<A NAME="index1803"></A>file delle differenze) ai programmi? <A NAME="index1804"></A> <A NAME="index1805"></A> </STRONG></P>
+
+<P>Per applicare un <A NAME="index1806"></A>file delle differenze (<EM>patch</EM>) ad un programma occorre posizionarsi all'interno della directory dove risiede la versione da aggiornare e digitare: </P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>patch &lt; <VAR>file_delle_differenze</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote3" NAME="footnote-ref3">(3)</A></SUP></P>
+
+<P>Per indirizzare su un file gli eventuali errori si dar&agrave; il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>patch &lt; <VAR>file_delle_differenze</VAR> 2&gt; <VAR>file_errori</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote4" NAME="footnote-ref4">(4)</A></SUP></P>
+
+<P><STRONG>3.1.7)&nbsp;&nbsp;<A NAME="title369"></A><A NAME="anchor392"></A>
+ Cosa sono i file <CODE>.elf</CODE>? <A NAME="index1808"></A> <A NAME="index1809"></A> </STRONG></P>
+
+<P>Ho scaricato un file con estensione .elf.tar Il tar lo conosco ma ELF cos'&egrave; e come si installa?</P>
+
+<P>I file formato <SAMP>.elf</SAMP> (<STRONG><EM>Executable Linkable Format</EM></STRONG>) sono degli eseguibili. Un sistema GNU/Linux utilizza librerie collegate dinamicamente, il che permette di avere eseguibili pi&ugrave; piccoli e quindi un minor consumo di memoria. Le librerie collegate dinamicamente (e quindi gli eseguibili ad esse collegati) possono essere di diversi formati, ma quello pi&ugrave; usato al momento &egrave; l'<SAMP>.elf</SAMP>.</P>
+
+<P><STRONG>3.1.8)&nbsp;&nbsp;<A NAME="title370"></A><A NAME="anchor393"></A>
+ &Egrave; possibile far girare alcune applicazioni di <A NAME="index1810"></A>SCO Unixware con Linux? <A NAME="index1811"></A> <A NAME="index1812"></A> <A NAME="index1813"></A> <A NAME="index1814"></A> </STRONG></P>
+
+<P>Esiste un <A NAME="index1815"></A>patch per il <A NAME="index1816"></A>kernel denominato <A NAME="index1817"></A>ABI (<A NAME="index1818"></A>iBCS per piattaforme Intel) in grado di permettere l'esecuzione di applicazioni <A NAME="index1819"></A>SCO Unixware. Questo <A NAME="index1820"></A>patch &egrave; stato fornito per&ograve; solamente fino alle ultime versioni del <A NAME="index1821"></A>kernel 2.3.x e non risulta disponibile per le versioni 2.4.x.</P>
+
+<P><STRONG>3.1.9)&nbsp;&nbsp;<A NAME="title371"></A><A NAME="anchor394"></A>
+ Dove viene posizionata all'interno del <A NAME="index1822"></A>file&nbsp;system la documentazione allegata ai pacchetti? <A NAME="index1823"></A> </STRONG></P>
+
+<P>Generalmente tutti i pacchetti, oltre agli eseguibili e alle librerie, sono accompagnati dalla documentazione. La maggior parte delle volte, dopo che si &egrave; installato il pacchetto, essa si va a posizionare nella directory <CODE>/usr/doc</CODE> o nella directory <CODE>/usr/share/doc</CODE>. Questo dipende generalmente dal tipo di distribuzione. Non &egrave; infrequente avere entrambe le directory perch&eacute; l'informazione della destinazione della documentazione &egrave; insita nel pacchetto.</P>
+
+<H2>3.2 &nbsp; <A NAME="title372"></A><A NAME="anchor395"></A>
+ File <CODE>core</CODE> <A NAME="index1824"></A> </H2>
+
+<P><STRONG>3.2.1)&nbsp;&nbsp;<A NAME="title373"></A><A NAME="anchor396"></A>
+ Cosa sono i file <CODE>core</CODE>? <A NAME="index1825"></A> </STRONG></P>
+
+<P>Quando un programma termina inavvertitamente, cio&egrave; con qualche errore, il <A NAME="index1826"></A>kernel, che deve terminare il processo, scrive un'immagine del processo in memoria su questo file <CODE>core</CODE>. Da quel file si dovrebbe essere in grado di risalire al tipo di errore e correggerlo.</P>
+
+<P><STRONG>3.2.2)&nbsp;&nbsp;<A NAME="title374"></A><A NAME="anchor397"></A>
+ Come si evidenzia il responsabile di un file <CODE>core</CODE>? <A NAME="index1827"></A> </STRONG></P>
+
+<P>Per sapere quale programma ha provocato l'errore e quindi il file <CODE>core</CODE> occorre posizionarsi all'interno della directory contenente il file <CODE>core</CODE> stesso e utilizzare il comando <SAMP>size</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>size core</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.2.3)&nbsp;&nbsp;<A NAME="title375"></A><A NAME="anchor398"></A>
+ Si possono disabilitare i file <CODE>core</CODE>? <A NAME="index1828"></A> <A NAME="index1829"></A> </STRONG></P>
+
+<P>Occorrer&agrave; aggiungere la seguente riga all'interno del file <CODE>/etc/profile</CODE>:</P>
+<BLOCKQUOTE>
+
+<PRE>ulimit -c 0</PRE>
+
+</BLOCKQUOTE>
+
+<P>oppure, allo stesso modo, se fosse presente gi&agrave; una riga simile alla seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>ulimit -c 1000000</PRE>
+
+</BLOCKQUOTE>
+
+<P>la si dovr&agrave; modificare come indicato.</P>
+
+<P><STRONG>3.2.4)&nbsp;&nbsp;<A NAME="title376"></A><A NAME="anchor399"></A>
+ Come si eliminano tutti i file <CODE>core</CODE>? <A NAME="index1830"></A> <A NAME="index1831"></A> </STRONG></P>
+
+<P>Per poter eliminare tutti i file <CODE>core</CODE> presenti all'interno del <A NAME="index1832"></A>file&nbsp;system, si potr&agrave; utilizzare uno dei seguenti comandi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>find / -name core -type f -xdev -exec rm {} \;</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>oppure:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>find / \( -name core \) -exec rm {} \;</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<H2>3.3 &nbsp; <A NAME="title377"></A><A NAME="anchor400"></A>
+ I pacchetti - generalit&agrave; </H2>
+
+<P><STRONG>3.3.1)&nbsp;&nbsp;<A NAME="title378"></A><A NAME="anchor401"></A>
+ Come si convertono i pacchetti? <A NAME="index1833"></A> <A NAME="index1834"></A> </STRONG></P>
+
+<P>Con il programma <A NAME="index1835"></A>Alien, che serve a convertire da un formato di un pacchetto ad un altro. Ecco un esempio di utilizzo di <A NAME="index1836"></A>Alien per convertire un pacchetto RPM in <CODE>.deb</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>alien --to-deb <VAR>pacchetto</VAR>.rpm</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote5" NAME="footnote-ref5">(5)</A></SUP></P>
+
+<P>Eccone un altro che mostra invece come convertire un pacchetto <CODE>.deb</CODE> in formato RPM:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>alien --to-rpm <VAR>pacchetto </VAR>.deb</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote6" NAME="footnote-ref6">(6)</A></SUP></P>
+
+<P><STRONG>3.3.2)&nbsp;&nbsp;<A NAME="title379"></A><A NAME="anchor402"></A>
+ Come si possono utilizzare pacchetti RPM in una distribuzione <A NAME="index1837"></A>Slackware? <A NAME="index1838"></A> <A NAME="index1839"></A> <A NAME="index1840"></A> </STRONG></P>
+
+<P>Occorre innanzitutto fare riferimento alla LDR <A HREF="ldr6.html#anchor401">3.3.1</A> che spiega l'utilizzo di <A NAME="index1841"></A>Alien. In questo caso l'utilizzo di <A NAME="index1842"></A>Alien sar&agrave; simile al seguente:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>alien --to-tgz <VAR>pacchetto </VAR>.rpm</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote7" NAME="footnote-ref7">(7)</A></SUP></P>
+
+<P>Si deve in ogni caso ricordare che esiste anche <A NAME="index1843"></A>RPM2targz.</P>
+
+<P><STRONG>3.3.3)&nbsp;&nbsp;<A NAME="title380"></A><A NAME="anchor403"></A>
+ Come si possono convertire i pacchetti <CODE>tar.gz</CODE> in formato RPM? <A NAME="index1844"></A> <A NAME="index1845"></A> <A NAME="index1846"></A> <A NAME="index1847"></A> </STRONG></P>
+
+<P>Se il file compresso (<CODE>tar.gz</CODE>) &egrave; stato predisposto, si potr&agrave; utilizzare la seguente sintassi del comando <SAMP>rpm</SAMP>:</P>
+
+<P class="syntax"><TT>rpm -ta <VAR>programma</VAR>.tar.gz
+</TT></P>
+
+<P><STRONG>3.3.4)&nbsp;&nbsp;<A NAME="title381"></A><A NAME="anchor404"></A>
+ Cosa sono i file <CODE>.bin</CODE>? <A NAME="index1848"></A> <A NAME="index1849"></A> </STRONG></P>
+
+<P>Questi file sono generalmente eseguibili autoscompattanti. Occorrer&agrave; quindi conferire loro i permessi di esecuzione e lanciarli.</P>
+
+<H2>3.4 &nbsp; <A NAME="title382"></A><A NAME="anchor405"></A>
+ I pacchetti - <SAMP>tar.gz</SAMP>, <SAMP>tgz</SAMP> <A NAME="index1850"></A> </H2>
+
+<P><STRONG>3.4.1)&nbsp;&nbsp;<A NAME="title383"></A><A NAME="anchor406"></A>
+ Come si installano i programmi distribuiti in pacchetti <CODE>.tar.gz</CODE> (o <CODE>.tgz</CODE>)? </STRONG></P>
+
+<P>La decompressione del contenuto dei pacchetti <CODE>.tar.gz</CODE> (o <CODE>.tgz</CODE>) avviene con il comando <SAMP>tar</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>tar -zxvf <VAR>pacchetto </VAR>.tar.gz</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote8" NAME="footnote-ref8">(8)</A></SUP></P>
+
+<P>Dopo avere effettuato questa operazione, &egrave; opportuno ricordarsi di leggere il contenuto dei file <CODE>README</CODE> ed <CODE>INSTALL</CODE>. Nel primo si troveranno indicazioni generali sul programma, nel secondo le istruzioni da seguire per installarlo. Un pacchetto <CODE>.tar.gz</CODE> generalmente &egrave; un pacchetto sorgente cio&egrave; contenente tutti i componenti necessari a compilare il programma. Altre volte invece i pacchetti <CODE>.tar.gz</CODE> contengono gi&agrave; i file binari che non necessiteranno altro che di essere eseguiti. Qui di seguito si tratter&agrave; dell'installazione di programmi distribuiti in forma sorgente.</P>
+
+<P>Generalmente i comandi che si impartiscono sono in sequenza:</P>
+
+<OL>
+
+<LI>
+
+<P><SAMP>./configure</SAMP></P>
+
+<P>(serve a costruire un file specifico per il sistema su cui si opera e che sar&agrave; utilizzato dal compilatore. Questo file si chiama <A NAME="index1851"></A>file-make.) </P>
+</LI>
+
+<LI>
+
+<P><SAMP>make</SAMP></P>
+
+<P>(Compila tutti i sorgenti basandosi sul <A NAME="index1852"></A>file-make) </P>
+</LI>
+
+<LI>
+
+<P><SAMP>make install</SAMP></P>
+
+<P>(Copia i file compilati nelle adeguate directory) </P>
+</LI>
+
+<LI>
+
+<P><SAMP>make clean</SAMP></P>
+
+<P>(Elimina eventuali file temporanei generati durante la compilazione) </P>
+</LI>
+</OL>
+
+<P><STRONG>3.4.2)&nbsp;&nbsp;<A NAME="title384"></A><A NAME="anchor407"></A>
+ Che differenza c'&egrave; tra i pacchetti <CODE>.tar.gz</CODE> e i pacchetti <CODE>.tgz</CODE>? </STRONG></P>
+
+<P>La differenza sostanziale non c'&egrave;. Si tratta di utilizzare a volte il formato <CODE>.tgz</CODE> per poter permettere una maggior compatibilit&agrave; con sistemi operativi che utilizzano nomi di file in formato 8+3.</P>
+
+<P><STRONG>3.4.3)&nbsp;&nbsp;<A NAME="title385"></A><A NAME="anchor408"></A>
+ Come si visualizza il contenuto dei pacchetti <CODE>.tar.gz</CODE> o <CODE>.tgz</CODE> </STRONG></P>
+
+<P>Dopo aver decompresso il pacchetto con <SAMP>gunzip</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>gunzip <VAR>file</VAR>.tar.gz</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote9" NAME="footnote-ref9">(9)</A></SUP></P>
+
+<P>si dar&agrave; il comando: </P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>tar -t file.tar</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questi due comandi possono essere riassunti in uno solo:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>tar -tzf file.tar.gz</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.4.4)&nbsp;&nbsp;<A NAME="title386"></A><A NAME="anchor409"></A>
+ Come si decomprimono i pacchetti <CODE>.tar.gz</CODE> o <CODE>.tgz</CODE>? </STRONG></P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>tar -zxvf file.tar.gz (o tgz)</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>La <SAMP>z</SAMP> evita di utilizzare <SAMP>gunzip</SAMP> prima di <SAMP>tar</SAMP>.</P>
+
+<P><STRONG>3.4.5)&nbsp;&nbsp;<A NAME="title387"></A><A NAME="anchor410"></A>
+ Come si disinstallano i programmi originariamente installati da pacchetti <CODE>.tar.gz</CODE> o <CODE>.tgz</CODE>? <A NAME="index1853"></A> <A NAME="index1854"></A> </STRONG></P>
+
+<P>Per disinstallare un programma che originariamente era stato installato da un pacchetto sorgente si potranno utilizzare diverse metodiche:</P>
+
+<P>Qualora si sia utilizzato <SAMP>installwatch</SAMP> all'atto dell'installazione, sar&agrave; possibile risalire facilmente a tutte le operazioni che vennero svolte allora e quindi anche alla posizione dei file installati. <SAMP>installwatch</SAMP> crea infatti un file di testo con queste informazioni; sarebbe quindi utile creare tanti file di testo quanti sono i programmi installati da pacchetti in forma sorgente.</P>
+
+<P>Si ricordi inoltre che alcuni pacchetti permettono anche comandi come <SAMP>make uninstall</SAMP> o <SAMP>make distclean</SAMP>; purtroppo per&ograve; questo non sempre accade.</P>
+
+<P>Un altro modo &egrave; quello di leggere il <CODE>Makefile</CODE> per controllare quali sono le directory in cui il programma viene installato per potere quindi rimuovere i file manualmente.</P>
+
+<P>Infine, a volte capita che vengano generati dei file di registro (<EM>log</EM>) con l'elenco dei file installati e la loro posizione all'interno del <A NAME="index1855"></A>file&nbsp;system.</P>
+
+<P><STRONG>3.4.6)&nbsp;&nbsp;<A NAME="title388"></A><A NAME="anchor411"></A>
+ Come si creano i propri pacchetti <CODE>.tar.gz</CODE> o <CODE>.tgz</CODE>? <A NAME="index1856"></A> </STRONG></P>
+
+<P>Il seguente comando generer&agrave; nella directory corrente il file compresso <CODE>nome_archivio.tar.gz</CODE> contenente il contenuto delle directory <CODE>/etc/</CODE>, <CODE>/home/</CODE> <CODE>/root/</CODE> <CODE>/var/</CODE> <CODE>/usr/local/</CODE>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>tar zcvf <VAR>nome_archivio</VAR>.tar.gz /etc /home /root /var /usr/local</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.4.7)&nbsp;&nbsp;<A NAME="title389"></A><A NAME="anchor412"></A>
+ Come si creano pacchetti <CODE>.tar.gz</CODE> o <CODE>.tgz</CODE> nel cui nome venga inserita la data di creazione? <A NAME="index1857"></A> <A NAME="index1858"></A> </STRONG></P>
+
+<P>Per creare un pacchetto <CODE>.tar.gz</CODE> che nel nome del file contenga la data della creazione si potr&agrave; impartire il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>tar zcvf <VAR> nome</VAR>-`date +%d%m%Y`.tar.gz <VAR>/directory/</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.4.8)&nbsp;&nbsp;<A NAME="title390"></A><A NAME="anchor413"></A>
+ Come si creano i pacchetti <CODE>.tar.gz</CODE> o <CODE>.tgz</CODE> sequenziali su dischetti? <A NAME="index1859"></A> </STRONG></P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>tar -c -f /dev/fd0 -L 1440 -M -v /home/<VAR>utente</VAR>/</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.4.9)&nbsp;&nbsp;<A NAME="title391"></A><A NAME="anchor414"></A>
+ Come si ripristinano i pacchetti <CODE>.tar.gz</CODE> o <CODE>.tgz</CODE> archiviati su dischetti sequenziali? <A NAME="index1860"></A> </STRONG></P>
+
+<P>Il comando da impartire per ripristinare il contenuto di un archivio presente su pi&ugrave; dischetti &egrave; il seguente:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>tar -x -f /dev/fd0 -L 1440 -M -v -p --same-owner</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<H2>3.5 &nbsp; <A NAME="title392"></A><A NAME="anchor415"></A>
+ I pacchetti - <SAMP>deb</SAMP> <A NAME="index1861"></A> </H2>
+
+<P><STRONG>3.5.1)&nbsp;&nbsp;<A NAME="title393"></A><A NAME="anchor416"></A>
+ Come si installano i pacchetti <A NAME="index1862"></A>Debian? <A NAME="index1863"></A> <A NAME="index1864"></A> </STRONG></P>
+
+<P>I pacchetti delle distribuzioni basate su <A NAME="index1865"></A>Debian hanno estensione <CODE>.deb</CODE>. Per poterli gestire &egrave; necessario utilizzare il comando <SAMP>dpkg</SAMP>. Per installare ad esempio il pacchetto <CODE>nome.deb</CODE> si impartir&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -i nome.deb</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Come <SAMP>rpm -i</SAMP>, per&ograve;, <SAMP>dpkg</SAMP> non &egrave; molto evoluto e si preferisce e si consiglia di utilizzare <SAMP>apt-get</SAMP> (fare riferimento alla LDR <A HREF="ldr6.html#anchor425">3.5.10</A>. Meglio ancora &egrave; utilizzare Dselect con <SAMP>apt-get</SAMP> (fare riferimento alle LDR <A HREF="ldr6.html#anchor425">3.5.10</A> e <A HREF="ldr6.html#anchor424">3.5.9</A>).</P>
+
+<P><STRONG>3.5.2)&nbsp;&nbsp;<A NAME="title394"></A><A NAME="anchor417"></A>
+ Come si aggiornano i pacchetti <A NAME="index1866"></A>Debian? <A NAME="index1867"></A> <A NAME="index1868"></A> </STRONG></P>
+
+<P>Il comando da utilizzare &egrave; lo stesso che si impiega per l'installazione:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -i <VAR>nome</VAR>.deb</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>o:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>apt-get install <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote10" NAME="footnote-ref10">(10)</A></SUP></P>
+
+<P>se il pacchetto proposto &egrave; una versione pi&ugrave; recente di quello gi&agrave; installato viene fatto l'aggiornamento.</P>
+
+<P><STRONG>3.5.3)&nbsp;&nbsp;<A NAME="title395"></A><A NAME="anchor418"></A>
+ Come si disinstallano i pacchetti <A NAME="index1869"></A>Debian? <A NAME="index1870"></A> <A NAME="index1871"></A> </STRONG></P>
+
+<P>Il comando da utilizzare per disinstallare un pacchetto <CODE>.deb</CODE> &egrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -r <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Si consiglia in ogni caso per&ograve; di provare prima:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg --no-act -r <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>per controllare se la disinstallazione del pacchetto compromette l'integrit&agrave; del sistema (ci possono essere altri pacchetti che dipendono da quello). Un altro metodo per la disinstallazione &egrave; con <SAMP>apt-get</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>apt-get remove <VAR>nome</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.5.4)&nbsp;&nbsp;<A NAME="title396"></A><A NAME="anchor419"></A>
+ Come si verifica l'installazione dei pacchetti <A NAME="index1872"></A>Debian? <A NAME="index1873"></A> <A NAME="index1874"></A> </STRONG></P>
+
+<P>Per verificare la corretta installazione di un pacchetto <CODE>.deb</CODE> si utilizzer&agrave; il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -s <VAR>nome</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo rende, oltre allo stato di installazione, anche altre informazioni sul pacchetto (come la descrizione del suo contenuto e i pacchetti da cui esso dipende). Per controllare la corretta installazione di tutti i pacchetti del sistema si utilizzer&agrave; <SAMP>apt-get</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>apt-get check</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.5.5)&nbsp;&nbsp;<A NAME="title397"></A><A NAME="anchor420"></A>
+ Da quale pacchetto <A NAME="index1875"></A>Debian proviene un determinato file? <A NAME="index1876"></A> <A NAME="index1877"></A> </STRONG></P>
+
+<P>Per sapere ad esempio da quale pacchetto proviene il file <CODE>access.conf</CODE>, si utilizzer&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -S access.conf</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote11" NAME="footnote-ref11">(11)</A></SUP></P>
+
+<P>Ecco un output eventuale:</P>
+<BLOCKQUOTE>
+
+<PRE>apache: /usr/share/doc/apache/examples/access.conf-dist
+apache: /usr/share/doc/apache/examples/access.conf
+libpam-modules: /etc/security/access.conf</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>3.5.6)&nbsp;&nbsp;<A NAME="title398"></A><A NAME="anchor421"></A>
+ Come si fa a conoscere le dipendenze di un pacchetto <A NAME="index1878"></A>Debian installato? <A NAME="index1879"></A> <A NAME="index1880"></A> </STRONG></P>
+
+<P>Per sapere le dipendenze di un pacchetto gi&agrave; installato nel sistema si potr&agrave; fare con il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -s <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>prestando attenzione alla riga <SAMP>Depends: </SAMP>. Per sapere quindi le dipendenze del pacchetto <CODE>ppp.deb</CODE> si impartir&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -s ppp</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e si ricever&agrave; qualcosa simile a quanto segue:</P>
+
+<PRE>Package: ppp
+Status: install ok installed
+Priority: standard
+Section: base
+Installed-Size: 473
+Maintainer: Philip Hands &lt;phil@hands.com&gt;
+Version: 2.3.11-1.4
+Replaces: ppp-pam
+Depends: libc6 (&gt;= 2.1.2), libpam0g, 
+         libpam-modules, netbase, sysvinit (&gt;= 2.75-4)
+Suggests: debconf
+Conflicts: ppp-pam
+Conffiles:
+ /etc/pam.d/ppp f12a620f26f0ae4ee1db5a20e5c6cfb1
+ /etc/init.d/ppp 6b40e38e43c3449705cd20abe2ae3683
+ /etc/ppp/options 74c30c6772c36934aa054e6822e96167
+ /etc/ppp/no_ppp_on_boot ae1f437f0adc7e9dc1906cfe12abf863
+ /etc/ppp/ip-up d51a6efe41a8e2f0d5c473b17f228c8e
+ /etc/ppp/ip-down 390b74816e426003b03d1f4bc892c6db
+Description: Point-to-Point Protocol (PPP) daemon.
+ The Point-to-Point Protocol (PPP) provides a standard way to transmit
+ datagrams over a serial link, as well as a standard way for the machines
+ at either end of the link (the "peers") to negotiate various optional
+ characteristics of the link.  Using PPP, a serial link can be used to
+ transmit Internet Protocol (IP) datagrams, allowing TCP/IP connections
+ between the peers.
+ .
+ This package contains pppd with PAM support built-in, so `ppp-pam'
+ package is obsolete.</PRE>
+
+<P><STRONG>3.5.7)&nbsp;&nbsp;<A NAME="title399"></A><A NAME="anchor422"></A>
+ Come si fa ad ottenere la descrizione e l'elenco del contenuto dei pacchetti <A NAME="index1881"></A>Debian? <A NAME="index1882"></A> <A NAME="index1883"></A> </STRONG></P>
+
+<P>Come gi&agrave; indicato nella LDR <A HREF="ldr6.html#anchor421">3.5.6</A> si utilizzer&agrave; la seguente sintassi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -s <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>per recuperare informazioni su un pacchetto installato e:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg --info <VAR>nome</VAR>.deb</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>per recuperarle da uno non installato.</P>
+
+<P>Per sapere quali file sono contenuti in un pacchetto, se &egrave; installato:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -L <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>se non lo &egrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg --contents <VAR>nome</VAR>.deb</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.5.8)&nbsp;&nbsp;<A NAME="title400"></A><A NAME="anchor423"></A>
+ Come si visualizza l'elenco dei pacchetti <A NAME="index1884"></A>Debian installati? <A NAME="index1885"></A> <A NAME="index1886"></A> </STRONG></P>
+
+<P>Per avere una lista dei pacchetti installati si dar&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dpkg -l</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Oltre ai nomi dei pacchetti si ricever&agrave; anche indicazioni sullo stato di installazione degli stessi, sulla versione e una piccola descrizione. Ecco un estratto di esempio:</P>
+
+<PRE>Desiderato=sconosciUto/Installato/Rimosso/P:eliminato/H:bloccato
+| Stato=Non/Installato/file Config./U:spacchett./conf. Fallita/H:inst.parz.
+|/ Err?=(nessuno)/H:bloc./necess.Reinst./X=entrambi (Stato,Err: maiusc.=gr)
+||/ Nome           Versione       Descrizione
++++-==============-==============-========================================
+
+[...]
+
+ii  alsa-base      0.4.1i-5       ALSA driver common files
+ii  apache         1.3.9-13.1     Versatile, high-performance HTTP server
+ii  apache-common  1.3.9-13.1     Support files for all Apache webservers
+
+[...]
+
+ii  xterm          3.3.6-11potato X terminal emulator
+ii  xviddetect     0.3-2.1        XFree86 installation helper
+
+[...]
+
+ii  zlib1g         1.1.3-5        compression library - runtime</PRE>
+
+<P><STRONG>3.5.9)&nbsp;&nbsp;<A NAME="title401"></A><A NAME="anchor424"></A>
+ Come funziona <A NAME="index1887"></A>Dselect? <A NAME="index1888"></A> <A NAME="index1889"></A> </STRONG></P>
+
+<P><A NAME="index1890"></A>Dselect &egrave; un programma molto comodo anche se al primo approccio pu&ograve; sembrare un po' ostico. Per avviarlo si dar&agrave; il comando <SAMP>dselect</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>dselect</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Scegliere <SAMP>Metodo</SAMP> (<SAMP>Access</SAMP> nelle versioni inglesi) per indicare dove sono i pacchetti. In questa sezione sar&agrave; possibile scegliere tra: <SAMP>cdrom</SAMP>, <SAMP>nfs</SAMP>, <SAMP>harddisk</SAMP>, <SAMP>mounted</SAMP>, <SAMP>floppy</SAMP>, <SAMP>ftp</SAMP> e <SAMP>apt</SAMP> a seconda che si intenda scegliere come fonte di pacchetti rispettivamente un CD-ROM, una macchina collegata alla rete, un disco rigido, un <A NAME="index1891"></A>file&nbsp;system montato, un floppy, un <A NAME="index1892"></A>server FTP o il programma <SAMP>apt-get</SAMP>. Dopo avere scelto la fonte dei pacchetti, si sceglier&agrave; <SAMP>Aggiorna</SAMP> (<SAMP>Update</SAMP> nelle versioni inglesi) per permettere l'aggiornamento della lista dei pacchetti disponibili sulla fonte.</P>
+
+<P>A questo punto, aggiornata la lista dei pacchetti, si potr&agrave; decidere quale pacchetto installare. Scegliere quindi <SAMP>Seleziona</SAMP> (<SAMP>Select</SAMP>).</P>
+
+<TABLE BORDER="3" WIDTH="100%">
+<TR><TD>
+
+<P>Apparir&agrave; subito un messaggio di aiuto, si dovr&agrave; premere la barra spaziatrice per eliminare questa schermata.</P>
+
+</TD></TR>
+</TABLE>
+
+<P>Apparir&agrave; una lista di pacchetti. I pacchetti desiderati si potranno scorrere con i tasti cursori oppure li si potr&agrave; cercare mediante [<KBD>/</KBD>]<SUP><A HREF="programmi.html#footnote12" NAME="footnote-ref12">(12)</A></SUP>. Se il primo risultato della ricerca non corrisponde, si potranno cercare le voci successive con [<KBD>\</KBD>].</P>
+
+<P>Una volta trovato il pacchetto si premer&agrave;:</P>
+
+<UL>
+
+<LI>
+
+<P>[<KBD>+</KBD>] per installarlo; </P>
+</LI>
+
+<LI>
+
+<P>[<KBD>-</KBD>] per rimuoverlo conservando per&ograve; i file di configurazione; </P>
+</LI>
+
+<LI>
+
+<P>[<KBD>_</KBD>] per eradicare tutto quello che &egrave; relativo a quel pacchetto. </P>
+</LI>
+</UL>
+
+<P>Il [<KBD>+</KBD>] ed il [<KBD>-</KBD>] sono quelli vicino l'[<KBD>Invio</KBD>], non quelli del tastierino numerico. Se non ci sono dipendenze, non apparir&agrave; nessun messaggio; se invece ci sono dipendenze, (dopo un messaggio di avvertimento da chiudere con la barra spaziatrice) appariranno una serie di pacchetti necessari o consigliati. Se ad esempio si seleziona il modulo PHP per <A NAME="index1893"></A>PostgreSQL, apparir&agrave; la seguente lista di dipendenze: <SAMP>Apache</SAMP>, <SAMP>postgres</SAMP>, <SAMP>postgres_doc</SAMP>, <SAMP>apache_doc</SAMP>, <SAMP>php3</SAMP>, ecc.</P>
+
+<P>Sulla lista di dipendenze, si pu&ograve; sempre agire con i tasti [<KBD>+</KBD>] o [<KBD>-</KBD>] per installare o rimuovere le eventuali dipendenze. (Sar&agrave; possibile infatti ad esempio premere [<KBD>-</KBD>] su <SAMP>postgres_doc</SAMP> se non si volesse installare la documentazione di <A NAME="index1894"></A>Apache).</P>
+
+<P>In entrambe i casi (dipendenze o meno), una volta certi di avere scelto i pacchetti desiderati, si premer&agrave; [<KBD>Invio</KBD>] per uscire dalla sezione di scelta dei pacchetti.<SUP><A HREF="programmi.html#footnote13" NAME="footnote-ref13">(13)</A></SUP></P>
+
+<P>Una volta tornati al men&ugrave; principale di <A NAME="index1895"></A> Dselect, si dovr&agrave; premere [<KBD>Invio</KBD>] su <SAMP>Installa</SAMP> (<SAMP>Install</SAMP>) per installare i pacchetti prescelti, oppure su <SAMP>Elimina</SAMP> (<SAMP>Remove</SAMP>) se si era scelto di rimuovere dei pacchetti.</P>
+
+<P>Se si &egrave; installato un pacchetto che per qualche ragione non &egrave; stato configurato al momento dell'installazione, selezionare <SAMP>Configura</SAMP> (<SAMP>Configure</SAMP>).</P>
+
+<P>Scegliere <SAMP>Termina</SAMP> (<SAMP>Quit</SAMP>) per uscire.</P>
+
+<P><STRONG>3.5.10)&nbsp;&nbsp;<A NAME="title402"></A><A NAME="anchor425"></A>
+ Come funziona <SAMP>apt-get</SAMP>? <A NAME="index1896"></A> <A NAME="index1897"></A> </STRONG></P>
+
+<P><SAMP>apt-get</SAMP> &egrave; un programma evoluto che serve a gestire i pacchetti in <A NAME="index1898"></A>Debian GNU/Linux. Nel file <CODE>/etc/apt/sources.list</CODE> vanno indicati i percorsi contenenti i pacchetti, siano essi CD-ROM, <A NAME="index1899"></A>server  di rete, ecc. Esiste ad esempio il programma <SAMP>apt-cdrom</SAMP> che permette di generare il file <CODE>/etc/apt/sources.list</CODE> basandosi sui CD-ROM della distribuzione in nostro possesso. Un output ipotetico di <SAMP>apt-cdrom</SAMP> per una distribuzione <A NAME="index1900"></A>Debian GNU/Linux 2.2 di 3 CD-ROM &egrave; il seguente <SUP><A HREF="programmi.html#footnote14" NAME="footnote-ref14">(14)</A></SUP>:</P>
+
+<PRE>deb cdrom:[Debian GNU/Linux 2.2 r0 _Potato_ Binary-1]/ unstable 
+                  contrib main non-US/contrib non-US/main
+deb cdrom:[Debian GNU/Linux 2.2 r0 _Potato_ Binary-3]/ unstable 
+                  contrib main non-US/contrib non-US/main
+deb cdrom:[Debian GNU/Linux 2.2 r0 _Potato_ Binary-2]/ unstable 
+                  contrib main non-US/contrib non-US/main</PRE>
+
+<P>Si possono anche aggiungere a mano <A NAME="index1901"></A>server remoti:</P>
+
+<PRE>deb http://http.it.debian.org/debian stable main non-free contrib
+deb http://http.it.debian.org/debian-non-US stable/non-US 
+                          main contrib non-free
+deb http://helix.firenze.linux.it/distributions/debian woody main</PRE>
+
+<P>Una volta impostate le fonti per <SAMP>apt-get</SAMP>, si dovr&agrave; ricevere l'elenco di tutti i pacchetti presenti su tali fonti mediante:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>apt-get update</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando aggiorner&agrave; le liste presenti in <CODE>/var/state/apt/list</CODE>. Una volta fatto questo, per installare un pacchetto si utilizzer&agrave; il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>apt-get install <VAR>nome_pacchetto</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote15" NAME="footnote-ref15">(15)</A></SUP></P>
+
+<H2>3.6 &nbsp; <A NAME="title403"></A><A NAME="anchor426"></A>
+ I pacchetti - RPM <A NAME="index1902"></A> <A NAME="index1903"></A> </H2>
+
+<P><STRONG>3.6.1)&nbsp;&nbsp;<A NAME="title404"></A><A NAME="anchor427"></A>
+ Come si installano i pacchetti RPM? </STRONG></P>
+
+<P>Per installare un pacchetto RPM si utilizza il comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -i <VAR>nome</VAR>.rpm</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>oppure:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -ivh <VAR>nome</VAR>.rpm</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote16" NAME="footnote-ref16">(16)</A></SUP></P>
+
+<P><STRONG>3.6.2)&nbsp;&nbsp;<A NAME="title405"></A><A NAME="anchor428"></A>
+ Come si aggiornano i pacchetti RPM? </STRONG></P>
+
+<P>Per aggiornare un pacchetto RPM si utilizza il comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -U <VAR>nome</VAR>.rpm</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>oppure:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -Uvh <VAR>nome</VAR>.rpm</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote17" NAME="footnote-ref17">(17)</A></SUP></P>
+
+<P><STRONG>3.6.3)&nbsp;&nbsp;<A NAME="title406"></A><A NAME="anchor429"></A>
+ Come si disinstallano i pacchetti RPM? </STRONG></P>
+
+<P>Per disinstallare un pacchetto RPM si utilizza il comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -e <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote18" NAME="footnote-ref18">(18)</A></SUP></P>
+
+<P><STRONG>3.6.4)&nbsp;&nbsp;<A NAME="title407"></A><A NAME="anchor430"></A>
+ Come si verifica l'installazione di pacchetti RPM? </STRONG></P>
+
+<P>Per verificare la corretta installazione di un pacchetto RPM si utilizza il comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -V <VAR>nome</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote19" NAME="footnote-ref19">(19)</A></SUP></P>
+
+<P><STRONG>3.6.5)&nbsp;&nbsp;<A NAME="title408"></A><A NAME="anchor431"></A>
+ Da qual pacchetto RPM viene un determinato file? </STRONG></P>
+
+<P>Si pu&ograve; ottenere questa informazione con le opzioni <SAMP>-qf</SAMP> del comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -qf <VAR>file</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.6.6)&nbsp;&nbsp;<A NAME="title409"></A><A NAME="anchor432"></A>
+ Come si ottiene una descrizione di un pacchetto RPM? </STRONG></P>
+
+<P>Si pu&ograve; ottenere questa informazione con le opzioni <SAMP>-qpi</SAMP> del comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -qpi <VAR>file</VAR>.rpm </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.6.7)&nbsp;&nbsp;<A NAME="title410"></A><A NAME="anchor433"></A>
+ Come si visualizza l'elenco dei pacchetti RPM installati? <A NAME="index1904"></A> </STRONG></P>
+
+<P>Si pu&ograve; ottenere questa informazione con le opzioni <SAMP>-qa</SAMP> del comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -qa </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.6.8)&nbsp;&nbsp;<A NAME="title411"></A><A NAME="anchor434"></A>
+ Come si verifica la corretta installazione di tutti i pacchetti? </STRONG></P>
+
+<P>Con il comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -Va</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.6.9)&nbsp;&nbsp;<A NAME="title412"></A><A NAME="anchor435"></A>
+ Come si pu&ograve; verificare la corrispondenza tra un pacchetto RPM e ci&ograve; che &egrave; installato? </STRONG></P>
+
+<P>Con il comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -Vp nome.rpm</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.6.10)&nbsp;&nbsp;<A NAME="title413"></A><A NAME="anchor436"></A>
+ Come si pu&ograve; installare un pacchetto RPM su destinazione diversa da quella predefinita? <A NAME="index1905"></A> <A NAME="index1906"></A> </STRONG></P>
+
+<P>Con il comando <SAMP>rpm</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>rpm -i --prefix <VAR>percorso</VAR> <VAR>file</VAR>.rpm</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<H2>3.7 &nbsp; <A NAME="title414"></A><A NAME="anchor437"></A>
+ La compressione - <CODE>.gz</CODE> <CODE>.bz2</CODE> <CODE>.zip</CODE> <A NAME="index1907"></A> <A NAME="index1908"></A> </H2>
+
+<P><STRONG>3.7.1)&nbsp;&nbsp;<A NAME="title415"></A><A NAME="anchor438"></A>
+ Come si comprime un file? </STRONG></P>
+
+<P>Sono molteplici i programmi di compressione: <SAMP>gzip</SAMP>, <SAMP>bzip2</SAMP>. Ecco la loro sintassi:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>gzip <VAR>file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>bzip2 <VAR>file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.7.2)&nbsp;&nbsp;<A NAME="title416"></A><A NAME="anchor439"></A>
+ Cosa &egrave; un file <CODE>.gz</CODE>? <A NAME="index1909"></A> </STRONG></P>
+
+<P>Un file <CODE>.gz</CODE> &egrave; un file compresso con <SAMP>gzip</SAMP> e si decomprime con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>gzip -d <VAR>file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>oppure con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>gunzip <VAR>file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.7.3)&nbsp;&nbsp;<A NAME="title417"></A><A NAME="anchor440"></A>
+ Cosa &egrave; un file <CODE>.bz2</CODE>? <A NAME="index1910"></A> </STRONG></P>
+
+<P>Un file <CODE>.bz2</CODE> &egrave; un file compresso con <SAMP>bzip2</SAMP> e si decomprime con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>bzip2 -d <VAR>file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>oppure con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>bunzip2 <VAR>file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>3.7.4)&nbsp;&nbsp;<A NAME="title418"></A><A NAME="anchor441"></A>
+ Avendo una serie di file compressi con <SAMP>gzip</SAMP>, come posso decomprimerli tutti evitando di utilizzare <SAMP>gunzip</SAMP> per ognuno? <A NAME="index1911"></A> <A NAME="index1912"></A> <A NAME="index1913"></A> <A NAME="index1914"></A> </STRONG></P>
+
+<P>Il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>gunzip *.gz</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>non funziona, e si deve ricorrere a uno <A NAME="index1915"></A>script simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>for file in `ls *.gz`
+do
+      gunzip $file
+done</PRE>
+
+</BLOCKQUOTE>
+
+<P><STRONG>3.7.5)&nbsp;&nbsp;<A NAME="title419"></A><A NAME="anchor442"></A>
+ Cos'&egrave; un file <CODE>.tar.bz2</CODE> e come posso utilizzarlo? <A NAME="index1916"></A> <A NAME="index1917"></A> <A NAME="index1918"></A> <A NAME="index1919"></A> </STRONG></P>
+
+<P>Si tratta di un archivio <VAR>.tar</VAR> compresso con <SAMP>bzip2</SAMP>. Innanzitutto occorre decomprimere l'archivio con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>bzip2 -d <VAR>nomefile</VAR>.tar.bz2 ; tar -xvf <VAR>nomefile</VAR>.tar </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmi.html#footnote20" NAME="footnote-ref20">(20)</A></SUP></P>
+
+<P>oppure con un unico comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>tar -xIvf <VAR>nomefile</VAR>.tar.bz2</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="programmi.html#footnote-ref1" NAME="footnote1">1)</A> dove <VAR>applicazione</VAR> &egrave; l'applicazione che si lancia dal terminale grafico.</P>
+
+<P><A HREF="programmi.html#footnote-ref2" NAME="footnote2">2)</A> Questo comando individua la posizione dell'eseguibile <SAMP>pppd</SAMP>.</P>
+
+<P><A HREF="programmi.html#footnote-ref3" NAME="footnote3">3)</A> dove <VAR>file_delle_differenze</VAR> &egrave; il nome del <A NAME="index1807"></A>file delle differenze (<EM>patch</EM>).</P>
+
+<P><A HREF="programmi.html#footnote-ref4" NAME="footnote4">4)</A> dove <VAR>file_errori</VAR> &egrave; il nome del file che conterr&agrave; gli errori dell'aggiornamento.</P>
+
+<P><A HREF="programmi.html#footnote-ref5" NAME="footnote5">5)</A> dove <VAR>pacchetto</VAR> &egrave; il nome del pacchetto RPM che verr&agrave; convertito in formato <CODE>.deb</CODE></P>
+
+<P><A HREF="programmi.html#footnote-ref6" NAME="footnote6">6)</A> dove <VAR>pacchetto</VAR> &egrave; il nome del pacchetto <CODE>.deb</CODE> che verr&agrave; convertito in formato RPM</P>
+
+<P><A HREF="programmi.html#footnote-ref7" NAME="footnote7">7)</A> dove <VAR>pacchetto</VAR> &egrave; il nome del pacchetto RPM che verr&agrave; convertito in formato <CODE>.tgz</CODE> o (<CODE>.tar.gz</CODE>) </P>
+
+<P><A HREF="programmi.html#footnote-ref8" NAME="footnote8">8)</A> dove <VAR>pacchetto</VAR> &egrave; il nome del pacchetto da decomprimere</P>
+
+<P><A HREF="programmi.html#footnote-ref9" NAME="footnote9">9)</A> <VAR>file</VAR>.tar.gz o <VAR>file</VAR>.tgz </P>
+
+<P><A HREF="programmi.html#footnote-ref10" NAME="footnote10">10)</A> fare riferimento alla LDR <A HREF="ldr6.html#anchor425">3.5.10</A>.</P>
+
+<P><A HREF="programmi.html#footnote-ref11" NAME="footnote11">11)</A> l'eventuale percorso per <CODE>access.conf</CODE> non deve essere specificato se si desidera sapere tutti i pacchetti di provenienza di tutti gli <CODE>access.conf</CODE> presenti nel sistema.</P>
+
+<P><A HREF="programmi.html#footnote-ref12" NAME="footnote12">12)</A> quello che si trova sopra il tasto [<KBD>7</KBD>] e <STRONG>non</STRONG> quello che si trova in corrispondenza del tastierino numerico</P>
+
+<P><A HREF="programmi.html#footnote-ref13" NAME="footnote13">13)</A> Si prema [<KBD>Q</KBD>] (maiuscola) per annullare le scelte fatte.</P>
+
+<P><A HREF="programmi.html#footnote-ref14" NAME="footnote14">14)</A> le tre righe sono separate per motivi tipografici ma si intendono tre righe intere</P>
+
+<P><A HREF="programmi.html#footnote-ref15" NAME="footnote15">15)</A> il nome del pacchetto si intende senza estensione </P>
+
+<P><A HREF="programmi.html#footnote-ref16" NAME="footnote16">16)</A> installa il pacchetto con dettagli e barra di progressione </P>
+
+<P><A HREF="programmi.html#footnote-ref17" NAME="footnote17">17)</A> aggiorna il pacchetto con dettagli e barra di progressione </P>
+
+<P><A HREF="programmi.html#footnote-ref18" NAME="footnote18">18)</A> il nome del pacchetto si intende senza estensione </P>
+
+<P><A HREF="programmi.html#footnote-ref19" NAME="footnote19">19)</A> il nome del pacchetto si intende senza estensione </P>
+
+<P><A HREF="programmi.html#footnote-ref20" NAME="footnote20">20)</A> al posto di <SAMP>bzip2 -d</SAMP> si pu&ograve; utilizzare <SAMP>bunzip2</SAMP></P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="programmi.html">programmi.html</A></P>
+<P>
+<A HREF="ldr7.html">[successivo]</A>
+<A HREF="ldr5.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

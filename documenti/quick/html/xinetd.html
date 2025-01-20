@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Xinetd</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="Junkbuster" href="junkbuster.html">
+    <LINK rel="NEXT" title="Informazioni di base" href=
+    "informazionibasexinetd.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "junkbuster.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "informazionibasexinetd.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="XINETD">Capitolo 13. Xinetd</A></H1>
+
+      <DIV class="TOC">
+        <DL>
+          <DT><B>Sommario</B></DT>
+
+          <DT>13.1. <A href="informazionibasexinetd.html">Informazioni di
+          base</A></DT>
+
+          <DT>13.2. <A href="configurazionebasexinetd.html">Configurazione di
+          base</A></DT>
+
+          <DD>
+            <DL>
+              <DT>13.2.1. <A href=
+              "configurazionebasexinetd.html#CONTROLLOACCESSOXINETD">Controllo
+              d'accesso</A></DT>
+
+              <DT>13.2.2. <A href=
+              "configurazionebasexinetd.html#XINETDDEFAULTS">Sezione
+              defaults</A></DT>
+
+              <DT>13.2.3. <A href=
+              "configurazionebasexinetd.html#CONFIGURAZIONESERVIZIXINETD">Configurare
+              i servizi</A></DT>
+            </DL>
+          </DD>
+
+          <DT>13.3. <A href=
+          "configurazioneavanzataxinetd.html">Configurazione
+          avanzata</A></DT>
+
+          <DD>
+            <DL>
+              <DT>13.3.1. <A href=
+              "configurazioneavanzataxinetd.html#XINETDPORTBINDING">Port
+              binding</A></DT>
+
+              <DT>13.3.2. <A href=
+              "configurazioneavanzataxinetd.html#PORTREDIRECTXINETD">Redirezione
+              di porte</A></DT>
+
+              <DT>13.3.3. <A href=
+              "configurazioneavanzataxinetd.html#XINETDSERVIZIINTERNI">Servizi
+              interni</A></DT>
+
+              <DT>13.3.4. <A href=
+              "configurazioneavanzataxinetd.html#XINETDCHROOT">Chroot di un
+              servizio</A></DT>
+            </DL>
+          </DD>
+        </DL>
+      </DIV>
+
+      <P><SPAN class="APPLICATION">Xinetd</SPAN> è un sostituto "sicuro" di
+      <SPAN class="APPLICATION">inetd</SPAN>, che unisce alle caratteristiche
+      di "super-server" quest'ultimo anche quelle dei <SPAN class=
+      "APPLICATION">TCP-Wrappers</SPAN>, permettendo controlli sull'accesso,
+      estese funzionalità di log, la possibilità di associare un servizio a
+      specifiche interfacce di rete, limitazione di possibili attacchi DoS,
+      redirezione di porte, e altro. <SPAN class="APPLICATION">Xinetd</SPAN>
+      dopo aver letto il suo file di configurazione, si mette in ascolto
+      sulle porte indicate, avviando il servizio richiesto, se vengono
+      passati tutti i controlli e vi si ha diritto. L'unico suo difetto è che
+      gestisce non (ancora) molto bene i servizi <B class="KEYCAP">RPC</B>
+      come NFS, che dovranno quindi essere avviati col solito <SPAN class=
+      "APPLICATION">portmap</SPAN> o col vecchio <SPAN class=
+      "APPLICATION">inetd</SPAN>. Può essere compilato per l'uso dei <SPAN
+      class="APPLICATION">TCP-Wrappers</SPAN>, ma visto che le stesse cose si
+      possono fare direttamente con <SPAN class="APPLICATION">xinetd</SPAN>,
+      non se ne sente il bisogno.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "junkbuster.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "informazionibasexinetd.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Junkbuster</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Informazioni di
+          base</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

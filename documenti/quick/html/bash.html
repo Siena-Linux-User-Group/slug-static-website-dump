@@ -1,0 +1,314 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Bash</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Varie" href="varie.html">
+    <LINK rel="PREVIOUS" title="TrueType" href="truetype.html">
+    <LINK rel="NEXT" title="Links" href="links.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "truetype.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 19.
+          Varie</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "links.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="BASH">19.2. Bash</A></H1>
+
+      <P>Alcuni file che possono tornare utili per configurare bash (altri
+      più dettagliati sono presenti nel <B class=
+      "KEYCAP">Config-HOWTO</B>)</P>
+
+      <P><B class="KEYCAP">=== file: .bash_profile ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+
+# varie
+export BASH_ENV="$HOME/.bashrc"
+export MAIL="$HOME/Mail/$USER"
+export USER=`whoami`       #oppure export USER=`id -un
+export TMPDIR="$HOME/.tmp"
+export BROWSER="netscape -raise -remote \"openURL(%s,new-window)\":lynx"
+export DATE=`date +%B-%Y`
+export HISTSIZE=1000
+export HISTFILESIZE=1000
+export HISTIGNORE="[   ]*:&amp;:bg:fg"
+export PAGER=less
+export LESS="-M -Q"
+export LESSEDIT="%E ?lt+%lt. %f"
+#export LESSOPEN="| lesspipe.sh %s"
+export LESSOPEN="| lesspipe %s"
+export LESSCHARSET=latin1
+
+# editor
+export VISUAL="gvim"
+export EDITOR="vim"
+export SLANG_EDITOR="vim %s"
+
+# rete
+export NNTPSERVER="127.0.0.1"
+export http_proxy="http://localhost:5865"
+export HOSTNAME=`hostname`
+
+# lingua
+LINGUA="it_IT.ISO-8859-1"
+export LANG=$LINGUA
+export LC_COLLATE=$LINGUA
+export LC_CTYPE=$LINGUA
+export LC_NUMERIC=$LINGUA
+export LC_MONETARY=$LINGUA
+export LC_MESSAGES=$LINGUA
+export LC_TIME=$LINGUA
+export LC_ALL=
+
+# path
+export PATH=$PATH:$HOME/.bin:/usr/local/j2sdk1.3.0/bin
+export JAVA_HOME=/usr/local/j2sdk1.3.0
+export JAVA_PATH=/usr/local/j2sdk1.3.0
+export SGML_CATALOG_FILES=/etc/sgml/catalog
+
+echo
+fortune
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: .bashrc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# User specific aliases and functions
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias s='cd ..'
+alias d='ls'
+alias p='cd -'
+#alias ls='ls -sh1C --color=tty'
+alias ls="ls -s -F -T 0 -b -H -1 -C --color=auto"
+alias df="df -Th"
+alias cdin='mount /mnt/cdrom ; cd /mnt/cdrom ; ls'
+alias cdout='cd ; umount /mnt/cdrom ; eject'
+alias du='du -h --max-depth=1'
+alias startx='startx -- -nolisten tcp'
+alias netstat='netstat -nap --inet'
+alias ps='ps auxfwww'
+
+eval `dircolors ~/.dircolors`
+
+# prompt
+if [ $USER = 'root' ] ; then
+  COLOUR=41  # red
+else
+  COLOUR=44  # blue
+fi
+ESC="\033"
+PROMPT="\u@\h"  # username@hostname
+#STYLE=";1m"  # bold
+STYLE="m"    # plain
+PS1="\[$ESC[$COLOUR;37$STYLE\]$PROMPT:\[$ESC[37;40$STYLE\]\w\\$ "
+PS2="&gt; "
+
+# Need for a xterm &amp; co if we don't make a -ls
+[ -n $DISPLAY ] &amp;&amp; {
+    [ -f /etc/profile.d/color_ls.sh ] &amp;&amp; source /etc/profile.d/color_ls.sh
+     export XAUTHORITY=$HOME/.Xauthority
+}
+
+# Read first /etc/inputrc if the variable is not defined, and after the /etc/inputrc 
+# include the ~/.inputrc
+[ -z $INPUTRC ] &amp;&amp; export INPUTRC=/etc/inputrc
+
+umask=022
+ulimit -c 0
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: .dircolors ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# EvilGNU's ~/.dircolors for GNU ls.  Colours based off of screen shots by
+# The Rasterman.
+# in your .bashrc put the lines:
+# eval `dircolors ~/.dircolors` and
+# alias ls='ls --color=auto'
+# you may also want options like -F or somthing.
+#
+# EvilGNU
+# dfree@inna.net
+
+COLOR tty
+
+# Extra command line options for ls go here.
+# Basically these ones are:
+#  -F = show '/' for dirs, '*' for executables, etc.
+#  -T 0 = don't trust tab spacing when formatting ls output.
+# -b = better support for special characters
+OPTIONS -F -b -T 0
+ -s -H -1 -C
+
+# Below, there should be one TERM entry for each termtype that is colorizable
+TERM linux
+TERM console
+TERM con132x25
+TERM con132x30
+TERM con132x43
+TERM con132x60
+TERM con80x25
+TERM con80x28
+TERM con80x30
+TERM con80x43
+TERM con80x50
+TERM con80x60
+TERM xterm
+TERM vt100
+TERM vt220
+TERM ansi
+TERM rxvt
+
+# EIGHTBIT, followed by '1' for on, '0' for off. (8-bit output)
+EIGHTBIT 1
+
+# Below are the color init strings for the basic file types. A color init
+# string consists of one or more of the following numeric codes:
+# Attribute codes: 
+# 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+# Text color codes:
+# 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+# Background color codes:
+# 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+NORMAL 00   # global default, although everything should be something.
+FILE 00     # normal file
+DIR 00;32   # directory
+LINK 01;36  # symbolic link
+FIFO 40;33  # pipe
+SOCK 01;35  # socket
+BLK 40;33;01    # block device driver
+CHR 40;33;01    # character device driver
+
+# This is for files with execute permission:
+EXEC 01;33 
+
+# List any file extensions like '.gz' or '.tar' that you would like ls
+# to colorize below. Put the extension, a space, and the color init string.
+# (and any comments you want to add after a '#')
+*~   05;31 # stuff we hate to find laying around (flashing red)
+.mtxt 05;31 # crap
+.ndx 05;31
+.cmd 00;33 # executables
+.exe 00;33
+.com 00;33
+.btm 00;33
+.bat 00;33
+.c   00;35 # source code
+.h   00;36
+.pl  00;35
+.pm  00;35
+.cgi 00;35
+.java 00;35
+.html 00;35
+.tar 00;31 # archives or compressed (bright red)
+.tgz 00;31
+.arj 00;31
+.taz 00;31
+.lzh 00;31
+.zip 00;31
+.z   00;31
+.Z   00;31
+.gz  00;31
+.jpg 00;34 # image formats
+.jpeg 00;34
+.JPG 00;34
+.gif 00;34
+.GIF 00;34
+.bmp 00;34
+.BMP 00;34
+.xbm 00;34
+.ppm 00;34
+.xpm 00;34
+.tif 00;34
+.png 00;34
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "truetype.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "links.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">TrueType</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "varie.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Links</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

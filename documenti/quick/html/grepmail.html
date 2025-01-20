@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Grepmail e Mutt</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Mutt" href="mutt.html">
+    <LINK rel="PREVIOUS" title="Tasti principali" href="tastimutt.html">
+    <LINK rel="NEXT" title="Slrn" href="slrn.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "tastimutt.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 14.
+          Mutt</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "slrn.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="GREPMAIL">14.4. Grepmail e Mutt</A></H1>
+
+      <P><SPAN class="APPLICATION">Grepmail</SPAN> è uno script in
+      <EM>perl</EM> che permette di fare ricerche molto velocemente nelle
+      vostre mailbox. Ne parlo quì perché esiste uno script di shell
+      ("grepm", in coda a questa sezione), che fa da wrapper ad esso,
+      richiamando direttamente <SPAN class="APPLICATION">mutt</SPAN> sul
+      risultato. Le sue particolarità sono le seguenti:</P>
+
+      <UL>
+        <LI>
+          <P>ritorna come risultato delle mailbox contenenti tutti i messaggi
+          che soddisfano i criteri di ricerca, non solo le righe che
+          contengono ciò che cercate</P>
+        </LI>
+
+        <LI>
+          <P>può cercare nel corpo o tra gli header dei messaggi</P>
+        </LI>
+
+        <LI>
+          <P>può eseguire ricerche anche su mailbox compresse in vari
+          formati, tra cui bzip2 e gzip</P>
+        </LI>
+      </UL>
+
+      <P>Se non trovate il pacchetto già pronto per la vostra distribuzione
+      preferita, scaricate i sorgenti di <SPAN class=
+      "APPLICATION">grepmail</SPAN> dal sito: <A href=
+      "http://grepmail.sourceforge.net" target=
+      "_top">http://grepmail.sourceforge.net</A>. Per prima cosa, se non li
+      avete già nel vostro sistema, installate i due moduli <EM>perl</EM> <B
+      class="KEYCAP">Date::Parse</B> e <B class="KEYCAP">Date::Manip</B> con
+      i comandi seguenti:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+perl -MCPAN -e 'install Date::Parse'
+perl -MCPAN -e 'install Date::Manip'
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>quindi compilate come segue (rispondendo eventualmente <B class=
+      "KEYCAP">y</B> alla domanda sull'installazione del modulo <B class=
+      "KEYCAP">Mail::Folder::FastReader</B>, per velocizzare di un 10/20% le
+      ricerche), X.YZ è la versione del programma:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cd /usr/local/src
+tar xvzf /percorso/verso/file/coi/sorgenti/grepmail-X.YZ.tar.gz
+cd grepmail-X.YZ
+perl Makefile.PL
+make
+make test
+make install
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Se <B class="COMMAND">make test</B> segnala qualche errore, usate <B
+      class="COMMAND">make testfunc</B> per vedere nello specifico l'errore
+      (a me ne dava uno sulle mailbox tzipped, ma visto che non le uso, non
+      me ne sono preoccupato). Per default la ricerca avviene sia sugli
+      header che nel corpo del messaggio. L'output può essere inviato su un
+      file (otterrete una mailbox standard), o direttamente in pipe di nuovo
+      a <SPAN class="APPLICATION">grepmail</SPAN> per un ulteriore
+      raffinamento della ricerca. Queste le opzioni per l'uso di <SPAN class=
+      "APPLICATION">grepmail</SPAN> da shell:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+grepmail [-abDhilmrRuv] [-s size] [-d "datespec"] [[-e] &lt;expr&gt;] &lt;files...&gt;
+
+-b cerca nel corpo dei messaggi
+-d specifica un intervallo di date (*)
+-a usa la data di ricezione invece di quella di invio per le ricerche -d
+-D modo debug
+-e dichiara esplicitamente che la seguente è l'espressione da
+   cercare (utile per ricerche su stringhe che iniziano con "-")
+-h cerca negli header dei messaggi
+-H stampa solo gli header ma non i corpi delle email trovate
+-i ignora maiuscole e minuscole nell'espressione
+-l visualizza un elenco dei file che contengono l'espressione cercata
+-M non cercare negli allegati MIME non testuali
+-m appende "X-Mailfolder: &lt;folder&gt;" agli header per indicare in
+   quale folder è avvenuto il match con l'espressione cercata
+-n visualizza i numeri di riga (e il nome del file se necessario)
+   delle email (lo script "grepm" non funzionerà...)
+-q modo silenzioso -- non visualizza gli avvertimenti
+-r visualizza i nomi dei file e il numero di email che soddisfano
+   l'espressione
+-R ridiscende un albero di directory ricorsivamente
+-s restringe il risultato alle email inferiori ad una certa dimensione
+   (in bytes)
+-u assicura che non ci siano email diplicate nell'output
+-v visualizza le email che NON soddisfano l'espressione
+-V visualizza il numero di versione
+-Z non usare Mail::Folder::FastReader anche se presente nel sistema
+
+(*) Le date devono essere in uno dei formati seguenti:
+  una data come "today", "1st thursday in June 1992" (richiede
+  Date::Manip), "05/18/93", "12:30 Dec 12th 1880", "8:00pm
+  december tenth", oppure "before", "after", o "since", seguito
+  da una data come specificata sopra, oppure "between &lt;date&gt;
+  and &lt;date&gt;", dove &lt;date&gt; è definita come sopra.
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Seguono alcuni esempi, presi dalla manpage:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# conta il numero di email ("." "matcha" tutte le email.)
+grepmail -r . sent-mail
+
+# trova tutte le email maggiori a 2000 byte sui "books"
+grepmail books -s 2000 sent-mail
+
+# trova tutte le email inviate ieri
+grepmail -d yesterday sent-mail
+
+# trova tutte le email contenenti "research" inviate prima del primo
+# giovedì di giugno 1998 (richiede il modulo Date::Manip)
+grepmail research -d "before 1st thursday in June 1992" sent-mail
+
+# trova tutte le email contenenti "research" inviate prima del
+# primo giugno 1998
+grepmail research -d "before 6/1/92" sent-mail
+
+# trova tutte le email ricevute dal 8/20/98 che non riguardano
+# "research" o "job", ignorando maiuscole e minuscole
+grepmail -iv "(research|job)" -d "since 8/20/98" saved-mail
+
+# trova tutte le email su "mime" ma non su "Netscape". Limita la
+# ricerca al solo corpo (molte email contengono "mime" negli header)
+grepmail -b mime saved-mail | grepmail Netscape -v
+
+# visualizza un elenco delle mailbox contenenti messaggi da "Rodney".
+# Limita la ricerca ai soli header, poiché il testo quotato
+# delle email potrebbe contenere il pattern
+grepmail -hl "^From.*Rodney" saved-mail*
+
+# trova tutte le email con il testo "Pilot" sia negli header
+# che nel corpo del messaggio
+grepmail -hb "Pilot" saved-mail*
+
+# conta il numero di messaggi su "grepmail" in tutte le mailbox
+# "saved-mail"
+grepmail -br grepmail saved-mail*
+
+# rimuove qualsiasi duplicato in una mailbox
+grepmail -u saved-mail
+
+# converte una mailbox Gnus in formato mbox
+grepmail . gnus-mailbox-dir/* &gt; mbox
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><SPAN class="APPLICATION">grepm</SPAN> è un wrapper per <SPAN class=
+      "APPLICATION">grepmail</SPAN> che invia l'output direttamente a <SPAN
+      class="APPLICATION">mutt</SPAN> (si usa esternamente ad esso,
+      direttamente da riga di comando, e lo richiama in automatico sul
+      risultato). Si usa esattamente come il tool originale, con le stesse
+      opzioni (visto che è un wrapper, e quindi passa tutto a <SPAN class=
+      "APPLICATION">grepmail</SPAN>). Segue lo script (gli eventuali
+      aggiornamenti su <A href="http://privat.schlund.de/barsnick" target=
+      "_top">http://privat.schlund.de/barsnick</A>), copiatelo in qualche
+      directory contenuta nel vostro <TT class="ENVAR">PATH</TT> e rendetelo
+      eseguibile con <B class="COMMAND">chmod 755 grepm</B>.</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+
+# grepm - a wrapper for grepmail utilizing mutt
+
+# grepm-0.6
+
+# written 1998-11-xx by Moritz Barsnick &lt;barsnick@gmx.net&gt;
+# updated 1998-12-22:   added "-m" option for grepmail
+#           added "exit 1" to trap
+# updated 1999-01-04:   added check for empty "mailbox" (don't open mutt)
+#           added messages
+#           added umask (to keep others from reading your messages)
+# updated 1999-01-19:   added trap for SIGPIPE (any other suggestions?)
+# updated 1999-07-05:   added $TMPDIR; we're still subject to races ($TMPFILE
+#               might exist)
+# updated 1999-11-29:   have mutt open the temporary mailbox read-only -
+#               there's no use in editing it anyway
+
+
+PROGNAME=`basename "$0"`
+TMPDIR=${TMPDIR-/tmp}
+
+umask 077
+
+if [ $# -lt 1 ]; then
+  echo 1&gt;&amp;2 "Usage: ${PROGNAME} arguments"
+  exit 1
+fi
+
+TMPFILE="${TMPDIR}/grepmail-output.$$"
+
+# I _would_ check this with "-e", but not all /bin/sh's understand it
+# so this is just a kludge
+
+if [ -f ${TMPFILE} -o -d ${TMPFILE} -o -w ${TMPFILE} ]; then
+  echo 1&gt;&amp;2 "Temporary file ${TMPFILE} exists for some reason! Aborting."
+  exit 1
+fi
+
+trap "rm -f ${TMPFILE}; exit 1" 1 2 3 13 15
+
+grepmail -m "$@" &gt; "${TMPFILE}"
+if [ `wc -c "${TMPFILE}" | awk '{print $1}'` -gt 0 ]; then
+  echo 1&gt;&amp;2 "Calling mutt on results file (${TMPFILE})."
+  mutt -R -f "${TMPFILE}"
+else
+  echo 1&gt;&amp;2 "No matches."
+fi
+
+rm -f "${TMPFILE}" &amp;&amp; echo 1&gt;&amp;2 "Deleted results file (${TMPFILE})."
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "tastimutt.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "slrn.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Tasti principali</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "mutt.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Slrn</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

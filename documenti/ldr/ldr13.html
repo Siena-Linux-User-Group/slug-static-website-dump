@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr12.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr14.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr14.html">[successivo]</A>
+<A HREF="ldr12.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 10. &nbsp; <A NAME="title524"></A><A NAME="anchor552"></A>Masterizzazione</H1>
+
+<H2>10.1 &nbsp; <A NAME="title525"></A><A NAME="anchor553"></A>
+ Masterizzare da riga di comando <A NAME="index2345"></A> </H2>
+
+<P><STRONG>10.1.1)&nbsp;&nbsp;<A NAME="title526"></A><A NAME="anchor554"></A>
+ Quali sono i comandi comuni per masterizzare con GNU/Linux? </STRONG></P>
+
+<P>Per masterizzare file o directory occorre prima includerli in una struttura che abbia un <A NAME="index2346"></A>file&nbsp;system adatto per il supporto (CD-ROM) destinazione. Questa struttura si chiama immagine e si crea con il comando <SAMP>mkisofs</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> mkisofs -a -r -v -T -o ~/<VAR>immagine.img</VAR> <VAR>/doc</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando creer&agrave; (<SAMP>-o</SAMP>) un'immagine chiamata <CODE>immagine.img</CODE> nella directory personale (<CODE>~</CODE>) della directory <CODE>/doc/</CODE> e delle sue sottodirectory, utilizzando un <A NAME="index2347"></A>file&nbsp;system ISO 9660 con estensioni <A NAME="index2348"></A>Rock&nbsp;Ridge. Quest'ultimo (utilizzato grazie all'opzione <SAMP>-r</SAMP>) permetter&agrave; di mantenere i permessi dei file e i nomi lunghi. Lo standard ISO 9660 gestisce solamente nomi di file costituiti da 8 caratteri per il nome e 3 per le estensioni. Le altre opzioni servono ad avere informazioni sul processo (<SAMP>-v</SAMP>), ad includere anche i file nascosti (<SAMP>-a</SAMP>) e a creare il file <CODE>TRANS.TBL</CODE> per la conversione (<SAMP>-T</SAMP>) qualora si utilizzi il CD-ROM in un sistema con nomi di caratteri 8+3.</P>
+
+<P>In seguito si potr&agrave; montare l'immagine per verificare che sia stata creata correttamente:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> mount -o loop -t iso9660 ~/<VAR>immagine.img</VAR> <VAR>/mnt/prova</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr13.html#footnote1" NAME="footnote-ref1">(1)</A></SUP></P>
+
+<P>Una volta fatte le opportune verifiche, la si potr&agrave; distaccare dal <A NAME="index2349"></A>file&nbsp;system (<EM>smontare</EM>):</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>umount <VAR>/mnt/prova</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e masterizzare:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord -v speed=<VAR>k</VAR> dev=<VAR>x</VAR>,<VAR>y</VAR> e <VAR>z</VAR> -data <VAR>~/immagine.img</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><VAR>k</VAR> &egrave; la velocit&agrave; di scrittura scelta (1,2,4,8,12, ecc.), <VAR>x</VAR> indica l'adattatore (scheda) SCSI (se se ne possiede uno solo si pu&ograve; omettere), <VAR>y</VAR> indica il numero del dispositivo nella catena SCSI (1-6), la <VAR>z</VAR> &egrave; generalmente 0 per assenza di LUN multipli (<EM>Logical Unit Number</EM>).</P>
+
+<P>Ad esempio, il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord -v speed=6 dev=3,0 -data immagine.img</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>masterizzer&agrave; a velocit&agrave; 6 l'immagine <CODE>immagine.img</CODE> presente nella directory corrente con il masterizzatore che riesiede al posto n&deg; 3 della catena SCSI dell'unico adattatore che c'&egrave; nel sistema.</P>
+
+<P><STRONG>10.1.2)&nbsp;&nbsp;<A NAME="title527"></A><A NAME="anchor555"></A>
+ Come si masterizza in modalit&agrave; multisessione? <A NAME="index2350"></A> <A NAME="index2351"></A> </STRONG></P>
+
+<P>Per masterizzare in modalit&agrave; multisessione si deve utilizzare l'opzione <SAMP>multi</SAMP> di <SAMP>cdrecord</SAMP>. Ipotizziamo di creare un CD-ROM in modalit&agrave; multisessione sulla prima unit&agrave; SCSI dell'unico dispositivo SCSI disponibile (0,1,0).</P>
+
+<P>Dopo la creazione dell'immagine mediante il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mkisofs -R -r -J -D -l -T -v -o <VAR>immagine</VAR> /<VAR>directory</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr13.html#footnote2" NAME="footnote-ref2">(2)</A></SUP></P>
+
+<P>si proceder&agrave; a creare la prima sessione del CD-ROM:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord -v -speed=4 dev=0,1,0 -multi <VAR>immagine</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr13.html#footnote3" NAME="footnote-ref3">(3)</A></SUP></P>
+
+<P>Quando si avr&agrave; intenzione di creare la seconda sessione da aggiungere alla prima, si dovr&agrave; utilizzare l'opzione <SAMP>-msinfo</SAMP> di <SAMP>cdrecord</SAMP>. Questa opzione serve a recuperare le informazioni relative alla multisessione dal CD-ROM:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord -msinfo dev=1,0</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Si otterranno dei numeri del tipo 0,11702 che in pratica stanno ad indicare la prima traccia dal settore 0 al settore 11702. Queste informazioni andranno inserite nel comando di creazione dell'immagine da aggiungere alla prima:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> mkisofs -o <VAR>secondaimmagine</VAR> -R -C 0,11702 -M /dev/scd1 /<VAR>directory</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr13.html#footnote4" NAME="footnote-ref4">(4)</A></SUP></P>
+
+<P>Il comando per masterizzare la seconda e le successive immagini &egrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdrecord -v -speed=4 dev=1,0 -eject -multi <VAR>secondaimmagine</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr13.html#footnote5" NAME="footnote-ref5">(5)</A></SUP></P>
+
+<P>Per le sessioni successive baster&agrave; eseguire nuovamente:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord -msinfo dev=1,0</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e reimpartire <SAMP>cdrecord</SAMP> sostituendo i valori ottenuti.</P>
+
+<P><STRONG>10.1.3)&nbsp;&nbsp;<A NAME="title528"></A><A NAME="anchor556"></A>
+ Come si masterizza un CD-ROM audio? <A NAME="index2355"></A> <A NAME="index2356"></A> <A NAME="index2357"></A> </STRONG></P>
+
+<P>Per masterizzare un CD-ROM audio &egrave; necessario disporre dei file contenenti i brani, in formato <CODE>.wav</CODE>. Se la creazione del CD-ROM audio parte da un altro CD-ROM, si dovranno innanzitutto estrarre le tracce audio con il programma <SAMP>cdparanoia</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdparanoia -B -s</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando estrae le tracce audio separandole (<SAMP>-B</SAMP>) le une dalle altre cercando (<SAMP>-s</SAMP>) autonomamente il dispositivo contenente il CD-ROM audio nel caso si abbiano 2 lettori (lettore e masterizzatore).</P>
+<BLOCKQUOTE>
+
+<PRE>[root@localhost]:[Tue Jul  3]:[22:50:43]:[/home/bigpaul/temp]:
+--&gt; cdparanoia -B -s
+cdparanoia III release 9.8 (March 23, 2001)
+(C) 2001 Monty &lt;monty@xiph.org&gt; and Xiphophorus
+
+Report bugs to paranoia@xiph.org
+http://www.xiph.org/paranoia/
+
+Ripping from sector       0 (track  0 [0:00.00])
+          to sector  207739 (track  9 [4:54.07])
+
+outputting to track00.cdda.wav
+
+ (== PROGRESS == [     &gt;                        | 006370 00 ] == :-) 0 ==)
+[root@localhost]:[Tue Jul  3]:[22:51:13]:[/home/bigpaul/temp]:
+</PRE>
+
+</BLOCKQUOTE>
+
+<P>Il risultato di questo comando generer&agrave; nella directory corrente i file <CODE>track00.cdda.wav</CODE>, <CODE>track01.cdda.wav</CODE>. Dopo ci&ograve;, si lancer&agrave; il comando per masterizzare le tracce:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdrecord -v speed=4 dev=3,0 -audio track*.wav</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dove <SAMP>-v</SAMP> permetter&agrave; di ottenere informazioni sul processo in atto; <SAMP>speed=4</SAMP> registrer&agrave; a velocit&agrave; quadrupla; <SAMP>dev=3,0</SAMP> indicano le coordinate del dispositivo di masterizzazione nell'ambito della catena SCSI. Questi numeri (0,3,0 ad esempio) rappresentano:</P>
+
+<P>il numero corrispondente alla scheda SCSI del nostro sistema (0 per una singola scheda, 0 e 1 se si hanno due schede e cos&igrave; via);</P>
+
+<P>l'ID del dispositivo attaccato alla scheda SCSI, in pratica la postazione della catena SCSI di quella scheda che il dispositivo occupa. Questo ID si ottiene con il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdrecord -scanbus</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>che generer&agrave; un output simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>scsibus0:
+          0) *
+          1) *
+          2) *
+          3) 'YAMAHA  ' 'CRWxxxx         ' '1.0h' Removable CD-ROM
+          4) *
+          5) *
+          6) *
+          7) *</PRE>
+
+</BLOCKQUOTE>
+
+<P>In questo caso l'ID sar&agrave; 3;</P>
+
+<P>il LUN che &egrave; generalmente 0 perch&eacute; difficilmente si dispone di dispositivi che supportino LUN multipli (<EM>Logical Unit Number</EM>).</P>
+
+<P><STRONG>10.1.4)&nbsp;&nbsp;<A NAME="title529"></A><A NAME="anchor557"></A>
+ Come si utilizza Cdda2wav per estrarre le tracce audio? <A NAME="index2358"></A> <A NAME="index2359"></A> </STRONG></P>
+
+<P>Se si decide di adoperare <A NAME="index2360"></A>Cdda2wav, dopo aver inserito il CD nel lettore ed avere scelto la directory dove si desidera registrare i file audio, sar&agrave; possibile estrarre un singolo brano musicale mediante:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdda2wav -t<VAR>nn</VAR> audio_<VAR>xx</VAR>.wav</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dove <VAR>nn</VAR> &egrave; il numero del brano musicale nel CD-ROM e <VAR>xx</VAR> il numero che si desidera assegnare al file. Se si vuole copiare un CD-ROM per intero, non &egrave; necessario eseguire il comando brano per brano; si far&agrave; cos&igrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdda2wav -B</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando infatti permetter&agrave; di recuperare tutti i brani ricopiati sotto forma <CODE>audio_nn.wav</CODE>. Se si dispone di una scheda sonora, si potranno controllare le tracce estratte con <SAMP>play</SAMP>, <SAMP>wavplay</SAMP> o <SAMP>wavp</SAMP>. Per masterizzare tutti i brani si utilizzer&agrave; <SAMP>cdrecord</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdrecord -v -audio speed=2 dev=1,0 audio_*.wav </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Se si desidera masterizzare solo un determinato brano, si indicher&agrave; il nome del file relativo.</P>
+
+<P>Potrebbe capitare di avere a che fare con file audio <CODE>.wav</CODE> prodotti da applicativi <A NAME="index2361"></A>Microsoft. Questi brani sono un po' particolari, perch&eacute; prima di funzionare devono essere opportunamente trattati con <A NAME="index2362"></A>Sox:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> sox nomefile.wav -x nomefile.cdr</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Si potranno ascoltare i brani convertiti con <SAMP>playcdr</SAMP>. Per masterizzarli:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdrecord -v -audio speed=2 dev=1,0 *.cdr</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>10.1.5)&nbsp;&nbsp;<A NAME="title530"></A><A NAME="anchor558"></A>
+ Come si masterizza <EM>on the fly</EM>? <A NAME="index2363"></A> </STRONG></P>
+
+<P>Per effettuare la copia di un CD-ROM, senza riversarne temporaneamente il contenuto in un supporto, si utilizzer&agrave; il comando <SAMP>cdrdao</SAMP>. Eccone un esempio:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> cdrdao copy --on-the-fly -v 6 --speed 2 --fast-toc --source-device 0,1,0 --device 0,3,0 </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando copier&agrave; a doppia velocit&agrave; il contenuto del CD-ROM presente nel dispositivo collegato alla prima posizione della catena SCSI su un CD-ROM vergine presente nel dispositivo collegato alla terza posizione della catena SCSI.</P>
+
+<P><STRONG>10.1.6)&nbsp;&nbsp;<A NAME="title531"></A><A NAME="anchor559"></A>
+ Come si rende avviabile un CD-ROM? <A NAME="index2364"></A> <A NAME="index2365"></A> </STRONG></P>
+
+<P>Per creare un CD-ROM avviabile occorrer&agrave; organizzare una directory temporanea all'interno di un disco fisso (o supporto analogo) contenente i file da masterizzare e l'immagine di avvio. Quest'ultima pu&ograve; essere l'immagine di un dischetto di avvio e in ogni caso deve avere una dimensione determinata:</P>
+<BLOCKQUOTE>
+
+<PRE>  make  an  "El  Torito" bootable CD.  The boot image
+  must be exactly the size of either a 1.2, 1.44,  or
+  a  2.88  meg floppy, and mkisofs will use this size
+  when creating the output iso9660 filesystem. It  is
+  assumed  that  the  first 512 byte sector should be
+  read from the boot image (it is essentially emulat-
+  ing  a  normal  floppy drive).  This will work, for
+  example, if the boot image is  a  LILO  based  boot
+  floppy.</PRE>
+
+</BLOCKQUOTE>
+
+<P>Come si vede da questa porzione di <A NAME="index2366"></A>pagina di manuale di <SAMP>mkisofs</SAMP>, le prime 512 byte saranno lette dall'immagine di avvio. Inoltre viene specificato che i dischetti di avvio basati su <A NAME="index2367"></A>LILO  sono validi per lo scopo.</P>
+
+<P>Ecco un esempio di comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mkisofs -l -J -R -T -v -b <VAR>boot/rescue.bin</VAR> -c <VAR>boot/boot.catalog</VAR>&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; -o <VAR>immagine.img</VAR> <VAR>/temp/cdavviabile</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>le opzioni <SAMP>-l -J -R -T -v -o</SAMP> <VAR>immagine.img</VAR> del comando appena mostrato, sono le stesse indicate nella LDR <A HREF="ldr13.html#anchor555">10.1.2</A>. L'opzione <SAMP>-b</SAMP> <VAR>boot/rescue.bin</VAR> serve ad indicare l'immagine di avvio mentre l'altra opzione <SAMP>-c</SAMP> <VAR>boot/boot.catalog</VAR> serve ad indicare la destinazione del file di catalogo.</P>
+
+<TABLE BORDER="3" WIDTH="100%">
+<TR><TD>
+
+<P>Si deve prestare attenzione. Il percorso dei file indicati con le opzioni <SAMP>-b</SAMP> e <SAMP>-c</SAMP> sono relativi alla porzione di <A NAME="index2368"></A>file system di cui si sta facendo l'immagine. In pratica per continuare con l'esempio sopra esposto, il file <CODE>rescue.bin</CODE> dovr&agrave; essere presente nella directory <CODE>boot/</CODE> contenuta all'interno di <CODE>/temp/cdavviabile</CODE>. Il file <CODE>boot.catalog </CODE> sar&agrave; creato nella directory <CODE>boot/</CODE> della nuova immagine.</P>
+
+</TD></TR>
+</TABLE>
+
+<P>Creata l'immagine la si potr&agrave; controllare innestandola (<EM>montandola</EM>) temporaneamente:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>mount -o loop <VAR>immagine.img</VAR> <VAR>/mnt/prova</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr13.html#footnote6" NAME="footnote-ref6">(6)</A></SUP></P>
+
+<P>e controllandone il contenuto:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ls -la <VAR>/mnt/prova</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Una volta effettuati i controlli necessari si proceder&agrave; a disinnestare l'immagine dal <A NAME="index2369"></A>file system:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>umount <VAR>/mnt/prova</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Ora tutto &egrave; pronto per la masterizzazione:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord -v -eject -speed=<VAR>4</VAR> dev=<VAR>0,3,0</VAR> <VAR>immagine.img</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="ldr13.html#footnote7" NAME="footnote-ref7">(7)</A></SUP></P>
+
+<P><STRONG>10.1.7)&nbsp;&nbsp;<A NAME="title532"></A><A NAME="anchor560"></A>
+ Linux gestisce i CD riscrivibili? <A NAME="index2370"></A> <A NAME="index2371"></A> <A NAME="index2372"></A> </STRONG></P>
+
+<P>I CD-ROM riscrivibili utilizzano un sistema per la scrittura dei dati chiamato <SAMP>packet writing</SAMP>, che come substrato ha un <A NAME="index2373"></A>file&nbsp;system chiamato <A NAME="index2374"></A>UDF. La possibilit&agrave; di scrittura su un <A NAME="index2375"></A>file&nbsp;system <A NAME="index2376"></A>UDF non &egrave; normalmente consentita (considerata pericolosa), mentre la possibilit&agrave; di lettura &egrave; normalmente gestita.</P>
+
+<TABLE ID="anchor561" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="26.jpg" ALT="figure/udf"></P>
+
+<P class="caption"> Figura <A HREF="ldr13.html#anchor561">10.1</A>. Il supporto UDF nel kernel 2.4.5. </P>
+
+</TD></TR>
+</TABLE>
+
+<P><STRONG>10.1.8)&nbsp;&nbsp;<A NAME="title533"></A><A NAME="anchor562"></A>
+ Come si formatta un CD riscrivibile? <A NAME="index2377"></A> <A NAME="index2378"></A> <A NAME="index2379"></A> </STRONG></P>
+
+<P>Per eseguire una formattazione di un CD-ROM riscrivibile si utilizzer&agrave; il comando <SAMP>cdrecord</SAMP> con l'opzione <SAMP>blank</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord dev=1,0 blank=fast</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>cdrecord dev=1,0 blank=all</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Quest'ultimo comando &egrave; pi&ugrave; lento ma permette una ripulitura pi&ugrave; completa.</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="ldr13.html#footnote-ref1" NAME="footnote1">1)</A> la directory <VAR>/mnt/prova</VAR> deve esistere.</P>
+
+<P><A HREF="ldr13.html#footnote-ref2" NAME="footnote2">2)</A> Le opzioni di <SAMP>mkisofs</SAMP> servono rispettivamente: <SAMP>-R</SAMP> per il supporto <A NAME="index2352"></A>Rock Ridge; <SAMP>-r</SAMP> per impostare gid, uid e permessi in maniera intelligente; <SAMP>-J</SAMP> per il supporto <A NAME="index2353"></A>Joliet; <SAMP>-D</SAMP> per non usare la ricollocazione delle directory; <SAMP>-l</SAMP> per abilitare i nomi lunghi; <SAMP>-T</SAMP> per creare il file di conversione <CODE>TRANS.TBL</CODE>; <SAMP>-v</SAMP> per visualizzare messaggi durante il processo. <SAMP>-o</SAMP> <VAR>immagine</VAR> serve a dichiarare il nome dell'immagine da creare. /<VAR>directory</VAR> &egrave; la porzione di <A NAME="index2354"></A>file system di cui si vuole creare l'immagine.</P>
+
+<P><A HREF="ldr13.html#footnote-ref3" NAME="footnote3">3)</A> <SAMP>-multi</SAMP> &egrave; l'opzione di <SAMP>cdrecord</SAMP> che serve a creare un CD-ROM in modalit&agrave; multisessione.</P>
+
+<P><A HREF="ldr13.html#footnote-ref4" NAME="footnote4">4)</A> <SAMP>-M</SAMP> serve ad indicare il dispositivo cui l'immagine sar&agrave; aggiunta.</P>
+
+<P><A HREF="ldr13.html#footnote-ref5" NAME="footnote5">5)</A> <SAMP>-eject</SAMP> serve ad espellere il disco alla fine del processo di masterizzazione.</P>
+
+<P><A HREF="ldr13.html#footnote-ref6" NAME="footnote6">6)</A> <CODE>/mnt/prova</CODE> deve esistere.</P>
+
+<P><A HREF="ldr13.html#footnote-ref7" NAME="footnote7">7)</A> Questo comando masterizzer&agrave; un CD-ROM a quadrupla velocit&agrave;, sul dispositivo SCSI <VAR>0,3,0</VAR> espellendo il disco alla fine del processo. </P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="masterizzazione.html">masterizzazione.html</A></P>
+<P>
+<A HREF="ldr14.html">[successivo]</A>
+<A HREF="ldr12.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

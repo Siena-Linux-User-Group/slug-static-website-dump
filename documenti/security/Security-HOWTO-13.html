@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Domande Frequenti</TITLE>
+ <LINK HREF="Security-HOWTO-14.html" REL=next>
+ <LINK HREF="Security-HOWTO-12.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc13" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-14.html">Avanti</A>
+<A HREF="Security-HOWTO-12.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc13">Indice</A>
+<HR>
+<H2><A NAME="q-and-a"></A> <A NAME="s13">13. Domande Frequenti</A></H2>
+
+<P>
+<OL>
+<LI> &Egrave; pi&ugrave; sicuro compilare il supporto dei driver direttamente nel
+kernel, invece che farne un modulo?
+<P>Risposta: Alcune persone ritengono meglio disabilitare il supporto dei moduli,
+perch&eacute; un intrusore potrebbe caricare un Cavallo di Troia o un altro
+modulo pericoloso per la sicurezza.
+<P>Comunque, per caricare i moduli, dovreste essere root. Anche i file dei moduli
+sono scrivibili solo da root. Questo significa che l'intrusore avrebbe bisogno
+dell'accesso di root per inserire un modulo. Se l'intrusore ha accesso di root,
+ci sono problemi ben pi&ugrave; gravi della possibilit&agrave; che carichi un
+modulo.
+<P>I moduli servono per caricare dinamicamente il supporto per un device che viene
+usato raramente. Su macchine server, o firewall per esempio, &egrave; molto 
+difficile che succeda. Per questa ragione, avrebbe pi&ugrave; senso compilare
+il supporto direttamente nel kernel, nelle macchine che facciano da server. I
+moduli inoltre sono meno veloci del supporto compilato nel kernel.
+<P>
+</LI>
+<LI> Perch&eacute; fare un login remoto come root ha sempre esito negativo?
+<P>Risposta: Vedi 
+<A HREF="Security-HOWTO-4.html#root-security">Sicurezza di Root</A>. Questo fatto
+&egrave; intenzionale per evitare che utenti remoti tentino di connettersi via
+<CODE>telnet</CODE> come <CODE>root</CODE> sulla vostra macchina, che &egrave; un serio
+rischio, perch&eacute; la password di root sarebbe trasmessa in chiaro sulla
+rete. Non dimenticate: i potenziali intrusori hanno il tempo dalla loro e
+possono eseguire programmi che trovino la vostra password.
+<P>
+</LI>
+<LI> Come abilito le shadow password sulla mia Red Hat 4.2 or 5.x ?
+<P>Risposta:
+<P>Per abilitare le shadow password, eseguite <CODE>pwconv</CODE> da root, quindi
+dovrebbe essere creato ed usato dalle applicazioni <CODE>/etc/shadow</CODE>. Se
+state usando RH 4.2 o superiore, i moduli PAM si adatteranno automaticamente al
+cambiamento dal normale <CODE>/etc/passwd</CODE> alle shadow password senza altri
+cambiamenti.
+<P>Un po' di informazioni di base: le shadow password sono un meccanismo per 
+tenere le password in un file diverso dal solito <CODE>/etc/passwd</CODE>. Questo
+ha diversi vantaggi. Il primo &egrave; che il file ombra, <CODE>/etc/shadow</CODE>,
+&egrave; leggibile solo da root, a differenza di <CODE>/etc/passwd</CODE>, che deve
+essere leggibile a tutti. L'altro vantaggio &egrave; che come amministratore
+potete abilitare o disabilitare gli account senza che uno sappia dell'altro.
+<P>Quindi il file <CODE>/etc/passwd</CODE> viene usato per registrare i nomi degli
+utenti e dei gruppi, usati da programmi come <CODE>/bin/ls</CODE> per risalire dal
+ID utente al nome utente nei listati delle directory.
+<P>Il file <CODE>/etc/shadow</CODE> contiene solo il nome utente e la password, magari
+informazioni sull'account come la scadenza ecc.
+<P>Visto che volete rendere pi&ugrave; sicure le vostre password, forse sareste
+anche interessati a generare buone password. Per questo potete usare il modulo
+<CODE>pam_cracklib</CODE>, che fa parte dei PAM. Prova le vostre password contro
+le librerie di Crack per aiutarvi a decidere se sono troppo facili da trovare
+con programmi del genere.
+<P>
+</LI>
+<LI> Come posso abilitare le estensioni SSL di Apache?
+<P>Risposta:
+<P>
+<OL>
+<LI>Prendete SSLeay 0.8.0 o successivo da 
+<A HREF="ftp://ftp.psy.uq.oz.au/pub/Crypto/SSL">ftp://ftp.psy.uq.oz.au/pub/Crypto/SSL</A><P>
+</LI>
+<LI>Compilatelo, provatelo e installatelo!<P>
+</LI>
+<LI>Prendete i sorgenti di Apache 1.2.5<P>
+</LI>
+<LI>Prendete le estensioni SSLeay di Apache da
+<A HREF="ftp://ftp.ox.ac.uk/pub/crypto/SSL/apache_1.2.5+ssl_1.13.tar.gz">qui</A><P>
+</LI>
+<LI>Scompattatele nella directory dei sorgenti di apache-1.2.5 e aggiornate
+Apache seguendo il README<P>
+</LI>
+<LI>Configuratelo e compilatelo.<P>
+</LI>
+</OL>
+<P>Potreste anche provare su 
+<A HREF="http://www.zedz.net">ZEDZ net</A>
+che ha molti pacchetti precompilati ed &egrave; collocata fuori dagli USA.
+<P>
+</LI>
+<LI> Come posso manipolare gli account, mantenendo la sicurezza?
+<P>Risposta: la distribuzione Red Hat, soprattutto RH5.0, contiene un gran numero
+di strumenti per cambiare le propriet&agrave; degli account utente.
+<P>
+<UL>
+<LI><CODE>pwconv</CODE> e <CODE>unpwconv</CODE> possono essere usati per convertire
+fra password normali e shadow.</LI>
+<LI><CODE>pwck</CODE> e <CODE>grpck</CODE> possono essere usati per controllare la
+giusta organizzazione dei file <CODE>passwd</CODE> e <CODE>group</CODE>.</LI>
+<LI><CODE>useradd</CODE>, <CODE>usermod</CODE> e <CODE>userdel</CODE> si possono usare
+per aggiungere, togliere o modificare gli account. <CODE>groupadd</CODE>,
+<CODE>groupmod</CODE>, e <CODE>groupdel</CODE> fanno lo stesso per i gruppi.</LI>
+<LI>Le password di gruppo possono essere create usando <CODE>gpasswd</CODE>.</LI>
+</UL>
+<P>Tutti questi programmi riconoscono le shadow password -- quindi, se le attivate
+useranno <CODE>/etc/shadow</CODE> per informazioni sulle password, altrimenti non
+lo faranno.
+<P>Leggete le rispettive pagine man per ulteriori informazioni.
+<P>
+</LI>
+<LI> Come posso proteggere con una password specifici documenti HTML usando
+Apache?
+<P>Scommetto che non sapevate di 
+<A HREF="http://www.apacheweek.com">http://www.apacheweek.org</A>, sbaglio?
+<P>Potete trovare informazioni sull'autenticazione degli utenti presso 
+<A HREF="http://www.apacheweek.com/features/userauth">http://www.apacheweek.com/features/userauth</A> oltre ad altri trucchi a
+proposito di sicurezza dei server web su 
+<A HREF="http://www.apache.org/docs/misc/security_tips.html">http://www.apache.org/docs/misc/security_tips.html</A></LI>
+</OL>
+<P>
+<HR>
+<A HREF="Security-HOWTO-14.html">Avanti</A>
+<A HREF="Security-HOWTO-12.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc13">Indice</A>
+</BODY>
+</HTML>

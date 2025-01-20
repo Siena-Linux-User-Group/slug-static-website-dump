@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+      <meta http-equiv="Content-Language" content="it">
+    <meta http-equiv="Content-Type" content=
+    "text/html; charset=windows-1252">
+    <title>Bootstrap remoto con macchine diskless HOWTO --- &copy;
+    Alessandro Illiano</title>
+    <p align="left"><a href="Il_boot_in_pratica.html">Avanti</a>
+    <a href="index.html">Indietro</a> <a href="index.html">Indice </a>
+    <hr>
+    <p><font size="5"><b>2. Introduzione al boot via rete e
+    all'Etherboot</b></font>
+    <p>&nbsp;
+	<a name="cosa"></a>
+    <p><font size="4">2.1 Cosa &egrave; il boot via rete</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Il boot via rete &egrave; una
+    vecchia idea; l'idea di base &egrave; che il computer abbia un
+    qualche codice di bootstrap nella memoria non volatile,
+    cio&egrave; un chip ROM o un floppy, che gli permetter&agrave;
+    di contattare un server per ottenere i file di sistema
+    attraverso un collegamento di rete.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    &nbsp;
+	<a name="funziona"></a>
+    <p><font size="4">2.2 Come funziona</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Perch&eacute; sia possibile un
+    boot attraverso la rete il computer deve ricevere:</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman"><br>
+    <i>1. un'identit&agrave;, (SERVER <a name=
+    "DHCP">DHCP</a>)</i></font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman"><br>
+    <i>2. un'immagine del sistema operativo e, (SERVER
+    TFTP)</i></font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman"><br>
+    <i>3. un file system funzionante. (SERVER NFS)</i></font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    &nbsp;
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Consideriamo un computer diskless
+    (DC) che abbia una floppy per il boot via rete. Potrebbe essere
+    uno di vari DC identici, come possiamo distinguere questo
+    computer dagli altri? C'&egrave; una informazione che &egrave;
+    unica per quel computer (in realt&agrave; per il suo adattatore
+    di rete) ed &egrave; il suo indirizzo Ethernet (MAC Address).
+    Ogni adattatore Ethernet nel mondo ha un indirizzo Ethernet
+    univoco di 48 bit; ci&ograve; perch&eacute; ad ogni costruttore
+    di hardware Ethernet sono stati assegnati dei blocchi di
+    indirizzi. Per convenzione tali indirizzi sono scritti con
+    cifre esadecimali, con i due punti che separano ogni gruppo di
+    due cifre; ad esempio: 00:60:08:C7:A3:D8.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">I protocolli usati per ottenere un
+    indirizzo IP, dato un indirizzo Ethernet, sono chiamati Boot
+    Protocol (BOOTP) e Dynamic Host Configuration Protocol (DHCP,
+    protocollo di configurazione dinamica dell'host). DHCP &egrave;
+    una evoluzione di BOOTP. Nella nostra configurazione
+    utilizziamo il DHCP SERVER.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Un esempio di scambio DHCP
+    funziona cos&igrave;:</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman"><i>DC</i> : Salve, il mio
+    indirizzo hardware &egrave; 00:60:08:C7:A3:D8, per favore dammi
+    il mio indirizzo IP.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman"><i>server DHCP</i> : (guardando
+    nel database degli indirizzi) Il tuo nome &egrave; 486, il tuo
+    indirizzo IP &egrave; 172.16.0.51, il tuo server &egrave;
+    172.16.1.1, il file da cui effettuare il boot &egrave;
+    tftpboot/172.16.0.51/vmlinuz.prova (pi&ugrave; qualche altra
+    informazione).</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Da notare che il file dal quale il
+    DC deve effettuare il bootstrap e' contenuto nella directory
+    'tftpboot/172.16.0.51/vmlinux.prova' dove 172.16.0.51 indica
+    l'indirizzo ip della macchina.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Ci si potrebbe chiedere come ha
+    fatto il DC a trovare l'indirizzo del server DHCP la prima
+    volta. La risposta &egrave; che non l'ha fatto; la richiesta
+    DHCP &egrave; stata diffusa in broadcast sulla rete locale e
+    qualsiasi server DHCP in grado di rispondere lo ha
+    fatto.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Dopo aver ottenuto un indirizzo
+    IP, il DC deve scaricare l'immagine di un sistema operativo ed
+    eseguirlo. Qui viene usato un altro protocollo Internet
+    chiamato Trivial File Transfer Protocol (TFTP &ndash;
+    protocollo elementare per il trasferimento file). Il TFTP
+    &egrave; una specie di versione ridotta dell'FTP ---&gt; non
+    c'&egrave; autenticazione e funziona sullo User Datagram
+    Protocol (UDP) invece che sul Transmission Control Protocol
+    (TCP). &Egrave; stato scelto l'UDP al posto del TCP a causa
+    della semplicit&agrave;; l'implementazione dell'UDP sul DC
+    pu&ograve; essere abbastanza piccola da permettere di farne
+    facilmente entrare il codice in una ROM. Visto che l'UDP
+    &egrave; un codice orientato ai blocchi, al contrario di uno
+    orientato al protocollo, il trasferimento avviene blocco per
+    blocco, in questo modo:</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">DC: Dammi il blocco 1 di
+    /tftpboot/172.16.0.51/vmlinuz.prova</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">server TFTP: Eccolo.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">DC: Dammi il blocco 2.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman"><br>
+    ...e cos&igrave; via, finch&eacute; non viene trasferito
+    l'intero file. L'handshaking &egrave; basato su una semplice
+    conferma di ogni blocco e la perdita di pacchetti &egrave;
+    gestita ritrasmettendo dopo un timeout. Quando sono stati
+    ricevuti tutti i pacchetti la ROM di boot della rete passa il
+    controllo all'entry point dell'immagine del sistema
+    operativo.<br>
+    &nbsp;</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <font face="Times New Roman">Concludendo, per poter eseguire un
+    sistema operativo deve essere fornito un filesystem principale.
+    Il protocollo usato da Linux e da altri Unix di solito &egrave;
+    il Network File System (NFS - file system di rete), sebbene
+    siano possibili altre scelte. In questo caso il codice non deve
+    risiedere nella ROM ma pu&ograve; essere parte del sistema
+    operativo che si &egrave; appena scaricato. Comunque il sistema
+    operativo deve essere capace di girare con un file system
+    principale che sia un NFS invece che un vero disco. Linux ha le
+    variabili di configurazione necessarie per compilare una
+    versione che possa farlo.</font>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    &nbsp;<p style="font-style: normal; margin-bottom: 0cm" align="left">
+    &nbsp;<hr>
+    <p style="font-style: normal; margin-bottom: 0cm" align="left">
+    <a href="Il_boot_in_pratica.html">Avanti</a> <a href="index.html">Indietro</a>
+    <a href="index.html">Indice </a>
+    <p>&nbsp;

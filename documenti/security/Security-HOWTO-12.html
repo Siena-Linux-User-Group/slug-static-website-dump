@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Glossario</TITLE>
+ <LINK HREF="Security-HOWTO-13.html" REL=next>
+ <LINK HREF="Security-HOWTO-11.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc12" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-13.html">Avanti</A>
+<A HREF="Security-HOWTO-11.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc12">Indice</A>
+<HR>
+<H2><A NAME="s12">12. Glossario</A></H2>
+
+<P>
+<UL>
+<LI><B>autenticazione:</B> Il processo che verifica che i dati ricevuti
+siano uguali a quelli spediti e che il mittente dichiarato sia quello 
+effettivo.
+<P>
+</LI>
+<LI><B>Host bastione:</B> Un sistema che deve essere estremamente sicuro
+perch&eacute; vulnerabile ad attacchi, in genere a causa del collegamento ad
+Internet e del continuo contatto con gli utenti della rete interna. Prende il
+nome dalle strutture fortificate sulle mura dei castelli medioevali. I bastioni
+sorvegliavano aree difensive strategiche ed in genere avevano grandi mura,
+spazio per truppe supplementari e il solito, caro, vecchio pentolone di
+olio bollente per "scoraggiare" gli aggressori.
+<P>
+</LI>
+<LI><B>buffer overflow:</B> spesso i programmatori non allocano mai buffer
+abbastanza grandi e si dimenticano di controllare se ci sono overflow. Quando
+un buffer va in overflow, al programma eseguito (sia un demone o un programma
+set-uid) si potrebbe far fare quel che non deve. In genere viene sovrascritto
+l'indirizzo di ritorno sullo stack di una funzione in modo che punti ad
+un'altra locazione.
+<P>
+</LI>
+<LI><B>denial of service (negazione di un servizio):</B> un attacco che
+consuma le risorse del computer in cose inutili, bloccando cos&igrave; il loro
+uso per scopi legittimi.
+<P>
+</LI>
+<LI><B>Host dual-homed (a doppia base):</B> Un computer per uso generico 
+che ha almeno due interfacce di rete.
+<P>
+</LI>
+<LI><B>firewall:</B> Un componente o set di componenti che restringe il
+passaggio di dati fra la rete protetta ed Internet, o fra due reti qualsiasi.
+<P>
+</LI>
+<LI><B>host:</B> un sistema che faccia parte di una rete.
+<P>
+</LI>
+<LI><B>IP spoofing:</B> l'IP Spoofing &egrave; un complesso attacco tecnico
+fatto di diversi componenti. &Egrave; un exploit di sicurezza che agisce 
+facendo credere ai computer in una relazione di fiducia di essere qualcuno che 
+in verit&agrave; non &egrave;. Esiste un esaustivo documento scritto da 
+daemon9, route e infinity nel Volume Settimo, numero 48 di Phrack Magazine.
+<P>
+</LI>
+<LI><B>non-ripudiabilit&agrave;:</B> la capacit&agrave; di un destinatario
+di provare che il mittente di alcuni dati li ha veramente spediti, anche se in
+seguito ha negato di averlo fatto. 
+<P>
+</LI>
+<LI><B>pacchetto:</B> l'unit&agrave; fondamentale di comunicazione su
+Internet.
+<P>
+</LI>
+<LI><B>filtraggio dei pacchetti:</B> l'azione intrapresa da un device per
+controllare selettivamente il flusso di dati per e da una rete. I filtri 
+lasciano passare o bloccano i pacchetti, spesso mentre li ridirigono da una
+rete ad un'altra (ancora pi&ugrave; spesso da Internet ad una intranet e 
+viceversa). I pacchetti vengono filtrati secondo regole che specificano che
+tipo di pacchetti sono permessi e quali sono bloccati.
+<P>
+</LI>
+<LI><B>rete di perimetro:</B> una rete inserita fra una rete protetta e una
+esterna, per aggiungere un ulteriore strato di sicurezza. Una rete di perimetro
+viene detta alle volte DMZ. 
+<P>
+</LI>
+<LI><B>server proxy:</B> un programma che dialoga con server esterni al 
+posto dei client interni. I client proxy parlano ai server proxy, che passano 
+le richieste dei client approvate ai veri server, e consegnano le risposte ai
+client..
+<P>
+</LI>
+<LI><B>superuser:</B> nome informale per <CODE>root</CODE>.
+<P>
+</LI>
+</UL>
+<P>
+<HR>
+<A HREF="Security-HOWTO-13.html">Avanti</A>
+<A HREF="Security-HOWTO-11.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc12">Indice</A>
+</BODY>
+</HTML>

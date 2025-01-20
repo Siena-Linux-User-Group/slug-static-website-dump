@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Configurazione di base</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Xinetd" href="xinetd.html">
+    <LINK rel="PREVIOUS" title="Informazioni di base" href=
+    "informazionibasexinetd.html">
+    <LINK rel="NEXT" title="Configurazione avanzata" href=
+    "configurazioneavanzataxinetd.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "informazionibasexinetd.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 13.
+          Xinetd</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "configurazioneavanzataxinetd.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CONFIGURAZIONEBASEXINETD">13.2.
+      Configurazione di base</A></H1>
+
+      <P>Vediamo ora come configurare <SPAN class=
+      "APPLICATION">xinetd</SPAN>.</P>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="CONTROLLOACCESSOXINETD">13.2.1. Controllo
+        d'accesso</A></H2>
+
+        <P>Potete garantire o proibire l'accesso ai vostri server usando
+        l'indirizzo IP, che è il metodo più veloce, non richiedendo la
+        risoluzione inversa sul nome dell'host. Ma ci sono anche altri
+        modi:</P>
+
+        <UL>
+          <LI>
+            <P>potete fare controllo d'accesso tramite risoluzione del nome
+            dell'host. <SPAN class="APPLICATION">xinetd</SPAN> esegue la
+            risoluzione del nome per <B class="KEYCAP">ogni</B> connessione,
+            e confronta l'indirizzo IP restituito con quello che sta tentando
+            la connessione;</P>
+          </LI>
+
+          <LI>
+            <P>oppure potete fare controllo d'accesso in base al nome di
+            dominio (p.e.: .domain.com); quando un client tenta la
+            connessione, <SPAN class="APPLICATION">xinetd</SPAN> esegue la
+            risoluzione del nome e controlla che l'IP del client appartenga
+            effettivamente al dominio indicato.</P>
+          </LI>
+        </UL>
+
+        <P>Naturalmente gli indirizzi IP sono più veloci, ma se volete usare
+        gli altri due metodi, un DNS locale, anche solo caching, aiuta molto
+        a velocizzare le cose.</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="XINETDDEFAULTS">13.2.2. Sezione
+        defaults</A></H2>
+
+        <P>Il metodo più pratico per garantire sicurezza senza rischiare di
+        dimenticare qualcosa, è quello di proibire qualsiasi accesso, e poi
+        aprire man mano solo i servizi di cui si ha bisogno a host
+        fidati.</P>
+
+        <DIV class="WARNING">
+          <TABLE class="WARNING" border="1" width="100%">
+            <TR>
+              <TD align="CENTER"><B>Attenzione</B></TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT">
+                <P>Ricordate di usare comunque almeno una tra le opzioni
+                "no_access" o "only_from"! Se nessuna delle due è presente,
+                l'accesso è consentito!</P>
+              </TD>
+            </TR>
+          </TABLE>
+        </DIV>
+
+        <P>La sezione "defaults" serve a specificare valori predefiniti per
+        tutti i servizi, validi se non specificato diversamente nella
+        dichiarazione del servizio; vediamo uno di esempio:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+defaults
+{
+    instances       = 15
+    log_type        = FILE /var/log/servicelog
+    log_on_success  = HOST PID USERID DURATION EXIT
+    log_on_failure  = HOST USERID RECORD
+    only_from       =
+    per_source      = 5
+
+    disabled = shell login exec comsat
+    disabled = telnet ftp
+    disabled = name uucp tftp
+    disabled = finger systat netstat
+
+    #INTERNAL
+    disabled = time daytime chargen servers services xadmin
+
+    #RPC
+    disabled = rstatd rquotad rusersd sprayd walld
+
+}
+
+includedir /etc/xinetd.d
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>La nuova direttiva "disabled" permette di disabilitare i servizi
+        anche se sono presenti nel file di configurazione, fornendo un metodo
+        veloce che evita il doverli commentare.</P>
+      </DIV>
+
+      <DIV class="SECT2">
+        <H2 class="SECT2"><A name="CONFIGURAZIONESERVIZIXINETD">13.2.3.
+        Configurare i servizi</A></H2>
+
+        <P>In genere non serve fare nulla, visto che se i valori specificati
+        nella sezione "defaults" vanno bene, basta solo inserire la chiamata
+        del server, lasciandola vuota. Se invece si vuole cambiare o
+        aggiungere qualcosa, allora si deve creare una sezione completa per
+        il server. Alcuni argomenti sono obbligatori, in base al tipo di
+        server:</P>
+
+        <DIV class="TABLE">
+          <A name="AEN2793"></A>
+
+          <P><B>Tabella 13-2. Argomenti obbligatori</B></P>
+
+          <TABLE border="1" class="CALSTABLE">
+            <THEAD>
+              <TR>
+                <TH align="LEFT" valign="TOP">Attributo</TH>
+
+                <TH align="LEFT" valign="TOP">Commento</TH>
+              </TR>
+            </THEAD>
+
+            <TBODY>
+              <TR>
+                <TD align="LEFT" valign="TOP">socket_type</TD>
+
+                <TD align="LEFT" valign="TOP">tutti i servizi</TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT" valign="TOP">user</TD>
+
+                <TD align="LEFT" valign="TOP">solo per servizi non
+                INTERNAL</TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT" valign="TOP">server</TD>
+
+                <TD align="LEFT" valign="TOP">solo per servizi non
+                INTERNAL</TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT" valign="TOP">wait</TD>
+
+                <TD align="LEFT" valign="TOP">tutti i servizi</TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT" valign="TOP">protocol</TD>
+
+                <TD align="LEFT" valign="TOP">tutti i servizi RPC e tutti
+                quelli non elencati in <TT class=
+                "FILENAME">/etc/services</TT></TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT" valign="TOP">rpc_version</TD>
+
+                <TD align="LEFT" valign="TOP">tutti i servizi RPC</TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT" valign="TOP">rpc_number</TD>
+
+                <TD align="LEFT" valign="TOP">tutti i servizi RPC</TD>
+              </TR>
+
+              <TR>
+                <TD align="LEFT" valign="TOP">port</TD>
+
+                <TD align="LEFT" valign="TOP">tutti i servizi NON RPC e non
+                elencati in <TT class="FILENAME">/etc/services</TT></TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+        </DIV>
+
+        <P>Alcuni esempi di configurazioni di servizi:</P>
+
+        <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+          <TR>
+            <TD>
+<PRE class="PROGRAMLISTING">
+service ntalk
+{
+    socket_type   = dgram
+    wait          = yes
+    user          = nobody
+    server        = /usr/sbin/in.ntalkd
+    only_from     = 192.168.1.0/24
+}
+
+service ftp
+{
+    socket_type  = stream
+    wait         = no
+    user         = root
+    server       = /usr/sbin/in.ftpd
+    server_args  = -l
+    instances    = 4
+    access_times = 7:00-12:30 13:30-21:00
+    nice         = 10
+    only_from    = 192.168.1.0/24
+}
+
+service pop3
+{
+    disable        = no
+    socket_type    = stream
+    wait           = no
+    user           = root
+    server         = /usr/sbin/ipop3d
+#   log_on_success += USERID
+#   log_on_failure += USERID
+}
+
+service nntp
+{
+    socket_type     = stream
+    protocol        = tcp
+    wait            = no
+    user            = news
+    server          = /usr/sbin/leafnode 
+    only_from       = 127.0.0.1 192.168.0.0/16
+    disable         = no
+}
+       
+</PRE>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <P>Come si vede, l'accesso è consentito solo alla rete locale, e per
+        l'FTP, sono consentite solo 4 istanze simultanee e solo in
+        determinati orari del giorno. Per quanto riguarda il POP3, attenzione
+        a loggare anche lo USERID, in quando questo di solito richiede
+        l'interrogazione di un server <B class="KEYCAP">IDENT</B> che deve
+        essere presente su ogni client, altrimenti si avrebbero ritardi anche
+        di 30 secondi per ogni richiesta al server POP3. Inoltre è molto
+        facile ingannare un server <B class="KEYCAP">IDENT</B>...</P>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "informazionibasexinetd.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "configurazioneavanzataxinetd.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Informazioni di base</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "xinetd.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Configurazione
+          avanzata</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

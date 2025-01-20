@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Fetchmail</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title=
+    "Disattivazione e disinstallazione di Sendmail" href=
+    "disattivazionesendmail.html">
+    <LINK rel="NEXT" title="Procmail" href="procmail.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "disattivazionesendmail.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "procmail.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="FETCHMAIL">Capitolo 6. Fetchmail</A></H1>
+
+      <P><B class="KEYCAP">Fetchmail</B> è il programma che si occupa di
+      ricevere la posta dalle vostre caselle email remote e passarle a
+      procmail che si occupa dello smistamento locale. È forse il programma
+      più semplice da configurare, basta creare nella propria home un file
+      <TT class="FILENAME">.fetchmailrc</TT> simile al seguente:</P>
+
+      <P><B class="KEYCAP">=== file: $HOME/.fetchmailrc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+poll popmail.libero.it timeout 60 with proto POP3
+user "tuo-nome-utente-remoto" there
+with password "tua-password-remota"
+is tuo-login-locale here options fetchall
+
+poll pop.tiscalinet.it timeout 60 with proto POP3
+user "tuo-nome-utente-remoto" there
+with password "tua-password-remota"
+is tuo-login-locale here options keep
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Le sezioni possono essere ripetute, aggiungendone altre per
+      eventuali altri pop-server. La sintassi è simile all'inglese, quindi:
+      interroga (<B class="KEYCAP">poll</B>) il server remoto indicato, se
+      non ottieni risposta (<B class="KEYCAP">timeout</B>) per 60 secondi
+      abortisci, usa il protocollo (<B class="KEYCAP">proto</B>) POP3, con il
+      nome utente (<B class="KEYCAP">user</B>) e la password (<B class=
+      "KEYCAP">password</B>) remoti indicati, che corrisponde all'utente (<B
+      class="KEYCAP">is here</B>) dato e passa tutto quello che ricevi al
+      server smtp locale per lo smistamento tramite <B class=
+      "COMMAND">procmail</B> (si potrebbe usare l'opzione <B class=
+      "KEYCAP">mda</B> di <B class="KEYCAP">fetchmail</B>, ma per sicurezza è
+      meglio fare richiamare <B class="COMMAND">procmail</B> dall'smtp). <B
+      class="KEYCAP">options keep</B> mantiene la posta sul server remoto,
+      senza cancellarla dopo averla scaricata, mentre <B class=
+      "KEYCAP">options fetchall</B> scarica tutti i messaggi, sia vecchi che
+      nuovi.</P>
+
+      <P>Ricordate che il file <TT class="FILENAME">.fetchmailrc</TT> deve
+      avere al piu' attributi <B class="KEYCAP">0710</B> (io uso <B class=
+      "KEYCAP">0600</B>), altrimenti <B class="KEYCAP">fetchmail</B> non
+      parte: quindi date nella vostra home-directory un bel:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+chmod 0710 .fetchmailrc
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per ricevere la vostra posta, date dal prompt di shell il comando:
+      <B class="COMMAND">fetchmail</B>. Possibili opzioni utili sono:</P>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">-v</B> : (anche ripetuto, come <B class=
+          "KEYCAP">-vvvv</B>) che stampa a video un resoconto di quello che
+          sta succedendo, più dettagliato in base a quante <B class=
+          "KEYCAP">v</B> mettete</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-c</B> : controlla se c'è nuova posta senza
+          scaricarla</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-d n</B> : (dove <B class="KEYCAP">n</B>
+          indica il numero di secondi), avvia in modalità demone, che
+          controlla e scarica la posta ogni <B class="KEYCAP">n</B>
+          secondi</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-q</B> : interrompe lo scaricamento a
+          intervalli regolari della posta</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-a</B> : scarica sia i vecchi che i nuovi
+          messaggi</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-k</B> : scarica la posta lasciandola anche
+          sul server remoto</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-F</B> : cancella i vecchi messaggi dal server
+          remoto</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-l n</B> : non scarica i messaggi di
+          dimensione superiore a quella indicata con <B class=
+          "KEYCAP">n</B></P>
+        </LI>
+      </UL>
+
+      <P>Ricordate di impostare anche <B class="COMMAND">procmail</B> per lo
+      smistamento della posta prelevata nelle vostre caselle locali,
+      altrimenti la posta rimane in <B class=
+      "KEYCAP">/var/spool/mail/nomeutente</B>.</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>NON USATE LA POSTA DA UTENTE <B class="KEYCAP">root</B>! È
+              PERICOLOSO, POTRESTE PERDERLA TUTTA!</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "disattivazionesendmail.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "procmail.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Disattivazione e
+          disinstallazione di Sendmail</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Procmail</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

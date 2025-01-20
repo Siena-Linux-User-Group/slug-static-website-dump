@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>File di configurazione</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Procmail" href="procmail.html">
+    <LINK rel="PREVIOUS" title="Introduzione" href=
+    "introduzioneprocmail.html">
+    <LINK rel="NEXT" title="File di regole (esempi)" href=
+    "regoleprocmail.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "introduzioneprocmail.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 7.
+          Procmail</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "regoleprocmail.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="CONFIGURAZIONEPROCMAIL">7.2. File di
+      configurazione</A></H1>
+
+      <P>Questo è un file di configurazione abbastanza generico, può essere
+      usato così com'è, perché le parti variabili (le regole di smistamento)
+      sono contenute in altri file (elencati alla fine di questo) che vengono
+      richiamati da questo principale:</P>
+
+      <P><B class="KEYCAP">=== file: .procmailrc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#directory
+MAILDIR = $HOME/Mail   # ASSICURATI CHE ESISTA! Le email finiranno qui!
+PMDIR = $MAILDIR/.Pm   # crea anche questa dir
+PMSRC = $PMDIR
+DUMMY=`test -d $MAILDIR || mkdir $MAILDIR`
+DUMMY=`test -d $PMDIR || mkdir $PMDIR`
+DUMMY=`test -d $MAILDIR/Sent || mkdir $MAILDIR/Sent`
+DUMMY=`test -d $MAILDIR/Read || mkdir $MAILDIR/Read`
+
+#varie
+SHELL=/bin/sh
+LINEBUF=8192
+PATH=$HOME/bin:/bin:/usr/bin:/usr/local/bin
+DEFAULT=$MAILDIR/IN.default   # mailbox di default per le email in entrata. Qui finiscono
+# le email che non sono elaborate o smistate prima da qualche regola adatta.
+# Se non definito, in generale le email finiscono in /var/spool/mail/nomeutente.
+DUMMY=`test -f $DEFAULT || touch $DEFAULT` # crea lo spool principale se non esiste
+FORMAIL=/usr/bin/formail    # path di formail, usato per processare alcune email
+SENDMAIL=/usr/sbin/sendmail # path di sendmail
+
+#log
+VERBOSE = yes   # impostare a no dopo il debug
+LOGABSTRACT = all   # produce log MOLTO estesi, impostare a no in seguito
+LOGFILE = $PMDIR/pm.log   # file di log
+
+# variabili utili (possono essere usate nelle regole per abbreviarne la scrittura,
+# ad esempio come $NomeVariabile)
+NL = "
+" # nuova linea (un invio tra "")
+WSPC = "    "   # blank: spazio + tab
+SPC = "[$WSPC]"   # Regexp: spazio + tab
+SPCL = "($SPC|$)"   # spazio o tab o nuova linea
+NSPC = "[^$WSPC]"   # NON spazio o tab
+s = $SPC   # abbreviazione: come in Perl \s
+d = "[0-9]"   # una cifra -- Perl \d
+w = "[0-9a-z_A-Z]"   # una parola alfanumerica -- Perl \w
+W = "[^0-9a-z_A-Z]"   # NON una parola alfanumerica  -- Perl \W
+a = "[a-zA-Z]"   # una parola, solo alfabetica
+
+# imposta la variabile DATE come "mese_esteso-anno"
+# attenzione, gli apici sono inversi, quindi ALT-GR piu' l'apice normale!
+DATE = `date +%B-%Y`
+
+#file .rc aggiuntivi
+INCLUDERC = $PMDIR/general.rc
+INCLUDERC = $PMDIR/lists.rc
+INCLUDERC = $PMDIR/autoreply.rc
+INCLUDERC = $PMDIR/friends.rc
+INCLUDERC = $PMDIR/spam.rc      # attivate 1 solo di questi filtri antispam
+#INCLUDERC = $PMDIR/spam2.rc
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per usare procmail, dovete istruire i programmi a richiamarlo. Per
+      <SPAN class="APPLICATION">Fetchmail</SPAN> e <SPAN class=
+      "APPLICATION">Postfix</SPAN> potete trovare le istruzioni nelle
+      relative sezioni del <EM>Quick&amp;Easy Configuration HOWTO</EM> (si
+      tratta di un rigo per parte), mentre per <SPAN class=
+      "APPLICATION">Sendmail</SPAN>, dovrete creare il file <TT class=
+      "FILENAME">.forward</TT> nella vostra directory <B class=
+      "KEYCAP">HOME</B> (questo passo non è necessario se procmail è il
+      gestore locale di default per lo smistamento, come nel caso di
+      <EM>Redhat</EM> e distribuzioni derivate):</P>
+
+      <P><B class="KEYCAP">=== file: .forward ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+"| IFS=' ' &amp;&amp; p=/usr/bin/procmail &amp;&amp; test -f $p &amp;&amp; exec $p -f- || exit 75 #mrshark"
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ricordatevi di sostituire a <EM>mrshark</EM> il vostro nome di
+      login, e copiate esattamente come vedete, comprese virgolette e apici!
+      In alcuni sistemi potrebbe essere richiesto che il file sia leggibile
+      da tutti e la vostra directory <B class="KEYCAP">HOME</B> sia
+      attraversabile. Date i comandi seguenti (quello relativo al .procmailrc
+      serve a prevenire che il file venga ignorato dall'MTA, infatti se ha
+      permessi 666 postfix lo ignora e invia la posta in <TT class=
+      "FILENAME">/var/spool/mail/nomeutente</TT>):</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+cd
+chmod 644 .forward
+chmod 644 .procmailrc
+chmod a+x .
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per controllare i file di log, potete usare lo script <B class=
+      "COMMAND">mailstat</B> che viene fornito con procmail. Il suo uso è
+      molto semplice, basta avviarlo fornendo come argomento il path del file
+      di log (l'esempio seguente si riferisce alla configurazione impostata
+      nel file <TT class="FILENAME">.procmailrc</TT> precedente): <B class=
+      "COMMAND">mailstat $HOME/Mail/.Pm/pm.log</B></P>
+
+      <P><B class="COMMAND">mailstat</B> fornisce un rapporto sulle email
+      arrivate e smistate a partire dalla volta precedente in cui è stato
+      lanciato lo stesso mailstat: infatti esso dopo l'uso rinomina il file
+      di log precedente con estensione .old e ne ricrea uno vuoto. Avete
+      quindi anche un metodo per tenere entro dimensioni accettabili il file
+      di log, richiamando <B class="COMMAND">mailstat</B>! Comunque, dopo
+      aver testato procmail, è utile ridurre i log, impostando <B class=
+      "KEYCAP">VERBOSE=no</B> e <B class="KEYCAP">LOGABSTRACT=no</B> in <TT
+      class="FILENAME">.procmailrc</TT>.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "introduzioneprocmail.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "regoleprocmail.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Introduzione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "procmail.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">File di regole
+          (esempi)</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

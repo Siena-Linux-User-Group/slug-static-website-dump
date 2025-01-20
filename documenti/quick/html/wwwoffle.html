@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Wwwoffle</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="Chrooting Bind" href="chrootingbind.html">
+    <LINK rel="NEXT" title="Junkbuster" href="junkbuster.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "chrootingbind.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "junkbuster.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="WWWOFFLE">Capitolo 11. Wwwoffle</A></H1>
+
+      <P><SPAN class="APPLICATION">Wwwoffle</SPAN> è il demone che permette
+      di implementare un <B class="KEYCAP">cache proxy server</B> sul vostro
+      PC, utile per sfogliare offline le pagine che avete scaricato e per
+      permettere agli altri vostri pc, se avete una rete locale, di accedere
+      a internet, magari limitandone l'uso ad alcuni soli siti e impedendone
+      altri. Tramite un'<EM>interfaccia di gestione in html</EM> e alcuni
+      <EM>script</EM>, dispone di un comodo <EM>motore di ricerca</EM>
+      all'interno della cache, permette di richiedere pagine anche quando si
+      è <EM>offline</EM> (verranno scaricate quando si sarà online), di
+      controllare i cambiamenti di pagine a intervalli predefiniti e
+      riscaricarle, e inoltre mi sono anche preso la briga di tradurvi le
+      pagine di interfaccia in italiano (sono disponibili dalla versione 2.5e
+      in poi: prego, prego, non c'è di che, non c'è bisogno che mi
+      ringraziate per la traduzione... E non dite che non vi voglio bene! ;-)
+      ). Fate in modo che parta in automatico ad ogni avvio del PC
+      (aggiungetelo con <B class="COMMAND">ntsysv</B> o con <B class=
+      "COMMAND">chkconfig --add wwwoffled</B>). Ricordate di impostare i
+      vostri DNS e dominio in <TT class="FILENAME">/etc/resolv.conf</TT>,
+      anche se usate qualche programma che lo rigenera in automatico ogni
+      volta, tipo <SPAN class="APPLICATION">kppp</SPAN> o <SPAN class=
+      "APPLICATION">wvdial</SPAN>. Fatelo prima di installarlo, altrimenti
+      potrebbe darvi un errore di <B class="COMMAND">nslookup</B> perché non
+      riesce a trovare un <EM>Non-Authoritative Host</EM>. Rimedio spiccio
+      nel caso ciò accada: DOPO aver stabilito la connessione, riavviate
+      <SPAN class="APPLICATION">wwwoffle</SPAN> con l'opzione <B class=
+      "KEYCAP">-config</B>, oppure con <B class=
+      "COMMAND">/etc/rc.d/init.d/wwwoffled restart</B>, oppure settate il
+      file <TT class="FILENAME">resolv.conf</TT> con i DNS fissi. Un rimedio
+      più corretto si trova alla fine della sezione relativa al DNS del
+      <EM>Quick&amp;Easy Configuration HOWTO</EM>. Un esempio di file <TT
+      class="FILENAME">/etc/resolv.conf</TT> :</P>
+
+      <P><B class="KEYCAP">=== file: /etc/resolv.conf ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+domain libero.it
+nameserver 195.210.91.1
+nameserver 195.210.91.2
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per default <SPAN class="APPLICATION">wwwoffle</SPAN> rimane in
+      ascolto sulla porta <B class="KEYCAP">8080</B>, quindi per usarlo
+      dovete impostare il vostro browser affinche usi il proxy su questa
+      porta (leggere la parte relativa a <SPAN class=
+      "APPLICATION">Junkbuster</SPAN> nel caso vogliate usarli insieme). Per
+      <SPAN class="APPLICATION">Netscape</SPAN> cercate nel menu <B class=
+      "KEYCAP">Edit</B> --&gt; <B class="KEYCAP">Preferences</B> --&gt; <B
+      class="KEYCAP">Advanced</B> --&gt; <B class="KEYCAP">Proxies</B> --&gt;
+      <B class="KEYCAP">Manual Proxy</B> --&gt; <B class="KEYCAP">View</B> e
+      settate la voce <EM>HTTP Proxy</EM> su <B class="KEYCAP">localhost</B>
+      e <B class="KEYCAP">port 8080</B>, mentre per <SPAN class=
+      "APPLICATION">Lynx</SPAN> inserite la riga seguente nel file <TT class=
+      "FILENAME">.bash_profile</TT> nella vostra directory <B class=
+      "KEYCAP">HOME</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+export http_proxy=http://localhost:8080
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>L'impostazione di base del file <TT class=
+      "FILENAME">/etc/wwwoffle.conf</TT> va già bene, comunque potete
+      cambiarla interattivamente puntando il vostro browser su <B class=
+      "KEYCAP">http://localhost:8080</B>, avrete una schermata in cui potrete
+      settare i vari parametri e con le relative spiegazioni. Se avete una
+      <EM>rete locale</EM> potete concedere l'accesso al proxy modificando la
+      sezione <EM>AllowedConnectHosts</EM>, inserendo ad esempio per una rete
+      di <EM>classe C</EM>: <B class="KEYCAP">192.168.0.*</B>.</P>
+
+      <P>Per usare <SPAN class="APPLICATION">wwwoffle</SPAN>, riavviate il pc
+      o date da utente <B class="KEYCAP">root</B> il comando <B class=
+      "COMMAND">/etc/rc.d/init.d/wwwoffle start</B>, o l'equivalente per la
+      vostra distribuzione. Le opzioni base sono:</P>
+
+      <UL>
+        <LI>
+          <P><B class="KEYCAP">-online</B> : attiva <SPAN class=
+          "APPLICATION">wwwoffle</SPAN> in modo che le richieste vengano
+          esaudite immediatamente (da attivare appena si è stabilita una
+          connessione);</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-offline</B> : mette <SPAN class=
+          "APPLICATION">wwwoffle</SPAN> in modalità <EM>offline</EM>, e ogni
+          nuova richiesta di connessione viene immagazzinata fino alla
+          successiva connessione;</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-fetch</B> : dopo che si è <EM>online</EM>,
+          scarica le pagine che erano state richieste in assenza di
+          connessione;</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-config</B> : rilegge il file di
+          configurazione;</P>
+        </LI>
+
+        <LI>
+          <P><B class="KEYCAP">-purge</B> : svuota la cache.</P>
+        </LI>
+      </UL>
+
+      <P>Conviene inserire i comandi <B class="COMMAND">wwwoffle -online</B>
+      nel file <TT class="FILENAME">/etc/ppp/ip-up</TT>, e <B class=
+      "COMMAND">wwwoffle -offline</B> nel file <TT class=
+      "FILENAME">/etc/ppp/ip-down</TT>, in modo da attivarlo e disattivarlo
+      automaticamente non appena viene instaurata la connessione o la si
+      conclude.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "chrootingbind.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "junkbuster.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Chrooting Bind</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Junkbuster</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

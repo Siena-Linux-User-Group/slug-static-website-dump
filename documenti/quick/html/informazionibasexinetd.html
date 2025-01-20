@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Informazioni di base</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Xinetd" href="xinetd.html">
+    <LINK rel="PREVIOUS" title="Xinetd" href="xinetd.html">
+    <LINK rel="NEXT" title="Configurazione di base" href=
+    "configurazionebasexinetd.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "xinetd.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 13.
+          Xinetd</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "configurazionebasexinetd.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="INFORMAZIONIBASEXINETD">13.1. Informazioni
+      di base</A></H1>
+
+      <P><SPAN class="APPLICATION">xinetd</SPAN> fornisce uno script per fare
+      la conversione in automatico dalla vecchia configurazione di <SPAN
+      class="APPLICATION">inetd</SPAN> alla nuova versione di file: questo
+      script è <B class="COMMAND">xconv.pl</B>, presente nella stessa
+      directory di <SPAN class="APPLICATION">xinetd</SPAN> (altre
+      distribuzioni, come <B class="KEYCAP">Mandrake</B>, forniscono un altro
+      script, con risultati medesimi, chiamato <B class=
+      "COMMAND">inetdconvert</B>). Si usano come segue:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+/usr/sbin/xconv.pl &lt; /etc/inetd.conf &gt; /tmp/xinetd.conf
+/usr/sbin/inetdconvert -c
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>La differenza principale tra i due script è che quello standard di
+      <SPAN class="APPLICATION">xinetd</SPAN> riunisce tutte le impostazioni
+      dei servizi nel file <TT class="FILENAME">xinetd.conf</TT> prodotto,
+      mentre quello di <B class="KEYCAP">Mandrake</B> crea script separati
+      per i singoli servizi nella directory <TT class=
+      "FILENAME">/etc/xinetd.d</TT>, cosa che io preferisco, in quanto tutti
+      i file presenti in questa directory vengono inclusi da <SPAN class=
+      "APPLICATION">xinetd</SPAN> tramite la direttiva <TT class=
+      "PARAMETER"><I>includedir /etc/xinetd.d</I></TT> del file di
+      configurazione <TT class="FILENAME">xinetd.conf</TT>, e quindi per
+      aggiungere nuovi servizi basta creare un nuovo file nella directory
+      indicata e riavviare il super-demone, senza dover modificare sempre il
+      suo file generale di configurazione. Se la pensate come me, ma non
+      usate <B class="KEYCAP">Mandrake</B>, ecco quì di seguito lo script in
+      questione:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/usr/bin/perl
+# -*- Mode: cperl -*-
+#--------------------------------------------------------------------------------
+# Copyright (C) 2000 by Chmouel Boudjnah &lt;chmouel@mandrakesoft.com&gt;, MandrakeSoft
+# Redistribution of this file is permitted under the terms of the GNU 
+# Public License (GPL)
+#--------------------------------------------------------------------------------
+## description: 
+# Update a system from inetd file to xinetd.
+
+use strict;
+
+my $inet_files = '/etc/inetd.conf';
+my $dir = '/etc/xinetd.d/';
+my $remain;
+my $choose;
+
+parse_options(@ARGV);
+$choose = shift;
+
+die "Need a service to convert\n" if not $choose and not $remain;
+
+system("/bin/mkdir " . "-p " . "$dir") unless -d $dir;
+
+local *F;
+open F, $inet_files;
+while (&lt;F&gt;) {
+    next if /^#/;
+    my @t = split;
+    my ($service, $socket_type, $protocol, $attente, $user, $server) = split;
+    my $programs; $programs .= "$t[$_] " for 6 .. $#t;
+    next if -f "$dir/$service";
+    next if $service !~ /^$choose$/ and not $remain;
+    
+    select W; open W, "&gt;$dir/$service";
+    print "# Converted by Linux-Mandrake_inetdconvert\n";
+    print "service $service\n{\n";
+    print "\tsocket_type\t\t= $socket_type\n";
+    print "\tprotocol\t\t= $protocol\n";
+    print "\twait\t\t\t= ", $attente =~ /yes/ ? "no" : "yes", "\n";
+    if ($user =~ /(\w+)\.(\w+)/)  {
+    print "\tuser\t\t\t= $1\n";
+    print "\tgroup\t\t\t= $2\n";
+    } else {
+    print "\tuser\t\t\t= $user\n";
+    }
+    print "\tserver\t\t\t= $server\n";
+    print "\tserver_args\t\t= ", $programs, "\n" if $programs;
+    print "\tdisable\t\t\t= no\n}\n";
+    close W;
+}
+close F;
+
+sub usage {
+    (my $n = $0) =~ s|.*/||g;
+    print &lt;&lt;EOF;
+Usage: $n -c -d=xinetd-directory -f=inetd-file servie
+  
+  -c    --convertremaining: Convert all the remainning service.
+  -d       --directory=DIR:     Specify another xinetd directory.
+  -f     --inetdfiles=FILE:     Specify an another inetd file.
+EOF
+  exit(0);
+}
+    
+sub parse_options {
+    while ($_[0] =~ /^--/ || $_[0] =~ /^-/) {
+    $_ = shift;
+    if (/-(?-)(directory|d)=([^ \t]+)/) {
+        $dir=$1;
+    } elsif (/-(?-)(inetdfiles|f)=([^ \t]+)/){
+        $inet_files=$1;
+    } elsif (/-(?-)(convertremaining|c)/){
+        $remain++;
+    } elsif (/-(?-)(help|h)/){
+        usage();
+    } else {
+        usage();
+    }
+    }
+}
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Dovrete renderlo eseguibile col comando <B class="COMMAND">chmod 700
+      inetdconvert</B>. Se lo userete come indicato in precedenza, <B class=
+      "KEYCAP">TUTTI</B> i servizi presenti nel vostro <TT class=
+      "FILENAME">inetd.conf</TT> saranno convertiti in script nella directory
+      <TT class="FILENAME">/etc/xinetd.d</TT>, mentre se volete convertire
+      solo determinati servizi, usate lo script senza l'opzione <TT class=
+      "PARAMETER"><I>-c</I></TT>, ma indicando invece come parametri dello
+      script i nomi dei servizi che volete. Naturalmente ricordate di
+      aggiungere nel file <TT class="FILENAME">/etc/xinetd.conf</TT> la
+      direttiva <TT class="PARAMETER"><I>includedir /etc/xinetd.d</I></TT>,
+      se non già presente! E tenete comunque conto del fatto che entrambi gli
+      script ignorano completamente le configurazioni dei <SPAN class=
+      "APPLICATION">TCP-Wrappers</SPAN> (i file <TT class=
+      "FILENAME">hosts.allow</TT> e <TT class="FILENAME">hosts.deny</TT>), e
+      quindi dovrete comunque modificare i file che vengono generati.</P>
+
+      <P>Visto che ci siamo, indichiamo i segnali di sistema che il
+      super-demone accetta per modificare il suo stato. Per prima cosa,
+      EVITATE di dare il segnale <B class="KEYCAP">SIGHUP</B>! Questo segnale
+      non provoca la rilettura del file di configurazione come ci si
+      aspetterebbe, ricordando il comportamento di <SPAN class=
+      "APPLICATION">inetd</SPAN>, ma provoca il DUMP del demone! Questa,
+      secondo l'autore, è una "feature", in quanto un possibile attacker che
+      volesse inserire una qualche backdoor avviata dal super-demone, nel
+      momento in cui dovesse dare il SIGHUP pensando di avere a che fare con
+      <SPAN class="APPLICATION">inetd</SPAN>, si ritroverebbe invece senza
+      più il demone in funzione! ;-) Invece, i segnali corretti da usare sono
+      i seguenti:</P>
+
+      <UL>
+        <LI>
+          <P>SIGUSR1 : rilegge il file di configurazione e i parametri e
+          servizi eventualmente cambiati e/o aggiunti</P>
+        </LI>
+
+        <LI>
+          <P>SIGUSR2 : come il precedente, ma inoltre uccide i demoni
+          eventualmente non più presenti</P>
+        </LI>
+
+        <LI>
+          <P>SIGTERM : chiude tutti i demoni prima di chiudere anche <SPAN
+          class="APPLICATION">inetd</SPAN></P>
+        </LI>
+      </UL>
+
+      <P>Ah, non sapete come dare questi segnali? Leggete le manpage di <B
+      class="COMMAND">kill</B> e <B class="COMMAND">killall</B>! ;-)</P>
+
+      <P>Il file di config. <TT class="FILENAME">/etc/xinetd.conf</TT> inizia
+      con una sezione <B class="KEYCAP">defaults</B>, che contiene i
+      parametri usati da tutti i servizi gestiti da <SPAN class=
+      "APPLICATION">xinetd</SPAN>, se questi in seguito non specificano loro
+      proprie modifiche a queste impostazioni, ed ha il formato seguente:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+defaults
+{
+   attributo operatore valore [valore]
+   altro_attributo operatore valore [valore]
+   ...
+}
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ogni sezione relativa a un servizio invece ha una forma simile:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+service nomeservizio
+{
+   attributo operatore valore [valore]
+   altro_attributo operatore valore [valore]
+   ...
+}
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e ogni servizio come abbiamo detto in precedenza può essere
+      specificato direttamente nel file di configurazione globale, o in un
+      file separato in una directory, poi inclusa dalla direttiva <TT class=
+      "PARAMETER"><I>includedir ...</I></TT>.</P>
+
+      <P>Sono disponibili 3 operatori diversi:</P>
+
+      <UL>
+        <LI>
+          <P>= : usato per assegnare un valore fisso ad un attributo</P>
+        </LI>
+
+        <LI>
+          <P>+= : per aggiungere un valore a un attributo che già ne ha altri
+          assegnati magari nella sezione "defaults" del file di
+          configurazione globale</P>
+        </LI>
+
+        <LI>
+          <P>-= : come +=, ma rimuove il valore indicato</P>
+        </LI>
+      </UL>
+
+      <P>Un elenco invece dei possibili attributi è il seguente (l'elenco non
+      è completo, altri attributi sono nella manpage di <TT class=
+      "FILENAME">xinetd.conf</TT>):</P>
+
+      <DIV class="TABLE">
+        <A name="AEN2654"></A>
+
+        <P><B>Tabella 13-1. Attributi</B></P>
+
+        <TABLE border="1" class="CALSTABLE">
+          <THEAD>
+            <TR>
+              <TH align="LEFT" valign="TOP">Attributo</TH>
+
+              <TH align="LEFT" valign="TOP">Valore e descrizione</TH>
+            </TR>
+          </THEAD>
+
+          <TBODY>
+            <TR>
+              <TD align="LEFT" valign="TOP">includedir</TD>
+
+              <TD align="LEFT" valign="TOP">Il nome di una directory, nella
+              forma <B class="KEYCAP">includedir /etc/xinetd.d</B>, i cui
+              file contenuti saranno esaminati in ordine alfabetico come file
+              di configurazione aggiuntivi per altri servizi. Non può essere
+              specificato nella dichiarazione di un servizio, deve essere
+              specificato al di fuori di qualsiasi dichiarazione.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">flags</TD>
+
+              <TD align="LEFT" valign="TOP">Quì sono elencate solo le opzioni
+              più usate, controllate la manpage per le altre opzioni: <B
+              class="KEYCAP">IDONLY</B>: accetta connessioni solo da client
+              che hanno un server di identificazione; <B class=
+              "KEYCAP">NORETRY</B>: evita che ci sia un fork di un nuovo
+              processo in caso di fallimento; <B class=
+              "KEYCAP">NAMEINARGS</B>: il primo argomento dell'attributo
+              "server_args" viene usato come argv[0] per il server; questo
+              permette di usare <B class="KEYCAP">tcpd</B> inserendolo
+              nell'attributo "server", e inserendo il nome del server e i
+              suoi argomenti come opzioni in "server_args", come faresti
+              normalmente con <SPAN class="APPLICATION">inetd</SPAN>.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">log_type</TD>
+
+              <TD align="LEFT" valign="TOP"><SPAN class=
+              "APPLICATION">xinetd</SPAN> usa per default <SPAN class=
+              "APPLICATION">syslogd</SPAN> e il selettore "daemon.info". <B
+              class="KEYCAP">SYSLOG facility [livello]</B>: permette di
+              scegliere tra <EM>daemon, auth, user o local0-7</EM> per <SPAN
+              class="APPLICATION">syslogd</SPAN>; <B class="KEYCAP">FILE
+              file_log [max_size [abs_max_size]]</B>: le informazioni
+              finiscono in "file_log", e i 2 parametri opzionali servono ad
+              inviare un messaggio nel file al raggiungimento del primo
+              limite, e a smettere di effettuare il log al raggiungimento del
+              secondo.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">log_on_success</TD>
+
+              <TD align="LEFT" valign="TOP">Si possono indicare quali
+              informazioni includere nei log (l'id del processo è sempre
+              incluso), in fase di avvio e chiusura di un servizio. È ammessa
+              una qualsiasi combinazione dei valori seguenti, separandoli con
+              spazi: <B class="KEYCAP">PID</B>: l'id del processo avviato, 0
+              se è interno a <SPAN class="APPLICATION">xinetd</SPAN>; <B
+              class="KEYCAP">HOST</B>: l'indirizzo dell'host remoto; <B
+              class="KEYCAP">USERID</B>: l'identità dell'utente remoto,
+              secondo il protocollo definito nell'RFC1413; <B class=
+              "KEYCAP">EXIT</B>: lo stato di uscita del servizio o il segnale
+              che ne ha provocato la fine; <B class="KEYCAP">DURATION</B>: la
+              durata della sessione.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">log_on_failure</TD>
+
+              <TD align="LEFT" valign="TOP">Le informazioni da includere
+              quando un servizio non può essere avviato, per carenza di
+              risorse o a causa delle regole d'accesso (l'id del processo è
+              sempre incluso, insieme alla ragione del fallimento). È ammessa
+              una qualsiasi combinazione dei valori seguenti, separandoli con
+              spazi: <B class="KEYCAP">HOST</B>: l'indirizzo dell'host
+              remoto; <B class="KEYCAP">USERID</B>: l'identità dell'utente
+              remoto, secondo il protocollo definito nell'RFC1413; <B class=
+              "KEYCAP">ATTEMPT</B>: il tentativo di connessione (questa
+              opzione è implicita se viene inclusa una qualsiasi delle altre
+              opzioni); <B class="KEYCAP">RECORD</B>: log di qualsiasi
+              informazioni disponibile sul client remoto.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">nice</TD>
+
+              <TD align="LEFT" valign="TOP">Cambia la priorità del server,
+              come farebbe il comando <B class="COMMAND">nice</B>.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">only_from</TD>
+
+              <TD align="LEFT" valign="TOP">Elenco dei client che hanno
+              accesso al server. Se questo parametro è presente ma vuoto,
+              l'accesso al servizio è negato. Gli indirizzi IP che hanno
+              accesso possono essere indicati con una qualsiasi combinazione
+              dei valori seguenti: <B class="KEYCAP">a)</B>: un indirizzo
+              nella forma %d.%d.%d.%d, dove %d è un decimale tra 0 e 255, e
+              se l'ultima cifra è 0, viene considerata come un'intera
+              sottorete, mentre 0.0.0.0 indica qualsiasi host; <B class=
+              "KEYCAP">b)</B>: un indirizzo fattorizzato nella forma
+              %d.%d.%d.{%d,%d,...}; <B class="KEYCAP">c)</B>: un nome di
+              rete, preso da <TT class="FILENAME">/etc/networks</TT>; <B
+              class="KEYCAP">d)</B>: un nome di host, di cui <SPAN class=
+              "APPLICATION">xinetd</SPAN> esegue il reverse lookup dell'IP
+              del client; <B class="KEYCAP">e)</B>: un intervallo nella forma
+              indirizzo, netmask.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">no_access</TD>
+
+              <TD align="LEFT" valign="TOP">Elenco dei client che non hanno
+              accesso al server, secondo la sintassi vista per il parametro
+              "only_from".</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">port</TD>
+
+              <TD align="LEFT" valign="TOP">La porta usata dal server. Se il
+              servizio è presente in <TT class="FILENAME">/etc/services</TT>,
+              i due numeri devono corrispondere.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">protocol</TD>
+
+              <TD align="LEFT" valign="TOP">Il protocollo usato dal servizio,
+              come indicato in <TT class="FILENAME">/etc/protocols</TT>. Se
+              non indicato, viene usato il protocollo di default per il
+              servizio.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">server</TD>
+
+              <TD align="LEFT" valign="TOP">Il percorso del server.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">server_args</TD>
+
+              <TD align="LEFT" valign="TOP">Gli argomenti passati al
+              server.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">socket_type</TD>
+
+              <TD align="LEFT" valign="TOP"><B class="KEYCAP">stream</B>
+              (TCP), <B class="KEYCAP">dgram</B> (UDP), <B class=
+              "KEYCAP">raw</B> (IP ad accesso diretto) o <B class=
+              "KEYCAP">seqpacket</B> ().</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">type</TD>
+
+              <TD align="LEFT" valign="TOP"><SPAN class=
+              "APPLICATION">xinetd</SPAN> gestisce tre tipi di servizi, e
+              questo parametro accetta qualsiasi combinazione dei parametri
+              seguenti. <B class="KEYCAP">RPC</B>: per i servizi elencati in
+              <TT class="FILENAME">/etc/rpc</TT>, ma non funziona molto bene,
+              come già detto; <B class="KEYCAP">INTERNAL</B>: servizi gestiti
+              internamente, come "echo, time, daytime, chargen e discard"; <B
+              class="KEYCAP">UNLISTED</B>: per servizi che non sono elencati
+              né in <TT class="FILENAME">/etc/rpc</TT>, né in <TT class=
+              "FILENAME">/etc/services</TT>.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">wait</TD>
+
+              <TD align="LEFT" valign="TOP">Definisce il comportamento da
+              seguire per i thread dei servizi. <B class="KEYCAP">yes</B>: il
+              servizio è mono-thread, può gestire una sola connessione per
+              volta; <B class="KEYCAP">no</B>: per ogni nuova connessione,
+              <SPAN class="APPLICATION">xinetd</SPAN> avvia una nuova copia
+              del server.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">cps</TD>
+
+              <TD align="LEFT" valign="TOP">Limita il numero di connessioni
+              in ingresso. Accetta due argomenti, il primo indica appunto
+              questo numero massimo di connessioni, raggiunto il quale il
+              servizio viene disattivato per un tempo pari al secondo
+              parametro, espresso in secondi.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">instances</TD>
+
+              <TD align="LEFT" valign="TOP">Definisce il numero massimo di
+              server dello stesso tipo che possono funzionare in
+              parallelo.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">max_load</TD>
+
+              <TD align="LEFT" valign="TOP">Il carico massimo per un server,
+              raggiunto il quale il servizio smette di accettare nuove
+              connessioni. Il numero è in virgola mobile, e indica il carico
+              medio in un minuto. UNLIMITED per connessioni infinite.</TD>
+            </TR>
+
+            <TR>
+              <TD align="LEFT" valign="TOP">per_source</TD>
+
+              <TD align="LEFT" valign="TOP">Un numero intero o UNLIMITED, per
+              limitare il numero massimo di connessioni da uno stesso IP
+              origine verso un server. Può essere anche specificato nella
+              sezione "defaults".</TD>
+            </TR>
+          </TBODY>
+        </TABLE>
+      </DIV>
+
+      <P>Le ultime quattro opzioni permettono di controllare le risorse in
+      base al server, permettendo di limitare possibile attacchi DoS (Denial
+      of Service), che saturano le risorse.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "xinetd.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "configurazionebasexinetd.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Xinetd</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "xinetd.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Configurazione di
+          base</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

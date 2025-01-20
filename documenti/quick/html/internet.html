@@ -1,0 +1,457 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Internet</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="PREVIOUS" title="Compilazione e installazione" href=
+    "compilazioneinstallazione.html">
+    <LINK rel="NEXT" title="Postfix" href="postfix.html">
+  </HEAD>
+
+  <BODY class="CHAPTER" bgcolor="#FFFFFF" text="#000000" link="#0000FF"
+  vlink="#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "compilazioneinstallazione.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">
+          </TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "postfix.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="CHAPTER">
+      <H1><A name="INTERNET">Capitolo 4. Internet</A></H1>
+
+      <P>In questa sezione viene spiegato come connettersi a Internet da
+      shell, senza l'uso di tool grafici, usando l'autenticazione PAP, ormai
+      fornita da tutti i provider. Con i computer moderni, veloci e stabili
+      anche sotto <EM>X-window</EM>, può sembrare un controsenso, ma se vi
+      abituerete a fare alcune cose da shell vedrete che sarete molto più
+      produttivi e veloci che sotto X. E poi, per leggere e inviare mail e
+      news, che sono puro testo, è inutile caricare pesanti tool grafici, che
+      spesso crashano sul più bello. Oppure potreste avere problemi col
+      server X, rimanendo tagliati fuori (se postate un messaggio sul perché
+      X non parte, e lo fate da shell, avrete la risposta e potrete
+      configurarvelo a puntino!). Insomma, le ragioni per avere internet
+      ANCHE da shell sono molteplici, quindi procediamo nella
+      configurazione.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Io sono un'anomalia: Linux è bello perché si
+          possono fare le stesse cose in svariati modi. Parto sempre da
+          shell, ma uno dei primi comandi che do è startx, perché il mio
+          Celeron 450 con 256Mb regge bene e mi piace il desktop di KDE. Per
+          avviare la connessione uso kppp perché mi ci trovo bene, ma ero
+          partito da <SPAN class="APPLICATION">Kmail</SPAN> e <SPAN class=
+          "APPLICATION">Knode</SPAN> per approdare spero DEFINITIVAMENTE a
+          <SPAN class="APPLICATION">Mutt</SPAN> ed <SPAN class=
+          "APPLICATION">Slrn</SPAN>, veloci ed efficienti come nessun altro
+          programma, e di cui trovate le configurazioni nelle ultime pagine
+          del <EM>Quick&amp;Easy Configuration HOWTO</EM>.</P>
+
+          <P>Aggiornamento (31/7/2001): nel mio cammino verso il Nirvana
+          Pinguino, ormai uso solo tool testuali per cose nate testuali e che
+          continuano ad essere ancor'oggi prevalentemente testuali. Ormai uso
+          solo <SPAN class="APPLICATION">Slrn</SPAN>, <SPAN class=
+          "APPLICATION">Mutt</SPAN>, e le connessioni da console con Pon e
+          Poff. Per Irc e Icq uso <SPAN class="APPLICATION">Xchat</SPAN> e
+          <SPAN class="APPLICATION">Licq</SPAN>, ma in caso di emergenza ho
+          sempre sottomano le loro versioni da console ;-).</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Naturalmente dovete avere il supporto per il protocollo PPP nel
+      kernel (scrivete <B class="COMMAND">pppd</B> e se vi escono caratteri
+      strani siete a posto). Vi servono anche i programmi <SPAN class=
+      "APPLICATION">pppd</SPAN> e <SPAN class="APPLICATION">chat</SPAN>. I
+      parametri per la connessione dovete chiederli al vostro provider, e
+      protestate se vi dicono che Linux non è supportato, con i parametri si
+      può configurare anche una caffettiera! In particolare dovete chiedere
+      gli indirizzi IP dei DNS, che in Windows vengono settati in
+      automatico.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Per conoscere in Windows gli IP dei DNS (in caso
+          vengano assegnati in automatico), per poterli inserire in Linux,
+          che invece li richiede obbligatoriamente, eseguite (tramite la voce
+          <B class="KEYCAP">Esegui...</B> del Menu d'Avvio o Start) il
+          comando <B class="COMMAND">winipcfg</B> DOPO esservi collegati a
+          internet, poi cliccate su <B class="KEYCAP">Dettagli &gt;&gt;</B> e
+          guardate la seconda voce (DNS) della schermata che vi trovate
+          davanti: quello che vedete è l'IP del DNS primario del provider che
+          state usando, mentre premendo il tasto con i 2 punti ".." avrete
+          l'IP del DNS secondario.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Per prima cosa configurate il modem, creando se non già presente un
+      link tra il dispositivo seriale e il modem. Ricordate che in Linux le
+      seriali corrispondono a <B class="KEYCAP">/dev/ttySX</B>, dove X vale 0
+      per <B class="KEYCAP">COM1</B>, 1 per <B class="KEYCAP">COM2</B> e così
+      via (NON usate più le vecchie <B class="KEYCAP">/dev/cuaX</B>, ormai
+      cadute in disuso e deprecate). Nel mio sistema il modem è connesso a <B
+      class="KEYCAP">COM2</B>, quindi il collegamento sarà:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="SCREEN">
+ln -sf /dev/ttyS1 /dev/modem
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Prima di continuare una nota: esistono in giro dei FALSI modem, non
+      perché contengano mattoni, alla napoletana ;-), ma perché hanno una
+      parte della logica di controllo implementata via software. E qual è il
+      software più diffuso, purtroppo? Quello di zio Bill! Per questo sono
+      anche chiamati softmodem o winmodem. La quasi totalità di quelli
+      interni PCI sono winmodem (scrivo quasi perché non sono a conoscenza di
+      modem interni PCI non soft, quindi non posso escluderlo a priori).
+      Anche alcuni esterni sono winmodem. Se il vostro modem è un Cosexant, o
+      un Motorola SM56, o un Soft56k e compagnia, solo per citare quelli che
+      più si trovano in giro, mettetevi l'anima in pace e non cominciate
+      nemmeno a configurare internet con Linux. Qualche speranza la potreste
+      avere con i Lucent, integrati anche in vari PC portatili, in quanto
+      esiste un driver binario sperimentale che sembra funzionare. Niente da
+      fare invece per gli USB: per ora non c'è alcun supporto, speriamo che
+      qualcosa si muova dopo l'uscita dei kernel 2.4.x, che incominceranno a
+      supportare anche l'USB.</P>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Aggiornamento: pare che ultimamente le cose si
+          siano smosse e finalmente alcuni Winmodem inizino a funzionare
+          anche con Linux. Pare che ora i modem Conexant e altri funzionino,
+          ma non so quanto bene. Forse funziona anche qualche modem USB, ma
+          per maggiori dettagli riferitevi a <A href=
+          "http://www.linmodems.org" target=
+          "_top">http://www.linmodems.org</A>.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P>Continuiamo. Lanciate <SPAN class="APPLICATION">minicom</SPAN> da
+      utente <B class="KEYCAP">root</B>, se tutto procede bene dovreste
+      ottenere un output come il seguente:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="SCREEN">
+AT S7=45 S0=0 L1 V1 X4 &amp;C1 E1 Q0
+OK
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Uscite da <SPAN class="APPLICATION">minicom</SPAN> con <B class=
+      "KEYCAP">CTRL-A X Invio</B>. Create o modificate tutti i file seguenti,
+      cambiando i parametri di DNS, dominio, numero di telefono, nome utente
+      e password.</P>
+
+      <P><B class="KEYCAP">=== file: /etc/resolv.conf ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# cambiate dominio e DNS (se avete impostato un DNS locale, sostituite
+# a libero.it il vostro dominio, e a nameserver il valore 127.0.0.1)
+domain libero.it
+nameserver 195.210.91.1
+nameserver 195.210.91.2
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etc/ppp/pon ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+# NON lasciate spazi dopo la \ alla fine delle righe seguenti
+# e sostituite il vostro nome utente alla fine dell'ultima riga
+/usr/sbin/pppd connect "/usr/sbin/chat -v -f /etc/ppp/ppp-chat" noauth \
+/dev/modem 57600 deflate 12,12 crtscts debug lock modem nodetach \
+defaultroute noipdefault login noproxyarp asyncmap 0  hide-password \
+ipcp-accept-remote lcp-echo-interval 30 lcp-echo-failure 8 user mionomeutente &amp;
+# aggiungete le 2 opzioni seguenti alla riga precedente per avviare in automatico
+# la connessione non appena pppd riscontra traffico sulla seriale
+# demand idle 30
+# i messaggi d'errore sono inviati dal pppd verso il syslog, da dove potrete
+# leggerli da root con il comando: tail -n 25 -f /var/log/messages
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etc/ppp/poff ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+kill -INT `cat /var/run/ppp0.pid`
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etc/ppp/pap-secrets ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#inserite qui il vostro nome utente e la vostra password
+mionomeutente   *       miapassword
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etc/ppp/ppp-chat ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# Cambiate la stringa di init e il numero del vostro ISP alla fine
+TIMEOUT 30
+ABORT BUSY
+ABORT ERROR
+ABORT 'NO CARRIER'
+ABORT 'NO DIALTONE'
+ABORT 'Invalid Login'
+ABORT 'Login incorrect'
+'' '+++AT&amp;FB40&amp;K44X3S2=128'
+OK 'ATDT096851010'
+CONNECT ''
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ora date tutti i seguenti comandi, per consentire anche ad un utente
+      comune di avviare e chiudere la connessione.</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+chmod 750 /etc/ppp/pon
+chmod 750 /etc/ppp/poff
+chmod 600 /etc/ppp/pap-secrets
+ln -sf /etc/ppp/pon /usr/bin
+ln -sf /etc/ppp/poff /usr/bin
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ora verificate che esista un gruppo degli utenti che possono usare
+      il ppp. Controllate che in <B class="KEYCAP">/etc/group</B> ci sia una
+      riga simile alla seguente, altrimenti inseritela, magari usando il
+      comando <B class="COMMAND">addgroup</B>:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+pppusers:x:230:
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>e modificatela come la seguente, inserendo alla fine separati da
+      virgole i nome degli utenti che possono collegarsi:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+pppusers:x:230:VostroNomeDiLogin,AltroUtentePpp
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Continuate a dare i comandi seguenti:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+chown root.pppusers /dev/ttyS1
+chmod 664 /dev/ttyS1
+chown root.pppusers /etc/ppp/pon
+chown root.pppusers /etc/ppp/poff
+chown root.pppusers /usr/bin/pon
+chown root.pppusers /usr/bin/poff
+chmod a+s /usr/sbin/pppd
+chmod a+s /usr/sbin/chat
+ln -sf /usr/sbin/pppd /usr/bin
+ln -sf /usr/sbin/chat /usr/bin
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Per un minimo di sicurezza, modificate i file <B class=
+      "KEYCAP">/etc/hosts.allow</B> e <B class="KEYCAP">/etc/hosts.deny</B>
+      come segue (ed eliminate da <B class="KEYCAP">/etc/inetd.conf</B> i
+      servizi che non vi servono, cioè tutti tranne auth, commentandoli con
+      #; se avete configurato un news server locale lasciate attivo anche
+      nntp):</P>
+
+      <P><B class="KEYCAP">=== file: /etc/hosts.allow ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+ALL:127.0.0.1
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etc/hosts.deny ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+ALL:ALL
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Potete avviare ed arrestare automaticamente dei programmi insieme
+      alla connessione, tramite i file script <B class=
+      "KEYCAP">/etc/ppp/ip-up</B> e <B class="KEYCAP">/etc/ppp/ip-down</B>,
+      che vengono richiamati dal pppd in automatico appena la connessione è
+      attiva e quando non è più presente. ecco alcuni esempi:</P>
+
+      <P><B class="KEYCAP">=== file: /etc/ppp/ip-up ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+# inserite le righe alla fine di quanto eventualmente
+# già presente e prima di un eventuale exit 0
+# avvia il proxy server in modalità online
+wwwoffle -online
+# attiva il firewall
+/usr/sbin/firewall start
+# invia la posta in giacenza
+sendmail -q
+# scarica le news usenet
+fetchnews
+# scarica la posta dell'utente mrshark ricontrollando ogni 300 secondi
+su mrshark -c "fetchmail -d 300"
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P><B class="KEYCAP">=== file: /etc/ppp/ip-down ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+#!/bin/sh
+#interrompe lo scaricamento della posta
+su mrshark -c "fetchmail -q"
+# abbatte il firewall
+/usr/sbin/firewall stop
+# pone il proxy server in modalità offline
+wwwoffle -offline
+   
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Dovreste essere a posto, ora potrete avviare la connessione con <B
+      class="KEYCAP">pon</B> e abbatterla con <B class="KEYCAP">poff</B>. E
+      invece NO! Il <B class="KEYCAP">pon</B> funziona anche da utente,
+      mentre il <B class="KEYCAP">poff</B> no, perché non è permesso ad un
+      utente che non sia root di abbattere la connessione ppp. Il
+      <EM>PPP-Howto</EM> suggerisce, se non volete loggarvi come root, di
+      spegnere il modem o staccare il cavo della linea telefonica, oppure
+      usare il programma sudo per concedere questo diritto anche agli
+      utenti.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "compilazioneinstallazione.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "postfix.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Compilazione e
+          installazione</TD>
+
+          <TD width="34%" align="center" valign="top">&nbsp;</TD>
+
+          <TD width="33%" align="right" valign="top">Postfix</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

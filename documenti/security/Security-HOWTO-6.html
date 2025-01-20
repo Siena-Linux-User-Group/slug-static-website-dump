@@ -1,0 +1,444 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+ <META NAME="GENERATOR" CONTENT="SGML-Tools 1.0.9">
+ <TITLE>Linux Security HOWTO: Sicurezza delle Password e Crittografia </TITLE>
+ <LINK HREF="Security-HOWTO-7.html" REL=next>
+ <LINK HREF="Security-HOWTO-5.html" REL=previous>
+ <LINK HREF="Security-HOWTO.html#toc6" REL=contents>
+</HEAD>
+<BODY>
+<A HREF="Security-HOWTO-7.html">Avanti</A>
+<A HREF="Security-HOWTO-5.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc6">Indice</A>
+<HR>
+<H2><A NAME="password-security"></A> <A NAME="s6">6. Sicurezza delle Password e Crittografia </A></H2>
+
+<P>Uno dei mezzi di sicurezza pi&ugrave; importanti usati oggi sono le password.
+&Egrave; importante per voi e i vostri utenti avere password sicure e difficili
+da indovinare. Molte delle recenti distribuzioni Linux includono programmi
+<CODE>passwd</CODE> che non permettono di inserire password troppo facili. 
+Assicuratevi che il vostro <CODE>passwd</CODE> sia aggiornato e abbia questa
+caratteristica.
+<P>Un'approfondita discussione sulla crittografia trascende gli scopi di questo
+documento, ma &egrave; necessaria almeno un'introduzione. La crittografia \
+utilissima, forse persino necessaria, in questi giorni. Ci sono metodi
+crittografici di ogni genere, ognuno con la propria gamma di caratteristiche.
+<P>La maggior parte degli Unix (e Linux non fa eccezione) usa un algoritmo di 
+crittografia a senso unico, chiamato DES (Standard di Crittografia di Dati),
+per crittografare le password. Questa password crittata &egrave; poi
+conservata in <CODE>/etc/passwd</CODE> o (pi&ugrave; raramente) <CODE>/etc/shadow</CODE>. Quando tentate di entrare la password che scrivete &egrave; crittata ancora
+e confrontata con quella nel file che conserva le password. Se coincidono, 
+potete entrare. Anche se il DES &egrave; un algoritmo di compressione a due vie
+(potete codificare e decodificare, un messaggio, con le giuste chiavi), la 
+variante che Unix usa &egrave; a senso unico. Questo significa che non dovrebbe
+essere possibile invertire la crittografia per ottenere la password dal
+contenuto di <CODE>/etc/passwd</CODE> (o <CODE>/etc/shadow</CODE>).
+<P>Attacchi di forza bruta, come "Crack" o "John the Ripper" (vedi la Sezione
+<A HREF="Security-HOWTO-6.html#crack">crack</A>
+) possono spesso indovinare la password se la vostra non 
+&egrave; abbastanza casuale. I moduli PAM (vedi sotto) vi permettono di usare
+una diversa routine crittografica per le vostre password (MD5 o simili). 
+Potreste anche usare Crack a vostro vantaggio.
+Eseguite periodicamente Crack contro il 
+vostro database di password, per trovare quelle insicure. Poi contattate
+l'utente in questione e fategli cambiare password.
+<P>Potete visitare 
+<A HREF="http://consult.cern.ch/writeup/security/security_3.html">http://consult.cern.ch/writeup/security/security_3.html</A> per avere
+informazioni su come scegliere una buona password.
+<P>
+<P>
+<H2><A NAME="ss6.1">6.1 PGP e Crittografia a Chiave Pubblica</A>
+</H2>
+
+<P>
+<P>La crittografia a chiave pubblica, come quella usata per PGP, usa una chiave
+per crittare e una per decrittare. Al contrario, la crittografia tradizionale
+usa la stessa chiave per crittare e decrittare; questa chiave deve essere 
+conosciuta da entrambe le parti, e quindi trasferita in qualche modo da una 
+all'altra.
+<P>Per evitare la necessit&agrave; di trasmettere in modo sicuro la chiave, la 
+crittografia a chiave pubblica usa due chiavi separate: una pubblica e una
+privata. La chiave pubblica di ognuno &egrave; disponibile a tutti per crittare, 
+mentre ogni persona tiene la sua chiave privata per decrittare i messaggi 
+crittati con la sua chiave pubblica.
+<P>Ci sono vantaggi per entrambi i metodi di crittografia, e potete leggere di
+queste differenze nella 
+<A HREF="http://www.rsa.com/rsalabs/newfaq/">FAQ della RSA sulla crittografia</A>, citata alla fine di questa sezione.
+<P>PGP (Pretty Good Privacy) &egrave; ben supportata da Linux. Le versioni 2.6.2
+e 5.0 funzionano bene. Per una buona introduzione a PGP e a come usarlo, date
+un'occhiata alla FAQ di PGP: 
+<A HREF="http://www.pgp.com/service/export/faq/55faq.cgi">http://www.pgp.com/service/export/faq/55faq.cgi</A><P>Siate sicuri di usare la versione per il vostro stato. A causa dei limiti di
+esportazione del governo USA, &egrave; proibito portare fuori dagli USA ogni
+forma di crittografia elettronica.
+<P>I controlli sull'esportazione dagli USA sono ora gestiti dall'EAR (Regole di
+Amministrazione dell'Esportazione). Non sono pi&ugrave; gestite dall'ITAR.
+<P>C'&egrave; anche una guida passo-passo per configurare PGP su Linux presso
+<A HREF="http://mercury.chem.pitt.edu/~angel/LinuxFocus/English/November1997/article7.html">http://mercury.chem.pitt.edu/~angel/LinuxFocus/English/November1997/article7.html</A>.
+&Egrave; scritta per la versione internazionale di PGP, ma &egrave; facilmente
+adattabile alla versione USA. Potreste aver bisogno di una patch anche per
+alcune recenti versioni di Linux; la patch &egrave; disponibile presso
+<A HREF="ftp://metalab.unc.edu/pub/Linux/apps/crypto">ftp://metalab.unc.edu/pub/Linux/apps/crypto</A>.
+<P>C'&egrave; un progetto che lavora ad una versione libera e open source di PGP.
+GnuPG &egrave; un sostituto completo e libero per PGP. Visto che non usa IDEA
+o RSA pu&ograve; essere usato senza restrizioni. GnuPG aderisce a 
+<A HREF="http://www.faqs.org/rfcs/rfc2440.html">OpenPGP</A>. Visitate il sito
+di GNU Privacy Guard per avere pi&ugrave; informazioni: 
+<A HREF="http://www.gnupg.org">http://www.gnupg.org/</A>.
+<P>Ulteriori informazioni sulla crittografia si trovano nella FAQ della RSA sulla
+crittografia, disponibile presso
+<A HREF="http://www.rsa.com/rsalabs/newfaq/">http://www.rsa.com/rsalabs/newfaq/</A>.  Qui troverete informazioni su
+termini come "Diffie-Hellman", "crittografia a chiave pubblica", "certificati
+digitali", ecc.
+<P>
+<P>
+<H2><A NAME="ss6.2">6.2 SSL, S-HTTP, HTTPS e S/MIME</A>
+</H2>
+
+<P>Spesso gli utenti chiedono informazioni sulle differenze fra i vari protocolli
+di sicurezza e crittografia, e su come usarli. Anche se questo non &egrave; un
+documento sulla crittografia, &egrave; una buona idea spiegare brevemente
+cosa sono i protocolli e dove trovare altre informazioni.
+<UL>
+<LI><B>SSL:</B> - SSL, o Secure Sockets Layer (Layer di Socket Sicuri),
+&egrave; un metodo crittografico sviluppato da Netscape per dare sicurezza su
+Internet. Supporta diversi protocolli crittografici, e fornisce autenticazione
+del client e del server.  SSL opera sul layer di trasporto, crea un canale di
+dati sicuro e crittato e pu&ograve; quindi crittare dati di molti tipi.
+Ci&ograve; si nota soprattutto quando si visita un sito sicuro con Communicator
+ed &egrave; la base di tutte le comunicazioni sicure con Communicator, oltre
+che con altro software Netscape. Ulteriori informazioni si trovano presso
+<A HREF="http://www.consensus.com/security/ssl-talk-faq.html">http://www.consensus.com/security/ssl-talk-faq.html</A>.
+Sono disponibili informazioni su altre forme di sicurezza di Netscape e un buon
+punto di partenza su questi protocolli presso 
+<A HREF="http://home.netscape.com/info/security-doc.html">http://home.netscape.com/info/security-doc.html</A>.
+<P>
+</LI>
+<LI><B>S-HTTP:</B> - S-HTTP &egrave; un altro protocollo che fornisce
+servizi di sicurezza su Internet. &Egrave; stato progettato per dare
+privacy, autenticazione, integrit&agrave; e per impedire scambi di persona,
+supportando contemporaneamente meccanismi di controllo con chiavi multiple e
+algoritmi crittografici attraverso la negoziazione di opzioni fra le parti
+coinvolte in ogni transazione. S-HTTP &egrave; limitato al software specifico
+che lo implementa, e critta ogni messaggio individualmente.
+(Dalla FAQ della RSA sulla crittografia, pagina 138)
+<P>
+</LI>
+<LI><B>S/MIME:</B> - S/MIME, o Secure Multipurpose Internet Mail
+Extension (Estensione Multiuso Sicura per la Posta via Internet), &egrave; uno
+standard crittografico usato per crittare posta elettronica e altri tipi di
+messaggi su Internet. &Egrave; uno standard aperto sviluppato da RSA, quindi probabilmente lo vedremo presto su Linux. Altre informazioni su S/MIME si trovano
+presso 
+<A HREF="http://home.netscape.com/assist/security/smime/overview.html">http://home.netscape.com/assist/security/smime/overview.html</A>.</LI>
+</UL>
+<P>
+<P>
+<H2><A NAME="ss6.3">6.3 Implementazioni IPSEC per Linux</A>
+</H2>
+
+<P>Oltre a CIPE, e altre forme di crittografia, ci sono anche molte altre 
+implementazioni di IPSEC per Linux. IPSEC &egrave; un tentativo della IETF di
+creare comunicazioni crittograficamente sicure al livello della rete IP e di
+fornire autenticazione, integrit&agrave; controllo di accesso e privacy.
+Informazioni su IPSEC si trovano presso 
+<A HREF="http://www.ietf.org/html.charters/ipsec-charter.html">http://www.ietf.org/html.charters/ipsec-charter.html</A>. Troverete anche
+link ad altri protocolli, una mailing list di IPSEC e degli archivi.
+<P>L'implementazione Linux di x-kernel, che viene sviluppata all'Universit&agrave;
+dell'Arizona, usa una struttura basata su oggetti per implementare protocolli
+i rete detti x-kernel, e si trova presso 
+<A HREF="http://www.cs.arizona.edu/xkernel/hpcc-blue/linux.html">http://www.cs.arizona.edu/xkernel/hpcc-blue/linux.html</A>.
+Semplificando, l'x-kernel &egrave; un metodo di passare messaggi al livello del
+kernel, che rende pi&ugrave; facile un'implementazione.
+<P>Un'altra implementazione libera di IPSEC &egrave; la IPSEC FreeS/WAN.
+Sul loro sito si legge:
+<BLOCKQUOTE>
+"Questi servizi vi permettono di creare tunnel sicuri attraverso reti
+inaffidabili. Ogni cosa che passa per la rete inaffidabile &egrave; crittata
+dalla macchina gateway IPSEC e decrittata dal gateway all'altro capo.
+Il risultato &egrave; una  Virtual Private Network (Rete Privata Virtuale) o 
+VPN. &Egrave; una rete che rimane privata nonostante includa macchine connesse
+attraverso l'insicura Internet."
+</BLOCKQUOTE>
+<P>&Egrave; scaricabile presso 
+<A HREF="http://www.xs4all.nl/~freeswan/">http://www.xs4all.nl/~freeswan/</A>, ed ha appena raggiunto la versione 1.0
+al momento della scrittura.
+<P>Come per altre forme di crittografia, non &egrave; distribuita col kernel di 
+default a causa di restrizioni di esportazione.
+<P>
+<P>
+<H2><A NAME="ssh"></A> <A NAME="ss6.4">6.4 <CODE>ssh</CODE> (Shell Sicura) e <CODE>stelnet</CODE></A>
+</H2>
+
+<P><CODE>ssh</CODE> e <CODE>stelnet</CODE> sono suite di programmi che vi permettono di
+fare login a sistemi remoti su una connessione crittata.
+<P><CODE>openssh</CODE> &egrave; una suite di programmi usata come sostituto sicuro di
+<CODE>rlogin</CODE>, <CODE>rsh</CODE> e <CODE>rcp</CODE>. Usa una crittografia a chiave
+pubblica per crittare le comunicazioni fra due host, oltre che per autenticare
+gli utenti. Pu&ograve; essere usata per fare login in sicurezza su host remoti
+o copiare dati fra host, evitando intercettazioni (dirottamenti della sessione)
+e il DNS spoofing. Eseguir&agrave; compressione dei dati sulle connessioni e
+comunicazioni X11 sicure fra host. 
+<P>Ci sono diverse implementazioni ssh al momento. Quella commerciale originale 
+di Data Fellows si trova nella homepage di <CODE>ssh</CODE> presso 
+<A HREF="http://www.datafellows.com">http://www.datafellows.com</A>. 
+<P>L'eccellente implementazione Openssh &egrave; basata su una delle prime
+versioni del ssh di Data Fellows ed &egrave; stata completamente ricostruita 
+per non includere alcuna parte proprietaria o brevettata. &Egrave; libera e 
+sotto licenza BSD. Si trova presso: 
+<A HREF="http://www.openssh.com">http://www.openssh.com</A>. 
+<P>Esiste anche un progetto open source per reimplementare ssh da zero chiamato
+"psst...". Per ulteriori informazioni visitate: 
+<A HREF="http://www.net.lut.ac.uk/psst/">http://www.net.lut.ac.uk/psst/</A> 
+<P>Potete anche usare <CODE>ssh</CODE> dalla vostra workstation Windows verso un
+server <CODE>ssh</CODE> Linux.  Ci sono diversi client liberi per Windows, incluso
+quello presso 
+<A HREF="http://guardian.htu.tuwien.ac.at/therapy/ssh/">http://guardian.htu.tuwien.ac.at/therapy/ssh/</A> oltre ad una versione
+commerciale di DataFellows, presso 
+<A HREF="http://www.datafellows.com">http://www.datafellows.com</A>. 
+<P>SSLeay &egrave; una versione libera del protocollo di Netscape Secure Sockets
+Layer, Sviluppato da Eric Young.  Include diverse applicazioni, come Secure
+telnet, un modulo per Apache, diversi database, oltre a molti algoritmi
+inclusi DES, IDEA e Blowfish.
+<P>Usando questa libreria &egrave; stato creato un sostituto sicuro per telnet
+che usa la crittografia per la connessione. A differenza di SSH, stelnet usa
+SSL, il protocollo di Netscape. potete trovare Secure telnet e Secure FTP
+iniziando con la FAQ di SSLeay, disponibile presso 
+<A HREF="http://www.psy.uq.oz.au/~ftp/Crypto/">http://www.psy.uq.oz.au/~ftp/Crypto/</A>.
+<P>SRP &egrave; un'altra implementazione sicura di telnet/ftp.
+Dalla loro pagina web:
+<P>
+<BLOCKQUOTE>
+"Il progetto SRP sta sviluppando software sicuro per Internet per l'uso
+libero in tutto il mondo. Iniziando con una distribuzione del tutto sicura di
+telnet e FTP, speriamo di soppiantare i deboli sistemi di autenticazione con
+forti sostituti che non sacrifichino la facilit&agrave; d'uso per la sicurezza.
+La sicurezza dovrebbe essere lo standard, non un'opzione!" 
+</BLOCKQUOTE>
+<P>Per ulteriori informazioni visitate 
+<A HREF="http://srp.stanford.edu/srp">http://srp.stanford.edu/srp</A>.
+<P>
+<P>
+<H2><A NAME="ss6.5">6.5 PAM - Pluggable Authentication Modules (Moduli Aggiuntivi di</A>
+Autenticazione)</H2>
+
+<P>Le ultime versioni della distribuzione Red Hat Linux sono distribuiti con uno
+schema di autenticazione unificato detto "PAM". PAM permette di cambiare i
+vostri metodi e requisiti di autenticazione al volo, e di aggiornare di
+conseguenza tutti i metodi di autenticazione senza ricompilare alcun binario.
+La configurazione di PAM trascende gli scopi di questo documento, ma siate 
+certi di dare un'occhiata al sito web dei PAM per altre informazioni. 
+<A HREF="http://www.kernel.org/pub/linux/libs/pam/index.html">http://www.kernel.org/pub/linux/libs/pam/index.html</A>.
+<P>Solo alcune delle cose che potete fare con PAM:
+<P>
+<UL>
+<LI>Usare crittografia non-DES per le password. (Rendendole pi&ugrave; difficili
+da decodificare con la forza bruta.)</LI>
+<LI>Impostare limiti alle risorse degli utenti perch&eacute; non possano attuare
+attacchi di denial-of-service (numero di processi, quantit&agrave; di memoria,
+ecc.) </LI>
+<LI>Abilitare le shadow passwords (vedi sotto) al volo</LI>
+<LI>Permettere a singoli utenti di accedere solo ad ore precise da posti precisi</LI>
+</UL>
+<P>Nel giro di poche ore dall'installazione e configurazione del vostro sistema,
+potete prevenire molti attacchi. Per esempio, usando PAM per impedire l'uso
+nel sistema di file <CODE>.rhosts</CODE> nella home directory degli utenti
+aggiungendo queste linee a <CODE>/etc/pam.d/rlogin</CODE>:
+<BLOCKQUOTE><CODE>
+<PRE>
+                #
+                # disabilita rsh/rlogin/rexec per gli utenti
+                #
+                login auth required pam_rhosts_auth.so no_rhosts
+</PRE>
+</CODE></BLOCKQUOTE>
+<P>
+<P>
+<H2><A NAME="ss6.6">6.6 Incapsulamento Crittografico IP (CIPE)</A>
+</H2>
+
+<P>Lo scopo primario di questo software &egrave; di fornire un mezzo per
+avere interconnessione sicura (contro l'eavesdropping, inclusi l'analisi del
+traffico e l'inserimento di falsi messaggi)fra le sottoreti attraverso una rete
+a pacchetti inaffidabile come Internet.
+<P>CIPE critta i dati al livello di rete. I pacchetti che viaggiano fra gli host
+di rete sono crittati. Il motore crittografico &egrave; affiancato al driver
+che manda e riceve pacchetti.
+<P>In questo si differenzia da SSH, che critta i dati per connessione, a livello
+dei socket. Viene crittata una connessione logica fra programmi eseguiti su
+host differenti.
+<P>CIPE pu&ograve; essere usato per il tunnelling, al fine di creare una Virtual
+Private Network. La crittografia a basso livello ha il vantaggio di poter 
+essere usata fra le due reti connesse con la VPN, senza cambiamento per il
+software applicativo.
+<P>Riassumendo la documentazione CIPE:
+<P>
+<BLOCKQUOTE>
+Gli standard IPSEC definiscono un set di protocolli che possono essere usati
+(oltre alle altre cose) per costruire VPN crittate. Comunque, IPSEC &egrave;
+un protocollo piuttosto pesante e complicato da impostare con molte opzioni,
+le implementazioni del protocollo completo  sono tuttora usate raramente e
+alcune caratteristiche (come la gestione delle chiavi) non sono ancora del
+tutto risolte. CIPE ha un approccio pi&ugrave; semplice in cui molte cose
+che possono essere parametrizzate (come la scelta del algoritmo crittografico
+effettivamente usato) sono una scelta da fare all'installazione. Questo limita
+la flessibilit&agrave;, ma permette una implementazione pi&ugrave; semplice e
+quindi efficiente e semplice in quanto a debug.
+</BLOCKQUOTE>
+<P>Ulteriori informazioni possono essere trovate presso
+<A HREF="http://www.inka.de/~bigred/devel/cipe.html">http://www.inka.de/~bigred/devel/cipe.html</A><P>Come per altre forme di crittografia, non &egrave; distribuita di default con
+il kernel a causa di restrizioni di esportazione.
+<P>
+<P>
+<H2><A NAME="ss6.7">6.7 Kerberos</A>
+</H2>
+
+<P>Kerberos &egrave; un sistema di autenticazione sviluppato dal progetto Athena
+al MIT. Quando un utente fa un login, Kerberos lo autentica (usando una 
+password), e d&agrave; all'utente un modo per provare la sua identit&agrave;:
+ad altri server ed host sparsi per la rete.
+<P>Questa autenticazione &egrave; poi usata da programmi come <CODE>rlogin</CODE> per
+lasciar entrare l'utente in altri host senza una password (al posto del file
+<CODE>.rhosts</CODE>). Questo metodo di autenticazione pu&ograve; anche essere
+usato dal sistema di posta per garantire che la posta sia consegnata alla
+persona giusta, oltre che per garantire che il mittente sia chi dice di essere.
+<P>Kerberos e i programmi con esso distribuiti evitano che gli utenti possano
+ingannare il sistema facendogli credere di essere qualcun altro. Purtroppo
+installare Kerberos &egrave; molto intrusivo, visto che richiede la modifica
+o la sostituzione di molti programmi standard.
+<P>Troverete ulteriori informazioni su Kerberos leggendo 
+<A HREF="http://www.cis.ohio-state.edu/hypertext/faq/usenet/kerberos-faq/general/faq.html">le FAQ di Kerberos</A>; inoltre troverete il codice presso 
+<A HREF="http://nii.isi.edu/info/kerberos/">http://nii.isi.edu/info/kerberos/</A>.
+<P>[Da: Stein, Jennifer G., Clifford Neuman, e Jeffrey L. Schiller.
+"Kerberos: An Authentication Service for Open Network Systems." USENIX 
+Conference Proceedings, Dallas, Texas, Winter 1998.]
+<P>Kerberos non dovrebbe essere il primo passo nel miglioramento della sicurezza
+del vostro host. Porta a molte conseguenze e non &egrave; usato quanto, per
+esempio, SSH.
+<P>
+<P>
+<H2><A NAME="ss6.8">6.8 Shadow Password.</A>
+</H2>
+
+<P>Le shadow password sono un mezzo di tenere segrete agli utenti normali le 
+password crittate. Le ultime versioni di RedHat e Debian Linux usano di default
+le shadow password, ma in altri sistemi le password crittate sono tenute in
+<CODE>/etc/passwd</CODE> dove tutti possono leggerle. Quindi chiunque potrebbe
+eseguire su di loro programmi che tentino di indovinare quali sono.
+Al contrario, le shadow password sono salvate in <CODE>/etc/shadow</CODE> che solo
+gli utenti privilegiati possono leggere. Per usare delle shadow password dovete
+assicurarvi che tutte le applicazioni che devono leggere le password siano
+ricompilate per supportarle. PAM (vedi sopra) invece permette di semplicemente
+installare un modulo shadow; non richiede la ricompilazione degli eseguibili.
+Potete fare riferimento allo Shadow-Password HOWTO per ulteriori informazioni
+se necessario. &Egrave; 
+<A HREF="http://metalab.unc.edu/LDP/HOWTO/Shadow-Password-HOWTO.html">http://metalab.unc.edu/LDP/HOWTO/Shadow-Password-HOWTO.html</A>
+&Egrave; abbastanza datato al momento, e non serve per le distribuzioni che supportino PAM.
+<P>
+<P>
+<H2><A NAME="crack"></A> <A NAME="ss6.9">6.9 "Crack" e "John the Ripper"</A>
+</H2>
+
+<P>Se per qualche ragione il vostro programma <CODE>passwd</CODE> non forza l'uso di
+password difficili da indovinare potreste volere eseguire un programma per
+crackare le password per essere sicuri che le password dei vostri utenti siano
+sicure.
+<P>I programmi per crackare le password funzionano su un semplice principio:
+provano ogni parola nel dizionario, e quindi variazioni di quelle parole,
+crittandole tutte e comparandole alle vostre password crittate. Se trovano una
+corrispondenza sanno di aver trovato quella giusta.
+<P>Esistono moltissimi programmi di questo tipo... i due pi&ugrave; degni di nota
+sono "Crack" e "John the Ripper" (
+<A HREF="http://www.false.com/security/john/index.html">http://www.false.com/security/john/index.html</A>).
+Usano moltissimo la cpu, ma, eseguendoli,  capirete se possono trovare le 
+vostre password e potrete quindi avvertire gli utenti con password deboli.
+Notate che un intrusore dovrebbero prima riuscire a trovare qualche altro buco
+per leggere il vostro <CODE>/etc/passwd</CODE>, ma questi buchi sono pi&ugrave;
+comuni di quanto pensiate
+<P>Visto che la sicurezza &egrave; resistente quanto il pi&ugrave; insicuro degli
+host, &egrave; bene ricordare che se avete macchine Windows sulla vostra rete
+dovreste controllare L0phtCrack, una versione Windows di Crack. &Egrave;
+disponibile presso 
+<A HREF="http://www.l0pht.com">http://www.l0pht.com</A><P>
+<P>
+<H2><A NAME="ss6.10">6.10 CFS - File System Crittografico e TCFS - File System Crittografico Trasparente</A>
+</H2>
+
+<P>CFS &egrave; un modo per crittare interi alberi di directory e per agli utenti
+di salvare al loro interno file crittografati. Usa un server NFS eseguito sulla
+macchina locale. Gli RPM sono disponibili presso 
+<A HREF="http://www.zedz.net/redhat/">http://www.zedz.net/redhat/</A>, e troverete altre informazioni su come
+funziona presso 
+<A HREF="ftp://ftp.research.att.com/dist/mab/">ftp://ftp.research.att.com/dist/mab/</A>.
+<P>TCFS migliora CFS aggiungendo pi&ugrave; integrazione con il file system.
+Ulteriori informazioni sono presso: 
+<A HREF="http://edu-gw.dia.unisa.it/tcfs/">http://edu-gw.dia.unisa.it/tcfs/</A>.
+<P>Inoltre non serve che sia usato su interi file system. Funziona anche su alberi
+di directory.
+<P>
+<H2><A NAME="ss6.11">6.11 X11, SVGA e Sicurezza della GUI</A>
+</H2>
+
+<P>
+<P>
+<H3>X11</H3>
+
+<P>E' importante rendere sicuro la vostra interfaccia grafica per
+evitare che un intrusore ottengano la vostra password mentre la scrivete,
+leggano i documenti o le informazioni che avete sullo schermo o persino che
+usino un buco per avere l'accesso di root. Anche eseguire applicazioni X remote
+su una rete deve essere considerato come un pericolo, perch&eacute; permette
+a chi intercetta i pacchetti di vedere tutte le interazioni fra voi e il sistema
+remoto. 
+<P>X ha una serie di meccanismi di controllo degli accessi. Il pi&ugrave; semplice
+di questi &egrave; basato sugli host: usate <CODE>xhost</CODE> per specificare gli
+host a cui &egrave; permesso l'accesso al vostro display. Questo metodo non
+&egrave; affatto sicuro, perch&eacute; se qualcuno ha accesso alla vostra
+macchina, pu&ograve; aggiungere la <I>sua macchina</I>al vostro <CODE>xhost</CODE> 
+ed ottenere facile accesso. Inoltre, se dovete dare l'accesso ad una macchina
+inaffidabile, chiunque sia l&igrave; pu&ograve; compromettere la vostra GUI. 
+<P>Quando usate <CODE>xdm</CODE> (X Display Manager) per entrare, avete un metodo di
+accesso molto migliore: MIT-MAGIC-COOKIE-1. Un "cookie" a 128 bit viene creato
+nel vostro file <CODE>.Xauthority</CODE>. Se dovete lasciare che una macchina
+remota acceda al vostro display, potete usare il comando <CODE>xauth</CODE> e le
+informazioni nel vostro file <CODE>.Xauthority</CODE> per dare accesso solo a 
+quella connessione. Leggete il Remote-X-Apps mini-howto, disponibile presso
+<A HREF="http://metalab.unc.edu/LDP/HOWTO/mini/Remote-X-Apps.html">http://metalab.unc.edu/LDP/HOWTO/mini/Remote-X-Apps.html</A>.
+<P>Potete anche usare <CODE>ssh</CODE> (cfr. 
+<A HREF="Security-HOWTO-6.html#ssh">ssh</A>
+, sopra) per permettere
+connessioni a X sicure. Ci&ograve; ha il vantaggio anche di essere trasparente
+per l'utente finale, e comporta che nessun dato non crittato passa per la rete.
+<P>Controllate la man page <CODE>Xsecurity</CODE> per avere pi&ugrave; informazioni 
+sulla sicurezza di X. La via sicura &egrave; usare <CODE>xdm</CODE> per entrare
+nella console e quindi usare <CODE>ssh</CODE> per eseguire programmi X su macchine
+remote. 
+<P>
+<P>
+<H3>SVGA </H3>
+
+<P>I programmi che usano SVGAlib sono in genere SUID-root allo scopo di accedere
+a tutto l'hardware della vostra macchina Linux. Questo li rende molto
+pericolosi. Se si bloccano, in genere avete bisogno di riavviare la macchina
+per riavere una console usabile. Assicuratevi che tutti i programmi SVGA che
+usate siano autentici e siano almeno abbastanza affidabili. Ancor meglio, non
+eseguitene affatto. 
+<P>
+<P>
+<H3>GGI (Generic Graphics Interface project) (Progetto di Interfaccia Grafica Generica)</H3>
+
+<P>Il progetto Linux GGI sta tentando di risolvere i diversi problemi delle
+interfacce grafiche di Linux. GGI sposter&agrave; una piccola parte del codice
+video nel kernel di Linux e quindi controller&agrave; direttamente l'accesso
+al sistema video. Questo significa che GGI potr&agrave; ripristinare la vostra
+console in ogni momento. Inoltre permetteranno di usare una chiave sicura,
+per assicurarvi che non c'&egrave; alcun cavallo di Troia che manometta il
+<CODE>login</CODE> della vostra console. 
+<A HREF="http://synergy.caltech.edu/~ggi/">http://synergy.caltech.edu/~ggi/</A> 
+<P>
+<P>
+<HR>
+<A HREF="Security-HOWTO-7.html">Avanti</A>
+<A HREF="Security-HOWTO-5.html">Indietro</A>
+<A HREF="Security-HOWTO.html#toc6">Indice</A>
+</BODY>
+</HTML>

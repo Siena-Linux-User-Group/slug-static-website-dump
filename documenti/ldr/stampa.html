@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr8.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr10.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr10.html">[successivo]</A>
+<A HREF="ldr8.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 6. &nbsp; <A NAME="title481"></A><A NAME="anchor509"></A>Stampa</H1>
+
+<H2>6.1 &nbsp; <A NAME="title482"></A><A NAME="anchor510"></A>
+ Impostazioni generali </H2>
+
+<P><STRONG>6.1.1)&nbsp;&nbsp;<A NAME="title483"></A><A NAME="anchor511"></A>
+ Com'&egrave; strutturato il file <CODE>/etc/printcap</CODE>? <A NAME="index2213"></A> </STRONG></P>
+
+<P>Il file in oggetto viene letto dal demone <SAMP>lpd</SAMP> e contiene le informazioni relative ai dispositivi di stampa. Risulta essere suddiviso in varie sezioni che possono definire stampanti diverse o propriet&agrave; diverse della stessa stampante.</P>
+
+<P>Ogni sezione &egrave; composta da pi&ugrave; righe ognuna delle quali inizia con <SAMP>:</SAMP> e termina con <SAMP>:\</SAMP> tranne la prima che non ha i <SAMP>:</SAMP> iniziali e l'ultima che termina solo con <SAMP>:</SAMP>.</P>
+
+<P>Se non sono presenti linee di commento (<SAMP>#</SAMP>), la prima riga definisce il nome della stampante cui si far&agrave; riferimento. Pi&ugrave; nomi per lo stesso dispositivo, sono separati dal carattere <SAMP>|</SAMP>:</P>
+
+<PRE>lp|hpgettoinc:\</PRE>
+
+<P>In questo caso si usano due nomi per indicare la stessa stampante. Poi viene indicata la directory della coda di stampa:</P>
+
+<PRE>:sd=/var/spool/lpd/lp:\</PRE>
+
+<P>Viene poi indicato il limite della dimensione del file che vogliamo stampare e viene lasciato generalmente a <STRONG>0</STRONG>:</P>
+
+<PRE>: mx#0:\</PRE>
+
+<P>Il comando <SAMP>sh</SAMP> evita la stampa della pagina di separazione tra 2 processi di stampa:</P>
+
+<PRE>:sh:\</PRE>
+
+<P>Viene indicato poi il dispositivo da utilizzare per stampare (<CODE>/dev/lp0</CODE> in questo caso):</P>
+
+<PRE>:lp=/dev/lp0:\</PRE>
+
+<P>Infine si trova la dichiarazione di un filtro (<SAMP>if</SAMP> sta per <EM>input filter</EM>) cio&egrave; di un comando utilizzato per invocare quel programma che &egrave; in grado di gestire la stampa di formati particolari (es.: ps, <A NAME="index2214"></A>JPG, ecc.):</P>
+
+<PRE>:if=/var/spool/lpd/lp/filter:</PRE>
+
+<P>Questo in genere conclude una sezione del file.</P>
+
+<P><STRONG>6.1.2)&nbsp;&nbsp;<A NAME="title484"></A><A NAME="anchor512"></A>
+ Perch&eacute; non vengono trovati i dispositivi <CODE>/dev/lp?</CODE>? <A NAME="index2215"></A> <A NAME="index2216"></A> </STRONG></P>
+
+<P>Qualora vengano visualizzati messaggi reclamanti la mancanza dei dispositivi <CODE>/dev/lp<VAR>x</VAR></CODE><SUP><A HREF="stampa.html#footnote1" NAME="footnote-ref1">(1)</A></SUP> durante l'installazione di una distribuzione oppure all'atto della stampa si dovr&agrave; verificare la presenza delle righe:</P>
+
+<PRE>alias parport_lowlevel parport_pc
+options parport_pc io=0x378,0x278 irq=7,auto</PRE>
+
+<P>all'interno del file <CODE>/etc/conf.modules</CODE>.</P>
+
+<P><STRONG>6.1.3)&nbsp;&nbsp;<A NAME="title485"></A><A NAME="anchor513"></A>
+ Come si configura la stampante in una distribuzione GNU/Linux <A NAME="index2217"></A>Red&nbsp;Hat? <A NAME="index2218"></A> <A NAME="index2219"></A> </STRONG></P>
+
+<P>Nella distribuzione <A NAME="index2220"></A>Red&nbsp;Hat pu&ograve; capitare che vengano omesse delle componenti fondamentali per stampare. Occorre infatti verificare le impostazioni.</P>
+
+<P>In particolare, si dovranno caricare i giusti moduli per la porta parallela. Nel file <CODE>/etc/conf.modules</CODE> dovranno essere presenti le seguenti righe:</P>
+
+<PRE>alias parport_lowlovel parport_pc
+options parport_pc io=0x3bc,0x378,0x278 irq=none,7,auto</PRE>
+
+<P>Occorrer&agrave; poi caricare i moduli appositi mediante i seguenti comandi:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod parport</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod parport_pc</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod parport_probe </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>insmod lp parport=0,2</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Occorrer&agrave; lanciare poi il demone <SAMP>lpd</SAMP> o mediante il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>lpd</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>oppure mediante:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>killall -HUP lpd</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>6.1.4)&nbsp;&nbsp;<A NAME="title486"></A><A NAME="anchor514"></A>
+ Come si visualizza la coda di stampa? <A NAME="index2221"></A> </STRONG></P>
+
+<P>Per visualizzare la coda di stampa si deve utilizzare il comando <SAMP>lpq</SAMP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>lpq -l</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>6.1.5)&nbsp;&nbsp;<A NAME="title487"></A><A NAME="anchor515"></A>
+ Come si eliminano i processi di stampa in coda? <A NAME="index2222"></A> </STRONG></P>
+
+<P>Dopo aver visualizzato con <SAMP>lpq</SAMP> la coda di stampa, si potranno eliminare i processi desiderati mediante il comando <SAMP>lprm</SAMP>.</P>
+
+<P>Se ad esempio si desiderasse interrompere e rimuovere dalla coda di stampa il processo 12, occorrer&agrave; impartire il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>lprm 12</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>6.1.6)&nbsp;&nbsp;<A NAME="title488"></A><A NAME="anchor516"></A>
+ Come si elimina tutta la coda di stampa? <A NAME="index2223"></A> </STRONG></P>
+
+<P>Per eliminare per intero la coda di stampa si dovr&agrave; utilizzare il comando <SAMP>lprm</SAMP> nel seguente modo:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>lprm -</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>6.1.7)&nbsp;&nbsp;<A NAME="title489"></A><A NAME="anchor517"></A>
+ Come si evita l'effetto scalettato nella stampa di testi? <A NAME="index2224"></A> </STRONG></P>
+
+<P>In un testo creato con un sistema <A NAME="index2225"></A>UNIX alla fine della riga c'&egrave; solo l'avanzamento alla riga successiva e non il ritorno carrello. Le stampanti nella maggior parte di casi si aspettano il codice di ritorno carrello. Per ovviare si pu&ograve; creare un filtro in <A NAME="index2226"></A>Perl:</P>
+
+<PRE>           
+#!perl
+while (&lt;STDIN&gt;) {chop $_; print "$_\r\n";};</PRE>
+
+<P>e farlo invocare da <SAMP>lpr</SAMP>. Il file <CODE>/etc/printcap</CODE> andr&agrave; modificato inserendo una nuova sezione per la stessa stampante da invocare nel caso di stampa di file di testo.</P>
+
+<P>Occorrer&agrave; inoltre ricordarsi di assegnare i permessi di esecuzione allo <A NAME="index2227"></A>script sopra descritto.</P>
+
+<P><STRONG>6.1.8)&nbsp;&nbsp;<A NAME="title490"></A><A NAME="anchor518"></A>
+ Come si evita la stampa dei separatori con il nome dell'utente? <A NAME="index2228"></A> <A NAME="index2229"></A> </STRONG></P>
+
+<P>Si dovr&agrave; inserire nel file <CODE>/etc/printcap</CODE> la riga:</P>
+
+<PRE>        :sh:\</PRE>
+
+<P>nell'ambito della sezione che definisce la stampante. Questa opzione elimina il separatore di pagina che serve nell'ambito di grosse reti, per capire chi &egrave; l'autore della stampa.</P>
+
+<H2>6.2 &nbsp; <A NAME="title491"></A><A NAME="anchor519"></A>
+ Stampa da riga di comando </H2>
+
+<P><STRONG>6.2.1)&nbsp;&nbsp;<A NAME="title492"></A><A NAME="anchor520"></A>
+ Come si stampa un file da riga di comando? <A NAME="index2230"></A> </STRONG></P>
+
+<P>Per stampare un file si deve utilizzare il comando <SAMP>lpr</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>lpr <VAR>file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando stampa il file <VAR>file</VAR> o meglio lo mette nella coda di stampa ed il demone <SAMP>lpd</SAMP> si occuper&agrave; di stamparlo.</P>
+
+<P><STRONG>6.2.2)&nbsp;&nbsp;<A NAME="title493"></A><A NAME="anchor521"></A>
+ Come si stampa il contenuto della directory corrente? <A NAME="index2231"></A> </STRONG></P>
+
+<P>Il seguente comando permetter&agrave; la stampa di tutti i file presenti nella directory corrente:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>ls -la |lpr</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>6.2.3)&nbsp;&nbsp;<A NAME="title494"></A><A NAME="anchor522"></A>
+ Come si stampa un file <A NAME="index2232"></A>PostScript da riga di comando? <A NAME="index2233"></A> <A NAME="index2234"></A> </STRONG></P>
+
+<P>Per stampare un file <A NAME="index2235"></A>PostScript  da riga di comando si utilizzer&agrave; il seguente comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>gs -dNOPAUSE -sDEVICE=<VAR> tipo</VAR> -sOutputFile=|lpr <VAR>file</VAR>.ps </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="stampa.html#footnote2" NAME="footnote-ref2">(2)</A></SUP></P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="stampa.html#footnote-ref1" NAME="footnote1">1)</A> dove <VAR>x</VAR> assume valori quali 0,1,2,3,ecc.</P>
+
+<P><A HREF="stampa.html#footnote-ref2" NAME="footnote2">2)</A> dove <VAR>tipo</VAR> assumer&agrave; valori quali <SAMP>deskjet</SAMP>, <SAMP>laserjet</SAMP>, ecc.</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="stampa.html">stampa.html</A></P>
+<P>
+<A HREF="ldr10.html">[successivo]</A>
+<A HREF="ldr8.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

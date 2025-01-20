@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>File di regole (esempi)</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Procmail" href="procmail.html">
+    <LINK rel="PREVIOUS" title="File di configurazione" href=
+    "configurazioneprocmail.html">
+    <LINK rel="NEXT" title="Usi avanzati e trucchetti" href=
+    "advancedprocmail.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "configurazioneprocmail.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 7.
+          Procmail</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "advancedprocmail.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="REGOLEPROCMAIL">7.3. File di regole
+      (esempi)</A></H1>
+
+      <P><B class="KEYCAP">=== file: general.rc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+# backup di tutte le email in ingresso
+# N.B.: se si vuole un backup compresso, sostituire con quanto segue, senza # iniziale
+:0c:
+|gzip -9fc &gt;&gt; .backup.gz
+#:0c:
+#.backup
+
+# corregge possibili header from errati
+:0fhw:
+| $FORMAIL -I "From " -a "From "
+
+# emimina i messaggi doppi, copiandoli per sicurezza in un file apposito
+:0Whc:msgid.lock
+| $FORMAIL -D 8192 $PMDIR/msgid.cache
+:0a:
+.duplicati
+
+:0:
+* ^TO_root
+IN.admin
+
+#correzione vecchi messaggi pgp
+:0
+* !^Content-Type: message/
+* !^Content-Type: multipart/
+* !^Content-Type: application/pgp
+{
+        :0 fBw
+        * ^-----BEGIN PGP MESSAGE-----
+        * ^-----END PGP MESSAGE-----
+        | formail -i "Content-Type: application/pgp; format=text; x-action=encrypt"
+ 
+        :0 fBw
+        * ^-----BEGIN PGP SIGNED MESSAGE-----
+        * ^-----BEGIN PGP SIGNATURE-----
+        * ^-----END PGP SIGNATURE-----
+        | formail -i "Content-Type: application/pgp; format=text; x-action=sign"
+}
+
+# corregge indicatori di firme errati (maledetto outlook...)
+:0 fBw
+* ^--$
+| sed -e 's/^--$/-- /'
+
+# corregge prefissi di risposta errati (sempre sia maledetto outlook...)
+:0 fHw
+* ^Subject:.*R:
+| sed -e 's/R:/Re:/g'
+
+# "impipa" a Little Brother DataBase per conservare
+# gli indirizzi email di chiunque mi scriva
+:0hc
+| lbdb-fetchaddr
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Il flag <B class="KEYCAP">f</B> permette di
+          considerare la <EM>pipe</EM> seguente come un filtro; il flag <B
+          class="KEYCAP">h</B> impone che siano inviati anche gli
+          <EM>header</EM> in <EM>pipe</EM>; il flag <B class="KEYCAP">w</B>
+          impedisce che il file di lock sia rilasciato fino a quando il
+          comando in <EM>pipe</EM> non ha concluso il suo processo. Il flag
+          <B class="KEYCAP">c</B> permette di far proseguire l'email
+          attraverso il flusso delle regole successive. Quindi in questo
+          caso, essendo la prima regola, TUTTE le email saranno copiate per
+          backup nel file indicato, dopo di che continueranno ad attraversare
+          le altre regole, fino a incontrarne un'altra che effettuerà un
+          confronto positivo (eventualmente facendola proseguire anch'essa
+          con un flag <B class="KEYCAP">c</B>), e quindi togliendola dal
+          flusso, o finiranno nello spool principale nel caso contrario. Il
+          flag <B class="KEYCAP">W</B> ha lo stesso comportamento di quello
+          <B class="KEYCAP">w</B>, ma non invia messaggi di avvertimento
+          sullo schermo ("<EM>Program Failure</EM>"). Infine il flag <B
+          class="KEYCAP">a</B>, permette di eseguire un comando SOLO se la
+          regola IMMEDIATAMENTE precedente ha avuto esito positivo (quindi in
+          questo caso se viene trovato un messaggio doppio, viene accodato a
+          ".duplicati"). La <EM>macro</EM> "<B class="KEYCAP">TO_</B>" viene
+          spiegato tra poco. Le ultime regole correggono alcuni messaggi che
+          potrebbero risultare errati (vecchi pgp, outlook...), e conservano
+          gli indirizzi nell'archivi di <SPAN class=
+          "APPLICATION">LBDB</SPAN>, un programma che consente di raccogliere
+          informazioni sui mittenti.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P><B class="KEYCAP">=== file: lists.rc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+DUMMY=`test -d $MAILDIR/Lists || mkdir $MAILDIR/Lists`
+
+:0:
+* ^TO_procmail@informatik.rwth-aachen.de
+Lists/ML-procmail
+
+:0:
+* ^TO_vim@vim.org
+Lists/ML-vim-$DATE
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> <B class="KEYCAP">TO_</B> è una <EM>macro</EM>
+          predefinita di procmail che intercetta un indirizzo email fra gli
+          header destinazione (<B class="KEYCAP">To</B>, <B class=
+          "KEYCAP">Cc</B>, <B class="KEYCAP">Resent-To</B>, ecc.). Va scritto
+          ESATTAMENTE come lo vedete (* ^TO_indirizzo@email), rispettando
+          spazi e maiuscole. Non inserite simboli &lt; o &gt;. Altre
+          informazioni all'interno di <B class="COMMAND">man
+          procmailrc</B>.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <DIV class="TIP">
+        <BLOCKQUOTE class="TIP">
+          <P><B>Suggerimento:</B> Inserite le regole per le
+          <EM>mailing-list</EM> più trafficate all'inizio di <TT class=
+          "FILENAME">lists.rc</TT>, in modo che i messaggi vengano elaborati
+          prima e attraversino meno regole, velocizzando il processo.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Il secondo esempio invece suddivide le email anche
+          in base a mese e anno (la variabile <B class="KEYCAP">DATE</B> è
+          impostata in <TT class="FILENAME">.procmailrc</TT>), il tutto in
+          automatico (mese e anno sono quelli dello smistamento, NON
+          dell'invio dagli autori alla mailing-list!) !</P>
+
+          <P>Le email da mailing-list finiscono in una directory apposita,
+          che viene creata in automatico se non esiste.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P><B class="KEYCAP">=== file: spam.rc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+:0:
+* ^from.*qualche\.rompi\.balle@spamlandia\.com
+/dev/null
+
+:0:
+* ^from.*sex
+/dev/null
+
+# free money? Ma andassero a cag**e...
+:0
+* ^Subject:.*\$\$\$
+spam
+
+# filtro tramite black-list
+:0
+* ? formail -x"From" -x"From:" -x"Sender:" -x"Reply-To:" -x"Return-Path:" -x"To:" | egrep -is -f $PMDIR/black.lst
+spam
+
+# email che non hanno me come destinatario
+:0:
+* !^TO .*(mrshark|fragola).*
+spam
+
+# X-Advertisement header = spam!
+:0:
+* ^X-Advertisement:.*
+spam
+
+# email indirizzate a nessuno!
+:0:
+* To:[ ]*$
+spam
+
+# header "To:" assente!
+:0:
+* !^To: .*
+spam
+
+# campi Message-ID vuoti di solito indicano mailserver
+# fuori norma, spesso usati per inviare spam.
+:0
+* ^Message-ID.*&lt;&gt;
+spam
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Lo spam finisce dritto dritto nel nulla! Notate
+          l'uso di <B class="KEYCAP">\.</B> per indicare il punto (ricordate
+          che il punto da solo significa QUALSIASI CARATTERE, quindi anche il
+          punto stesso, ma non fidatevi, potrebbe avere effetti non voluti).
+          <B class="KEYCAP">/dev/null</B> è un buco nero di sistema (hai
+          capito il pinguino! ;-) ) che disperde qualsiasi cosa ci finisca
+          dentro. Il secondo esempio invece l'ho messo per far vedere che non
+          è necessario mettere <B class="KEYCAP">.*</B> alla fine: è
+          sottinteso, e in questo caso tutte le email che contengono la
+          stringa <EM>sex</EM> vengono eliminate. La terza filtra i messaggi
+          che contengono $$$ nel Subject:. Le ultime regole sono spiegate
+          nella sezione seguente dei trucchetti.</P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>I due file di regole <TT class="FILENAME">spam.rc</TT> e <TT
+              class="FILENAME">spam2.rc</TT> sono attualmente alternativi!
+              Infatti molte delle cose presenti nel primo file sono fatte
+              anche da <B class="KEYCAP">SpamBouncer</B>, e per filtri
+              specifici potete sempre usare la Black-List. Attivatene quindi
+              un solo file in <TT class="FILENAME">.procmailrc</TT>!</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P><B class="KEYCAP">=== file: friends.rc ===</B></P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="PROGRAMLISTING">
+:0:
+* ^from.*gino@pluto\.cxm
+gino
+
+:0:
+* ^subject.*barzellett
+{
+  :0c:
+  ! michele@yahoo.com
+  :0:
+  barzellette
+}
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Qui da notare l'uso delle parentesi graffe, che
+          permettono di riunire comandi che devono agire su una stessa email.
+          In questo caso di tutte le email che arrivano e che contengono la
+          stringa <EM>barzellett</EM> (quindi sia barzelletta che
+          barzellette) nel <EM>subject</EM>, ne viene generata una copia che
+          viene inoltrata a <B class="KEYCAP">michele@yahoo.com</B>, dopo di
+          che l'email finisce nella mailbox <B class="KEYCAP">barzellette</B>
+          e la regola si conclude.</P>
+        </BLOCKQUOTE>
+      </DIV>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "configurazioneprocmail.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "advancedprocmail.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">File di
+          configurazione</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "procmail.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Usi avanzati e
+          trucchetti</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

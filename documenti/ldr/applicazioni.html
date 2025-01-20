@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr7.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr9.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr9.html">[successivo]</A>
+<A HREF="ldr7.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 5. &nbsp; <A NAME="title460"></A><A NAME="anchor487"></A>Applicazioni</H1>
+
+<H2>5.1 &nbsp; <A NAME="title461"></A><A NAME="anchor488"></A>
+ <A NAME="index2141"></A>Editor di testi </H2>
+
+<P><STRONG>5.1.1)&nbsp;&nbsp;<A NAME="title462"></A><A NAME="anchor489"></A>
+ Quali sono i comandi essenziali di <A NAME="index2142"></A>VI? <A NAME="index2143"></A> <A NAME="index2144"></A> </STRONG></P>
+
+<P>Nella tabella <A HREF="ldr8.html#anchor490">5.1</A> sono elencati i comandi pi&ugrave; frequentemente utilizzati con <A NAME="index2145"></A>VI.</P>
+
+<TABLE ID="anchor490" BORDER="3">
+
+<THEAD>
+<TR><TD>Comando</TD><TD>Descrizione</TD></TR>
+</THEAD>
+
+<TBODY>
+<TR><TD>i</TD><TD>Modalit&agrave; di inserimento alla posizione del cursore</TD></TR>
+<TR><TD>I</TD><TD>Modalit&agrave; di inserimento a inizio riga</TD></TR>
+<TR><TD>A</TD><TD>Modalit&agrave; di inserimento a fine riga</TD></TR>
+<TR><TD>r</TD><TD>Sovrascrivere un carattere</TD></TR>
+<TR><TD>R</TD><TD>Modalit&agrave; di sovrascrittura</TD></TR>
+<TR><TD>x</TD><TD>Cancellazione (come tasto Canc)</TD></TR>
+<TR><TD>dd</TD><TD>Cancellare una riga</TD></TR>
+<TR><TD>:w</TD><TD>Salvare</TD></TR>
+<TR><TD>:wq</TD><TD>Salva e esce (come ZZ)</TD></TR>
+<TR><TD>:q!</TD><TD>Esce senza salvare</TD></TR>
+</TBODY>
+</TABLE>
+
+<P><EM> Tabella <A HREF="ldr8.html#anchor490">5.1</A>. I comandi pi&ugrave; comunemente utilizzati in VI </EM></P>
+
+<P><STRONG>5.1.2)&nbsp;&nbsp;<A NAME="title463"></A><A NAME="anchor491"></A>
+ Come si configura il numero di caratteri per riga di <SAMP>elvis</SAMP> (<SAMP>vi</SAMP>)? <A NAME="index2146"></A> <A NAME="index2147"></A> <A NAME="index2148"></A> <A NAME="index2149"></A> </STRONG></P>
+
+<P>Molte volte l'eseguibile di <A NAME="index2150"></A>VI (<SAMP>vi</SAMP>) non &egrave; altro che un collegamento ad <SAMP>elvis</SAMP>. A seconda che si stia utilizzando quindi <A NAME="index2151"></A>VI o <SAMP>elvis</SAMP> si dovranno impartire i comandi o modificare i relativi file di configurazione.</P>
+
+<P>Per <A NAME="index2152"></A>VI il comando sar&agrave;:</P>
+
+<P class="command"><CODE>: </CODE><STRONG><CODE>tw=<VAR>72</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="applicazioni.html#footnote1" NAME="footnote-ref1">(1)</A></SUP></P>
+
+<P>Se si desidera invece che questa variazione sia resa effettiva in maniera permanente, si dovr&agrave; modificare il file <CODE>.vimrc</CODE> includendo quanto segue:</P>
+<BLOCKQUOTE>
+
+<PRE>set tw=72</PRE>
+
+</BLOCKQUOTE>
+
+<P>Per <SAMP>elvis</SAMP> il file sar&agrave; <CODE>.elvisrc</CODE> e dovr&agrave; contenere:</P>
+<BLOCKQUOTE>
+
+<PRE>set textwidth=70</PRE>
+
+</BLOCKQUOTE>
+
+<P>A volte i file di configurazione di <SAMP>elvis</SAMP> sono: <CODE>~/.exrc</CODE>, <CODE>~/.elvisrc</CODE> o <CODE>~/elvis.rc</CODE> e dovranno contenere la seguente dichiarazione:</P>
+
+<PRE>:set ttycolumns=num</PRE>
+
+<P>Per vim:</P>
+
+<P>la stessa cosa, ma il nome del file &egrave; <CODE>.vimrc</CODE></P>
+
+<P>L'opzione &egrave; impostata a <STRONG>0</STRONG> in maniera predefinita e ovviamente pu&ograve; essere modificata anche all'interno di <SAMP>vi</SAMP> con il comando:</P>
+
+<PRE>:set textwidth=65</PRE>
+
+<H2>5.2 &nbsp; <A NAME="title464"></A><A NAME="anchor492"></A>
+ Applicazioni per comunicazioni telefoniche </H2>
+
+<P><STRONG>5.2.1)&nbsp;&nbsp;<A NAME="title465"></A><A NAME="anchor493"></A>
+ Come si cambiano le impostazioni di <A NAME="index2153"></A>Minicom? <A NAME="index2154"></A> <A NAME="index2155"></A> </STRONG></P>
+
+<P>Per effettuare modifiche all'impostazione di <A NAME="index2156"></A>Minicom occorrer&agrave; avviare il programma con l'opzione <SAMP>-s</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>minicom -s</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<H2>5.3 &nbsp; <A NAME="title466"></A><A NAME="anchor494"></A>
+Applicazioni fax</H2>
+
+<P><STRONG>5.3.1)&nbsp;&nbsp;<A NAME="title467"></A><A NAME="anchor495"></A>
+ <SAMP>no dialtone</SAMP> con <A NAME="index2157"></A>Efax <A NAME="index2158"></A> <A NAME="index2159"></A> </STRONG></P>
+
+<P>Qualora, utilizzando <A NAME="index2160"></A>Efax, venisse visualizzato un messaggio di assenza di tono di chiamata (<EM>no dialtone</EM>), si dovr&agrave; sostituire all'interno del file <CODE>~/.efaxrc</CODE>, la riga simile alla seguente:</P>
+
+<PRE>INIT="-iZ -i&amp;FE&amp;D2S7=120 -i&amp;C0"</PRE>
+
+<P>con questa:</P>
+
+<PRE>INIT="-iZ -i&amp;FX3E&amp;D2S7=120 -i&amp;C0"</PRE>
+
+<P>In pratica si dovr&agrave; aggiungere <SAMP>X3</SAMP>.</P>
+
+<H2>5.4 &nbsp; <A NAME="title468"></A><A NAME="anchor496"></A>
+Applicazioni grafica bidimensionale non vettoriale</H2>
+
+<P><STRONG>5.4.1)&nbsp;&nbsp;<A NAME="title469"></A><A NAME="anchor497"></A>
+ Come si convertono i file <CODE>.gif</CODE> in <CODE>.png</CODE>? <A NAME="index2161"></A> <A NAME="index2162"></A> <A NAME="index2163"></A> <A NAME="index2164"></A> </STRONG></P>
+
+<P>Per convertire immagini <A NAME="index2165"></A>GIF in <A NAME="index2166"></A>PNG, si dovr&agrave; utilizzare <SAMP>gif2png</SAMP>.</P>
+<BLOCKQUOTE>
+
+<PRE>Greg Roelofs - September 18th 1999, 18:07 EST 
+gif2png is a simple command-line utility to convert
+images from GIF to PNG format. It automatically preserves
+transparency, interlacing and text comments, and it can do
+multiple images in one command (e.g., gif2png *.gif).  The
+distribution also includes a web2png script that can be used
+to convert an entire web tree; it calls gif2png to do image
+conversions, then patches IMG SRC tags correctly in referring
+pages.</PRE>
+
+</BLOCKQUOTE>
+
+<H2>5.5 &nbsp; <A NAME="title470"></A><A NAME="anchor498"></A>
+Applicazioni matematiche</H2>
+
+<P><STRONG>5.5.1)&nbsp;&nbsp;<A NAME="title471"></A><A NAME="anchor499"></A>
+ Ci sono per GNU/Linux programmi per la matematica, per fare grafici? <A NAME="index2167"></A> <A NAME="index2168"></A> <A NAME="index2169"></A> <A NAME="index2170"></A> <A NAME="index2171"></A> </STRONG></P>
+
+<P>Tra i programmi che si occupano della matematica, occorre ricordare:</P>
+
+<OL>
+
+<LI>
+
+<P> <A NAME="index2172"></A>Rlab; <SUP><A HREF="applicazioni.html#footnote2" NAME="footnote-ref2">(2)</A></SUP> </P>
+</LI>
+
+<LI>
+
+<P> <A NAME="index2173"></A>Octave; <SUP><A HREF="applicazioni.html#footnote3" NAME="footnote-ref3">(3)</A></SUP> </P>
+</LI>
+
+<LI>
+
+<P> <A NAME="index2174"></A>goctave (versione <A NAME="index2175"></A>Gnome di <A NAME="index2176"></A>Octave); <SUP><A HREF="applicazioni.html#footnote4" NAME="footnote-ref4">(4)</A></SUP> </P>
+</LI>
+</OL>
+
+<H2>5.6 &nbsp; <A NAME="title472"></A><A NAME="anchor500"></A>
+ Applicazioni base di dati (database) </H2>
+
+<P><STRONG>5.6.1)&nbsp;&nbsp;<A NAME="title473"></A><A NAME="anchor501"></A>
+ Quali sono le differenze tra DB e DBMS? <A NAME="index2177"></A> <A NAME="index2178"></A> <A NAME="index2179"></A> </STRONG></P>
+
+<P>Un DB &egrave; un archivio, un insieme ordinato di dati detto base di dati o nella dicitura anglosassone <EM>database</EM>. Il DBMS (<EM>Data Base Management System</EM>) &egrave; il programma o la serie di programmi che sono preposti alla gestione della base di dati.</P>
+
+<P><STRONG>5.6.2)&nbsp;&nbsp;<A NAME="title474"></A><A NAME="anchor502"></A>
+ Perch&eacute; durante la compilazione di <A NAME="index2180"></A>PHP per il supporto di <A NAME="index2181"></A>PostgreSQL mi vengono richieste le librerie <SAMP>libpq</SAMP>? <A NAME="index2182"></A> <A NAME="index2183"></A> <A NAME="index2184"></A> </STRONG></P>
+
+<P>Se durante la compilazione di <A NAME="index2185"></A>PHP si include il supporto per <A NAME="index2186"></A>PostgreSQL mediante il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>./configure --with-pgsql; make</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e la compilazione si interrompe con un esito simile al seguente:</P>
+
+<PRE>/usr/src/packages/SOURCES/php-3.0.12 # make
+
+[...]
+functions/php3_pgsql.h:46: libpq-fe.h: No such file or directory
+functions/php3_pgsql.h:47: libpq/libpq-fs.h: No such file or directory
+[...]
+make: *** [internal_functions.o] Error 1</PRE>
+
+<P>si deve tenere presente che le librerie richieste sono presenti nel pacchetto <SAMP>postgres-devel</SAMP>.</P>
+
+<P><STRONG>5.6.3)&nbsp;&nbsp;<A NAME="title475"></A><A NAME="anchor503"></A>
+ <SAMP>Unable to connect to PostgresSQL server: connectDB() failed: Is the postmaster running and accepting connections at 'UNIX Socket' on port '5432'? in /var/www/prova.php3</SAMP> <A NAME="index2187"></A> <A NAME="index2188"></A> <A NAME="index2189"></A> </STRONG></P>
+
+<P>Manca l'opzione <SAMP>-i</SAMP> al momento dell'avvio del demone. Per risolvere il problema, occorre modificare il file <CODE>/etc/postgresql/postmaster.init</CODE>. Questo file contiene una riga che serve ad abilitare le connessioni TCP/IP. Questa riga dovr&agrave; risultare pi&ugrave; o meno cos&igrave;:</P>
+
+<PRE>: PGALLOWTCPIP=yes</PRE>
+
+<P>e ci dovr&agrave; essere anche la dichiarazione della porta:</P>
+
+<PRE>: PGPORT=5432</PRE>
+
+<P><STRONG>5.6.4)&nbsp;&nbsp;<A NAME="title476"></A><A NAME="anchor504"></A>
+ Perch&eacute; non tutti gli utenti possono creare archivi <A NAME="index2190"></A>PostgreSQL? <A NAME="index2191"></A> </STRONG></P>
+
+<P>In <A NAME="index2192"></A>PostgreSQL si devono creare utenti abilitati alla generazione degli archivi. La creazione degli utenti &egrave; un'operazione che deve fare l'utente <SAMP>postgres</SAMP> tramite il comando:</P>
+
+<P class="command"><CODE>[postgres@linuxfaq.it]&nbsp;</CODE><STRONG><CODE>createuser nome</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dando prima il comando:</P>
+
+<P class="command"><CODE>[root@linuxfaq.it]&nbsp;</CODE><STRONG><CODE>su postgres</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Se l'utente non &egrave; ancora in grado di creare l'archivio (e in realt&agrave; neanche l'utente <SAMP>postgres</SAMP>), allora vuol dire che non &egrave; stata inizializzata la struttura delle directory di <A NAME="index2193"></A>PostgreSQL. Occorrer&agrave; quindi eseguire:</P>
+
+<P class="command"><CODE>[root@linuxfaq.it]&nbsp;</CODE><STRONG><CODE>su postgres</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e poi:</P>
+
+<P class="command"><CODE>[postgres@linuxfaq.it]&nbsp;</CODE><STRONG><CODE>initdb</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>5.6.5)&nbsp;&nbsp;<A NAME="title477"></A><A NAME="anchor505"></A>
+ Come si possono esportare basi di dati da <A NAME="index2194"></A>Microsoft&nbsp;Access a <A NAME="index2195"></A>PostgreSQL? </STRONG></P>
+
+<P>&Eacute; possibile esportare una base di dati (<EM>database</EM>) da <A NAME="index2196"></A>Microsoft&nbsp;Access a <A NAME="index2197"></A>PostgreSQL con il <A NAME="index2198"></A>driver <SAMP>ODBC</SAMP> di <A NAME="index2199"></A>PostgreSQL reperibile presso &lt;<EM><A HREF="http://www.postgresql.org">http://www.postgresql.org</A></EM>&gt;. Il <A NAME="index2200"></A>driver <SAMP>ODBC</SAMP> dovr&agrave; essere impostato in modo tale da puntare alla sorgente <SAMP>ODBC</SAMP> che in questo caso sar&agrave; rappresentata dalla macchina GNU/Linux dove sta girando <A NAME="index2201"></A>PostgreSQL.</P>
+
+<P>Da <A NAME="index2202"></A>Microsoft&nbsp;Access si dovranno esportare verso la sorgente appena descritta le tabelle che si interessa convertire. Occorre per&ograve; ricordare che le chiavi che non vengono correttamente esportate.</P>
+
+<P><STRONG>5.6.6)&nbsp;&nbsp;<A NAME="title478"></A><A NAME="anchor506"></A>
+ Come si creano gli archivi con <A NAME="index2203"></A>PostgreSQL? <A NAME="index2204"></A> </STRONG></P>
+
+<P>Per creare una base dati (<EM>database</EM>) in <A NAME="index2205"></A>PostgreSQL, si dovr&agrave; utilizzare il comando <SAMP>createdb</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>createdb <VAR>nomedb</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="applicazioni.html#footnote5" NAME="footnote-ref5">(5)</A></SUP></P>
+
+<P><STRONG>5.6.7)&nbsp;&nbsp;<A NAME="title479"></A><A NAME="anchor507"></A>
+ Come si fa ad accedere ad un archivio con <A NAME="index2206"></A>PostgreSQL? <A NAME="index2207"></A> <A NAME="index2208"></A> </STRONG></P>
+
+<P>Per accedere, modificare, aggiungere dati e strutture all'archivio si da il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>psql <VAR>nomedb</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="applicazioni.html#footnote6" NAME="footnote-ref6">(6)</A></SUP></P>
+
+<P>per accedere da console. Una comoda interfaccia grafica da utilizzare in X &egrave; <SAMP>pgaccess</SAMP>.</P>
+
+<P><STRONG>5.6.8)&nbsp;&nbsp;<A NAME="title480"></A><A NAME="anchor508"></A>
+ <SAMP>Unsupported frontend protocol</SAMP> <A NAME="index2209"></A> <A NAME="index2210"></A> </STRONG></P>
+
+<P>Qualora, accedendo da una macchina remota ad un server <A NAME="index2211"></A>PostgreSQL, si riceva un messaggio simile al seguente:</P>
+<BLOCKQUOTE>
+
+<PRE>Connection to database 'nome_db' failed.
+Unsupported frontend protocol.</PRE>
+
+</BLOCKQUOTE>
+
+<P>si dovr&agrave; verificare la compatibilit&agrave; tra le versioni di <A NAME="index2212"></A>PostgreSQL sulle due macchine. Le versioni devono essere le medesime al fine di evitare un errore del genere.</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="applicazioni.html#footnote-ref1" NAME="footnote1">1)</A> dove <VAR>72</VAR> &egrave; il numero di colonne desiderato.</P>
+
+<P><A HREF="applicazioni.html#footnote-ref2" NAME="footnote2">2)</A> <STRONG>Rlab</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="applicazioni.html#footnote-ref3" NAME="footnote3">3)</A> <STRONG>Octave</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="applicazioni.html#footnote-ref4" NAME="footnote4">4)</A> <STRONG>goctave</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="applicazioni.html#footnote-ref5" NAME="footnote5">5)</A> colui che impartisce il seguente comando deve essere per&ograve; un utente abilitato alla creazione degli archivi. Questi poteri vengono conferiti dall'utente <SAMP>postgres</SAMP> mediante il comando <SAMP>createuser</SAMP>.</P>
+
+<P><A HREF="applicazioni.html#footnote-ref6" NAME="footnote6">6)</A> colui che impartisce il seguente comando deve essere per&ograve; un utente abilitato alla gestione degli archivi. Questi poteri vengono conferiti dall'utente <SAMP>postgres</SAMP> mediante il comando <SAMP>createuser</SAMP>.</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="applicazioni.html">applicazioni.html</A></P>
+<P>
+<A HREF="ldr9.html">[successivo]</A>
+<A HREF="ldr7.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

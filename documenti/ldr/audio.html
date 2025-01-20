@@ -1,0 +1,547 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr13.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr15.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr15.html">[successivo]</A>
+<A HREF="ldr13.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 11. &nbsp; <A NAME="title534"></A><A NAME="anchor563"></A>Audio</H1>
+
+<H2>11.1 &nbsp; <A NAME="title535"></A><A NAME="anchor564"></A>
+Impostazioni</H2>
+
+<P><STRONG>11.1.1)&nbsp;&nbsp;<A NAME="title536"></A><A NAME="anchor565"></A>
+ Come si installano i moduli audio <A NAME="index2380"></A>ALSA? <A NAME="index2381"></A> <A NAME="index2382"></A> </STRONG></P>
+
+<P><A NAME="index2383"></A>ALSA &egrave; un sistema diverso rispetto ad <A NAME="index2384"></A>OSS. Requisito essenziale &egrave; che il <A NAME="index2385"></A>kernel preveda il supporto dell'audio, ma non in modo monolitico. La compilazione e l'installazione prevede nell'ordine la seguente procedura:</P>
+
+<OL>
+
+<LI>
+
+<P>Dalla directory dei dispositivi eseguire:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>./configure --help</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>per ottenere un aiuto sulla configurazione;</P>
+</LI>
+
+<LI>
+
+<P>per una scheda PCI si dar&agrave; il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>./configure --sequencer=yes; make; make install</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+
+<LI>
+
+<P>fatto questo, si eseguir&agrave; lo <A NAME="index2386"></A>script:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>./snddevices</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+
+<LI>
+
+<P>sia per le librerie che per i programmi di utilit&agrave; si dovr&agrave; eseguire:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>./configure; make; make install</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+</OL>
+
+<P>Prima di caricare il modulo della propria scheda si deve tenere presente che non vi devono essere gi&agrave; altri moduli audio caricati e bisogna attivare con <A NAME="index2387"></A>Isapnptools le schede ISA (se non si &egrave; fatta la scelta --with-isapnp=yes). Fare riferimento a: <A HREF="ldr17.html#anchor667">14.9.1</A>.</P>
+
+<OL>
+
+<LI>
+
+<P>in seguito si dovranno commentare le righe di <CODE>/etc/conf.modules</CODE> relative alle scelte effettuate tramite <SAMP>sndconfig</SAMP> o manualmente. (oppure scaricare tutti i moduli con lo <A NAME="index2388"></A>script presente in: <A HREF="ldr17.html#anchor667">14.9.1</A>);</P>
+</LI>
+
+<LI>
+
+<P>eseguire:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe <VAR>nome_modulo</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>per caricare la propria scheda, considerando che alcune schede richiedono parametri aggiuntivi come si legge nel file <CODE>INSTALL</CODE> posto nella directory dei <A NAME="index2389"></A>driver;</P>
+</LI>
+
+<LI>
+
+<P>Impostare il volume come descritto in <A HREF="ldr14.html#anchor566">11.1.2</A>.</P>
+</LI>
+</OL>
+
+<P>Si tenga presente che <A NAME="index2390"></A>ALSA &egrave; pienamente compatibile con <A NAME="index2391"></A>OSS. Se infatti si volessero usare applicazioni non native <A NAME="index2392"></A>ALSA, occorrer&agrave; caricare i moduli <A NAME="index2393"></A>OSS tramite:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe snd-pcm1-oss</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>modprobe snd-mixer-oss</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Una volta attivata la scheda, si possono conservare le impostazioni con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>alsactl store</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="audio.html#footnote1" NAME="footnote-ref1">(1)</A></SUP></P>
+
+<P>Queste ultime si potranno ripristinare con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>alsactl restore</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>11.1.2)&nbsp;&nbsp;<A NAME="title537"></A><A NAME="anchor566"></A>
+ Perch&eacute; non si sente nessun suono dopo l'installazione dei <A NAME="index2394"></A>driver <A NAME="index2395"></A>ALSA? <A NAME="index2396"></A> <A NAME="index2397"></A> </STRONG></P>
+
+<P>Qualora dopo l'installazione dei <A NAME="index2398"></A>driver <A NAME="index2399"></A>ALSA non si riesca a sentire nulla, si deve ricordare che in maniera predefinita, il volume viene impostato a <SAMP>mute</SAMP>, quindi si deve impostare il <A NAME="index2400"></A>mixer con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>amixer set Master on</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>amixer set PCM on</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>amixer set Master 75%</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>amixer set PCM 75%</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>In seguito all'esecuzione di questi comandi, si potr&agrave; usare il <A NAME="index2401"></A>mixer che si desidera. Caricando inoltre <SAMP>snd-pcm1-oss</SAMP>, si potranno utilizzare anche i <A NAME="index2402"></A>mixer di <A NAME="index2403"></A>OSS, come ad esempio <A NAME="index2404"></A>Aumix).</P>
+
+<P><STRONG>11.1.3)&nbsp;&nbsp;<A NAME="title538"></A><A NAME="anchor567"></A>
+ Come si alza il volume nelle macchine <A NAME="index2405"></A>desktop e nei portatili se si utilizzano i <A NAME="index2406"></A>driver <A NAME="index2407"></A>ALSA? <A NAME="index2408"></A> </STRONG></P>
+
+<P>Come gi&agrave; descritto nella LDR <A HREF="ldr14.html#anchor566">11.1.2</A> dopo avere installato <A NAME="index2409"></A>ALSA, il volume &egrave; nullo. Ecco uno <A NAME="index2410"></A>script (tratto da &lt;<EM><A HREF="http://www.sr.bham.ac.uk/~sjt/opl3sa2.html">http://www.sr.bham.ac.uk/~sjt/opl3sa2.html</A></EM>&gt;) per i computer casalinghi e quelli portatili:</P>
+
+<PRE>--Desktop--
+#!/bin/sh
+AMIX='/usr/bin/amixer -q'
+$AMIX set Master 100% unmute
+$AMIX set PCM 85% unmute
+$AMIX set 'Input Gain' 40%
+$AMIX set Line 40% unmute capture</PRE>
+
+<PRE>--Laptop--
+/usr/bin/amixer -q set Master 90% unmute
+/usr/bin/amixer -q set PCM 90% unmute
+/usr/bin/amixer -q set Line 60% unmute capture
+/usr/bin/amixer -q set CD  60% unmute
+/usr/bin/amixer -q set 'Input Gain' 50%
+/usr/bin/amixer -q set FM 60% unmute</PRE>
+
+<P><STRONG>11.1.4)&nbsp;&nbsp;<A NAME="title539"></A><A NAME="anchor568"></A>
+ Come si regolano in maniera definitiva i toni del <A NAME="index2411"></A>mixer? <A NAME="index2412"></A> <A NAME="index2413"></A> </STRONG></P>
+
+<P>Spesso, pur regolandolo mediante i <A NAME="index2414"></A>mixer appositi, il volume non resta costante. A tal proposito &egrave; possibile provare ad utilizzare <A NAME="index2415"></A>Aumix, salvando le impostazioni con <EM>S</EM>. Questo comando creer&agrave; il file <CODE>.aumixrc</CODE>. Occorrer&agrave; allora inserire nei file letti dal sistema all'avvio (<CODE>rc.local</CODE>, <CODE>.bash_profile</CODE>, ecc.) il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>aumix -L <VAR>percorso</VAR>/.aumixrc</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="audio.html#footnote2" NAME="footnote-ref2">(2)</A></SUP></P>
+
+<P><STRONG>11.1.5)&nbsp;&nbsp;<A NAME="title540"></A><A NAME="anchor569"></A>
+ Come si possono eliminare le segnalazioni acustiche di sistema? <A NAME="index2416"></A> <A NAME="index2417"></A> <A NAME="index2418"></A> <A NAME="index2419"></A> </STRONG></P>
+
+<P>Si pu&ograve; modificare il file <CODE>/etc/inputrc</CODE> oppure <CODE>~/.inputrc</CODE> e inserire la riga:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>set bell-style none</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>set bell-style visible</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>si fa il contrario.</P>
+
+<P>Un altro modo consiste nell'impartire il seguente comando (<A NAME="index2420"></A>Bash):</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>echo -en "\33[11;00]"</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>che emette il suono per zero ms.</P>
+
+<H2>11.2 &nbsp; <A NAME="title541"></A><A NAME="anchor570"></A>
+CD audio</H2>
+
+<P><STRONG>11.2.1)&nbsp;&nbsp;<A NAME="title542"></A><A NAME="anchor571"></A>
+ Non riesco a <A NAME="index2421"></A>montare i CD audio! <A NAME="index2422"></A> <A NAME="index2423"></A> </STRONG></P>
+
+<P>I CD audio non si possono montare perch&eacute; non hanno un <A NAME="index2424"></A>file&nbsp;system. Devi inserirli e ascoltarli, ad es. con <SAMP>cdplay</SAMP> o applicativi analoghi.</P>
+
+<H2>11.3 &nbsp; <A NAME="title543"></A><A NAME="anchor572"></A>
+mp3, wav, ecc.</H2>
+
+<P><STRONG>11.3.1)&nbsp;&nbsp;<A NAME="title544"></A><A NAME="anchor573"></A>
+ Quali sono le applicazioni da utilizzare per creare file <CODE>.mp3</CODE> partendo da brani presenti su CD? <A NAME="index2425"></A> <A NAME="index2426"></A> <A NAME="index2427"></A> <A NAME="index2428"></A> <A NAME="index2429"></A> <A NAME="index2430"></A> <A NAME="index2431"></A> <A NAME="index2432"></A> <A NAME="index2433"></A> <A NAME="index2434"></A> <A NAME="index2435"></A> <A NAME="index2436"></A> <A NAME="index2437"></A> <A NAME="index2438"></A> <A NAME="index2439"></A> <A NAME="index2440"></A> <A NAME="index2441"></A> <A NAME="index2442"></A> <A NAME="index2443"></A> <A NAME="index2444"></A> <A NAME="index2445"></A> <A NAME="index2446"></A> <A NAME="index2447"></A> <A NAME="index2448"></A> <A NAME="index2449"></A> </STRONG></P>
+
+<P>Per creare file <CODE>.mp3</CODE> partendo da CD-ROM, si dovranno utilizzare:</P>
+
+<OL>
+
+<LI>
+
+<P>programmi che eseguono estrazione digitale delle tracce audio in file <CODE>.wav</CODE> o <CODE>.cdr</CODE>;</P>
+</LI>
+
+<LI>
+
+<P>programmi che convertono i file <CODE>.wav</CODE> o <CODE>.cdr</CODE> in file file <CODE>.mp3</CODE>;</P>
+</LI>
+
+<LI>
+
+<P>programmi che possono fare ambedue i processi sopra descritti.</P>
+</LI>
+</OL>
+
+<OL>
+
+<LI>
+
+<P>Programmi che eseguono estrazione digitale delle tracce audio in file <CODE>.wav</CODE> o <CODE>.cdr</CODE>;</P>
+
+<UL>
+
+<LI>
+
+<P><A NAME="index2450"></A>Cdda2wav <SUP><A HREF="audio.html#footnote3" NAME="footnote-ref3">(3)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2451"></A>Cdparanoia <SUP><A HREF="audio.html#footnote4" NAME="footnote-ref4">(4)</A></SUP>; </P>
+</LI>
+</UL>
+</LI>
+
+<LI>
+
+<P>programmi che convertono i file <CODE>.wav</CODE> o <CODE>.cdr</CODE> in file file <CODE>.mp3</CODE>;</P>
+
+<UL>
+
+<LI>
+
+<P><A NAME="index2452"></A>LAME <SUP><A HREF="audio.html#footnote5" NAME="footnote-ref5">(5)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2453"></A>BladeEnc <SUP><A HREF="audio.html#footnote6" NAME="footnote-ref6">(6)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2454"></A>Parallel Bladeenc <SUP><A HREF="audio.html#footnote7" NAME="footnote-ref7">(7)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2455"></A>NotLame MP3 Encoder <SUP><A HREF="audio.html#footnote8" NAME="footnote-ref8">(8)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2456"></A>GOGO <SUP><A HREF="audio.html#footnote9" NAME="footnote-ref9">(9)</A></SUP>; </P>
+</LI>
+</UL>
+</LI>
+
+<LI>
+
+<P>programmi che possono fare ambedue i processi sopra descritti</P>
+
+<UL>
+
+<LI>
+
+<P><A NAME="index2457"></A>cdr <SUP><A HREF="audio.html#footnote10" NAME="footnote-ref10">(10)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2458"></A>Dac2mp3 <SUP><A HREF="audio.html#footnote11" NAME="footnote-ref11">(11)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2459"></A>pktrip <SUP><A HREF="audio.html#footnote12" NAME="footnote-ref12">(12)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2460"></A>rip <SUP><A HREF="audio.html#footnote13" NAME="footnote-ref13">(13)</A></SUP>; </P>
+
+<TABLE ID="anchor574" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="27.jpg" ALT="figure/rip" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor574">11.1</A>. rip. </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><A NAME="index2461"></A>RipEnc <SUP><A HREF="audio.html#footnote14" NAME="footnote-ref14">(14)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2462"></A>T.E.A.R. <SUP><A HREF="audio.html#footnote15" NAME="footnote-ref15">(15)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2463"></A>The One Ripper <SUP><A HREF="audio.html#footnote16" NAME="footnote-ref16">(16)</A></SUP>; </P>
+
+<TABLE ID="anchor575" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="28.jpg" ALT="figure/theoneripper" WIDTH="850" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor575">11.2</A>. The One Ripper. </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><A NAME="index2464"></A>Grip <SUP><A HREF="audio.html#footnote17" NAME="footnote-ref17">(17)</A></SUP>; </P>
+
+<TABLE ID="anchor576" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="29.jpg" ALT="figure/grip"></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor576">11.3</A>. Grip. </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><A NAME="index2465"></A>ripperX <SUP><A HREF="audio.html#footnote18" NAME="footnote-ref18">(18)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P><A NAME="index2466"></A>XMultiGrab <SUP><A HREF="audio.html#footnote19" NAME="footnote-ref19">(19)</A></SUP>; </P>
+
+<TABLE ID="anchor577" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="30.jpg" ALT="figure/xmultigrab"></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor577">11.4</A>. XMultiGrab. </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><A NAME="index2467"></A>GTKmp3make <SUP><A HREF="audio.html#footnote20" NAME="footnote-ref20">(20)</A></SUP>; </P>
+
+<TABLE ID="anchor578" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="31.jpg" ALT="figure/GTKmp3make1" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor578">11.5</A>. GTKmp3make. </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor579" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="32.jpg" ALT="figure/GTKmp3make2" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor579">11.6</A>. GTKmp3make. </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor580" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="33.jpg" ALT="figure/GTKmp3make3" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor580">11.7</A>. GTKmp3make. </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor581" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="34.jpg" ALT="figure/GTKmp3make4" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor581">11.8</A>. GTKmp3make. </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><A NAME="index2468"></A>SimpleCDR <SUP><A HREF="audio.html#footnote21" NAME="footnote-ref21">(21)</A></SUP>; </P>
+
+<TABLE ID="anchor582" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="35.jpg" ALT="figure/simplecdr1" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor582">11.9</A>. SimpleCDR. </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor583" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="36.jpg" ALT="figure/simplecdr2" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor583">11.10</A>. SimpleCDR. </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor584" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="37.jpg" ALT="figure/simplecdr3" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor584">11.11</A>. SimpleCDR. </P>
+
+</TD></TR>
+</TABLE>
+
+<TABLE ID="anchor585" BORDER="0" WIDTH="100%">
+<TR><TD>
+
+<P><IMG SRC="38.jpg" ALT="figure/simplecdr4" WIDTH="680" ></P>
+
+<P class="caption"> Figura <A HREF="ldr14.html#anchor585">11.12</A>. SimpleCDR. </P>
+
+</TD></TR>
+</TABLE>
+</LI>
+
+<LI>
+
+<P><A NAME="index2469"></A>YaRET <SUP><A HREF="audio.html#footnote22" NAME="footnote-ref22">(22)</A></SUP>; </P>
+</LI>
+</UL>
+</LI>
+</OL>
+
+<P><STRONG>11.3.2)&nbsp;&nbsp;<A NAME="title545"></A><A NAME="anchor586"></A>
+ Si possono creare file <CODE>.mp3</CODE> dai brani presenti in un CD-ROM mediante un comodo <A NAME="index2470"></A>script? <A NAME="index2471"></A> <A NAME="index2472"></A> <A NAME="index2473"></A> <A NAME="index2474"></A> </STRONG></P>
+
+<P> Qualora non si voglia utilizzare uno degli applicativi adatti allo scopo (vedere LDR <A HREF="ldr14.html#anchor573">11.3.1</A>), si potr&agrave; creare un semplice <A NAME="index2475"></A>script (<SAMP>makemp3</SAMP> di The Hitman): </P>
+
+<PRE> ----------------------------
+ #!/bin/bash
+ cd ~
+ for T in $*; do
+ cdparanoia -w -Y $T temp.wav
+ gogo temp.wav $T.mp3
+ rm -f temp.wav
+ done
+ ----------------------------</PRE>
+
+<P>Come si vede &egrave; necessario che siano installati i programmi <A NAME="index2476"></A>Cdparanoia e <A NAME="index2477"></A>GOGO. La sintassi di questo <A NAME="index2478"></A>script &egrave; semplice: </P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>makemp3 <VAR>traccia</VAR> [<VAR>traccia</VAR>]</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="audio.html#footnote23" NAME="footnote-ref23">(23)</A></SUP></P>
+
+<P> Es.: </P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>makemp3 1 5 7</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Questo comando provveder&agrave; ad estrarre in formato digitale le tracce 1,5 e 7. I file <CODE>.wav</CODE> che ne derivano saranno trasformati in <CODE>.mp3</CODE> mediante <A NAME="index2479"></A>GOGO. I file risultanti saranno rispettivamente <CODE>1.mp3</CODE>, <CODE>5.mp3</CODE>, <CODE>7.mp3</CODE>. Ad ogni traccia analizzata, il file <CODE>.wav</CODE> corrispondente sar&agrave; cancellato.</P>
+
+<P><STRONG>11.3.3)&nbsp;&nbsp;<A NAME="title546"></A><A NAME="anchor587"></A>
+ Come si possono leggere i <A NAME="index2480"></A>tag (marcatori) <SAMP>ID3</SAMP> dei file <CODE>.mp3</CODE>? <A NAME="index2481"></A> <A NAME="index2482"></A> <A NAME="index2483"></A> </STRONG></P>
+
+<P>Per leggere i <A NAME="index2484"></A>tag (marcatori) <SAMP>ID3</SAMP> dei file <CODE>.mp3</CODE> possiamo utilizzare applicativi quali <A NAME="index2485"></A>MP3info <SUP><A HREF="audio.html#footnote24" NAME="footnote-ref24">(24)</A></SUP>; .</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="audio.html#footnote-ref1" NAME="footnote1">1)</A> comando che immagazzina le impostazioni nel file <CODE>/etc/asound.conf</CODE></P>
+
+<P><A HREF="audio.html#footnote-ref2" NAME="footnote2">2)</A> dove <VAR>percorso</VAR> &egrave; il percorso in cui <SAMP>aumix</SAMP> ha salvato il file di configurazione (<CODE>.aumixrc</CODE>)</P>
+
+<P><A HREF="audio.html#footnote-ref3" NAME="footnote3">3)</A> <STRONG>Cdda2wav</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref4" NAME="footnote4">4)</A> <STRONG>Cdparanoia</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref5" NAME="footnote5">5)</A> <STRONG>LAME</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref6" NAME="footnote6">6)</A> <STRONG>BladeEnc</STRONG> &nbsp; LGPL</P>
+
+<P><A HREF="audio.html#footnote-ref7" NAME="footnote7">7)</A> <STRONG>Parallel Bladeenc</STRONG> &nbsp; LGPL</P>
+
+<P><A HREF="audio.html#footnote-ref8" NAME="footnote8">8)</A> <STRONG>NotLame MP3 Encoder</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref9" NAME="footnote9">9)</A> <STRONG>GOGO</STRONG> &nbsp; LGPL</P>
+
+<P><A HREF="audio.html#footnote-ref10" NAME="footnote10">10)</A> <STRONG>cdr</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref11" NAME="footnote11">11)</A> <STRONG>Dac2mp3</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref12" NAME="footnote12">12)</A> <STRONG>pktrip</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref13" NAME="footnote13">13)</A> <STRONG>rip</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref14" NAME="footnote14">14)</A> <STRONG>RipEnc</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref15" NAME="footnote15">15)</A> <STRONG>T.E.A.R.</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref16" NAME="footnote16">16)</A> <STRONG>The One Ripper</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref17" NAME="footnote17">17)</A> <STRONG>Grip</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref18" NAME="footnote18">18)</A> <STRONG>ripperX</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref19" NAME="footnote19">19)</A> <STRONG>XMultiGrab</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref20" NAME="footnote20">20)</A> <STRONG>GTKmp3make</STRONG> &nbsp; LGPL</P>
+
+<P><A HREF="audio.html#footnote-ref21" NAME="footnote21">21)</A> <STRONG>SimpleCDR</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref22" NAME="footnote22">22)</A> <STRONG>YaRET</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="audio.html#footnote-ref23" NAME="footnote23">23)</A> dove <VAR>traccia</VAR> &egrave; il numero della traccia da estrarre e da trasformare in <CODE>.mp3</CODE></P>
+
+<P><A HREF="audio.html#footnote-ref24" NAME="footnote24">24)</A> <STRONG>MP3info</STRONG> &nbsp; GPL</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="audio.html">audio.html</A></P>
+<P>
+<A HREF="ldr15.html">[successivo]</A>
+<A HREF="ldr13.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

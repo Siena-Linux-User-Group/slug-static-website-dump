@@ -1,0 +1,684 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"    "http://www.w3.org/TR/html4/strict.dtd">
+<HTML LANG="it">
+<HEAD>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html">
+    <META NAME="Generator" CONTENT="Alml">
+    <META NAME="Description" CONTENT=" LDR: Linux Domande e Risposte FAQ su GNU/Linux in italiano ">
+    <META NAME="Keywords" CONTENT=" LDR, FAQ, linuxfaq, LINUXFAQ, linux faq, linux, Linux, ldr, L.D.R., l.d.r., faq, F.A.Q., f.a.q., Linux Domande e Risposte, Gaetano Paolone, Paolone ">
+    <META NAME="Author" CONTENT="Gaetano Paolone &lt;bigpaul@linuxfaq.it&gt;">
+    <META NAME="Date" CONTENT="(2001.08.10)">
+    <META NAME="Resource-type" LANG="en" CONTENT="Document" >
+    <META NAME="Revisit-after" LANG="en" CONTENT="15 days" >
+    <META NAME="Robots" CONTENT="ALL" >
+    <TITLE>LDR: Linux Domande e Risposte</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="ldr.css">
+    <LINK REL="Start" TITLE="Start" HREF="ldr.html">
+    <LINK REL="Prev" TITLE="Previous" HREF="ldr14.html">
+    <LINK REL="Next" TITLE="Next" HREF="ldr16.html">
+</HEAD>
+<BODY>
+<P>
+<A HREF="ldr16.html">[successivo]</A>
+<A HREF="ldr14.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+<A HREF="ldr3.html">[parte]</A>
+</P>
+<HR>
+<DIV>
+<H1>Capitolo 12. &nbsp; <A NAME="title547"></A><A NAME="anchor588"></A>Programmazione</H1>
+
+<H2>12.1 &nbsp; <A NAME="title548"></A><A NAME="anchor589"></A>
+ <A NAME="index2486"></A>Script per la <A NAME="index2487"></A>shell <A NAME="index2488"></A> <A NAME="index2489"></A> </H2>
+
+<P><STRONG>12.1.1)&nbsp;&nbsp;<A NAME="title549"></A><A NAME="anchor590"></A>
+ Perch&eacute; il comando <SAMP>cd</SAMP> non funziona negli <A NAME="index2490"></A>script? <A NAME="index2491"></A> <A NAME="index2492"></A> </STRONG></P>
+
+<P>Se si esegue il seguente <A NAME="index2493"></A>script:</P>
+
+<PRE>#!/bin/sh
+cd /home/aur
+ls -la --color</PRE>
+
+<P>il risultato sar&agrave; la visualizzazione del contenuto della directory <CODE>/home/aur/</CODE>. Quello che accade per&ograve;, &egrave; che la posizione della <A NAME="index2494"></A>shell all'interno del <A NAME="index2495"></A>file system non sar&agrave; <CODE>/home/aur/</CODE> ma risulter&agrave; essere quella da cui lo <A NAME="index2496"></A>script &egrave; stato invocato. Questo accade perch&eacute; lo <A NAME="index2497"></A>script viene eseguito da una <A NAME="index2498"></A>shell secondaria (<CODE>/bin/sh</CODE>), che si chiude quando lo <A NAME="index2499"></A>script stesso termina la sua esecuzione. Pertanto la <A NAME="index2500"></A>shell perde tutte le impostazioni e le variabili (compresa <SAMP>PWD</SAMP>, cio&egrave; il percorso della directory corrente). Per ovviare a tale comportamento si potranno utilizzare due metodiche. La prima prevede l'utilizzo di <SAMP>source</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>source <VAR>nomescript</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>La seconda consiste nell'apporre al comando il punto (<SAMP>.</SAMP>):</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>. <VAR>nomescript</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>in questo caso infatti sar&agrave; la <A NAME="index2501"></A>shell corrente ad eseguire i comandi e non un processo figlio.</P>
+
+<P><STRONG>12.1.2)&nbsp;&nbsp;<A NAME="title550"></A><A NAME="anchor591"></A>
+ Come si pu&ograve; eseguire uno <A NAME="index2502"></A>script di <A NAME="index2503"></A>shell attraverso il protocollo <A NAME="index2504"></A>HTTP? <A NAME="index2505"></A> <A NAME="index2506"></A> <A NAME="index2507"></A> <A NAME="index2508"></A> </STRONG></P>
+
+<P>Si pu&ograve; ottenere il risultato richiesto utilizzando i file <CODE>.cgi</CODE> con permessi 755:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>chmod 755 file.cgi</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>e richiamando mediante <A NAME="index2509"></A>collegamento simbolico o fornendo l'indirizzo esatto. Il contenuto di un file <CODE>.cgi</CODE> pu&ograve; essere qualunque linguaggio interpretato o compilato che sia in grado di leggere lo <A NAME="index2510"></A>standard input, scrivere su <A NAME="index2511"></A>standard output e leggere il contenuto delle variabili d'ambiente.</P>
+
+<P><STRONG>12.1.3)&nbsp;&nbsp;<A NAME="title551"></A><A NAME="anchor592"></A>
+ Esiste un comando o un sistema per contare le righe presenti in un file di testo? <A NAME="index2512"></A> </STRONG></P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>cat <VAR>nomefile</VAR> | wc -l</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote1" NAME="footnote-ref1">(1)</A></SUP></P>
+
+<P><STRONG>12.1.4)&nbsp;&nbsp;<A NAME="title552"></A><A NAME="anchor593"></A>
+ Esiste un comando o un sistema per contare i caratteri presenti in un file di testo? <A NAME="index2513"></A> </STRONG></P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>cat <VAR>nomefile</VAR> | wc -c</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote2" NAME="footnote-ref2">(2)</A></SUP></P>
+
+<P><STRONG>12.1.5)&nbsp;&nbsp;<A NAME="title553"></A><A NAME="anchor594"></A>
+ Come si fa a sapere lo stato di uscita di un comando? <A NAME="index2514"></A> </STRONG></P>
+
+<P>Si pu&ograve; ottenere questa informazione utilizzando il parametro speciale <SAMP>?</SAMP>. Prendendo come esempio la visualizzazione del contenuto di una directory e impartendo il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ls ; echo -e "\nEXIT_CODE: $?\n"</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>verr&agrave; restituito 0 se l'esito &egrave; stato positivo. Il comando appena esposto restituir&agrave; il seguente <A NAME="index2515"></A>output:</P>
+
+<PRE>EXIT_CODE: 0</PRE>
+
+<P>Qualora invece il comando non abbia avuto successo, come ad esempio potrebbe accadere nella visualizzazione di una directory che non esiste:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>ls <VAR>directory_che_non_esiste</VAR>; echo -e "\nEXIT_CODE: $?\n"</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Il comando avr&agrave; un esito negativo e restituir&agrave; quanto segue:</P>
+
+<PRE>EXIT_CODE: 1</PRE>
+
+<P><STRONG>12.1.6)&nbsp;&nbsp;<A NAME="title554"></A><A NAME="anchor595"></A>
+ Che differenza c'&egrave; tra <SAMP>$@</SAMP> e <SAMP>$#</SAMP> all'interno degli <A NAME="index2516"></A>script <A NAME="index2517"></A>shell? <A NAME="index2518"></A> <A NAME="index2519"></A> <A NAME="index2520"></A> </STRONG></P>
+
+<P>Per capire la differenza tra i due parametri posizionali <SAMP>$@</SAMP> e <SAMP>$#</SAMP>, sar&agrave; sufficiente creare il seguente <A NAME="index2521"></A>script fornendogli il nome di <CODE>prova</CODE></P>
+<BLOCKQUOTE>
+
+<PRE>#!/bin/bash
+
+echo $@;
+echo $#;</PRE>
+
+</BLOCKQUOTE>
+
+<P>Ora, dopo avergli fornito i permessi di esecuzione:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>chmod u+x prova</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>lo si potr&agrave; invocare. A scopo didattico verranno forniti tre argomenti:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>./prova ciao bla "un esempio"</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>L'<A NAME="index2522"></A>output del comando &egrave; abbastanza chiaro: <EM>$@</EM> restituir&agrave; tutti i parametri passati tramite la linea di comando, mentre <EM>$#</EM> indicher&agrave; la posizione dell'ultimo di essi, nel nostro caso 3.</P>
+
+<P>Se si aggiunge allo <A NAME="index2523"></A>script anche la riga:</P>
+<BLOCKQUOTE>
+
+<PRE>echo $3</PRE>
+
+</BLOCKQUOTE>
+
+<P>verr&agrave; restituito il terzo argomento (<SAMP>un esempio</SAMP>).</P>
+
+<P><STRONG>12.1.7)&nbsp;&nbsp;<A NAME="title555"></A><A NAME="anchor596"></A>
+ Come si eliminano le prime <VAR>n</VAR> righe o le ultime <VAR>n</VAR> righe per numerosi file di testo? <A NAME="index2524"></A> <A NAME="index2525"></A> </STRONG></P>
+
+<P>A tale scopo utilizziamo <SAMP>vim</SAMP>, caricando i file da modificare tutti in una volta:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>vim file1 file2 file3 file4 file5</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote3" NAME="footnote-ref3">(3)</A></SUP></P>
+
+<P>A questo punto impartiamo il comando dopo essere entrati nella modalit&agrave; che lo consente mediante la pressione del tasto [<KBD>ESC</KBD>]:</P>
+
+<PRE>[...]
+~
+~
+~
+~
+~
+:nmap z gg:d10&lt;CR&gt;G20kd20&lt;CR&gt;:w&lt;CR&gt;:n&lt;CR&gt;</PRE>
+
+<P>Questo comando permette di rimappare il tasto [<KBD>z</KBD>] in <SAMP>vim</SAMP>. Mediante la sola pressione di tale tasto infatti, sar&agrave; possibile cancellare le prime 10 righe e le ultime 20 del file di testo correntemente visualizzato, esso verr&agrave; inoltre memorizzato e verr&agrave; aperto il file successivo.<SUP><A HREF="programmazione.html#footnote4" NAME="footnote-ref4">(4)</A></SUP></P>
+
+<P>Quando <SAMP>vim</SAMP> avr&agrave; modificato l'ultimo file aperto, avvertir&agrave; che non ce ne sono altri cui applicare le operazioni. A questo punto si dovr&agrave; salvare ed uscire con :wq</P>
+
+<PRE>[...]
+~
+~
+~
+~
+~
+:wq</PRE>
+
+<P><STRONG>12.1.8)&nbsp;&nbsp;<A NAME="title556"></A><A NAME="anchor597"></A>
+ Come si cancellano tutte le righe di un file che cominciano con una determinata stringa? <A NAME="index2526"></A> </STRONG></P>
+
+<P>Ammettiamo che la stringa sia &laquo;pD:&raquo;. Facendo riferimento alla LDR <A HREF="ldr15.html#anchor596">12.1.7</A> si dovr&agrave; modificare la mappatura del tasto [<KBD>z</KBD>] questo modo:</P>
+
+<PRE>:nmap z /pD\:&lt;CR&gt;dd</PRE>
+
+<P>Il &laquo;\&raquo; davanti a &laquo;:&raquo; protegge quest'ultimo carattere dall'interpretazione di <SAMP>vim</SAMP>.</P>
+
+<P><STRONG>12.1.9)&nbsp;&nbsp;<A NAME="title557"></A><A NAME="anchor598"></A>
+ Come si aggiungono i numeri di riga ad un file di testo? <A NAME="index2527"></A> <A NAME="index2528"></A> <A NAME="index2529"></A> </STRONG></P>
+
+<P>Si pu&ograve; numerare un file di testo con <A NAME="index2530"></A>Perl. Si crei ad esempio il file <CODE>tizio.pl</CODE> contenente quanto segue:</P>
+<BLOCKQUOTE>
+
+<PRE>#!/usr/bin/perl 
+
+$nr=0;
+while (&lt;STDIN&gt;) {
+                              print sprintf("%04d: %s",$nr,$_);
+                              $nr++;
+                             }
+exit;</PRE>
+
+</BLOCKQUOTE>
+
+<P>Si conferiscano i relativi permessi di esecuzione mediante:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>chmod u+x tizio.pl</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>cat sempronio.txt | ./tizio.pl &gt; filenumerato</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote5" NAME="footnote-ref5">(5)</A></SUP></P>
+
+<P>creer&agrave; il file <CODE>filenumerato</CODE>. Per ottenere lo stesso scopo si potr&agrave; utilizzare <SAMP>awk</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>cat sempronio.txt | awk '{print FNR,$0}'</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>reindirizzando opportunamente l'<A NAME="index2531"></A>output su un file destinazione.</P>
+
+<P><STRONG>12.1.10)&nbsp;&nbsp;<A NAME="title558"></A><A NAME="anchor599"></A>
+ Come si sceglie un file a caso in una directory? <A NAME="index2532"></A> <A NAME="index2533"></A> </STRONG></P>
+
+<P>Se si desidera scegliere un file a caso nella directory corrente si potr&agrave; utilizzare il seguente comando che si avvale di <SAMP>sed</SAMP> e <SAMP>random</SAMP>:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>ls -1 | sed -e $(random -e `ls -1 | wc -l` ; echo $(( RAND=$?+1 )))p --quiet</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Si pu&ograve; sopperire alla mancanza di <SAMP>random</SAMP> con l'equivalente in <A NAME="index2534"></A>Perl:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>perl -e '@files=`ls -1`;print "@files[int(rand($#files))]\n";'</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>12.1.11)&nbsp;&nbsp;<A NAME="title559"></A><A NAME="anchor600"></A>
+ Come si visualizzano i file modificati negli ultimi <VAR>n</VAR> minuti? <A NAME="index2535"></A> </STRONG></P>
+
+<P>Se si intende farlo nella directory corrente e nelle sue discendenti il comando sar&agrave;:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>find . -mmin -30 -exec grep -l aabbcc "{}" \;</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>se invece si intende farlo in tutto il <A NAME="index2536"></A>file&nbsp;system, si impartir&agrave; il seguente comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>find / -mmin -30 -exec grep -l aabbcc "{}" \;</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>12.1.12)&nbsp;&nbsp;<A NAME="title560"></A><A NAME="anchor601"></A>
+ Come si ricercano file doppi? <A NAME="index2537"></A> <A NAME="index2538"></A> <A NAME="index2539"></A> </STRONG></P>
+
+<P>Per cercare in una directory e nelle relative discendenti, se ci sono o meno dei file con nomi uguali e per reindirizzare il risultato di questa ricerca su un file di testo si potr&agrave; utilizzare il seguente <A NAME="index2540"></A>script</P>
+<BLOCKQUOTE>
+
+<PRE>#!/bin/sh
+# $1= directory dove cercare i file.
+
+for $i in `find $1 -name *`; do
+        $n= basename $i
+        if [ `find $1 -name $n |wc -l` -gt 1]; then
+                find $1 -name $n
+        fi
+done</PRE>
+
+</BLOCKQUOTE>
+
+<P>Ecco un metodo alternativo:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>for F in `ls -1 -R <VAR> percorso_dir1</VAR>`; do find <VAR>percorso_dir2</VAR> -name $F; done &gt; <VAR>lista_files_doppi</VAR></CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote6" NAME="footnote-ref6">(6)</A></SUP></P>
+
+<P><STRONG>12.1.13)&nbsp;&nbsp;<A NAME="title561"></A><A NAME="anchor602"></A>
+ Come si convertono in minuscolo tutti i nomi dei file di una directory? <A NAME="index2541"></A> <A NAME="index2542"></A> <A NAME="index2543"></A> <A NAME="index2544"></A> </STRONG></P>
+
+<P>Ci si pu&ograve; avvalere di diverse metodiche (comandi e <A NAME="index2545"></A>script) per rinominare in minuscolo tutti i file di una directory:</P>
+
+<OL>
+
+<LI>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>perl -e '@files = `ls -1`;&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; chop @files; foreach $f(@files){!-e lc($f) &amp;&amp; rename ($f, lc($f))}'</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+
+<LI>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>for FILE in `/bin/ls`; do FILELOWER=`echo $FILE |&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; tr A-Z a-z`; mv -i $FILE $FILELOWER; done</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+</LI>
+
+<LI>
+<BLOCKQUOTE>
+
+<PRE>for i in *
+do
+  echo $i
+  j = `echo $i | dd conv=lcase 2&gt;&amp;-`
+  mv $i $j
+done</PRE>
+
+</BLOCKQUOTE>
+</LI>
+
+<LI>
+<BLOCKQUOTE>
+
+<PRE>for i in *
+do
+   mv -i `echo $i | awk '{print  tolower($1)}'  -`
+done</PRE>
+
+</BLOCKQUOTE>
+</LI>
+</OL>
+
+<P><STRONG>12.1.14)&nbsp;&nbsp;<A NAME="title562"></A><A NAME="anchor603"></A>
+ Come si convertono in minuscolo i nomi dei file nei <A NAME="index2546"></A>collegamenti ipertestuali di una pagina <A NAME="index2547"></A>HTML? <A NAME="index2548"></A> </STRONG></P>
+
+<P>Se si dispone di una pagina <A NAME="index2549"></A>HTML con dei collegamenti a file che hanno lettere maiuscole e minuscole, ad esempio:</P>
+<BLOCKQUOTE>
+
+<PRE>&lt;A HREF="/dir-a/dir-b/pAGInA.html"&gt;</PRE>
+
+</BLOCKQUOTE>
+
+<P>e si volesse convertire i nomi dei file in minuscolo (<CODE>pAGInA.html</CODE> &gt; <CODE>pagina.html</CODE>) si potr&agrave; utilizzare il seguente comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE> cat <VAR>pagina</VAR>.html | perl -e 'while($l=&lt;STDIN&gt;){$l=~s/a href=\"(.*)\"\s*/a \href=\"\L$1\" /ig;print $l;}' &gt; <VAR>convertita</VAR>.html </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote7" NAME="footnote-ref7">(7)</A></SUP></P>
+
+<P><STRONG>12.1.15)&nbsp;&nbsp;<A NAME="title563"></A><A NAME="anchor604"></A>
+ Come si converte un elenco di nomi di file <CODE>.html</CODE> in <A NAME="index2550"></A>collegamenti ipertestuali? <A NAME="index2551"></A> </STRONG></P>
+
+<P>Se si dispone di un file di testo composto da tante righe ognuna delle quali &egrave; il nome di un file <A NAME="index2552"></A>HTML:</P>
+<BLOCKQUOTE>
+
+<PRE> file1.html
+ file2.html
+ file3.html
+ file4.html
+ [...]
+ file34575.html</PRE>
+
+</BLOCKQUOTE>
+
+<P>sar&agrave; possibile trasformare queste righe in altrettanti collegamenti ipertestuali. Per farlo sar&agrave; sufficiente utilizzare il seguente comando (<A NAME="index2553"></A>shell Bash):</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE> for i in `cat <VAR>elenco.txt</VAR>`; do echo "&lt;a href="$i"&gt;$i&lt;/a&gt;"; done &gt; <VAR>filedestinazione.html</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote8" NAME="footnote-ref8">(8)</A></SUP></P>
+
+<P>Si pensi inoltre ad una directory contente molte immagini (<CODE>.png</CODE>, <CODE>.jpg</CODE>, ecc.). Mediante tale comando si potr&agrave; creare un file <CODE>.html</CODE> con un elenco facilmente accessibile da qualsiasi navigatore.</P>
+
+<P><STRONG>12.1.16)&nbsp;&nbsp;<A NAME="title564"></A><A NAME="anchor605"></A>
+ Come si ordinano le righe di un file di testo al contrario? <A NAME="index2554"></A> <A NAME="index2555"></A> </STRONG></P>
+
+<P>Se si desidera che un file del tipo:</P>
+<BLOCKQUOTE>
+
+<PRE>aaa
+bbb
+ccc
+ddd
+eee
+fff</PRE>
+
+</BLOCKQUOTE>
+
+<P>venga convertito in:</P>
+<BLOCKQUOTE>
+
+<PRE>fff
+eee
+ddd
+ccc
+bbb
+aaa</PRE>
+
+</BLOCKQUOTE>
+
+<P>si potr&agrave; utilizzare il seguente comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE> cat -n <VAR>nome_file</VAR> | sort -r |&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; awk '{$1="";print}' | sed -e s/\ // &gt; <VAR>nuovo_file</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote9" NAME="footnote-ref9">(9)</A></SUP></P>
+
+<P>oppure:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>cat <VAR>nome_file</VAR> | perl -e '@a=&lt; STDIN &gt;;&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; while(@a){print pop(@a)};' &gt; <VAR>nuovo_file</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Non basta il semplice:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>cat nome_file | sort -r &gt; nome_file.rev</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>che funzionerebbe se il primo campo di ogni riga fosse la data in formato aa/mm/gg. Se invece il formato &egrave; gg/mm/aa le righe verrebbero ordinate in base al giorno e non in base all'anno.</P>
+
+<P><STRONG>12.1.17)&nbsp;&nbsp;<A NAME="title565"></A><A NAME="anchor606"></A>
+ Come si utilizza <A NAME="index2556"></A>Sed per sostituire il testo? <A NAME="index2557"></A> <A NAME="index2558"></A> <A NAME="index2559"></A> </STRONG></P>
+
+<P>Ecco un esempio simpatico per capire come funziona <A NAME="index2560"></A>Sed, per la sostituzione di testo:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>echo 'Il miglior sistema operativo: Windows' | sed /Windows/s//Linux/g</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>12.1.18)&nbsp;&nbsp;<A NAME="title566"></A><A NAME="anchor607"></A>
+ Quante volte appare una parola in un file? <A NAME="index2561"></A> <A NAME="index2562"></A> </STRONG></P>
+
+<P>Per sapere quante volte compare una parola in un file si dar&agrave; il seguente comando</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>grep <VAR>parola</VAR> <VAR>file</VAR>|wc -w</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>12.1.19)&nbsp;&nbsp;<A NAME="title567"></A><A NAME="anchor608"></A>
+ A cosa serve l'opzione <SAMP>-f</SAMP> (if) negli <A NAME="index2563"></A>script della <A NAME="index2564"></A>shell? <A NAME="index2565"></A> </STRONG></P>
+
+<P>Il seguente <A NAME="index2566"></A>script:</P>
+
+<PRE>#!/bin/bash
+
+if [ -f "$1" ]; then 
+        echo "file regolare";
+fi</PRE>
+
+<P>analizza l'argomento fornitogli. Se quest'ultimo rappresenta un file regolare, lo <A NAME="index2567"></A>script lo segnala. Per file regolare si intende un qualsiasi file normale, che non sia quindi un dispositivo, una directory, ecc.</P>
+
+<P><STRONG>12.1.20)&nbsp;&nbsp;<A NAME="title568"></A><A NAME="anchor609"></A>
+ Come si pu&ograve; utilizzare <SAMP>date</SAMP> negli <A NAME="index2568"></A>script della <A NAME="index2569"></A>shell? <A NAME="index2570"></A> <A NAME="index2571"></A> <A NAME="index2572"></A> </STRONG></P>
+
+<P>In alcuni <A NAME="index2573"></A>script per la <A NAME="index2574"></A>shell a volte &egrave; necessario utilizzare la data. Utilizzando per&ograve; esclusivamente il comando <SAMP>date</SAMP> vengono restituite informazioni a volte inutili. Per eliminarle si utilizzano del opzioni da aggiungere al comando <SAMP>date</SAMP> stesso.</P>
+
+<P>Ad esempio il comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>echo `date +%x`</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>restituisce il formato: <SAMP>gg/mm/aa</SAMP>. Utilizzare invece:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE> echo `date +%x` | sed "/\//s///g" </CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote10" NAME="footnote-ref10">(10)</A></SUP></P>
+
+<P>per ottenere il formato: <EM>ggmmaa</EM> (senza /). Lo stesso risultato lo si ottiene anche con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>echo `date +%x | sed 's/\///g'`</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Con i parametri <SAMP>%d %m %y %Y</SAMP> si possono ottenere tutte le combinazioni per manipolare il formato della data. Ad esempio:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>date +%Y%m%d</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>restituir&agrave;:</P>
+
+<PRE>20010304</PRE>
+
+<P>Il parametro <SAMP>%Y</SAMP> restituisce l'anno a quattro cifre mentre <SAMP>%y</SAMP> quello a due.</P>
+
+<P><STRONG>12.1.21)&nbsp;&nbsp;<A NAME="title569"></A><A NAME="anchor610"></A>
+ Come si fa a cercare tutti i file di un certo tipo (es. <CODE>*.png</CODE>) e a copiarli in una directory? <A NAME="index2575"></A> <A NAME="index2576"></A> <A NAME="index2577"></A> <A NAME="index2578"></A> </STRONG></P>
+
+<P>Se la directory di destinazione &egrave; <CODE>/root/pngfile</CODE>, il comando sar&agrave;:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE> find / -name "*.png" -exec cp -p {} <VAR>/root/pngfile</VAR> \; </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P><STRONG>12.1.22)&nbsp;&nbsp;<A NAME="title570"></A><A NAME="anchor611"></A>
+ Come si cambiano le estensioni dei file? <A NAME="index2579"></A> <A NAME="index2580"></A> <A NAME="index2581"></A> <A NAME="index2582"></A> </STRONG></P>
+
+<P>Ecco uno <A NAME="index2583"></A>script che permette di cambiare le estensioni di gruppi di file dello stesso tipo presenti nella directory corrente:</P>
+<BLOCKQUOTE>
+
+<PRE>#!/usr/bin/perl
+
+$old_ext = @ARGV[0] || usage();
+$new_ext = @ARGV[1] || usage();
+
+print "$old_ext --&gt; $new_ext\n\n";
+
+@files = `ls -1`;
+chop @files;
+
+foreach $f(@files) {
+        $f =~ /(^.*)\.$old_ext/ &amp;&amp; rename ($f, "$1.$new_ext");
+}
+
+sub usage {
+        print &lt;&lt;"END";
+
+        Usage: ./script.pl old_ext new_ext
+
+        Example: ./script.pl tar.gz zip
+
+END
+        exit(1);
+}</PRE>
+
+</BLOCKQUOTE>
+
+<P>Occorre fornire i permessi di esecuzione e occorre invocarlo nella directory in cui si devono rinominare i file ponendo come primo argomento l'estensione da cambiare e come secondo l'estensione che si desidera. Esempio:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>converti jpeg jpg</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote11" NAME="footnote-ref11">(11)</A></SUP></P>
+
+<P>Ecco un altro metodo per ottenere lo stesso scopo:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE> for i in *.vecchiaest; do echo $i | mv $i `awk -F. '{print $1 ".nuovaest"}'`; done </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>o pi&ugrave; semplicemente:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE> for i in *.vecchiaest; do mv $i ${i%.vecchiaest}.nuovaest; done </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Se i file sono tanti e si eccede la lunghezza massima di una riga di comando, si pu&ograve; impartire:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>find . -name "abc*.txt" | while read i; do mv $i ${i%.txt}; done</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote12" NAME="footnote-ref12">(12)</A></SUP></P>
+
+<P><STRONG>12.1.23)&nbsp;&nbsp;<A NAME="title571"></A><A NAME="anchor612"></A>
+ Come si pu&ograve; modificare l'<A NAME="index2585"></A>output di <SAMP>pppstats</SAMP>? <A NAME="index2586"></A> <A NAME="index2587"></A> </STRONG></P>
+
+<P>Il comando</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>pppstats -r -v ppp0</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>restituisce qualcosa del genere::</P>
+
+<PRE>      IN   PACK VJCOMP VJTOSS NON-VJ  RATIO  UBYTE
+   48089    366     16      0     99   1.00      0  </PRE>
+
+<PRE>      OUT   PACK VJCOMP VJSRCH VJMISS  RATIO  UBYTE
+   308840    385     54    212      8   1.00      0</PRE>
+
+<P>Se si dovesse avere la necessit&agrave; di eliminare la prima riga e avere la seconda tale e quale, ma al posto degli spazi dei caratteri di tabulazione, si potr&agrave; procedere come segue <SUP><A HREF="programmazione.html#footnote13" NAME="footnote-ref13">(13)</A></SUP>:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>pppstats -r -v ppp0 |&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; grep -v VJCOMP | perl -e '$i=&lt;STDIN&gt;;&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp;$i=~s/\s+/\t/g;print $i;' | cut -f 2-</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>perl -e '@a=split(/\s+/, `pppstats -r -v ppp0|&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp;grep -v VJCOMP`);shift(a);&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp;foreach $b(@a) {print "$b\t"};'</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>pppstats -r -v ppp0 | grep -v OUT |&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; sed -e 's/\ \+/ /g' | cut -f 2-</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote14" NAME="footnote-ref14">(14)</A></SUP></P>
+
+<P><STRONG>12.1.24)&nbsp;&nbsp;<A NAME="title572"></A><A NAME="anchor613"></A>
+ Come si trovano tutti gli indirizzi di posta elettronica in un file <A NAME="index2590"></A>HTML? <A NAME="index2591"></A> </STRONG></P>
+
+<P>Per ricavare da una pagina <A NAME="index2592"></A>HTML tutti gli indirizzi di posta elettronica si potr&agrave; utilizzare l'interprete <A NAME="index2593"></A>Perl:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE> cat <VAR>file.html</VAR> | perl -e 'while ($l=&lt;STDIN&gt;)&nbsp;<SUB><EM>(segue)</EM></SUB><BR>&nbsp;&nbsp; {$l=~/mailto:\s*([\w-_\.]+\@[\w-_\.]+\.[\w-_\.]+)/ &amp;&amp; print "$1\n";}' </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Se gli indirizzi da estrapolare non compaiono sotto forma di <A NAME="index2594"></A>tag (marcatore) <A NAME="index2595"></A>HTML, si dovr&agrave; togliere la stringa relativa al <SAMP>mailto</SAMP> e lo spazio nell'espressione regolare.</P>
+
+<P><STRONG>12.1.25)&nbsp;&nbsp;<A NAME="title573"></A><A NAME="anchor614"></A>
+ Come si aggiunge una stringa alla fine di ogni riga di un file testo? <A NAME="index2596"></A> <A NAME="index2597"></A> </STRONG></P>
+
+<P>Per aggiungere una stessa stringa alla fine di ogni riga di testo si dar&agrave; il seguente comando:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>cat <VAR>file</VAR> -name | sed "s/$/testo/"</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>dove <VAR>testo</VAR> &egrave; la stringa da aggiungere.</P>
+
+<P><STRONG>12.1.26)&nbsp;&nbsp;<A NAME="title574"></A><A NAME="anchor615"></A>
+ Esempio di uno <A NAME="index2598"></A>script per decomprimere file in directory sequenziali. <A NAME="index2599"></A> </STRONG></P>
+
+<P>Se si dispone di <VAR>n</VAR> file compressi con <SAMP>gzip</SAMP>, e si desidera decomprimerne il contenuto in <VAR>n</VAR> directory differenti, si potr&agrave; utilizzare il seguente <A NAME="index2600"></A>script:</P>
+<BLOCKQUOTE>
+
+<PRE>#!/bin/sh
+cd /gzipdir/
+for f in *
+do
+    mkdir /destinazione/$f
+    unzip $f -d /destinazione/$f
+done</PRE>
+
+</BLOCKQUOTE>
+
+<P>Lo <A NAME="index2601"></A>script assume che tutti i file compressi risiedano in <CODE>/gzipdir/</CODE> e che la directory <CODE>/destinazione/</CODE> esista gi&agrave;.</P>
+
+<H2>12.2 &nbsp; <A NAME="title575"></A><A NAME="anchor616"></A>
+Linguaggio C</H2>
+
+<P><STRONG>12.2.1)&nbsp;&nbsp;<A NAME="title576"></A><A NAME="anchor617"></A>
+ Cosa sono i file <CODE>.h</CODE>, <CODE>.o</CODE> e <CODE>.c</CODE> in un programma <A NAME="index2602"></A>C? <A NAME="index2603"></A> <A NAME="index2604"></A> <A NAME="index2605"></A> </STRONG></P>
+
+<P>Supponendo di lavorare sul file <CODE>miofile</CODE>, il codice sorgente vero e proprio viene scritto in <CODE>miofile.c</CODE>. <CODE>miofile.h</CODE>, detto file di intestazione contiene le dichiarazioni delle variabili e delle funzioni implementate nel file <CODE>miofile.c</CODE>.</P>
+
+<P>Infine il codice oggetto risultante dalla compilazione risieder&agrave; in <CODE>miofile.o</CODE>.</P>
+
+<P><STRONG>12.2.2)&nbsp;&nbsp;<A NAME="title577"></A><A NAME="anchor618"></A>
+ Come si avvia il compilatore <A NAME="index2606"></A>C++? <A NAME="index2607"></A> <A NAME="index2608"></A> <A NAME="index2609"></A> <A NAME="index2610"></A> </STRONG></P>
+
+<P>Tale compilatore si pu&ograve; avviare con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>g++ -o <VAR>nomefile</VAR> <VAR>nomefile.cpp</VAR> </CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>L'opzione <SAMP>-o</SAMP> serve a dare un nome all'eseguibile diverso dal nome predefinito, che &egrave; <CODE>a.out</CODE>.</P>
+
+<P><STRONG>12.2.3)&nbsp;&nbsp;<A NAME="title578"></A><A NAME="anchor619"></A>
+ <SAMP>Bus Error</SAMP> <A NAME="index2611"></A> <A NAME="index2612"></A> </STRONG></P>
+
+<P>Solitamente l'errore <SAMP>Bus Error</SAMP> si verifica per un superamento dei limiti di memoria, un indice di un <A NAME="index2613"></A>array che supera il limite, un fine-stringa mancante ecc.</P>
+
+<P>Per risalire all'origine del problema, occorrer&agrave; compilare il sorgente con l'opzione <SAMP>-g</SAMP> ed eseguirlo. Quando si interrompe l'esecuzione del programma stesso, si potranno analizzare le cause con:</P>
+
+<P class="command"><CODE>$&nbsp;</CODE><STRONG><CODE>dbx <VAR>nomeprogr</VAR> core</CODE></STRONG>[<KBD>Invio</KBD>]<SUP><A HREF="programmazione.html#footnote15" NAME="footnote-ref15">(15)</A></SUP></P>
+
+<P>e tramite l'istruzione <SAMP>where</SAMP> si potr&agrave; visualizzare il punto in cui si &egrave; verificato l'errore.</P>
+
+<P><STRONG>12.2.4)&nbsp;&nbsp;<A NAME="title579"></A><A NAME="anchor620"></A>
+ Esiste in GNU/Linux il file <CODE>conio.h</CODE>? <A NAME="index2614"></A> <A NAME="index2615"></A> </STRONG></P>
+
+<P>Su &lt;<EM><A HREF="https://www.siena.linux.it/documenti/ldr/sunsite.unc.edu">sunsite.unc.edu</A></EM>&gt; &egrave; presente un file che si chiama <CODE>linux-conio-x.yy.tgz</CODE> che sostituisce il <CODE>conio.h</CODE>.</P>
+
+<H2>12.3 &nbsp; <A NAME="title580"></A><A NAME="anchor621"></A>
+<A NAME="index2616"></A>Pascal</H2>
+
+<P><STRONG>12.3.1)&nbsp;&nbsp;<A NAME="title581"></A><A NAME="anchor622"></A>
+ Si pu&ograve; convertire un programma scritto in <A NAME="index2617"></A>Pascal in C? <A NAME="index2618"></A> <A NAME="index2619"></A> <A NAME="index2620"></A> <A NAME="index2621"></A> <A NAME="index2622"></A> </STRONG></P>
+
+<P>Esiste <SAMP>p2c</SAMP> <A NAME="index2623"></A>Pascal-to-C. Dato un sorgente <A NAME="index2624"></A>Pascal, esso genera un altro sorgente <A NAME="index2625"></A>C che &egrave; possibile compilare tranquillamente con <SAMP>gcc</SAMP>.</P>
+
+<TABLE BORDER="3" WIDTH="100%">
+<TR><TD>
+
+<P>Il nome di <A NAME="index2626"></A>Pascal-to-C &egrave; indicato dal suo autore come <A NAME="index2627"></A>P2c. Tuttavia, <A NAME="index2628"></A>P2C &egrave; anche il nome di un altro compilatore analogo, realizzato per sistemi speciali: &lt;<EM><A HREF="http://www.geocities.com/SiliconValley/Network/3656/p2c/linux.html">http://www.geocities.com/SiliconValley/Network/3656/p2c/linux.html</A></EM>&gt;. In questo secondo caso, oltre alla particolarit&agrave; del compilatore stesso, c'&egrave; da considerare il fatto che non si tratta di software libero.</P>
+
+</TD></TR>
+</TABLE>
+
+<H2>12.4 &nbsp; <A NAME="title582"></A><A NAME="anchor623"></A>
+Cobol</H2>
+
+<P><STRONG>12.4.1)&nbsp;&nbsp;<A NAME="title583"></A><A NAME="anchor624"></A>
+ Esistono dei compilatori Cobol per GNU/Linux? <A NAME="index2629"></A> <A NAME="index2630"></A> <A NAME="index2631"></A> <A NAME="index2632"></A> </STRONG></P>
+
+<P>Eccone alcuni:</P>
+
+<OL>
+
+<LI>
+
+<P> <A NAME="index2633"></A>Cobol2c <SUP><A HREF="programmazione.html#footnote16" NAME="footnote-ref16">(16)</A></SUP>; (in sviluppo: &lt;<EM><A HREF="http://www.gnu.org/software/cobol/cobol.htm">http://www.gnu.org/software/cobol/cobol.htm</A></EM>&gt;) </P>
+</LI>
+
+<LI>
+
+<P> <A NAME="index2634"></A>Tiny Cobol <SUP><A HREF="programmazione.html#footnote17" NAME="footnote-ref17">(17)</A></SUP>; </P>
+</LI>
+
+<LI>
+
+<P> <A NAME="index2635"></A>RPCobol <SUP><A HREF="programmazione.html#footnote18" NAME="footnote-ref18">(18)</A></SUP>; </P>
+</LI>
+</OL>
+
+<H2>12.5 &nbsp; <A NAME="title584"></A><A NAME="anchor625"></A>
+ <A NAME="index2636"></A>Perl <A NAME="index2637"></A> </H2>
+
+<P><STRONG>12.5.1)&nbsp;&nbsp;<A NAME="title585"></A><A NAME="anchor626"></A>
+ Come si installano i moduli <A NAME="index2638"></A>Perl? <A NAME="index2639"></A> <A NAME="index2640"></A> </STRONG></P>
+
+<P>Il modo migliore per installare i moduli in <A NAME="index2641"></A>Perl &egrave; tramite il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>perl -MCPAN -eshell</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Al <A NAME="index2642"></A>prompt occorre digitare:</P>
+
+<P class="command"><CODE>&gt;&nbsp;</CODE><STRONG><CODE>install <VAR>Tk</VAR></CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P> (<SAMP>Tk</SAMP> in questo caso &egrave; un esempio di modulo da installare) Sar&agrave; necessaria una breve fase di configurazione guidata se si installano i moduli in questo modo per la prima volta, ma tutta la fase di scarico del modulo, test e installazione &egrave; automatica. Essa comprende anche eventuali installazioni di moduli necessari a quello in oggetto. In alternativa, per installare un modulo <A NAME="index2643"></A>Perl a mano, dopo averlo scompattato ed essere entrati nella directory dove &egrave; stato decompresso, si pu&ograve; inizializzare la procedura di installazione con: </P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>perl Makefile.PL</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>Il modulo viene creato mediante il comando:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>make</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>provato mediante:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>make test</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>ed installato con:</P>
+
+<P class="command"><CODE>#&nbsp;</CODE><STRONG><CODE>make install</CODE></STRONG>[<KBD>Invio</KBD>]</P>
+
+<P>durante tutte queste fasi si possono presentare inconvenienti, ad esempio altri moduli da installare che sono necessari a quello in oggetto, oppure test falliti per qualche ragione.</P>
+LDR --- <EM>Copyright &copy; 1999-2001 Gaetano Paolone -- &nbsp;bigpaul&nbsp;@&nbsp;linuxfaq.it</EM><HR>
+
+<P><A HREF="programmazione.html#footnote-ref1" NAME="footnote1">1)</A> dove <VAR>nomefile</VAR> &egrave; il nome del file di cui vogliamo contare le righe</P>
+
+<P><A HREF="programmazione.html#footnote-ref2" NAME="footnote2">2)</A> dove <VAR>nomefile</VAR> &egrave; il nome del file di cui vogliamo contare i caratteri</P>
+
+<P><A HREF="programmazione.html#footnote-ref3" NAME="footnote3">3)</A> &egrave; possibile utilizzare anche i caratteri di sostituzione (<SAMP>*</SAMP> e <SAMP>?</SAMP>)</P>
+
+<P><A HREF="programmazione.html#footnote-ref4" NAME="footnote4">4)</A>  Sar&agrave; sufficiente sostituire 10 e 20 con i valori desiderati</P>
+
+<P><A HREF="programmazione.html#footnote-ref5" NAME="footnote5">5)</A> dove <CODE>sempronio.txt</CODE> &egrave; il file da numerare</P>
+
+<P><A HREF="programmazione.html#footnote-ref6" NAME="footnote6">6)</A> dove per <VAR>percorso_dir1</VAR> si intende il percorso completo della prima directory da confrontare, e per <VAR>percorso_dir2</VAR> il percorso della seconda. <VAR>lista_files_doppi</VAR> sar&agrave; il file di testo contenente l'elenco dei file doppi</P>
+
+<P><A HREF="programmazione.html#footnote-ref7" NAME="footnote7">7)</A> dove <VAR>pagina.html</VAR> &egrave; la pagina da convertire e <VAR>convertita.html</VAR> &egrave; la pagina risultato della conversione.</P>
+
+<P><A HREF="programmazione.html#footnote-ref8" NAME="footnote8">8)</A> dove <VAR>elenco.txt</VAR> &egrave; l'elenco dei file <CODE>.html</CODE> e <VAR>filedestinazione.html</VAR> &egrave; la pagina ipertestuale risultato della conversione.</P>
+
+<P><A HREF="programmazione.html#footnote-ref9" NAME="footnote9">9)</A> dove <VAR>nome_file</VAR> &egrave; il file da convertire e <VAR>nuovo_file</VAR> il file risultato della conversione.</P>
+
+<P><A HREF="programmazione.html#footnote-ref10" NAME="footnote10">10)</A> le virgolette sono necessarie a causa della <SAMP>\</SAMP></P>
+
+<P><A HREF="programmazione.html#footnote-ref11" NAME="footnote11">11)</A> ammesso che lo <A NAME="index2584"></A>script sia stato chiamato <VAR>converti</VAR>.</P>
+
+<P><A HREF="programmazione.html#footnote-ref12" NAME="footnote12">12)</A> prestare attenzione: <SAMP>find</SAMP> &egrave; ricorsivo.</P>
+
+<P><A HREF="programmazione.html#footnote-ref13" NAME="footnote13">13)</A> Questa metodica &egrave; utile se si desidera analizzare i dati sulle connessioni con un foglio di calcolo (<A NAME="index2588"></A>Gnumeric, ecc.)</P>
+
+<P><A HREF="programmazione.html#footnote-ref14" NAME="footnote14">14)</A> N.B.: nella parte con il <A NAME="index2589"></A>Sed il tab &egrave; scritto con [<KBD>Ctrl+v</KBD>] e [<KBD>tab</KBD>]</P>
+
+<P><A HREF="programmazione.html#footnote-ref15" NAME="footnote15">15)</A> <VAR>nomeprogr</VAR> &egrave; il nome del programma</P>
+
+<P><A HREF="programmazione.html#footnote-ref16" NAME="footnote16">16)</A> <STRONG>Cobol2c</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="programmazione.html#footnote-ref17" NAME="footnote17">17)</A> <STRONG>Tiny Cobol</STRONG> &nbsp; GPL</P>
+
+<P><A HREF="programmazione.html#footnote-ref18" NAME="footnote18">18)</A> <STRONG>RPCobol</STRONG> &nbsp; GPL</P>
+</DIV>
+<HR>
+<P>Dovrebbe essere possibile fare riferimento a questa pagina anche con il nome  <A HREF="programmazione.html">programmazione.html</A></P>
+<P>
+<A HREF="ldr16.html">[successivo]</A>
+<A HREF="ldr14.html">[precedente]</A>
+<A HREF="ldr.html">[inizio]</A>
+<A HREF="ldr23.html">[fine]</A>
+<A HREF="ldr1.html">[indice generale]</A>
+<A HREF="ldr21.html">[hall of fame]</A>
+<A HREF="ldr23.html">[indice analitico]</A>
+</P>
+</BODY>
+</HTML>

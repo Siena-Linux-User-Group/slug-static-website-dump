@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+  <HEAD>
+    <META name="generator" content="HTML Tidy, see www.w3.org">
+    <TITLE>Leafnode+</TITLE>
+    <META name="GENERATOR" content=
+    "Modular DocBook HTML Stylesheet Version 1.61 ">
+    <LINK rel="HOME" title="Quick&amp;Easy Configuration HOWTO" href=
+    "index.html">
+    <LINK rel="UP" title="Leafnode" href="leafnode.html">
+    <LINK rel="PREVIOUS" title="Scorefile" href="scorefile.html">
+    <LINK rel="NEXT" title="Firewall" href="firewall.html">
+  </HEAD>
+
+  <BODY class="SECT1" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink=
+  "#840084" alink="#0000FF">
+    <DIV class="NAVHEADER">
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TH colspan="3" align="center"><EM>Quick&amp;Easy Configuration
+          HOWTO</EM></TH>
+        </TR>
+
+        <TR>
+          <TD width="10%" align="left" valign="bottom"><A href=
+          "scorefile.html">Indietro</A></TD>
+
+          <TD width="80%" align="center" valign="bottom">Capitolo 8.
+          Leafnode</TD>
+
+          <TD width="10%" align="right" valign="bottom"><A href=
+          "firewall.html">Avanti</A></TD>
+        </TR>
+      </TABLE>
+      <HR align="LEFT" width="100%">
+    </DIV>
+
+    <DIV class="SECT1">
+      <H1 class="SECT1"><A name="LEAFNODEPLUS">8.3. Leafnode+</A></H1>
+
+      <DIV class="NOTE">
+        <BLOCKQUOTE class="NOTE">
+          <P><B>Nota:</B> Sottosezione a cura di <A href=
+          "mailto:ggiambon@student.ethz.ch" target="_top">Giambo</A></P>
+        </BLOCKQUOTE>
+      </DIV>
+
+      <P><SPAN class="APPLICATION">Leafnode+</SPAN> deriva da <B class=
+      "KEYCAP">Leafnode v1.4</B>. La differenza più interessante rispetto al
+      suo <EM>predecessore</EM> è forse la velocità nello scaricare gli
+      articoli di ogni NG: lo scaricamento avviene in maniera
+      <EM>asincrona</EM>, non aspettando cioè una risposta per ogni richiesta
+      prima di procedere con la prossima, bensì spedendo più richieste ed
+      eventualmente riformulando quelle che non hanno ricevuto una risposta.
+      Risulta inoltre più veloce nel fornire i suoi servizi una volta
+      contattato. Manca purtroppo dell'opzione <B class=
+      "KEYCAP">delaybody</B> che permette di scaricare in un secondo tempo il
+      corpo di un messaggio del quale si è letto il titolo: l'autore promette
+      di implementare questa possibilità se le richieste saranno numerose.
+      Manca inoltre il <EM>filterfile</EM>, quindi bisogna scaricare tutti i
+      post per ogni newsgroup sottoscritto. Personalmente non ne sento la
+      mancanza, anzi, per dirla tutta, non credo che sia giusto che
+      un'amministratore si arroghi il diritto di filtrare i messaggi che a
+      lui non vanno a genio prevaricando così i suoi utenti; questi ultimi
+      possono utilizzare le possibilità di filtraggio offerte dai loro
+      <EM>newsreader</EM>. Dall'altro lato c'è da dire che per una LinuxBox
+      configurata per un solo utente, l'utilizzo di un filtro può portare ad
+      un buon risparmio sulla bolletta telefonica, risparmio però facilmente
+      uguagliabile dalla maggiore velocità di <SPAN class=
+      "APPLICATION">leafnode+</SPAN> nello scaricare i messaggi rispetto al
+      suo predecessore. Come si può notare, ci sono tutti gli elementi per
+      innescare una <EM>guerra santa</EM>, o per spingere qualche volenteroso
+      a implementare il filtraggio utilizzando i sorgenti di <SPAN class=
+      "APPLICATION">leafnode</SPAN>: magari potrà nascere una nuova creatura,
+      <EM>leafnode++</EM> :-)</P>
+
+      <P>In linea di massima <SPAN class="APPLICATION">leafnode+</SPAN>
+      assomiglia al suo predecessore, vi rimando al capitolo su <B class=
+      "KEYCAP">leafnode</B> per quel che concerne la creazione degli utenti,
+      l'uso di <B class="COMMAND">fetchnews</B> e <B class=
+      "COMMAND">texpire</B>. La differenza principale è che il file di
+      configurazione non si trova nella directory <B class=
+      "KEYCAP">/etc/leafnode/</B>, bensì in quella <B class=
+      "KEYCAP">/usr/lib/leafnode/</B>. Se si compila partendo dai sorgenti,
+      si può modificare nel <EM>Makefile</EM> la voce <B class=
+      "KEYCAP">LIBDIR</B> per piazzare i file di configurazione in <B class=
+      "KEYCAP">/etc/leafnode/</B> (Il che sarebbe, IMHO, più
+      <EM>ordinato</EM>).</P>
+
+      <DIV class="WARNING">
+        <TABLE class="WARNING" border="1" width="100%">
+          <TR>
+            <TD align="CENTER"><B>Attenzione</B></TD>
+          </TR>
+
+          <TR>
+            <TD align="LEFT">
+              <P>Se si compila partendo dai sorgenti, di default
+              l'installazione crea un file in questa directory con il nome
+              <TT class="FILENAME">config.example</TT>: Sarà necessario
+              quindi copiare il file con il nome corretto, cioè <TT class=
+              "FILENAME">config</TT>, facendo attenzione ai diritti di
+              lettura/scrittura sia del file che della directory che lo
+              contiene (in questa directory verrà scritto pure il <TT class=
+              "FILENAME">groupinfo</TT>!). Il file di configurazione è
+              analogo a quello di <SPAN class=
+              "APPLICATION">Leafnode</SPAN>.</P>
+            </TD>
+          </TR>
+        </TABLE>
+      </DIV>
+
+      <P><B class="KEYCAP">[BUGS]</B>. C'è un curioso <EM>BUG</EM> con la
+      versione 2.10: la prima volta che viene dato il comando <B class=
+      "COMMAND">make installall</B> compare la scritta:</P>
+
+      <TABLE border="0" bgcolor="#E0E0E0" width="100%">
+        <TR>
+          <TD>
+<PRE class="SCREEN">
+make: libutil.a: Command not found
+     
+</PRE>
+          </TD>
+        </TR>
+      </TABLE>
+
+      <P>Ridando il comando <B class="COMMAND">make installall</B> il tutto
+      viene compilato e installato correttamente.</P>
+    </DIV>
+
+    <DIV class="NAVFOOTER">
+      <HR align="LEFT" width="100%">
+
+      <TABLE width="100%" border="0" cellpadding="0" cellspacing="0">
+        <TR>
+          <TD width="33%" align="left" valign="top"><A href=
+          "scorefile.html">Indietro</A></TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "index.html">Partenza</A></TD>
+
+          <TD width="33%" align="right" valign="top"><A href=
+          "firewall.html">Avanti</A></TD>
+        </TR>
+
+        <TR>
+          <TD width="33%" align="left" valign="top">Scorefile</TD>
+
+          <TD width="34%" align="center" valign="top"><A href=
+          "leafnode.html">Risali</A></TD>
+
+          <TD width="33%" align="right" valign="top">Firewall</TD>
+        </TR>
+      </TABLE>
+    </DIV>
+  </BODY>
+</HTML>
+

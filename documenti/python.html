@@ -1,0 +1,166 @@
+<html>
+<head>
+   <title>SLUG - Siena Linux User Group - Portsentry</title>
+</head>
+<body bgcolor="#EAA503">
+<CENTER>
+	<HR NOSHADE>
+	<TABLE width="100%" border=0 cellspacing=2 cellpadding=0 bgcolor="#EAA503">
+	<TR><TD align="LEFT">
+	<a href="../../siena.linux.it/index.html">
+	<IMG SRC="../img/logo.jpg" ALT="Cor Magis Tibi Sena Pandit" border=1 valign=middle>
+	</a>
+	</TD>
+	<TD align="RIGHT" VALIGN="TOP" width="99%">
+	<a href="../../siena.linux.it/index.html">
+	<img src="../img/scritta.png" alt="SLUG - Siena.Linux.User.Group" border=0></a>
+        </TD>
+	</TR>
+	</TABLE>
+        <HR NOSHADE>
+
+
+<BR><BR>
+<center>
+<font size=+4>Python 2: Pyqt o WxWindows?</font></center>
+<BR><BR>
+<center>
+<table BORDER=1 CELLSPACING=0 CELLPADDING=2 WIDTH="60%" BGCOLOR="#000000">
+<tr>
+   <td align = "center">
+<font color = "#FFFFFF"> <B>Un resoconto di Dinogen sulle esperienze di sviluppo del Kahemba con Python</b>
+</td> </tr>
+
+<tr>
+   <td aligh = "left" BGCOLOR="#FFFFFF">
+Siena, 25/07/2002<BR><BR>
+Ho avuto modo di provare il linguaggio python2 in abbinamento con due framework:
+QT e wxWindows.<BR>
+Riporto qui le mie esperienze.<BR>
+Potete saltare lo sproloquio e andare alle considerazioni finali.<BR>
+Per chi gli interessa....<BR>
+<BR>
+Vi ricorderete che il progetto <a href='http://www.kahemba.org'>Kahemba</a> è un tentativo 
+di fornire una tenuta conto ed una gestione aziendale multipiattaforma (linux e windows).<BR>
+Per un paio d'anni abbiamo usato il C++ con il toolkit <a href='http://www.fltk.org'>FLTK</a>. <BR>
+Purtroppo il progetto è andato sempre a rilento e poi si è arenato per tre motivi:<BR>
+1) limiti del toolkit che manca di componenti come tree e grid;<BR>
+2) carenza di programmatori C++, non è facile trovarne, almeno cosi' e' stato per me;<BR>
+3) difficile reperibilità del compilatore C++.<BR>
+<BR>
+Sul punto numero 3 si potrebbe obbiettare, ma il MSVC e Borland C++ costano, il cygwin usa un 
+sistema di path unix-like che fa girare spesso le scatole e poi sono 80 mega da scaricare. <BR>
+Inoltre la maggior parte di progetti open source usano MSVC.<BR>
+Ho provato anche altro, come il Borland Free Command Line C Compiler 5.5, che non è male, e il 
+mingwc, ma c'erano sempre problemi.<BR>
+<BR>
+Allora ho preso la sofferta decisione di cambiare tutto.<BR>
+Ho provato il kylix, ma la versione free non ha il supporto DB. Ho provato a usare le zeoslib 
+(componenti free per l'accesso al database), ma sono in beta e non sono riuscito a usarle.<BR>
+<BR>
+Poi c'ho un amico che mi decanta le meraviglie del python. «Beh», mi son detto, «proviamo anche questa!».<BR>
+Il python e' multipiattaforma, ha il supporto per tutti i database, ed e' facile da imparare.<BR>
+Col python e' possibile superare i problemi descritti nei punti 2 e 3.<BR>
+<BR>
+Ho letto il tutorial del python mentre camminavo per andare a pranzo dal lavoro.<BR> Davvero un linguaggio 
+di facile apprendimento. Io ho cominciato a programmare vent'anni fa in esadecimale e che ho visto 
+nascere e morire un bel po' di linguaggi.<BR> Praticamente mi sono impadronito delle basi del python all'istante.
+E' un linguaggio molto simile agli altri linguaggi di scripting e unisce semplicit&agrave e potenza. <BR>
+<BR>
+Ora mi serviva un toolkit. Prima ho provato il PyQT che e' il binding delle librerie QT per python.<BR>
+Un volta per divertimento avevo fatto il tutorial del QT.<BR>
+Bè, ci crediate o no, in un pomeriggio ho fatto tutta una applicazione che mi serve per lavoro in pyQT, 
+poi l'ho cancellata per errore e l'ho rifatta tutta dinuovo in 20 minuti!<BR>
+La potenza e la velocita' di sviluppo del PyQT sono incredibili!<BR>
+La mattina non sapevo quasi niente di python e di QT, e la sera potevo fare tutto quello che volevo col PyQT.<BR>
+Tipicamente il designer del QT (che serve a disegnare le interfacce) produce un file dal quale, con l'utility 
+"uic", si genera una classe C++.<BR>
+Il PyQT ha l'utility pyuic che genera una classe python. Dalla classe cosi' generata si deriva un'altra classe 
+dove si mette il codice. In questo modo potevo sempre cambiare l'interfaccia utente senza toccare il codice.<BR>
+Il python semplificava enormemente la stesura del codice rispetto al C++, mentre il QT permetteva di costruire 
+interfacce grafiche belle ed efficienti.<BR> Il tutto viaggiava via CVS da Linux e Windows e ritorno senza cambiare 
+una sola riga.<BR>
+L'ho provato per qualche giorno, e ho fatto qualche applicazione. Veramente un framework eccezionale, facile, 
+veloce, potente. Non gli trovavo nessun difetto.<BR>
+Fino a quando non ho aggiornato alla Red Hat 7.3. <BR>
+La Red Hat 7.3 aggiorna le QT e il designer alla versione 3. <BR>
+La versione di QT per Windows non e' libera, ma gratuita.<BR>
+Inoltre è ferma alla versione 2 e ha molte limitazioni nella licenza d'uso. Non potevo neanche fare quella 
+applicazioncina per lavoro. Ok, l'ho eliminata.<BR>
+Sotto linux il designer 2 e 3 possono convivere, ma non sono compatibili tra loro. Questo porta un inevitabile 
+disallineamento quando il tuo codice viaggia da linux a windows. Se vuoi la compatibilità con windows devi usare 
+le QT 2 sotto linux e non puoi aggiornare il PyQT. <BR>
+<BR>
+Niente, ho abbandonato il PyQT con uno straziante addio.<BR>
+<BR>
+Allora mi sono messo a guardare il <a href="http://www.wxwindows.org">wxWindows</a>. <BR>
+Ora, non pensate che sia facile cominciare a usare un nuovo toolkit. <BR>Sinceramente quando c'hai una cosa che funziona 
+e conosci gia', tutto faresti meno che abbandonarla.<BR> Avevo già dovuto abbandonare il FLTK, che per piccole cose è ottimo. <BR>
+Dopo aver imparato il PyQT devo mollare e passare ad altro. Altre filosofie di programmazione, altre gerarchie di classi.<BR> 
+
+E' uno stress.<BR>
+<BR>
+Dicevo, il wxWindows + python prende il nome di <a href='http://www.wxpython.org'>wxPython</a>.<BR>
+Si basa interamente sui dei layout manager detti sizer. Cioe' non dici "metti questo widget in posizione x,y con 
+dimensioni w,h", ma invece dici "metti in fila tutti questi widget".<BR>
+Godetevi il demo che e' veramente notevole. Inoltre considerate il demo l'unica documentazione disponibile.<BR>Infatti 
+il primo scoglio con cui mi sono dovuto scontrare e' la assoluta mancanza di documentazione.<BR> Nel sito c'e' scritto che 
+il riferimento e' costituito da un sito wiki. Ok, chi ci capisce qualcosa e' bravo.<BR>
+In ogni caso si puo' vedere la doc di wxWindows, perche' le classi wxPython si usano esattamente nello stesso modo, con 
+qualche piccola perfida eccezione, e poi ogni tanto ci sono delle note per il python.<BR>
+Poi qualche informazione utile te la da' l'help di wxDesigner, ed ho sbirciato un bel po' nei sorgenti.<BR>
+<BR>
+Ho cominciato a guardare le classi e sono ok; ci puoi fare veramente di tutto, e' un ottimo framework.<BR>
+Allora ho dato un' occhiata ai tools.<BR>
+Ci sarebbe un dialog editor, ma non funziona e l'ho lasciato perdere subito.<BR>
+C'e' un interessante XRCed, che serve a costruire una interfaccia grafica e metterla in un file XML. Figo. Peccato che 
+non funziona neanche questo, e poi non gestisce neanche tutti gli widget.<BR>
+Allora ho scaricato la demo di wxDesigner, un tool commerciale per il disegno delle interfacce grafiche in wxWindows e wxPython.
+Veramente un bel programma. Completo e funzionale.<BR>
+Provo un po' a disegnare alcuni dialog e scopro alcune amare sorprese.<BR>
+<BR>
+Se si genera codice python, non fa una classe, ma una funzione. Poi per ottenere i puntatori agli widget devi fare dei giri strani.<BR>
+Inoltre se usi la griglia il wxDesigner si "dimentica" di metterci il relativo import e quindi non funziona. <BR>
+Si deve inserire come codice personalizzato.<BR>
+Infine il caricamento delle immagini, se impostato da wxDesigner, funziona sotto windows ma non sotto linux. 
+Forse ho fatto qualche errore, non so.<BR>
+<BR>
+Allora ho provato la via del file xml. Tutta l'interfaccia grafica viene messa in un "XML resource file". Poi con pochi 
+comandi recuperi da questo file, menu, immagini, dialoghi. Una soluzione estremamente elegante.<BR>
+Ha solo un piccolo difetto: non funziona. Se si usa lo widget griglia (wxGrid), che per me e' il componente principale, 
+si ha un messaggio di errore: "no handler for class wxGrid". Speriamo che nelle release future si possa usare anche wxGrid 
+con il resouce file, perche' questa e' indubbiamente la soluzione piu' versatile ed elegante.<BR>
+Avevo anche pensato di disegnare l'interfaccia lasciando fuori le grid, aggiungendole dopo, ma non si puo' ottenere il puntatore ai sizer e quindi non si puo' aggiungere altro.<BR>
+<BR>
+Mi sono rassegnato a scrivere il codice a mano, e sinceramente, una volta imparato, non e' neanche difficile, grazie ai sizer.
+Sono riuscito in una settimanella al mare, a disegnare tutta l'interfaccia del kahemba. <BR>Ho fatto molti tentativi ed errori. Ho visto che wxWindows e wxPython sono framework maturi e stabili, molto eleganti ed efficienti.<BR>
+<BR>
+Con wxPython e l'utility py2exe puoi anche creare un eseguibile per windows.<BR>
+Mi hanno detto che spesso il python viene usato per fare i prototipi, per poi riscrivere tutto in C++.<BR>
+Io credo che per un progetto come il Kahemba, che deve alimentare e consultare un database, possa andar bene anche una implementazione interamente in wxPython.<BR>
+<BR>
+<BR>
+Le mie considerazioni finali sono le seguenti:<BR>
+<BR>
+PyQT va bene se dovete fare un programma solo per linux o per solo per windows.<BR>
+C'e' il designer di QT per disegnare le interfacce e per creare classi python.<BR>
+E' il migliore e si impara velocemente, ma non e' libero. Le versioni gratuite di QT per linux e per windows sono disallineate. <BR>Inoltre mentre su linux potete fare tutto, per windows la licenza non permette gran che.<BR>
+<BR>
+wxPython va benissimo ed e' libero (GPL). <BR>C'e' per linux, windows, amiga e mac.<BR> Ci potete fare programmi di tipo gestionale, dove non e' importante la velocita'; oppure ci potete fare un gioco di ruolo in rete, qualcosa cosi'. <BR>
+Per disegnare le interfacce ci sono degli strumenti, ma nessuno mi ha soddisfatto.<BR>
+C'e' l'interessantissima possibilita' di mettere i componenti su file di risorse xml, ma ancora non e' gestito pienamente.<BR>
+La soluzione migliore è scrivere tutto il codice a mano.<BR>
+Prendetevi un bel po' di tempo per impararlo e per farci confidenza.<BR><BR>
+--<BR>
+Ciao!!______________<BR>
+I dilettanti hanno costruito l'arca, i professionisti il Titanic. Passa a 
+Linux!<BR>
+http://dinogen.tripod.com  ||  http://siena.linux.it<BR>
+</center>
+</td>
+</tr>
+</table>
+
+<br>
+</body>
+</html>
