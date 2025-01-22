@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Sistema win e linx su unico hard.
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Sistema%20win%20e%20linx%20su%20unico%20hard.&In-Reply-To=BAY102-F27AE0E9709895EF41F11F2C36B0%40phx.gbl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000335.html">
+   <LINK REL="Next"  HREF="000337.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Sistema win e linx su unico hard.</H1>
+    <B>GTL v97.6</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Sistema%20win%20e%20linx%20su%20unico%20hard.&In-Reply-To=BAY102-F27AE0E9709895EF41F11F2C36B0%40phx.gbl"
+       TITLE="[Generale] Sistema win e linx su unico hard.">gtlv97.6slug a gmail.com
+       </A><BR>
+    <I>Lun 10 Lug 2006 16:16:07 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000335.html">[Generale] Sistema win e linx su unico hard.
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000337.html">[Generale] Sistema win e linx su unico hard.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#336">[ Data ]</a>
+              <a href="thread.html#336">[ Thread ]</a>
+              <a href="subject.html#336">[ Oggetto ]</a>
+	      <a href="author.html#336">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Allora, tre partizioni è la cosa migliore...
+secondo la mia esperienza segui una tabella di marci di questo tipo:
+- installa winXp
+
+- usa un programma come ad esempio Partition Magic per rimodellare le
+partizioni:
+tieni la NTFS (o FAT32) che è stata fatta per il C: di Uindou$; crea
+una ext3+ almeno 256 mega di partizione SWAP per il linux e poi il
+resto lo dedichi ad altra partizione in NTFS (win nn legge le ext3 a
+meno di supporti particolari mentre linux legge senza problemi NTFS).
+[io su questo pc ho fatto così: 80GB-&gt; 10G NTFS (uin), 10G ext3
+(linux), 300M linuxswap, 30G NTFS (dati), 30G NTFS (dati)].
+
+- installa Linux
+sinceramente per la scelta tra Lilo e Grub non ho una conoscenza
+tecnica della situazione diversa tra i due bootloader ma in sostanza
+dovrebbero andare bene entrambi e in ogni caso se vai da SuSE ti becca
+automaticamente anche la partizione di uindou$, te lo ritrovi di
+conseguenza nell'elenco dei kernel che puoi avviare.
+
+Fare l'installazione prima linux e poi uindou$ è più noiosa perché poi
+devi riuscire a maneggiare un pò il bootloader di uindou$ che
+ovviamente non ti vede l'installazione effettuata dell'altro OS...
+
+spero che qualcuno a breve ti dia informazioni compendianti circa Lilo
+e Grub (che apprezzo allo stesso modo per uso personale) però per
+adesso puoi andare con questa tabella di marcia...
+
+in ogni caso questa discussione sarebbe stata molto più appropriata
+nella lista Tecnica e non in quella Generale dato il suo contenuto
+^^...però essendo uno degli accoliti degli OT di questa lista non ti
+farò nessuna ramanzina a riguardo ^^ :P
+
+
+-- 
+GTL v97.6
+&quot;...fallou de linucs uei and
+mei de surss bi uiv iu...&quot;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000335.html">[Generale] Sistema win e linx su unico hard.
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000337.html">[Generale] Sistema win e linx su unico hard.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#336">[ Data ]</a>
+              <a href="thread.html#336">[ Thread ]</a>
+              <a href="subject.html#336">[ Oggetto ]</a>
+              <a href="author.html#336">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

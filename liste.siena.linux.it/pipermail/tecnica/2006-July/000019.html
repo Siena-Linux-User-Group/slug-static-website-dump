@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Linux o wind? Forse omnitel! :P
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Linux%20o%20wind%3F%20Forse%20omnitel%21%20%3AP&In-Reply-To=200607121811.42593.xdatap1%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000017.html">
+   <LINK REL="Next"  HREF="000018.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Linux o wind? Forse omnitel! :P</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Linux%20o%20wind%3F%20Forse%20omnitel%21%20%3AP&In-Reply-To=200607121811.42593.xdatap1%40siena.linux.it"
+       TITLE="[Tecnica] Linux o wind? Forse omnitel! :P">maali.yusef a gmail.com
+       </A><BR>
+    <I>Ven 14 Lug 2006 14:43:59 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000017.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000018.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#19">[ Data ]</a>
+              <a href="thread.html#19">[ Thread ]</a>
+              <a href="subject.html#19">[ Oggetto ]</a>
+	      <a href="author.html#19">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 7/12/06, Paolo Sammicheli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xdatap1 a siena.linux.it</A>&gt; wrote:
+
+&gt;<i> &gt; se non mi ricordo male, NTFS è stato giudicato (non da me) come un
+</I>&gt;<i> &gt; filesystem mediocre, non particolarmente efficente e decisamente non
+</I>&gt;<i> &gt; sicuro.
+</I>&gt;<i>
+</I>&gt;<i> Oddio, ora non esageriamo. E' sempre un filesytem transazionale. Che non
+</I>&gt;<i> ci
+</I>&gt;<i> garbi il sistema che ci gira sopra é un altro discorso.
+</I>
+
+Sono sicuro di averlo letto in una qualche rivista abbastanza
+&quot;autorevole&quot;... forse era una rivista pro-linux (non ricordo) comunque
+l'articolo era impostato in modo serio.
+
+
+&gt;<i> Beh, se va via la luce con un file a metà non lo ripristina nessun file
+</I>&gt;<i> system.
+</I>
+
+vero, mi sono espresso male.
+
+
+
+&gt;<i> Come dice la teoria della transazionalità, l'importante é che o c'e' o non
+</I>&gt;<i> c'e' del tutto... non che c'e' a mezzo.
+</I>
+
+si, però se la corrente va via nel mezzo di una transazione, prima che venga
+fatto il commit, NTFS non ti da la possibilità di recuperare, in fase di
+recovery, ciò che è stato scritto fin a quel punto. Fa un bel rollback e
+buona notte.
+Se invece potesse recuperare ciò che ha scritto, metterlo da parte e poi
+annullare la transazione rimasta a metà, sarebbe molto meglio.
+
+Preciso che non so come funzionino gli altri FS transazionali, probabilmente
+adottano tutti la stessa politica (sempre in fase di recovery, ovvio). Sta
+di fatto che, leggendo l'articolo di cui sopra, mi rimase impresso questo
+comportamente piuttosto &quot;distruttivo&quot;.
+
+
+&gt;<i> &gt; Insomma se uindovs lo usi solo per giocarci lo puoi installare in una
+</I>&gt;<i> fat32
+</I>&gt;<i> &gt; e stai sicuro che funziona alla grande anche con linucs.
+</I>&gt;<i>
+</I>&gt;<i> Si, ma fat32 é un Fs non transazionale, men che meno journal, ha grossi
+</I>&gt;<i> problemi di allocazione, si deframmenta... ne vogliamo altre?
+</I>
+
+Verissimo, ma come al solito dipende per cosa viene usato Win.
+Nel mio caso, ho win solo perchè alcuni programmi non esistono per linux e
+sopratutto perchè i giochi non vanno su linux (con il fatto che ho una ATI
+peggio che mai...).
+Quindi mettere NTFS per usare windows 2 volte l'anno, non mi interessa :P
+Ho la Fat32 e con linux ci posso operare senza particolari restrizioni o
+magheggi (vedi partizione condivisa ext).
+
+
+&gt;<i> Dipende dal virus. Btw se il virus in questione rasa byte nella zona della
+</I>&gt;<i> tabella di allocazione delle partizioni ti arrangi anche se metti reiser
+</I>&gt;<i> fs.
+</I>&gt;<i> Un virus che vuole far danno se ne frega del sistema operativo e potrebbe
+</I>&gt;<i> scrivere sul disco ad esempio in RAW. Certo che si affronta il tema Virus
+</I>&gt;<i> non
+</I>&gt;<i> lo installi proprio windows.
+</I>
+
+Va beh, se mi vai a cercare il virus &quot;particolare&quot; che spara bit a caso hai
+perfettamente ragione. Quei danni si evitano molto male...
+Io pensavo a virus più innoqui, che magari ti cancellano qualche file a
+caso...
+
+Ciao!
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060714/b9c817ca/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060714/b9c817ca/attachment.htm</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000017.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000018.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#19">[ Data ]</a>
+              <a href="thread.html#19">[ Thread ]</a>
+              <a href="subject.html#19">[ Oggetto ]</a>
+              <a href="author.html#19">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

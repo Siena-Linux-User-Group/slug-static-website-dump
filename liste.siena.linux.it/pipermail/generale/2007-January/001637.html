@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] password cambiata
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20password%20cambiata&In-Reply-To=45B7526F.6040502%40alice.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001630.html">
+   <LINK REL="Next"  HREF="001641.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] password cambiata</H1>
+    <B>Daniele Paganelli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20password%20cambiata&In-Reply-To=45B7526F.6040502%40alice.it"
+       TITLE="[Generale] password cambiata">daniele a modena1.it
+       </A><BR>
+    <I>Gio 25 Gen 2007 17:16:48 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001630.html">[Generale] password cambiata
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001641.html">[Generale] password cambiata
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1637">[ Data ]</a>
+              <a href="thread.html#1637">[ Thread ]</a>
+              <a href="subject.html#1637">[ Oggetto ]</a>
+	      <a href="author.html#1637">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Se non hai già tentato, prova a lanciare il comando last. L'output indica in 
+tutti gli accessi in ordine cronologico inverso (l'ultimo per primo). 
+Per un rapido controllo puoi mandare l'out in pipe a head:
+last|head
+e controllare gli ultimi 10 accessi alla macchina.
+E' molto utile in quanto riporta l'host dal quale è stata fatta la connessione 
+e l'orario.
+Tuttavia potrebbe essere inutile nel caso l'intruso fosse riuscito ad ottenere 
+i permessi di root (se è furbo cancella le tracce). Però se cambia le pass 
+forse non è così furbo. Inoltre se l'accesso non avviene via ssh ma con altri 
+mezzi, non lascia traccia in last.log.
+
+Il file /var/log/auth.log mostra tutte le operazioni di autenticazione verso 
+root (su, sudo e root login).
+
+Se riscontri lentezza sospetta puoi utilizzare il comando netstat -t per farti 
+elencare tutte le connessioni attive. Dopo aver chiuso tutte le applicazioni 
+di rete, dovrebbero esserci esclusivamente connessioni in chiusura. 
+bwm-ng ti mostra poi in tempo reale il traffico di rete. 
+
+L'accoppiata &quot;ps aux&quot; e &quot;grep&quot; da molte informazioni su quanto sta avvenendo 
+sulla macchina. Ad esempio, lanciando il comando:
+ps aux|grep utente
+ottieni tutti i processi usati dall'utente.
+
+Il problema potrebbe non essere dovuto ad intrusioni, controlla il file di log 
+di gdm in /var/log/gdm. Potresti avere una scadenza per le password, che le 
+resetta se l'utente non le cambia ogni tot? (non ho idea di come funzionino 
+le scadenze...).
+
+Dovrebbe esserci un frontend per la comoda visualizzazione dei vari log di 
+sistema, per gnome. Non ricordo il nome... vado benissimo a colpi di tail.
+
+
+Oltre questo, sarei interessato anch'io a metodi più avanzati e sistematici 
+per localizzare le intrusioni... esempio una cronologia totale di tutti i 
+comandi mai lanciati nella storia del sistema.
+
+
+Alle 13:34, mercoledì 24 gennaio 2007, manuela ha scritto:
+&gt;<i> Ho un computer con una debian etch e 3 users.
+</I>&gt;<i> Ultimamente ho notato che la connessione adsl è molto lenta e a volte si
+</I>&gt;<i> interrompe, inoltre per ben due volte uno degli user ha trovato la sua
+</I>&gt;<i> passwd di login cambiata.
+</I>&gt;<i> Ieri, mentre ero connessa mi si è chiusa la sessione all'improvviso per
+</I>&gt;<i> ben 4 volte di seguito portandomi alla schermata di gdm per il login. In
+</I>&gt;<i> gdm era attivato il login automatico (senza passwd)  dell'user che ha
+</I>&gt;<i> trovato la passwd cambiata. Per il momento l'ho tolto e ho cercato di
+</I>&gt;<i> capire dai log, con chkrootkit e altro software (ho seguito una guida
+</I>&gt;<i> trovata su linux magazine) di cui ho capito meno della metà, se qualcuno
+</I>&gt;<i> era entrato. Comunque, dai controlli eseguiti non ho trovato traccia del
+</I>&gt;<i> passaggio di intrusi. Non capisco nemmeno l'utilità, se si trattasse di
+</I>&gt;<i> intruso, di cambiare la password dell'user in questione, a meno che il
+</I>&gt;<i> suo scopo non fosse proprio provare la sua presenza. Non so che fare: ho
+</I>&gt;<i> reinstallato da poco la distro sempre per lo stesso dubbio di avere a
+</I>&gt;<i> bordo intrusi...
+</I>&gt;<i> Qualcuno mi sa consigliare cosa fare? Oppure il software giusto per
+</I>&gt;<i> vedere se ho qualche intruso  nel computer o per prevenire o mostrarne
+</I>&gt;<i> le tracce...?
+</I>&gt;<i>
+</I>&gt;<i> Manu
+</I>
+-- 
+<A HREF="http://daniele.modena1.it">http://daniele.modena1.it</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001630.html">[Generale] password cambiata
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001641.html">[Generale] password cambiata
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1637">[ Data ]</a>
+              <a href="thread.html#1637">[ Thread ]</a>
+              <a href="subject.html#1637">[ Oggetto ]</a>
+              <a href="author.html#1637">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

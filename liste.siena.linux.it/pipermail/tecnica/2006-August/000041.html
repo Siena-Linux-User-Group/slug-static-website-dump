@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] url rewriting
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=6FAE45B3-61AA-4B36-B480-CC59872B2EF5%40email.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000040.html">
+   <LINK REL="Next"  HREF="000042.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] url rewriting</H1>
+    <B>Martino di Filippo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=6FAE45B3-61AA-4B36-B480-CC59872B2EF5%40email.it"
+       TITLE="[Tecnica] url rewriting">puntodifuga a gmail.com
+       </A><BR>
+    <I>Mar 15 Ago 2006 22:41:06 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000040.html">[Tecnica] url rewriting
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000042.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#41">[ Data ]</a>
+              <a href="thread.html#41">[ Thread ]</a>
+              <a href="subject.html#41">[ Oggetto ]</a>
+	      <a href="author.html#41">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ho capito dove sta il problema.
+Inoltre, c'è almeno un errore, seppur triviale, oltre al fatto che non
+capisco bene l'uso di [^/] (perchè mai usare &quot;un carattere diverso da /&quot;
+quando l'id non è terminato da &quot;/&quot;? visto che l'url è nella forma
+test/ID.html, sarebbe più corretto usare [^\.]+\.html)
+
+Comunque, venendo al nocciolo della questione, il browser mostra il nuovo
+indirizzo perchè stai dando un url completo di http:// come rewrite,
+dovresti usare un url relativo alla directory corrente:
+
+RewriteRule test/(\d+)\.html text.php?id$1
+
+(Nota che il . prima di html, se non preceduto da un backslash, indica &quot;un
+carattere qualsiasi&quot; e non un punto effettivo. L'espressione funziona
+comunque perchè un punto è &quot;un carattere qualsiasi&quot;, ma tanto vale essere
+precisi.
+In più, visto che gli id sono numerici, puoi usare \d+ (che indica una serie
+di cifre) al posto di [^/]+.)
+
+Spero che sia tutto chiaro!
+
+Martino
+
+On 8/15/06, Massimo Sandolo &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bastilani a email.it</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 15/ago/06, alle ore 21:00, Martino di Filippo ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Potresti inviare il codice del rewrite in modo da controllare che
+</I>&gt;<i> &gt; non ci siano errori?
+</I>&gt;<i> &gt; A quanto ne so, se l'estensione è caricata in modo corretto non
+</I>&gt;<i> &gt; dovrebbero esserci altre opzioni da modificare.
+</I>&gt;<i>
+</I>&gt;<i> eh .. è quello che pensavo anche io ... cmq per il rewrite in
+</I>&gt;<i> httpd.conf di apache ho queste righe:
+</I>&gt;<i>
+</I>&gt;<i> LoadModule rewrite_module     libexec/httpd/mod_rewrite.so
+</I>&gt;<i> AddModule mod_rewrite.c
+</I>&gt;<i>
+</I>&gt;<i> e poi queste altre:
+</I>&gt;<i> &lt;IfModule mod_rewrite.c&gt;
+</I>&gt;<i>      RewriteEngine On
+</I>&gt;<i>      RewriteCond %{REQUEST_METHOD} ^TRACE
+</I>&gt;<i>      RewriteRule .* - [F]
+</I>&gt;<i> &lt;/IfModule&gt;
+</I>&gt;<i> che cmq se commento non mi cambiano niente.
+</I>&gt;<i>
+</I>&gt;<i> nelle conf dell'user:
+</I>&gt;<i> &lt;Directory &quot;/Users/massimo/Sites/&quot;&gt;
+</I>&gt;<i>      Options All
+</I>&gt;<i>      AllowOverride All
+</I>&gt;<i>      Order allow,deny
+</I>&gt;<i>      Allow from all
+</I>&gt;<i> &lt;/Directory&gt;
+</I>&gt;<i>
+</I>&gt;<i> la regola di rewrite scritta nell'htaccess messo nella directory
+</I>&gt;<i> prova_rewrite:
+</I>&gt;<i> RewriteEngine On
+</I>&gt;<i> RewriteRule ^test/([^/]+).html <A HREF="http://localhost/~massimo/">http://localhost/~massimo/</A>
+</I>&gt;<i> prova_rewrite/test.php?id=$1 [L]
+</I>&gt;<i>
+</I>&gt;<i> Dimenticavo .. lavoro in locale su un osx e nn linux .. ma non credo
+</I>&gt;<i> incida sensibilmete sul problema (spero).. apache è la versione 1.33
+</I>&gt;<i>
+</I>&gt;<i> byez
+</I>&gt;<i> max
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060815/52cebe38/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060815/52cebe38/attachment.htm</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000040.html">[Tecnica] url rewriting
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000042.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#41">[ Data ]</a>
+              <a href="thread.html#41">[ Thread ]</a>
+              <a href="subject.html#41">[ Oggetto ]</a>
+              <a href="author.html#41">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

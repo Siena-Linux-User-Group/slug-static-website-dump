@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Accesso remoto OpenERP
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Accesso%20remoto%20OpenERP&In-Reply-To=%3C22ce830707e90e1ac93424bd7860c1f8%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001687.html">
+   <LINK REL="Next"  HREF="001689.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Accesso remoto OpenERP</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Accesso%20remoto%20OpenERP&In-Reply-To=%3C22ce830707e90e1ac93424bd7860c1f8%40yusefmaali.net%3E"
+       TITLE="[Tecnica] Accesso remoto OpenERP">contact a yusefmaali.net
+       </A><BR>
+    <I>Mar 23 Apr 2013 17:28:50 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001687.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001689.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1688">[ Data ]</a>
+              <a href="thread.html#1688">[ Thread ]</a>
+              <a href="subject.html#1688">[ Oggetto ]</a>
+	      <a href="author.html#1688">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> 
+
+Windows funge da NAT per la macchina virtuale. In questa
+configurazione dovresti
+trovare un programma che gestisca il
+port-forwarding. 
+
+Scegli una porta libera sul tuo indirizzo IP pubblico
+(ad esempio la 9999) e imponi che
+tutte le connessioni su quella porta
+vengano inoltrate all'indirizzo IP del guest (linux) alla 
+porta a cui
+risponde OpenERP (la 80?).
+A questo punto ti puoi collegare all'ip
+pubblico sulla 9999 (--&gt; 111.222.333.444:9999) e
+hai risolto. 
+
+Prova a
+googlare &quot;port forwarding windows xp&quot; e vedi se trovi qualcosa di utile.
+
+
+Un tunnel SSH non lo puoi fare. Un reverse ssh tunnel si, ma ti si
+complica lo scenario.
+I servizi di dynamic DNS, se c'è di mezzo un NAT,
+non ti servono. 
+
+Se hai la possibilità di dare un altro ip statico al
+guest (linux), non hai bisogno del 
+port-forwarding e risolvi in 5
+minuti. 
+
+Y. 
+
+Il 23.04.2013 17:14 Giulio Saletti ha scritto: 
+
+&gt;<i> Ciao a
+</I>tutta la lista, 
+&gt;<i> vorrei poter accedere da remoto alla mia
+</I>installazione di OpenERP residente su ubuntu 12.04 installato su una
+virtual machine che gira su un pc con XP a ip fisso. 
+&gt;<i> Sono
+</I>assolutamente ignorante in materia e googlando ho capito solo che non ci
+capisco niente :) 
+&gt;<i> Non ho capito se mi serve un tunnel SSH o se devo
+</I>utilizzare un servizio tipo www.noip.com [2] 
+&gt;<i> Qualche buon'anima può
+</I>aiutarmi, magari con un procedura step-by-step for dummy? 
+&gt;<i> La versione
+</I>di OpenERP è la 7, non so quale altro dato possa essere utile. 
+&gt;<i> 
+</I>&gt;<i>
+</I>Grazie in anticipo. 
+&gt;<i> 
+</I>&gt;<i> Giulio. 
+</I>&gt;<i> 
+</I>&gt;<i>
+</I>_______________________________________________
+&gt;<i> Tecnica mailing list
+</I>&gt;<i>
+</I><A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+&gt;<i>
+</I><A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A> [1]
+
+
+
+Links:
+------
+[1]
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+[2]
+<A HREF="http://www.noip.com">http://www.noip.com</A>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20130423/4b17a8e2/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20130423/4b17a8e2/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001687.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001689.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1688">[ Data ]</a>
+              <a href="thread.html#1688">[ Thread ]</a>
+              <a href="subject.html#1688">[ Oggetto ]</a>
+              <a href="author.html#1688">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

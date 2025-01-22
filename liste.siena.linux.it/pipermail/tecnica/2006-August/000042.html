@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] url rewriting
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=ff6b9ba30608151441k5a2d1c29l2989bc5294402400%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000041.html">
+   <LINK REL="Next"  HREF="000043.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] url rewriting</H1>
+    <B>Massimo Sandolo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=ff6b9ba30608151441k5a2d1c29l2989bc5294402400%40mail.gmail.com"
+       TITLE="[Tecnica] url rewriting">bastilani a email.it
+       </A><BR>
+    <I>Mer 16 Ago 2006 09:34:09 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000041.html">[Tecnica] url rewriting
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000043.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#42">[ Data ]</a>
+              <a href="thread.html#42">[ Thread ]</a>
+              <a href="subject.html#42">[ Oggetto ]</a>
+	      <a href="author.html#42">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Il giorno 15/ago/06, alle ore 23:41, Martino di Filippo ha scritto:
+
+&gt;<i> Ho capito dove sta il problema.
+</I>&gt;<i> Inoltre, c'è almeno un errore, seppur triviale, oltre al fatto che  
+</I>&gt;<i> non capisco bene l'uso di [^/] (perchè mai usare &quot;un carattere  
+</I>&gt;<i> diverso da /&quot; quando l'id non è terminato da &quot;/&quot;? visto che l'url è  
+</I>&gt;<i> nella forma test/ID.html, sarebbe più corretto usare [^\.]+\.html)
+</I>
+questo tipo di regola l'avevo presa da un tutorial su un forum, che  
+era data come prova per verificare il funzionamento del rewrite.. non  
+mi sono soffermato troppo sulla correttezza dell'espressione :P
+
+&gt;<i> Comunque, venendo al nocciolo della questione, il browser mostra il  
+</I>&gt;<i> nuovo indirizzo perchè stai dando un url completo di http:// come  
+</I>&gt;<i> rewrite, dovresti usare un url relativo alla directory corrente:
+</I>&gt;<i>
+</I>&gt;<i> RewriteRule test/(\d+)\.html text.php?id$1
+</I>
+ok, in effetti tutti fanno riferimento a questo tipo di regole (senza  
+url completo), però in realtà se non specifico l'url completo lui mi  
+da un 404.
+Cmq con la tua regola chiedendo la pagina
+<A HREF="http://localhost/~massimo/prova_rewrite/test/mondo.html">http://localhost/~massimo/prova_rewrite/test/mondo.html</A>
+ottengo:
+Not Found
+The requested URL /~massimo/prova_rewrite/test/mondo.html was not  
+found on this server.
+
+
+invece con la regola precedente:
+RewriteRule test/([^/]+).html test.php?id=$1 [L]
+
+richiamando: <A HREF="http://localhost/~massimo/prova_rewrite/test/mondo.html">http://localhost/~massimo/prova_rewrite/test/mondo.html</A>
+mi restituisce:
+Not Found
+The requested URL /Users/massimo/Sites/prova_rewrite/test.php was not  
+found on this server.
+
+nel primo caso non riscrive, nel secondo invece il path sarebbe  
+corretto perchè il file test.php è proprio in quella directory, solo  
+che lo traduce in path e non in url
+
+&gt;<i> (Nota che il . prima di html, se non preceduto da un backslash,  
+</I>&gt;<i> indica &quot;un carattere qualsiasi&quot; e non un punto effettivo.  
+</I>&gt;<i> L'espressione funziona comunque perchè un punto è &quot;un carattere  
+</I>&gt;<i> qualsiasi&quot;, ma tanto vale essere precisi.
+</I>&gt;<i> In più, visto che gli id sono numerici, puoi usare \d+ (che indica  
+</I>&gt;<i> una serie di cifre) al posto di [^/]+.)
+</I>
+capito!
+
+&gt;<i> Spero che sia tutto chiaro!
+</I>&gt;<i> Martino
+</I>
+byez
+max
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060816/57b6c48e/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060816/57b6c48e/attachment.htm</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000041.html">[Tecnica] url rewriting
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000043.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#42">[ Data ]</a>
+              <a href="thread.html#42">[ Thread ]</a>
+              <a href="subject.html#42">[ Oggetto ]</a>
+              <a href="author.html#42">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

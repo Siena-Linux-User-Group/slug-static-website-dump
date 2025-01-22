@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi con /etc/sudoers
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=BAY131-W6EA06AC8150C51A563EC0B4B40%40phx.gbl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000508.html">
+   <LINK REL="Next"  HREF="000510.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi con /etc/sudoers</H1>
+    <B>roberto volpini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=BAY131-W6EA06AC8150C51A563EC0B4B40%40phx.gbl"
+       TITLE="[Tecnica] problemi con /etc/sudoers">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Sab 22 Set 2007 10:16:52 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000508.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000510.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#509">[ Data ]</a>
+              <a href="thread.html#509">[ Thread ]</a>
+              <a href="subject.html#509">[ Oggetto ]</a>
+	      <a href="author.html#509">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ho provato con cntr+alt+f1 ma non mi fa cambiare i permessi in quanto 
+non mi riconosce come amministratore nemmenno con
+
+su -
+
+quanto al grub non so come fare a entrarci visto che ho una sola 
+partizione con ubuntu....e winzozz virtualizzato....(il casino credo di 
+averlo fatto ieri cambiando i permessi a vmplayer)...
+in questo caso come faccio a far partire il ricovery mode?
+
+grazie ancora
+
+alfonso - ha scritto:
+&gt;<i> hai riavviato in modalità recovery? da grub selezioni avvio di ubuntu 
+</I>&gt;<i> in recovery mode,
+</I>&gt;<i> semplicemente scrivi
+</I>&gt;<i> chmod 440 /etc/sudoers
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;<i> Attenzione non scrivere sudo prima perchè 1 non ce n'è bisogno 2 
+</I>&gt;<i> probabilmente non funzionerebbe perchè il comando sudo non va essendo 
+</I>&gt;<i> appunto incasinato il file sudoers.
+</I>&gt;<i>
+</I>&gt;<i> exit
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;<i> e dovrebbe partire gdm... quindi prova a &quot;sudare&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; Date: Sat, 22 Sep 2007 08:21:28 +0200
+</I>&gt;<i> &gt; From: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i> &gt; To: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">generale a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; Subject: [Tecnica] problemi con /etc/sudoers
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; stamani sono andato per aggiornare il mio ubuntu e non ne ha voluto
+</I>&gt;<i> &gt; saperne....visto che dal gestore non si aggiornava, ho provato con sudo
+</I>&gt;<i> &gt; apt-get update....
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; sudo: /etc/sudoers is mode 0777, should be 0440
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; questa è stata la risposta del terminale dal quale si evince che i
+</I>&gt;<i> &gt; permessi di /etc/sudoers sono sbagliati.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; bene.....come faccio a rimetterli come devono essere ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; visto che con chmod 440 /etc/sudoers ho questa risposta:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; chmod: ripristino dei permessi di `/etc/sudoers': Funzione non permessa
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ovviamente non mi riconosce come amministratore.....
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; qualcuno sa come fare?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; grazie a tutti
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; roberto
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> Lanciati in una sfida con i tuoi amici a Battaglia Navale, il nuovo 
+</I>&gt;<i> gioco per Messenger! Battaglia Navale 
+</I>&gt;<i> &lt;<A HREF="http://messengergiochi.it.msn.com/battaglianavale.htm">http://messengergiochi.it.msn.com/battaglianavale.htm</A>&gt;
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000508.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000510.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#509">[ Data ]</a>
+              <a href="thread.html#509">[ Thread ]</a>
+              <a href="subject.html#509">[ Oggetto ]</a>
+              <a href="author.html#509">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

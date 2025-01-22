@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] mount ecryptfs
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20mount%20ecryptfs&In-Reply-To=%3C4E0DB525.1090309%40aruba.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="001389.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] mount ecryptfs</H1>
+    <B>Luigi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20mount%20ecryptfs&In-Reply-To=%3C4E0DB525.1090309%40aruba.it%3E"
+       TITLE="[Tecnica] mount ecryptfs">pergigi49 a gmail.com
+       </A><BR>
+    <I>Ven  1 Lug 2011 12:53:09 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="001389.html">[Tecnica] mount ecryptfs
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1388">[ Data ]</a>
+              <a href="thread.html#1388">[ Thread ]</a>
+              <a href="subject.html#1388">[ Oggetto ]</a>
+	      <a href="author.html#1388">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>... dunque ...
+Su un dischino esterno (neanche tanto &quot;ino&quot;: 640GB) ho fatto 2
+partizioni, su una ho installato ubuntu (10.10? non ricordo) e
+sull'altra la home, e qui casca il ciuco (ubuntu o io?) ...
+Dopo aver girellato un po' ho deciso (in fase di installazione) di
+criptare la mia home, pensando che in qualche modo avrei potuto
+accedervi anche senza dover partire con il dischino; partendo dal
+dischino funziona tutto alla perfezione, sia il boot, che il mount della
+mia home criptata.
+Il problema è sorto quando ho cercato di montare la partizione criptata
+(ripeto: solo la mia home, la partizione fisica è una volgare ext3 che
+monta regolarmente e sulla quale vedo anche la dir &quot;.ecryptfs&quot;) dopo
+essere partito in modo &quot;regolare&quot; dal PC.
+Il comando che ho dato è
+
+sudo mount -t ecryptfs /media/hm-smg640/.ecryptfs/(user)/.Private
+~/privata -o key=passphrase:passwd=(mia_pass)
+
+ovviamente ho sostituito &quot;user&quot; e &quot;mia_pass&quot; con i dati corretti,
+rincoglionito sì, ma non fino a questo punto ... :-P ...
+Ma tutto quello che ho raccattato è:
+
+Error mounting eCryptfs: [-2] No such file or directory
+
+... o questa??? ...
+
+/media/hm-smg640/.ecryptfs/(user)/.Private la vedo normalmente
+(ovviamente non vedo il contenuto, una serie di file e dir di molto
+incasinati tipo &quot;ECRYPTFS_FNEK_ENCRYPTED ...&quot;)
+su ~/privata monto quello che voglio ...
+
+ho frugato non poco (malgrado il collegamento africano) in rete e non
+sono riuscito a venirne a capo ...
+
+Ho visto:
+
+<A HREF="https://help.ubuntu.com/community/EncryptedPrivateDirectory">https://help.ubuntu.com/community/EncryptedPrivateDirectory</A>
+
+<A HREF="http://wiki.ubuntu-it.org/Sicurezza/CartellaProtetta?highlight=%28mount%29|%28ecryptfs%29">http://wiki.ubuntu-it.org/Sicurezza/CartellaProtetta?highlight=%28mount%29|%28ecryptfs%29</A>
+
+<A HREF="http://linux.die.net/man/7/ecryptfs">http://linux.die.net/man/7/ecryptfs</A>
+
+<A HREF="http://ecryptfs.sourceforge.net/README">http://ecryptfs.sourceforge.net/README</A>
+
+... qualcuno (l'uomo di ubuntu Paolo?) mi può dare una dritta ...
+
+Luigi
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="001389.html">[Tecnica] mount ecryptfs
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1388">[ Data ]</a>
+              <a href="thread.html#1388">[ Thread ]</a>
+              <a href="subject.html#1388">[ Oggetto ]</a>
+              <a href="author.html#1388">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

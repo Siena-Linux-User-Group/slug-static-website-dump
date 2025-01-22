@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAONfR_B4zkO0bU%2BMPXsihTzdknHo9eYY1UD6S6Bi-ZnWvYJyag%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005695.html">
+   <LINK REL="Next"  HREF="005697.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] shell</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAONfR_B4zkO0bU%2BMPXsihTzdknHo9eYY1UD6S6Bi-ZnWvYJyag%40mail.gmail.com%3E"
+       TITLE="[Generale] shell">freeze a siena.linux.it
+       </A><BR>
+    <I>Sab  4 Feb 2012 21:55:53 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005695.html">[Generale] shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005697.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5696">[ Data ]</a>
+              <a href="thread.html#5696">[ Thread ]</a>
+              <a href="subject.html#5696">[ Oggetto ]</a>
+	      <a href="author.html#5696">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>[SNIP]
+&gt;<i>
+</I>&gt;<i> Mah io crfedo che vada bene in fondo. :)
+</I>&gt;<i> Del resto è un comando di assegnazione a una variabile di ambiente e
+</I>&gt;<i> quindi dove lo metti lo metti basta che non ti venga sovrascritta. :)
+</I> e quindi se ho imodificato il file in questo modo
+
+if [ -f /etc/bash_completion ] &amp;&amp; ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+PROMPT_COMMAND='printf &quot;\033]0;%s@%s:%s\007&quot; &quot;${USER}&quot;
+&quot;${HOSTNAME%%.*}&quot; &quot;${PWD/#$HOME/~}&quot;'
+
+e se mi loggo con l'utenza in question dovrei vedere il terminal diverso giusto?
+e in vece se sul mio server mi loggo come utente (diverso da root)
+vedo sempre il solito terminale, ovvero solo con $
+
+mica dovrò riaviare il server?
+Grazie Ancora
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005695.html">[Generale] shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005697.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5696">[ Data ]</a>
+              <a href="thread.html#5696">[ Thread ]</a>
+              <a href="subject.html#5696">[ Oggetto ]</a>
+              <a href="author.html#5696">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

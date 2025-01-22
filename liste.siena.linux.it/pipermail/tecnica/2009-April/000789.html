@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] caricare modulo ne2000 all'avvio
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="000790.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] caricare modulo ne2000 all'avvio</H1>
+    <B>Luca Mercurio</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To="
+       TITLE="[Tecnica] caricare modulo ne2000 all'avvio">luca a willothewisp.it
+       </A><BR>
+    <I>Mar 14 Apr 2009 01:20:12 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="000790.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#789">[ Data ]</a>
+              <a href="thread.html#789">[ Thread ]</a>
+              <a href="subject.html#789">[ Oggetto ]</a>
+	      <a href="author.html#789">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+                    come sapete da qualche giorno mi sto buttando 
+nell'installazione di vecchi PC e oggi posso dire di aver raggiunto un 
+traguardo storico: per la prima volta in vita mia ho caricato a mano un 
+modulo per fare funzionare una scheda ISA!
+
+Si tratta di una scheda di rete winbond che usa il modulo NE2000.
+Dopo svariati tentativi alla fine sono riuscito a beccare l'io e IRQ 
+della scheda caricando il modulo chiamato &quot;ne&quot;. Più in dettaglio da 
+terminale ho digitato:
+
+sudo modprobe ne io=0x300
+
+A questo punto facendo ifconfig eth0 mi viene restituito un risultato 
+conforme alla mia scheda.
+Poi dal panello di controllo di DSL ho avviato la procedura per fare 
+prendere i parametri di rete in DHCP.
+
+Fatto questo la scheda si inserisce nella rete con tanto di IP e default 
+gateway e posso navigare in internet con un fantastico Pentium 75 a 100 
+Mhz e 32 MB di RAM!!!
+
+A questo punto ho bisogno di inserire il driver all'avvio in modo tale 
+da evitare di dare a mano questi comandi.
+
+Qualcuno mi può aiutare?
+
+Grazie 1000
+
+MacMercury
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="000790.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#789">[ Data ]</a>
+              <a href="thread.html#789">[ Thread ]</a>
+              <a href="subject.html#789">[ Oggetto ]</a>
+              <a href="author.html#789">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

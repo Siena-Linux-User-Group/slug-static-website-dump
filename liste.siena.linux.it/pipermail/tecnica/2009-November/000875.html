@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] bluetooth ubuntu 9.10 e nokia 6630
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20bluetooth%20ubuntu%209.10%20e%20nokia%206630&In-Reply-To=%3C4AF0766D.10206%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000874.html">
+   <LINK REL="Next"  HREF="000873.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] bluetooth ubuntu 9.10 e nokia 6630</H1>
+    <B>robi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20bluetooth%20ubuntu%209.10%20e%20nokia%206630&In-Reply-To=%3C4AF0766D.10206%40valdelsa.net%3E"
+       TITLE="[Tecnica] bluetooth ubuntu 9.10 e nokia 6630">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Mar  3 Nov 2009 18:29:01 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000874.html">[Tecnica] bluetooth ubuntu 9.10 e nokia 6630
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000873.html">[Tecnica] bluetooth ubuntu 9.10 e nokia 6630
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#875">[ Data ]</a>
+              <a href="thread.html#875">[ Thread ]</a>
+              <a href="subject.html#875">[ Oggetto ]</a>
+	      <a href="author.html#875">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>scrivi nel terminale:
+
+hciconfig
+
+e vedi se hai un output di questo tipo:
+
+hci0:    Type: USB
+    BD Address: 00:02:72:C0:36:4F ACL MTU: 377:10 SCO MTU: 64:8
+    UP RUNNING PSCAN ISCAN
+    RX bytes:507296 acl:1697 sco:0 events:359 errors:0
+    TX bytes:8974 acl:288 sco:0 commands:46 errors:0
+
+se si il dispositivo bluetooth del pc funziona, ora vediamo se rileva il 
+telefono scrivi nel terminale:
+
+ sudo hcitool scan
+ 
+in output dovresti avere l'indirizzo e il nome del telefono....
+nel frattempo ho dato un occhio in rete e provato con i miei dispositivi....
+
+sono svariate le persone che hanno questo tipo di problemi con 9.10 e i 
+miei dispositivi un nokia 6600 ha gli stessi problemi che hai tu invece 
+un nokia di ultima generazione funziona molto bene......non vorrei che 
+fosse cambiato qualcosa.....
+
+
+
+fai le prove
+
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">marco.rosati.30 a hotmail.it</A> wrote:
+&gt;<i> robi nn cambia nulla, e dopo il comando non c'è verso di riabilitare 
+</I>&gt;<i> il bluethoot (che era correttamente acceso)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000874.html">[Tecnica] bluetooth ubuntu 9.10 e nokia 6630
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000873.html">[Tecnica] bluetooth ubuntu 9.10 e nokia 6630
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#875">[ Data ]</a>
+              <a href="thread.html#875">[ Thread ]</a>
+              <a href="subject.html#875">[ Oggetto ]</a>
+              <a href="author.html#875">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

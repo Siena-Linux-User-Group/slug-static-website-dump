@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi HP dv6-6169sl: grafica ibrida, fingerprint, java
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problemi%20HP%20dv6-6169sl%3A%20grafica%20ibrida%2C%20fingerprint%2C%20java&In-Reply-To=%3C4F0EDC0E.80208%40yahoo.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001523.html">
+   <LINK REL="Next"  HREF="001525.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi HP dv6-6169sl: grafica ibrida, fingerprint, java</H1>
+    <B>Edoardo Giomi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problemi%20HP%20dv6-6169sl%3A%20grafica%20ibrida%2C%20fingerprint%2C%20java&In-Reply-To=%3C4F0EDC0E.80208%40yahoo.it%3E"
+       TITLE="[Tecnica] problemi HP dv6-6169sl: grafica ibrida, fingerprint, java">edogiomi a yahoo.it
+       </A><BR>
+    <I>Gio 12 Gen 2012 13:11:42 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001523.html">[Tecnica] Waze è GPL
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001525.html">[Tecnica] Invito a collegarsi su LinkedIn
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1524">[ Data ]</a>
+              <a href="thread.html#1524">[ Thread ]</a>
+              <a href="subject.html#1524">[ Oggetto ]</a>
+	      <a href="author.html#1524">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ciao a tutti,
+ho acquistato da pochi giorni un laptop HP Pavilion dv6-6169sl che ho 
+upgradato ad 8 GB di RAM e dove ho installato Ubuntu 11.10 (oneiric).
+Questo laptop presenta una grafica ibrida con Intel integrata e ATI HD 
+6770M discreta.
+Vi riporto alcuni problemi che sto incontrando.
+
+1) il lettore di impronte biometriche non viene ancora riconosciuto 
+nonostante abbia seguito questa procedura 
+<A HREF="https://bugs.launchpad.net/ubuntu/+source/libfprint/+bug/285089?comments=all">https://bugs.launchpad.net/ubuntu/+source/libfprint/+bug/285089?comments=all</A> 
+post 78 e seguenti
+
+2) nonostante siano correttamente installati OpenDJK (6 e 7) ho problemi 
+con Firefox a loggarmi su una VPN con Juniper Network Connect (ho 
+temporaneamente risolto installando una macchina virtuale con Win7Pro e 
+facendo il login da IE9+java)
+
+3) ho l'impressione che la scheda grafica ATI non abbia mai funzionato; 
+mi spiego:
+
+3.1) caso driver open
+
+lspci | grep VGA
+00:02.0 VGA compatible controller: Intel Corporation 2nd Generation Core 
+Processor Family Integrated Graphics Controller (rev 09)
+01:00.0 VGA compatible controller: ATI Technologies Inc Whistler XT [AMD 
+Radeon HD 6700M Series]
+
+sudo lshw -c display | grep driver
+configuration: driver=radeon latency=0
+configuration: driver=i915 latency=0
+
+attraverso il flag vgaswitcheroo riesco solo a fare il power-up e 
+power-down della ATI ma non riesco a selezionarla (nel senso che i 
+comandi echo DIS &gt; oppure echo DDIS &gt; non hanno alcun effetto).
+riuscendo ad ottenere solo queste 2 configurazioni (interrogando cat 
+/sys/kernel/debug/vgaswitcheroo/switch):
+
+0:IGD:+:Pwr:0000:00:02.0
+1:DIS:   :Pwr:0000:01:00.0
+
+0:IGD:+:Pwr:0000:00:02.0
+1:DIS:   :Off:0000:01:00.0
+
+
+3.2) caso driver catalyst
+Innanzitutto con i driver proprietari non si può lanciare cat 
+/sys/kernel/debug/vgaswitcheroo/switch in quanto vgaswitcheroo non viene 
+caricato.
+Ho installato catalyst via sito AMD; la procedura sembra andare a buon 
+fine, infatti:
+
+sudo lshw -c display | grep driver
+configuration: driver=fglrx_pci latency=0
+configuration: driver=i915 latency=0
+
+tuttavia se lancio aticonfig da terminale ottengo:
+
+aticonfig: No supported adapters detected
+
+se lancio AMD catalyst control center (sia versione &quot;utente&quot; che 
+&quot;admin&quot;) da dash ottengo il più verboso avviso:
+
+Si è verificato un problema durante l'inizializzazione del Catalyst 
+Control Center nell'edizione Linux. Le cause potrebbero essere le seguenti.
+
+Non è installato alcun driver grafico AMD oppure il driver AMD non 
+funziona correttamente.
+
+Pregasi installare il controllore AMD adatto al vostro hardware AMD o di 
+configurarlo usando anticonfig.
+
+
+
+Avete qualche suggerimento in merito ai punti precedenti?
+Scusate se ho commesso qualche errore nel testo oppure non mi sono 
+espresso bene, ma non sono né un programmatore né un ing. informatico.
+solo un semplice linux user ;-)
+grazie in anticipo,
+
+edoardo
+
+
+
+
+
+
+---------------------------------------------
+Dott. Ing. Edoardo Giomi
+V.le G. Mazzini, 24 - 53100 SIENA
+Tel.: +39-0577-2237620
+Mobile: +39-333-4335551
+Fax.: +39-0577-223762
+Private: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">edogiomi a yahoo.it</A>
+Work: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">edoardo.giomi a maxim-ic.com</A>
+---------------------------------------------
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20120112/1dc3e5a2/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20120112/1dc3e5a2/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001523.html">[Tecnica] Waze è GPL
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001525.html">[Tecnica] Invito a collegarsi su LinkedIn
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1524">[ Data ]</a>
+              <a href="thread.html#1524">[ Thread ]</a>
+              <a href="subject.html#1524">[ Oggetto ]</a>
+              <a href="author.html#1524">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

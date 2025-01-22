@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi con grub
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20grub&In-Reply-To=ee205e1830f94034adf17fe3fc35f16d%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000834.html">
+   <LINK REL="Next"  HREF="000836.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi con grub</H1>
+    <B>Luigi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20grub&In-Reply-To=ee205e1830f94034adf17fe3fc35f16d%40valdelsa.net"
+       TITLE="[Tecnica] problemi con grub">per.gigi a aruba.it
+       </A><BR>
+    <I>Lun 13 Lug 2009 22:18:35 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000834.html">[Tecnica] problemi con grub
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000836.html">[Tecnica] problemi con chiavetta onda mobile e ubuntu 9.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#835">[ Data ]</a>
+              <a href="thread.html#835">[ Thread ]</a>
+              <a href="subject.html#835">[ Oggetto ]</a>
+	      <a href="author.html#835">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A> ha scritto:
+&gt;<i> ho risolto facendo così.....siccome il problema era proprio quello che hai scritto.....e non mi è possibile aggiornare il bios (quello montato è l'ultima versione disponibile per il mio asus a2h).....ho partizionato l'hd lasciando all'inizio 200mb senza allocazione poi ho installato winzozz in una partizione ntfs che era la prima dopo quella non allocata....e con il partizionatore di ubuntu a quei 200mb gli ho dato l'allocazione come /boot e la partizione ext3 di ubuntu come / .....finita l'installazione funziona tutto ottimamente....questo qui sotto è il mio disco:
+</I>&gt;<i> 
+</I>&gt;<i> Disco /dev/sda: 160.0 GB, 160041885696 byte
+</I>&gt;<i> 255 testine, 63 settori/tracce, 19457 cilindri
+</I>&gt;<i> Unità = cilindri di 16065 * 512 = 8225280 byte
+</I>&gt;<i> Identificativo disco: 0x00037091
+</I>&gt;<i> 
+</I>&gt;<i> Dispositivo Boot      Start         End      Blocks   Id  System
+</I>&gt;<i> /dev/sda1   *          26        2671    21253995    7  HPFS/NTFS
+</I>&gt;<i> /dev/sda2            2672       19244   133122622+  83  Linux
+</I>&gt;<i> /dev/sda3           19245       19457     1710922+  82  Linux swap / Solaris
+</I>&gt;<i> /dev/sda4               1          25      200781    5  Esteso
+</I>&gt;<i> /dev/sda5               1          25      200749+  83  Linux
+</I>&gt;<i> 
+</I>&gt;<i> Le voci nella tabella delle partizioni non sono nello stesso ordine del disco
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> grazie infinite....
+</I>&gt;<i> 
+</I>&gt;<i> roberto 
+</I>&gt;<i> 
+</I>&gt;&gt;<i> ----- Messaggio Originale -----
+</I>&gt;&gt;<i> Da: Luigi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">per.gigi a aruba.it</A>&gt;
+</I>&gt;&gt;<i> A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;&gt;<i> Data: 12/07/2009 16:36
+</I>&gt;&gt;<i> Oggetto: Re: [Tecnica] problemi con grub
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> robi ha scritto:
+</I>&gt;&gt;&gt;<i> andiamo con ordine.....LBA è 40008mb.....il disco è stato partizionato 
+</I>&gt;&gt;&gt;<i> con il partizionatore di ubuntu .....se pensi che il problema sia la 
+</I>&gt;&gt;&gt;<i> partizione dimmi come devo farla e poi ne riparliamo.... l'hd è 160gb ed 
+</I>&gt;&gt;&gt;<i> è stato sostituito a quello originale da 40gb....grazie aspetto 
+</I>&gt;&gt;&gt;<i> ulteriori consigli...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Secondo me il problema è proprio nella sostituzione del disco: 40008Mb
+</I>&gt;&gt;<i> sono circa 40Gb. In concreto il BIOS non vede tutto l'HD, quindi devi
+</I>&gt;&gt;<i> trafficare un po' con il BIOS, o aggiornarlo se non può vedere i 160Gb
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+Non ho ben capito cosa tu abbia combinato, ma se funziona ok. Hai
+provato a disabilitare LBA dal BIOS? Inoltre, se non usi programmi molto
+particolari, Windows conviene installarlo in una macchina virtuale,
+VirtualBox funziona benissimo, io avevo bisogno di Windows per i
+programmi della macchina fotografica, ho usato questo sistema e tutto va
+perfettamente.
+Personalmente non faccio mai una partizione di boot separata, alla fine
+può far girare anche i santissimi, partiziono il disco per root
+(10-15GB), swap (piccolina, dipende dalla memoria) e tutto il resto per
+home; in questa ci sta molto comodo anche un &quot;disco&quot; per Windows in
+VirtualBox
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000834.html">[Tecnica] problemi con grub
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000836.html">[Tecnica] problemi con chiavetta onda mobile e ubuntu 9.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#835">[ Data ]</a>
+              <a href="thread.html#835">[ Thread ]</a>
+              <a href="subject.html#835">[ Oggetto ]</a>
+              <a href="author.html#835">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

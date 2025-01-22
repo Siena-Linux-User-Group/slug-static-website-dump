@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] xorg e caratteristiche driver radeon per grafica ibrida
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20xorg%20e%20caratteristiche%20driver%20radeon%20per%20grafica%20ibrida&In-Reply-To=%3C1327741610.91850.YahooMailNeo%40web171211.mail.ir2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001527.html">
+   <LINK REL="Next"  HREF="001529.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] xorg e caratteristiche driver radeon per grafica ibrida</H1>
+    <B>Edoardo Giomi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20xorg%20e%20caratteristiche%20driver%20radeon%20per%20grafica%20ibrida&In-Reply-To=%3C1327741610.91850.YahooMailNeo%40web171211.mail.ir2.yahoo.com%3E"
+       TITLE="[Tecnica] xorg e caratteristiche driver radeon per grafica ibrida">edogiomi a yahoo.it
+       </A><BR>
+    <I>Sab 28 Gen 2012 09:06:50 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001527.html">[Tecnica] eseguire un script da pennina USB
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001529.html">[Tecnica] Android sostituire sd
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1528">[ Data ]</a>
+              <a href="thread.html#1528">[ Thread ]</a>
+              <a href="subject.html#1528">[ Oggetto ]</a>
+	      <a href="author.html#1528">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ciao a tutti,
+gentilmente qualcuno saprebbe spiegarmi questa nota?
+
+There are two versions of hybrd graphics: MUXed and MUX-less.  MUXed 
+have a display MUX to switch the displays between the discrete and 
+integrated cards.  MUXed systems can be switched using vgaswitcheroo.  
+MUX-less do not have a display MUX and the displays are only connected 
+to the integrated card.  On MUX-less systems, the discrete card is 
+solely for rendering, not display.  At the moment the X server does not 
+support rendering and display from different cards so the discrete card 
+can not be used with MUX-less systems at the moment.  Most new laptops 
+(2011+) are MUX-less.
+
+<A HREF="http://www.x.org/wiki/RadeonFeature">http://www.x.org/wiki/RadeonFeature</A>
+
+Per caso significa che, in caso di muxless, la scheda discreta è destinata al momento a rimanere inutilizzata?
+grazie in anticipo,
+
+edoardo
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20120128/b0e0d115/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20120128/b0e0d115/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001527.html">[Tecnica] eseguire un script da pennina USB
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001529.html">[Tecnica] Android sostituire sd
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1528">[ Data ]</a>
+              <a href="thread.html#1528">[ Thread ]</a>
+              <a href="subject.html#1528">[ Oggetto ]</a>
+              <a href="author.html#1528">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

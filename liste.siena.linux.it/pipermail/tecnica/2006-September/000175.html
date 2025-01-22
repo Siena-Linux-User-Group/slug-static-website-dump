@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] dns dinamico
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20dns%20dinamico&In-Reply-To=200609221212.50981.mailing%40pilusci.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000174.html">
+   <LINK REL="Next"  HREF="000176.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] dns dinamico</H1>
+    <B>GTL v97.6</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20dns%20dinamico&In-Reply-To=200609221212.50981.mailing%40pilusci.org"
+       TITLE="[Tecnica] dns dinamico">gtlv97.6 a siena.linux.it
+       </A><BR>
+    <I>Ven 22 Set 2006 12:53:19 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000174.html">[Tecnica] dns dinamico
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000176.html">[Tecnica] dns dinamico
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#175">[ Data ]</a>
+              <a href="thread.html#175">[ Thread ]</a>
+              <a href="subject.html#175">[ Oggetto ]</a>
+	      <a href="author.html#175">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sulla gentoo c'è già un updater per noip...
+
+che funziona per altro senza alcun problema anche da dentro la LAN
+senza bisogno che sia eseguito sul router...
+
+ovviamente una volta che hai noip come demone dietro poi puoi da linea
+di comando leggerti il file di conf o chiedere un riassunto della
+situazione...
+
+io ho no-ip e non mi ha MAI dato problemi/insoddisfazioni eccetera...
+
+te lo consiglio vivamente sopratutto che c'è il demone per linux funzionante.
+
+<A HREF="http://www.no-ip.com">http://www.no-ip.com</A>
+
+il demone:
+
+<A HREF="http://www.no-ip.com/downloads.php?page=linux">http://www.no-ip.com/downloads.php?page=linux</A>
+
+
+
+opzioni del comando:
+
+USAGE: noip2 [ -C [ -F][ -Y][ -U #min]
+        [ -u username][ -p password][ -x progname]]
+        [ -c file][ -d][ -D pid][ -i addr][ -S][ -M][ -h]
+
+Version Linux-2.1.1
+Options: -C               create configuration data
+         -F               force NAT off
+         -Y               select all hosts/groups
+         -U minutes       set update interval
+         -u username      use supplied username
+         -p password      use supplied password
+         -x executable    use supplied executable
+         -c config_file   use alternate data path
+         -d               increase debug verbosity
+         -D processID     toggle debug flag for PID
+         -i IPaddress     use supplied address
+         -I interface     use supplied interface
+         -S               show configuration data
+         -M               permit multiple instances
+         -K processID     terminate instance PID
+         -h               help (this text)
+
+
+
+gtuxl ~ # noip2 -S
+1 noip2 process active.
+
+Process 6409, started as noip2 -c /etc/no-ip2.conf
+Using configuration from /etc/no-ip2.conf
+Last IP Address set 83.184.222.178
+Account <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">gtlv97.6slug a gmail.com</A>
+configured for:
+        host  gtl.serveftp.com
+Updating every 5 minutes via /dev/wlan0 with NAT enabled.
+
+
+-- 
+GTL v97.6
+&quot;...fallou de linucs uei and
+mei de surss bi uiv iu...&quot;
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000174.html">[Tecnica] dns dinamico
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000176.html">[Tecnica] dns dinamico
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#175">[ Data ]</a>
+              <a href="thread.html#175">[ Thread ]</a>
+              <a href="subject.html#175">[ Oggetto ]</a>
+              <a href="author.html#175">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

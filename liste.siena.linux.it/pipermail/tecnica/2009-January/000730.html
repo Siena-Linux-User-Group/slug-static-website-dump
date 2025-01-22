@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Curiosità su Netfilter
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FCuriosit%3DE0_su_Netfilter%3F%3D&In-Reply-To=200901060007.36574.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000729.html">
+   <LINK REL="Next"  HREF="000731.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Curiosità su Netfilter</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FCuriosit%3DE0_su_Netfilter%3F%3D&In-Reply-To=200901060007.36574.pragma%40siena.linux.it"
+       TITLE="[Tecnica] Curiosità su Netfilter">contact a yusefmaali.net
+       </A><BR>
+    <I>Mar  6 Gen 2009 01:21:28 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000729.html">[Tecnica] Curiosità su Netfilter
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000731.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#730">[ Data ]</a>
+              <a href="thread.html#730">[ Thread ]</a>
+              <a href="subject.html#730">[ Oggetto ]</a>
+	      <a href="author.html#730">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Premetto che rileggendo a &quot;mente fredda&quot; (e nel vero senso del termine visto i -5 che sono fuori), mi rendo conto di aver chiesto nel modo sbagliato una cosa ovvia... (riflettere e rileggere, riflettere e rileggere, riflettere e rileggere)
+
+L'origine della domanda deriva dal voler mettere un DROP su tutto il traffico della eth0 (in, out e fwd), in modo da isolarmi completamente.
+Al che m'è venuto il dubbio: se droppo tutto su eth0, mi si droppano anche le interfacce logiche che ci passano dentro.
+
+La cosa ha un senso, visto che PPPoE inizializza la ppp attraverso la eth0. Quindi la eth0 deve lasciar passare almeno i pacchetti necessari a PPPoE.
+Poi riflettendo (ma non rileggendo) m'è venuto in mente che PPPoE non lavora a livello IP, lavora ad un livello più basso (MAC address), alchè posso droppare tutto quello che voglio, tranquillo del fatto che netfilter opera solamente a livello IP e non mi crea interferenze &quot;distruttive&quot;.
+
+Riflettere e rileggere... :)
+
+Grazie comunque di aver risposto!
+
+
+&gt;<i> Quello che non puoi fare nel tuo caso è filtrare il traffico PPPoE
+</I>&gt;<i> sulla eth0. Questo perchè i pacchetti PPPoE sono &quot;sotto&quot; il livello
+</I>&gt;<i> IP e non entrano nel flusso di iptables. Il contenuto dello stream
+</I>&gt;<i> PPPoE lo vedi apparire direttamente da ppp0.
+</I>
+Si, per il solito motivo che PPPoE lavora a livello MAC, right?
+
+
+&gt;<i> Questo in generale... poi non mi stupirei se rovistando su netfilter.org
+</I>&gt;<i> tu trovassi una qualche patch malefica che ti permette di matchare
+</I>&gt;<i> il PPPoE direttamente su eth0... nello stack di rete la gente ci fa le
+</I>&gt;<i> peggio porcate :D
+</I>
+
+Eheheheh, l'ideale per amministrare bene una rete :D
+
+
+Ciao,
+Yusef
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000729.html">[Tecnica] Curiosità su Netfilter
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000731.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#730">[ Data ]</a>
+              <a href="thread.html#730">[ Thread ]</a>
+              <a href="subject.html#730">[ Oggetto ]</a>
+              <a href="author.html#730">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

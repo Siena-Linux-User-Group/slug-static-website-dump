@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] casino, grosso casino!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=56248c610608150812n3e3ae39dh30e6870fac4a4211%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000532.html">
+   <LINK REL="Next"  HREF="000535.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] casino, grosso casino!</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=56248c610608150812n3e3ae39dh30e6870fac4a4211%40mail.gmail.com"
+       TITLE="[Generale] casino, grosso casino!">maali.yusef a gmail.com
+       </A><BR>
+    <I>Mar 15 Ago 2006 16:29:06 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000532.html">[Generale] casino, grosso casino!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000535.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#533">[ Data ]</a>
+              <a href="thread.html#533">[ Thread ]</a>
+              <a href="subject.html#533">[ Oggetto ]</a>
+	      <a href="author.html#533">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>eheheh questo qui sotto suona un pò male (anche se non compromette la
+configurazione) :)
+
+Section &quot;Device&quot;
+	Identifier	&quot;ATI Technologies, Inc. Radeon RV100 QY [Radeon 7000/VE]&quot;
+	Driver		&quot;nvidia&quot;
+	BusID		&quot;PCI:0:5:0&quot;
+EndSection
+
+
+comunque se guardi bene il file di configurazione non esiste una sezione
+
+Section &quot;InputDevice&quot;
+EndSection
+
+dedicata alla scheda grafica. Dovresti avere una cosa del tipo:
+
+Section &quot;InputDevice&quot;
+  Identifier &quot;Scheda Grafica Nvidia&quot;
+  Driver &quot;nvidia&quot;
+
+  qui tutte le opzioni di inizializzazione della scheda
+EndSection
+
+cerca qualche script che ti configuri l'Xorg.conf e il problema vedrai
+che si risolve :)
+
+On 8/15/06, $ito &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">checco.sito a gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ah, dato che ci sono allego anche lo Xorg.conf
+</I>&gt;<i>
+</I></PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000532.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000535.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#533">[ Data ]</a>
+              <a href="thread.html#533">[ Thread ]</a>
+              <a href="subject.html#533">[ Oggetto ]</a>
+              <a href="author.html#533">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

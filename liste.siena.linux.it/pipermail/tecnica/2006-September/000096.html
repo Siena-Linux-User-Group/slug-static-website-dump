@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] kate: file di testo sovrascritto come binario
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20kate%3A%20file%20di%20testo%20sovrascritto%20come%20binario&In-Reply-To=200609111827.06944.xdatap1%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000095.html">
+   <LINK REL="Next"  HREF="000097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] kate: file di testo sovrascritto come binario</H1>
+    <B>Iacopo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20kate%3A%20file%20di%20testo%20sovrascritto%20come%20binario&In-Reply-To=200609111827.06944.xdatap1%40siena.linux.it"
+       TITLE="[Tecnica] kate: file di testo sovrascritto come binario">iakko a siena.linux.it
+       </A><BR>
+    <I>Lun 11 Set 2006 22:54:49 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000095.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000097.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#96">[ Data ]</a>
+              <a href="thread.html#96">[ Thread ]</a>
+              <a href="subject.html#96">[ Oggetto ]</a>
+	      <a href="author.html#96">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 11 September 2006 18:27, Paolo Sammicheli wrote:
+
+&gt;<i> Siccome a me il non capire una cosa non mi piace, mi sono installato
+</I>&gt;<i> l'editor esadecimale khexeditor. Il bello é che se apri un file di *testo*
+</I>&gt;<i> con un editor esadecimale ottieni ...&quot;lo stesso risultato che aprendo con
+</I>&gt;<i> kwrite-kate semplicemente ottengo in più la versione esadecimale&quot;...
+</I>&gt;<i> Quindi? che differenza c'e' tra i file &quot;sputtanati&quot; di GTL e un file di
+</I>&gt;<i> testo?
+</I>&gt;<i>
+</I>&gt;<i> Illuminatemi per favore.
+</I>
+rispondo a paolo ma e' come se rispondessi all'intero thread.
+
+allora, prima cosa facciamo un po' di chiarezza su cosa sono i file binari e i 
+file di testo. sono la stessa cosa.
+
+partendo dalla definizione, un file e' &quot;un insieme di informazioni codificate 
+organizzate come una sequenza di byte&quot;.
+La differenza tra binari e testuali e' semplicemente nell'interpretazione del 
+contenuto. le informazioni contenute sui file testuali non sono altro che 
+sequenze di byte esattamente come per i file binari, la differenza sta nel 
+loro valore. nel caso dei testuali questo valore (dei singoli byte) 
+appartiene al range definito nelle codifiche standard di testo (come l'ASCII 
+per esempio) che rappresentano lettere/numeri/simboli.
+
+ci sono una serie di programmi che riescono a prendere in pasto tali sequenze 
+di byte e stampare a video l'equivalente testuale, sono gli editor di testo 
+(come kate). in questo modo l'utente ha un'interpretazione direttamente 
+comprensibile del contenuto senza ulteriori elaborazioni (legge il testo).
+i file binari sono, per convenzione, tutti i file che non appartengono a tale 
+classificazione.
+
+tornando al problema di GTL, non ha senso quando dice &quot;kate salva in binario&quot; 
+perchè lui salva la sequenza di byte che scrivi, quindi al massimo puo' 
+cambiare codifica. la codifica pero' non influisce sul testo standard ma solo 
+su alcuni caratteri particolari, come per esempio sulle lettere accentate o 
+su simboli &quot;non-standard&quot;. anche se cambiasse inaspettatamente codifica al 
+massimo non leggeresti i caratteri accentati o simboli come l'euro, il testo 
+standard continueresti a vederlo bene.
+
+secondo me se ti ritrovi il contenuto scombinato e' perche' e' successo 
+qualcosa durante il salvataggio (sputandoti dentro garbage vario).
+il problema potrebbe anche essere nel filesystem, in tal caso pero' dovresti 
+accorgertene perche' via via dovrebbero accaderti fatti analoghi su altri 
+file.
+
+se cosi' non fosse io proverei ad aggiornare kate e/o capire meglio cosa 
+succede tra il momento in cui lo chiudi e quando riaprendolo ti ritrovi in 
+questa situazione.
+
+come chiudi la sessione di kde? chiudi sempre kate prima? sarebbe interessante 
+se tu allegassi il file &quot;corrotto&quot;, magari guardandolo e' possibile capire 
+qualcosa di piu'.
+
+-- 
+--------------------------------------------------------------
+Iacopo Palazzi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">iakko a siena.linux.it</A>&gt;
+GPG Public Key: <A HREF="http://iakko.net/iakko.gpgkey.asc">http://iakko.net/iakko.gpgkey.asc</A>
+Fingerprint: B0A8 BC97 C53E 172D 0C77 80B3 C30E 835F 5C31 65AE
+Jabber: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">iakko a jabber.linux.it</A> - ICQ: 7622157
+Siena Linux User Group - www.siena.linux.it
+
+&quot;Se solo Dio mi desse i sorgenti...&quot;
+--------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  191 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060911/de90cce4/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060911/de90cce4/attachment.pgp</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000095.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000097.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#96">[ Data ]</a>
+              <a href="thread.html#96">[ Thread ]</a>
+              <a href="subject.html#96">[ Oggetto ]</a>
+              <a href="author.html#96">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

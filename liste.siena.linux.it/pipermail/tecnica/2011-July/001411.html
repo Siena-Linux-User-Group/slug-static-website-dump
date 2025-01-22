@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3CCA%2Bn2inDDcrNW%3DCZFBemLKJfpcm-ThyMJHK_151A--gYaRmKNbA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001410.html">
+   <LINK REL="Next"  HREF="001412.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Serverone per MAC a base Ubuntu (cap.1)</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3CCA%2Bn2inDDcrNW%3DCZFBemLKJfpcm-ThyMJHK_151A--gYaRmKNbA%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Serverone per MAC a base Ubuntu (cap.1)">polva86 a gmail.com
+       </A><BR>
+    <I>Lun 18 Lug 2011 20:03:12 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001410.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001412.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1411">[ Data ]</a>
+              <a href="thread.html#1411">[ Thread ]</a>
+              <a href="subject.html#1411">[ Oggetto ]</a>
+	      <a href="author.html#1411">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sono contento della partecipazione e della collaborazione. E soprattutto dei
+validi consigli.
+Si, si tratta di un cliente, pure abbastanza intestardito da brutte
+precedenti esperienze con i NAS prefabbricati che gli hanno giocato qualche
+migliaio di euro di camera bianca e un fermo macchina di un mese. Per questo
+ha insistito lui in prima persona a voler fare la doppia ridondanza fisica
+in tutti i modi. Il raid0 è stata una cosa che ha scelto lui per la comodità
+di avere tutto in un solo archivio, in modo che i suoi collaboratori non
+impazzissero. Quindi non è per una questione prestazionale o altro, ma solo
+di visualizzazione.
+Il raid 5 lo avevo già preso in considerazione, ma:
+1) visto che c'è già comunque un'altra macchina perde un po' di utilità
+2)ho praticamente esaurito lo spazio nel case e nei connettori sata con le
+esose richieste del cliente.
+
+Scusate se non ho specificato un aspetto importante, che giustamente
+bartrosso ha messo in evidenza.
+Non lavoriamo da soli, ma in collaborazione con un'altra struttura più
+grande che, sostanzialmente, ci vuole dare la capacità di sviluppare nuove
+soluzioni; per questo scegliamo dei clienti fidati che vogliano testare
+nuovi prototipi (e che siano coscienti della fase sperimentale in cui
+siamo). In casi come questi, per fare scuola appunto, non facciamo pagare al
+cliente praticamente nulla, se non l'hardware stesso soltanto. Solo quando
+la soluzione diventerà consolidata e più che collaudata, abbandoneremo la
+versione beta gratuita e la metteremo a pagamento. Quando saremo in quella
+fase mi auguro per me di aver imparato a usare la shell un bel po' meglio...
+Questo non significa che ora il lavoro vada fatto tirato via, tutt'altro (io
+poi personalmente tendo a farmi spesso molti più scrupoli del necessario);
+Ora è passato un po' di tempo (e io ci ho studiato sopra per alcuni mesi) e
+il cliente vorrebbe iniziare ad usarlo. Per questo serve che adesso giri e
+faccia tre cose basilari: condivida una cartella di rete, faccia il suo
+auto-backup di notte, sia monitorabile a distanza.
+Ripetendo che il riuscire a fare controllarlo da terminale E' la mia
+intenzione e tappa successiva, ora non posso farlo. Quindi mancherebbe uno
+dei tre compiti necessari.
+So bene (e me lo avete ripetuto tutti, anche con una certa solerzia) che è
+una cosa sbagliata, illogica e offensiva per il nostro povero pinguino, ma
+altrimenti non saprei come uscirne.
+Ma ritorniamo ai nostri punti:
+1) Il kernel lo volevo aggiornare perchè mi sembrava che Netatalk e avahi lo
+richiedessero più nuovo, ma mi sbagliavo. Posso evitare di farlo.
+2) Del raid 5 ho già detto su...
+3) Dell'LVM seguirò il pacato consiglio di Paolo :D ... l'unica cosa che
+volevo sapere con la precedente mail a questo riguardo era se fossi sulla
+strada giusta, non certo un trattato in lista su cosa sia l'LVM (per quello
+ci avrei pensato da me). Ora so che devo continuare a esplorare in questa
+direzione...
+4) Non è certo mia intenzione chiedere a tutti voi come fare un mio lavoro e
+poi parlare male di GNU/Linux se non sono in grado di farlo. Sapendo qual'è
+la mia dimestichezza, se qualcosa non riesce dipende sicuramente da me.
+Infatti, a differenza di sistemi più &quot;ruffiani&quot; lo si deve conoscere a
+fondo; ed è questo anche il bello, perchè imparandolo capisci come una cosa
+funzioni. Ora che ho la fortuna di poter mettere alla prova le poche
+conoscenze che ho in una &quot;sandbox&quot; le vedo pian piano aumentare e
+perfezionarsi per il futuro.
+Prima ancora di scrivere in lista sapevo che il server va usato a riga di
+comando e che non funziona come windows.
+La filosofia l'avevo intuita e volevo perseguirla. Purtroppo non ce la
+potevo fare. Siccome per questo &quot;step&quot; qui potevo risolvere con questo
+lacchezzo non ne vedevo il male. Che era una cosa imperfetta me ne rendevo
+conto (infatti tenevo la parte di correzione seria per il cap.2 della
+discussione), ma il tempo è rilevante.
+Il server deve poter stare in piedi ed essere usabile per quelle 3 cose
+entro una settimana. Con tutti i pregi e i difetti.
+Se ritenete che sia troppo instabile per il momento installerò la versione
+desktop e ne riparleremo dopo su quella server.
+Da questo cliente possiamo tornare comodamente a
+migliorare/formattare/cambiare installazione una volta messa su la versione
+stabile (mantenendo chiaramente il raid coi dati).
+Quello che vi chiedevo era semplicemente qualche dritta per chiudere questa
+faccenda.
+Per rispondere a Marcello, sono d'accordo. Però sarebbero più cappi se
+dovessi risolvere un problema con un interfaccia di cui so poco o niente
+piuttosto che in una in cui so muovermi meglio.
+5) Come diceva Yusef, sto provando anche soluzioni quali Webmin (che mi
+convinceva infatti nettamente di più di un DE da virtualizzare in VNC), ma
+lì ho ancora dei problemi per settarlo.
+A questo punto, chiarite queste cose, mi consigliate di mettere direttamente
+la desktop in questa situazione? Riuscirebbe ad essere stabile e a fare i
+compiti richiesti? Chiaramente per cascare in piedi partirei sempre dalla
+10.04 LTS, così da avere almeno 3 anni di supporto (5 sono nella server
+soltanto se non erro). Come release è abbastanza stabile?
+Scusatemi se sembro testardo ma non è per questioni di comprendonio quanto
+di esigenze.
+Il percorso che sto studiando è in divenire perchè certe occasioni di test
+non le posso avere solo con dei miei propri prototipi (cacofonia).
+Sono conscio del fatto che domando, faccio e prospetto cose non ortodosse,
+ma vorrei capire se sono sbagliate in linea di principio (es. il server non
+è stato pensato per...) o a livello strettamente funzionale (es. se lo fai
+crasha ogni 5 min). Anche questo, secondo me, fa parte della ricerca e della
+formazione di ognuno.
+Se vorrete darmi una mano vi sarò grato della pazienza che mi dedicherete.
+Se sono così insopportabile mandatemi pure a quel paese, come si è visto non
+mi offendo...
+Grazie ancora,
+Il Polva.
+
+
+Il giorno 18 luglio 2011 19:03, Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a gmail.com</A>&gt; ha
+scritto:
+
+&gt;<i> Ciao perdonatemi se mi intrometto. Con il massimo rispetto se questo lavoro
+</I>&gt;<i> è per un cliente pagante temo che tu ti stia facendo la corda per
+</I>&gt;<i> impiccarti. Un sistema così complesso se lo metti in produzione e poi hai
+</I>&gt;<i> problemi su cose che conosci appena  son cappi.
+</I>&gt;<i>
+</I>&gt;<i>  Il giorno 18/lug/2011 01.15, &quot;bartrosso&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha
+</I>&gt;<i> scritto:
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20110718/8c952397/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20110718/8c952397/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001410.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001412.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1411">[ Data ]</a>
+              <a href="thread.html#1411">[ Thread ]</a>
+              <a href="subject.html#1411">[ Oggetto ]</a>
+              <a href="author.html#1411">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

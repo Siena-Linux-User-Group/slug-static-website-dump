@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] problemi di configurazione scheda wifi....
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20problemi%20di%20configurazione%20scheda%20wifi....&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000603.html">
+   <LINK REL="Next"  HREF="000590.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] problemi di configurazione scheda wifi....</H1>
+    <B>roberto volpini</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20problemi%20di%20configurazione%20scheda%20wifi....&In-Reply-To="
+       TITLE="[Generale] problemi di configurazione scheda wifi....">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Lun 28 Ago 2006 16:23:04 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000603.html">[Generale] Logo LD2006
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000590.html">[Generale] Riapre il LIL con novità
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#579">[ Data ]</a>
+              <a href="thread.html#579">[ Thread ]</a>
+              <a href="subject.html#579">[ Oggetto ]</a>
+	      <a href="author.html#579">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>buon giorno a tutti......nel tentativo di configurare la scheda wifi io 
+e il proprietario del pc....ci siam o sbattezzati per circa 15 
+giorni.....allego i risultati di vari comandi......con le varie 
+spiegazioni del caso......sembra che la scheda non venga caricata dal 
+sistema (kubuntu 6.06) oppure che il kernel non riesca a farla 
+andare.....aspetto notizie da qualcuno che abbia risolto......
+
+roberto
+-------------- parte successiva --------------
+#log durante la scansione della rete:(con swscanner)
+------------------
+Starting a new scan thread!!
+Deleting apentry
+if(eth2)-&gt;192.168.0.3/255.255.255.0/192.168.0.255####   level: -256  noise: -256 (0)
+eth2      Scan completed :
+New AP found(01): 00:0F:B5:B5:1F:32
+
+Scan finished!!
+Creating SWSconfig...
+New 'scan finished' event received...
+Deleting apentry
+Deleting SWSconfig...
+
+----------------------
+#cosa curiosa:
+#lancio wlassistant e non rileva nessuna rete.
+#lancio swscanner e la trova.
+#rilancio wlassistant e la trova ance lui ...??? 
+#DA QUI IN AVANTI IL LOG DI WLASSISTANT:
+
+#avvio di wlassistant:
+<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">piri a xpiri-desktop</A>:~$ sudo wlassistant
+X Error: BadDevice, invalid or uninitialized input device 168
+  Major opcode:  145
+  Minor opcode:  3
+  Resource id:  0x0
+Failed to open device
+X Error: BadDevice, invalid or uninitialized input device 168
+  Major opcode:  145
+  Minor opcode:  3
+  Resource id:  0x0
+Failed to open device
+Xlib: connection to &quot;:0.0&quot; refused by server
+Xlib: No protocol specified
+
+kdeinit: Can't connect to the X Server.
+kdeinit: Might not terminate at end of session.
+Xlib: connection to &quot;:0.0&quot; refused by server
+Xlib: No protocol specified
+
+kded: cannot connect to X server :0.0
+kded: ERROR: KUniqueApplication: Registering failed!
+kded: ERROR: Communication problem with kded, it probably crashed.
+ScimInputContextPlugin()
+Loaded application options.
+DHCP Client: dhclient
+All executables found.
+iwconfig_status: /sbin/iwconfig
+==&gt;stderr: lo        no wireless extensions.
+
+h0      no wireless extensions.
+sit0      no wireless extensions.
+
+Wireless interface(s): eth2
+Permissions checked.
+ifconfig_status: /sbin/ifconfig eth2
+scan: /sbin/iwlist eth2 scan
+Networks found: 1
+Checking for active connection.
+Trying to get gateway address...
+...from /var/lib/dhcp3/dhclient.leases
+...from 'route'
+Gateway address: 192.168.0.1
+Checking for active connection.
+Checking for active connection.
+Checking for active connection.
+Checking for active connection.
+Checking for active connection.
+Checking for active connection.
+
+#a questo punto ho la finestra aperta con la rete presente
+#provo a connettere (ho un ip statico)
+
+ill_dhcp: /sbin/dhclient -r eth2
+==&gt;stderr: Internet Systems Consortium DHCP Client V3.0.3
+Copyright 2004-2005 Internet Systems Consortium.
+All rights reserved.
+For info, please visit <A HREF="http://www.isc.org/products/DHCP">http://www.isc.org/products/DHCP</A>
+
+Listening on LPF/eth2/00:07:ca:03:fd:6b
+Sending on   LPF/eth2/00:07:ca:03:fd:6b
+Sending on   Socket/fallback
+ifup: /sbin/ifconfig eth2 up
+iwconfig_set: /sbin/iwconfig eth2 mode managed channel 1 key open 9106990099 essid NETGEAR
+==&gt;stderr: Error for wireless request &quot;Set Encode&quot; (8B2A) :
+    SET failed on device eth2 ; Unknown error 524.
+iwconfig_ap: /sbin/iwconfig eth2 ap 00:0F:B5:B5:1F:32
+ifconfig_manual: /sbin/ifconfig eth2 192.168.0.3 netmask 255.255.255.0 broadcast 192.168.0.255
+resolv.conf: domain xpiri-desktop
+resolv.conf: nameserver 194.243.154.62
+resolv.conf: nameserver 194.31.190.31
+route: /sbin/route add default gw 192.168.0.1
+==&gt;stderr: SIOCADDRT: Il file esiste
+Xlib: connection to &quot;:0.0&quot; refused by server
+Xlib: No protocol specified
+
+Xlib: connection to &quot;:0.0&quot; refused by server
+Xlib: No protocol specified
+
+Xlib: connection to &quot;:0.0&quot; refused by server
+Xlib: No protocol specified
+
+knotify: cannot connect to X server :0.0
+ERROR: KUniqueApplication: Registering failed!
+ERROR: Communication problem with knotify, it probably crashed.
+Checking for active connection.
+
+#riprovo la connessione con DHCP attivato
+
+Network settings updated.
+kill_dhcp: /sbin/dhclient -r eth2
+==&gt;stderr: Internet Systems Consortium DHCP Client V3.0.3
+Copyright 2004-2005 Internet Systems Consortium.
+All rights reserved.
+For info, please visit <A HREF="http://www.isc.org/products/DHCP">http://www.isc.org/products/DHCP</A>
+
+Listening on LPF/eth2/00:07:ca:03:fd:6b
+Sending on   LPF/eth2/00:07:ca:03:fd:6b
+Sending on   Socket/fallback
+ifup: /sbin/ifconfig eth2 up
+iwconfig_set: /sbin/iwconfig eth2 mode managed channel 1 key open 9106990099 essid NETGEAR
+==&gt;stderr: Error for wireless request &quot;Set Encode&quot; (8B2A) :
+    SET failed on device eth2 ; Unknown error 524.
+iwconfig_ap: /sbin/iwconfig eth2 ap 00:0F:B5:B5:1F:32
+ifconfig_dhcp: /sbin/dhclient -q eth2
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000603.html">[Generale] Logo LD2006
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000590.html">[Generale] Riapre il LIL con novità
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#579">[ Data ]</a>
+              <a href="thread.html#579">[ Thread ]</a>
+              <a href="subject.html#579">[ Oggetto ]</a>
+              <a href="author.html#579">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

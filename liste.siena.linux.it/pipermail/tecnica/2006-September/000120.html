@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ssh gaia unreachable
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609171601.43728.o-zone%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000119.html">
+   <LINK REL="Next"  HREF="000130.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ssh gaia unreachable</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609171601.43728.o-zone%40siena.linux.it"
+       TITLE="[Tecnica] ssh gaia unreachable">pragma a siena.linux.it
+       </A><BR>
+    <I>Dom 17 Set 2006 14:50:42 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000119.html">[Tecnica] ssh gaia unreachable
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000130.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#120">[ Data ]</a>
+              <a href="thread.html#120">[ Thread ]</a>
+              <a href="subject.html#120">[ Oggetto ]</a>
+	      <a href="author.html#120">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday 17 September 2006 18:01, Michele &quot;O-Zone&quot; Pinassi wrote:
+
+&gt;<i> &gt; Perchè l'errore restituito dal sistema è un &quot;Network is unreachable&quot;
+</I>&gt;<i> &gt; invece di un &quot;Connection Refused&quot; ?
+</I>&gt;<i>
+</I>&gt;<i> da quale sistema ? il tuo casalingo ?
+</I>
+Yep. Ma anche da quello di GTL e di Iakko (se ho capito bene).
+
+&gt;<i> &gt; La parte rilevante del tcpdump di &quot;ssh -l utente gaia.siena.linux.it&quot;
+</I>&gt;<i> &gt; è il seguente:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 13:36:56.025639 IP (tos 0x0, ttl  64, id 13087, offset 0, flags [DF],
+</I>&gt;<i> &gt; proto: TCP (6), length: 60) ppp-234-4.27-151.libero.it.35165 &gt;
+</I>&gt;<i> &gt; gaia.siena.linux.it.ssh: S, cksum 0x2ac8 (correct),
+</I>&gt;<i> &gt; 4185561033:4185561033(0) win 5800 &lt;mss 1450,sackOK,timestamp 10134742
+</I>&gt;<i> &gt; 0,nop,wscale 7&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 13:36:56.232156 IP (tos 0x0, ttl  49, id 0, offset 0, flags [DF], proto:
+</I>&gt;<i> &gt; TCP (6), length: 40) gaia.siena.linux.it.ssh &gt;
+</I>&gt;<i> &gt; ppp-234-4.27-151.libero.it.35165: R, cksum 0x4ea6 (correct), 0:0(0) ack
+</I>&gt;<i> &gt; 4185561034 win 0
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; e qui &quot;Network is unreachable&quot;.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Qualcuno sa dare una spiegazione ?
+</I>&gt;<i>
+</I>&gt;<i> Finalmente un questito interessante. Se non sbaglio il pacchetto di
+</I>&gt;<i> risposta di Gaia contiene, giustamente, un ACK RST (Reset) che indica una
+</I>&gt;<i> porta chiusa/servizio non disponibile. Fosse stata una porta bloccata da
+</I>&gt;<i> firewall avresti avuto un tipo di risposta diversa.
+</I>
+Infatti il RST c'è. Gaia sembra comportarsi in modo corretto: nessuno
+ascolta sulla 22, che non è filtrata; il sistema risponde con un RST
+che di solito corrisponde ad un Connection Refused.
+
+&gt;<i> Leggo da <A HREF="http://www.freesoft.org/CIE/RFC/1812/105.htm:">http://www.freesoft.org/CIE/RFC/1812/105.htm:</A>
+</I>&gt;<i>
+</I>&gt;<i> [CUT]
+</I>&gt;<i> The ICMP Destination Unreachable message is sent by a router in response to
+</I>&gt;<i> a packet which it cannot forward because the destination (or next hop) is
+</I>&gt;<i> unreachable or a service is unavailable.
+</I>&gt;<i> [/CUT]
+</I>
+Se gaia fosse del tutto morta avrei probabilmente ricevuto un 
+ICMP &quot;Destination Unreachable&quot; dall'ultimo hop raggiungibile.
+Se la 22 fosse filtrata con regola REJECT allora avrei ricevuto un &quot;Port 
+Unreachable&quot; da gaia stessa. Se fosse filtrata con regola DROP non avrei
+ricevuto nessun messaggio di risposta.
+Il fatto è che non cadiamo in nessuno di questi casi. Niente ICMP di risposta.
+
+Prova a ssh-arti in locale su una porta &quot;vuota&quot; qualunque.
+I pacchetti che vedi passare sono esattamente gli stessi (almeno per quanto 
+riguarda la parte decodificata da tcpdump), ma l'errore che ti becchi 
+è &quot;Connection Refused&quot;.
+
+etherea pragmaware # ssh -p 100 -l pragma 127.0.0.1
+ssh: connect to host 127.0.0.1 port 100: Connection refused
+
+etherea venariasync # tcpdump  -vvv -i lo
+tcpdump: listening on lo, link-type EN10MB (Ethernet), capture size 96 bytes
+
+15:46:14.206348 IP (tos 0x0, ttl  64, id 14820, offset 0, flags [DF], proto: 
+TCP (6), length: 60) localhost.55649 &gt; localhost.100: S, cksum 0x9bc0 
+(correct), 1556306382:1556306382(0) win 32792 &lt;mss 16396,sackOK,timestamp 
+55271466 0,nop,wscale 7&gt;
+
+15:46:14.246827 IP (tos 0x0, ttl  64, id 0, offset 0, flags [DF], proto: TCP 
+(6), length: 40) localhost.100 &gt; localhost.55649: R, cksum 0x2176 (correct), 
+0:0(0) ack 1556306383 win 0
+
+E qui il &quot;Connection Refused&quot;.
+
+Nel caso di gaia invece ci si becca(va) il &quot;Network is unreachable&quot;.
+
+Ci deve essere qualche differenza &quot;nascosta&quot; (cioè che tcpdump non decodifica
+nemmeno con il -vvv) oppure qualche differenza di elaborazione all'interno
+del kernel a seconda del host target.... oppure mi sta sfuggendo qualcosa.
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- A red sign of the door of a physics professor:
+- if this sign is blue you're going too fast
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060917/7a1e412c/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060917/7a1e412c/attachment.pgp</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000119.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000130.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#120">[ Data ]</a>
+              <a href="thread.html#120">[ Thread ]</a>
+              <a href="subject.html#120">[ Oggetto ]</a>
+              <a href="author.html#120">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

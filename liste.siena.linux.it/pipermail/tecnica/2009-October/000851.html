@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi con phasis gestionale
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problemi%20con%20phasis%20gestionale&In-Reply-To=%3C4ACCCB9D.6000001%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000850.html">
+   <LINK REL="Next"  HREF="000852.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi con phasis gestionale</H1>
+    <B>robi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problemi%20con%20phasis%20gestionale&In-Reply-To=%3C4ACCCB9D.6000001%40valdelsa.net%3E"
+       TITLE="[Tecnica] problemi con phasis gestionale">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Mer  7 Ott 2009 18:10:53 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000850.html">[Tecnica] Digest di Tecnica, Volume 39, Numero 3
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000852.html">[Tecnica] problemi con phasis gestionale
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#851">[ Data ]</a>
+              <a href="thread.html#851">[ Thread ]</a>
+              <a href="subject.html#851">[ Oggetto ]</a>
+	      <a href="author.html#851">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ciao a tutti e grazie per l'ascolto che mi darete....
+
+vengo subito al dunque ho installato un gestionale phasis....
+
+il programma sembra funzionare ma dopo aver personalizzato l'azienda 
+.....come lo spengo non mi fa più accedere si apre l'interfaccia ma non 
+posso accedere.....il terminale mi da questo errore:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">laura a laura-laptop</A>:~$ phasis
+Traceback (most recent call last):
+  File &quot;/opt/phasis/phasis/selaz.py&quot;, line 465, in OnOk
+    else : self.Save(self)
+  File &quot;/opt/phasis/phasis/selaz.py&quot;, line 468, in Save
+    self.FndAZ(self)
+  File &quot;/opt/phasis/phasis/selaz.py&quot;, line 408, in FndAZ
+    elif (cnt_rec==1 and cnt_rec&lt;2): self.FndSelAz(row)
+  File &quot;/opt/phasis/phasis/selaz.py&quot;, line 425, in FndSelAz
+    self.indaz=str(row[6]).title()
+UnicodeEncodeError: 'ascii' codec can't encode character u'\xb0' in 
+position 13: ordinal not in range(128)
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">laura a laura-laptop</A>:~$
+
+leggendo qualche forum ho scoperto che il problema sembra essere che 
+mysql ha come default un tipo di codec ascii e che sql ne ha un altro 
+ora dopo aver disinstallato sql pensavo di avere risolto 
+invece...picche......il sistema operativo è ubuntu 8.04 ......
+
+vi chiedo scusa se mi sono spiegato molto male ma non ne so abbastanza 
+per chiarire meglio.....
+se qualcuno può aiutarmi gliene sarei molto grato....
+
+se avete bisogno di ulteriori chiarimenti scrivetemi che devo fare e lo farò
+
+grazie a tutti
+
+roberto
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000850.html">[Tecnica] Digest di Tecnica, Volume 39, Numero 3
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000852.html">[Tecnica] problemi con phasis gestionale
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#851">[ Data ]</a>
+              <a href="thread.html#851">[ Thread ]</a>
+              <a href="subject.html#851">[ Oggetto ]</a>
+              <a href="author.html#851">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

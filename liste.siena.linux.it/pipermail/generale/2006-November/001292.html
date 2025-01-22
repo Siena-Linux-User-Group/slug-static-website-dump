@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=BAY102-F17F98FC2CC6F6A248E0056C3E20%40phx.gbl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001308.html">
+   <LINK REL="Next"  HREF="001294.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=BAY102-F17F98FC2CC6F6A248E0056C3E20%40phx.gbl"
+       TITLE="[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali">pragma a siena.linux.it
+       </A><BR>
+    <I>Gio 23 Nov 2006 00:53:04 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001308.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001294.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1292">[ Data ]</a>
+              <a href="thread.html#1292">[ Thread ]</a>
+              <a href="subject.html#1292">[ Oggetto ]</a>
+	      <a href="author.html#1292">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 23 November 2006 01:18, Alex M4DC4T wrote:
+&gt;<i> &quot;Quindi l'array esterno è un array di references e l'array interno è
+</I>&gt;<i> &quot;puntato&quot; dagli elementi di quello interno.&quot;
+</I>&gt;<i> forse doveva essere
+</I>&gt;<i> &quot;Quindi l'array esterno è un array di references e l'array interno è
+</I>&gt;<i> &quot;puntato&quot; dagli elementi di quello ESTERNO.
+</I>
+
+Si, hai ragione: devo forzarmi a rileggere due volte le mail prima di 
+inviarle.
+
+Cmq se mi hai corretto vuol dire che ti torna :)
+
+&gt;<i> Ma praticamente il fatto che non si possano in perl fare array multi
+</I>&gt;<i> dimensionali (oltre i due dimensionali, tramite &quot;trucco&quot; dei references,
+</I>&gt;<i> che poi non mi sembrano ugualmente bidimensionali, ma solo con una
+</I>&gt;<i> reference....) significa che difficilmente si possono fare matrici
+</I>&gt;<i> multidimensionali?
+</I>
+Un array a più di una dimensione è sostanzialmente assimilabile ad una 
+matrice. Anzi, per generalizzare, diciamo che è solo una questione di &quot;nomi&quot;
+ma in realtà parliamo delle stesse cose.
+
+Array multidimensionale è una collezione di elementi ordinati
+ed indicizzabile tramite N indici.
+
+Il nome comune &quot;array&quot; (senza specificare le dimensioni) viene solitamente 
+associato ad una collezione indicizzabile tramite un singolo indice ovvero un 
+vettore (ovvero una matrice di dimensione 1). Il nome comune &quot;matrice&quot; si 
+associa facilmente alla collezione indicizzabile da due indici e 
+rappresentabile mediante una griglia rettangolare di oggetti ovvero un array 
+bidimensionale. In tre dimensioni non vi è un nome canonico e dobbiamo 
+dire &quot;array a tre dimensioni&quot; oppure &quot;matrice a tre dimensioni&quot;...
+Nsomma, son la stessa cosa, via. Il nome scelto dipende solo dal contesto
+di partenza...  
+
+Inoltre si possono simulare array a dimensione maggiore di 2 (o matrici, se 
+preferisci) sempre con lo stesso trucco.
+
+	$interno_interno[10] = 1;
+	$interno[4] = \@interno_interno;
+	$esterno[2] = \@interno;
+
+	print  $esterno[2]-&gt;[4]-&gt;[10];
+
+&gt;<i> E comunque anche nell'ultimo aggiornamento del programma rimangono le cose
+</I>&gt;<i> in questo modo?
+</I>
+Le vecchie versioni del perl erano messe peggio di così.
+Nelle ultime versioni, invece, son stati aggiunti i references
+e i vari trucchi sintattici che ti permettono appunto
+di scrivere
+
+	$esterno[2][4][10] = 1;
+	
+Nota che così sembra proprio una matrice di dimensione 3...
+...in realtà internamente è un &quot;array di reference ad array di
+reference ad array di scalari&quot;.
+
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Black holes were created when God divided by 0
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20061123/23c342f5/attachment-0001.pgp">http://liste.siena.linux.it/pipermail/generale/attachments/20061123/23c342f5/attachment-0001.pgp</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001308.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001294.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1292">[ Data ]</a>
+              <a href="thread.html#1292">[ Thread ]</a>
+              <a href="subject.html#1292">[ Oggetto ]</a>
+              <a href="author.html#1292">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

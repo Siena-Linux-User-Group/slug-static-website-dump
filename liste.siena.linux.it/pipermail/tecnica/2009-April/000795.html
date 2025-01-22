@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] caricare modulo ne2000 all'avvio
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=49E6449A.5050604%40willothewisp.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000793.html">
+   <LINK REL="Next"  HREF="000796.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] caricare modulo ne2000 all'avvio</H1>
+    <B>Luigi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=49E6449A.5050604%40willothewisp.it"
+       TITLE="[Tecnica] caricare modulo ne2000 all'avvio">per.gigi a aruba.it
+       </A><BR>
+    <I>Gio 16 Apr 2009 13:03:30 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000793.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000796.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#795">[ Data ]</a>
+              <a href="thread.html#795">[ Thread ]</a>
+              <a href="subject.html#795">[ Oggetto ]</a>
+	      <a href="author.html#795">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Luca Mercurio ha scritto:
+&gt;<i> Ciao Flying Tux!
+</I>&gt;<i>                            Felice di risentirti per l'occasione ;-)
+</I>&gt;<i> Ho provato a seguire il tuo consiglio inserendo
+</I>&gt;<i>
+</I>&gt;<i> ne io=0x300
+</I>&gt;<i>
+</I>&gt;<i> dentro etc/modules, salvando e riavviando, ma non appena faccio ifconfig 
+</I>&gt;<i> eth0 una volta caricato il sistema operativo ottengo il risultato:
+</I>&gt;<i>
+</I>&gt;<i> ifconfig: eth0: error fetching interface information: Device not found
+</I>&gt;<i>
+</I>&gt;<i> Che è esattamente quello che mi compare se non carico il modulo a mano...
+</I>&gt;<i>
+</I>&gt;<i> Qualche idea?
+</I>&gt;<i>
+</I>&gt;<i> Solo per la cronaca: per tirare su a mano eth0 faccio:
+</I>&gt;<i>
+</I>&gt;<i> sudo modprobe ne io=0x300 (si tratta di una scheda ISA)
+</I>&gt;<i>
+</I>&gt;<i> Poi con il tool grafico tiro su il DHCP e mi funziona tutto.
+</I>&gt;<i>
+</I>&gt;<i> Grazie per il tuo tempo.
+</I>&gt;<i>
+</I>&gt;<i> MacMercury
+</I>&gt;<i>
+</I>&gt;<i> flying.tux wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Apri il file, ci scrivi dentro il nome del modulo, salvi e chiudi.
+</I>&gt;&gt;<i> Al successivo riavvio il modulo sarà caricato in automatico.
+</I>&gt;&gt;<i> Ciao!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il 14 aprile 2009 14.43, Luca Mercurio &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">luca a willothewisp.it</A>&gt; ha scritto:
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Ciao Gabriele,
+</I>&gt;&gt;&gt;<i>                        grazie per la dritta, ma purtroppo non sono così
+</I>&gt;&gt;&gt;<i> esperto come alcuni possono erroneamente credere ;-)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Come devo fare per aggiungere il modulo a etc/modules?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Posso utilizzare nano e poi aggiungere cosa?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Grazie per la pazienza.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Ciao
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Luca
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Gabriele Monfardini wrote:
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> Nelle distribuzioni basate su debian devi aggiungere il modulo a /etc/modules.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Gabriele
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 2009/4/14 Luca Mercurio &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">luca a willothewisp.it</A>&gt;:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Luca, non dimenticare per mettere anche il francese! In Togo amano
+studiare l'italiano, ma per ora non è molto capito! :-) ... e in Togo la
+connessione non è proprio il massimo ...
+In Gnome lo trovi in &quot;Supporto lingue&quot;, dalle altre parti non saprei ...
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20090416/1c78fd44/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20090416/1c78fd44/attachment.htm</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000793.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000796.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#795">[ Data ]</a>
+              <a href="thread.html#795">[ Thread ]</a>
+              <a href="subject.html#795">[ Oggetto ]</a>
+              <a href="author.html#795">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

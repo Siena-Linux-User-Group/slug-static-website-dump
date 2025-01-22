@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] acer 5920g con debian wifi
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20acer%205920g%20con%20debian%20wifi&In-Reply-To=4A2D44CE.4020704%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000818.html">
+   <LINK REL="Next"  HREF="000812.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] acer 5920g con debian wifi</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20acer%205920g%20con%20debian%20wifi&In-Reply-To=4A2D44CE.4020704%40valdelsa.net"
+       TITLE="[Tecnica] acer 5920g con debian wifi">dinogen a gmail.com
+       </A><BR>
+    <I>Mar  9 Giu 2009 08:03:22 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000818.html">[Tecnica] acer 5920g con debian wifi
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000812.html">[Tecnica] wifi.....
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#815">[ Data ]</a>
+              <a href="thread.html#815">[ Thread ]</a>
+              <a href="subject.html#815">[ Oggetto ]</a>
+	      <a href="author.html#815">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>E' successo anche a me.
+L'antenna veniva riconosciuta e attivata ma niente connessione.
+Per questo nel mio ultimo portatile ho scelto la scheda wifi che
+costava 20 euro di più ma che era pienamente compatibile col kernel
+linux.
+
+Il giorno 8 giugno 2009 19.05, robi&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt; ha scritto:
+&gt;<i> ciao....non sono la persona più indicata (ce ne sono molti...molto
+</I>&gt;<i> meglio di me)...comunque è strano che non vada perchè wlan0 è
+</I>&gt;<i> attivato.....a me tempo fa successe una cosa simile e dopo essermi
+</I>&gt;<i> sbattezzato ho scoperto che era un problema di chiave di rete....se hai
+</I>&gt;<i> una chiave wep o wpa prova a disattivarla e vedi se va.....a me andava
+</I>&gt;<i> ma con la chiave no.....e ho dovuto installare rutilt e configurare la
+</I>&gt;<i> connessione con quello.....ho scoperto poi che era un problema del
+</I>&gt;<i> kernel.....purtroppo non mi ricordo che kernel era.... :-(
+</I>&gt;<i>
+</I>&gt;<i> spero di esserti stato di aiuto.....ciao
+</I>&gt;<i>
+</I>&gt;<i> roberto
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Freeze NorthPole ha scritto:
+</I>&gt;&gt;<i> CIao a tutti,
+</I>&gt;&gt;<i> ho da poco installato sul mio notebook acer 5920g debian lenny, ma il
+</I>&gt;&gt;<i> wireless non funziona, avete suggerimenti?
+</I>&gt;&gt;<i> ecco un po' di info, per aiutarvi ad aiutarmi :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> - lspci | grep Network
+</I>&gt;&gt;<i> ------
+</I>&gt;&gt;<i> 06:00.0 Network controller: Intel Corporation PRO/Wireless 4965 AG or
+</I>&gt;&gt;<i> AGN [Kedron] Network Connection (rev 61)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> - ifconfig
+</I>&gt;&gt;<i> ------
+</I>&gt;&gt;<i> eth0      Link encap:Ethernet  HWaddr 00:1b:24:3e:b8:4e
+</I>&gt;&gt;<i>           inet addr:192.168.1.70  Bcast:192.168.1.255  Mask:255.255.255.0
+</I>&gt;&gt;<i>           inet6 addr: fe80::21b:24ff:fe3e:b84e/64 Scope:Link
+</I>&gt;&gt;<i>           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+</I>&gt;&gt;<i>           RX packets:12375 errors:0 dropped:0 overruns:0 frame:0
+</I>&gt;&gt;<i>           TX packets:15619 errors:0 dropped:0 overruns:0 carrier:0
+</I>&gt;&gt;<i>           collisions:0 txqueuelen:1000
+</I>&gt;&gt;<i>           RX bytes:2747331 (2.6 MiB)  TX bytes:17368494 (16.5 MiB)
+</I>&gt;&gt;<i>           Interrupt:17
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> lo        Link encap:Local Loopback
+</I>&gt;&gt;<i>           inet addr:127.0.0.1  Mask:255.0.0.0
+</I>&gt;&gt;<i>           inet6 addr: ::1/128 Scope:Host
+</I>&gt;&gt;<i>           UP LOOPBACK RUNNING  MTU:16436  Metric:1
+</I>&gt;&gt;<i>           RX packets:66 errors:0 dropped:0 overruns:0 frame:0
+</I>&gt;&gt;<i>           TX packets:66 errors:0 dropped:0 overruns:0 carrier:0
+</I>&gt;&gt;<i>           collisions:0 txqueuelen:0
+</I>&gt;&gt;<i>           RX bytes:5248 (5.1 KiB)  TX bytes:5248 (5.1 KiB)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -iwconfig
+</I>&gt;&gt;<i> -----
+</I>&gt;&gt;<i> lo        no wireless extensions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> eth0      no wireless extensions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> wmaster0  no wireless extensions.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> wlan0     IEEE 802.11  ESSID:&quot;&quot;
+</I>&gt;&gt;<i>           Mode:Managed  Frequency:2.412 GHz  Access Point: Not-Associated
+</I>&gt;&gt;<i>           Tx-Power=0 dBm
+</I>&gt;&gt;<i>           Retry min limit:7   RTS thr:off   Fragment thr=2352 B
+</I>&gt;&gt;<i>           Encryption key:off
+</I>&gt;&gt;<i>           Link Quality:0  Signal level:0  Noise level:0
+</I>&gt;&gt;<i>           Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+</I>&gt;&gt;<i>           Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> - ifconfig wlan0 up
+</I>&gt;&gt;<i> -------
+</I>&gt;&gt;<i> SIOCSIFFLAGS: No such device
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> -uname -a
+</I>&gt;&gt;<i> -------
+</I>&gt;&gt;<i> Linux davide-laptop 2.6.26-2-686 #1 SMP Thu May 28 15:39:35 UTC 2009
+</I>&gt;&gt;<i> i686 GNU/Linux
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> grazie a tutti
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+____________________________
+Marcello Semboli
+<A HREF="http://dinogen.hacknight.org/">http://dinogen.hacknight.org/</A>
+
+&quot;Io non doppioclicco.&quot; (Davide Bianchi)
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000818.html">[Tecnica] acer 5920g con debian wifi
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000812.html">[Tecnica] wifi.....
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#815">[ Data ]</a>
+              <a href="thread.html#815">[ Thread ]</a>
+              <a href="subject.html#815">[ Oggetto ]</a>
+              <a href="author.html#815">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

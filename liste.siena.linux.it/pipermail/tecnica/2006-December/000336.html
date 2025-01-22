@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] funzionamento rewrite url
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20funzionamento%20rewrite%20url&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000340.html">
+   <LINK REL="Next"  HREF="000339.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] funzionamento rewrite url</H1>
+    <B>Massimo Sandolo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20funzionamento%20rewrite%20url&In-Reply-To="
+       TITLE="[Tecnica] funzionamento rewrite url">bastilani a email.it
+       </A><BR>
+    <I>Ven 29 Dic 2006 09:22:08 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000340.html">[Tecnica] Dubbi su immagine
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000339.html">[Tecnica] funzionamento rewrite url
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#336">[ Data ]</a>
+              <a href="thread.html#336">[ Thread ]</a>
+              <a href="subject.html#336">[ Oggetto ]</a>
+	      <a href="author.html#336">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buon giorno,
+già tempo fa mi ero scontrato con questo problema del rewrite delle url con
+apache.
+Il risultato era che sul mio mac con apache 1.33 non funzionava a dovere.
+Avevo un po abbandonato la cosa .. ma ora la vorrei un po riprendere e
+risolvere.
+In pratica il rewrite funzionava in parte solo se inserivo le pagine nella
+document root, e non nelle home degli utenti.
+Il problema era che effettuava il rewrite caricando la pagina corretta, ma
+non passava i parametri al php.
+
+In questi giorni ho fatto alcune prove anche sul server di aruba dove ho un
+hosting linux.
+Alcune regole che provavo funzionano su aruba, ma non in locale. Altre
+nemmeno in remoto.
+
+Regole provate
+
+#1
+RewriteEngine On
+RewriteRule prova/([^\.]+)\.html test.php?id=$1 [QSA]
+
+#2
+RewriteEngine On
+RewriteRule ^prova/([^/]+).html test.php?id=$1 [L]
+
+oppure
+
+#3
+RewriteEngine On 
+RewriteRule ^.*$ test.php?id=mondo [L]
+
+#4
+RewriteEngine On
+RewriteRule test/([^\.]+)\.html test.php?id=$1 [QSA]
+
+In remoto, la 1, 2 e 3 funzionano correttamente.
+In locale tutte e 4 non funzionano, per la precisione la 1, 2 e 4 non viene
+passato il parametro id, mentre per quanto riguarda la 3 quando richiamo un
+<A HREF="http://localhost/prova_rewrite/pippo.html">http://localhost/prova_rewrite/pippo.html</A> non mostra la pagina test, ma mi
+dà il 404 di pagina non trovata.
+Su aruba invece la regola numero 3 funziona correttamente.
+Invece per quanto riguarda la 4 su aruba non funziona .. la richiamo con
+<A HREF="http://sito/rewrite/test/mondo.html">http://sito/rewrite/test/mondo.html</A> non effettua il rewrite, ma cerca la
+pagina e non trovandola da un 404. Chiamando la pagina php e il pattern in
+modo differente (vedi regola 1 o 2) funziona. Capirei nel caso in cui test
+sia una directory reale, ma in questo caso perhcè anche il nome pagina gli
+da noia? Per dire gli esempi di rewrite che si trovano in giro mostrano
+spesso pattern e nome pagina uguali! E' una configurazione imposta da aruba?
+
+Che mi sapete dire su sto rewrite? Alla fine in remoto escluso i nomi
+diversi (fra pattern e pagina) funziona... ma in locale non so più che
+provare!
+
+
+ciao
+max 
+ --
+ Email.it, the professional e-mail, gratis per te: <A HREF="http://www.email.it/f">http://www.email.it/f</A>
+ 
+ Sponsor:
+ Stupisci i tuoi Amici con le Fantastiche Idee Regalo D-Mail !
+
+ Clicca qui: <A HREF="http://adv.email.it/cgi-bin/foclick.cgi?mid=5891&amp;d=20061229">http://adv.email.it/cgi-bin/foclick.cgi?mid=5891&amp;d=20061229</A>
+
+
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000340.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000339.html">[Tecnica] funzionamento rewrite url
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#336">[ Data ]</a>
+              <a href="thread.html#336">[ Thread ]</a>
+              <a href="subject.html#336">[ Oggetto ]</a>
+              <a href="author.html#336">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

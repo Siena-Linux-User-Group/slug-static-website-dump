@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Git, rimozioni e tipi di file
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2015-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Git%2C%20rimozioni%20e%20tipi%20di%20file&In-Reply-To=%3CCAPqRDyLkdsH-JDh3mAE%2B%3Dc56LE_emcNOB0ueu-XT-JeBDM96_Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001933.html">
+   <LINK REL="Next"  HREF="001935.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Git, rimozioni e tipi di file</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Git%2C%20rimozioni%20e%20tipi%20di%20file&In-Reply-To=%3CCAPqRDyLkdsH-JDh3mAE%2B%3Dc56LE_emcNOB0ueu-XT-JeBDM96_Q%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Git, rimozioni e tipi di file">dinogen a gmail.com
+       </A><BR>
+    <I>Lun 30 Mar 2015 09:57:59 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001933.html">[Tecnica] Git, rimozioni e tipi di file
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001935.html">[Tecnica] Git, rimozioni e tipi di file
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1934">[ Data ]</a>
+              <a href="thread.html#1934">[ Thread ]</a>
+              <a href="subject.html#1934">[ Oggetto ]</a>
+	      <a href="author.html#1934">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sì, però prima salvatelo in un'altra directory, questi magheggi a volte
+sono un po' pericolosi.
+In realtà col GIT si può fare di tutto, ma io sono sempre per il KISS.
+
+
+________________________________________
+Marcello Semboli
+Siena
+
+Il giorno 30 marzo 2015 10:33, $ito &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">checco.sito a gmail.com</A>&gt; ha scritto:
+
+&gt;<i> Rispondo per il punto due perché in realtà lo puoi fare, ad una condizione.
+</I>&gt;<i> Se vuoi rimuovere dal repository un file che hai messo in gitignore (cosa
+</I>&gt;<i> che credo sia il tuo caso) puoi fare
+</I>&gt;<i>
+</I>&gt;<i> git rm --cached myfile
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> oppure, nel caso di cartella
+</I>&gt;<i>
+</I>&gt;<i> git rm --cached -r mydirectory
+</I>&gt;<i>
+</I>&gt;<i> Così facendo rimuovi il file dal repository, ma dovrebbe rimanere sul tuo
+</I>&gt;<i> filesystem.
+</I>&gt;<i>
+</I>&gt;<i> $ito
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 29 marzo 2015 23:36, Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt; ha
+</I>&gt;<i> scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On Sun, 29 Mar 2015 23:25:01 +0200
+</I>&gt;&gt;<i> Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a gmail.com</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; Si, no.
+</I>&gt;&gt;<i> &gt; Sì, I file che git deve ignorare stanno in un file che si chiama
+</I>&gt;&gt;<i> gitignore.
+</I>&gt;&gt;<i> &gt; Se cerchi su internet ne trovi di già pronti.
+</I>&gt;&gt;<i> &gt; No, il git rispecchia il file sistem.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> denghiù so macc...
+</I>&gt;&gt;<i> Sapevo di poter contare sulla Scienza (detto con la voce di
+</I>&gt;&gt;<i> CrozzaZichichi) dello SLUG... :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> aloha!
+</I>&gt;&gt;<i> blackhat
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt; -Utente Linux registrato #223702
+</I>&gt;&gt;<i> &quot;Beati gli ultimi perchè lo stack è LIFO&quot; (Dinogen)
+</I>&gt;&gt;<i> La via dello Unix è il KISS.
+</I>&gt;&gt;<i> DIffida dei programmi che non rispettano il  KISS.
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20150330/99517add/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20150330/99517add/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001933.html">[Tecnica] Git, rimozioni e tipi di file
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001935.html">[Tecnica] Git, rimozioni e tipi di file
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1934">[ Data ]</a>
+              <a href="thread.html#1934">[ Thread ]</a>
+              <a href="subject.html#1934">[ Oggetto ]</a>
+              <a href="author.html#1934">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

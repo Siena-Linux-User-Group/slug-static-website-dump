@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Dubbi su immagine
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dubbi%20su%20immagine&In-Reply-To=864915.80611.qm%40web55210.mail.re4.yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000332.html">
+   <LINK REL="Next"  HREF="000335.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Dubbi su immagine</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dubbi%20su%20immagine&In-Reply-To=864915.80611.qm%40web55210.mail.re4.yahoo.com"
+       TITLE="[Tecnica] Dubbi su immagine">pragma a siena.linux.it
+       </A><BR>
+    <I>Gio 28 Dic 2006 19:03:17 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000332.html">[Tecnica] Dubbi su immagine
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000335.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#334">[ Data ]</a>
+              <a href="thread.html#334">[ Thread ]</a>
+              <a href="subject.html#334">[ Oggetto ]</a>
+	      <a href="author.html#334">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 28 December 2006 18:21, Marcello Semboli wrote:
+
+&gt;<i> In rete ho trovato questo: <A HREF="http://sourceforge.net/projects/g4l/">http://sourceforge.net/projects/g4l/</A>
+</I>&gt;<i> e questo: <A HREF="http://sourceforge.net/projects/kasper">http://sourceforge.net/projects/kasper</A>
+</I>
+Yep. In effetti un &quot;linux-ghost&quot; è una soluzione sicuramente più user 
+friendly. Concordo nel fatto che va provata per prima.
+
+Fra l'altro, nella fretta della mail precedente sono stato poco puntiglioso 
+(oltre che sgrammaticato) quindi aggiungo un dettaglio che mi sembra 
+importante nel caso tu decidessi di cimentarti con dd.
+Per copiare tutto in una botta sola i dischi devono essere proprio uguali.
+In particolare devono avere lo stesso numero di cilindri e testine nonchè
+un numero di settori uguale o superiore al disco &quot;master&quot;.
+Questo perchè nella tabella delle partizioni gli offset sono memorizzati
+in formato C/H/S (cylinder - head - sector).
+Se i dischi non sono uguali devi per forza fare immagini delle singole
+partizioni (e quindi partizionare i dischi a mano in modo che la dimensione 
+corrisponda). E' probabile che ghost operi solo su partizioni proprio
+per questo motivo.
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- The brighter you are the more you have to learn.
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061228/c4d92366/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061228/c4d92366/attachment.pgp</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000332.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000335.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#334">[ Data ]</a>
+              <a href="thread.html#334">[ Thread ]</a>
+              <a href="subject.html#334">[ Oggetto ]</a>
+              <a href="author.html#334">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] gestionale computer subaqueo
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20gestionale%20computer%20subaqueo&In-Reply-To=%3C83F2B023-1C7A-42F7-8A3B-31707F829680%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001185.html">
+   <LINK REL="Next"  HREF="001187.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] gestionale computer subaqueo</H1>
+    <B>roberto volpini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20gestionale%20computer%20subaqueo&In-Reply-To=%3C83F2B023-1C7A-42F7-8A3B-31707F829680%40valdelsa.net%3E"
+       TITLE="[Tecnica] gestionale computer subaqueo">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Mar  3 Ago 2010 18:44:10 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001185.html">[Tecnica] gestionale computer subaqueo
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001187.html">[Tecnica] gestionale computer subaqueo
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1186">[ Data ]</a>
+              <a href="thread.html#1186">[ Thread ]</a>
+              <a href="subject.html#1186">[ Oggetto ]</a>
+	      <a href="author.html#1186">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>questo è output di ls -l
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robertovolpini a ubuntu</A>:~$ cd Scrivania/
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robertovolpini a ubuntu</A>:~/Scrivania$ cd JTrak_linux_1.1.4/
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robertovolpini a ubuntu</A>:~/Scrivania/JTrak_linux_1.1.4$ ls -l
+totale 12
+-rw-rw-rw- 1 robertovolpini robertovolpini 1791 2006-04-19 14:50 Jtrak.jar
+drwxrwxrwx 2 robertovolpini robertovolpini 4096 2006-06-16 16:09 lib
+-rw-rw-rw- 1 robertovolpini robertovolpini   60 2006-04-19 15:06 start_JTrak.sh
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robertovolpini a ubuntu</A>:~/Scrivania/JTrak_linux_1.1.4$
+
+ma nel file eseguibile non manca il permesso di eseguire?
+
+appunto.....mancava proprio quello ma dati i permessi giusti......mi ritrovo con questo output che dice di aver bisogno di java-6-openjdk......che nei repo di 10.04 non ho trovato.......oppure non ho capito un tubo di questo output??????
+
+grazie a tutti....
+
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robertovolpini a ubuntu</A>:~/Scrivania/JTrak_linux_1.1.4$ sudo chmod 777 start_JTrak.sh 
+[sudo] password for robertovolpini: 
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robertovolpini a ubuntu</A>:~/Scrivania/JTrak_linux_1.1.4$ ./start_JTrak.sh 
+[INFO] | JTrakLog -&gt; initLog : Logger started at Tue Aug 03 10:39:46 PDT 2010
+OS: Linux 2.6.32-24-generic
+Java version: 1.6.0_18-b18
+Locale: it_IT
+JTrak version: 1.1.4
+Exception in thread &quot;main&quot; java.lang.UnsatisfiedLinkError: Can't load library: /usr/lib/jvm/java-6-openjdk/jre/lib/i386/xawt/libmawt.so
+	at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1649)
+	at java.lang.Runtime.load0(Runtime.java:787)
+	at java.lang.System.load(System.java:1022)
+	at java.lang.ClassLoader$NativeLibrary.load(Native Method)
+	at java.lang.ClassLoader.loadLibrary0(ClassLoader.java:1750)
+	at java.lang.ClassLoader.loadLibrary(ClassLoader.java:1667)
+	at java.lang.Runtime.loadLibrary0(Runtime.java:840)
+	at java.lang.System.loadLibrary(System.java:1047)
+	at sun.security.action.LoadLibraryAction.run(LoadLibraryAction.java:67)
+	at sun.security.action.LoadLibraryAction.run(LoadLibraryAction.java:47)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.awt.Toolkit.loadLibraries(Toolkit.java:1614)
+	at java.awt.Toolkit.&lt;clinit&gt;(Toolkit.java:1636)
+	at java.awt.Component.&lt;clinit&gt;(Component.java:568)
+	at de.frobese.jtrak.app.JTrakLinux.main(Unknown Source)
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robertovolpini a ubuntu</A>:~/Scrivania/JTrak_linux_1.1.4$ 
+
+Il giorno 03/ago/2010, alle ore 18.54, $ito ha scritto:
+
+&gt;<i> Posto qui sotto il risultato della mia prova:
+</I>&gt;<i> 
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sito a Tardis</A>:~/Download/JTrak_linux_1.1.4$ cd
+</I>&gt;<i> /home/sito/Download/JTrak_linux_1.1.4
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sito a Tardis</A>:~/Download/JTrak_linux_1.1.4$ clear
+</I>&gt;<i> 
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sito a Tardis</A>:~/Download/JTrak_linux_1.1.4$ ls -l
+</I>&gt;<i>  totale 12
+</I>&gt;<i>  -rw-rw-rw- 1 sito sito 1791 2006-04-19 14:50 Jtrak.jar
+</I>&gt;<i>  drwxrwxrwx 2 sito sito 4096 2006-06-16 16:09 lib
+</I>&gt;<i>  -rw-rw-rw- 1 sito sito   60 2006-04-19 15:06 start_JTrak.sh
+</I>&gt;<i> 
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sito a Tardis</A>:~/Download/JTrak_linux_1.1.4$ chmod +x start_JTrak.sh
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sito a Tardis</A>:~/Download/JTrak_linux_1.1.4$ ls -l
+</I>&gt;<i>  totale 12
+</I>&gt;<i>  -rw-rw-rw- 1 sito sito 1791 2006-04-19 14:50 Jtrak.jar
+</I>&gt;<i>  drwxrwxrwx 2 sito sito 4096 2006-06-16 16:09 lib
+</I>&gt;<i>  -rwxrwxrwx 1 sito sito   60 2006-04-19 15:06 start_JTrak.sh
+</I>&gt;<i> 
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sito a Tardis</A>:~/Download/JTrak_linux_1.1.4$ ./start_JTrak.sh
+</I>&gt;<i>    [INFO] | JTrakLog -&gt; initLog : Logger started at Tue Aug 03
+</I>&gt;<i> 18:51:48 CEST 2010
+</I>&gt;<i>    OS: Linux 2.6.32-24-generic
+</I>&gt;<i>    Java version: 1.6.0_20-b02
+</I>&gt;<i>    Locale: it_IT
+</I>&gt;<i>    JTrak version: 1.1.4
+</I>&gt;<i> 
+</I>&gt;<i> Il 03 agosto 2010 18.49, $ito &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">checco.sito a gmail.com</A>&gt; ha scritto:
+</I>&gt;&gt;<i> Il 03 agosto 2010 18.38, Andrea Coronese &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackeye84 a gmail.com</A>&gt; ha scritto:
+</I>&gt;&gt;&gt;<i> Verosimilmente il comando che non riesce a lanciare si trova DENTRO allo
+</I>&gt;&gt;&gt;<i> script sh (scusate ma sul sito non ho trovato il pacchetto indicato quindi
+</I>&gt;&gt;&gt;<i> non lo vedo), così a naso mi viene in mente la sezione #! per l'interprete
+</I>&gt;&gt;&gt;<i> di default oppure altri comandi lanciati in sequenza successivamente. Ad
+</I>&gt;&gt;&gt;<i> esempio so che per alcune distro il comando di esecuzione di java non è
+</I>&gt;&gt;&gt;<i> sempre &quot;java&quot; ma può variare.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Ottima osservazione, ora proverò anche personalmente, ma ieri sera
+</I>&gt;&gt;<i> quando ho aperto il file &quot;.sh&quot; ho visto che all'interno viene solo
+</I>&gt;&gt;<i> esportata una variabile e lanciato il comando &quot;java -jar&quot; sul file jar
+</I>&gt;&gt;<i> che si trova nella stessa cartella. Per esperienza ti assicuro che in
+</I>&gt;&gt;<i> ubuntu è il comando corretto.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Ripeto, faccio una prova al volo per non incappare in errori banali a
+</I>&gt;&gt;<i> cui non stò pensando al momento
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> I miei due cent
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> E uno di resto :P
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> $ito
+</I>&gt;&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001185.html">[Tecnica] gestionale computer subaqueo
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001187.html">[Tecnica] gestionale computer subaqueo
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1186">[ Data ]</a>
+              <a href="thread.html#1186">[ Thread ]</a>
+              <a href="subject.html#1186">[ Oggetto ]</a>
+              <a href="author.html#1186">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

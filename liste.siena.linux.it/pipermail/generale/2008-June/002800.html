@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20accesso%20a%20risorse%20di%20rete%20-%20Ubuntu%208.04&In-Reply-To=200806101348.43165.xdatap1%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002798.html">
+   <LINK REL="Next"  HREF="002799.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Problema accesso a risorse di rete - Ubuntu 8.04</H1>
+    <B>flying.tux</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20accesso%20a%20risorse%20di%20rete%20-%20Ubuntu%208.04&In-Reply-To=200806101348.43165.xdatap1%40siena.linux.it"
+       TITLE="[Generale] Problema accesso a risorse di rete - Ubuntu 8.04">flying.tux a gmail.com
+       </A><BR>
+    <I>Mar 10 Giu 2008 19:10:32 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002798.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002799.html">[Generale] kubuntu 8.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2800">[ Data ]</a>
+              <a href="thread.html#2800">[ Thread ]</a>
+              <a href="subject.html#2800">[ Oggetto ]</a>
+	      <a href="author.html#2800">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ho disabilitato eth0 e adesso funziona: grande Paolo!
+Ora non mi resta che trovare un modo per accedere al disco via 
+Nautilus/ftp. Riesco ad accederci sia via http che ftp attraverso 
+l'interfaccia di login, ma non ci sono ancora riuscito nell'altro modo...
+Grazie ancora,
+ft
+
+Paolo Sammicheli ha scritto:
+&gt;<i> Alle martedì 10 giugno 2008, flying.tux ha scritto:
+</I>&gt;&gt;<i> Alcuni giorni fa ho scoperto perchè non ricevevo più messaggi dalla
+</I>&gt;&gt;<i> mailing list: non risultavo più iscritto a nessuna lista... :-) 
+</I>&gt;<i> 
+</I>&gt;<i> welcome back!!!
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Adesso 
+</I>&gt;&gt;<i> che mi sono re-iscritto vi saluto tutti e vi pongo immediatamente un
+</I>&gt;&gt;<i> problema.
+</I>&gt;<i> &lt;SNIP&gt;
+</I>&gt;&gt;<i> auto eth0
+</I>&gt;&gt;<i> iface eth0 inet static
+</I>&gt;&gt;<i> address 192.168.0.202
+</I>&gt;&gt;<i> netmask 255.255.255.0
+</I>&gt;&gt;<i> network 192.168.0.0
+</I>&gt;&gt;<i> broadcast 192.168.0.255
+</I>&gt;&gt;<i> gateway 192.168.0.1
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> auto wlan0
+</I>&gt;&gt;<i> iface wlan0 inet static
+</I>&gt;&gt;<i> address 192.168.0.203
+</I>&gt;&gt;<i> netmask 255.255.255.0
+</I>&gt;&gt;<i> network 192.168.0.0
+</I>&gt;&gt;<i> broadcast 192.168.0.255
+</I>&gt;&gt;<i> gateway 192.168.0.1
+</I>&gt;<i> &lt;SNIP&gt;
+</I>&gt;&gt;<i> Avete qualche idea?
+</I>&gt;<i> 
+</I>&gt;<i> Una cosa che ho riscontrato con Hardy mentre non avevo con Gutsy è che se ci 
+</I>&gt;<i> sono due schede di rete sulla stessa sottorete, come nel tuo caso, può fare  
+</I>&gt;<i> casino. Ovvero, mentre sei connesso ad esempio con wlan0 cerca di ruotare i 
+</I>&gt;<i> pacchetti verso eth0 perché il default gateway è lo stesso anche se il cavo 
+</I>&gt;<i> non è collegato fisicamente ad eth0. Penso sia un qualcosa legato al servizio 
+</I>&gt;<i> zeroconf che tanto furbo non è visto che tira su l'interfaccia di rete anche 
+</I>&gt;<i> se non c'è la portante del cavo.
+</I>&gt;<i> 
+</I>&gt;<i> Prova a buttare giù a mano l'interfaccia di rete che non usi tipo:
+</I>&gt;<i> 
+</I>&gt;<i> sudo ifconfig eth0 down
+</I>&gt;<i> 
+</I>&gt;<i> e facci sapere,
+</I>&gt;<i> 
+</I>&gt;<i> Ciao
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002798.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002799.html">[Generale] kubuntu 8.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2800">[ Data ]</a>
+              <a href="thread.html#2800">[ Thread ]</a>
+              <a href="subject.html#2800">[ Oggetto ]</a>
+              <a href="author.html#2800">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

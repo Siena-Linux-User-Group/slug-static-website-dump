@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Linux o wind? Forse omnitel! :P
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Linux%20o%20wind%3F%20Forse%20omnitel%21%20%3AP&In-Reply-To=87c98d450607120836xde53dc8x36bc7685d620a929%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000016.html">
+   <LINK REL="Next"  HREF="000019.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Linux o wind? Forse omnitel! :P</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Linux%20o%20wind%3F%20Forse%20omnitel%21%20%3AP&In-Reply-To=87c98d450607120836xde53dc8x36bc7685d620a929%40mail.gmail.com"
+       TITLE="[Tecnica] Linux o wind? Forse omnitel! :P">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Mer 12 Lug 2006 17:11:42 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000016.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000019.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#17">[ Data ]</a>
+              <a href="thread.html#17">[ Thread ]</a>
+              <a href="subject.html#17">[ Oggetto ]</a>
+	      <a href="author.html#17">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 17:36, mercoledì 12 luglio 2006, Yusef Maali ha scritto:
+&gt;<i> On 7/12/06, GTL v97.6 &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">gtlv97.6slug a gmail.com</A>&gt; wrote:
+</I>&gt;<i> &gt; il tuo NTFS mantenendo i vantaggi di questo FS sotto uindou$...
+</I>&gt;<i>
+</I>&gt;<i> cioè quali sarebbero? :PP
+</I>&gt;<i> se non mi ricordo male, NTFS è stato giudicato (non da me) come un
+</I>&gt;<i> filesystem mediocre, non particolarmente efficente e decisamente non
+</I>&gt;<i> sicuro.
+</I>
+Oddio, ora non esageriamo. E' sempre un filesytem transazionale. Che non ci 
+garbi il sistema che ci gira sopra é un altro discorso.
+
+&gt;<i> Sempre se non ricordo male, NTFS impone per ogni operazione di scrittura un
+</I>&gt;<i> numero considerevole di operazioni da effettuare (che ne abbassa le
+</I>&gt;<i> performance) e (di questo sono sicuro) se una operazione di scrittura
+</I>&gt;<i> fallisce (ad esempio ti va via la luce mentre ti fai una copia di backup),
+</I>&gt;<i> il file che è rimasto a metà non viene ripristinato, ma viene eliminato.
+</I>
+Beh, se va via la luce con un file a metà non lo ripristina nessun file 
+system. Il discorso é che con i file system transazionali (come ntfs) o 
+journal (come ext3, reiser fs, jfs e via dicendo) quando ripristini hai, 
+innanzitutto alte performance di recupero integrità, secondariamente non hai 
+file troncati che sono il vero problema nella cadute di tensione.
+
+Come dice la teoria della transazionalità, l'importante é che o c'e' o non 
+c'e' del tutto... non che c'e' a mezzo.
+
+&gt;<i> Comunque la scrittura sull'NTFS penso che sia ancora in fase di testing
+</I>&gt;<i> (credo).
+</I>
+Mi sembra anche a me. Fare una partizione di share win/linux, in ext3 con il 
+driver di iakko mi sembra piu' ragionevole. Magari la monti in qualcosa 
+tipo /mnt/share
+
+&gt;<i> Insomma se uindovs lo usi solo per giocarci lo puoi installare in una fat32
+</I>&gt;<i> e stai sicuro che funziona alla grande anche con linucs.
+</I>
+Si, ma fat32 é un Fs non transazionale, men che meno journal, ha grossi 
+problemi di allocazione, si deframmenta... ne vogliamo altre?
+
+&gt;<i> Oppure fai come dice iakko, creando la partizione condivisa in ext3
+</I>&gt;<i> e installando in windows i driver per le leggere le partizioni ext2/3. In
+</I>&gt;<i> questo modo quando windows si infetterà (e siamo sicuri che prima o poi un
+</I>&gt;<i> bel virus se lo becca) sarà capace di far danno tranquillamente in tutte le
+</I>&gt;<i> partizioni ext2/3 che hai :P
+</I>
+Dipende dal virus. Btw se il virus in questione rasa byte nella zona della 
+tabella di allocazione delle partizioni ti arrangi anche se metti reiser fs. 
+Un virus che vuole far danno se ne frega del sistema operativo e potrebbe 
+scrivere sul disco ad esempio in RAW. Certo che si affronta il tema Virus non 
+lo installi proprio windows.
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000016.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000019.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#17">[ Data ]</a>
+              <a href="thread.html#17">[ Thread ]</a>
+              <a href="subject.html#17">[ Oggetto ]</a>
+              <a href="author.html#17">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

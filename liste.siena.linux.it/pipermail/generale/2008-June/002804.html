@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Nagios ed Asterisk...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Nagios%20ed%20Asterisk...&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002802.html">
+   <LINK REL="Next"  HREF="002805.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Nagios ed Asterisk...</H1>
+    <B>Michele O-Zone Pinassi</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Nagios%20ed%20Asterisk...&In-Reply-To="
+       TITLE="[Generale] Nagios ed Asterisk...">michele.pinassi a gmail.com
+       </A><BR>
+    <I>Ven 27 Giu 2008 14:31:39 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002802.html">[Generale] Io non doppioclicco
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002805.html">[Generale] info wireless
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2804">[ Data ]</a>
+              <a href="thread.html#2804">[ Thread ]</a>
+              <a href="subject.html#2804">[ Oggetto ]</a>
+	      <a href="author.html#2804">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao gente, 
+vi racconto questa perchè è divertente !
+
+Premesso: si stà parlando di un server con RedHat ES 4 con sopra
+Asterisk e Nagios.
+
+Tutto è iniziato quando al capufficio è venuta la bella idea di
+installare Groundwork perchè Nagios non gli piace: è un pacchetto
+tutto-incluso di gestione per Nagios con la possibilità di configurare
+tutto da web. Groundwork è un installer tutto-incluso ad eccezione di
+MySQL. Groundwork pretende la 5 mentre sul ns sistema c'era la 4. Ok, no
+problem, aggiorno MySQL. Scopro poi che non posso cambiare l'utente
+sotto il quale gira groundwork (nagios:nagios) nè quello sotto il quale
+gira asterisk (asterisk:asterisk) così sorge il dilemma: asterisk o
+groundwork ?
+
+Decido di tentare la via delle due istanze di apache: una di Groundwork
+che gira come nagios:nagios ed una di asterisk che gira come
+asterisk:asterisk (su due IP diversibindati sulla stessa eth). Sembrava
+prefetto SE NON CHE RedHat 4 ha la versione PHP 4.3 ed il relativo
+modulo php-mysql pretende MySQL 4 (e noi abbiamo la 5 perchè Groundwork
+pretende la 5...). Questo comporta che GroundWork e la sua istanza
+apache funzionano bene, l'altra non ne vuole sapere del supporto MySQL. 
+Interessante notare che se decido di fare &quot;up2date php-mysql&quot; esso non
+solo mi installa php-mysql-4.. MA ANCHE mysql 4 !!!!! 
+
+Mettiamo PHP5, con la speranza che supporti MySQL 5. Peccato ! La RHEL4
+(RedHat Enterpise Linux 4) come ultima versione di PHP ha la 4.3 ! 
+
+Bene, rimuovo l'rpm del PHP e lo installo a mano ! Allora dovete sapere
+che il PHP deve essere compilato come modulo usando apsx di apache.
+Peccato che l'rpm del server apache della redhat NON ha l'apsx (vorrei
+tanto sapere perchè...) percui non posso installare il PHP5 con il
+supporto MySQL 5. Dirrete voi: l'apsx c'è, è nel pacchetto httpd-dev !
+Si, peccato che il pacchetto httpd-dev richieda una serie di dipendenze
+ridondanti che lo rende impossibile da installare !!!!
+
+Dopo aver perso 4 giorni dietro questo schifo decido per una soluzione
+&quot;slackwerista&quot;: rimuovo l'RPM di Apache, l'RPM
+di PHP, scarico il nuovo Apache , il nuovo PHP, ricompilo tutto
+e...MAGIA ! Funziona !!!!!
+
+Morale: &quot;cavallo vincente non si cambia !&quot;
+
+-- 
+O-Zone ! No (C) 1996
+WEB     <A HREF="http://www.zerozone.it">http://www.zerozone.it</A>
+BLOG    <A HREF="http://www.openitaly.net/diary/O-Zone">http://www.openitaly.net/diary/O-Zone</A>
+PHOTOS  <A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002802.html">[Generale] Io non doppioclicco
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002805.html">[Generale] info wireless
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2804">[ Data ]</a>
+              <a href="thread.html#2804">[ Thread ]</a>
+              <a href="subject.html#2804">[ Oggetto ]</a>
+              <a href="author.html#2804">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

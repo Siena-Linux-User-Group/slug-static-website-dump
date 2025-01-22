@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20accesso%20a%20risorse%20di%20rete%20-%20Ubuntu%208.04&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002792.html">
+   <LINK REL="Next"  HREF="002798.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Problema accesso a risorse di rete - Ubuntu 8.04</H1>
+    <B>flying.tux</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20accesso%20a%20risorse%20di%20rete%20-%20Ubuntu%208.04&In-Reply-To="
+       TITLE="[Generale] Problema accesso a risorse di rete - Ubuntu 8.04">flying.tux a gmail.com
+       </A><BR>
+    <I>Mar 10 Giu 2008 09:17:12 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002792.html">[Generale] tom tom su linux
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002798.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2797">[ Data ]</a>
+              <a href="thread.html#2797">[ Thread ]</a>
+              <a href="subject.html#2797">[ Oggetto ]</a>
+	      <a href="author.html#2797">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alcuni giorni fa ho scoperto perchè non ricevevo più messaggi dalla
+mailing list: non risultavo più iscritto a nessuna lista... :-) Adesso
+che mi sono re-iscritto vi saluto tutti e vi pongo immediatamente un
+problema.
+Ho una piccola rete casalinga, composta come segue:
+
+- CONNESSIONE TISCALI, con modem &quot;proprietario&quot; Pirelli VOCE
+(necessario per il VOiP di Tiscali): il modem ha indirizzo IP (nella
+rete) 192.168.1.1;
+
+- ROUTER SITECOM WL-160: ha indirizzo IP 192.168.0.1, DHCP
+disabilitato, port forwarding verso il PC_1;
+
+-SETTAGGI VARI RETE PC
+
+PC_1 (connesso via cavo):
+
+PC_1 (connesso via cavo):
+Indirizzo IP. . . . . . . ... . . : 192.168.0.201
+Maschera sottorete  . . . . : 255.255.255.0
+Gateway predefinito . . . . : 192.168.0.1
+DNS 1 . . . . . . . . . . . . .  : 208.67.222.222
+DNS 2 . . . . . . . . . . . . .  : 208.67.220.220
+
+PC_2 (connesso via wi-fi e, a volte, via cavo):
+
+LAN
+Indirizzo IP. . . . . . . ... . . : 192.168.0.202
+Maschera sottorete  . . . . : 255.255.255.0
+Gateway predefinito . . . . : 192.168.0.1
+DNS 1 . . . . . . . . . . . . .  : 208.67.222.222
+DNS 2 . . . . . . . . . . . . .  : 208.67.220.220
+
+WLAN
+Indirizzo IP. . . . . . . ... . . : 192.168.0.203
+Maschera sottorete  . . . . : 255.255.255.0
+Gateway predefinito . . . . : 192.168.0.1
+DNS 1 . . . . . . . . . . . . .  : 208.67.222.222
+DNS 2 . . . . . . . . . . . . .  : 208.67.220.220
+
+NAS (disco LACIE ETHERNET BIG DISK)
+Indirizzo IP. . . . . . . ... . . : 192.168.0.234
+Maschera sottorete  . . . . : 255.255.255.0
+Gateway predefinito . . . . : 192.168.0.1
+
+Il problema è che con questi settaggi riesco ad accedere al router e/o
+al disco di rete sia con macchine windows che con un mac, ma non ci
+riesco da ubuntu, Il file etc/network/interfaces è impostato come
+segue:
+
+auto eth0
+iface eth0 inet static
+address 192.168.0.202
+netmask 255.255.255.0
+network 192.168.0.0
+broadcast 192.168.0.255
+gateway 192.168.0.1
+
+auto wlan0
+iface wlan0 inet static
+address 192.168.0.203
+netmask 255.255.255.0
+network 192.168.0.0
+broadcast 192.168.0.255
+gateway 192.168.0.1
+
+I dns sono impostati come segue in /etc/resolv.conf:
+
+nameserver 208.67.222.222
+nameserver 208.67.220.220
+nameserver 192.168.0.1
+
+IPv6 è disabilitato.
+
+Non riesco in nessun modo ac accedere alla risorse di rete: navigo su
+internet senza alcun problema ma non riesco a &quot;vedere&quot; il disco nè ad
+accedere alla pagina di amministrazione dello stesso via browser. La
+stessa cosa capita col router. Se digito in firefox gli indirizzi del
+router e/o del disco di rete ottengo solo una pagina di errore.
+
+Avete qualche idea?
+Ciao,
+ft
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002792.html">[Generale] tom tom su linux
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002798.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2797">[ Data ]</a>
+              <a href="thread.html#2797">[ Thread ]</a>
+              <a href="subject.html#2797">[ Oggetto ]</a>
+              <a href="author.html#2797">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

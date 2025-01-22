@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3CCA%2B1kOc%2BqLGa2GWU_RJmaK9VGTC7X6g46iR2%3DA%2Bm-6VcVYMf_mg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001403.html">
+   <LINK REL="Next"  HREF="001405.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Serverone per MAC a base Ubuntu (cap.1)</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3CCA%2B1kOc%2BqLGa2GWU_RJmaK9VGTC7X6g46iR2%3DA%2Bm-6VcVYMf_mg%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Serverone per MAC a base Ubuntu (cap.1)">bartrosso a gmail.com
+       </A><BR>
+    <I>Dom 17 Lug 2011 18:39:37 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001403.html">[Tecnica] bartrosso wants to chat
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001405.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1404">[ Data ]</a>
+              <a href="thread.html#1404">[ Thread ]</a>
+              <a href="subject.html#1404">[ Oggetto ]</a>
+	      <a href="author.html#1404">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve a tutti.
+Io e Bartrosso stiamo sviluppando per lavoro un server di backup per
+fotografi e tipografie, che hanno necessità di salvaguardare grandi moli di
+dati.
+Usano tutti quasi esclusivamente MAC e ci è sembrata una buona occasione per
+mostrare di che pasta è fatto GNU/Linux :D ...
+Il cuore del funzionamento sono Avahi e Netatalk che svolgono più che
+egregiamente il loro lavoro, permettendo ai nostri server di essere visti
+come MAC Xserve e abilitando il trasferimento AFP a cui sono abituati i
+nostri clienti.
+Le macchine, per motivi di sicurezza, sono due copie identiche dello stesso
+hardware. Una, sottoposta a maggiore usura è attiva tutto il giorno mentre
+di notte i dati vengono clonati nell'altra attraverso rsync e connessione
+samba.
+Come sistema operativo ho installato un ubuntu server 11.04 con server SSH
+per il controllo remoto.
+C'è la necessità infatti di controllare costantemente l'attività delle
+nostre macchine. Siccome ancora non mi sento un genio del terminale, non
+credo di essere ancora in grado di fare tutto via SSH percui ho bisogno di
+un minimo di interfaccia grafica (che parta in automatico, senza startx) e
+di un VNC (per alcuni problemi con quello nativo, uso TeamViewer).
+Sopra al Ubuntu Server ho provato quindi ad installare gnome-core, xorg, gdm
+per avere un ambiene minimale ma funzionale. Il problema è che mi ritrovo
+soltanto il DE completamente privo e spoglio di ogni utility di sistema (ad
+esempio gestore dischi, monitor di sistema, synaptic, strumenti di rete,
+gestione utenti, ecc). Siccome avevo fretta, ho pensato bene di installarmi
+a dritto ubuntu-desktop, consapevole che mi sarei tirato dietro tutto
+office, ekiga, e altra roba che qui non serve, oltre alla &quot;mitica&quot; Unity,
+con cui mi trovo poco.
+
+Una prima domanda è questa: è possibile installare gnome e
+contemporaneamente anche tutte le utility di sistema con un solo comando
+(per evitare di scoprire il nome dei singoli pacchetti e scaricarli uno a
+uno)?
+Inoltre, se per scrupolo partissi da una versione server 10.04 LTS e facessi
+apt-get install ubuntu-desktop mi ritroverei gnome o unity?
+Per quanto riguarda la pesantezza della grafica il sistema è ben piazzato:
+ha un i3 2100, 4GB ram. Unica pecca il SandyBridge, che sembra ancora non
+essere supportato da Ubuntu. Quindi non temo di appesantirlo troppo con una
+gui sempre accesa.
+Quando avrò più tempo per studiarmelo, mi sceglierò i pacchetti uno ad uno e
+farò una bella lite con UCK.
+
+Una seconda domanda è: esiste un programma di monitoraggio SMART che sia in
+grado di fare dei report via mail SOLO se vengono rilevati problemi sui
+dischi?
+Ho provato smartmontools che però sembra inviare i report periodicamente,
+così come vengono fatti periodicamente i test. Mi sarebbe piaciuto di più un
+demone che controlla costantemente in background lo stato e segnala solo se
+c'è bisogno. Altri programmi che ho testato non hanno l'opzione email.
+
+Una terza ed ultima questione è questa. Facendo ulteriori prove ho provato
+ad installare, sulla 11.04 server, xubuntu-desktop, per avere un'interfaccia
+più leggera di unity. Mi capita però, saltuariamente, la GUI salti e io mi
+ritrovi in terminale in tty1. Dovendo essere gestite da remoto (per ora non
+solo in SSH) non è una cosa simpatica.
+Facendo CTRL+ALT+F7 lo schermo entra in standby e si ferma tutto.
+Sopra alla linea di comando ci sono i moduli che ha caricato e segnala un
+fail con quello della scheda audio. Sapete cosa può essere? Devo comunque
+ancora provare a disabilitare tutti i risparmi energetici e le periferiche
+inutili (es. audio) da BIOS. In alcuni forum segnalano freeze legati ai
+SandyBridge, non so se può essere correlato.
+
+Detto questo, avventurarmi in questa nuova impresa è stato molto faticoso
+(tante ore e imprecazioni!!) ma anche incredibilmente formativo e
+stimolante. Ho scoperto cose che in anni di uso di ubuntu ed altre distro
+non avevo capito come funzionassero e sono molto contento. Chiaramente i
+dubbi sono ancora molti e diverse le cose da perfezionare. Percui ora mi
+limito a chiedere la vostra opinione su queste prime questioni. Se non sarò
+troppo petulante mi piacerebbe poter contare su questa nostra comunità per
+qualche altro consiglio in futuro.
+Vi ringrazio per ora,
+Il Polva e Bartrosso.
+
+PS: potreste sbloccarmi mio indirizzo per scrivere in &quot;generale&quot; e in
+&quot;tecnica&quot;? è polva86(at)tin.it. Mi sono accorto che è da un po' che i
+messaggi mi ritornano indietro... mi è toccato usare quella di Francesco...
+Grazie ancora,
+Il Polva.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20110717/b22ae968/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20110717/b22ae968/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001403.html">[Tecnica] bartrosso wants to chat
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001405.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1404">[ Data ]</a>
+              <a href="thread.html#1404">[ Thread ]</a>
+              <a href="subject.html#1404">[ Oggetto ]</a>
+              <a href="author.html#1404">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

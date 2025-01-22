@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] 32 contro 64 bit.
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%2032%20contro%2064%20bit.&In-Reply-To=87c98d450610121606k778d39f2qe9790b6417a6ab98%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000215.html">
+   <LINK REL="Next"  HREF="000223.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] 32 contro 64 bit.</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%2032%20contro%2064%20bit.&In-Reply-To=87c98d450610121606k778d39f2qe9790b6417a6ab98%40mail.gmail.com"
+       TITLE="[Tecnica] 32 contro 64 bit.">pragma a siena.linux.it
+       </A><BR>
+    <I>Ven 13 Ott 2006 13:48:23 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000215.html">[Tecnica] 32 contro 64 bit.
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000223.html">[Tecnica] 32 contro 64 bit.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#219">[ Data ]</a>
+              <a href="thread.html#219">[ Thread ]</a>
+              <a href="subject.html#219">[ Oggetto ]</a>
+	      <a href="author.html#219">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 13 October 2006 01:06, Yusef Maali wrote:
+&gt;<i> On 10/11/06, Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a yahoo.com</A>&gt; wrote:
+</I>&gt;<i> &gt; Secondo voi linux a 64 bit e' molto piu' performante o
+</I>&gt;<i> &gt; la differenza non e' apprezzabile?
+</I>&gt;<i>
+</I>&gt;<i> Non hoi prove alla mano, ma ti posso dire che usando una Amd64 con
+</I>&gt;<i> linux a 64bit, non si notano assolutamente performance superiori.
+</I>
+In effetti è difficile fare un confronto, bisognerebbe avere
+due cpu alla stessa frequenza, una a 32 e una a 64 con il resto
+tutto uguale (sistema operativo, hw...).
+
+Teoricamente i vantaggi ci sono anche se bisogna ammettere
+che non stiamo parlando di un &quot;ribaltone&quot; di caratteristiche...
+
+Il primo vantaggio è che l'architettura x86_64 ha 8 registri general purpose
+in più della controparte ix86. Questo significa ottimizzazione molto 
+più efficiente dell'assembly e (in generale) passaggio di parametri
+di funzione nei registri anzichè in memoria. Molto fico.
+
+Il secondo è che la memoria è (più o meno) &quot;flat&quot;: niente segmentazione.
+Di nuovo molto fico perchè si usano meno istruzioni per gestirla.
+
+Poi, ovviamente, x86_64 va di più lì dove son richiesti più
+di 32 bit nei calcoli. In realtà i posti sono molti: basta pensare
+alla dimensione dei file o a come rappresentiamo il tempo...
+
+Il fatto è che ci trasciniamo dietro la compatibilità con 32 bit...
+se gli sviluppatori (e i progettisti hardware) pensassero &quot;direttamente&quot; 
+all'architettura a 64 il tutto andrebbe sicuramente molto di più.
+
+&gt;<i> Amesso che ci siano, non ripagano il giramento di scatole che devi
+</I>&gt;<i> sopportare per non aver flash nel browser, i codec a 32bit e doverti
+</I>&gt;<i> comunque installare tutte le librerie di emulazione per i 32bit
+</I>&gt;<i> (perchè programmi come OpenOffice non compilano sui 64bit, almeno fino
+</I>&gt;<i> a pochi mesi fa, e i binari sono rilasciati solo a 32 bit). Oltre a
+</I>&gt;<i> questo ci sono anche altri svantaggi che non ricordo.
+</I>
+OpenOffice ora compila, ho provato recentemente. Acroread, RealPlayer
+e altra roba &quot;binaria&quot; ovviamente è sempre a 32 bit.
+
+Tra mplayer e xine (entrambi a 64) i file multimediali che non riesco
+a vedere sono estremamente rari. Per lo più si tratta di wmv con dei
+codec improbabili.
+
+Per flash ho risolto con opera che è comunque in versione binaria a 32.
+Tutti gli altri browser li tengo a 64 bit. Https va su tutti (è una gentoo).
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- A red sign of the door of a physics professor:
+- if this sign is blue you're going too fast
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061013/653eb610/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061013/653eb610/attachment.pgp</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000215.html">[Tecnica] 32 contro 64 bit.
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000223.html">[Tecnica] 32 contro 64 bit.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#219">[ Data ]</a>
+              <a href="thread.html#219">[ Thread ]</a>
+              <a href="subject.html#219">[ Oggetto ]</a>
+              <a href="author.html#219">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

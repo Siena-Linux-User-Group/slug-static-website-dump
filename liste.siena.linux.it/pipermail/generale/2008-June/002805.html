@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] info wireless
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20info%20wireless&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002804.html">
+   <LINK REL="Next"  HREF="002806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] info wireless</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20info%20wireless&In-Reply-To="
+       TITLE="[Generale] info wireless">freeze a siena.linux.it
+       </A><BR>
+    <I>Ven 27 Giu 2008 21:53:39 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002804.html">[Generale] Nagios ed Asterisk...
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002806.html">[Generale] info wireless
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2805">[ Data ]</a>
+              <a href="thread.html#2805">[ Thread ]</a>
+              <a href="subject.html#2805">[ Oggetto ]</a>
+	      <a href="author.html#2805">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ave popolo di appassionati del pinguino,
+vi pongo un nuovo quesito, sono riuscito a far funzionare la wireless
+sul notebook ( che ricordo è un acer 5920 con la slackware 12.1)
+per utilizzare la wireless uso l'applicazione wireless Assistant 0.5.7
+solo che imposto sul router di usare una connessione protetta WPA-psk
+non riesco a connettermi,
+guardando qua e la per la rete ho letto che devo configurare il file
+wpa_supplicant.conf
+ho provato a configurarlo, e in basso è il risultato, solo che non
+riesco a connettermi.
+
+Potete aiutarmi?
+Thanks
+---- inizio wpa_supplicant.conf -----
+# See /usr/doc/wpa_supplicant-0.5.10/wpa_supplicant.conf.sample
+# for many more options that you can use in this file.
+
+# This line enables the use of wpa_cli which is used by rc.wireless
+# if possible (to check for successful association)
+ctrl_interface=/var/run/wpa_supplicant
+# By default, only root (group 0) may use wpa_cli
+ctrl_interface_group=0
+eapol_version=1
+ap_scan=1
+fast_reauth=1
+
+# WPA protected network, supply your own ESSID and WPAPSK here:
+network={
+  scan_ssid=0
+  ssid=&quot;Freeze&quot;
+  proto=WPA
+  key_mgmt=WPA-PSK
+  pairwise=CCMP TKIP
+  group=CCMP TKIP WEP104 WEP40
+  psk=Censura
+}
+
+# Plaintext connection (no WPA, no IEEE 802.1X),
+# nice for hotel/airport types of WiFi network.
+network={
+  key_mgmt=NONE
+  priority=0
+}
+
+---- inizio wpa_supplicant.conf -----
+
+-- 
+Registered GNU/Linux User #439266
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002804.html">[Generale] Nagios ed Asterisk...
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002806.html">[Generale] info wireless
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2805">[ Data ]</a>
+              <a href="thread.html#2805">[ Thread ]</a>
+              <a href="subject.html#2805">[ Oggetto ]</a>
+              <a href="author.html#2805">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

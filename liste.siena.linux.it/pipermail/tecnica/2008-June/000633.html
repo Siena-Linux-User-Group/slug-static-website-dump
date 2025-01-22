@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema Virtual Host Apache2
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20Virtual%20Host%20Apache2&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000632.html">
+   <LINK REL="Next"  HREF="000634.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema Virtual Host Apache2</H1>
+    <B>Andrea Ciani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20Virtual%20Host%20Apache2&In-Reply-To="
+       TITLE="[Tecnica] Problema Virtual Host Apache2">cianiandrea10 a gmail.com
+       </A><BR>
+    <I>Lun 16 Giu 2008 23:55:23 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000632.html">[Tecnica] avvio senza password
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000634.html">[Tecnica] Problema Virtual Host Apache2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#633">[ Data ]</a>
+              <a href="thread.html#633">[ Thread ]</a>
+              <a href="subject.html#633">[ Oggetto ]</a>
+	      <a href="author.html#633">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti;
+
+ho una domanda da farvi riguardo il virtual host (specificato nel file
+httpd.conf di apache).
+Ho la necessità di collegare un sottodominio ad un'altro pc:
+
+Praticamente ho una pagina web nel pc1 con un link che deve aprire una
+pagina nel pc2 (solo pc1 però ha un dominio internet). Come faccio con il
+virtual host a dirgli che un link particolare (tipo &quot; *pc2.pc1.miodominio.it
+* &quot; ) punti ad una porta particolare del pc2??
+
+In particolare *il mio pc con apache ha l'inirizzo di rete 192.168.0.2 e
+devo far puntare il link presente nella pagina web a questo indirizzo:
+192.168.0.4:4748*
+
+Mi potreste dare una mano?? Ho cerato tutte le guide sul virtual host ma
+apache non ne vuole sapere di partire!!!!
+
+Help...
+
+Ps: Adesso ho provato così ma non funziona
+
+File httpd.conf
+
+[...]
+
+&lt;VirtualHost 192.168.0.4:4748&gt;
+  ServerName <A HREF="http://www.pc2.pc1.miodominio.it">http://www.pc2.pc1.miodominio.it</A>
+&lt;/VirtualHost&gt;
+
+Cosa c'è di sbagliato??
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20080617/8b7de615/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20080617/8b7de615/attachment.htm</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000632.html">[Tecnica] avvio senza password
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000634.html">[Tecnica] Problema Virtual Host Apache2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#633">[ Data ]</a>
+              <a href="thread.html#633">[ Thread ]</a>
+              <a href="subject.html#633">[ Oggetto ]</a>
+              <a href="author.html#633">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

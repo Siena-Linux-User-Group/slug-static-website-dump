@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Connessione sicura
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Connessione%20sicura&In-Reply-To=%3C53C8F1C4.2000409%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001811.html">
+   <LINK REL="Next"  HREF="001814.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Connessione sicura</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Connessione%20sicura&In-Reply-To=%3C53C8F1C4.2000409%40siena.linux.it%3E"
+       TITLE="[Tecnica] Connessione sicura">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Ven 18 Lug 2014 11:07:00 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001811.html">[Tecnica] Connessione sicura
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001814.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1813">[ Data ]</a>
+              <a href="thread.html#1813">[ Thread ]</a>
+              <a href="subject.html#1813">[ Oggetto ]</a>
+	      <a href="author.html#1813">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 17/07/2014 16:42, Marcello Semboli ha scritto:
+&gt;<i> Ciao a tutti.
+</I>&gt;<i> Ho fatto una app android che fa votare la gente.
+</I>&gt;<i> Su un server tophost ci sono un paio di web service in php, uno che
+</I>&gt;<i> salva il voto, un altro che restituisce il totale dei voti in JSON.
+</I>&gt;<i> La app usa i due web service per registrare il voto e per  leggere i
+</I>&gt;<i> risultati.
+</I>&gt;<i> 
+</I>&gt;<i> Non vorrei però che qualcuno scoprisse la url e si mettesse a buttarci
+</I>&gt;<i> dati falsi.
+</I>&gt;<i> 
+</I>&gt;<i> SSH temo di non poterlo usare, ho letto che tophost non lo supporta, e
+</I>&gt;<i> poi da una app usare ssh non è banale.
+</I>&gt;<i> 
+</I>&gt;<i> Pensavo di passare i dati come stringa criptata, ma è abbastanza inutile
+</I>&gt;<i> perché se io sniffo la url
+</I>&gt;<i> <A HREF="http://ciao.com/webservice1.php?key=ka2sjk3jsf4gsd6f">http://ciao.com/webservice1.php?key=ka2sjk3jsf4gsd6f</A>
+</I>&gt;<i> è sempre una URL che posso copiare su un browser. Il server non si
+</I>&gt;<i> accorge che non proviene dalla app.
+</I>&gt;<i> 
+</I>&gt;<i> Avete una soluzione semplice?
+</I>
+Cifri (o firmi, se ti torna meglio) con una chiave asimmetrica la frame
+dei dati che mandi al server con una chiave che nascondi dentro al
+codice. Nel frame includi un timestamp in modo che se uno cattura
+l'intera frame e la ritrasmette pari pari il server la rifiuta dopo un
+tempo x (oppure uno uidd che il client genera e che il server si annota
+per ricordarsi le frame ricevute e riconoscere eventuali duplicati).
+
+L'unico modo che ha l'attaccante di andare sull'url e postare dati falsi
+è disassemblare l'applicazione per catturare la chiave. Cosa che non è
+improbabile se fossero transazioni finanziare ma trattandosi di
+pronostici sul palio...
+
+Ciao
+-- 
+Paolo Sammicheli
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Do what you like. Like what you do -
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001811.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001814.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1813">[ Data ]</a>
+              <a href="thread.html#1813">[ Thread ]</a>
+              <a href="subject.html#1813">[ Oggetto ]</a>
+              <a href="author.html#1813">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

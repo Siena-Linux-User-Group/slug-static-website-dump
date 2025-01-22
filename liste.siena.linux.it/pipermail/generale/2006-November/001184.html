@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Bluetooth all'avvio
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Bluetooth%20all%27avvio&In-Reply-To=5dc53a9b0611030520u64afe676y630853fe570f30c5%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001183.html">
+   <LINK REL="Next"  HREF="001186.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Bluetooth all'avvio</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Bluetooth%20all%27avvio&In-Reply-To=5dc53a9b0611030520u64afe676y630853fe570f30c5%40mail.gmail.com"
+       TITLE="[Generale] Bluetooth all'avvio">dinogen a yahoo.com
+       </A><BR>
+    <I>Ven  3 Nov 2006 14:46:48 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001183.html">[Generale] Bluetooth all'avvio
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001186.html">[Generale] Suse 10 e emacs
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1184">[ Data ]</a>
+              <a href="thread.html#1184">[ Thread ]</a>
+              <a href="subject.html#1184">[ Oggetto ]</a>
+	      <a href="author.html#1184">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Vedi vedi, che succede.
+Le nuove generazioni mancano delle basi ;-)
+Ma il LUG ci sta apposta no?
+
+Bluez puo' girare come servizio 
+/etc/init.d/bluez-utils restart
+e come tutti i servizi per farlo partire al boot deve
+essere presente come link simbolico nella directory
+/etc/rcN.d/ dove N e' il runlevel.
+In pratica:
+ln -s /etc/init.d/bluez /etc/rc3.d/S90bluez
+oppure
+ln -s /etc/init.d/bluez /etc/rc5.d/S90bluez
+In Debian si puo' anche usare il comando:
+update-rc.d bluez defaults 90
+
+Inoltre ricorda che puoi mettere tutti i comandi che
+vuoi  nel file
+/etc/rc.local
+Che parte dopo tutti i servizi.
+
+
+
+--- frantic &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">frantic.zen a gmail.com</A>&gt; ha scritto: 
+
+&gt;<i> <A HREF="http://wiki.ubuntu-it.org/BluetoothGuida">http://wiki.ubuntu-it.org/BluetoothGuida</A>
+</I>&gt;<i> Seguendo questa guida sono riuscito a far funzionare
+</I>&gt;<i> mouse e tastiera
+</I>&gt;<i> bluetooth---però ad ogni avvio m tocca rifare la
+</I>&gt;<i> procedura (meno che
+</I>&gt;<i> installare il pacchetto, ovviamente)
+</I>&gt;<i> 
+</I>&gt;<i> C'è un modo per automatizzare quei comandi dati a
+</I>&gt;<i> terminale?
+</I>&gt;<i> Grazie.
+</I>&gt;<i> -- 
+</I>&gt;<i> Scarica Firefox - mozillaitalia.org
+</I>&gt;<i> Il Nuovo Browser, più veloce e sicuro.
+</I>&gt;<i> GdR Online - lenar.it
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> Generale mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i>
+</I><A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+&gt;<i> 
+</I>
+
+Regards.
+
+Marcello Semboli
+____________________________
+<A HREF="http://dinogen.hacknight.org">http://dinogen.hacknight.org</A>
+&quot;We reject kings, presidents, and voting. We believe in rough consensus and running code&quot; -- Dave Clark, IETF Credo (1992)
+
+__________________________________________________
+Do You Yahoo!?
+Poco spazio e tanto spam? Yahoo! Mail ti protegge dallo spam e ti da tanto spazio gratuito per i tuoi file e i messaggi 
+<A HREF="http://mail.yahoo.it">http://mail.yahoo.it</A> 
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001183.html">[Generale] Bluetooth all'avvio
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001186.html">[Generale] Suse 10 e emacs
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1184">[ Data ]</a>
+              <a href="thread.html#1184">[ Thread ]</a>
+              <a href="subject.html#1184">[ Oggetto ]</a>
+              <a href="author.html#1184">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

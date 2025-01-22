@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Visualizzare un numero in complemento a due
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To=200901221907.26987%40OZ">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000752.html">
+   <LINK REL="Next"  HREF="000755.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Visualizzare un numero in complemento a due</H1>
+    <B>Marco Slack</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To=200901221907.26987%40OZ"
+       TITLE="[Tecnica] Visualizzare un numero in complemento a due">mrkslack a gmail.com
+       </A><BR>
+    <I>Gio 22 Gen 2009 19:23:49 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000752.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000755.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#753">[ Data ]</a>
+              <a href="thread.html#753">[ Thread ]</a>
+              <a href="subject.html#753">[ Oggetto ]</a>
+	      <a href="author.html#753">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il giorno 22 gennaio 2009 19.07, Michele O-Zone Pinassi
+&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a zerozone.it</A>&gt;ha scritto:
+
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> domanda per i cervelloni (io non riesco a venirne fuori !). Ho un DS1631
+</I>&gt;<i> collegato, via I2C, al PIC 18F4455. Il DS1631 mi restituisce la temperatura
+</I>&gt;<i> in 12-bit complemento a due. Praticamente io ho un array di due byte in cui
+</I>&gt;<i> il most significant byte mi rappresenta la parte intera, con il MSB ad 1 se
+</I>&gt;<i> negativo o 0 se positivo, mentre il least significant byte contiene la
+</I>&gt;<i> parte
+</I>&gt;<i> decimale. Un esempio (dal datasheet del DS1631):
+</I>&gt;<i>
+</I>&gt;<i> 0111 1101 0000 0000 (7d00h) = +125°C
+</I>&gt;<i> 0001 1001 0001 0000 (1910h) = +25.0625 °C
+</I>&gt;<i> 0000 0000 1000 0000 (0080h) = +0.5 °C
+</I>&gt;<i> 0000 0000 0000 0000 (0000h) = 0 °C
+</I>&gt;<i> 1111 1111 1000 0000 (FF80h) = -0.5 °C
+</I>&gt;<i> 1110 0110 1111 0000 (E6F0h) = -25.0625 °C
+</I>&gt;<i> 1100 1001 0000 0000 (C900h) = -55 °C
+</I>&gt;<i>
+</I>
+
+sembra che i primi 8 bits most significant rappresentino il valore intero
+della temperatura,
+mentre il nibble seguente (4 bits) e' relativo alla parte frazionaria:
+avendo solo 16 valori possibili
+ogni bit vale 1/16 (0.0625 °C)
+
+
+adesso vorrei riuscire a visualizzare anche i decimali :-) ma non riesco
+&gt;<i> assolutamente a capire come funziona questa storia del complemento a due.
+</I>&gt;<i>
+</I>&gt;<i> se ricordo bene il complemento a 2 si ottiene facendo il complemento a 1
+</I>(gli 1 diventano 0 e viceversa)
+ed aggiungendo 1.
+
++5 = 00000101 (compl.1)-&gt; 11111010 + 1 (compl.2)-&gt; 11111011 = -5
+
+-- 
+Marco Dei
+GNU/Linux Registered User #407088 counter.li.org
+
+Elsaglug www.elsaglug.org
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20090122/210abcd4/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20090122/210abcd4/attachment.htm</A> 
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000752.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000755.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#753">[ Data ]</a>
+              <a href="thread.html#753">[ Thread ]</a>
+              <a href="subject.html#753">[ Oggetto ]</a>
+              <a href="author.html#753">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

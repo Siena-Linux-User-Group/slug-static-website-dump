@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Bash script e WiFi
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Bash%20script%20e%20WiFi&In-Reply-To=%3C20100529221938.2207e775%40bip-bip.zerozone.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001068.html">
+   <LINK REL="Next"  HREF="001071.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Bash script e WiFi</H1>
+    <B>Michele O-Zone Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Bash%20script%20e%20WiFi&In-Reply-To=%3C20100529221938.2207e775%40bip-bip.zerozone.it%3E"
+       TITLE="[Tecnica] Bash script e WiFi">o-zone a zerozone.it
+       </A><BR>
+    <I>Sab 29 Maggio 2010 21:19:38 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001068.html">[Tecnica] SquidTL 0.0.8
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001071.html">[Tecnica] Bash script e WiFi
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1069">[ Data ]</a>
+              <a href="thread.html#1069">[ Thread ]</a>
+              <a href="subject.html#1069">[ Oggetto ]</a>
+	      <a href="author.html#1069">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+ho provato a giocare un pò con Bash per realizzare uno script che mi
+permetta, in fase di boot del portatile, di selezionare la rete wifi a
+cui connettersi.
+
+Sul portatile ho Slackware percui gli script di avvio sono in stile
+BSD :-D. La rete si avvia con rc.inet1, che avvia le interfacce
+wireless con rc.wireless, ed io ho creato rc.netconfig:
+
+----------&gt;8------------
+#!/bin/bash
+
+INTERFACE=$1
+
+rm /tmp/wlan.lst
+
+ifconfig $INTERFACE up
+iwlist $INTERFACE scan | egrep -i 'essid|freq|qual|encr' |awk
+'ORS=NR%4?&quot; &quot;:&quot;\n&quot;'| tr -s ' ' | while read l; do AP=`echo &quot;$l &quot;|awk
+'{s=substr($0,index($0,&quot;ESSID:&quot;)+7);print
+substr(s,1,index(s,&quot;\&quot;&quot;)-1)}'` QU=`echo &quot;$l &quot;|awk
+'{s=substr($0,index($0,&quot;Quality=&quot;)+8);print
+substr(s,1,index(s,&quot;/&quot;)-1)}'` #    echo &quot;$AP:$QU&quot; echo &quot;$AP $AP($QU)&quot;
+&gt;&gt;<i> /tmp/wlan.lst done
+</I>
+APLIST=`cat /tmp/wlan.lst`
+
+dialog --title &quot;Net $INTERFACE configuration&quot; --menu &quot;Which WLAN to
+connect to ?\n&quot; 20 51 4 $APLIST &quot;None&quot; &quot;None&quot; 2&gt;/tmp/$INTERFACE.cfg
+
+-----------8&lt;----------
+
+In rc.wireless richiamo lo script così:
+
+---------&gt;8-----------
+
+...
+if [ &quot;$2&quot; = &quot;start&quot; ]; then # If starting up...
+        . /etc/rc.d/rc.netconfig ${1} # First ask user which zone...
+fi
+...
+
+-----------8&lt;----------
+
+${1} contiene l'interfaccia wlanX.
+
+Praticamente lo script lancia un &quot;iwlist scan&quot; per identificare le reti
+wifi disponibili, crea una lista adatta per &quot;dialog&quot; e chiede a quale
+rete connettersi. l'ESSID della rete viene scritto in un file che poi
+corrisponderà alla relativa configurazione presente in rc.inet1.conf
+
+Allora, lo script funzionerebbe se non avessi problemi con iwconfig.
+
+Idee su come risolvere ? Grazie !
+
+
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001068.html">[Tecnica] SquidTL 0.0.8
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001071.html">[Tecnica] Bash script e WiFi
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1069">[ Data ]</a>
+              <a href="thread.html#1069">[ Thread ]</a>
+              <a href="subject.html#1069">[ Oggetto ]</a>
+              <a href="author.html#1069">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

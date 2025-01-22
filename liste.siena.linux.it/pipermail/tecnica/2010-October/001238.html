@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemini africani - parte seconda ...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problemini%20africani%20-%20parte%20seconda%20...&In-Reply-To=%3C201010272341.31285.pragma%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001242.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemini africani - parte seconda ...</H1>
+    <B>Szymon Tomasz Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problemini%20africani%20-%20parte%20seconda%20...&In-Reply-To=%3C201010272341.31285.pragma%40siena.linux.it%3E"
+       TITLE="[Tecnica] problemini africani - parte seconda ...">pragma a siena.linux.it
+       </A><BR>
+    <I>Mer 27 Ott 2010 22:41:31 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001242.html">[Tecnica] problemini africani - parte seconda ...
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1238">[ Data ]</a>
+              <a href="thread.html#1238">[ Thread ]</a>
+              <a href="subject.html#1238">[ Oggetto ]</a>
+	      <a href="author.html#1238">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday, October 27, 2010, Luigi wrote:
+
+&gt;<i> [...]
+</I>&gt;<i> Allora mi sono chiesto: e se in qualche modo, in qualche diavolo di
+</I>&gt;<i> file, memorizzassi almeno i gli IP dei siti più comuni? In modo che,
+</I>&gt;<i> tutti i PC della LAN, che comunque passano da quello che fornisce la
+</I>&gt;<i> connessione, almeno non debbano andare su Google, con i tempi che vi ho
+</I>&gt;<i> detto, magari per trovare la pagina principale di Google ... sempre
+</I>&gt;<i> qualche secondo ...
+</I>&gt;<i> Insomma, una specie di DNS locale, ma senza sbattersi con BIND e cose
+</I>&gt;<i> simili, decisamente fuori luogo, visto il fine ;)
+</I>
+Puoi memorizzare le associazioni nome host - indirizzo ip nel file /etc/hosts
+di ogni macchina. Metti un'entry per riga, l'indirizzo ip seguito dal nome del host.
+
+72.14.234.104   www.google.com
+216.34.181.45   www.slashdot.org
+...
+
+L'alternativa è installare bind sul pc che fornisce la connessione ed impostarlo
+come dns su tutti i client. Bind fa caching di default e con ubuntu l'installazione
+è triviale (penso che non ci sia nemmeno bisogno di toccare la configurazione).
+
+
+
+-- 
+
+Szymon Tomasz Stefanek
+
+------------------------------------------------------------------------------
+-
+- The Space Between Your Ears
+- Ozric Tentacles
+-
+------------------------------------------------------------------------------
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001242.html">[Tecnica] problemini africani - parte seconda ...
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1238">[ Data ]</a>
+              <a href="thread.html#1238">[ Thread ]</a>
+              <a href="subject.html#1238">[ Oggetto ]</a>
+              <a href="author.html#1238">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

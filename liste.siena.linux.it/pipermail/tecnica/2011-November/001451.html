@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] inner join
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20inner%20join&In-Reply-To=%3CCAE8%2BC3YPObRA90JuNX0s7KM4xS36dkgAx4rKJ_FBREQaTWcF-Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001450.html">
+   <LINK REL="Next"  HREF="001453.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] inner join</H1>
+    <B>Motaz Abuthiab</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20inner%20join&In-Reply-To=%3CCAE8%2BC3YPObRA90JuNX0s7KM4xS36dkgAx4rKJ_FBREQaTWcF-Q%40mail.gmail.com%3E"
+       TITLE="[Tecnica] inner join">moty66 a gmail.com
+       </A><BR>
+    <I>Mar 29 Nov 2011 10:14:58 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001450.html">[Tecnica] inner join
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001453.html">[Tecnica] inner join
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1451">[ Data ]</a>
+              <a href="thread.html#1451">[ Thread ]</a>
+              <a href="subject.html#1451">[ Oggetto ]</a>
+	      <a href="author.html#1451">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Puoi incollare la struttora delle tabelle ed esempio di dati ?
+
+
+Il giorno 29 novembre 2011 11:10, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha
+scritto:
+
+&gt;<i> ti ringrazio delle risposte velocissime, ma continuo ad avere problemi.
+</I>&gt;<i>
+</I>&gt;<i> Non è difficile, ho letto i manuali, l'ho anche gia rifatto in passato, ma
+</I>&gt;<i> io da ste tabelle non riesco a tirare fuori niente. quindi sto sbagliando
+</I>&gt;<i> qualcosa.
+</I>&gt;<i>
+</I>&gt;<i> Allora ho due tabelle, con UN SOLO elemento ciascuno
+</I>&gt;<i>
+</I>&gt;<i> fatta la select cornici.*, schedaprogetto.* FROM cornici, schedaprogetto
+</I>&gt;<i> dallo spazio SQL di phpmyadmin ottengo
+</I>&gt;<i> non due ma una riga di risultato, contenente TUTTI i campi delle due
+</I>&gt;<i> tabelle
+</I>&gt;<i>
+</I>&gt;<i> come faccio ciclarle?
+</I>&gt;<i>
+</I>&gt;<i> se inserisco più elementi per riga non ottengo le righe delle tabelle,
+</I>&gt;<i> ottengo una loro combinazione.
+</I>&gt;<i>
+</I>&gt;<i> cioè 2 elementi per tabella mi restituiscono 4 elementi contenenti le
+</I>&gt;<i> combinazioni,
+</I>&gt;<i>
+</I>&gt;<i> 2 elementi in una e 3 nell'altra ottengo 6 righe con le combinazioni 2X3
+</I>&gt;<i>
+</I>&gt;<i> e cosi via.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Semplicemente mi servono i risultati delle due select messi in fila,
+</I>&gt;<i>
+</I>&gt;<i> c'è il modo o devo crearmi per ogni inserimento una tabella terza che si
+</I>&gt;<i> salvi TUTTI gli inserimenti con riferimenti esterni?? mi sembra strano..
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> tanga
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2011/11/29 Motaz Abuthiab &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">moty66 a gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> Buongiorno
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> select t1.*,t2.*, t1.dataconsegna as t1dataconsegna , t2.dataconsegna as
+</I>&gt;&gt;<i> dataconsegna2 from tablella1 as t1, tabella2 as t2 where .........
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> cosi hai due data consegna
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> m.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il giorno 29 novembre 2011 10:53, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha
+</I>&gt;&gt;<i> scritto:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> scusatemi,
+</I>&gt;&gt;&gt;<i> mi spiego meglio.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ho due tabelle una di ordini cornici e una di schedeprogetto (altra
+</I>&gt;&gt;&gt;<i> categoria lavorativa). Entrambe le tabelle contengono il dato dataconsegna.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> devo ordinare tutti gli elementi di entrambe le tabelle disposte per
+</I>&gt;&gt;&gt;<i> dataconsegna per tirare fuori uno scadenzario.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> la domanda, devo semplicemente selezionare tutti gli elementi da
+</I>&gt;&gt;&gt;<i> entrambe le tabelle e stamaprle ordinandole per dataconsegna.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> quale tipo di join devo usare?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> tanga
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> 2011/11/29 bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> mi sono letto il fucking manual, ma qual'è la differenza reale tra
+</I>&gt;&gt;&gt;&gt;<i> fetch array e fetch assoc??
+</I>&gt;&gt;&gt;&gt;<i> non capisco, crea un array associativo invece di uno ... uguale con un
+</I>&gt;&gt;&gt;&gt;<i> valore assoc su eventuali secondi parametri.
+</I>&gt;&gt;&gt;&gt;<i> bene.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> tradotto?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> è più meglio?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> tanga
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> 2011/11/28 Motaz Abuthiab &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">moty66 a gmail.com</A>&gt;
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Non devi usare tabella.alias, basta il nome del campo, se hai due
+</I>&gt;&gt;&gt;&gt;&gt;<i> campi con nomi uguali dovresti fare select t1.id as t1_id, t2.id as
+</I>&gt;&gt;&gt;&gt;&gt;<i> t2_id from t1, t2 where ......
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Ti consiglio di usare mysql_fetch_assoc() invece di fetch_array()
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> M.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Crea il tuo sito con &lt;<A HREF="http://dinamocms.com">http://dinamocms.com</A>&gt;dinamocms.com
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Il giorno 28/nov/2011, alle ore 19:50, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt;
+</I>&gt;&gt;&gt;&gt;&gt;<i> ha scritto:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> scusatemi
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> ma quando devo fare una inner join con mysql e unisco due tabelle,
+</I>&gt;&gt;&gt;&gt;&gt;<i> usando gli alias,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> come si fa il fetch array dei risultati?
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Es:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> $query=mysql_query(&quot;SELECT * from pippo as p, topolino as t&quot;);
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> while($res=mysql_fetch_array($query)){
+</I>&gt;&gt;&gt;&gt;&gt;<i> $id1=$res['p.id'];
+</I>&gt;&gt;&gt;&gt;&gt;<i> $id2=$res['t.id'];
+</I>&gt;&gt;&gt;&gt;&gt;<i> }
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> QUESTO NON MI FUNZIONA, ma non mi da neanche errori
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tanga aka Bartrosso
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;&gt;&gt;<i> Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;&gt;&gt;&gt;&gt;<i> Debian..&quot;
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;&gt;&gt;&gt;&gt;<i> libero e totale tutta la conoscenza umana.»
+</I>&gt;&gt;&gt;&gt;&gt;<i> &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;&gt;<i> Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;&gt;&gt;&gt;<i> Debian..&quot;
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;&gt;&gt;&gt;<i> libero e totale tutta la conoscenza umana.»
+</I>&gt;&gt;&gt;&gt;<i> &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;<i> Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;&gt;&gt;<i> Debian..&quot;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;&gt;&gt;<i> libero e totale tutta la conoscenza umana.»
+</I>&gt;&gt;&gt;<i> &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Crea il tuo sito con Dinamo Cms
+</I>&gt;&gt;<i> <A HREF="http://www.dinamocms.com">http://www.dinamocms.com</A>
+</I>&gt;&gt;<i> .
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;<i> Debian..&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;<i> libero e totale tutta la conoscenza umana.»
+</I>&gt;<i> &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+--
+
+Crea il tuo sito con Dinamo Cms
+<A HREF="http://www.dinamocms.com">http://www.dinamocms.com</A>
+.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20111129/4831bce1/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20111129/4831bce1/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001450.html">[Tecnica] inner join
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001453.html">[Tecnica] inner join
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1451">[ Data ]</a>
+              <a href="thread.html#1451">[ Thread ]</a>
+              <a href="subject.html#1451">[ Oggetto ]</a>
+              <a href="author.html#1451">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

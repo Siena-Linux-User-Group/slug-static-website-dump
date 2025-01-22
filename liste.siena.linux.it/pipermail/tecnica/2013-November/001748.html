@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] SSH su istanza remota
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20SSH%20su%20istanza%20remota&In-Reply-To=%3CCA%2Bn2inBeo9Kt4MVqY7qomj4ue9F82yLLPAj7X3xjNoJrxbm-4w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001747.html">
+   <LINK REL="Next"  HREF="001743.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] SSH su istanza remota</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20SSH%20su%20istanza%20remota&In-Reply-To=%3CCA%2Bn2inBeo9Kt4MVqY7qomj4ue9F82yLLPAj7X3xjNoJrxbm-4w%40mail.gmail.com%3E"
+       TITLE="[Tecnica] SSH su istanza remota">polva86 a gmail.com
+       </A><BR>
+    <I>Sab  9 Nov 2013 10:13:17 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001747.html">[Tecnica] SSH su istanza remota
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001743.html">[Tecnica] SSH su istanza remota
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1748">[ Data ]</a>
+              <a href="thread.html#1748">[ Thread ]</a>
+              <a href="subject.html#1748">[ Oggetto ]</a>
+	      <a href="author.html#1748">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>@bartrosso @Moreno.
+Si l'idea era partita dall'idea malsana di farmi la sveglia con il computer
+che diceva bartrosso (VLC ha anche l'istanza senza GUI), cosa che ho
+realizzato, ma poi per curiosità mi sono chiesto se non facesse anche
+partire programmi sull'host remoto che girano solo su server grafico, per
+ogni evenienza. Da lì era sorto il problema.
+
+
+Il giorno 09 novembre 2013 11:05, Angelo Polvanesi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt; ha
+scritto:
+
+&gt;<i> Chiedo venia!
+</I>&gt;<i> A dire il vero il man l'avevo letto, solo che non avevo capito che avessi
+</I>&gt;<i> dovuto impostare la variabile.
+</I>&gt;<i> Infatti il primo tentativo l'ho fatto senza -X e mi diceva, appunto che
+</I>&gt;<i> andava specificata la il valore di $DISPLAY.
+</I>&gt;<i> Da qui ho pensato, sbagliando, di fare una prova con il -X che però fa
+</I>&gt;<i> quello che sappiamo.
+</I>&gt;<i> Ora ho risolto come diceva Simone:
+</I>&gt;<i>
+</I>&gt;<i> ssh <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">utente a host</A>
+</I>&gt;<i> export DISPLAY=&quot;:0.0&quot;
+</I>&gt;<i> /usr/bin/firefox
+</I>&gt;<i>
+</I>&gt;<i> Ora funziona tutto come volevo.
+</I>&gt;<i> Però mi chiedevo se non si potesse evitare di inserire l'assegnazione del
+</I>&gt;<i> valore di $DISPLAY a ogni collegamento.
+</I>&gt;<i> Ho cercato dentro a /etc/ssh/ssh_config ma ci sono solo i settaggi per il
+</I>&gt;<i> X11 forwarding.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 08 novembre 2013 16:25, Moreno Bartalucci &lt;
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">moreno.bartalucci a gmail.com</A>&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> Ciao,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> se non metti il -X, credo che firefox (ad esempio) non parta affatto.
+</I>&gt;&gt;<i> Dovresti settare la variabile DISPLAY in modo corretto, per far si che
+</I>&gt;&gt;<i> parta.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Comunque, non so a che puo' servire far partire un prog con interfaccia
+</I>&gt;&gt;<i> grafica senza... interfaccia grafica... :-)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Se vuoi, puoi provare cosi':
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ssh <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">utente a ip_macchina_remota</A> -L 5900:localhost:5900
+</I>&gt;&gt;<i> vnc localhost
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ovviamente, avendo un server vnc in funzione sulla macchina remota e
+</I>&gt;&gt;<i> sostituendo al mio 'vnc' il nome del client sulla macchina locale.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ciao,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Moreno
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il giorno 08/nov/2013, alle ore 16:21, Angelo Polvanesi &lt;
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt; ha scritto:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; Ciao.
+</I>&gt;&gt;<i> &gt; Scusami, mi sono effettivamente spiegato un po' coi piedi...
+</I>&gt;&gt;<i> &gt; Mi piacerebbe controllare da remoto la sessione di Ubuntu in corso sul
+</I>&gt;&gt;<i> PC remoto attraverso shell.
+</I>&gt;&gt;<i> &gt; L'idea sarebbe quella di un controllo in stile VNC, che controlla
+</I>&gt;&gt;<i> direttamente la sessione in uso, ma senza interfaccia grafica.
+</I>&gt;&gt;<i> &gt; Per farti un esempio generale (visto che quello di VLC è un po'
+</I>&gt;&gt;<i> intrigato), che comando dovrei mandare in SSH per far aprire Firefox sul
+</I>&gt;&gt;<i> computer remoto? Perchè se lancio il comando ssh -X <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a host</A>/usr/bin/firefox, giustamente me lo esegue con X sul computer locale...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20131109/11f2ce48/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20131109/11f2ce48/attachment.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001747.html">[Tecnica] SSH su istanza remota
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001743.html">[Tecnica] SSH su istanza remota
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1748">[ Data ]</a>
+              <a href="thread.html#1748">[ Thread ]</a>
+              <a href="subject.html#1748">[ Oggetto ]</a>
+              <a href="author.html#1748">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

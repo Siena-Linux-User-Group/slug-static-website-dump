@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> R: [Tecnica] inittab
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=R%3A%20%5BTecnica%5D%20inittab&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000377.html">
+   <LINK REL="Next"  HREF="000379.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>R: [Tecnica] inittab</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=R%3A%20%5BTecnica%5D%20inittab&In-Reply-To="
+       TITLE="R: [Tecnica] inittab">dinogen a yahoo.com
+       </A><BR>
+    <I>Mer 10 Gen 2007 15:13:00 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000377.html">[Tecnica] inittab
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000379.html">[Tecnica] Frequenza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#378">[ Data ]</a>
+              <a href="thread.html#378">[ Thread ]</a>
+              <a href="subject.html#378">[ Oggetto ]</a>
+	      <a href="author.html#378">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Interessante.
+Praticamente upstart ha sostituito init e fa girare degli script incredibilmente semplici in base a eventi del sistema, per esempio la pressione di ctrl-alt-canc.
+Questi script stanno in /etc/event.d
+Il cambio di runlevel si fa con il comando telinit.
+
+ 
+Regards. 
+Marcello Semboli
+____________________________
+<A HREF="http://dinogen.hacknight.org">http://dinogen.hacknight.org</A>
+&quot;We reject kings, presidents, and voting. We believe in rough consensus and running code&quot; -- Dave Clark, IETF Credo (1992)
+
+----- Messaggio originale -----
+Da: Paolo Sammicheli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xdatap1 a siena.linux.it</A>&gt;
+A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+Inviato: Mercoledì 10 gennaio 2007, 13:09:29
+Oggetto: Re: [Tecnica] inittab
+
+Alle 12:35, mercoledì 10 gennaio 2007, Marcello Semboli ha scritto:
+&gt;<i> In ubuntu, con il nuovo sistema di init, mi pare si chiami startup, non
+</I>&gt;<i> c'e' più il file /etc/inittab. Esistono ancora i runlevel?
+</I>&gt;<i> Come si puo' avere il boot in console e fare startx dopo?
+</I>&gt;<i> Prima si metteva 3 al posto di 5 nel runlevel di inittab. E ora?
+</I>
+Si chiama Upstart. Trovi tutto qua: <A HREF="http://upstart.ubuntu.com/">http://upstart.ubuntu.com/</A>
+
+Cmq, da quel poco che ho letto, è retrocompatibile con init, quindi gli script 
+e runlevel ci sono ancora.
+
+In futuro ci saranno pacchetti con lo script di avvio specifico per upstart e 
+credo tengano la compatibilità con link simbolici.
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+_______________________________________________
+Tecnica mailing list
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+
+
+
+
+
+
+	
+
+	
+		
+___________________________________ 
+Vinci i biglietti per FIFA World Cup in Germania! 
+yahoo.it/concorso_messenger
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000377.html">[Tecnica] inittab
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000379.html">[Tecnica] Frequenza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#378">[ Data ]</a>
+              <a href="thread.html#378">[ Thread ]</a>
+              <a href="subject.html#378">[ Oggetto ]</a>
+              <a href="author.html#378">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

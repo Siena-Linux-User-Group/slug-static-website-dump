@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ssh gaia unreachable
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609151430.44705.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000134.html">
+   <LINK REL="Next"  HREF="000120.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ssh gaia unreachable</H1>
+    <B>Michele &quot;O-Zone&quot; Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609151430.44705.pragma%40siena.linux.it"
+       TITLE="[Tecnica] ssh gaia unreachable">o-zone a siena.linux.it
+       </A><BR>
+    <I>Dom 17 Set 2006 17:01:43 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000134.html">[Tecnica] ssh gaia unreachable
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000120.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#119">[ Data ]</a>
+              <a href="thread.html#119">[ Thread ]</a>
+              <a href="subject.html#119">[ Oggetto ]</a>
+	      <a href="author.html#119">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 12:30, venerdì 15 settembre 2006, Szymon Stefanek ha scritto:
+&gt;<i> Il demone ssh era morto. Iakko lo ha ritirato su.
+</I>
+Consiglio di mettere &quot;monit&quot;, un programmino che monitorizza i demoni e, nel 
+caso, li ritira sù. Se volete lo installo/configuro io che lo suo da diversi 
+anni con soddisfazione.
+
+&gt;<i> Perchè l'errore restituito dal sistema è un &quot;Network is unreachable&quot;
+</I>&gt;<i> invece di un &quot;Connection Refused&quot; ?
+</I>
+da quale sistema ? il tuo casalingo ?
+
+&gt;<i> La parte rilevante del tcpdump di &quot;ssh -l utente gaia.siena.linux.it&quot;
+</I>&gt;<i> è il seguente:
+</I>&gt;<i>
+</I>&gt;<i> 13:36:56.025639 IP (tos 0x0, ttl  64, id 13087, offset 0, flags [DF],
+</I>&gt;<i> proto: TCP (6), length: 60) ppp-234-4.27-151.libero.it.35165 &gt;
+</I>&gt;<i> gaia.siena.linux.it.ssh: S, cksum 0x2ac8 (correct),
+</I>&gt;<i> 4185561033:4185561033(0) win 5800 &lt;mss 1450,sackOK,timestamp 10134742
+</I>&gt;<i> 0,nop,wscale 7&gt;
+</I>&gt;<i>
+</I>&gt;<i> 13:36:56.232156 IP (tos 0x0, ttl  49, id 0, offset 0, flags [DF], proto:
+</I>&gt;<i> TCP (6), length: 40) gaia.siena.linux.it.ssh &gt;
+</I>&gt;<i> ppp-234-4.27-151.libero.it.35165: R, cksum 0x4ea6 (correct), 0:0(0) ack
+</I>&gt;<i> 4185561034 win 0
+</I>&gt;<i>
+</I>&gt;<i> e qui &quot;Network is unreachable&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Qualcuno sa dare una spiegazione ?
+</I>
+Finalmente un questito interessante. Se non sbaglio il pacchetto di risposta 
+di Gaia contiene, giustamente, un ACK RST (Reset) che indica una porta 
+chiusa/servizio non disponibile. Fosse stata una porta bloccata da firewall 
+avresti avuto un tipo di risposta diversa.
+
+Leggo da <A HREF="http://www.freesoft.org/CIE/RFC/1812/105.htm:">http://www.freesoft.org/CIE/RFC/1812/105.htm:</A>
+
+[CUT]
+The ICMP Destination Unreachable message is sent by a router in response to a 
+packet which it cannot forward because the destination (or next hop) is 
+unreachable or a service is unavailable. 
+[/CUT]
+
+Può essere ?
+
+Oz
+-- 
+----
+O-Zone ! Since 1996
+WEB <A HREF="http://www.zerozone.it">http://www.zerozone.it</A> - BLOG <A HREF="http://blog.zerozone.it">http://blog.zerozone.it</A>
+
+-- 
+----
+O-Zone ! Since 1996 No (C)
+WEB (<A HREF="http://www.zerozone.it">http://www.zerozone.it</A>) and BLOG (<A HREF="http://blog.zerozone.it">http://blog.zerozone.it</A>)
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000134.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000120.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#119">[ Data ]</a>
+              <a href="thread.html#119">[ Thread ]</a>
+              <a href="subject.html#119">[ Oggetto ]</a>
+              <a href="author.html#119">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] BitTorrent da linea di comando
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20BitTorrent%20da%20linea%20di%20comando&In-Reply-To=%3C45ea25fb1001050413w47f5a02fr58b672e122fa7f15%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000925.html">
+   <LINK REL="Next"  HREF="000934.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] BitTorrent da linea di comando</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20BitTorrent%20da%20linea%20di%20comando&In-Reply-To=%3C45ea25fb1001050413w47f5a02fr58b672e122fa7f15%40mail.gmail.com%3E"
+       TITLE="[Tecnica] BitTorrent da linea di comando">dinogen a gmail.com
+       </A><BR>
+    <I>Mar  5 Gen 2010 12:13:29 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000925.html">[Tecnica] BitTorrent da linea di comando
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000934.html">[Tecnica] domande ubuntuose forse cretine....
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#926">[ Data ]</a>
+              <a href="thread.html#926">[ Thread ]</a>
+              <a href="subject.html#926">[ Oggetto ]</a>
+	      <a href="author.html#926">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Si esatto, e va pure editato il file di configurazione.
+Leggi le istruzioni che sono insieme ai sorgenti. E' facile.
+Copi tutto in una directory di apache.
+Poi crei il DB.
+Metti nel file di configurazione utente e password.
+Fine.
+
+Se invece istalli il deb non devi fare nulla. Ma se poi non ti
+funziona lo puoi configurare da te.
+Davvero, è facile.
+
+Il 05 gennaio 2010 12.08, Andrea Ciani &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">cianiandrea10 a gmail.com</A>&gt; ha scritto:
+&gt;<i> Ho scaricato torrentflux... ma allora se ho capito bene NON è un programma??? Praticamente... è tipo...un sitoweb???? Cioè... va fatto il dumb del database e copiata la cartella in /var/www di apache e basta????
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 05/gen/2010, alle ore 11.15, Marcello Semboli ha scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Ahh ora ho capito.
+</I>&gt;&gt;<i> Io ho un vecchio iBook (G3) con ubuntu convertito a serverino (niente
+</I>&gt;&gt;<i> grafica) e lo uso proprio per scaricare.
+</I>&gt;&gt;<i> Io dopo tanti tentativi c'ho messo Torrentflux. E' una webUI scritta
+</I>&gt;&gt;<i> in PHP che usa le librerie in python di Bittornado.
+</I>&gt;&gt;<i> C'e' anche il deb, lo puoi istallare senza problemi.
+</I>&gt;&gt;<i> Io ho preferito scaricare i sorgenti e metterlo su da me.
+</I>&gt;&gt;<i> Comunque usare bittorrent da linea di comando è improponibile. Meglio la webUI.
+</I>&gt;&gt;<i> Io di client bittorrent per Linux ne ho provati diversi e torrentflux
+</I>&gt;&gt;<i> penso sia l'unico che non mi ha dato mai problemi.
+</I>&gt;&gt;<i> Va bè anche ktorrent va benissimo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il 05 gennaio 2010 11.09, Andrea Ciani &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">cianiandrea10 a gmail.com</A>&gt; ha scritto:
+</I>&gt;&gt;&gt;<i> In realtà lo scopo è quello normale di bittorrent! La scelta di usarlo da linea di comando (o comunque di configurare al massimo una webUI) è &quot;dettata&quot; dal fatto che ho ubuntu server... quindi niente GUI! Ho un pc piuttosto vecchiotto e volevo qualcosa di rapito così non ho installato l'interfaccia grafica (anche perché non avrei comunque un monitor sempre a disposizione per controllarlo). Sto installando e monitorando tutto tramite ssh e webUI.
+</I>&gt;&gt;&gt;<i> Quindi non ho esigenze &quot;particolari&quot; se non quelle di trovare un buon client torrent (come utorret) da poter usare tramite linea di comando. Se poi c'è anche la possibilità di usarlo tramite webui meglio ancora!
+</I>&gt;&gt;&gt;<i> Ho visto che deluge ha tutto quindi sembrerebbe perfetto! E' solo che non capisco perchè debba dare quegli errori! Eppure l'ho scaricato con apt-get dai Repository ufficiali...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ????? Stano...!!!
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Il giorno 05/gen/2010, alle ore 09.41, Marcello Semboli ha scritto:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Scusa, ma perché vuoi usare bittorrent da linea di comando?
+</I>&gt;&gt;&gt;&gt;<i> Forse se ci dici lo scopo finale riusciamo a aiutarti meglio...
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Il 05 gennaio 2010 01.36, Andrea Ciani &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">cianiandrea10 a gmail.com</A>&gt; ha scritto:
+</I>&gt;&gt;&gt;&gt;&gt;<i> Ho scaricato ed installato Deluge 1.1.9. Ho installato solo i pacchetti deluge-core, webui e console (dal momento che non ho interfaccia grafica), ma sembra proprio non partire! Voglio dire... se provo a far partire la web ui mi dice che due pacchetti (phyton mi pare) sono &quot;deprecated&quot; (vecchi??) e non so con cosa rinpiaziarl! Per quanto riguarda invece la gestione via console... non capisco proprio cosa c'è che non va... mi date un dritta??? Ho cercato in mille forum... il meglio che ho trovato è questo... ma non funziona... <A HREF="http://www.nekos.org/2009/06/configurazione-deluge-daemon.html">http://www.nekos.org/2009/06/configurazione-deluge-daemon.html</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Qualcuno mi sa aiutare??
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Il giorno 04/gen/2010, alle ore 18.08, robi ha scritto:
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> io utilizzo DELUGE che al seguito di alcuni problemi iniziali al momento va davvero bene...
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> ciao
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Andrea Ciani ha scritto:
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Salve a tutti. Qualcuno saprebbe consigliarmi un client BitTorrent completo (ovvero con tutte le funzioni base) che può girare anche solamente da linea di comando???
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> In questo momento ho installato Transmission ma gli mancano molte funzioni (tipo l'avvio automatico dei torrent, la ricerca dei torrent in una cartella speciale, lo spostamento dei torrent in una cartella separata una volta completi etc...) inoltre ha un'interfaccia da Browser veramente scarna e con poche funzioni (secondo me).
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Qualcuno saprebbe darmi qualche consiglio???
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> ------------------------------------------------
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Andrea Ciani
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> ------------------------------------------------
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> Andrea Ciani
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> --
+</I>&gt;&gt;&gt;&gt;<i> ____________________________
+</I>&gt;&gt;&gt;&gt;<i> Marcello Semboli
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="http://dinogen.hacknight.org/">http://dinogen.hacknight.org/</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> &quot;Io non doppioclicco.&quot; (Davide Bianchi)
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ------------------------------------------------
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Andrea Ciani
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> ____________________________
+</I>&gt;&gt;<i> Marcello Semboli
+</I>&gt;&gt;<i> <A HREF="http://dinogen.hacknight.org/">http://dinogen.hacknight.org/</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &quot;Io non doppioclicco.&quot; (Davide Bianchi)
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Andrea Ciani
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+____________________________
+Marcello Semboli
+<A HREF="http://dinogen.hacknight.org/">http://dinogen.hacknight.org/</A>
+
+&quot;Io non doppioclicco.&quot; (Davide Bianchi)
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000925.html">[Tecnica] BitTorrent da linea di comando
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000934.html">[Tecnica] domande ubuntuose forse cretine....
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#926">[ Data ]</a>
+              <a href="thread.html#926">[ Thread ]</a>
+              <a href="subject.html#926">[ Oggetto ]</a>
+              <a href="author.html#926">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

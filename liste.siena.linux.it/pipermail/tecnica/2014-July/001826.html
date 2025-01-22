@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Mysqldump da host remoto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3C53D8E1C1.6000109%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001824.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Mysqldump da host remoto</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3C53D8E1C1.6000109%40yusefmaali.net%3E"
+       TITLE="[Tecnica] Mysqldump da host remoto">contact a yusefmaali.net
+       </A><BR>
+    <I>Mer 30 Lug 2014 13:14:57 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001824.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1826">[ Data ]</a>
+              <a href="thread.html#1826">[ Thread ]</a>
+              <a href="subject.html#1826">[ Oggetto ]</a>
+	      <a href="author.html#1826">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Usare l'utente root per attività programmate non è cosa buona.
+Io farei così:
+
+ServerA:
+utente dedicato con i permessi in sola lettura su tutti i database. vedi 
+se a mysqldump serve qualche permesso speciale e nel caso aggiungilo.
+Il domain dell'utente deve essere l'ip (o l'hostname) del serverA.
+Volendo puoi usare anche &quot;%&quot; al posto del domain.
+
+ServerB:
+non devi fare nulla.
+devi solo invocare mysqldump con i parametri giusti.
+
+
+
+
+On 30/07/2014 13:51, Freeze NorthPole wrote:
+&gt;<i>
+</I>&gt;<i> *precondizione:*
+</I>&gt;<i> l'ip del server  B e` stato autorizzato ad accedere al DB del server A
+</I>&gt;<i> *come ci sto lavorando:*
+</I>&gt;<i> dal server B mi loggo come root e lancio il comando
+</I>&gt;<i> /usr/bin/mysqldump &#8211;opt &#8211;user=miousername &#8211;password=miapassword
+</I>&gt;<i>
+</I>&gt;<i> --host=localhost nome_del_db &gt; /home/backup/database.sql
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Attento: invochi mysqldump con --host=localhost.
+</I>&gt;<i>     lo dovresti invocare con --host=serverA
+</I>&gt;<i>
+</I>&gt;<i> ammetto di aver scritto male  come host ho messo SERVER A
+</I>&gt;<i>
+</I>&gt;<i>     Se hai creato correttamente l'utente <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a serverA</A> e il firewall non
+</I>&gt;<i>     ti blocca la connessione, dovrebbe funzionarti tutto.
+</I>&gt;<i>
+</I>&gt;<i> beh  sul db del serverA c'è l'utente  &quot;miousername&quot; e non il root
+</I>&gt;<i>
+</I>&gt;<i>     Usare un utente dedicato, abilitando solo i permessi necessari per
+</I>&gt;<i>     il dump, è la soluzione più sicura.
+</I>&gt;<i>
+</I>&gt;<i> cioè quella che mi sembrava una scelta &quot;becera&quot;
+</I>&gt;<i> quindi creare  utenza <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">miouserame a severB</A>
+</I>&gt;<i>
+</I>&gt;<i> è la soluzione ideale?
+</I>&gt;<i> che intendi con i &quot;permessi necessari&quot; ?
+</I>&gt;<i>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001824.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1826">[ Data ]</a>
+              <a href="thread.html#1826">[ Thread ]</a>
+              <a href="subject.html#1826">[ Oggetto ]</a>
+              <a href="author.html#1826">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

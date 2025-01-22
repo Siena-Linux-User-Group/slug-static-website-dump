@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] (senza oggetto)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20%28senza%20oggetto%29&In-Reply-To=J5OYSD%24D90BE9D04C6DE544FC7AFD03CC753261%40libero.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000738.html">
+   <LINK REL="Next"  HREF="000726.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] (senza oggetto)</H1>
+    <B>Iacopo</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20%28senza%20oggetto%29&In-Reply-To=J5OYSD%24D90BE9D04C6DE544FC7AFD03CC753261%40libero.it"
+       TITLE="[Generale] (senza oggetto)">iakko a siena.linux.it
+       </A><BR>
+    <I>Dom 17 Set 2006 11:01:01 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000738.html">[Generale] (senza oggetto)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000726.html">[Generale] xfce
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#729">[ Data ]</a>
+              <a href="thread.html#729">[ Thread ]</a>
+              <a href="subject.html#729">[ Oggetto ]</a>
+	      <a href="author.html#729">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 17:24, sabato 16 settembre 2006, <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">mastro_apulo a libero.it</A> ha scritto:
+
+&gt;<i> parte la ventola del processore al massimo, anche se il processore non è per 
+</I>&gt;<i> nulla stressato.
+</I>
+suona come un problema ACPI (Advanced Configuration and Power Interface).
+l'ACPI è uno standard che permette controlli da parte del sistema operativo su 
+vari aspetti hardware tra i quali la velocita' della ventola per evitare 
+l'arrosto del processore.
+
+prima cosa serve sapere se hai il supporto nel kernel. dicci che versione hai 
+installata, incolla l'output di questo comando da console:
+
+	uname -r
+
+poi vai nella cartella
+
+	/usr/src/linux
+
+e dai il comando
+
+	make menuconfig
+
+ti si apre il menu di configurazione del kernel, naviga attraverso queste 
+sezioni:
+
+	Power management options (ACPI, APM) ---&gt;
+	ACPI (Advanced Configuration and Power Interface) Support  ---&gt;
+
+e controlla che la voce
+
+	ACPI SUpport
+
+sia spuntata con un asterisco (od una M) tra le parentesi quadre alla 
+sinistra.
+Se e' cosi', controlla anche che la voce
+
+	Fan
+
+sia selezionata con un asterisco tra le parentesi triangolari.
+
+&gt;<i> anche una mano a configurare altre periferiche come la scheda wireless che
+</I>&gt;<i> me la da come esterna anche su uindous (ASUS USB Wireless Network Adapter).
+</I>
+devi dirci qualcosa di piu', da console dai il comando
+
+	lspci -v
+
+ed incolla *solo* il blocco riferito alla scherda wireless.
+
+comunque per domande di tipo tecnico, iscriviti alla lista apposita attraverso 
+questo link:
+
+	<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+
+e dai un titolo alla mail che si traccia meglio il thread.
+
+&gt;<i> Il fatto è che a giorni parto per l'ERASMUS  e sicuramente dove andrò sarà
+</I>&gt;<i> difficile che qualcuno mi aiuti nei miei primi passi col pinguino (e mi
+</I>&gt;<i> dispiacerebbe continuare con questo cazzo di uindous...). Bye bye
+</I>
+sei in una lista pubblica, magari la prossima volta sostituisci il termine 
+*cazzo* con maledetto, brutto, orribile..
+
+-- 
+--------------------------------------------------------------
+Iacopo Palazzi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">iakko a siena.linux.it</A>&gt;
+GPG Public Key: <A HREF="http://iakko.net/iakko.gpgkey.asc">http://iakko.net/iakko.gpgkey.asc</A>
+Fingerprint: B0A8 BC97 C53E 172D 0C77 80B3 C30E 835F 5C31 65AE
+Jabber: <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">iakko a jabber.linux.it</A> - ICQ: 7622157
+Siena Linux User Group - www.siena.linux.it
+
+&quot;Se solo Dio mi desse i sorgenti...&quot;
+--------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  191 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20060917/08531967/attachment.pgp">http://liste.siena.linux.it/pipermail/generale/attachments/20060917/08531967/attachment.pgp</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000738.html">[Generale] (senza oggetto)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000726.html">[Generale] xfce
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#729">[ Data ]</a>
+              <a href="thread.html#729">[ Thread ]</a>
+              <a href="subject.html#729">[ Oggetto ]</a>
+              <a href="author.html#729">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

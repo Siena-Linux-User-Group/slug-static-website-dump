@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] multiusers su un sistema
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20multiusers%20su%20un%20sistema&In-Reply-To=%3CCAKjoEh_7ODvaVvtYKWBpMHZPbx9TNXS0KNTMnJxhqC1YX-3bYQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001555.html">
+   <LINK REL="Next"  HREF="001557.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] multiusers su un sistema</H1>
+    <B>daniele masti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20multiusers%20su%20un%20sistema&In-Reply-To=%3CCAKjoEh_7ODvaVvtYKWBpMHZPbx9TNXS0KNTMnJxhqC1YX-3bYQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] multiusers su un sistema">danielemasti a gmail.com
+       </A><BR>
+    <I>Gio 15 Mar 2012 15:12:36 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001555.html">[Tecnica] multiusers su un sistema
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001557.html">[Tecnica] multiusers su un sistema
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1556">[ Data ]</a>
+              <a href="thread.html#1556">[ Thread ]</a>
+              <a href="subject.html#1556">[ Oggetto ]</a>
+	      <a href="author.html#1556">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve
+non necessariamente. Postifix accetta come utenti quelli di sistema
+oppure quelli specificati attraverso uno dei backend supportati, che
+possono essere, oltre al canonico database, anche semplici file di
+testo. Stessa cosa fa dovecot (anche se non tramite la stessa
+sintassi) mentre per courier non sono tanto sicuro. Come guida di
+riferimento ti mando a questa (
+<A HREF="https://help.ubuntu.com/community/PostfixVirtualMailBoxClamSmtpHowto">https://help.ubuntu.com/community/PostfixVirtualMailBoxClamSmtpHowto</A>
+). Se poi ti interessa (e soprattutto se lo ritrovo) tempo fa scrissi
+un piccolo tool per automatizzare il processo di creazione/rimozione
+utenti, se ti interessa fammi un fischio.
+
+Il 14 marzo 2012 18:57, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha scritto:
+&gt;<i> salve, ho configurato un postfix con sasl per autenticarmi in tls,
+</I>&gt;<i> ora ho una domanda stupida, ma dalla risposta celata nei meandri della ret,
+</I>&gt;<i> e non riesco a trovarla.
+</I>&gt;<i>
+</I>&gt;<i> Gli utenti che possono loggarsi al server smtp devono per forza essere
+</I>&gt;<i> utenti del sistema in uso?
+</I>&gt;<i> o posso riempire una lista da qualche parte (ho un
+</I>&gt;<i> controlled_envelope_sender, ma non reagisce ai cambiamenti)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Sono giunto al termine di una lunga giornata di configurazioni e prove.
+</I>&gt;<i> Ora mi si connette ma ricevo:
+</I>&gt;<i> SMTP server error: 5.7.1 : Sender address rejected: not owned by user
+</I>&gt;<i> root@(miodominiodiprova.com)
+</I>&gt;<i>
+</I>&gt;<i> sto usando root perchè qualsiasi altro nome inserito nella controlled
+</I>&gt;<i> envelope sender mi da un errore di autenticazione
+</I>&gt;<i>
+</I>&gt;<i> Ho un controlled... .db credo sia stato generato a partire dal file
+</I>&gt;<i> precedente, ma le associazioni utente e password non so dove vadano messe,
+</I>&gt;<i>
+</I>&gt;<i> le 39 guide ufficiali che sto usando in questi giorni sorvolano tutte sulla
+</I>&gt;<i> cosa fondamentale, una volta installato, come si usa??? WTF
+</I>&gt;<i>
+</I>&gt;<i> Sappiatemi voler bene.
+</I>&gt;<i>
+</I>&gt;<i> a presto
+</I>&gt;<i>
+</I>&gt;<i> tanga
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare Debian..&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> «Immagina se ogni persona sulla terra potesse condividere con accesso libero
+</I>&gt;<i> e totale tutta la conoscenza umana.»
+</I>&gt;<i> &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I></PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001555.html">[Tecnica] multiusers su un sistema
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001557.html">[Tecnica] multiusers su un sistema
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1556">[ Data ]</a>
+              <a href="thread.html#1556">[ Thread ]</a>
+              <a href="subject.html#1556">[ Oggetto ]</a>
+              <a href="author.html#1556">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

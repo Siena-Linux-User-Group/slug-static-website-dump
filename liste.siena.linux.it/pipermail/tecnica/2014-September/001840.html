@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Domanda su if (di bash)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20su%20if%20%28di%20bash%29&In-Reply-To=%3C540DFB47.4040500%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001839.html">
+   <LINK REL="Next"  HREF="001841.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Domanda su if (di bash)</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20su%20if%20%28di%20bash%29&In-Reply-To=%3C540DFB47.4040500%40siena.linux.it%3E"
+       TITLE="[Tecnica] Domanda su if (di bash)">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Lun  8 Set 2014 19:53:59 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001839.html">[Tecnica] Domanda su if (di bash)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001841.html">[Tecnica] Domanda su if (di bash)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1840">[ Data ]</a>
+              <a href="thread.html#1840">[ Thread ]</a>
+              <a href="subject.html#1840">[ Oggetto ]</a>
+	      <a href="author.html#1840">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 08/09/2014 20:10, Emanuele Bruni ha scritto:
+&gt;<i> ottengo sempre questo errore
+</I>&gt;<i> 
+</I>&gt;<i> ./carica.sh: riga 14: [233353: comando non trovato
+</I>&gt;<i> 
+</I>&gt;<i> Ho ragione di credere che quella sia la dimensione del file 1 ma che
+</I>&gt;<i> toppo? Perchè mi da l'errore e cerca un comando?
+</I>
+Manca il ;
+
+Ecco come fare, preso da qui(1) :
+
+#!/bin/sh
+
+if diff file1 file2 &gt;/dev/null ; then
+  echo Same
+else
+  echo Different
+fi
+
+
+(1)
+<A HREF="http://www.linuxquestions.org/questions/linux-newbie-8/bash-script-to-compare-two-files-563836/">http://www.linuxquestions.org/questions/linux-newbie-8/bash-script-to-compare-two-files-563836/</A>
+
+Ciao
+-- 
+Paolo Sammicheli
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Do what you like. Like what you do -
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001839.html">[Tecnica] Domanda su if (di bash)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001841.html">[Tecnica] Domanda su if (di bash)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1840">[ Data ]</a>
+              <a href="thread.html#1840">[ Thread ]</a>
+              <a href="subject.html#1840">[ Oggetto ]</a>
+              <a href="author.html#1840">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

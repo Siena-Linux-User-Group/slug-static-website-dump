@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Logrotate....solo una volta !
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Logrotate....solo%20una%20volta%20%21&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000446.html">
+   <LINK REL="Next"  HREF="000448.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Logrotate....solo una volta !</H1>
+    <B>Michele &quot;O-Zone&quot; Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Logrotate....solo%20una%20volta%20%21&In-Reply-To="
+       TITLE="[Tecnica] Logrotate....solo una volta !">o-zone a siena.linux.it
+       </A><BR>
+    <I>Gio 26 Apr 2007 08:10:57 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000446.html">[Tecnica] bizzarrerie di (k)ubuntu cn la root passwd
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000448.html">[Tecnica] cercasi consulente linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#447">[ Data ]</a>
+              <a href="thread.html#447">[ Thread ]</a>
+              <a href="subject.html#447">[ Oggetto ]</a>
+	      <a href="author.html#447">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+ho installato, per esigenze di lavoro, logrotate su un HPUX. Questa la 
+configurazione (/etc/logrotate.conf):
+
+weekly
+rotate 24
+errors root
+create
+compress
+/xxx/apache/logs/stats_log {
+        daily
+        rotate 31
+        create
+        compress
+        postrotate
+                /xxx/apache/bin/apachectl restart
+        endscript
+}
+
+/xxx/apache/logs/access_log {
+        weekly
+        rotate 24
+        create
+        compress
+        postrotate
+                /xxx/apache/bin/apachectl restart
+        endscript
+}
+
+e poi ho messo una entry nel cron. Tutto funziona, se non che 
+logrotate &quot;ruota&quot; solo una volta ! Invece di ruotare, come nel primo caso, 31 
+volte e 24 nel secondo, fà solo una rotazione, cancellando il file vecchio 
+dei log. Ho controllato anche il file &quot;status&quot; (var/lob/logrotate/status):
+
+sbs3:/xxxx/apache/logs# cat /var/lib/logrotate/status
+logrotate state -- version 1
+/xxx/apache/logs/stats_log 2007-4-26
+/xxx/apache/logs/access_log 2007-4-24
+
+idee ? Su google non ho trovato nulla :-(
+
+Saluti, oz
+
+-- 
+O-Zone ! No (C) 1996
+WEB+BLOG <A HREF="http://www.zerozone.it">http://www.zerozone.it</A>
+PHOTOS <A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000446.html">[Tecnica] bizzarrerie di (k)ubuntu cn la root passwd
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000448.html">[Tecnica] cercasi consulente linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#447">[ Data ]</a>
+              <a href="thread.html#447">[ Thread ]</a>
+              <a href="subject.html#447">[ Oggetto ]</a>
+              <a href="author.html#447">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

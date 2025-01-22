@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Antifurto a reti neurali !
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Antifurto%20a%20reti%20neurali%20%21&In-Reply-To=20080624111318.2bc8a74d%40moloch.unisi.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000641.html">
+   <LINK REL="Next"  HREF="000643.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Antifurto a reti neurali !</H1>
+    <B>Andrea Rossi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Antifurto%20a%20reti%20neurali%20%21&In-Reply-To=20080624111318.2bc8a74d%40moloch.unisi.it"
+       TITLE="[Tecnica] Antifurto a reti neurali !">ilrossino a gmail.com
+       </A><BR>
+    <I>Mar 24 Giu 2008 15:44:48 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000641.html">[Tecnica] Antifurto a reti neurali !
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000643.html">[Tecnica] Antifurto a reti neurali !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#642">[ Data ]</a>
+              <a href="thread.html#642">[ Thread ]</a>
+              <a href="subject.html#642">[ Oggetto ]</a>
+	      <a href="author.html#642">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>E bravo il nostro Oz....
+A proposito di OpenSource e sistemi antifurto un'applicazione interessante è
+anche Motion <A HREF="http://www.lavrsen.dk/twiki/bin/view/Motion/">http://www.lavrsen.dk/twiki/bin/view/Motion/</A>
+
+Un saluto a tutta la lista
+
+P.S. Come mai da un pò di tempo # grep &quot;pizzata&quot; lista non mi dà nessun
+risultato? ;-)
+
+
+Il 24 giugno 2008 11.13, O-Zone &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a zerozone.it</A>&gt; ha scritto:
+
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> stò lavorando ad un sistema antifurto (ma che può servire a molto
+</I>&gt;<i> altro...) basato su sensori X10 MS14A e DS10A (comprati quà:
+</I>&gt;<i> <A HREF="http://stores.ebay.it/Digitronex-Domain">http://stores.ebay.it/Digitronex-Domain</A>) ed interfacciati, tramite un
+</I>&gt;<i> CM15A (ricevitore X10 su porta USB - leggermente modificato da me) con
+</I>&gt;<i> un NSLU2 (cos'è un NSLU2 ? Guarda quà: <A HREF="http://www.nslu2-linux.org/">http://www.nslu2-linux.org/</A>) con
+</I>&gt;<i> Debian sopra.
+</I>&gt;<i>
+</I>&gt;<i> Stò scrivendo il software e per adesso và benone. Ho scelto di fare un
+</I>&gt;<i> sistema &quot;a zone&quot; assegnando ad ogni sensore un certo &quot;peso&quot;. Ogni zona
+</I>&gt;<i> ha poi dei &quot;triggers&quot; che si attivano se si superano le soglie
+</I>&gt;<i> prestabilite. As esempio:
+</I>&gt;<i>
+</I>&gt;<i> ZonaA:
+</I>&gt;<i>        Sensore1 peso 3
+</I>&gt;<i>        Sensore2 peso 2
+</I>&gt;<i>        Sensore3 peso 5
+</I>&gt;<i>
+</I>&gt;<i>        Trigger:
+</I>&gt;<i>                WarningTreshold: 5
+</I>&gt;<i>                AlarmThreshold: 8
+</I>&gt;<i>
+</I>&gt;<i> ZonaB:
+</I>&gt;<i>        Sensore4 peso 2
+</I>&gt;<i>        Sensore5 peso 1
+</I>&gt;<i>
+</I>&gt;<i>        Trigger:
+</I>&gt;<i>                WarningThreshold: 2
+</I>&gt;<i>                AlarmThreshold: 3
+</I>&gt;<i>
+</I>&gt;<i> le azioni quando si attivano i Triggers sono definite dall'utente, così
+</I>&gt;<i> come i vari pesi etc etc etc (in un file formato XML).
+</I>&gt;<i> Ovviamente è previsto l'uso di telecomandini (sempre X10, come i KR10A)
+</I>&gt;<i> per attivare/disattivare il tutto.
+</I>&gt;<i>
+</I>&gt;<i> Stavo pensando: ma si può usare le reti neurali (Vincenzoooo !!! Visto
+</I>&gt;<i> che fai parte del progetto FANN....) per insegnare all'antifurto quando
+</I>&gt;<i> deve scattare e quando no ? Insomma, un antifurto intelligente ?
+</I>&gt;<i>
+</I>&gt;<i> Sono gradite idee e suggerimenti ! Ovviamente il progetto è
+</I>&gt;<i> OpenSource :-)
+</I>&gt;<i>
+</I>&gt;<i> Alcune informazioni sui moduli X10 le trovate
+</I>&gt;<i> quà: <A HREF="http://www.zerozone.it/Hardware/X10/">http://www.zerozone.it/Hardware/X10/</A> (pagina in costruzione !)
+</I>&gt;<i>
+</I>&gt;<i> Michele
+</I>&gt;<i> --
+</I>&gt;<i> O-Zone ! No (C) 1996
+</I>&gt;<i> WEB     <A HREF="http://www.zerozone.it">http://www.zerozone.it</A>
+</I>&gt;<i> BLOG    <A HREF="http://www.openitaly.net/diary/O-Zone">http://www.openitaly.net/diary/O-Zone</A>
+</I>&gt;<i> PHOTOS  <A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20080624/e33e6e24/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20080624/e33e6e24/attachment.htm</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000641.html">[Tecnica] Antifurto a reti neurali !
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000643.html">[Tecnica] Antifurto a reti neurali !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#642">[ Data ]</a>
+              <a href="thread.html#642">[ Thread ]</a>
+              <a href="subject.html#642">[ Oggetto ]</a>
+              <a href="author.html#642">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

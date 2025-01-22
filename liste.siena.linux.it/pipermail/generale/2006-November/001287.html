@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Perl e strutture dati multidimensionali
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=BAY102-F16DDF34570816F8E159143C3E30%40phx.gbl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001286.html">
+   <LINK REL="Next"  HREF="001288.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Perl e strutture dati multidimensionali</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=BAY102-F16DDF34570816F8E159143C3E30%40phx.gbl"
+       TITLE="[Generale] Perl e strutture dati multidimensionali">pragma a siena.linux.it
+       </A><BR>
+    <I>Mer 22 Nov 2006 19:51:42 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001286.html">[Generale] Perl e strutture dati multidimensionali
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001288.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1287">[ Data ]</a>
+              <a href="thread.html#1287">[ Thread ]</a>
+              <a href="subject.html#1287">[ Oggetto ]</a>
+	      <a href="author.html#1287">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wednesday 22 November 2006 15:16, Alex M4DC4T wrote:
+&gt;<i> In questi giorni mi sto' facendo una cultura su Perl. Sono arrivato a
+</I>&gt;<i> studiare le strutture di dati multidimensionali (implementabili tramite le
+</I>&gt;<i> references). Purtroppo non e' che ho capito benissimo, e il testo si
+</I>&gt;<i> dilunga poco.
+</I>&gt;<i> Richiesta:
+</I>&gt;<i> c'e' qualche anima pia che ha tempo da perdere (il meno possibile, ovvio)
+</I>&gt;<i> che mi puo' dare una mano a parole?
+</I>
+Premesso il fatto che è un topic da &quot;tecnica&quot; e tra un pò ci cacciano
+da qui ecco la risposta :D
+
+Dal punto di vista di strutture multidimensionali il libro (e il perl)
+ti complica la vita. Prima di tutti sappi che PUOI usare una sintassi
+come:
+
+	$pippo[10][3] = 5;
+	print $pippo[10][3];
+
+Questa sintassi manipola un array multidimensionale (in particolare a due 
+dimensioni).
+Lo stesso si può fare per i hash
+
+	$hash{&quot;test&quot;}{&quot;prova&quot;} = 5;
+	print $hash{&quot;test&quot;}{&quot;prova&quot;};
+
+Se ti basta fare questo non leggere oltre: fermati e vivi felice.
+
+Se sei curioso di cosa succede sotto allora eccoti una spiegazione.
+
+Il perl di base NON supporta strutture dati multidimensionali.
+Se vuoi, è un suo difetto (anche se ci si può girare tranquillamente intorno).
+
+In sostanza il perl manegga i seguenti tipi di dati:
+
+- scalari (un numero, una stringa)
+- array ad una dimensione di _scalari_ (quindi array di numeri o di stringhe)
+- hash ad una dimensione di _scalari_ (quindi array di numeri o di stringhe)
+
+Questo significa che un array multidimensionale non lo puoi fare
+e non puoi fare nemmeno un &quot;array di array&quot;.
+
+...Che poi, fra parentesi, è interessante notare che in questo tipo di 
+linguaggi un array multidimensionale e un array di array (di array...) NON 
+sono la stessa cosa mentre in C, in generale, si... vabbeh.
+
+Allora ecco la &quot;magia&quot; (o la menata, dipende da come la vedi) delle 
+references.
+
+Dato una variabile qualunque (scalare, array o hash), mediante una
+particolare sintassi (__contorta__) si può ottenere un riferimento
+ad essa, che per definizione è sempre scalare. Il reference è in sostanza una 
+sorta di puntatore nascosto.
+
+	perl -e '$scalare = 10; $ref = \$scalare; print $ref; print $$ref;'
+
+Nota che nell'esempio sopra la sintassi $$ref fa il dereferenziamento.
+Il '$' più interno accede al reference contenuto dentro la variabile $ref
+mentre quello più esterno accede al contenuto della variabile referenziata.
+Il doppio $, quindi, è l'operatore di dereferenziamento per scalari.
+
+Questo significa che si può ottenere il reference di un array e dato
+che il reference è scalare si può fare un array di reference ad array.
+
+In sostanza si tratta di fare:
+
+	$ausiliario[3] = 5;          # creo array &quot;interno&quot;
+	$pippo[10] = \@ausiliario;   # all'array esterno assegno il reference
+                                     # a quello interno: nota l'operatore
+	                             # '\' che prende il reference di un array
+	print $pippo[10]-&gt;[3];       # accedo tramite reference: nota
+	                             # l'operatore '-&gt;' di dereferencing
+                                     # per array e hash
+
+Quindi l'array esterno è un array di references e l'array interno è
+&quot;puntato&quot; dagli elementi di quello interno.
+
+            0   1   2   3   4   5   6   7   8   9   10
+  @pippo = | ? | ? | ? | ? | ? | ? | ? | ? | ? | ? |ref|
+                                                     |
+         +-------------------------------------------+
+         |
+         |       0   1   2   3
+  @ausiliario = | ? | ? | ? | 5 |
+
+
+Poi, per rendere le cose usabili ai comuni mortali, la sintassi
+$pippo[10][20] è uno shortcut sintattico per scrivere la roba esposta sopra.
+
+
+	man perlref
+
+	<A HREF="http://www.ifarm.nl/erikt/perl/ln05.html">http://www.ifarm.nl/erikt/perl/ln05.html</A>
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Segmentation fault. Brain dumped.
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20061122/6dede00a/attachment.pgp">http://liste.siena.linux.it/pipermail/generale/attachments/20061122/6dede00a/attachment.pgp</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001286.html">[Generale] Perl e strutture dati multidimensionali
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001288.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1287">[ Data ]</a>
+              <a href="thread.html#1287">[ Thread ]</a>
+              <a href="subject.html#1287">[ Oggetto ]</a>
+              <a href="author.html#1287">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

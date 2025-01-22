@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Consiglio Access Point
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Consiglio%20Access%20Point&In-Reply-To=%3CCAE8%2BC3b%3DQk%3D8A2_YqjzoqBUrOG9SmmMj40hNiNx1D17OptXdOA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001681.html">
+   <LINK REL="Next"  HREF="001683.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Consiglio Access Point</H1>
+    <B>Motaz Abuthiab</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Consiglio%20Access%20Point&In-Reply-To=%3CCAE8%2BC3b%3DQk%3D8A2_YqjzoqBUrOG9SmmMj40hNiNx1D17OptXdOA%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Consiglio Access Point">moty66 a gmail.com
+       </A><BR>
+    <I>Gio 14 Mar 2013 17:18:18 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001681.html">[Tecnica] Consiglio Access Point
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001683.html">[Tecnica] Consiglio Access Point
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1682">[ Data ]</a>
+              <a href="thread.html#1682">[ Thread ]</a>
+              <a href="subject.html#1682">[ Oggetto ]</a>
+	      <a href="author.html#1682">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Non ho capito bene quello che hai detto, ma 8 cavi funziona sia per 100 o
+1000 Mbit, portrebbe essere sia PoE  o NON PoE.
+
+Invece per il filtro o l'adattatore o forse si chiami iniettore PoE
+funziona così: dallo switch va un cavo all'*ingresso* ETH dell'adattatore
+PoE e sul secondo *ingresso* va l'*alimentatore*, e dall'adattatore
+*esce*il cavo PoE che va al tuo AP, quindi, non rischi di inviare
+corrente allo
+switch
+
+spero che sia chiaro quello che ho detto
+
++--------------+
+|<i> ALIMENTATORE +---+
+</I>+--------------+   |    +----------------+        +-----+
+                   +---&gt;+  ADATTATATORE  |        |  A. |
+                   +---&gt;+  PoE           |+-------&gt;  P. |
++--------------+   |    +----------------+
++-----+
+|<i> SWITCH       +---+
+</I>+--------------+
+
+
+
+Saluti
+M.
+Il giorno 14 marzo 2013 17:28, Angelo Polvanesi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt; ha
+scritto:
+
+&gt;<i> Benone!
+</I>&gt;<i> No, il mio dubbio era questo: se a valle c'è uno switch gigabit (che usa
+</I>&gt;<i> tutti e 8 i cavi, dai quali si aspetta pacchetti) non volevo ci fossero
+</I>&gt;<i> problemi se invece su 4 fili viaggiasse corrente.
+</I>&gt;<i> Era un dubbio di &quot;compatibilità&quot; tra PoE su 100MBit e NON PoE su Gigabit.
+</I>&gt;<i> Ma se mi dici così immagino che l'adattatore faccia da filtro e mandi
+</I>&gt;<i> corrente solo per un verso...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 14 marzo 2013 15:31, Motaz Abuthiab &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">moty66 a gmail.com</A>&gt; ha
+</I>&gt;<i> scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Il giorno 14 marzo 2013 11:55, Angelo Polvanesi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt; ha
+</I>&gt;&gt;<i> scritto:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Poi una portata di 15km...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Non ho mai provato la potenza del segnale, ma diciamo indoor funziona
+</I>&gt;&gt;<i> molto bene :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Ho cercato un po' a giro e non sono riuscito a capire se l'adattatore
+</I>&gt;&gt;&gt;<i> PoE (quello col trasformatorino e le due porte ethernet) fosse in bundle.
+</I>&gt;&gt;&gt;<i> In alcuni di questi AP ci servirebbe, visto che non sono serviti da uno
+</I>&gt;&gt;&gt;<i> switch PoE. Te ce lo hai trovato?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Si, l'adattatore PoE è incluso nella scatola e ti consiglio di usarlo e
+</I>&gt;&gt;<i> non collegarlo ad un switch PoE
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Poi ho guardato la mappatura stessa del PoE. Visto che è un 100Mbit
+</I>&gt;&gt;&gt;<i> usano l'alimentazione sulle coppie 4,5 e 7,8. Sai se riescono a
+</I>&gt;&gt;&gt;<i> implementarlo anche su reti Gigabit (visto che usano tutti gli 8 fili)?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Hmmm, come leggo dai dettagli, funziona solo a 10/100 Mbit, quindi non
+</I>&gt;&gt;<i> hai nessun vantaggio collegandolo ad un switch Gigabit, ma di sicuro
+</I>&gt;&gt;<i> funziona
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Saluti
+</I>&gt;&gt;<i> M.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> *
+</I>&gt;&gt;<i> Motaz Abuthiab*
+</I>&gt;&gt;<i> Web developer &amp; System Integrator
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+*
+Motaz Abuthiab*
+Web developer &amp; System Integrator
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20130314/0c617c4c/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20130314/0c617c4c/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001681.html">[Tecnica] Consiglio Access Point
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001683.html">[Tecnica] Consiglio Access Point
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1682">[ Data ]</a>
+              <a href="thread.html#1682">[ Thread ]</a>
+              <a href="subject.html#1682">[ Oggetto ]</a>
+              <a href="author.html#1682">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

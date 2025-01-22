@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Router con iptables
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C60378230-CD47-40E1-912F-451D9623C962%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001003.html">
+   <LINK REL="Next"  HREF="001005.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Router con iptables</H1>
+    <B>Andrea Ciani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C60378230-CD47-40E1-912F-451D9623C962%40gmail.com%3E"
+       TITLE="[Tecnica] Router con iptables">cianiandrea10 a gmail.com
+       </A><BR>
+    <I>Ven 26 Mar 2010 16:55:44 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001003.html">[Tecnica] Router con iptables
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001005.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1004">[ Data ]</a>
+              <a href="thread.html#1004">[ Thread ]</a>
+              <a href="subject.html#1004">[ Oggetto ]</a>
+	      <a href="author.html#1004">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ufw sarebbe??? e questo &quot;dnsmasq&quot; cosa sarebbe di preciso? un servizio da installare???
+
+Il giorno 26/mar/2010, alle ore 17.52, Yusef Maali ha scritto:
+
+&gt;<i> Altra cosa: hai ufw attivo?
+</I>&gt;<i> In tal caso devi modificare /etc/ufw/sysctl.conf anzichè /etc/sysctl.conf
+</I>&gt;<i> Quando si attiva il servizio ufw reimposta i parametri del sysctl.conf 
+</I>&gt;<i> &quot;standard&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> Ho letto il post, io ti consiglio vivamente dnsmasq. Ti funziona da dhcp 
+</I>&gt;<i> server, dns cache per la rete locale, tftp boot server e altro. Inoltre ti gli 
+</I>&gt;<i> host in /etc/hosts in entry DNS. Per reti piccole lo trovo favoloso.
+</I>&gt;<i> 
+</I>&gt;<i> Ciao,
+</I>&gt;<i> Yusef
+</I>&gt;<i> 
+</I>&gt;<i> In data venerdì 26 marzo 2010 17:36:55, Andrea Ciani ha scritto:
+</I>&gt;&gt;<i> iptables ha salvato tutto, ho già testato, mi rimane il dubbio che possano
+</I>&gt;&gt;<i> essere i DNS. Ecco il mio post sul forum di ubuntu.it
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> <A HREF="http://forum.ubuntu-it.org/index.php/topic,372382.msg2885764.html#msg288576">http://forum.ubuntu-it.org/index.php/topic,372382.msg2885764.html#msg288576</A>
+</I>&gt;&gt;<i> 4
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Il giorno 26/mar/2010, alle ore 17.32, Yusef Maali ha scritto:
+</I>&gt;&gt;&gt;<i> Le route vanno bene.
+</I>&gt;&gt;&gt;<i> Ricontrolla che iptables abbia salvato tutto.
+</I>&gt;&gt;&gt;<i> Fai anche    iptables -L -t nat      per controllare la tabella di
+</I>&gt;&gt;&gt;<i> natting.
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> Infine, nel dubbio, prova a fargli a mano un:
+</I>&gt;&gt;&gt;<i> echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> In data venerdì 26 marzo 2010 16:35:19, Andrea Ciani ha scritto:
+</I>&gt;&gt;&gt;&gt;<i> Facendo il comando che mi hai detto è venuta fuori questa cosa qui... ma
+</I>&gt;&gt;&gt;&gt;<i> non la so leggere bene... cosa vuol dire?
+</I>&gt;&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;&gt;<i> Tabella di routing IP del kernel
+</I>&gt;&gt;&gt;&gt;<i> Destination     Gateway         Genmask         Flags Metric Ref    Use
+</I>&gt;&gt;&gt;&gt;<i> Iface 192.168.0.0     0.0.0.0         255.255.255.0   U     0      0
+</I>&gt;&gt;&gt;&gt;<i> 0 eth0 10.198.152.0    0.0.0.0         255.255.248.0   U     0      0
+</I>&gt;&gt;&gt;&gt;<i>   0 eth1 0.0.0.0         10.198.152.1    0.0.0.0         UG    100    0
+</I>&gt;&gt;&gt;&gt;<i>     0 eth1
+</I>&gt;&gt;&gt;<i> 
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> ---------------------------------------
+</I>&gt;&gt;<i> Andre
+</I>&gt;&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+
+---------------------------------------
+Andre
+
+
+
+
+
+
+
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/5f998289/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/5f998289/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001003.html">[Tecnica] Router con iptables
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001005.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1004">[ Data ]</a>
+              <a href="thread.html#1004">[ Thread ]</a>
+              <a href="subject.html#1004">[ Oggetto ]</a>
+              <a href="author.html#1004">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Router con iptables
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C201003261732.01328.contact%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001000.html">
+   <LINK REL="Next"  HREF="001002.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Router con iptables</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C201003261732.01328.contact%40yusefmaali.net%3E"
+       TITLE="[Tecnica] Router con iptables">contact a yusefmaali.net
+       </A><BR>
+    <I>Ven 26 Mar 2010 16:32:01 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001000.html">[Tecnica] Router con iptables
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001002.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1001">[ Data ]</a>
+              <a href="thread.html#1001">[ Thread ]</a>
+              <a href="subject.html#1001">[ Oggetto ]</a>
+	      <a href="author.html#1001">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Le route vanno bene.
+Ricontrolla che iptables abbia salvato tutto.
+Fai anche    iptables -L -t nat      per controllare la tabella di natting.
+
+Infine, nel dubbio, prova a fargli a mano un:
+echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+
+
+In data venerdì 26 marzo 2010 16:35:19, Andrea Ciani ha scritto:
+&gt;<i> Facendo il comando che mi hai detto è venuta fuori questa cosa qui... ma
+</I>&gt;<i>  non la so leggere bene... cosa vuol dire?
+</I>&gt;<i> 
+</I>&gt;<i> Tabella di routing IP del kernel
+</I>&gt;<i> Destination     Gateway         Genmask         Flags Metric Ref    Use
+</I>&gt;<i>  Iface 192.168.0.0     0.0.0.0         255.255.255.0   U     0      0      
+</I>&gt;<i>   0 eth0 10.198.152.0    0.0.0.0         255.255.248.0   U     0      0    
+</I>&gt;<i>     0 eth1 0.0.0.0         10.198.152.1    0.0.0.0         UG    100    0  
+</I>&gt;<i>       0 eth1
+</I>&gt;<i> 
+</I></PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001000.html">[Tecnica] Router con iptables
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001002.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1001">[ Data ]</a>
+              <a href="thread.html#1001">[ Thread ]</a>
+              <a href="subject.html#1001">[ Oggetto ]</a>
+              <a href="author.html#1001">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ... problemini africani ... ;)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTim%3D1Strs1CY0VAiD4sMqNZ%3DLND02xqPOC-r%3DryF%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001218.html">
+   <LINK REL="Next"  HREF="001220.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ... problemini africani ... ;)</H1>
+    <B>info@labi Laboratori Innovazione</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTim%3D1Strs1CY0VAiD4sMqNZ%3DLND02xqPOC-r%3DryF%40mail.gmail.com%3E"
+       TITLE="[Tecnica] ... problemini africani ... ;)">info a labi.it
+       </A><BR>
+    <I>Sab 16 Ott 2010 18:07:09 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001218.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001220.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1219">[ Data ]</a>
+              <a href="thread.html#1219">[ Thread ]</a>
+              <a href="subject.html#1219">[ Oggetto ]</a>
+	      <a href="author.html#1219">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> while [ ! -f FILE_NAME ]; do THINGS_HERE;done
+
+
+Il giorno 16 ottobre 2010 18:40, Simone Soldateschi &lt;
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>&gt; ha scritto:
+
+&gt;<i>
+</I>&gt;<i> Senza costringermi a studiarmi tutto il manuale di BASH ;), chi ha
+</I>&gt;&gt;<i> un'idea di come fare uno script per mandare in loop un comando finché
+</I>&gt;&gt;<i> non torna zero?
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> lo questo script:
+</I>&gt;<i>
+</I>&gt;<i> ----------------------------------------
+</I>&gt;<i> #!/bin/bash
+</I>&gt;<i>
+</I>&gt;<i> CONTINUA=1 # varaiabile di controllo del ciclo while
+</I>&gt;<i>
+</I>&gt;<i> while [ $CONTINUA -eq 1 ]; do
+</I>&gt;<i>     # controllo
+</I>&gt;<i>     ls continua &gt; /dev/null 2&gt;&amp;1
+</I>&gt;<i>     if [ ! $? -eq 0 ]; then
+</I>&gt;<i>         CONTINUA=0
+</I>&gt;<i>     fi
+</I>&gt;<i>
+</I>&gt;<i>     # do stuff here
+</I>&gt;<i>     date +%s
+</I>&gt;<i>     sleep 1
+</I>&gt;<i> done
+</I>&gt;<i>
+</I>&gt;<i> exit 0
+</I>&gt;<i> ----------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> controlla che esista il file './continua': se esiste allora esegue 'do
+</I>&gt;<i> stuff here', altrimenti termina ;)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> // SS
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/146834fa/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/146834fa/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001218.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001220.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1219">[ Data ]</a>
+              <a href="thread.html#1219">[ Thread ]</a>
+              <a href="subject.html#1219">[ Oggetto ]</a>
+              <a href="author.html#1219">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

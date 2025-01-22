@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] VPN
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VPN&In-Reply-To=%3Cb564d310bcd4b70318eeb83f1b8a81c0%40localhost%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001151.html">
+   <LINK REL="Next"  HREF="001153.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] VPN</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VPN&In-Reply-To=%3Cb564d310bcd4b70318eeb83f1b8a81c0%40localhost%3E"
+       TITLE="[Tecnica] VPN">contact a yusefmaali.net
+       </A><BR>
+    <I>Mer  9 Giu 2010 17:41:46 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001151.html">[Tecnica] VPN
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001153.html">[Tecnica] VPN
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1152">[ Data ]</a>
+              <a href="thread.html#1152">[ Thread ]</a>
+              <a href="subject.html#1152">[ Oggetto ]</a>
+	      <a href="author.html#1152">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 9 Jun 2010 18:09:02 +0200, Paolo Sammicheli
+&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xdatap1 a siena.linux.it</A>&gt; wrote:
+&gt;<i> Alle 12:36 del 9/6/2010, Luigi ha scritto:
+</I>&gt;&gt;<i> miliardo di &#8364; ... ;-) ...: &#232; possibile impiantare una VPN dentro una
+</I>&gt;&gt;<i> VPN? E come?
+</I>&gt;<i> 
+</I>&gt;<i> Occorrerebbe fare due prove per capire quali sottoreti private utilizza
+</I>&gt;<i> quel provider. 
+</I>
+Non credo sia necessario tutto questo lavoro.
+Se Luigi vuole fare una rete unica nella diocesi e nel villaggio è da
+capire intanto come la vuole realizzare.
+
+Piccola premessa per Luigi:
+una VPN è una rete &quot;distribuita&quot; (generalmente) su internet, nel senso che
+*prima* ti colleghi ad internet con la tua connessione (e l'Ip che ti da il
+provider), e *poi* ti colleghi ad una rete Vpn (quindi tramite internet),
+la quale ti assegna un Ip aggiuntivo che appartiene ad una rete LAN.
+Io non credo tu abbia bisogno di questo, i pc della diocesi saranno
+connessi fra di loro via cavo e i pc del villaggio li puoi raggiungere o
+via cavo o via wireless. In questo caso devi solo configurare una LAN e non
+una VPN.
+Riassumendo: per usare una VPN hai bisogno di un accesso ad internet
+individuale per ogni pc e questo va contro la tua idea di condividere la
+connettività, se ho capito bene.
+
+Fare una grossa rete LAN via cavo e via wireless che interconnetta diocesi
+e villaggio è senz'altro un lavoro più semplice.
+Devi solo configurare un pc come router (è facilissimo).
+Avere un pc come router significa due cose:
+- rendi totalmente indipendente la rete del tuo provider TogoTelecom dalla
+tua rete interna (piccola o grossa che sia).
+- nel futuro puoi applicare anche dei filtri sul traffico, se mai ti
+servissero.
+In pratica ti serve un normalissimo pc (magari usi uno dei più potenti che
+hai a disposizione) al quale colleghi sia il modem sia la rete LAN. Quel pc
+farà da intermediario tra i tuoi pc e internet (e viceversa) e si occuperà
+anche di &quot;convertire&quot; gli Ip nel modo corretto. Puoi così sceglierti la
+sottorete che più ti piace.
+Il router non deve essere dedicato a fare solo quello, puoi anche essere
+usato dai tuoi ragazzi, l'importante è che sia sempre acceso.
+
+L'argomento è vasto, ma dacci più informazioni su come vuoi/puoi
+fisicamente realizzare l'idea.
+
+Ciao
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001151.html">[Tecnica] VPN
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001153.html">[Tecnica] VPN
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1152">[ Data ]</a>
+              <a href="thread.html#1152">[ Thread ]</a>
+              <a href="subject.html#1152">[ Oggetto ]</a>
+              <a href="author.html#1152">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

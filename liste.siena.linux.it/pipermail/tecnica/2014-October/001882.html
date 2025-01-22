@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20aggiornamento%20ubuntu%2012.04-14.04...non%20andata%20a%20buon%0A%20fine&In-Reply-To=%3C5433E246.7030905%40aruba.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001881.html">
+   <LINK REL="Next"  HREF="001885.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine</H1>
+    <B>Luigi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20aggiornamento%20ubuntu%2012.04-14.04...non%20andata%20a%20buon%0A%20fine&In-Reply-To=%3C5433E246.7030905%40aruba.it%3E"
+       TITLE="[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine">per.gigi a aruba.it
+       </A><BR>
+    <I>Mar  7 Ott 2014 13:53:26 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001881.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001885.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1882">[ Data ]</a>
+              <a href="thread.html#1882">[ Thread ]</a>
+              <a href="subject.html#1882">[ Oggetto ]</a>
+	      <a href="author.html#1882">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 07/10/2014 14:33, Michele Pinassi ha scritto:
+
+senza stare a reistallare tutto ...
+se hai creato il nuovo utente puoi spostare tutto compresi i files
+nascosti (&quot;punto&quot;) dalla home del vecchio alla home del nuovo, con due
+accortezze:
+1) devi farlo da super user (un volgare sudo cp -r /home/vecchio/*
+/home/nuovo o, se vuoi farlo in modalità grafica - nautilus o quello che
+che usi - ALT+F2 -&gt; gksu nautilus/quello_che_usi ;
+2) cambiare il proprietario:gruppo ai file compiati (sudo chown -r
+nuovo:nuovo /home/nuovo/*) perché il nuovo utente ha uid:gid differente
+
+... e per la prossima installazione fai come dice Michele, metti almeno
+la home per conto suo ;-) ... lo puoi fare già adesso senza perder un
+bit dei tuoi dati, si tratta di trafficare un po' con Gparted o roba simile
+
+ciao
+
+l.
+
+&gt;<i> Ciao Roberto,
+</I>&gt;<i> 
+</I>&gt;<i> probabilmente si, fai prima a reinstallarlo da capo. Unica accortezza
+</I>&gt;<i> che ti suggerisco: crea una partizione separata per le /home, così se
+</I>&gt;<i> devi aggiornare il sistema in futuro non dovrai preoccuparti di
+</I>&gt;<i> backuppare i tuoi documenti/impostazioni personali :-)
+</I>&gt;<i> 
+</I>&gt;<i> Esempio (dal mio PC):
+</I>&gt;<i> 
+</I>&gt;<i> /dev/sda1      /
+</I>&gt;<i> /dev/sda2      /var
+</I>&gt;<i> /dev/sda4      /home
+</I>&gt;<i> 
+</I>&gt;<i> (la /dev/sda3 è la swap...)
+</I>&gt;<i> 
+</I>&gt;<i> Michele
+</I>&gt;<i> 
+</I>&gt;<i> Il 07/10/2014 13:57, roberto ha scritto:
+</I>&gt;&gt;<i> completato il boot in nessun modo riesco ad avere un terminale, in
+</I>&gt;&gt;<i> recovery mode non riesco ad entrarci, da grub seleziono &quot;ozioni
+</I>&gt;&gt;<i> avanzate di boot&quot; e la schermata dopo, dove posso scegliere di
+</I>&gt;&gt;<i> avviarlo in modalità recovery, non sta aperta abbastanza tempo perchè
+</I>&gt;&gt;<i> io possa selezionare qualcosa di diverso dalla prima riga che è il
+</I>&gt;&gt;<i> boot normale.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ho creato un nuovo utente con gnome shell ma facendo questo tutto
+</I>&gt;&gt;<i> quello che avevo nel mio utente resta li......tu dici di spostare
+</I>&gt;&gt;<i> tutto e riconfigurare il nuovo utente da capo?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> premesso che non l'ho mai fatto, ma così a occhio forse faccio prima a
+</I>&gt;&gt;<i> installarlo di nuovo non credi?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> grazie
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il 06/10/2014 09:01, Paolo Sammicheli ha scritto:
+</I>&gt;&gt;&gt;<i> Il 05/10/2014 13:49, roberto ha scritto:
+</I>&gt;&gt;&gt;&gt;<i> come faccio a creare un utente, premesso che non riesco ad arrivare ad
+</I>&gt;&gt;&gt;&gt;<i> un terminale....perche dalla schermata di grub il terminale che si
+</I>&gt;&gt;&gt;&gt;<i> avvia
+</I>&gt;&gt;&gt;&gt;<i> mi fa lavorare solo su &lt;grub&gt;....e quando il sistema è avviato con
+</I>&gt;&gt;&gt;&gt;<i> alt+f2 non mi apre il terminale....
+</I>&gt;&gt;&gt;<i> Nelle opzioni di boot dovresti avere (se non l'hai disabilitata) la
+</I>&gt;&gt;&gt;<i> recovery mode.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Oppure una volta completato il boot usando ctrl alt F1 (o anche F2, F3,
+</I>&gt;&gt;&gt;<i> F4, ecc) ti apre uno dei vari login testuali. Il login grafico lo trovi
+</I>&gt;&gt;&gt;<i> su CTRL ALT F7
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Ciao
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001881.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001885.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1882">[ Data ]</a>
+              <a href="thread.html#1882">[ Thread ]</a>
+              <a href="subject.html#1882">[ Oggetto ]</a>
+              <a href="author.html#1882">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

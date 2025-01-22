@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] [ ubuntu 9.10 aiuto per apt-get su netbeans 6.7.1 ]
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20%5B%20ubuntu%209.10%20aiuto%20per%20apt-get%20su%20netbeans%206.7.1%20%5D&In-Reply-To=%3C1258386972.2417.10.camel%40tux-desktop%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000895.html">
+   <LINK REL="Next"  HREF="000897.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] [ ubuntu 9.10 aiuto per apt-get su netbeans 6.7.1 ]</H1>
+    <B>tux</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20%5B%20ubuntu%209.10%20aiuto%20per%20apt-get%20su%20netbeans%206.7.1%20%5D&In-Reply-To=%3C1258386972.2417.10.camel%40tux-desktop%3E"
+       TITLE="[Tecnica] [ ubuntu 9.10 aiuto per apt-get su netbeans 6.7.1 ]">bullettux a gmail.com
+       </A><BR>
+    <I>Lun 16 Nov 2009 15:56:12 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000895.html">[Tecnica] AGGIORNAMENTO BASTAAAAAAAA
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000897.html">[Tecnica] [ ubuntu 9.10 aiuto per apt-get su netbeans 6.7.1 ]
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#896">[ Data ]</a>
+              <a href="thread.html#896">[ Thread ]</a>
+              <a href="subject.html#896">[ Oggetto ]</a>
+	      <a href="author.html#896">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao Ciao Ragazzi!!
+
+Premessa: lavoro con ubuntu gia' dalla 8.04 ma non sono espertissimo,
+ho molta strada da fare ancora XD ma mi muovo bene :)
+
+
+Ho un problema con NetBeans su ubuntu 9.10
+
+dopo aver fatto gli aggiornamenti di netbeans 6.7.1, quando
+aprivo un progetto ( anche nuovo ) mi dava un avviso del tipo che non
+trovava delle librerie ( una di queste era &quot;Jutil&quot; ) ed il progetto me
+lo segnalava con un'iconcina a pedice della tazza di colore giallo.
+
+cmq per non perdere tempo, da shell ho eseguito i seguenti comandi:
+
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+$sudo su
+
+#apt-get remove netbeans
+s
+#apt-get purge
+#restart
+---------------
+$sudo su
+
+#apt-get install netbeans
+s
+
+
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+ma mi dava sempre lo stesso problema.
+allora, molto furbamente ho pensato che era un problema di impostazioni
+e quindi ho fatto:
+
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+#apt-get remove netbeans
+s
+#apt-get purge
+#restart
+
+$ sudo su
+
+# cd /
+# find -name *netbeans*
+
+al fine di rimuovere ogni cosa riferito a netbeans. ma una volta che
+ho rifatto:
+
+$sudo su
+#apt-get install netbeans
+s
+
+°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+ache se ha installato tutto correttamente, non lo avvia..
+
+allora sono passato a synaptic scegliendo di installare netbeans e
+di disinstallarlo completamente, per poi installarlo di nuovo.
+(tante le volte avessi levato precedentemente qualche file neccessario
+per la disinstallazione completa) Ma non ho ottenuto nulla :(
+
+DOMANDA:
+
+esiste un modo per ripristinare tutto come prima?? ho davvero bisogno
+di netbeans per tirare avanti un progetto di esame, e so disperato !!
+
+vi rigrazio anticipatamente.
+
+Milton Gomez ( DaemonTux )
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000895.html">[Tecnica] AGGIORNAMENTO BASTAAAAAAAA
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000897.html">[Tecnica] [ ubuntu 9.10 aiuto per apt-get su netbeans 6.7.1 ]
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#896">[ Data ]</a>
+              <a href="thread.html#896">[ Thread ]</a>
+              <a href="subject.html#896">[ Oggetto ]</a>
+              <a href="author.html#896">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

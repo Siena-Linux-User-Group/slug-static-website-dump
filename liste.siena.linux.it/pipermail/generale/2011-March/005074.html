@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] problema upload php
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20problema%20upload%20php&In-Reply-To=%3CAANLkTinUvEC2L9SnuvwVSVmYbF1naSXoQ%2BVR_oCdy_T4%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005073.html">
+   <LINK REL="Next"  HREF="005075.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] problema upload php</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20problema%20upload%20php&In-Reply-To=%3CAANLkTinUvEC2L9SnuvwVSVmYbF1naSXoQ%2BVR_oCdy_T4%40mail.gmail.com%3E"
+       TITLE="[Generale] problema upload php">bartrosso a gmail.com
+       </A><BR>
+    <I>Gio 10 Mar 2011 20:14:38 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005073.html">[Generale] problema upload php
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005075.html">[Generale] problema upload php
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5074">[ Data ]</a>
+              <a href="thread.html#5074">[ Thread ]</a>
+              <a href="subject.html#5074">[ Oggetto ]</a>
+	      <a href="author.html#5074">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>si, infatti non ho un problema in upload CON i dati.
+ho un problema SENZA dati. c'è un enctype anche per un contenuto opzionale?
+
+tanga
+
+
+2011/3/10 Michele Pinassi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">michele.pinassi a gmail.com</A>&gt;
+
+&gt;<i> Ciao,
+</I>&gt;<i> hai usato l'encoding giusto per il form ? Esempio:
+</I>&gt;<i>
+</I>&gt;<i> &lt;form enctype='multipart/form-data' method='POST'&gt;
+</I>&gt;<i>            &lt;input type='hidden' name='action' value='imageUpload'&gt;
+</I>&gt;<i>                &lt;input type='hidden' name='MAX_FILE_SIZE' value='500000'&gt;
+</I>&gt;<i>                &lt;input name='myTitle' type='text'&gt;&lt;/div&gt;
+</I>&gt;<i>                           &lt;input name='userfile' type='file'&gt;
+</I>&gt;<i>            &lt;input type='submit' value='&quot;.getString(&quot;send&quot;).&quot;' /&gt;
+</I>&gt;<i>
+</I>&gt;<i> &lt;/form&gt;
+</I>&gt;<i>
+</I>&gt;<i> se non specifichi l'enctype non ti arriva nulla :-)
+</I>&gt;<i>
+</I>&gt;<i> Michele
+</I>&gt;<i>
+</I>&gt;<i> Il 10/03/2011 19:58, bartrosso ha scritto:
+</I>&gt;<i> &gt; scusate la domanda di informatica &quot;generica&quot;..
+</I>&gt;<i> &gt; php, form upload,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ho un problema su un form classico di upload in cui ho tre quattro
+</I>&gt;<i> &gt; info come nome cognome titolo di un libro anno ,
+</I>&gt;<i> &gt; e l'immagine della copertina.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; upload correttamente eseguito in tutti i casi di caratteri lunghezze
+</I>&gt;<i> &gt; pesi e formato.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; il problema sorge se di un libro non ho la copertina e il campo
+</I>&gt;<i> &gt; $_FILES resta vuoto.
+</I>&gt;<i> &gt; non mi dà nessun errore, semplicemente diventa tutto bianco e stop.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; error.log di apache nulla, a mysql manco gli arriva nulla, ho provato
+</I>&gt;<i> &gt; a commentare ogni singolo passaggio uno per volta, non cambia nulla.
+</I>&gt;<i> &gt; semplicemente sul primo campo isset ($_POST['submit']) si pianta tutto
+</I>&gt;<i> &gt; se il campo file è vuoto,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ho provato is_uploaded_file, empty, file size &gt; 0, file name =&quot;&quot;, con
+</I>&gt;<i> &gt; tutte le negazioni.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; vi è mai capitato?
+</I>&gt;<i> &gt; cosa stò sbagliando?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; grazie milel della pazienza.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; il niubbone tanga
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;<i> &gt; Debian..&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;<i> &gt; libero e totale tutta la conoscenza umana.»
+</I>&gt;<i> &gt; &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Generale mailing list
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> O-Zone ! No (C) since 1996
+</I>&gt;<i> On the road with VFR VTec 2002 &quot;Vuffy&quot;, on the net with Linux Slackware.
+</I>&gt;<i> Home+BLOG @ <A HREF="http://www.zerozone.it">http://www.zerozone.it</A> - Travels @ <A HREF="http://www.openitaly.net">http://www.openitaly.net</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Generale mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Sono ciò che sono grazie a quello che siamo tutti,
+
+
+
+un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare Debian..&quot;
+
+
+«Immagina se ogni persona sulla terra potesse condividere con accesso libero
+e totale tutta la conoscenza umana.»
+&#8212; Jimmy Wales, fondatore di Wikipedia
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20110310/e5fd6103/attachment.htm">http://liste.siena.linux.it/pipermail/generale/attachments/20110310/e5fd6103/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005073.html">[Generale] problema upload php
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005075.html">[Generale] problema upload php
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5074">[ Data ]</a>
+              <a href="thread.html#5074">[ Thread ]</a>
+              <a href="subject.html#5074">[ Oggetto ]</a>
+              <a href="author.html#5074">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

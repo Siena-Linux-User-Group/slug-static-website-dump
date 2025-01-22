@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] funzionamento rewrite url
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20funzionamento%20rewrite%20url&In-Reply-To=18A6D314-8149-4DEA-824B-38B420C88B2C%40email.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000341.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] funzionamento rewrite url</H1>
+    <B>Massimo Sandolo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20funzionamento%20rewrite%20url&In-Reply-To=18A6D314-8149-4DEA-824B-38B420C88B2C%40email.it"
+       TITLE="[Tecnica] funzionamento rewrite url">bastilani a email.it
+       </A><BR>
+    <I>Sab 30 Dic 2006 11:14:12 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000341.html">[Tecnica] funzionamento rewrite url
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#342">[ Data ]</a>
+              <a href="thread.html#342">[ Thread ]</a>
+              <a href="subject.html#342">[ Oggetto ]</a>
+	      <a href="author.html#342">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Allora, ok ho risolto in locale, in effetti c'erano delle direttive  
+di configurazione della document root che restringevano l'.htaccess
+Non so perchè non c'avevo fatto caso la prima volta, o meglio forse  
+perchè all'inizio lavoravo nella home dell'utente dove questi  
+parametri di Options e AllowOverride erano ad All.
+Però quello che non capisco è il perchè di alcuni comportamenti con  
+alcune configurazioni.
+
+Per esempio se io nella configurazione della document root ho Options  
+Indexes FollowSymLinks MultiViews, perchè se chiamo la pagina http:// 
+localhost/prova_rewrite/test/mondo.html e con regola di rewrite  
+RewriteRule ^prova/([^/]+).html test.php?id=$1 [L] lui mi chiama la  
+pagina test.php come se facesse il rewrite (cosa che forse mi  
+ingannava nel caso delle regola con il pattern ^test)ma non gli passa  
+i parametri? Se invece metto Options All lui quando richiamo la  
+pagina <A HREF="http://localhost/prova_rewrite/test/mondo.html">http://localhost/prova_rewrite/test/mondo.html</A> allora mi da  
+errore (giustamente) di pagina non trovata!
+Le options possibili sono all, execCGI, followSymLinks, Includes,  
+IncludesNOEXEC, Index, MultiViews, symlinksIfOwnerMatch ... provando  
+ad inserire tutte e 7 esclusa la all, continua a caricare la pagina  
+test.php anche se non dovrebbe, mentre se metto all no .. perchè?!  
+Dov'è il trucco? 
+ 
+ --
+ Email.it, the professional e-mail, gratis per te: <A HREF="http://www.email.it/f">http://www.email.it/f</A>
+ 
+ Sponsor:
+ Video Corsi GRATIS - Scopri come imparare velocemente e senza stress (Internet, Informatica, Web Marketing, Hobby
+ Clicca qui: <A HREF="http://adv.email.it/cgi-bin/foclick.cgi?midQ45&amp;d0-12">http://adv.email.it/cgi-bin/foclick.cgi?midQ45&amp;d0-12</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000341.html">[Tecnica] funzionamento rewrite url
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#342">[ Data ]</a>
+              <a href="thread.html#342">[ Thread ]</a>
+              <a href="subject.html#342">[ Oggetto ]</a>
+              <a href="author.html#342">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] casino con i permessi
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%20con%20i%20permessi&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="003307.html">
+   <LINK REL="Next"  HREF="003309.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] casino con i permessi</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%20con%20i%20permessi&In-Reply-To="
+       TITLE="[Generale] casino con i permessi">bartrosso a gmail.com
+       </A><BR>
+    <I>Lun  9 Mar 2009 17:26:32 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="003307.html">[Generale] Fwd: [toscana] HN 18 marzo 2009
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="003309.html">[Generale] casino con i permessi
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#3308">[ Data ]</a>
+              <a href="thread.html#3308">[ Thread ]</a>
+              <a href="subject.html#3308">[ Oggetto ]</a>
+	      <a href="author.html#3308">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ciao a tutti
+vi spiego la situazione
+ho installato exnovo su un pc con vista un dual boot winxp e ubuntu
+ho configurato un 2giornidilavoro di programmi
+ho copiato un 5oredipassaggio di dati
+poi non contento volevo impostare la priorità dell'utente su 777 per quel
+che riguardava alcune cartelle di Documenti
+quindi procedo con un chmod 777 Documenti
+ok
+apro e mi accorgo che a caombiato solo Doc. alora entro dentro doc e tutti
+sono ancora in boh mi sembra 644
+allora mi raschio il cervelo per ricordarmi il comando chmod -R er un
+autorizzazione ricorsiva
+così terminale e
+chmod -R 777 / tipico comando che imposta a TUTTO il disco i permessi 777
+così d non permettere più l'uso del dmbr (file che si occupa delle
+impsotazioni utente) e del usr/bin/sudo che necessita 644 per funzionare
+impossibile non so come mai tornare al 644
+dopo aver fatto questo riprovo a impostare usr/bin/ a 700 e non chiedetemi
+come mai, fate finta sia un esercizio, ma ho reimpostato tutto il disco a
+700
+ora mi ritrovo nella configurazione di non riuscire a fare più nulla con
+l'utente sara
+ora da recovery mode ho creato un utente francesco poi cp -a home francesco
+home sara
+poi chown -R home sara
+e remove di francesco
+risutato:
+LA SESSIONE E' DURATA MENO DI DIECI SECONDI, SE IL PROBLEMA PERSISTE TROVATE
+UNA SOLUZIONE
+
+ditemi voi, c'è un mdo per ripristinare i permessi di default di un utente?
+il primo problem era che non cancellava una cartella ora non accede manco
+più al sistema
+tanga
+
+grazie mille
+vi devo una birra
+
+-- 
+Un giorno ti svegli,apri gli occhi,
+e vedi il mondo intorno a te, luminoso.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20090309/1b8d19df/attachment.htm">http://liste.siena.linux.it/pipermail/generale/attachments/20090309/1b8d19df/attachment.htm</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="003307.html">[Generale] Fwd: [toscana] HN 18 marzo 2009
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="003309.html">[Generale] casino con i permessi
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#3308">[ Data ]</a>
+              <a href="thread.html#3308">[ Thread ]</a>
+              <a href="subject.html#3308">[ Oggetto ]</a>
+              <a href="author.html#3308">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

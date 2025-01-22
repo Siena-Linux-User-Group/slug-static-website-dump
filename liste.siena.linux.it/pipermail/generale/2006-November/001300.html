@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=87c98d450611221629k10de8087u386293029d2f1ff0%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001329.html">
+   <LINK REL="Next"  HREF="001302.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=87c98d450611221629k10de8087u386293029d2f1ff0%40mail.gmail.com"
+       TITLE="[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali">pragma a siena.linux.it
+       </A><BR>
+    <I>Gio 23 Nov 2006 02:04:06 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001329.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001302.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1300">[ Data ]</a>
+              <a href="thread.html#1300">[ Thread ]</a>
+              <a href="subject.html#1300">[ Oggetto ]</a>
+	      <a href="author.html#1300">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 23 November 2006 01:29, Yusef Maali wrote:
+
+&gt;<i> ma allora la gestione di array multimensionali del Perl è del tutto
+</I>&gt;<i> simile (almeno da un punto di vista concettuale) a quella del C, o
+</I>&gt;<i> sbaglio?
+</I>&gt;<i> Da una parte hai references e dall'altra i puntatori.
+</I>
+No, appunto.
+
+La differenza è la seguente.
+
+In C la matrice tridimensionale
+
+	int pippo[3][3][3];
+
+è una roba che in memoria occupa uno spazio
+contiguo di 3*3*3*sizeof(int) bytes.
+
+Sintatticamente &quot;pippo&quot; preso da solo, senza indici,
+è il puntatore al primo elemento di un array lineare (=monodimensionale)
+di 27 elementi interi.
+
+       |pippo|
+         |
+         |
+         |
+        |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+        |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |  ^  |
+        |                 |                 |                 |
+         riga1 riga2 riga3 riga1 riga2 riga3 riga1 riga2 riga3
+              piano 1           piano 2           piano 3
+                         matrice 3 dimensionale
+
+
+Se incrementi pippo
+
+	pippo++;
+
+punti al secondo elemento.
+
+Se lo incrementi 3 volte punti al quarto elemento dell'array lineare
+ovvero alla seconda &quot;riga&quot; del primo &quot;piano&quot; della matrice tridimensionale...
+
+Se lo incrementi 9 volte punti al primo elemento della prima &quot;riga&quot; del 
+secondo &quot;piano&quot; della matrice tridimensionale.
+
+L'equivalenza matrice &lt;-&gt; array lineare è molto fica perchè puoi maneggiare
+una roba in N-dimensioni come un singolo blocco.
+
+Pensa ad esempio agli algoritmi di manipolazione delle immagini.
+L'immagine è una matrice bidimensionale di pixel (immaginiamola in scala di 
+grigi). 
+
+	unsigned char immagine[100][100];
+
+Prima di tutto posso spostarla in memoria con un semplice memmove()
+e schiaffarla su disco scrivendo l'intero blocco in una botta sola.
+
+Immagina poi di voler aumentare del 10% la luminosità dell'immagine (mediante 
+un algoritmo brutale a moltiplicazione che produce pure artefatti nonchè 
+probabilmente warning del compilatore...)
+
+L'algoritmo che pensa alla matrice è il seguente:
+
+	for(int i=0;i&lt;100;i++)
+	{
+		for(int j=0;j&lt;100;j++)
+		{
+			immagine[i][j] = (immagine[i][j] * 11) / 10;
+		}
+	}
+
+L'algoritmo che pensa all'array lineare è il seguente
+
+	unsigned char * p = immagine;
+	unsigned char * fine = p + (100 * 100);
+	while(p &lt; fine)
+	{
+		*p = (*p * 11) / 10;
+		p++;
+	}
+
+Nota che il primo algoritmo usa due indici e fa 10% di confronti ed
+incrementi in più (è dimostrabile).
+
+In perl la scrittura
+	
+	$pippo[3][3][3]
+
+è una roba che è solo sintatticamente simile ad una matrice
+tridimensionale.
+
+In memoria è un aggeggio che _semplificando_ può essere schematizzato
+come una specie di albero:
+
+	|-ref-|-ref-|-ref-|
+           |     |     |
+	   |     |     +&gt; |-ref-|-ref-|-ref-|
+	   |     |           |     |     |
+           |     |           |     |     +-&gt; |--?--|--?--|--?--|
+           |     |           |     +-------&gt; |--?--|--?--|--?--|
+           |     |           +-------------&gt; |--?--|--?--|--?--|
+           |     |     
+	   |     +-----+&gt; |-ref-|-ref-|-ref-|
+	   |                 |     |     |
+           |                 |     |     +-&gt; |--?--|--?--|--?--|
+           |                 |     +-------&gt; |--?--|--?--|--?--|
+           |                 +-------------&gt; |--?--|--?--|--?--|
+           |           
+	   +-----------+&gt; |-ref-|-ref-|-ref-|
+	                     |     |     |
+                             |     |     +-&gt; |--?--|--?--|--?--|
+                             |     +-------&gt; |--?--|--?--|--?--|
+                             +-------------&gt; |--?--|--?--|--?--|
+
+
+Dove ogni sotto-array lineare occupa un intervallo di memoria distinto.
+Nota che questo aggeggio occupa pure molta più memoria di quello in C.
+
+Fra l'altro non puoi scrivere una versione ottimizzata dell'algoritmo
+di manipolazione delle immagini: devi per forza usare gli indici.
+I references, insomma, sono simili ai puntatori solo per certi aspetti: 
+puoi &quot;dereferenziarli&quot; ma non ci puoi fare aritmetica, ad esempio.
+
+[--- da qui in poi c'è la pazzia: chi non è malato di cervello non legga ---]
+
+Che poi, volendo togliere la semplificazione, gli array del perl
+sono pure array di oggetti che comunemente si chiamano &quot;variant&quot;:
+sono variabili con tipo &quot;mutevole&quot;. Per implementare sta cosa
+in realtà uno scalare perl è un qualcosa di simile ad un puntatore
+ad un area di memoria variabile.
+
+  $pippo ==    |puntatore|
+                     |
+                     |----- qualcosa ----|
+
+Dove il &quot;qualcosa&quot; è una stringa, un numero o un reference, magari.
+Un array di scalari perl è quindi un array lineare di puntatori
+ad oggetti di dimensione variabile (un albero a due livelli di per se).
+
+Quindi $pippo[3][3][3] in realtà ha 6 livelli e non 3 come mostrato
+in precedenza.
+
+Inoltre è evidente che la dimensione di uno scalare in perl non corrisponde 
+assolutamente alla dimensione che avresti in C per lo stesso tipo di dati.
+
+Anzi, volendo complicarci la vita del tutto, $pippo non contiene solo un 
+puntatore ma anche un qualche campo che definisce il tipo di quello che viene 
+puntato. La dimensione in memoria, quindi, è ancora più grande...
+
+Una cosa simile si verifica sostanzialmente in tutti i linguaggi interpretati 
+non strettamente tipizzati: perl, php, il linguaggio del matlab e perfino 
+KVS. Se non hai i tipi devi per forza avere dei variant...che nel caso
+più semplice possono essere delle stringhe che rappresentano tutti
+gli altri tipi di dato... come ad esempio in bash.
+
+<A HREF="https://cvs.kvirc.de/kvirc/cvsweb/~checkout~/kvirccvs/kvirc/src/kvirc/kvs/kvi_kvs_variant.h">https://cvs.kvirc.de/kvirc/cvsweb/~checkout~/kvirccvs/kvirc/src/kvirc/kvs/kvi_kvs_variant.h</A>
+
+Riassumendo:
+
+- In C un array multidimensionale (o matrice multidimensionale) è assimilabile
+  ad un array lineare, è manipolabile tramite (aritmetica dei) puntatori e
+  occupa il minimo spazio possibile in memoria.
+
+- In perl un array multidimensionale (o matrice multidimensionale)
+  lo è solo sintatticamente ed in realtà è una struttura dati
+  abbastanza complessa (in particolare ad albero), quasi mai
+  contigua in memoria. Non è manipolabile tramite aritmetica
+  dei puntatori.
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Programmers never die , they just GOSUB and never RETURN
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20061123/b84d2498/attachment-0001.pgp">http://liste.siena.linux.it/pipermail/generale/attachments/20061123/b84d2498/attachment-0001.pgp</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001329.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001302.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1300">[ Data ]</a>
+              <a href="thread.html#1300">[ Thread ]</a>
+              <a href="subject.html#1300">[ Oggetto ]</a>
+              <a href="author.html#1300">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

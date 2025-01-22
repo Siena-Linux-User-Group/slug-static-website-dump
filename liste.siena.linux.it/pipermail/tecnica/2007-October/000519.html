@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] configurazione di rete
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000521.html">
+   <LINK REL="Next"  HREF="000520.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] configurazione di rete</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To="
+       TITLE="[Tecnica] configurazione di rete">dinogen a yahoo.com
+       </A><BR>
+    <I>Mer  3 Ott 2007 08:13:21 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000521.html">[Tecnica] configurazione di rete
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000520.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#519">[ Data ]</a>
+              <a href="thread.html#519">[ Thread ]</a>
+              <a href="subject.html#519">[ Oggetto ]</a>
+	      <a href="author.html#519">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok, ho capito:
+Prima di tutto lascia perdere l'interfaccia grafica e apri un bel terminale.
+La prima cosa è capire se la rete funziona con il comando
+ping indirizzo
+dove indirizzo è l'IP dell'altro computer.
+
+Se hai il reply la rete funziona. Altrimenti devi sistemare prima questa.
+
+Se la rete funziona si prova samba.
+Edita il file di configurazione, leggi bene il mauale in italiano riguardo a questo file. Usa all'inizio l'opzione SHARE.
+Poi esegui il comando testparm. Serve a vedere se il file di conf. è a posto.
+
+Dopo di che sempre nel terminale usa l'utility smbclient che si collega sia all'altro server samba o anche a quello che è sulla macchina stessa.
+
+Leggi il manuale di smbclient su internet oppure con il comando 
+man smbclient.
+
+
+ 
+________________________________
+Marcello Semboli
+<A HREF="http://dinogen.hacknight.org">http://dinogen.hacknight.org</A>
+
+----- Messaggio originale -----
+Da: roberto volpini &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt;
+A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+Inviato: Martedì 2 ottobre 2007, 17:47:22
+Oggetto: Re: [Tecnica] configurazione di rete
+
+bene.....andiamo con ordine....ieri non mi sono spiegato a dovere:
+
+in pratica ho tentato di configurare samba per creare una rete tra 2 
+ubuntu+1 router...ma siccome non ci avevo levato le gambe ho tentato di 
+configurarla anche con NFS...
+ho seguito i consigli che mi avete dato per samba...ma senza nessun 
+risultato....nel menu risorse-rete non ci sono cartelle condivise.....
+
+con NFS invece sono riuscito a pingare gli indirizzi ma non riesco ad 
+accedervi.....come faccio?
+
+grazie a tutti
+
+roberto
+
+
+_______________________________________________
+Tecnica mailing list
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+
+
+
+
+
+      ___________________________________ 
+L'email della prossima generazione? Puoi averla con la nuova Yahoo! Mail: <A HREF="http://it.docs.yahoo.com/nowyoucan.html">http://it.docs.yahoo.com/nowyoucan.html</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000521.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000520.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#519">[ Data ]</a>
+              <a href="thread.html#519">[ Thread ]</a>
+              <a href="subject.html#519">[ Oggetto ]</a>
+              <a href="author.html#519">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

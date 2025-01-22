@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Router con iptables
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C59B8E9BA-6AE2-439E-A0B6-11F23F8CC36A%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001008.html">
+   <LINK REL="Next"  HREF="000999.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Router con iptables</H1>
+    <B>Andrea Ciani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C59B8E9BA-6AE2-439E-A0B6-11F23F8CC36A%40gmail.com%3E"
+       TITLE="[Tecnica] Router con iptables">cianiandrea10 a gmail.com
+       </A><BR>
+    <I>Ven 26 Mar 2010 11:37:45 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001008.html">[Tecnica] VNC scomparso
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000999.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#998">[ Data ]</a>
+              <a href="thread.html#998">[ Thread ]</a>
+              <a href="subject.html#998">[ Oggetto ]</a>
+	      <a href="author.html#998">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+
+stavo configurando un router/firewall con linux ubuntu server utilizzando le iptables.
+
+Ho 2 schede di rete chiamate eht0 (LAN) ed eth1 (collegata a sua volta con un modem/router di fastweb).
+
+Ho creato un DHCP che assegna correttamente gli indirizzi nella lan. La scheda eth0 ha indirizzo 192.168.0.2 e la eth1 invece prende gli ip direttamente da fastweb.
+
+Il computer è correttamente connesso a internet (ho provato e testato con wget) e la eth0 è correttamente configurata in lan (ho provato a scambiare risorse condivise e funziona tutto).
+
+Però, come faccio a far andare i computer della lan su internet?? Perché non riescono a dialogare??
+
+Con iptables ho inserito le seguenti regole:
+
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+
+ed ho inserito la seguente riga nel file /etc/sysctl.conf
+
+net.ipv4.ip_forward = 1
+
+riavviando ho notato che iptables aveva mantenuto i settaggi, però ancora niente internet dalla LAN!!! Perché?? Cosa ho sbagliato?? Qualcuno mi saprebbe dare una mano?
+
+-----------------------------------------------
+Andrea Ciani
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/c389da3d/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/c389da3d/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001008.html">[Tecnica] VNC scomparso
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000999.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#998">[ Data ]</a>
+              <a href="thread.html#998">[ Thread ]</a>
+              <a href="subject.html#998">[ Oggetto ]</a>
+              <a href="author.html#998">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

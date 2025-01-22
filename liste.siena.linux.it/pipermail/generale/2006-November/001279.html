@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] ubuntu aggiornata
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20ubuntu%20aggiornata&In-Reply-To=f6601ceb0611160353w6a9bb9adv83ebfee8479b80ee%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001278.html">
+   <LINK REL="Next"  HREF="001283.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] ubuntu aggiornata</H1>
+    <B>Daniele Paganelli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20ubuntu%20aggiornata&In-Reply-To=f6601ceb0611160353w6a9bb9adv83ebfee8479b80ee%40mail.gmail.com"
+       TITLE="[Generale] ubuntu aggiornata">daniele a modena1.it
+       </A><BR>
+    <I>Gio 16 Nov 2006 13:15:55 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001278.html">[Generale] ubuntu aggiornata
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001283.html">[Generale] ubuntu aggiornata
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1279">[ Data ]</a>
+              <a href="thread.html#1279">[ Thread ]</a>
+              <a href="subject.html#1279">[ Oggetto ]</a>
+	      <a href="author.html#1279">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 12:53, giovedì 16 novembre 2006, Freeze North Pole ha scritto:
+&gt;<i> /usr/lib/xorg/modules/extensions/libGLcore.sd
+</I>
+1- Controlla se questo file esiste.
+ 
+2- Guarda nei file di log, tipo /var/log/Xorg.0.log. Alla fine dovrebbe 
+esserci indicato il motivo dettagliato del crash. Controlla l'errore e 
+postacelo.
+
+3- Postaci la Section &quot;Module&quot; del file /etc/X11/xorg.conf. Dovrebbe esserci 
+un load &quot;glcore&quot;. Prova a commentarlo:
+#    Load           &quot;glcore&quot;
+Oppure prova a cavare Load &quot;glx&quot; (la sparo a caso).
+
+NOTA: prima di modificare il file xorg.conf, crea un backup
+cp /etc/X11/xorg.conf /etc/X11/xorg.conf.backup
+
+-- 
+<A HREF="http://daniele.homelinux.org">http://daniele.homelinux.org</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001278.html">[Generale] ubuntu aggiornata
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001283.html">[Generale] ubuntu aggiornata
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1279">[ Data ]</a>
+              <a href="thread.html#1279">[ Thread ]</a>
+              <a href="subject.html#1279">[ Oggetto ]</a>
+              <a href="author.html#1279">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

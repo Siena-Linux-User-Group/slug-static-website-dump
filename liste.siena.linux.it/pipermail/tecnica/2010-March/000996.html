@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Koala Karmico e NVIDIA
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Koala%20Karmico%20e%20NVIDIA&In-Reply-To=%3C2bab69c91003231512x2ffa2e97qaabc445b088736d5%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000995.html">
+   <LINK REL="Next"  HREF="000997.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Koala Karmico e NVIDIA</H1>
+    <B>Iacopo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Koala%20Karmico%20e%20NVIDIA&In-Reply-To=%3C2bab69c91003231512x2ffa2e97qaabc445b088736d5%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Koala Karmico e NVIDIA">iakko a siena.linux.it
+       </A><BR>
+    <I>Mar 23 Mar 2010 22:12:32 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000995.html">[Tecnica] Koala Karmico e NVIDIA
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000997.html">[Tecnica] VNC scomparso
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#996">[ Data ]</a>
+              <a href="thread.html#996">[ Thread ]</a>
+              <a href="subject.html#996">[ Oggetto ]</a>
+	      <a href="author.html#996">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Pure io ho un VAIO a 64 bit con ubuntu 9.10 e una Nvidia GeForce 9300M
+GS di qualche annetto fa che va benone (accelerazione 3D inclusa)
+usando i driver proprietari.
+
+Anche se il pc ti rimane su schermo nero, sono confidente sul fatto
+che i servizi siano partiti tutti e quindi puoi provare ad entrare
+dentro in ssh. In questo modo, puoi leggerti i file di log di xorg
+(/var/log/Xorg.0.log). Scommetto che li' dentro troverai le
+informazioni che ti servono per capire il problema.
+
+Se non puoi entrare in ssh da un altro pc. prova a disabilitare
+l'avvio automatico di kdm/gdm (update-rc.d -f kdm/gdm remove), riavvii
+il pc e dovrebbe darti direttamente il prompt. A questo punto, ti
+loggi e avvii a mano con sudo service kdm/gdm start e vedi cosa
+succede. Se e' come penso (cioe' il modulo non riconosce la scheda)
+dovrebbe tornarti al prompt. In ogni caso ti guardi i log e poi ci
+dici.
+
+-- 
+Iacopo Palazzi
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000995.html">[Tecnica] Koala Karmico e NVIDIA
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000997.html">[Tecnica] VNC scomparso
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#996">[ Data ]</a>
+              <a href="thread.html#996">[ Thread ]</a>
+              <a href="subject.html#996">[ Oggetto ]</a>
+              <a href="author.html#996">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

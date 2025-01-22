@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Curiosità su Netfilter
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FCuriosit%3DE0_su_Netfilter%3F%3D&In-Reply-To=200901051643.13936.contact%40yusefmaali.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000728.html">
+   <LINK REL="Next"  HREF="000730.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Curiosità su Netfilter</H1>
+    <B>Szymon Tomasz Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FCuriosit%3DE0_su_Netfilter%3F%3D&In-Reply-To=200901051643.13936.contact%40yusefmaali.net"
+       TITLE="[Tecnica] Curiosità su Netfilter">pragma a siena.linux.it
+       </A><BR>
+    <I>Lun  5 Gen 2009 23:07:36 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000728.html">[Tecnica] Curiosità su Netfilter
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000730.html">[Tecnica] Curiosità su Netfilter
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#729">[ Data ]</a>
+              <a href="thread.html#729">[ Thread ]</a>
+              <a href="subject.html#729">[ Oggetto ]</a>
+	      <a href="author.html#729">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 05 January 2009, Yusef Maali wrote:
+&gt;<i> Salve a tutti,
+</I>&gt;<i> spippolando con iptables mi è venuta una curiosità che non so bene come
+</I>&gt;<i> soddisfare.
+</I>&gt;<i>
+</I>&gt;<i> Ho un'interfaccia di rete eth0, attiva ma non configurata, sulla quale creo
+</I>&gt;<i> tramite PPPoE un'interfaccia virtuale (si chiamano virtuali questo tipo di
+</I>&gt;<i> interfacce? virtuale, logica, ...) ppp0. Siccome la eth0 è connessa
+</I>&gt;<i> direttamente alla rete interna di un noto provider rosiniano, mentre la
+</I>&gt;<i> ppp0 è connessa via point-to-point sul gateway di tale provider, mi chiedo:
+</I>&gt;<i> Posso impostare regole di filtraggio diverse per le due interfacce?
+</I>
+Se ho interpretato bene la domanda, si:
+
+iptables ... -o interfaccia ...
+iptables ... -i interfaccia ...
+
+&gt;<i> Netfilter è intelligente a sufficienza da sapere che nonostante condividano
+</I>&gt;<i> la stessa interfaccia fisica, in realtà sono due cose ben distinte?
+</I>
+Si.
+
+Iptables opera su interfaccie logiche non su devices fisici.
+Infatti puoi fare filtraggio su &quot;lo&quot;, che non ha dispositivo fisico 
+associato...
+
+Quello che non puoi fare nel tuo caso è filtrare il traffico PPPoE
+sulla eth0. Questo perchè i pacchetti PPPoE sono &quot;sotto&quot; il livello
+IP e non entrano nel flusso di iptables. Il contenuto dello stream
+PPPoE lo vedi apparire direttamente da ppp0.
+
+Sulla eth0, quindi, puoi filtrare i pacchetti _IP_ che vanno direttamente alle
+macchine connesse via ethernet.
+
+Questo in generale... poi non mi stupirei se rovistando su netfilter.org
+tu trovassi una qualche patch malefica che ti permette di matchare
+il PPPoE direttamente su eth0... nello stack di rete la gente ci fa le
+peggio porcate :D
+
+Szymon Tomasz Stefanek
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000728.html">[Tecnica] Curiosità su Netfilter
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000730.html">[Tecnica] Curiosità su Netfilter
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#729">[ Data ]</a>
+              <a href="thread.html#729">[ Thread ]</a>
+              <a href="subject.html#729">[ Oggetto ]</a>
+              <a href="author.html#729">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

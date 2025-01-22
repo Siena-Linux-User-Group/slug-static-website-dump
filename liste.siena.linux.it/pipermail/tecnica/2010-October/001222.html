@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ... problemini africani ... ;)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTim2TXn9AaSZmGTOUnVwVy1G0iEp-W_N7c2gDcVQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001221.html">
+   <LINK REL="Next"  HREF="001223.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ... problemini africani ... ;)</H1>
+    <B>Simone Soldateschi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTim2TXn9AaSZmGTOUnVwVy1G0iEp-W_N7c2gDcVQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] ... problemini africani ... ;)">simone.soldateschi a gmail.com
+       </A><BR>
+    <I>Sab 16 Ott 2010 21:47:25 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001221.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001223.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1222">[ Data ]</a>
+              <a href="thread.html#1222">[ Thread ]</a>
+              <a href="subject.html#1222">[ Oggetto ]</a>
+	      <a href="author.html#1222">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/10/16 Paolo Sammicheli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xdatap1 a siena.linux.it</A>&gt;
+
+&gt;<i> Alle 18:40 del 16/10/2010, Simone Soldateschi ha scritto:
+</I>&gt;<i> &gt; controlla che esista il file './continua': se esiste allora esegue 'do
+</I>&gt;<i> stuff
+</I>&gt;<i> &gt; here', altrimenti termina ;)
+</I>&gt;<i>
+</I>&gt;<i> Nè tu né Raul nell'altra mail avete risposto.
+</I>&gt;<i>
+</I>
+??
+
+
+&gt;<i> Il problema è testare il codice di ritorno di un RSYNC, non l'esistenza di
+</I>&gt;<i> un file o una
+</I>&gt;<i> variabile.
+</I>&gt;<i>
+</I>&gt;<i> Nella manpage di RSYNC non ho trovato nulla, come si ricava l'esito del
+</I>&gt;<i> comando RSYNC?
+</I>&gt;<i>
+</I>
+in bash il codice di errore di qualsiasi programma si indica con:
+
+    $?
+
+quindi se, ad esempio, volessi sapere qual è il codice di errore restituito
+dall'esecuzione di 'date':
+
+    $ date &amp;&amp; echo $?
+    Sat Oct 16 22:45:50 CEST 2010
+    0
+
+Verificare l'esistenza di un file era esemplificativo, ed infatti l'ho fatto
+con ls:
+
+    ls continua
+
+verificando poi il codice di errore di 'ls' con '$?' piuttosto che usare la
+forma corretta per vedere se un file esiste:
+
+    if [ -e continua ]; then ...
+
+proprio per mostrare l'uso del codice di errore restituito da un programma
+qualsiasi ;)
+
+Per quanto riguarda i codici di errore restituiti da 'rsync' il man dice:
+
+EXIT VALUES
+       0      Success
+       1      Syntax or usage error
+       2      Protocol incompatibility
+       3      Errors selecting input/output files, dirs
+       4      Requested  action  not  supported:  an  attempt was made to
+manipulate 64-bit files on a platform that cannot support them; or an option
+was
+              specified that is supported by the client and not by the
+server.
+       5      Error starting client-server protocol
+       6      Daemon unable to append to log-file
+       10     Error in socket I/O
+       11     Error in file I/O
+       12     Error in rsync protocol data stream
+       13     Errors with program diagnostics
+       14     Error in IPC code
+       20     Received SIGUSR1 or SIGINT
+       21     Some error returned by waitpid()
+       22     Error allocating core memory buffers
+       23     Partial transfer due to error
+       24     Partial transfer due to vanished source files
+       25     The --max-delete limit stopped deletions
+       30     Timeout in data send/receive
+       35     Timeout waiting for daemon connection
+
+
+ciao
+
+
+// SS
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/7133cbf3/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/7133cbf3/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001221.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001223.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1222">[ Data ]</a>
+              <a href="thread.html#1222">[ Thread ]</a>
+              <a href="subject.html#1222">[ Oggetto ]</a>
+              <a href="author.html#1222">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

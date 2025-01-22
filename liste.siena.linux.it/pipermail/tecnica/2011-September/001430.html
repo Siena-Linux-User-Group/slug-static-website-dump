@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Asus P5LP-LE
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Asus%20P5LP-LE&In-Reply-To=%3CCA%2Bn2inAs_%2Bxq1zpViWrFspewF4CAhcGTded1nvBnDgDfq0_myg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001429.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Asus P5LP-LE</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Asus%20P5LP-LE&In-Reply-To=%3CCA%2Bn2inAs_%2Bxq1zpViWrFspewF4CAhcGTded1nvBnDgDfq0_myg%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Asus P5LP-LE">polva86 a gmail.com
+       </A><BR>
+    <I>Gio 22 Set 2011 13:13:00 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001429.html">[Tecnica] Asus P5LP-LE
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1430">[ Data ]</a>
+              <a href="thread.html#1430">[ Thread ]</a>
+              <a href="subject.html#1430">[ Oggetto ]</a>
+	      <a href="author.html#1430">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Io ho lo stesso problema col mio portatile Toshiba Satellite L300-1AY con
+Intel Core2Duo T5800 (credo abbiano anche lo stesso socket, l'LGA775, e/o
+comunque un'architettura hardware molto simile). Ho montato diverse
+distribuzioni (K/X/Ubuntu e Debian le principali che ho tenuto più a lungo).
+All'accensione la ventola ha giri lentissimi finchè evidentemente la CPU non
+raggiunge la temperatura che li fa aumentare. Ma invece di diminuire dopo un
+po' i giri rimangono al massimo per ore, con l'aria gelida che esce dal
+canale della dissipazione. Continua finchè non si arresta il sistema.
+Poi mi è venuto in mente una cosa: è probabile che sia correlato alle
+tabelle ACPI (una &quot;sezione&quot; del sistema operativo di bassissimo livello che
+è caricata all'avvio che si occupa di gestire tutto ciò che è relativo alla
+alimentazione, come sospensioni, stati S3,S4,S5, periferiche lasciate
+sottotensione allo spegnimento e simili).
+Queste tabelle di predefinito trasportano al kernel i settaggi del BIOS in
+fase di boot; ma se correttamente settate possono aggirare le impostazioni
+mancanti/errate del BIOS stesso.
+Qua &lt;<A HREF="http://guide.debianizzati.org/index.php/ACPI_e_DSDT">http://guide.debianizzati.org/index.php/ACPI_e_DSDT</A>&gt; una piccola ed
+esauriente guida su come editare e compilare il relativo file binario.
+Ora il fatto sta solo nel riuscire a trovare dove viene gestito l'RPM delle
+ventole.
+Non so se è la via risolutiva ma probabilmente ci si avvicina e può essere
+una strada da percorrere.
+Il Polva.
+
+Il giorno 22 settembre 2011 13:36, Luigi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pergigi49 a gmail.com</A>&gt; ha scritto:
+
+&gt;<i> Il 21/09/2011 21:26, daniele masti ha scritto:
+</I>&gt;<i> &gt; salve
+</I>&gt;<i> &gt; di solito le asus hanno un impostazione da bion (qfan) che permette la
+</I>&gt;<i> &gt; gestione automatica delle ventole direttamente dallo stesso
+</I>&gt;<i>
+</I>&gt;<i> C'avevo pensato, ma non l'ho trovato ... comunque, quando riavrò il PC
+</I>&gt;<i> tra le mani (non è mio ed è a Firenze), controllerò meglio ...
+</I>&gt;<i>
+</I>&gt;<i> Altre idee?
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20110922/25b79060/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20110922/25b79060/attachment.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001429.html">[Tecnica] Asus P5LP-LE
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1430">[ Data ]</a>
+              <a href="thread.html#1430">[ Thread ]</a>
+              <a href="subject.html#1430">[ Oggetto ]</a>
+              <a href="author.html#1430">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

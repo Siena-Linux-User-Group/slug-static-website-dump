@@ -1,0 +1,87 @@
+From roberto.volpini a mail.com  Sun Apr 16 10:12:31 2023
+From: roberto.volpini a mail.com (roberto volpini)
+Date: Sun, 16 Apr 2023 11:12:31 +0200
+Subject: [Tecnica] grub in debian
+Message-ID: <trinity-98d8c206-bd61-4675-800d-cb28050d8b49-1681636351352@3c-app-mailcom-lxa01>
+
+Un allegato HTML è stato rimosso...
+URL: <http://liste.siena.linux.it/pipermail/tecnica/attachments/20230416/300dcb54/attachment.htm>
+
+From bruniemanuele a live.com  Sun Apr 16 14:18:55 2023
+From: bruniemanuele a live.com (Emanuele bruni)
+Date: Sun, 16 Apr 2023 13:18:55 +0000
+Subject: [Tecnica] R:  grub in debian
+In-Reply-To: <trinity-98d8c206-bd61-4675-800d-cb28050d8b49-1681636351352@3c-app-mailcom-lxa01>
+References: <trinity-98d8c206-bd61-4675-800d-cb28050d8b49-1681636351352@3c-app-mailcom-lxa01>
+Message-ID: <DB9P193MB11646248DFBD03E8561DBD51DF9F9@DB9P193MB1164.EURP193.PROD.OUTLOOK.COM>
+
+(Odio, queste interfacce che ti forzano a quotare sotto. Le odio)
+
+Ti consiglio di provare a scaricare ed usare rescatux da qui oppure direttamente superbgrubdisk2, le ultime volte che ho avuto problemi con GRUB sono state sufficienti.
+
+https://www.supergrubdisk.org/
+Rescue your Windows & GNU/Linux systems<https://www.supergrubdisk.org/>
+Rescatux Fixes GRUB / GRUB2 Many UEFI boot options Check and fix filesystems Clear Windows password Change Gnu/Linux password Regenerate sudoers file And much more features? How to put Rescatux into a CDROM or a USB ~ 672 MB Size Super Grub2 Disk Boots into many systems and GRUB2 ones! Helps you to fix your GRUB or
+www.supergrubdisk.org
+
+L'alternativa è studiarsi il manuale di GRUB ma non facile, anzi diciamo che è decisamente superiore a quanto tempo ci potrei investire purtuttavia qui:
+
+https://phoenixnap.com/kb/grub-rescue
+[https://phoenixnap.com/kb/wp-content/uploads/2021/12/how-to-use-grub-rescue-to-fix-linux-boot-failure.png]<https://phoenixnap.com/kb/grub-rescue>
+How to Use Grub Rescue to Fix Linux Boot Failure | phoenixNAP KB<https://phoenixnap.com/kb/grub-rescue>
+Use Grub Rescue or the Boot Repair tool to fix Linux boot failure. Follow the steps in this article to quickly solve some common boot issues.
+phoenixnap.com
+
+
+trovi un po' di istruzioni se rescatux/SGD non dovessero bastare.
+
+Spero tu possa risolvere,
+
+aloha!
+blackhat.
+
+
+________________________________
+Da: tecnica-bounces a liste.siena.linux.it <tecnica-bounces a liste.siena.linux.it> per conto di roberto volpini <roberto.volpini a mail.com>
+Inviato: domenica 16 aprile 2023 09:12
+A: tecnica a liste.siena.linux.it <tecnica a liste.siena.linux.it>
+Oggetto: [Tecnica] grub in debian
+
+Ciao a tutti, scrivo per avere dei chiarimenti riguardo l'installazione di grub in debian 11
+
+Bene sono ormai anni che uso ubuntu con il quale mi sono sempre trovato molto bene,purtroppo nelle ultime versioni ho dei problemi ho pertanto pensato di trasferirmi in debian.
+
+Ho scaricato la versione live nonfree, e l'ho installata in una macchina virtuale senza riscontrare nessun problema, a seguire ho preparato una chiavetta usb per fare l'installazione permanente.
+Avviata la chiavetta, la live si avvia e funziona senza problemi di sorta.
+
+Purtroppo finita l'installazione nel pc, mi ritrovo con una shell nella quale c'è scritto "grub" e il cursore che lampeggia....
+Se non ho capito male, di fatto il sistema operativo all'avvio non trova il bootloader e mi chiede dove andarlo a prendere.
+Per cui in automatico non viene installato correttamente. Vi chiedo: come faccio a dirgli dove andare a installarlo? Oppure come ripristinarlo, premesso che ho seguito delle guide per il ripristino che non hanno portato a nessun  risultato.
+
+In ubuntu nella schermata di partizionamento c'è una riga nella quale puoi specificare dove installarlo se l'indirizzo di defaut non andasse bene, in debian non l'ho vista.
+
+l pc è un portatile con due partizioni entrambe ext4 , una di storage e l'altra per il sistema operativo, nella tabella delle partizioni è presente la partizione di uefi.
+
+Un ultima cosa, avrei volentieri usato il  forum italiano di debian, purtroppo non sono riuscito a iscrivermi... e cercando tra i post non ho trovato nessuno con il mio stesso problema
+
+Grazie per il tempo che gentilmente potrete e vorrete dedicarmi
+
+Roberto
+
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <http://liste.siena.linux.it/pipermail/tecnica/attachments/20230416/c750a294/attachment.htm>
+
+From roberto.volpini a mail.com  Sun Apr 16 14:32:52 2023
+From: roberto.volpini a mail.com (roberto volpini)
+Date: Sun, 16 Apr 2023 15:32:52 +0200
+Subject: [Tecnica] =?utf-8?q?=C2=A0_R=3A__grub_in_debian?=
+In-Reply-To: <DB9P193MB11646248DFBD03E8561DBD51DF9F9@DB9P193MB1164.EURP193.PROD.OUTLOOK.COM>
+References: <trinity-98d8c206-bd61-4675-800d-cb28050d8b49-1681636351352@3c-app-mailcom-lxa01>
+	<DB9P193MB11646248DFBD03E8561DBD51DF9F9@DB9P193MB1164.EURP193.PROD.OUTLOOK.COM>
+Message-ID: <trinity-b317c293-b7f1-4807-9ff3-500a285fcdb1-1681651972882@msvc-mesg-gmxus005>
+
+Un allegato HTML è stato rimosso...
+URL: <http://liste.siena.linux.it/pipermail/tecnica/attachments/20230416/a324b200/attachment-0001.htm>
+

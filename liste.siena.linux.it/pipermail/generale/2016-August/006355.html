@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Linuguaggio di programmazione event-driven per BOT
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2016-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20Linuguaggio%20di%20programmazione%20event-driven%20per%20BOT&In-Reply-To=%3C6edff35d-e16a-1b16-13b9-6727d0adb388%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006354.html">
+   <LINK REL="Next"  HREF="006356.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Linuguaggio di programmazione event-driven per BOT</H1>
+    <B>Michele Pinassi</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20Linuguaggio%20di%20programmazione%20event-driven%20per%20BOT&In-Reply-To=%3C6edff35d-e16a-1b16-13b9-6727d0adb388%40gmail.com%3E"
+       TITLE="[Generale] Linuguaggio di programmazione event-driven per BOT">michele.pinassi a gmail.com
+       </A><BR>
+    <I>Mer 31 Ago 2016 13:30:07 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="006354.html">[Generale] Linuguaggio di programmazione event-driven per BOT
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="006356.html">[Generale] Linuguaggio di programmazione event-driven per BOT
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#6355">[ Data ]</a>
+              <a href="thread.html#6355">[ Thread ]</a>
+              <a href="subject.html#6355">[ Oggetto ]</a>
+	      <a href="author.html#6355">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Grazie Daniele,
+
+in realtà l'idea è quella di avere un editor all'interno di un portale
+(una volgare &lt;textarea&gt; magari con syntax highlighting tipo
+<A HREF="http://prismjs.com">http://prismjs.com</A>) dove l'utente scrive un pezzetto di codice
+event-driven con il cui elaborare le risposte che il bot dovrebbe dare
+dietro input dell'utente.
+
+Esempio:
+
+dal BOT Telegram arriva il comando classico '/start'. Posso immagine
+qualcosa tipo una funzione di hook:
+
+function on_command_start($username, $chat_id) {
+    echo &quot;Salve, il BOT dello Slug ti da il benvenuto !&quot;
+}
+
+o altro, anche più evoluto. Lo scopo sarebbe quello di offrire
+all'utente una interfaccia il più possibile evoluta per il suo BOT di
+Telegram (è all'interno del progetto AllAroundSiena -
+www.allaroundsiena.com).
+
+Michele
+
+
+On 31/08/2016 14:18, daniele masti wrote:
+&gt;<i> salve,
+</I>&gt;<i> Sono assolutamente linguaggi server side: immaginavo lo use case fosse
+</I>&gt;<i> quello di una sorta di &quot;hosting&quot; di questi pezzetti di codice.
+</I>&gt;<i> Se invece la cosa deve essere client side, se vuoi rimanere dentro il
+</I>&gt;<i> browser, l'unica scelta è js (o al limite action script...)
+</I>&gt;<i> Escluso quello il web è comunque pieno di transpiler che hanno il js
+</I>&gt;<i> come target finale... qualcosa troveresti di sicuro.
+</I>&gt;<i> Se le azioni sono facili, valuta magari qualcosa di tipo grafico/a
+</I>&gt;<i> blocchi da poi interpretare al volo.
+</I>&gt;<i>
+</I>&gt;<i> Diciamo che non me la sento di consigliarti ulteriormente senza avere
+</I>&gt;<i> un'idea più precisa di come vuoi strutturare l'applicazione: l'idea
+</I>&gt;<i> che mi sono fatto 
+</I>&gt;<i> potrebbe essere drammaticamente differente da quella che hai tu, anche
+</I>&gt;<i> al netto di come l'utente fisicamente scriverà i propri comandi.
+</I>&gt;<i> Saluti
+</I>
+
+--
+BLOG @ www.zerozone.it
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="006354.html">[Generale] Linuguaggio di programmazione event-driven per BOT
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="006356.html">[Generale] Linuguaggio di programmazione event-driven per BOT
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#6355">[ Data ]</a>
+              <a href="thread.html#6355">[ Thread ]</a>
+              <a href="subject.html#6355">[ Oggetto ]</a>
+              <a href="author.html#6355">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

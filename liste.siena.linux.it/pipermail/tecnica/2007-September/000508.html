@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi con /etc/sudoers
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=46F4B468.3000901%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000507.html">
+   <LINK REL="Next"  HREF="000509.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi con /etc/sudoers</H1>
+    <B>alfonso -</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=46F4B468.3000901%40valdelsa.net"
+       TITLE="[Tecnica] problemi con /etc/sudoers">alfovel a hotmail.com
+       </A><BR>
+    <I>Sab 22 Set 2007 07:53:37 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000507.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000509.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#508">[ Data ]</a>
+              <a href="thread.html#508">[ Thread ]</a>
+              <a href="subject.html#508">[ Oggetto ]</a>
+	      <a href="author.html#508">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+hai riavviato in modalità recovery? da grub selezioni avvio di ubuntu in recovery mode,
+semplicemente scrivi 
+
+chmod 440 /etc/sudoers
+
+Attenzione non scrivere sudo prima perchè 1 non
+ce n'è bisogno 2 probabilmente non funzionerebbe perchè il comando sudo
+non va essendo appunto incasinato il file sudoers.
+
+exit
+
+e dovrebbe partire gdm... quindi prova a &quot;sudare&quot; 
+
+
+&gt;<i> Date: Sat, 22 Sep 2007 08:21:28 +0200
+</I>&gt;<i> From: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i> To: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">generale a liste.siena.linux.it</A>
+</I>&gt;<i> Subject: [Tecnica] problemi con /etc/sudoers
+</I>&gt;<i> 
+</I>&gt;<i> stamani sono andato per aggiornare il mio ubuntu e non ne ha voluto 
+</I>&gt;<i> saperne....visto che dal gestore non si aggiornava, ho provato con sudo 
+</I>&gt;<i> apt-get update....
+</I>&gt;<i> 
+</I>&gt;<i> sudo: /etc/sudoers is mode 0777, should be 0440
+</I>&gt;<i> 
+</I>&gt;<i> questa è stata la risposta del terminale dal quale si evince che i 
+</I>&gt;<i> permessi di /etc/sudoers sono sbagliati.
+</I>&gt;<i> 
+</I>&gt;<i> bene.....come faccio a rimetterli come devono essere ?
+</I>&gt;<i> 
+</I>&gt;<i> visto che con chmod 440 /etc/sudoers ho questa risposta:
+</I>&gt;<i> 
+</I>&gt;<i> chmod: ripristino dei permessi di `/etc/sudoers': Funzione non permessa
+</I>&gt;<i> 
+</I>&gt;<i> ovviamente non mi riconosce come amministratore.....
+</I>&gt;<i> 
+</I>&gt;<i> qualcuno sa come fare?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> grazie a tutti
+</I>&gt;<i> 
+</I>&gt;<i> roberto
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+_________________________________________________________________
+Ti piace viaggiare? Allora racconta le tue avventure su MSN Diari di viaggio
+<A HREF="http://diaridiviaggio.it.msn.com/">http://diaridiviaggio.it.msn.com/</A>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20070922/c52bc7c8/attachment.html">http://liste.siena.linux.it/pipermail/tecnica/attachments/20070922/c52bc7c8/attachment.html</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000507.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000509.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#508">[ Data ]</a>
+              <a href="thread.html#508">[ Thread ]</a>
+              <a href="subject.html#508">[ Oggetto ]</a>
+              <a href="author.html#508">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

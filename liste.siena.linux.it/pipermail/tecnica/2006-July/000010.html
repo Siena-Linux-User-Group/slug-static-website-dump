@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Ripristinare Mailman
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ripristinare%20Mailman&In-Reply-To=200606301109.04758.jacopo%40jacopo81.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Ripristinare Mailman</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ripristinare%20Mailman&In-Reply-To=200606301109.04758.jacopo%40jacopo81.it"
+       TITLE="[Tecnica] Ripristinare Mailman">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Sab  1 Lug 2006 12:51:22 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="000011.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#10">[ Data ]</a>
+              <a href="thread.html#10">[ Thread ]</a>
+              <a href="subject.html#10">[ Oggetto ]</a>
+	      <a href="author.html#10">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Ciao Jacopo,
+
+tempo addietro ho migrato un mailman da un server all'altro e copiando le 
+directory ed ha funzionato tutto.
+
+Per trovare dove mettere la roba (siccome anche io non lo sapevo proprio) 
+creai una lista con un nome strano (cippalippa) nel server nuovo e sul 
+vecchio e poi con un bel find trovai le directory, che naturalmente non mi 
+ricordo più, sennò te lo scrivevo. :D
+
+L'unico problema che ho incontrato é che per ogni lista c'e' una directory 
+lock, e se dentro c'e' un file vuoto con il pid del qrunner, un altro qrunner 
+con pid diverso non la scoda. Se hai un backup magari in quel momento stava 
+girando il qrunner su qualche lista, quindi non ti funzionerebbe facendo il 
+restore. Basta cancellare il file e riparte alla grande.
+
+Ciao
+
+
+Alle 11:09, venerdì 30 giugno 2006, Jacopo Baldi ha scritto:
+&gt;<i> Salve a tutti,
+</I>&gt;<i> ho un server su cui era installato mailman e tutto funzionava a dovere. Poi
+</I>&gt;<i> causa dei simpatici hackers ho dovuto reinstallare tutto quanto.
+</I>&gt;<i>
+</I>&gt;<i> Bene io ora ho una copia intera del disco e vorrei ripristinare mailman con
+</I>&gt;<i> tutte le liste che gestiva ed i relativi iscritti. Dove trovo tutti questi
+</I>&gt;<i> dati?
+</I>&gt;<i> Ho controllato in /var/mailman ma li dentro ci sono solo gli archivi delle
+</I>&gt;<i> liste e poco altro?
+</I>&gt;<i> Nella documentazione di supporto dice di creare una home per mailman ma a
+</I>&gt;<i> suo tempo chi aveva installato il tutto non l'ha fatto. Esiste un path dove
+</I>&gt;<i> trovo iscritti alle liste e loro preferenze?
+</I>&gt;<i>
+</I>&gt;<i> Se semplicemente (una volta trovati) sostituisco i dati vecchi a quelli
+</I>&gt;<i> nuovi funziona tutto?
+</I>&gt;<i>
+</I>&gt;<i> Ciao e grazie
+</I>&gt;<i> Jak
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+</I>&gt;<i> WebSite: www.jacopo81.it
+</I>&gt;<i> GPG Public Key: <A HREF="http://lnx.jacopo81.it/gpg/jacopo.asc">http://lnx.jacopo81.it/gpg/jacopo.asc</A>
+</I>&gt;<i> Fingerprint: 2F4D 5A4C 58E6 6551 3C3E  C753 43C7 C6DB B907 81D1
+</I>&gt;<i> #########################################################
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="000011.html">[Tecnica] Linux o wind? Forse omnitel! :P
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#10">[ Data ]</a>
+              <a href="thread.html#10">[ Thread ]</a>
+              <a href="subject.html#10">[ Oggetto ]</a>
+              <a href="author.html#10">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

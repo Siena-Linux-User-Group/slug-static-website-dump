@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Router con iptables
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3CABE87ADA-86CF-4E55-8001-6D07AFC0498D%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000999.html">
+   <LINK REL="Next"  HREF="001001.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Router con iptables</H1>
+    <B>Andrea Ciani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3CABE87ADA-86CF-4E55-8001-6D07AFC0498D%40gmail.com%3E"
+       TITLE="[Tecnica] Router con iptables">cianiandrea10 a gmail.com
+       </A><BR>
+    <I>Ven 26 Mar 2010 15:35:19 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000999.html">[Tecnica] Router con iptables
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001001.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1000">[ Data ]</a>
+              <a href="thread.html#1000">[ Thread ]</a>
+              <a href="subject.html#1000">[ Oggetto ]</a>
+	      <a href="author.html#1000">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Facendo il comando che mi hai detto è venuta fuori questa cosa qui... ma non la so leggere bene... cosa vuol dire?
+
+Tabella di routing IP del kernel
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+192.168.0.0     0.0.0.0         255.255.255.0   U     0      0        0 eth0
+10.198.152.0    0.0.0.0         255.255.248.0   U     0      0        0 eth1
+0.0.0.0         10.198.152.1    0.0.0.0         UG    100    0        0 eth1
+
+
+Il giorno 26/mar/2010, alle ore 16.24, Yusef Maali ha scritto:
+
+&gt;<i> Le route?
+</I>&gt;<i> 
+</I>&gt;<i> Fai un route -n e vedi se ci sono tutte.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Ciao
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> In data venerdì 26 marzo 2010 12:37:45, Andrea Ciani ha scritto:
+</I>&gt;&gt;<i> Ciao a tutti,
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> stavo configurando un router/firewall con linux ubuntu server utilizzando
+</I>&gt;&gt;<i> le iptables.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Ho 2 schede di rete chiamate eht0 (LAN) ed eth1 (collegata a sua volta con
+</I>&gt;&gt;<i> un modem/router di fastweb).
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Ho creato un DHCP che assegna correttamente gli indirizzi nella lan. La
+</I>&gt;&gt;<i> scheda eth0 ha indirizzo 192.168.0.2 e la eth1 invece prende gli ip
+</I>&gt;&gt;<i> direttamente da fastweb.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Il computer è correttamente connesso a internet (ho provato e testato con
+</I>&gt;&gt;<i> wget) e la eth0 è correttamente configurata in lan (ho provato a scambiare
+</I>&gt;&gt;<i> risorse condivise e funziona tutto).
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Però, come faccio a far andare i computer della lan su internet?? Perché
+</I>&gt;&gt;<i> non riescono a dialogare??
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Con iptables ho inserito le seguenti regole:
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> iptables -P INPUT ACCEPT
+</I>&gt;&gt;<i> iptables -P FORWARD ACCEPT
+</I>&gt;&gt;<i> iptables -P OUTPUT ACCEPT
+</I>&gt;&gt;<i> iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> ed ho inserito la seguente riga nel file /etc/sysctl.conf
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> net.ipv4.ip_forward = 1
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> riavviando ho notato che iptables aveva mantenuto i settaggi, però ancora
+</I>&gt;&gt;<i> niente internet dalla LAN!!! Perché?? Cosa ho sbagliato?? Qualcuno mi
+</I>&gt;&gt;<i> saprebbe dare una mano?
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> -----------------------------------------------
+</I>&gt;&gt;<i> Andrea Ciani
+</I>&gt;&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+
+---------------------------------------
+Andre
+
+
+
+
+
+
+
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/607457d8/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/607457d8/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000999.html">[Tecnica] Router con iptables
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001001.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1000">[ Data ]</a>
+              <a href="thread.html#1000">[ Thread ]</a>
+              <a href="subject.html#1000">[ Oggetto ]</a>
+              <a href="author.html#1000">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Accesso remoto OpenERP
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Accesso%20remoto%20OpenERP&In-Reply-To=%3CCAFfcDWyEe8N1LLPUMaUn6LqDJ796qnMtsi88quyQXBXTh0%2BFmA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001688.html">
+   <LINK REL="Next"  HREF="001690.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Accesso remoto OpenERP</H1>
+    <B>Giulio Saletti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Accesso%20remoto%20OpenERP&In-Reply-To=%3CCAFfcDWyEe8N1LLPUMaUn6LqDJ796qnMtsi88quyQXBXTh0%2BFmA%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Accesso remoto OpenERP">giulio.saletti a gmail.com
+       </A><BR>
+    <I>Mar 23 Apr 2013 20:41:36 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001688.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001690.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1689">[ Data ]</a>
+              <a href="thread.html#1689">[ Thread ]</a>
+              <a href="subject.html#1689">[ Oggetto ]</a>
+	      <a href="author.html#1689">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mitico, ho la possibilità. di dare Ip statico al guest (di fatto mi
+connetto all'interno della rete locale tramite il suo ip statico e la porta
+8069) ma per uscire connettermi via Web? Ho provato cercando l'ip pubblico
+del guest ( <A HREF="http://www.mio-ip.it">http://www.mio-ip.it</A>) ma inserendo l'ip fornito e la porta alla
+quale risponde openerp non funziona... cosa suggerisci?
+Il giorno 23/apr/2013 18:28, &quot;Yusef Maali&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">contact a yusefmaali.net</A>&gt; ha
+scritto:
+
+&gt;<i> **
+</I>&gt;<i>
+</I>&gt;<i> Windows funge da NAT per la macchina virtuale. In questa configurazione
+</I>&gt;<i> dovresti
+</I>&gt;<i> trovare un programma che gestisca il port-forwarding.
+</I>&gt;<i>
+</I>&gt;<i> Scegli una porta libera sul tuo indirizzo IP pubblico (ad esempio la 9999)
+</I>&gt;<i> e imponi che
+</I>&gt;<i> tutte le connessioni su quella porta vengano inoltrate all'indirizzo IP
+</I>&gt;<i> del guest (linux) alla
+</I>&gt;<i> porta a cui risponde OpenERP (la 80?).
+</I>&gt;<i> A questo punto ti puoi collegare all'ip pubblico sulla 9999 (--&gt;
+</I>&gt;<i> 111.222.333.444:9999) e
+</I>&gt;<i> hai risolto.
+</I>&gt;<i>
+</I>&gt;<i> Prova a googlare &quot;port forwarding windows xp&quot; e vedi se trovi qualcosa di
+</I>&gt;<i> utile.
+</I>&gt;<i>
+</I>&gt;<i> Un tunnel SSH non lo puoi fare. Un reverse ssh tunnel si, ma ti si
+</I>&gt;<i> complica lo scenario.
+</I>&gt;<i> I servizi di dynamic DNS, se c'è di mezzo un NAT, non ti servono.
+</I>&gt;<i>
+</I>&gt;<i> Se hai la possibilità di dare un altro ip statico al guest (linux), non
+</I>&gt;<i> hai bisogno del
+</I>&gt;<i> port-forwarding e risolvi in 5 minuti.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Y.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il 23.04.2013 17:14 Giulio Saletti ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> Ciao a tutta la lista,
+</I>&gt;<i> vorrei poter accedere da remoto alla mia installazione di OpenERP
+</I>&gt;<i> residente su ubuntu 12.04 installato su una virtual machine che gira su un
+</I>&gt;<i> pc con XP a ip fisso.
+</I>&gt;<i> Sono assolutamente ignorante in materia e googlando ho capito solo che non
+</I>&gt;<i> ci capisco niente :)
+</I>&gt;<i> Non ho capito se mi serve un tunnel SSH o se devo utilizzare un servizio
+</I>&gt;<i> tipo www.noip.com
+</I>&gt;<i> Qualche buon'anima può aiutarmi, magari con un procedura step-by-step for
+</I>&gt;<i> dummy?
+</I>&gt;<i> La versione di OpenERP è la 7, non so quale altro dato possa essere utile.
+</I>&gt;<i>
+</I>&gt;<i> Grazie in anticipo.
+</I>&gt;<i>
+</I>&gt;<i> Giulio.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">listTecnica a liste.siena.linux.ithttp</A>://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20130423/48f0d288/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20130423/48f0d288/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001688.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001690.html">[Tecnica] Accesso remoto OpenERP
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1689">[ Data ]</a>
+              <a href="thread.html#1689">[ Thread ]</a>
+              <a href="subject.html#1689">[ Oggetto ]</a>
+              <a href="author.html#1689">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

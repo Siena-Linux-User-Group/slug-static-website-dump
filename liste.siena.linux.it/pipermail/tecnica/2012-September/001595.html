@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Configurazione ISC DHCP
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Configurazione%20ISC%20DHCP&In-Reply-To=%3C50504937.5060904%40zerozone.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001594.html">
+   <LINK REL="Next"  HREF="001596.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Configurazione ISC DHCP</H1>
+    <B>Michele Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Configurazione%20ISC%20DHCP&In-Reply-To=%3C50504937.5060904%40zerozone.it%3E"
+       TITLE="[Tecnica] Configurazione ISC DHCP">o-zone a zerozone.it
+       </A><BR>
+    <I>Mer 12 Set 2012 09:35:03 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001594.html">[Tecnica] vps a confronto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001596.html">[Tecnica] Configurazione ISC DHCP
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1595">[ Data ]</a>
+              <a href="thread.html#1595">[ Thread ]</a>
+              <a href="subject.html#1595">[ Oggetto ]</a>
+	      <a href="author.html#1595">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buongiorno a todos,
+
+ho la necessità di configurare un server DHCP per assegnare sia
+indirizzi IP che opzioni a seconda di:
+
+* MAC Address
+* Vendor
+
+(si tratta di telefoni VoIP con autoprovisioning, per capirsi...)
+
+Ho &quot;n&quot; sedi dove io conosco quali MAC ci sono in ogni sede. Ad esempio,
+MAC1 in SEDE1, MAC2 in SEDE2 etc etc etc...
+
+Ho la necessità di configurare il server DHCP in modo che:
+
+* assegni un certo range di IP per la SEDE1 e altro range per la SEDE2
+(per il routing)
+
+e che, a seconda della stringa Vendor, restituisca una &quot;option 66&quot;
+differente. Attualmente, per partire, ho una configurazione come questa:
+
+
+class &quot;polycom&quot; {
+    match if substring (option vendor-class-identifier,0,7) = &quot;Polycom&quot;;
+    option tftp-server-name &quot;<A HREF="tftp://voip.unisi.it&quot;;">tftp://voip.unisi.it&quot;;</A>
+}
+
+class &quot;cisco&quot; {
+    match if substring (option vendor-class-identifier,0,5) = &quot;Cisco&quot;;
+    option tftp-server-name &quot;voip.unisi.it&quot;;
+}
+
+class &quot;snom&quot; {
+    match if substring (option vendor-class-identifier,0,4) = &quot;Snom&quot;;
+    option tftp-server-name &quot;voip.unisi.it&quot;;
+}
+
+class &quot;yealink&quot; {
+    match if substring (option vendor-class-identifier,0,7) = &quot;yealink&quot;;
+    option tftp-server-name &quot;voip.unisi.it&quot;;
+}
+
+shared-network 1-10 {
+    subnet 172.20.1.0 netmask 255.255.1.0 {
+    option routers 172.20.1.1;
+    pool {
+        range 172.20.1.10 172.20.1.254;
+        allow members of &quot;polycom&quot;;
+        allow members of &quot;cisco&quot;;
+        allow members of &quot;yealink&quot;;
+        allow members of &quot;snom&quot;;
+    }
+    }
+    subnet 172.20.2.0 netmask 255.255.2.0 {
+    option routers 172.20.2.1;
+    pool {
+        range 172.20.2.10 172.20.2.254;
+        allow members of &quot;polycom&quot;;
+        allow members of &quot;cisco&quot;;
+        allow members of &quot;yealink&quot;;
+        allow members of &quot;snom&quot;;
+    }
+    }
+}
+
+Come potete vedere, in questa situazione non viene fatto il controllo
+del MAC address, cosa assolutamente necessaria.
+
+Inoltre stavo valutando l'uso di LDAP per poter gestire dinamicamente la
+configurazione del DHCP (
+<A HREF="https://answers.launchpad.net/ubuntu/+source/isc-dhcp/+question/172939">https://answers.launchpad.net/ubuntu/+source/isc-dhcp/+question/172939</A>)
+
+Michele
+
+-- 
+O-Zone ! No (C) since 1996
+On the road with VFR VTec 2002 &quot;Vuffy&quot;, on the net with Linux Slackware.
+Home+BLOG @ <A HREF="http://www.zerozone.it">http://www.zerozone.it</A> - Travels @ <A HREF="http://www.openitaly.net">http://www.openitaly.net</A>
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001594.html">[Tecnica] vps a confronto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001596.html">[Tecnica] Configurazione ISC DHCP
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1595">[ Data ]</a>
+              <a href="thread.html#1595">[ Thread ]</a>
+              <a href="subject.html#1595">[ Oggetto ]</a>
+              <a href="author.html#1595">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

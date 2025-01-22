@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ASUS &amp; Slackware &amp; help me!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ASUS%20%26%20Slackware%20%26%20help%20me%21&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000185.html">
+   <LINK REL="Next"  HREF="000178.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ASUS &amp; Slackware &amp; help me!</H1>
+    <B>mastro_apulo a libero.it</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ASUS%20%26%20Slackware%20%26%20help%20me%21&In-Reply-To="
+       TITLE="[Tecnica] ASUS &amp; Slackware &amp; help me!">mastro_apulo a libero.it
+       </A><BR>
+    <I>Ven 22 Set 2006 09:43:01 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000185.html">[Tecnica] dns dinamico
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000178.html">[Tecnica] ASUS &amp; Slackware &amp; help me!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#169">[ Data ]</a>
+              <a href="thread.html#169">[ Thread ]</a>
+              <a href="subject.html#169">[ Oggetto ]</a>
+	      <a href="author.html#169">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>---------- Initial Header ----------- 
+
+&gt;<i>From : <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">generale-bounces a liste.siena.linux.it</A> 
+</I>To : &quot;Lista Generale del Siena Linux User Group&quot; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">generale a liste.siena.linux.it</A> 
+Cc : 
+Date : Sun, 17 Sep 2006 12:01:01 +0200 
+Subject : Re: [Generale] (senza oggetto) 
+
+1) VOGLIO RINGRAZIARVI PER AVER RISPOSTO COSI' CELERMENTE
+PURTROPPO NON HO POTUTO METTER MANO AL PC FINO AD OGGI PERCHE' SONO STATO IMPEGNATO DALLA BUROCRAZIA UNIVERSITARIA X IL MIO ERASMUS
+
+2) QUANDO ACCENDO IL PC MI DICE CHE L'APPLICAZIONE SOUNDSERVER  (artsd) E' ANDATA IN CRASH E HA CAUSATO IL SEGNALE 11
+
+&gt;<i> Alle 17:24, sabato 16 settembre 2006, <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">mastro_apulo a libero.it</A> ha scritto: 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; parte la ventola del processore al massimo, anche se il processore non è per 
+</I>&gt;<i> &gt; nulla stressato. 
+</I>&gt;<i> 
+</I>&gt;<i> suona come un problema ACPI (Advanced Configuration and Power Interface). 
+</I>&gt;<i> l'ACPI è uno standard che permette controlli da parte del sistema operativo su 
+</I>&gt;<i> vari aspetti hardware tra i quali la velocita' della ventola per evitare 
+</I>&gt;<i> l'arrosto del processore. 
+</I>&gt;<i> 
+</I>&gt;<i> prima cosa serve sapere se hai il supporto nel kernel. dicci che versione hai 
+</I>&gt;<i> installata, incolla l'output di questo comando da console: 
+</I>&gt;<i> 
+</I>&gt;<i> uname -r 
+</I>&gt;<i> 
+</I>&gt;<i> poi vai nella cartella 
+</I>&gt;<i> 
+</I>&gt;<i> /usr/src/linux 
+</I>
+3) QUANDO VADO NELLA CARTELLA /usr/src/ NON TROVO LA DIRECTORY linux (NON C'E' NIENTE)
+
+&gt;<i> e dai il comando 
+</I>&gt;<i> 
+</I>&gt;<i> make menuconfig 
+</I>&gt;<i> 
+</I>&gt;<i> ti si apre il menu di configurazione del kernel, naviga attraverso queste 
+</I>&gt;<i> sezioni: 
+</I>&gt;<i> 
+</I>&gt;<i> Power management options (ACPI, APM) ---&gt; 
+</I>&gt;<i> ACPI (Advanced Configuration and Power Interface) Support ---&gt; 
+</I>&gt;<i> 
+</I>&gt;<i> e controlla che la voce 
+</I>&gt;<i> 
+</I>&gt;<i> ACPI SUpport 
+</I>&gt;<i> 
+</I>&gt;<i> sia spuntata con un asterisco (od una M) tra le parentesi quadre alla 
+</I>&gt;<i> sinistra. 
+</I>&gt;<i> Se e' cosi', controlla anche che la voce 
+</I>&gt;<i> 
+</I>&gt;<i> Fan 
+</I>&gt;<i> 
+</I>&gt;<i> sia selezionata con un asterisco tra le parentesi triangolari. 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; anche una mano a configurare altre periferiche come la scheda wireless che 
+</I>&gt;<i> &gt; me la da come esterna anche su uindous (ASUS USB Wireless Network Adapter). 
+</I>&gt;<i> 
+</I>&gt;<i> devi dirci qualcosa di piu', da console dai il comando 
+</I>&gt;<i> 
+</I>&gt;<i> lspci -v 
+</I>4) MI DICE COMMAND NOT FOUND
+ 
+&gt;<i> ed incolla *solo* il blocco riferito alla scherda wireless. 
+</I>&gt;<i> 
+</I>&gt;<i> comunque per domande di tipo tecnico, iscriviti alla lista apposita attraverso 
+</I>&gt;<i> questo link: 
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A> 
+</I>&gt;<i> 
+</I>&gt;<i> e dai un titolo alla mail che si traccia meglio il thread. 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Il fatto è che a giorni parto per l'ERASMUS e sicuramente dove andrò sarà 
+</I>&gt;<i> &gt; difficile che qualcuno mi aiuti nei miei primi passi col pinguino (e mi 
+</I>&gt;<i> &gt; dispiacerebbe continuare con questo cazzo di uindous...). Bye bye 
+</I>&gt;<i> 
+</I>&gt;<i> sei in una lista pubblica, magari la prossima volta sostituisci il termine 
+</I>&gt;<i> *cazzo* con maledetto, brutto, orribile.. 
+</I>&gt;<i> 
+</I>5)  QUANDO HO INSTALLATO LA SLACKWARE ABBIAMO FATTO IN MODO CHE PARTE DELL'HD SI VEDESSE SIA SU LINUX CHE SU WINDOWS; PERO' NON RIESCO A TROVARLA SU LINUX
+6) QUANDO LO SPENGO NON SI SPENGNE: ESCE DA KDE E SI BLOCCA
+7) CE LA FARO'???
+&gt;<i> -------------------------------------------------------------- 
+</I>&gt;<i> Iacopo Palazzi 
+</I>&gt;<i> GPG Public Key: <A HREF="http://iakko.net/iakko.gpgkey.asc">http://iakko.net/iakko.gpgkey.asc</A> 
+</I>&gt;<i> Fingerprint: B0A8 BC97 C53E 172D 0C77 80B3 C30E 835F 5C31 65AE 
+</I>&gt;<i> Jabber: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">iakko a jabber.linux.it</A> - ICQ: 7622157 
+</I>&gt;<i> Siena Linux User Group - www.siena.linux.it 
+</I>&gt;<i> 
+</I>&gt;<i> &quot;Se solo Dio mi desse i sorgenti...&quot; 
+</I>&gt;<i> -------------------------------------------------------------- 
+</I>&gt;<i> 
+</I>
+=========================================== 
+Michele Aquaro 
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">mastro_apulo a libero.it</A> 
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">micheleaquaro a hotmail.com</A> 
++ 39 329 30 12 916 
+===========================================
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060922/00f72f7b/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060922/00f72f7b/attachment.htm</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000185.html">[Tecnica] dns dinamico
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000178.html">[Tecnica] ASUS &amp; Slackware &amp; help me!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#169">[ Data ]</a>
+              <a href="thread.html#169">[ Thread ]</a>
+              <a href="subject.html#169">[ Oggetto ]</a>
+              <a href="author.html#169">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Luminosità LCD
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FLuminosit%3DE0_LCD%3F%3D&In-Reply-To=649bf45d0810120748i6923dba3h304bad3df5eacac1%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000649.html">
+   <LINK REL="Next"  HREF="000651.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Luminosità LCD</H1>
+    <B>Simone Soldateschi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FLuminosit%3DE0_LCD%3F%3D&In-Reply-To=649bf45d0810120748i6923dba3h304bad3df5eacac1%40mail.gmail.com"
+       TITLE="[Tecnica] Luminosità LCD">simone.soldateschi a gmail.com
+       </A><BR>
+    <I>Lun 13 Ott 2008 07:09:46 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000649.html">[Tecnica] Luminosità LCD
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000651.html">[Tecnica] Luminosità LCD
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#650">[ Data ]</a>
+              <a href="thread.html#650">[ Thread ]</a>
+              <a href="subject.html#650">[ Oggetto ]</a>
+	      <a href="author.html#650">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *B1*) Posso programmare in qualche modo un dump automatico del database
+</I>&gt;<i> SQL di Drupal? Ho trovato dei moduli per drupal che dovrebbero fare questo
+</I>&gt;<i> ma non funzionano come vorrei. In particolar modo vorrei che venissero
+</I>&gt;<i> salvati dei file di backup (del tipo *.sql) ad intervalli regolari (solo del
+</I>&gt;<i> database di drupal). Sapete darmi qualche consiglio? Sapevo che in linux si
+</I>&gt;<i> possono fare degli script che vengono eseguiti in automatico dalla shell ma
+</I>&gt;<i> non so né come farli né come funzionano.
+</I>&gt;<i>
+</I>
+devi usare una utility di backup tipo mysql_dump (per MySQL) o pg_dump
+(PostgreSQL)
+una volta che hai trovato i parametri corretti per l'esecuzione la scheduli
+con:
+
+  $ sudo crontab -e -u &lt;utente-per-il-backup&gt;
+
+dove &lt;utente-per-il-backup&gt; è lo user che vuoi che esegua i backup
+
+-- 
+Unix is friendly - it's just picky about its friends
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20081013/15f388b0/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20081013/15f388b0/attachment.htm</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000649.html">[Tecnica] Luminosità LCD
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000651.html">[Tecnica] Luminosità LCD
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#650">[ Data ]</a>
+              <a href="thread.html#650">[ Thread ]</a>
+              <a href="subject.html#650">[ Oggetto ]</a>
+              <a href="author.html#650">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

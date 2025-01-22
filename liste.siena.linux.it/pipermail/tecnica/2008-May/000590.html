@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Help!!!! (X4)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Help%21%21%21%21%20%28X4%29&In-Reply-To=649bf45d0805191157r4cd31acfo4d80b4782cb39cf8%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000589.html">
+   <LINK REL="Next"  HREF="000591.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Help!!!! (X4)</H1>
+    <B>Simone Giuliani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Help%21%21%21%21%20%28X4%29&In-Reply-To=649bf45d0805191157r4cd31acfo4d80b4782cb39cf8%40mail.gmail.com"
+       TITLE="[Tecnica] Help!!!! (X4)">simone.giuliani a gmail.com
+       </A><BR>
+    <I>Lun 19 Maggio 2008 20:25:23 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000589.html">[Tecnica] Help!!!! (X4)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000591.html">[Tecnica] Help!!!! (X4)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#590">[ Data ]</a>
+              <a href="thread.html#590">[ Thread ]</a>
+              <a href="subject.html#590">[ Oggetto ]</a>
+	      <a href="author.html#590">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Il giorno 19/mag/08, alle ore 20:57, Andrea Ciani ha scritto:
+
+&gt;<i> Salve a tutti guru del Pinguino!!!
+</I>&gt;<i>
+</I>&gt;<i> Ho configurato un piccolo server linux ubuntu e vorrei chiedervi 3  
+</I>&gt;<i> (o 4) cose.
+</I>&gt;<i>
+</I>&gt;<i> 1) Attualmente il server di casa mia (linux) è un sempron @ 1.4 GHz  
+</I>&gt;<i> con scheda video X800 e M/B con chipset VIA. Vorrei portare il tutto  
+</I>&gt;<i> su di un nuovo pc che ho appena preso (Athlon X2 @ 2.4 scheda video  
+</I>&gt;<i> X1300 Ati e M/B sapphire). Posso semplicemente staccare l'hd dal pc  
+</I>&gt;<i> vecchio e metterlo in quello nuovo oppure mi salta tutto??? Ho dei  
+</I>&gt;<i> dati importanti all'interno e non vorrei perderli!!! E'  
+</I>&gt;<i> un'operazione che posso fare o è rischiosa?? Non mi pare di aver  
+</I>&gt;<i> installato dei driver particolari nel pc attuale però... Voi cosa  
+</I>&gt;<i> dite??
+</I>
+se io fossi in te farei un bel backup della partizione attaccando al  
+vecchio pc un nuovo disco che poi sara' destinato al nuovo pc.
+l'idea di spostare il disco può anche funzionare ma non e' esente da  
+problematiche + o - inattese con annesso il rischio della perdita dei  
+dati.
+al contrario facendo il backup il rischio e' zero.
+il discorso dei driver (Non mi pare di aver installato dei driver  
+particolari nel pc attuale però... )  non è attendibile. bene o male  
+devi preoccuparti dei driver del nuovo hardware e non di quello vecchio.
+secondo me la via migliore in assoluto è installare un nuovo linux  
+sulla nuova macchina, configurare i servizi a modo e copiarci i dati.
+se non ho capito male hai solo php+mysql da recuperare. in questo caso  
+copi il contenuto dei file anche via ftp e in phpmyadmin ripristini il  
+backup mysql che hai fatto sempre da phpmyadmin sul vecchio pc.
+puoi anche copiare  le tabelle mysql ma non e' una soluzione esente da  
+difetti.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2) Nel presente Pc ho ubuntu 8.10 (mi pare almeno, oppure la 8.04),  
+</I>&gt;<i> che ho appena aggiornato con l'apposito programma dalla 7.10. Dopo  
+</I>&gt;<i> l'aggiornamento però il pc si blocca se provo ad eseguire il  
+</I>&gt;<i> programma di aggiornamento dei file (mi viene visualizzato nel  
+</I>&gt;<i> desktop il popup che mi dice che sono presenti una quarantina di  
+</I>&gt;<i> aggiornamenti, se ci clicco e gli dico &quot;installa aggiornamenti&quot; mi  
+</I>&gt;<i> viene il cursore di attesa e non parte niente. Ho provato a farlo  
+</I>&gt;<i> via shell ma mi dice qualcosa come &quot;password for jonnyx (questo è il  
+</I>&gt;<i> nome del pc): /home/jonnyx/dead.letter... Saved message in /home/ 
+</I>&gt;<i> jonnyx/dead.letter&quot; e non parte nulla ugualmente. Da sottolineare  
+</I>&gt;<i> che questa cosa è iniziata dopo il passaggio di versione (come ho  
+</I>&gt;<i> detto dalla 7.10 alla 8.xx)
+</I>
+non saprei non ho capito il problema.
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 3) Nel medesimo pc ho un webserver apache che contiene alcuni siti  
+</I>&gt;<i> (diversi cms es. ho drupal, joomla etc...). suddivisi ognuno nella  
+</I>&gt;<i> sua cartella (es www/drupal ; www/joomla etc...) Come posso fare per  
+</I>&gt;<i> impostare un cms come home page e da esso creare dei link per andare  
+</I>&gt;<i> su tutti gli altri?? (devo per forza copiare tutti i file di joomla  
+</I>&gt;<i> nella home di apache?? (ovvero su www???) così incasinerei tutto.  
+</I>&gt;<i> Invece come organizzato adesso ogni sito ha la sua cartella. Vi  
+</I>&gt;<i> prego datemi un consiglio.
+</I>
+metterli insieme e' un suicidio, evitalo ad ogni costo.
+la via piu' banale e' un index.html nella directory di default in cui  
+metti dei tag &lt;a href&gt; che puntano ai tuoi siti.
+puoi farla carina usando gimp e integrando la grafica nell'html.
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 4) Utilizzo in media 3o4 caselle di posta elettronica (questa, msn,  
+</I>&gt;<i> università etc...). Come posso organizzare la mia posta affinnchè  
+</I>&gt;<i> tutti i miei pc siano sincronizzati?? Mi spiego meglio: Se scarico  
+</I>&gt;<i> una e-mail sul pc X il pc Y non mi scaricheà l'e-mail perchè la  
+</I>&gt;<i> vedrà come già letta (e viceversa). Avendo 3 pc fissi,1 portatile e  
+</I>&gt;<i> 1 palmare potete capire che la ricerca di un messaggio è assai ardua  
+</I>&gt;<i> (a meno che non la cerchi on-line sul server) .
+</I>
+
+&gt;<i> Come posso fare per far si che tutti i pc (non tutti sono linux, uno  
+</I>&gt;<i> è windows, l'altro apple e il palmare windows mobile 6) abbiano  
+</I>&gt;<i> TUTTE le e-mail scaricate in loco? (non importa quelle inviate,  
+</I>&gt;<i> basta quelle ricevute). Se possibile vorrei poter far fungere da  
+</I>&gt;<i> server al computer linux che prima vi ho descritto (ho visto che  
+</I>&gt;<i> esiste windows exchange server ma sono sicuro che linux questi  
+</I>&gt;<i> lavori li fa meglio!!).
+</I>
+imposta il client di posta di tutti escluso uno in modo da non  
+rimuovere la posta dal server. in quello dove non e' stata messa  
+questa configurazione lasci la cancellazione sul server pop e fai il  
+modo che sia sempre l'ultimo a scaricare. meglio ancora se li imposti  
+tutti nel solito modo (non cancellare la posta) e saltuariamente  
+svuoti manualmente i pop3 (cosa puoi anche evitare se usi gmail o  
+altre con spazi enormi)
+tutto ciò vale solo per le email ricevute, se tu volessi anche le  
+inviate dovresti centralizzare il tutto tramite un server ma la cosa  
+non e' semplice.
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Vi ringrazio tutti per l'attenzione. Attendo le vostre risposte (mie  
+</I>&gt;<i> uniche speranze!!)
+</I>&gt;<i>
+</I>&gt;<i> -- Ciani Andrea --
+</I>
+a presto
+
+   simone
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20080519/1dd9c5a5/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20080519/1dd9c5a5/attachment.htm</A> 
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000589.html">[Tecnica] Help!!!! (X4)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000591.html">[Tecnica] Help!!!! (X4)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#590">[ Data ]</a>
+              <a href="thread.html#590">[ Thread ]</a>
+              <a href="subject.html#590">[ Oggetto ]</a>
+              <a href="author.html#590">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

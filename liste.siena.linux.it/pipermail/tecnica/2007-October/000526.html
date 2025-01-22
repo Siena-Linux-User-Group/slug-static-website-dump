@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Kernel Panic
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000525.html">
+   <LINK REL="Next"  HREF="000527.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Kernel Panic</H1>
+    <B>voland03 a interfree.it</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To="
+       TITLE="[Tecnica] Kernel Panic">voland03 a interfree.it
+       </A><BR>
+    <I>Dom 14 Ott 2007 22:29:51 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000525.html">[Tecnica] Openoffice
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000527.html">[Tecnica] Kernel Panic
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#526">[ Data ]</a>
+              <a href="thread.html#526">[ Thread ]</a>
+              <a href="subject.html#526">[ Oggetto ]</a>
+	      <a href="author.html#526">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Ciao!!
+
+Volevo proporvi un &quot;piccolo&quot; problema che non riesco a risolvere in questo periodo,spero di essere chiaro e di non tralasciare nulla. 
+Allora: Ho un portatile nuovo su cui ho deciso di installare linux (una Slackware per essere precisi!) e ne ho approfittato per ricompilare il kernel (il 2.6.23.) . La slack senza essere compilata &quot;funzionicchia&quot; ma ad esempio ha qualche problema con la scheda audio e la ethernet.Proprio per questo ho deciso di spulciare e buttarmi nella compilazione,per vedere un po' di risolvere e migliorare il sistema.
+Solamente che non riesco ad uscire dal seguente vicolo cieco del kernel panic,vi riporto le ultime 4 righe che appaiono nei messaggi al boot del nuovo kernel compilato.
+
+VFS: cannot open root device &quot;811&quot; or unknown-block(8,17)
+please append a correct &quot;root=&quot; boot option;here are the available partitions;
+0300      4194302     hda driver:  ide-cdrom
+Kernel Panic - not syncing:VFS: unable to mount root fs on unknown-block(8,17)
+
+Per quanto riguarda il lilo eccolo qua :
+
+
+boot = /dev/sda
+message = /boot/boot_message.txt
+prompt
+timeout = 1200
+change rules
+reset
+vga=773
+
+other = /dev/sda2
+label = windows
+table = /dev/sda
+
+image = /boot/vmlinux
+label = linux
+root = /dev/sdb1
+readonly
+
+image = /boot/vmlinux-2.6.23.1
+label = linux-new
+root = /dev/sdb1
+readonly
+
+Se poi eseguo un lilo -v ottengo le seguenti info:
+
+Warning :lba32 addressing assumed
+reading boot sector from /dev/sda
+using menu secondaryloader
+calling map_insert-data
+warning:the boot sector and map files are on different disks.
+mapping message file /boot/boot_message.txt
+calling map_insert_file
+      .
+      .
+
+Il modello del mio portatile e' un Acer Aspire 7520g
+
+Avete qualche suggerimento?Problemi con il lilo o con la configurazione del kernel ?
+
+Ciao e grazie in anticipo
+Andrea V.
+
+
+
+----------------------------------------------------------------------------
+DEXGATEMICRO il centralino VoIP multifunzione per l'azienda.
+Prova gratuita per 4 utenti!
+
+
+Scopri tutte le funzionalita' sul sito Dexgate.com
+----------------------------------------------------------------------------
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000525.html">[Tecnica] Openoffice
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000527.html">[Tecnica] Kernel Panic
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#526">[ Data ]</a>
+              <a href="thread.html#526">[ Thread ]</a>
+              <a href="subject.html#526">[ Oggetto ]</a>
+              <a href="author.html#526">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

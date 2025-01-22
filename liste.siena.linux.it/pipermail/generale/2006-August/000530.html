@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] casino, grosso casino!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=44DF7D38.3000207%40gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000529.html">
+   <LINK REL="Next"  HREF="000532.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] casino, grosso casino!</H1>
+    <B>Vincenzo Di Massa</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=44DF7D38.3000207%40gmail.com"
+       TITLE="[Generale] casino, grosso casino!">hawk78 a interfree.it
+       </A><BR>
+    <I>Mar 15 Ago 2006 00:27:59 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000529.html">[Generale] casino, grosso casino!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000532.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#530">[ Data ]</a>
+              <a href="thread.html#530">[ Thread ]</a>
+              <a href="subject.html#530">[ Oggetto ]</a>
+	      <a href="author.html#530">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il problema è che i driver binari di ati e nvidia sono divisi in 2 pezzi:
+1) kernel module
+2) X11 driver
+
+Il secondo carica il primo nel sistema.
+
+Una volta lanciato X11 hai il modulo nel kernel: lo hai preso nel kernel :-P
+Per poter far funzionare i vecchi drivers devi scaricare quel driver 
+(modprobe -r), ma... probabilmente dopo aver rimosso il driver la scheda sarà 
+mooolto confusa (i driver all'uscita non fanno un reset fatto bene: sono 
+fatti per restare sempre in controllo della scheda, se uno li vuole 
+rimuovere... fatti suoi!).
+
+La soluzione da provare è quindi
+$ sudo modprobe -r nvidia
+$ sudo apr-get remove nvidia-glx xserver-xorg-driver-nv+\
+linux-restricted-modules-*
+$ Xorg -configure
+$ startx
+$ #se non funziona
+$ sudo reboot #al reboot la scheda rinsavisce
+....
+$ startx
+
+Ciao
+Vincenzo
+
+Alle 21:27, domenica 13 agosto 2006, sito ha scritto:
+&gt;<i> Mi sa che ho fatto un casino, ho fatto il gravissimo errore di
+</I>&gt;<i> installare i driver Nvidia nella mia Kubuntu.
+</I>&gt;<i> La faccio breve, non parte più X, se provo a lanciare &quot;startx&quot; mi
+</I>&gt;<i> restituisce:
+</I>&gt;<i>
+</I>&gt;<i> (= =)Log file :&quot;/var/log/Xorg.0.log&quot; Time Sun aug 1321:12:22 2006
+</I>&gt;<i> (= =)Using config file: &quot;/etc/X11/xorg.conf&quot;
+</I>&gt;<i> (WW) NVIDIA: No matching Devicesection for instance (BusID PC:1:0:0) found
+</I>&gt;<i> (EE) No devices detected.
+</I>&gt;<i>
+</I>&gt;<i> Fatal server error:
+</I>&gt;<i> no screen found
+</I>&gt;<i>
+</I>&gt;<i> Se invece provo a ripristinare i driver precedenti mi sostituisce
+</I>&gt;<i> soltanto la parola NVIDIA con NV.
+</I>&gt;<i> Ok, so da me che non è niente di grave, ma senza connessione ad internet
+</I>&gt;<i> non riesco a cavarci il ragno dal buco.
+</I></PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000529.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000532.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#530">[ Data ]</a>
+              <a href="thread.html#530">[ Thread ]</a>
+              <a href="subject.html#530">[ Oggetto ]</a>
+              <a href="author.html#530">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

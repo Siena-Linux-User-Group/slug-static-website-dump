@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Salome
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Salome&In-Reply-To=339d31640611081549v33f2d13dn3983729ee4ad1629%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000295.html">
+   <LINK REL="Next"  HREF="000297.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Salome</H1>
+    <B>Simone Soldateschi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Salome&In-Reply-To=339d31640611081549v33f2d13dn3983729ee4ad1629%40mail.gmail.com"
+       TITLE="[Tecnica] Salome">simone.soldateschi a gmail.com
+       </A><BR>
+    <I>Gio  9 Nov 2006 08:10:52 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000295.html">[Tecnica] Salome
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000297.html">[Tecnica] Salome
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#296">[ Data ]</a>
+              <a href="thread.html#296">[ Thread ]</a>
+              <a href="subject.html#296">[ Oggetto ]</a>
+	      <a href="author.html#296">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao Giulio
+
+On 11/9/06, Giulio Saletti &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">giulio.saletti a gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Esatto Paolo...
+</I>&gt;<i>
+</I>&gt;<i> seguendo questo indirizzo - <A HREF="http://www.salome-platform.org/download/">http://www.salome-platform.org/download/</A> -
+</I>&gt;<i> arriviamo ad un tabella (nella parte bassa della pagina) che indica i
+</I>&gt;<i> pacchetti necessari all'installazione di questo programma di modellazione 3D
+</I>&gt;<i> open source... ma non sto arrivando a niente...
+</I>&gt;<i>
+</I>&gt;<i> Ho eseguito il download della versione per Debian Sarge (se ho ben capito
+</I>&gt;<i> è Debian la radice di Ubuntu)
+</I>
+
+oddio, qui potresti scatenare un acceso flame
+&lt;flame&gt;
+  rockerduck è un papero, ma non è simpatico come archimede
+&lt;/flame&gt;
+
+anche se il sistema dei pacchetti .deb è utilizzato da Ubuntu non vuol dire
+che puoi prendere un pacchetto debian (qui sarge) ed installarlo su una
+qualsiasi ubuntu
+
+il pacchetto contiene informazioni circa le dipendenze (altri
+pacchetti/librerie/moduli/...) che devono essere presenti sul tuo sistema
+affinché il nuovo pacchetto possa essere installato e funzionare; ad esempio
+se volessi installare gcc versione 4 e mi chiedessi quali sono le
+dipendenze:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone a devsrv</A>:~$ apt-cache depends gcc-4.0
+gcc-4.0
+  Dipende: gcc-4.0-base
+  Dipende: cpp-4.0
+  Dipende: binutils
+  Dipende: libgcc1
+  Dipende: libc6
+  Consiglia: gcc-4.0-doc
+  Consiglia: gcc-4.0-locales
+  Consiglia: libc6-dev-amd64
+  Consiglia: lib64gcc1
+  Raccomanda: libc6-dev
+  Raccomanda: libmudflap0-dev
+  Va in conflitto: &lt;gcc-3.2&gt;
+  Va in conflitto: &lt;gcc-3.5&gt;
+  Sostituisce: &lt;gcc-3.5&gt;
+
+
+ma l'unica cosa che sono riuscito a fare è far partire l'installazione in
+&gt;<i> modalità GUI, dopodichè l'installer mi avverte che non ho il gcc3.5.5nativo... ho capito che è il compilatore di Python, ma non riesco ad
+</I>&gt;<i> installare la versione 3.5.5 e se installo la versione 4 del gcc con Adept
+</I>&gt;<i> non sembra riconoscerla...
+</I>
+
+gcc è il compilatore C Gnu
+python è interpretato, quindi per eseguire applicazioni dovrai usare
+l'interprete Python
+se l'applicazione deve essere compilata con gcc versione 3.5.5 devi
+installare proprio quello e non la 4
+
+Potreste darmi una mano a capirci qualcosa?
+
+
+mi spiace ma non ho mai  utilizzato salome, ma pur col timore di &quot;andare in
+loop&quot;, non esiste un bel pacchetto?
+
+ciao
+
+// SS
+
+-- 
+jabber: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a jabber.linux.it</A>
+Trusted Computing: <A HREF="http://www.no1984.org/">http://www.no1984.org/</A>
+&quot;In theory, it shouldn't be that hard, but it just needs to be done&quot;
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061109/5ebf3223/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061109/5ebf3223/attachment-0001.htm</A>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000295.html">[Tecnica] Salome
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000297.html">[Tecnica] Salome
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#296">[ Data ]</a>
+              <a href="thread.html#296">[ Thread ]</a>
+              <a href="subject.html#296">[ Oggetto ]</a>
+              <a href="author.html#296">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

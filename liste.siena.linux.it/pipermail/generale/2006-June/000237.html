@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] RAID implementato via software o via hardware
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20RAID%20implementato%20via%20software%20o%20via%20hardware&In-Reply-To=87c98d450606211710x1d67afe3tc61a57d8ae773a87%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000236.html">
+   <LINK REL="Next"  HREF="000230.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] RAID implementato via software o via hardware</H1>
+    <B>Alessandro Iurlano</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20RAID%20implementato%20via%20software%20o%20via%20hardware&In-Reply-To=87c98d450606211710x1d67afe3tc61a57d8ae773a87%40mail.gmail.com"
+       TITLE="[Generale] RAID implementato via software o via hardware">alessandro.iurlano a gmail.com
+       </A><BR>
+    <I>Gio 22 Giu 2006 15:30:09 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000236.html">[Generale] RAID implementato via software o via hardware
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000230.html">[Generale] Glib
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#237">[ Data ]</a>
+              <a href="thread.html#237">[ Thread ]</a>
+              <a href="subject.html#237">[ Oggetto ]</a>
+	      <a href="author.html#237">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2006-06-22 at 02:10 +0200, Yusef Maali wrote:
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> 
+</I>&gt;<i> vorrei implementare un Raid di tipo 1 (mirroring) nel mio piccolo
+</I>&gt;<i> server di casa.
+</I>&gt;<i> Quello che devo proteggere non è niente di &quot;mission critical&quot; ma sono
+</I>&gt;<i> cose comunque che non voglio/devo perdere (ok meglio del backup non
+</I>&gt;<i> c'è niente, siamo d'accordo ;) ).
+</I>&gt;<i> 
+</I>&gt;<i> Ho visto che linux offre la possibilità di gestire due dischi in
+</I>&gt;<i> modalità Raid direttamente via software.
+</I>&gt;<i> Vi chiedo quali sono le principali differenze rispetto ad una
+</I>&gt;<i> soluzione completamente hardware.
+</I>&gt;<i> 
+</I>&gt;<i> Posso immaginare che la soluzione software sia:
+</I>&gt;<i> 
+</I>&gt;<i> - più lenta (ma a me non interessa la velocità. il piccolo server
+</I>&gt;<i> viene usato come NAS su una lan 10/100...)
+</I>&gt;<i> - occupa maggiormente il processore (anche questo non mi interessa,
+</I>&gt;<i> visto che non deve far nulla di chè)
+</I>
+Non di molto. Il collo di bottiglia è comunque l'attesa dati dal disco.
+
+&gt;<i> - meno affidabile (?) (questa invece sarebbe una cosa che non mi
+</I>&gt;<i> piacerebbe...)
+</I>
+L'unica cosa per cui puo' essere meno affidabile è che nel caso di raid
+sw se ti si rompe un disco ci sta' che ti si pianti la macchina. Nel
+caso di un raid hw il sistema non fa una piega. Ma per raid hw considera
+un sistema con una scheda raid apposita. Il raid offerto dalle piastre
+madri normalmente è un emulazione fatta a livello di bios ed è quindi
+molto simile al raid sw di linux. Inutile dire che quello di linux è
+migliore...
+
+&gt;<i> e sopratutto in caso di rompimento di uno dei dischi, si riesce a
+</I>&gt;<i> ripristinare il Raid?
+</I>
+Si. Metti il disco nuovo, dai il comando raidhotadd e linux te lo
+ricostruisce.
+Unica nota, se usi raid sw, assicurati di usare comunque un fs
+transazionale. Meglio ext3. Vai sul sicuro quando si tratta di
+recuperare i dati.
+
+Ciao
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: This is a digitally signed message part
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20060622/de93ae88/attachment.pgp">http://liste.siena.linux.it/pipermail/generale/attachments/20060622/de93ae88/attachment.pgp</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000236.html">[Generale] RAID implementato via software o via hardware
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000230.html">[Generale] Glib
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#237">[ Data ]</a>
+              <a href="thread.html#237">[ Thread ]</a>
+              <a href="subject.html#237">[ Oggetto ]</a>
+              <a href="author.html#237">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

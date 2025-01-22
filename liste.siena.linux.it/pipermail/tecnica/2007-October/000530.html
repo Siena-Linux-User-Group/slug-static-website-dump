@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Iptables
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Iptables&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000529.html">
+   <LINK REL="Next"  HREF="000531.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Iptables</H1>
+    <B>Jacopo Baldi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Iptables&In-Reply-To="
+       TITLE="[Tecnica] Iptables">jacopo a jacopo81.it
+       </A><BR>
+    <I>Mer 17 Ott 2007 21:37:15 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000529.html">[Tecnica] Kernel Panic
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000531.html">[Tecnica] Iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#530">[ Data ]</a>
+              <a href="thread.html#530">[ Thread ]</a>
+              <a href="subject.html#530">[ Oggetto ]</a>
+	      <a href="author.html#530">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+ho due reti collegate ad internet tramite lo stesso collegamento e dietro un 
+firewall comune (un pc vecchio con linux). La prima è una Lan di un ufficio a 
+cui non è consentito accedere dall'esterno, la seconda invece è una DMZ dove 
+sono collegati dei web server a cui si dovrebbe riuscire ad accedere 
+dall'esterno. Per semplicità ipotiziamo che ad ogni webserver sia associato 
+un solo dominio da raggiungere.
+L'indirizzo ip della rete che appare sul web è unico, come ho già detto 
+infatti il collgamento è lo stesso per le due reti.
+
+Avrei bisogno analizzare le richieste http (ed i pacchetti), che giungono al 
+firewall in modo da indirizzarle al webserver che ospita il sito richiesto. 
+Ovviamente questo non lo posso fare differenziando le porte delle 
+applicazioni, infatti tutti i siti web dovrebbero girare sulla stessa porta 
+(80).
+
+Qualcuno mi sa suggerire se questo si può fare solo con iptables oppure devo 
+usare qualcos'altro? C'è qualche materiale sul web dove è spiegato 
+dettagliatamente (ho cercato ma con pochi risultati).
+
+Ringrazio tutti per l'attenzione!
+Grazie
+Jacopo
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000529.html">[Tecnica] Kernel Panic
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000531.html">[Tecnica] Iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#530">[ Data ]</a>
+              <a href="thread.html#530">[ Thread ]</a>
+              <a href="subject.html#530">[ Oggetto ]</a>
+              <a href="author.html#530">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

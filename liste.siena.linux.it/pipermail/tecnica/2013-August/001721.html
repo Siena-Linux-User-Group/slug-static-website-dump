@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Fwd: Traffico in upload abnorme
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20Traffico%20in%20upload%20abnorme&In-Reply-To=%3CCAKsp6b%2Bt%2Bm4-tvORGcRr%2BKfHQ_96ttnUKbu1_qpgOhutyDrCvA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001720.html">
+   <LINK REL="Next"  HREF="001722.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Fwd: Traffico in upload abnorme</H1>
+    <B>luca mercurio</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20Traffico%20in%20upload%20abnorme&In-Reply-To=%3CCAKsp6b%2Bt%2Bm4-tvORGcRr%2BKfHQ_96ttnUKbu1_qpgOhutyDrCvA%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Fwd: Traffico in upload abnorme">luca.mercurio a gmail.com
+       </A><BR>
+    <I>Mer 21 Ago 2013 10:25:45 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001720.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001722.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1721">[ Data ]</a>
+              <a href="thread.html#1721">[ Thread ]</a>
+              <a href="subject.html#1721">[ Oggetto ]</a>
+	      <a href="author.html#1721">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ragazzi io vi voglio bene... Siete la mia famiglia...
+
+Comunque mi sto convincendo che sia un problema di switch e visto che al
+momento non posso spengere niente ho risolto così:
+
+1) Metto i miei colleghi sulla linea ADSL di backup
+2) controllo il traffico sugli switch
+
+A tale proposito sto controllando gli switch procurve:
+
+Collegandomi ad uno degli switch ho trovato:
+loss of link        lost connection to multiple devices on port:23.
+
+in un altro ho trovato:
+Excessive broadcast        excessive broadcast detected on port:4
+Excessive broadcast        excessive broadcast detected on port:46 (questa
+è la voce prevalente)
+Excessive broadcast        excessive broadcast detected on port:31
+Excessive broadcast        excessive broadcast detected on port:7
+
+nel terzo ho trovato:
+Excessive CRC/alignement errors        excessive CRC/Alignment errors on
+port 39 (questa è la voce prevalente)
+Excessive jabbering                            excessive jabbering detected
+on port 38
+
+
+Che dite... Prendo la scala e vado a spengerli o avete idea se possa fare
+una cosa più raffinata?
+
+Grazie
+
+Vi voglio tanto bene
+
+
+
+Il giorno 21 agosto 2013 11:07, Michele Pinassi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a zerozone.it</A>&gt; ha
+scritto:
+
+&gt;<i> Scusa ma a questo punto puoi farti dare risposta a queste domande, dal
+</I>&gt;<i> supporto tecnico del provider ?
+</I>&gt;<i>
+</I>&gt;<i> 1) che tipo di traffico è
+</I>&gt;<i> 2) se è IP, comunicare il MAC o -meglio- un bel dump del frame, così
+</I>&gt;<i> magari trovi qualcosa che ti possa aiutare...
+</I>&gt;<i>
+</I>&gt;<i> Michele
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 21/08/2013 11:01, luca mercurio wrote:
+</I>&gt;<i> &gt; Effettivamente il problema non è risolto....
+</I>&gt;<i> &gt; Spengendo il router gli ho dato una scossetta, ma ora a regime sono
+</I>&gt;<i> &gt; punto a capo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Di switch cinesi non ne ho. Addirittura la maggior parte degli switch
+</I>&gt;<i> &gt; sono HP procurve.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Da solo è un po' un casino fare queste prove: ad ogni switch ci sono
+</I>&gt;<i> &gt; collegati la totalità dei cavi e per fare un controllo approfondito ho
+</I>&gt;<i> &gt; bisogno di almeno un'altra persona.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; L'unica adesso è staccare brutalmente il generale della scuola.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ovviamente la parte più difficile è convincere i colleghi che per
+</I>&gt;<i> &gt; risolvere il problema ho bisogno di abbuiare tutto... Ma tanto lo
+</I>&gt;<i> &gt; sapete meglio di me che in questi casi ognuno è preso dal sacro furore
+</I>&gt;<i> &gt; del demone del lavoro e non può interrompere per nessun motivo...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; pazienza...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Si aspetterà la fatina magica che risolve tutto oppure fare come dice
+</I>&gt;<i> &gt; il mio collega amministratore &quot;'un ti preoccupà... tanto fra poino
+</I>&gt;<i> &gt; riparte tutto da sè...&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Uno sconfortato MacMercury
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; P.S.: Ma se il problema è uno switch impazzito, perché se utilizzo la
+</I>&gt;<i> &gt; linea ADSL di Backup tutto funziona? Provo a rispondermi: Perché
+</I>&gt;<i> &gt; magari gli switch puntano al router Cisco della Telecom e fanno casino?
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> &quot;Il numero di parole conosciute e usate è direttamente proporzionale al
+</I>&gt;<i> grado di sviluppo della democrazia e dell'uguaglianza delle possibilità.
+</I>&gt;<i> Poche parole e poche idee, poche possibilità e poca democrazia; più sono le
+</I>&gt;<i> parole che si conoscono, più ricca è le discussione politica e, con essa,
+</I>&gt;<i> la vita democratica&quot; Gustavo Zagrebelsky
+</I>&gt;<i> BLOG @ www.zerozone.it
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20130821/a763befc/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20130821/a763befc/attachment-0001.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001720.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001722.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1721">[ Data ]</a>
+              <a href="thread.html#1721">[ Thread ]</a>
+              <a href="subject.html#1721">[ Oggetto ]</a>
+              <a href="author.html#1721">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

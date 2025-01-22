@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Mysqldump da host remoto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3CCAONfR_CCj4Y38JACWExshaESSdYmPmHJudqrKg__WGUC4Yyg%2BQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001816.html">
+   <LINK REL="Next"  HREF="001819.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Mysqldump da host remoto</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3CCAONfR_CCj4Y38JACWExshaESSdYmPmHJudqrKg__WGUC4Yyg%2BQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Mysqldump da host remoto">freeze a siena.linux.it
+       </A><BR>
+    <I>Mar 29 Lug 2014 22:51:21 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001816.html">[Tecnica] Connessione sicura
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001819.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1818">[ Data ]</a>
+              <a href="thread.html#1818">[ Thread ]</a>
+              <a href="subject.html#1818">[ Oggetto ]</a>
+	      <a href="author.html#1818">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ciao a tutti,
+eccomi con una nuoa e inopportuna domanda :)
+
+
+*ecco il mio obiettivo: *
+fare backup periodici, nel server B, di un DB presente sul server A
+
+*precondizione:*
+l'ip del server  B e` stato autorizzato ad accedere al DB del server A
+
+*come ci sto lavorando:*
+dal server B mi loggo come root e lancio il comando
+
+/usr/bin/mysqldump &#8211;opt &#8211;user=miousername &#8211;password=miapassword
+--host=localhost nome_del_db &gt; /home/backup/database.sql
+
+ma ottengo il seguente messaggio di errore:
+*mysqldump: Got error: 1045: Access denied for user 'root'@'server B'
+(using password: YES) when trying to connect*
+
+da quel che ho letto e` che sul DB l'utente  &quot;root&quot; non e` abilitato
+
+la prima soluzione che mi e` venuta in mente
+e` di creare un utente sul&quot; server B&quot; col nome &quot;miousername&quot; e di
+rilanciare il comando da quell'utenza
+ma mi sembra una soluzione un attimo becera oltre che potenzialmente
+insicura
+
+a voi vengono in mente soluzioni meno criminali?
+
+Grazie Mille a tutti
+Freeze :)
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140729/e736f03b/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140729/e736f03b/attachment.htm</A>&gt;
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001816.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001819.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1818">[ Data ]</a>
+              <a href="thread.html#1818">[ Thread ]</a>
+              <a href="subject.html#1818">[ Oggetto ]</a>
+              <a href="author.html#1818">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

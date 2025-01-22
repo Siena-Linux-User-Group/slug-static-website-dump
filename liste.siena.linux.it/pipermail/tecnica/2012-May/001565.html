@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Domanda phpmailer ssl aruba
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-May/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20phpmailer%20ssl%20aruba&In-Reply-To=%3CCA%2B1kOc%2BdtN-z7oHiq0VjUArJfLvp_%3DiR-ntrWBY%2BjgyybcMsvg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001564.html">
+   <LINK REL="Next"  HREF="001563.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Domanda phpmailer ssl aruba</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20phpmailer%20ssl%20aruba&In-Reply-To=%3CCA%2B1kOc%2BdtN-z7oHiq0VjUArJfLvp_%3DiR-ntrWBY%2BjgyybcMsvg%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Domanda phpmailer ssl aruba">bartrosso a gmail.com
+       </A><BR>
+    <I>Mar 29 Maggio 2012 17:23:05 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001564.html">[Tecnica] Domanda phpmailer ssl aruba
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001563.html">[Tecnica] Domanda phpmailer ssl aruba
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1565">[ Data ]</a>
+              <a href="thread.html#1565">[ Thread ]</a>
+              <a href="subject.html#1565">[ Oggetto ]</a>
+	      <a href="author.html#1565">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>per Motaz, il mio numero di carta di credito qual'è?
+
+bart
+
+2012/5/29 bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt;
+
+&gt;<i> ho risolto, per i posteri.
+</I>&gt;<i>
+</I>&gt;<i> Solo con aruba mi ha dato questo tipo di problema ma è relativo a phpmailer
+</I>&gt;<i> Semplicissimo: il protocollo ssl è da scriversi minuscolo e senza
+</I>&gt;<i> virgolette... SMTPSecure=ssl;
+</I>&gt;<i> Altrimenti non viene preso. il fatto è che in tutti gli altri casi finora
+</I>&gt;<i> avuti non prendendo ssl
+</I>&gt;<i> entrava in tls con la porta di default che per gmail non era affatto un
+</I>&gt;<i> problema.
+</I>&gt;<i>
+</I>&gt;<i> In realtà, quindi, non avevo mai mandato correttamente email con phpmailer
+</I>&gt;<i> in ssl.
+</I>&gt;<i> Quanto cose si imparano tra una bestemmia ed un rosario
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Bartrosso
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> quando
+</I>&gt;<i>
+</I>&gt;<i> 2012/5/29 daniele masti &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">danielemasti a gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> salve
+</I>&gt;&gt;<i> domanda idiota, hai già provato se effettivamente funzioni con altri
+</I>&gt;&gt;<i> sistemi (altri linguaggi o altre librerie)?
+</I>&gt;&gt;<i> magari è un servizio che aruba vende a parte, oppure richiede di
+</I>&gt;&gt;<i> essere abilitato da loro (sto congetturando, sinceramente non ho mai
+</I>&gt;&gt;<i> lavorato con aruba)
+</I>&gt;&gt;<i> saluti
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il 29 maggio 2012 11:04, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha scritto:
+</I>&gt;&gt;<i> &gt; Scusatemi, nessuno ha avuto esperienze di inviare email tramite
+</I>&gt;&gt;<i> phpmailer
+</I>&gt;&gt;<i> &gt; L'ho sempre usato senza problemi.
+</I>&gt;&gt;<i> &gt; Ora mi trovo da due giorni dietro ad un semplice invio su di un sito in
+</I>&gt;&gt;<i> &gt; aruba.
+</I>&gt;&gt;<i> &gt; Con i dati rivisti e rivisti e sono corretti e secondo la guida di aruba
+</I>&gt;&gt;<i> &gt; stessa.
+</I>&gt;&gt;<i> &gt; SSL
+</I>&gt;&gt;<i> &gt; porta 465
+</I>&gt;&gt;<i> &gt; server smtps.aruba.it
+</I>&gt;&gt;<i> &gt; Auth  si
+</I>&gt;&gt;<i> &gt; username e password , sono l'email e la sua rispettiva password.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Continua a negarmi l'accesso smtp,
+</I>&gt;&gt;<i> &gt; Rimandandomi alla linea 212 del class.smtp.php di phpmailer in cui
+</I>&gt;&gt;<i> avviene
+</I>&gt;&gt;<i> &gt; un controllo sull'host.
+</I>&gt;&gt;<i> &gt; Io non so più cosa provare.
+</I>&gt;&gt;<i> &gt; Gli altri tre invii del sito usano sempre phpmailer funzionando
+</I>&gt;&gt;<i> &gt; correttamente ma uso come gestore di posta un amail gmail con TLS  e
+</I>&gt;&gt;<i> porta
+</I>&gt;&gt;<i> &gt; di google (500 e qualcosa, ora non ricordo .)
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Non vorrei eliminare phpmailer, lo uso bene in molte altre occasioni.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Sapete dirmi se c'è qualche cosa su aruba che non mi permette di
+</I>&gt;&gt;<i> inviare?
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; OpenSSL da php.ini è enabled
+</I>&gt;&gt;<i> &gt; Ultima versione disponibile.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Grazie mille
+</I>&gt;&gt;<i> &gt; Bartrosso
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; --
+</I>&gt;&gt;<i> &gt; Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;&gt;<i> Debian..&quot;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;&gt;<i> libero
+</I>&gt;&gt;<i> &gt; e totale tutta la conoscenza umana.»
+</I>&gt;&gt;<i> &gt; &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; _______________________________________________
+</I>&gt;&gt;<i> &gt; Tecnica mailing list
+</I>&gt;&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;<i> Debian..&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;<i> libero e totale tutta la conoscenza umana.»
+</I>&gt;<i> &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+Sono ciò che sono grazie a quello che siamo tutti,
+
+
+
+un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare Debian..&quot;
+
+
+«Immagina se ogni persona sulla terra potesse condividere con accesso
+libero e totale tutta la conoscenza umana.»
+&#8212; Jimmy Wales, fondatore di Wikipedia
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20120529/1b44462a/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20120529/1b44462a/attachment-0001.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001564.html">[Tecnica] Domanda phpmailer ssl aruba
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001563.html">[Tecnica] Domanda phpmailer ssl aruba
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1565">[ Data ]</a>
+              <a href="thread.html#1565">[ Thread ]</a>
+              <a href="subject.html#1565">[ Oggetto ]</a>
+              <a href="author.html#1565">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

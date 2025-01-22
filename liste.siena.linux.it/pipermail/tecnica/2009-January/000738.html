@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Permessi &quot;Strani&quot;
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Permessi%20%22Strani%22&In-Reply-To=496CA317.0%40gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000737.html">
+   <LINK REL="Next"  HREF="000739.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Permessi &quot;Strani&quot;</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Permessi%20%22Strani%22&In-Reply-To=496CA317.0%40gmail.com"
+       TITLE="[Tecnica] Permessi &quot;Strani&quot;">contact a yusefmaali.net
+       </A><BR>
+    <I>Mar 13 Gen 2009 23:48:08 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000737.html">[Tecnica] Permessi &quot;Strani&quot;
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000739.html">[Tecnica] Permessi &quot;Strani&quot;
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#738">[ Data ]</a>
+              <a href="thread.html#738">[ Thread ]</a>
+              <a href="subject.html#738">[ Oggetto ]</a>
+	      <a href="author.html#738">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Con i permessi di linux una cosa del genere non la puoi fare.
+I permessi utilizzabili per i file sono: r (read), w (write), x  
+(execute)
+Se dai il permesso di write su un file, ci puoi fare tutto ciò che  
+implichi la scrittura: cancellazione, rinominazione, modifiche al  
+contenuto, ecc...
+Se poi ti interessa capire meglio come funzionano ci sono pagine  
+decisamente ben fatte e molto approfondite a giro per internet che ti  
+spiegano tutto.
+
+Quello che vuoi tu invece vede Samba tra chi impartisce il comando  
+(l'utente) e chi lo esegue (linux). Le cose cambiano e forse è una  
+cosa fattibile.
+Qui però passa la palla a chi è esperto di Samba. Ti consiglio  
+comunque di cercare nei manuali di samba. Se si può fare lo trovi  
+scritto li piuttosto che nei permessi di linux.
+
+Quando scopri qualcosa, mi fa la cortesia di comunicarlo in lista? :)
+Dovrei fare anche io una cosa del genere in un futuro breve...
+
+Ciao,
+Yusef
+
+Il giorno 13/gen/09, alle ore 15:20, Ciani Andrea ha scritto:
+
+&gt;<i> Il problema è che questa cartella è condivisa in rete (con accesso da
+</I>&gt;<i> computer windows). Sarà fattibile ugualmente?
+</I>&gt;<i>
+</I>&gt;<i> $ito wrote:
+</I>&gt;&gt;<i> Una cosa come quella che chiedi è fattibile, ma complicata, l'unica
+</I>&gt;&gt;<i> cosa rapida che mi viene in mente è quella di fare sudo chmod 744
+</I>&gt;&gt;<i> &lt;nome cartella&gt; che, se non ricordo male, dovrebbe dare tutti i
+</I>&gt;&gt;<i> diritti solo al root e in lettura solamente a tutti gli altri, così
+</I>&gt;&gt;<i> per modificare, copiare, etc.. dovrai inserire la password di root e
+</I>&gt;&gt;<i> non succederà più &quot;involontariamente&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Se ho sbagliato qualcosa mi auguro che qualcuno mi corregga. :D
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $ito
+</I>&gt;&gt;<i>
+</I></PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000737.html">[Tecnica] Permessi &quot;Strani&quot;
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000739.html">[Tecnica] Permessi &quot;Strani&quot;
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#738">[ Data ]</a>
+              <a href="thread.html#738">[ Thread ]</a>
+              <a href="subject.html#738">[ Oggetto ]</a>
+              <a href="author.html#738">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

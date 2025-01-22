@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] domanda sul php
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20sul%20php&In-Reply-To=%3CAANLkTi%3D-aw4%2BAWNKFmJoVo3kXhoNY6kstU2DxKAn_cRw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004472.html">
+   <LINK REL="Next"  HREF="004474.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] domanda sul php</H1>
+    <B>Max Murdock</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20sul%20php&In-Reply-To=%3CAANLkTi%3D-aw4%2BAWNKFmJoVo3kXhoNY6kstU2DxKAn_cRw%40mail.gmail.com%3E"
+       TITLE="[Generale] domanda sul php">maxmurd a gmail.com
+       </A><BR>
+    <I>Lun 23 Ago 2010 18:17:51 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="004472.html">[Generale] domanda sul php
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="004474.html">[Generale] domanda sul php
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4473">[ Data ]</a>
+              <a href="thread.html#4473">[ Thread ]</a>
+              <a href="subject.html#4473">[ Oggetto ]</a>
+	      <a href="author.html#4473">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2010/8/23 bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">bartrosso a gmail.com</A>&gt;:
+&gt;<i> Chiedo scusa, non riesco a capire come funziona una cosa relativa all upload
+</I>&gt;<i> dei  file.
+</I>&gt;<i> Com'è che si fa capire al server chi è l'uploader del file, cioè l'id dell
+</I>&gt;<i> utente, dov'è che si trasmette in nel modulo di upload?
+</I>&gt;<i> è un punto in cui sono fermo per un mio progetto..
+</I>&gt;<i> tanga
+</I>&gt;<i> grazie mille come al solito,
+</I>
+Bhe se stai paralndo di un utente loggato in un'-interfaccia php che
+ti carica un file sul server, allora l-id glielo passi tu
+semplicemente come parametro dell'applicazione
+Esattamente come gli passi il file via post con i vari attributi size
+name etc, alla form ci aggiungi un campo input, magari di tipo hidden,
+dove specifichi l'id dell'utente che vuoi...
+
+Se invece ti rifewrisci ala &quot;nuda&quot; funzione del php per caricare un
+fiel dal tuo pc a un server, cioè move_uploaded_file che ti porta il
+file dalal dir temporanea su quella che vuoi, non mi risulta che tra i
+parametri dell'array $_FILES che lui usa ci sia l'utente del sistema
+(apache, httpd, nobody...) che fa questa azione, ma non credo che ti
+interessi sapere se il file viene caricato da quale utente del server
+che stai usando. Bensi appunto è interessante sapere quale utente sta
+usando l'interfaccia di upload che hai fatto in php.
+Appunto come sopra, ci aggiungi un campo al post e te lo leggi al
+momento di fare il move_uploaded_file...
+
+cYa
+-- 
+Fabrizio Felici
+Registered Linux User #398394
+Registered Linux Machines #300244 #300245 #395591
+
+Blog: Open Source e Linux Business <A HREF="http://www.smartmedia2000.it/blog/">http://www.smartmedia2000.it/blog/</A>
+Rock Polis la città del rock <A HREF="http://www.rockpolis.net/">http://www.rockpolis.net/</A>
+GroLug Grosseto - <A HREF="http://www.grolug.org/">http://www.grolug.org/</A>
+Ass. Partito Pirata - <A HREF="http://www.partito-pirata.it/">http://www.partito-pirata.it/</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="004472.html">[Generale] domanda sul php
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="004474.html">[Generale] domanda sul php
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4473">[ Data ]</a>
+              <a href="thread.html#4473">[ Thread ]</a>
+              <a href="subject.html#4473">[ Oggetto ]</a>
+              <a href="author.html#4473">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

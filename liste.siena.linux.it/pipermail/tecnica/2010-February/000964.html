@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] dipendenze......
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dipendenze......&In-Reply-To=%3C4B7ADDCA.5050503%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000956.html">
+   <LINK REL="Next"  HREF="000965.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] dipendenze......</H1>
+    <B>robi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dipendenze......&In-Reply-To=%3C4B7ADDCA.5050503%40valdelsa.net%3E"
+       TITLE="[Tecnica] dipendenze......">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Mar 16 Feb 2010 18:02:50 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000956.html">[Tecnica] dipendenze......
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000965.html">[Tecnica] dipendenze......
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#964">[ Data ]</a>
+              <a href="thread.html#964">[ Thread ]</a>
+              <a href="subject.html#964">[ Oggetto ]</a>
+	      <a href="author.html#964">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> Si esatto. Ma comunque quando si parla di shell in Ubuntu si parla ancora di 
+</I>&gt;<i> apt o aptitude identicamente a Debian.
+</I>&gt;<i>
+</I>&gt;<i> Quindi se Robero vuole installare libglade2-dev deve dare da shell:
+</I>&gt;<i>
+</I>&gt;<i> sudo apt-get install libglade2-dev
+</I>&gt;<i>
+</I>&gt;<i> il quale installerà anche tutte le sue dipendenze.
+</I>&gt;<i>
+</I>&gt;<i> Si segnala anche il comando apt-cache con il quale fare ricerche:
+</I>&gt;<i>
+</I>&gt;<i> apt-cache search parole chiavi di ricerca
+</I>&gt;<i>
+</I>&gt;<i> o per vedere le versioni dei pacchetti e le loro sorgenti
+</I>&gt;<i>
+</I>&gt;<i> apt-cache policy nomepacchetto
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i>   
+</I>purtroppo come avete detto non funziona (premesso che di solito è il 
+gestore pacchetti che installa le dipendenze), in questo caso le 
+risposte da shell sono queste:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a robi-laptop</A>:~$ sudo apt-get install libglade2-dev
+Lettura della lista dei pacchetti in corso... Fatto
+Generazione dell'albero delle dipendenze in corso      
+Lettura delle informazioni di stato... Fatto    
+Alcuni pacchetti non possono essere installati. Questo può voler
+dire che è stata richiesta una situazione impossibile oppure, se
+si sta usando la distribuzione &quot;unstable&quot;, che alcuni pacchetti
+richiesti non sono ancora stati creati o rimossi da incoming.
+
+Poiché è stata richiesta solo una singola operazione è molto facile che
+il pacchetto semplicemente non sia installabile, si consiglia
+di inviare un &quot;bug report&quot; per tale pacchetto.
+Le seguenti informazioni possono aiutare a risolvere la situazione:
+
+I seguenti pacchetti hanno dipendenze non soddisfatte:
+  libglade2-dev: Dipende: libgtk2.0-dev (&gt;= 2.0.6) ma non sta per essere 
+installato
+
+allora provo a installare libgtk2.0-dev....
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a robi-laptop</A>:~$ sudo apt-get install libgtk2.0-dev
+Lettura della lista dei pacchetti in corso... Fatto
+Generazione dell'albero delle dipendenze in corso      
+Lettura delle informazioni di stato... Fatto    
+Alcuni pacchetti non possono essere installati. Questo può voler
+dire che è stata richiesta una situazione impossibile oppure, se
+si sta usando la distribuzione &quot;unstable&quot;, che alcuni pacchetti
+richiesti non sono ancora stati creati o rimossi da incoming.
+
+Poiché è stata richiesta solo una singola operazione è molto facile che
+il pacchetto semplicemente non sia installabile, si consiglia
+di inviare un &quot;bug report&quot; per tale pacchetto.
+Le seguenti informazioni possono aiutare a risolvere la situazione:
+
+I seguenti pacchetti hanno dipendenze non soddisfatte:
+  libgtk2.0-dev: Dipende: libcairo2-dev ma non sta per essere installato
+                 Dipende: libpango1.0-dev (&gt;= 1.10.0-2) ma non sta per 
+essere installato
+                 Dipende: libx11-dev (&gt;= 2:1.0.0-6) ma non sta per 
+essere installato
+                 Dipende: libxcomposite-dev ma non sta per essere installato
+                 Dipende: libxcursor-dev ma non sta per essere installato
+                 Dipende: libxdamage-dev ma non sta per essere installato
+                 Dipende: libxext-dev ma non sta per essere installato
+                 Dipende: libxfixes-dev ma non sta per essere installato
+                 Dipende: libxi-dev ma non sta per essere installato
+                 Dipende: libxinerama-dev ma non sta per essere installato
+                 Dipende: libxrandr-dev ma non sta per essere installato
+
+se provo con gli altri pacchetti lo stesso......ora ho il dubbio che ci 
+siano dei problemi con i &quot;repo&quot; ma vanno bene......e il serpente 
+continua a mordersi la coda.....
+
+in pratica non se ne esce.....:-(((((
+
+a qualcuno è successo qualcosa di simile?
+
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000956.html">[Tecnica] dipendenze......
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000965.html">[Tecnica] dipendenze......
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#964">[ Data ]</a>
+              <a href="thread.html#964">[ Thread ]</a>
+              <a href="subject.html#964">[ Oggetto ]</a>
+              <a href="author.html#964">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

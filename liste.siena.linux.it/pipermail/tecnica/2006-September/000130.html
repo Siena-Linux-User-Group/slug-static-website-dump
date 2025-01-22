@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ssh gaia unreachable
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609171550.46932.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000120.html">
+   <LINK REL="Next"  HREF="000133.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ssh gaia unreachable</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609171550.46932.pragma%40siena.linux.it"
+       TITLE="[Tecnica] ssh gaia unreachable">pragma a siena.linux.it
+       </A><BR>
+    <I>Lun 18 Set 2006 01:52:47 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000120.html">[Tecnica] ssh gaia unreachable
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000133.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#130">[ Data ]</a>
+              <a href="thread.html#130">[ Thread ]</a>
+              <a href="subject.html#130">[ Oggetto ]</a>
+	      <a href="author.html#130">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok, ci siamo arrivati.
+
+Si vede bene se si tenta la connessione attraverso telnet:
+
+# telnet gaia.siena.linux.it 22
+Trying 80.68.90.40...
+Trying 2001:4bd0:2011::1...
+telnet: Unable to connect to remote host: Network is unreachable
+
+Al nome gaia.siena.linux.it c'è asociato anche un IPV6 (che prova per 
+secondo).
+Non essendoci imposstato un tunnel IPV6 nelle macchine dalle quali facciamo le 
+prove, il messaggio Network Unreachable e' corretto.
+
+Se si forza gaia.siena.linux.it a risolvere solo l'IPV4 (80.68.90.40 
+gaia.siena.linu.it su /etc/hosts):
+
+# telnet gaia.siena.linux.it 22
+Trying 80.68.90.40...
+telnet: Unable to connect to remote host: Connection refused
+
+Mistero svelato.
+
+pragma &amp; iakko
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Black holes were created when God divided by 0
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060918/8a893a0b/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060918/8a893a0b/attachment.pgp</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000120.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000133.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#130">[ Data ]</a>
+              <a href="thread.html#130">[ Thread ]</a>
+              <a href="subject.html#130">[ Oggetto ]</a>
+              <a href="author.html#130">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

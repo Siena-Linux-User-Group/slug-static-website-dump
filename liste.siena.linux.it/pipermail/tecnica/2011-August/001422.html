@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Pacchetti
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Pacchetti&In-Reply-To=%3CCAKjoEh_i5oX%3Dggjw2U1JDpT-6K9a0OqzeY%3DkJxb-RR959LtJWA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001421.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Pacchetti</H1>
+    <B>daniele masti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Pacchetti&In-Reply-To=%3CCAKjoEh_i5oX%3Dggjw2U1JDpT-6K9a0OqzeY%3DkJxb-RR959LtJWA%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Pacchetti">danielemasti a gmail.com
+       </A><BR>
+    <I>Sab 27 Ago 2011 10:46:42 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001421.html">[Tecnica] Pacchetti
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1422">[ Data ]</a>
+              <a href="thread.html#1422">[ Thread ]</a>
+              <a href="subject.html#1422">[ Oggetto ]</a>
+	      <a href="author.html#1422">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve
+di solito la jvm do per scontato che sia già installata, e lo scrivo
+bello grosso nelle note.
+Per il database, nella mia esperienza di installazioni monoutente, per
+quanto riguarda applicazioni abbastanza piccole (2/3k &quot;record&quot; o giù
+di li) ho trovato più che soddisfacente la seriealizzaione tramite
+tramite xml direttamente proposta dal jdk (java.io.XMLEncoder &amp; C) di
+cui, con un minimo di caching e poco più, mi sono anche scritto una
+piccola libreria.
+Nei casi in cui l'sql era necessario, mi sono spesso rifatto a
+database quali javadb e hsqldb i quali si veicolano attraverso uno o
+due singoli jar,  senza necessità di installazione.
+Se ti servono informazioni (per il discorso xml ho anche una libreria
+intera) chiedi pure
+
+PS: per i linux, esiste la possibilita di integrare del binario in uno
+script bash, praticamente con quello ci veicoli quello che ti pare
+Saluti
+Daniele Masti
+
+Il 25 agosto 2011 23:25, Giulio Saletti &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">giulio.saletti a gmail.com</A>&gt; ha scritto:
+&gt;<i> Ciao, grazie della risposta!
+</I>&gt;<i> Nell'autoestraente includi anche la JVM? E per i database?
+</I>&gt;<i> Comunque è già un buon inizio, grazie Daniele!
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 25/ago/2011, alle ore 23:22, daniele masti
+</I>&gt;<i> &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">danielemasti a gmail.com</A>&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i> salve,
+</I>&gt;&gt;<i> solitamente quando devo consegnare programmi scritti in java su
+</I>&gt;&gt;<i> piattaforma windows, opto per un semplice autoestraente creato con
+</I>&gt;&gt;<i> izarc, winzip o chi ho installato in quel momento, che contenga il jar
+</I>&gt;&gt;<i> principale più i jar delle eventuali librerie necessarie.
+</I>&gt;&gt;<i> Sotto linux, sinceramente, non ne ho mai avuto la necissità e non mi
+</I>&gt;&gt;<i> sono mai posto il problema, per cui non so darti risposta
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Saluti
+</I>&gt;&gt;<i> Daniele Masti
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il 25 agosto 2011 16:01, Giulio Saletti &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">giulio.saletti a gmail.com</A>&gt; ha scritto:
+</I>&gt;&gt;&gt;<i> Ciao a tutti,
+</I>&gt;&gt;&gt;<i> bentrovati in questa torrida estate... ma sempre meglio dei rigidi inverni!
+</I>&gt;&gt;&gt;<i> Vorrei sapere cosa usate (oppure se conoscete) qualche free tool per
+</I>&gt;&gt;&gt;<i> pacchettizzare i software scritti in java nei vari .exe, . deb et
+</I>&gt;&gt;&gt;<i> similia o qualcosa che aiuti nel semplice wrapping dei .jar
+</I>&gt;&gt;&gt;<i> comprensivi di librerie etc.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Grazie a tutti!
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Giulio
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001421.html">[Tecnica] Pacchetti
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1422">[ Data ]</a>
+              <a href="thread.html#1422">[ Thread ]</a>
+              <a href="subject.html#1422">[ Oggetto ]</a>
+              <a href="author.html#1422">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

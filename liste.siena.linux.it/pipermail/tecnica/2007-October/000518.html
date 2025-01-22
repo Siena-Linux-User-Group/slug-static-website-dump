@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] configurazione di rete
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=4702680A.1070408%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000517.html">
+   <LINK REL="Next"  HREF="000521.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] configurazione di rete</H1>
+    <B>Michele Mondelli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=4702680A.1070408%40valdelsa.net"
+       TITLE="[Tecnica] configurazione di rete">mithenks.ml a gmail.com
+       </A><BR>
+    <I>Mar  2 Ott 2007 19:20:30 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000517.html">[Tecnica] configurazione di rete
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000521.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#518">[ Data ]</a>
+              <a href="thread.html#518">[ Thread ]</a>
+              <a href="subject.html#518">[ Oggetto ]</a>
+	      <a href="author.html#518">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 02/10/07, roberto volpini&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt; ha scritto:
+&gt;<i> bene.....andiamo con ordine....ieri non mi sono spiegato a dovere
+</I>&gt;<i>
+</I>
+Quindi per &quot;creare una rete&quot; intendi condividere i file?
+Cioè SMB e NFS sono protocolli per la condivisione di file in rete, mentre per
+quanto riguarda il fatto cui ti riferivi, al pingare gli ip, quelli
+dovresti pingarli a prescindere
+dal fatto che samba o altri siano configurati correttamente.
+
+Questo è quello che uso io nel mio file di samba:
+
+[global]
+# Nome del Workgroup ^^
+workgroup = Workgroup
+# Identificativo della Macchina
+server string = Michele's Laptop
+# Tipo di restrizioni usate
+security = share
+# Hosts da cui accettare connessioni
+hosts allow = 192.168.1. 127.
+
+[Condivisione]
+        comment = File Condivisi
+        path = /home/mithenks/condivisi
+        public = yes
+        writeable = no
+        guest ok = yes
+
+Prova ^^
+
+
+
+-- 
+Mithenks
+.: www.mithenks.com :.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000517.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000521.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#518">[ Data ]</a>
+              <a href="thread.html#518">[ Thread ]</a>
+              <a href="subject.html#518">[ Oggetto ]</a>
+              <a href="author.html#518">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

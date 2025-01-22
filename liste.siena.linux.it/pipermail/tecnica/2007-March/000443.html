@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] primi danni....PC nuovo.. lungo
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20primi%20danni....PC%20nuovo..%20lungo&In-Reply-To=45F90E34.7040808%40unisi.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000440.html">
+   <LINK REL="Next"  HREF="000441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] primi danni....PC nuovo.. lungo</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20primi%20danni....PC%20nuovo..%20lungo&In-Reply-To=45F90E34.7040808%40unisi.it"
+       TITLE="[Tecnica] primi danni....PC nuovo.. lungo">contact a yusefmaali.net
+       </A><BR>
+    <I>Ven 16 Mar 2007 00:28:48 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000440.html">[Tecnica] primi danni....PC nuovo.. lungo
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000441.html">[Tecnica] cercasi consulente linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#443">[ Data ]</a>
+              <a href="thread.html#443">[ Thread ]</a>
+              <a href="subject.html#443">[ Oggetto ]</a>
+	      <a href="author.html#443">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 00:42, giovedì 15 marzo 2007, marco ha scritto:
+&gt;<i> 
+</I>&gt;<i> scusate  ho un approccio un po diverso dal 
+</I>&gt;<i> vostro....
+</I>
+Per carità, è giustissimo avere questo approccio. Non so quanto possa funzionare :)
+
+&gt;<i> non c'è modo di salvare i file di configurazioni o le  
+</I>&gt;<i> informazioni necessarie....
+</I>
+Salvare solo i file di configurazioni non ti basta.
+Salvare le configurazione del kernel non ti basta.
+Devi salvare tutto.
+
+Ti descrivo un approccio abbastanza gentooista:
+Fai il backup di tutto con:
+sudo tar cjf /backup.tar.bz2 / --exclude=/tmp --exclude=/mnt --exclude=/proc --exclude=/sys
+
+Per ripristinare tutto (magari attraverso una live):
+sudo tar -xvjpf backup.tar.bz2
+
+
+Detto questo ti do la mia assoluta certezza che linux non funzionerà subito automaticamente.
+Avrai comunque bisogno di perderci tempo dietro, magari meno che reinstallare tutto da zero.
+
+Se cerchi tool automatici che tengano conto del cambio di partizione, non so aiutarti.
+
+
+-- 
+Y.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000440.html">[Tecnica] primi danni....PC nuovo.. lungo
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000441.html">[Tecnica] cercasi consulente linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#443">[ Data ]</a>
+              <a href="thread.html#443">[ Thread ]</a>
+              <a href="subject.html#443">[ Oggetto ]</a>
+              <a href="author.html#443">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

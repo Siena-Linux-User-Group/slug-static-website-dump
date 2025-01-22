@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] debuild, automake, configure...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20debuild%2C%20automake%2C%20configure...&In-Reply-To=%3CAANLkTikeVUXdTgffVPXX-6maNnoOopgD_qHXzAiBMW2r%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001243.html">
+   <LINK REL="Next"  HREF="001250.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] debuild, automake, configure...</H1>
+    <B>Vincenzo Di Massa</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20debuild%2C%20automake%2C%20configure...&In-Reply-To=%3CAANLkTikeVUXdTgffVPXX-6maNnoOopgD_qHXzAiBMW2r%40mail.gmail.com%3E"
+       TITLE="[Tecnica] debuild, automake, configure...">hawk78 a interfree.it
+       </A><BR>
+    <I>Gio 18 Nov 2010 00:28:17 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001243.html">[Tecnica] debuild, automake, configure...
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001250.html">[Tecnica] debuild, automake, configure...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1247">[ Data ]</a>
+              <a href="thread.html#1247">[ Thread ]</a>
+              <a href="subject.html#1247">[ Oggetto ]</a>
+	      <a href="author.html#1247">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>dh_install, se non ricordo male. cmq guarda i debhelpers
+
+2010/11/16 O-Zone &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a zerozone.it</A>&gt;:
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> sono alle prese con la pacchettizzazione di SquidTL. Sono riuscito a
+</I>&gt;<i> completare la creazione del .deb con debuild, configurando gli scripts
+</I>&gt;<i> dentro debian/
+</I>&gt;<i>
+</I>&gt;<i> Tuttavia ho alcuni problemi che non riesco a risolvere, tra cui
+</I>&gt;<i> includere nel pacchetto la directory con le pagine web (www) ed il file
+</I>&gt;<i> di configurazione, che dovrebbe essere copiato dentro /etc/squidtl/
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ecco un breve &quot;alberino&quot; della situazione:
+</I>&gt;<i>
+</I>&gt;<i> squidtl-0.2.0 +- src - [il file binario]
+</I>&gt;<i>              |
+</I>&gt;<i>              +- www - [pagine web]
+</I>&gt;<i>              |
+</I>&gt;<i>              +- config.xml
+</I>&gt;<i>
+</I>&gt;<i> Ok, praticamente il .deb mi viene creatro ma solo con il file binario.
+</I>&gt;<i> Io voglio includere la directory 'www' che dovrà essere copiata in
+</I>&gt;<i> '/var/www/squidtl' e 'config.xml' che andrà in '/etc/squidtl/'
+</I>&gt;<i>
+</I>&gt;<i> Inoltre, visto che ci siamo, dovrei anche automatizzare la modifica alla
+</I>&gt;<i> configurazione di squid (in /etc/squid/squid.conf) aggiungendo due
+</I>&gt;<i> righe. Poi dovrei anche riavviare automaticamente il servizio.
+</I>&gt;<i>
+</I>&gt;<i> ...come faccio ?
+</I>&gt;<i>
+</I>&gt;<i> Grazie, Michele
+</I>&gt;<i> --
+</I>&gt;<i> O-Zone ! No (C) since 1996
+</I>&gt;<i> On the road with VFR VTec 2002 &quot;Vuffy&quot;, on the net with Linux Slackware.
+</I>&gt;<i> Home+BLOG @ <A HREF="http://www.zerozone.it">http://www.zerozone.it</A> - Travels @ <A HREF="http://www.openitaly.net">http://www.openitaly.net</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001243.html">[Tecnica] debuild, automake, configure...
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001250.html">[Tecnica] debuild, automake, configure...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1247">[ Data ]</a>
+              <a href="thread.html#1247">[ Thread ]</a>
+              <a href="subject.html#1247">[ Oggetto ]</a>
+              <a href="author.html#1247">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

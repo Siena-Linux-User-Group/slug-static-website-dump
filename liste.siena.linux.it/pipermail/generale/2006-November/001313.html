@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=331769.34224.qm%40web55213.mail.re4.yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001312.html">
+   <LINK REL="Next"  HREF="001315.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali</H1>
+    <B>Alex M4DC4T</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=331769.34224.qm%40web55213.mail.re4.yahoo.com"
+       TITLE="[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali">alex71si a hotmail.com
+       </A><BR>
+    <I>Gio 23 Nov 2006 10:56:20 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001312.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001315.html">[Generale] [InTopic] Pubblicità non occulta
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1313">[ Data ]</a>
+              <a href="thread.html#1313">[ Thread ]</a>
+              <a href="subject.html#1313">[ Oggetto ]</a>
+	      <a href="author.html#1313">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Beh, il tuo ragionamento e' paragonabile, secondo il mio punto di vista, 
+alla differenza che c'e' fra tecnica e scienza... &quot;con la tecnica puoi fare 
+una cosa senza capire, colla scienza puoi capire una cosa senza fare, ma se 
+capisci, puoi fare molto bene e se fai molto bene, magari puoi capire&quot;
+Filosofia rulez....
+=D
+comunque, ritornando al fatto che non capisco....=D
+quando io scrivo
+$a='pippo';
+poi referenzio
+$ra=\$a;
+se io ora scrivo
+print $ra;
+lui mi scrive ad esempio:
+&gt;<i>0x80d1fbc
+</I>se scrivo
+print $$ra;    (analogo print ${$ra}; in cui in {$ra} c'e' la reference che 
+punta a $a)
+praticamente in $rb io avro' il &quot;puntatore&quot; alla variabile $a e non un 
+&quot;nuovo luogo dove memorizzare una variabile&quot;... almeno fin qui pensavo di 
+aver capito....
+per vettori:
+@a = (1, 2, 3);
+$ra = \@a;
+le varie references saranno
+$ra[0]
+$ra[1]
+$ra[2]
+se scrivo
+print $ra[1];
+avrei di ritorno l'indirizzo....
+se scrivo
+print $$ra[1]; otterrei il valore di a[1], ovvero il valore '2'
+i miei dubbi sorgono con:
+$ra[1][1]           piu' rigoroso si scriverebbe ${$ra[1]}[1]
+perche' per me dentro alle parentesi {} ci dovrebbe essere la reference a 
+$a[1], ma il restante che sta fuori alle parentesi {} ?
+Nel senso, se $ra[1] punta sempre a $a[1], allora scrivere ${$ra[1]}[1] e  
+${$ra[1]}[0] sarebbero due references diverse che pero' comunque puntano 
+alla stessa cosa, cioe' $a[1], e non due elementi
+insomma, penso che se Szymon Stefanek non me da' una mano a capire con 
+carta, penna e/o portatile e tanta pazienza, 'sta cosa non la capiro' mai...
+=)
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>--- Alex M4DC4T &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">alex71si a hotmail.com</A>&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;Pero' tornando al discorso originale, a me non
+</I>&gt;<i> &gt; sembra
+</I>&gt;<i> &gt; &gt;complicato definire un array multidimenzionale:
+</I>&gt;<i> &gt; &gt;A[1][2][3] = 4
+</I>&gt;<i> &gt; &gt;E' complicato?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;Regards.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;Marcello Semboli
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Beh, qui non si trattava di &quot;non riesco a
+</I>&gt;<i> &gt; definire&quot;.... ma riuscire a
+</I>&gt;<i> &gt; capire... se mi permetti un paragone, anche definire
+</I>&gt;<i> &gt; una donna semplicemente
+</I>&gt;<i> &gt; come &quot;l'essere umano di sesso femminile&quot; e'
+</I>&gt;<i> &gt; semplice, ma capirla no....
+</I>&gt;<i> &gt; =D
+</I>&gt;<i>
+</I>&gt;<i>Mah, secondo me, se parliamo di capire come viene
+</I>&gt;<i>allocata la memoria, o di come funziona internamente
+</I>&gt;<i>il linguaggio allora va bene.
+</I>&gt;<i>
+</I>&gt;<i>Ma se l'intento era di capire l'essenza stessa dei
+</I>&gt;<i>vettori multidimenzionali, siamo fuori strada ;)
+</I>&gt;<i>Il mio professore di topologia diceva: &quot;mai visto un
+</I>&gt;<i>numero in vita mia. Punti, rette, mai viste.&quot;
+</I>&gt;<i>Sono solo parole, definizioni, giochini.
+</I>&gt;<i>Hilbert stesso diceva: &quot;Non parliamo di punti rette e
+</I>&gt;<i>piani: parliamo di piattini, tazzine e cucchiaini; per
+</I>&gt;<i>due cucchiaini passa una e una sola tazzina&quot;.
+</I>&gt;<i>
+</I>&gt;<i>Il fatto che una retta abbia una qualche
+</I>&gt;<i>corrispondenza con una riga di gesso fatta alla
+</I>&gt;<i>lavagna è solo un caso.
+</I>&gt;<i>Il fatto che
+</I>&gt;<i>int A[][][]
+</I>&gt;<i>abbia una qualche corrispondenza con un vettore che si
+</I>&gt;<i>studia ad algebra lineare, bè, è pure esso un caso ;)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Regards.
+</I>&gt;<i>
+</I>&gt;<i>Marcello Semboli
+</I>&gt;<i>____________________________
+</I>&gt;<i><A HREF="http://dinogen.hacknight.org">http://dinogen.hacknight.org</A>
+</I>&gt;<i>&quot;We reject kings, presidents, and voting. We believe in rough consensus and 
+</I>&gt;<i>running code&quot; -- Dave Clark, IETF Credo (1992)
+</I>&gt;<i>
+</I>&gt;<i>__________________________________________________
+</I>&gt;<i>Do You Yahoo!?
+</I>&gt;<i>Poco spazio e tanto spam? Yahoo! Mail ti protegge dallo spam e ti da tanto 
+</I>&gt;<i>spazio gratuito per i tuoi file e i messaggi
+</I>&gt;<i><A HREF="http://mail.yahoo.it">http://mail.yahoo.it</A>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Generale mailing list
+</I>&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>
+_________________________________________________________________
+Hotmail 1 GB: ancora più spazio per i tuoi messaggi e foto! GRATIS!        
+<A HREF="http://join.msn.com/hotmail/features-std#1">http://join.msn.com/hotmail/features-std#1</A>
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001312.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001315.html">[Generale] [InTopic] Pubblicità non occulta
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1313">[ Data ]</a>
+              <a href="thread.html#1313">[ Thread ]</a>
+              <a href="subject.html#1313">[ Oggetto ]</a>
+              <a href="author.html#1313">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

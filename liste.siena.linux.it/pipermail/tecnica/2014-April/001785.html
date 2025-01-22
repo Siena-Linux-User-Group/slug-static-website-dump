@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Citofonia wi-fi
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Citofonia%20wi-fi&In-Reply-To=%3CCAE8%2BC3Z6Bwwv%3DkS4qsYYeO9h%3DMXkX__YOSNR6rONUWGnBCgCDw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001784.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Citofonia wi-fi</H1>
+    <B>Motaz Abuthiab</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Citofonia%20wi-fi&In-Reply-To=%3CCAE8%2BC3Z6Bwwv%3DkS4qsYYeO9h%3DMXkX__YOSNR6rONUWGnBCgCDw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Citofonia wi-fi">moty66 a gmail.com
+       </A><BR>
+    <I>Mar 22 Apr 2014 10:20:12 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001784.html">[Tecnica] Citofonia wi-fi
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1785">[ Data ]</a>
+              <a href="thread.html#1785">[ Thread ]</a>
+              <a href="subject.html#1785">[ Oggetto ]</a>
+	      <a href="author.html#1785">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao
+
+Ho fatto un lavoretto voip, tutto quello che dice è fattibile.
+
+Il sistema dove ho messo le mani era composto da, Asterisk come voip server
+e citofoni 2N <A HREF="http://www.2nitalia.it/">http://www.2nitalia.it/</A>
+Tutto funziona perfettamente
+
+Inoltre, c'era un gateway per linea analogica &lt;--&gt; voip
+<A HREF="http://www.patton.com/products/product_detail.asp?id=51.">http://www.patton.com/products/product_detail.asp?id=51.</A> Questo permetteva
+di inoltrare le chiamate dal citofono ad un cellulare in base ad un
+programma stabilito in Asterisk. Uno dei citofoni aveva un relay a bordo
+che si puo aprire/chiudere tramite DTMF.
+
+Il tutto supporta anche il video
+
+
+La cosa più difficile in tutto questo, è la configurazione di Asterisk, è
+molto molto complicato e bisogna leggere un sacco di documentazione per
+farlo funzionare
+
+
+
+ciao
+m.
+
+
+
+
+Il giorno 17 aprile 2014 21:19, Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt; ha
+scritto:
+
+&gt;<i> Ordunque, gente vi sottopongo il seguente problema puramente teorico ma
+</I>&gt;<i> anche no...
+</I>&gt;<i>
+</I>&gt;<i> Supponiamo che una persona (che da ora in poi abbrevierò in M.) debba
+</I>&gt;<i> mettere un sistema citofonico in un complesso agreste di una decina di
+</I>&gt;<i> appartamenti.
+</I>&gt;<i>
+</I>&gt;<i> Supponiamo che M abbia chiesto un preventivo suddetto sistema ottenendo
+</I>&gt;<i> una risposta con troppe cire.
+</I>&gt;<i>
+</I>&gt;<i> Ora supponiamo che il coglione di turno (che chiamerò blackhat d'ora
+</I>&gt;<i> innanzi per ovvi motivi) parli con M ed entri in argomento. A questo
+</I>&gt;<i> punto trascrivo per chiarezza:
+</I>&gt;<i>
+</I>&gt;<i> cogl... blackhat: &quot;Ma non hai la wi-fi negli appartamenti? Perchè
+</I>&gt;<i> non fai una rete interna VOIP usando degli skyphones?&quot;
+</I>&gt;<i>
+</I>&gt;<i> M.: &quot;Interessante? Ma si può fare?&quot;
+</I>&gt;<i>
+</I>&gt;<i> blackhat: &quot;Dovrebbe, aspetta posso connettermi da qui guardo un attimo
+</I>&gt;<i> sul sito di asterisk...&quot;
+</I>&gt;<i>
+</I>&gt;<i> ...
+</I>&gt;<i> ...
+</I>&gt;<i> ...
+</I>&gt;<i> blackhat (a sè stesso): &quot;Lo ricordi che di VOIP non sai un'emerita, si?&quot;
+</I>&gt;<i> ...
+</I>&gt;<i> ...
+</I>&gt;<i> ...
+</I>&gt;<i> M (dubbioso): &quot;Allora?&quot;
+</I>&gt;<i>
+</I>&gt;<i> blackhat:&quot;Credo si possa fare, cioè non vedo perchè no ma chiedo un
+</I>&gt;<i> attimo a chi ne sa più di me, tipo i ragazzi dello SLUG&quot;
+</I>&gt;<i>
+</I>&gt;<i> M: &quot;ok, senza impegno...&quot;
+</I>&gt;<i>
+</I>&gt;<i> Ora appunto vi giro la domanda: è possibile? La rete c'è e funziona
+</I>&gt;<i> (provata). La mia idea era di mettere un minipc (come potenza
+</I>&gt;<i> intendo ;)) che facesse da server e appunto dei telefoni o altri
+</I>&gt;<i> dispositivi solo VOIP che dialogassero col server permettendo al mio
+</I>&gt;<i> amico di non dover uscire di casa quando piove ;)
+</I>&gt;<i>
+</I>&gt;<i> Sono disponibile per ulteriori spiegazioni se la risposta non è &quot;NO!&quot;
+</I>&gt;<i> secco
+</I>&gt;<i>
+</I>&gt;<i> aloha!
+</I>&gt;<i> blackhat
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt; -Utente Linux registrato #223702
+</I>&gt;<i> &quot;Beati gli ultimi perchè lo stack è LIFO&quot; (Dinogen)
+</I>&gt;<i> La via dello Unix è il KISS.
+</I>&gt;<i> DIffida dei programmi che non rispettano il  KISS.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+
+*Motaz Abuthiab*
+Web developer &amp; System Integrator
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140422/b4a0f3df/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140422/b4a0f3df/attachment.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001784.html">[Tecnica] Citofonia wi-fi
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1785">[ Data ]</a>
+              <a href="thread.html#1785">[ Thread ]</a>
+              <a href="subject.html#1785">[ Oggetto ]</a>
+              <a href="author.html#1785">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

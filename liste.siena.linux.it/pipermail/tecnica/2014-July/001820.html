@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Mysqldump da host remoto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3C53D8D8D1.5030308%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001825.html">
+   <LINK REL="Next"  HREF="001824.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Mysqldump da host remoto</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3C53D8D8D1.5030308%40yusefmaali.net%3E"
+       TITLE="[Tecnica] Mysqldump da host remoto">contact a yusefmaali.net
+       </A><BR>
+    <I>Mer 30 Lug 2014 12:36:49 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001825.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001824.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1820">[ Data ]</a>
+              <a href="thread.html#1820">[ Thread ]</a>
+              <a href="subject.html#1820">[ Oggetto ]</a>
+	      <a href="author.html#1820">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29/07/2014 23:51, Freeze NorthPole wrote:
+&gt;<i>
+</I>&gt;<i> *precondizione:*
+</I>&gt;<i> l'ip del server  B e` stato autorizzato ad accedere al DB del server A
+</I>&gt;<i>
+</I>&gt;<i> *come ci sto lavorando:*
+</I>&gt;<i> dal server B mi loggo come root e lancio il comando
+</I>&gt;<i>
+</I>&gt;<i> /usr/bin/mysqldump &#8211;opt &#8211;user=miousername &#8211;password=miapassword
+</I>&gt;<i> --host=localhost nome_del_db &gt; /home/backup/database.sql
+</I>&gt;<i>
+</I>
+Attento: invochi mysqldump con --host=localhost.
+lo dovresti invocare con --host=serverA
+
+Se hai creato correttamente l'utente <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a serverA</A> e il firewall non ti 
+blocca la connessione, dovrebbe funzionarti tutto.
+
+Usare un utente dedicato, abilitando solo i permessi necessari per il 
+dump, è la soluzione più sicura.
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001825.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001824.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1820">[ Data ]</a>
+              <a href="thread.html#1820">[ Thread ]</a>
+              <a href="subject.html#1820">[ Oggetto ]</a>
+              <a href="author.html#1820">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

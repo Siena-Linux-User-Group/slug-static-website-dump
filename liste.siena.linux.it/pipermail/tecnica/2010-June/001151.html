@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] VPN
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VPN&In-Reply-To=%3C201006091809.03622.xdatap1%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001150.html">
+   <LINK REL="Next"  HREF="001152.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] VPN</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VPN&In-Reply-To=%3C201006091809.03622.xdatap1%40siena.linux.it%3E"
+       TITLE="[Tecnica] VPN">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Mer  9 Giu 2010 17:09:02 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001150.html">[Tecnica] VPN
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001152.html">[Tecnica] VPN
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1151">[ Data ]</a>
+              <a href="thread.html#1151">[ Thread ]</a>
+              <a href="subject.html#1151">[ Oggetto ]</a>
+	      <a href="author.html#1151">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 12:36 del 9/6/2010, Luigi ha scritto:
+&gt;<i> Spiego la situazione (africana).
+</I>&gt;<i> Il mio collegamento ad internet passa tramite una strana rete mobile
+</I>&gt;<i> (CDMA) della locale compagnia telefonica.
+</I>&gt;<i> Secondo me utilizzano una VPN perché il mo attuale IP è della serie
+</I>&gt;<i> 10.x.x.x con gateway 192.168.1.1 (?!?!?!), mentre l'IP esterno è della
+</I>&gt;<i> serie 41.207.x.x (TogoTelecom). Moltissimi (praticamente la quasi
+</I>&gt;<i> totalità delle utenze &quot;private&quot;) utilizzano questo tipo di collegamento.
+</I>&gt;<i> Tra i miei progetti c'è quello di creare una VPN in diocesi (e al
+</I>&gt;<i> villaggio), se ci riesco per varie idee che abbiamo. Le domande da 1
+</I>&gt;<i> miliardo di &#8364; ... ;-) ...: &#232; possibile impiantare una VPN dentro una
+</I>&gt;<i> VPN? E come?
+</I>
+Occorrerebbe fare due prove per capire quali sottoreti private utilizza quel provider. 
+Il problema è che non puoi usare per la tua sottorete un range di indirizzi che usa il 
+tuo provider per fornirti servizi altrimenti ti impicchi sul routing.
+
+L'unica cosa che mi viene in mente, per ora è quello di fare il traceroute verso un ip 
+pubblico per vedere quali sottoreti attraversi, controllare in che sottorete sono i dns 
+ed il tuo default gateway (ovvero, quest'ultimo sta sulla 192.168.1.0/24 da quello che 
+ci dici).
+
+Forse se sei fortunato puoi usare una delle sottoreti private (1) che non hanno usato 
+loro, mi viene in mente ad esempio di usare una rete tra 172.16.0.0 e 172.31.255.255 
+magari mappate a 24 bit.
+
+Ad esempio, prova con la 172.20.0.0/24 Ma prima, di quanti indirizzi hai bisogno? Una 
+sottorete a 24 (ovvero 253 ip) ti bastano? E poi, vpn verso dove? Perché influisce anche 
+il range di ip usati dall'altro capo della tua vpn nell'incasinare il routing.
+
+(1) <A HREF="http://it.wikipedia.org/wiki/Indirizzo_IP_privato">http://it.wikipedia.org/wiki/Indirizzo_IP_privato</A>
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Do what you like. Like what you do -
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001150.html">[Tecnica] VPN
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001152.html">[Tecnica] VPN
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1151">[ Data ]</a>
+              <a href="thread.html#1151">[ Thread ]</a>
+              <a href="subject.html#1151">[ Oggetto ]</a>
+              <a href="author.html#1151">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

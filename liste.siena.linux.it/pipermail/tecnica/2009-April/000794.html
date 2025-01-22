@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] caricare modulo ne2000 all'avvio
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000799.html">
+   <LINK REL="Next"  HREF="000800.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] caricare modulo ne2000 all'avvio</H1>
+    <B>Emanuele Bruni</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To="
+       TITLE="[Tecnica] caricare modulo ne2000 all'avvio">blackhat a siena.linux.it
+       </A><BR>
+    <I>Gio 16 Apr 2009 10:16:05 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000799.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000800.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#794">[ Data ]</a>
+              <a href="thread.html#794">[ Thread ]</a>
+              <a href="subject.html#794">[ Oggetto ]</a>
+	      <a href="author.html#794">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Ciao Flying Tux!
+</I>&gt;<i>                            Felice di risentirti per l'occasione ;-)
+</I>&gt;<i> Ho provato a seguire il tuo consiglio inserendo
+</I>&gt;<i>
+</I>&gt;<i> ne io=0x300
+</I>&gt;<i>
+</I>&gt;<i> dentro etc/modules, salvando e riavviando, ma non appena faccio ifconfig
+</I>&gt;<i> eth0 una volta caricato il sistema operativo ottengo il risultato:
+</I>&gt;<i>
+</I>&gt;<i> ifconfig: eth0: error fetching interface information: Device not found
+</I>&gt;<i>
+</I>&gt;<i> Che è esattamente quello che mi compare se non carico il modulo a mano...
+</I>&gt;<i>
+</I>&gt;<i> Qualche idea?
+</I>&gt;<i>
+</I>Prova a specificare nel file che passi opzioni con il parametro options e
+già che ci sei specifica l'irq della porta.
+
+Il risultato dovrebbe essere qualcosa tipo:
+
+options ne io=0x300 irq=5
+
+dove il 5 varia con l'irq
+
+Se non va così, per ora posso solo suggerire di dipingere un segno degli
+antichi sulla macchina...
+
+aloha!
+blackhat
+
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000799.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000800.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#794">[ Data ]</a>
+              <a href="thread.html#794">[ Thread ]</a>
+              <a href="subject.html#794">[ Oggetto ]</a>
+              <a href="author.html#794">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

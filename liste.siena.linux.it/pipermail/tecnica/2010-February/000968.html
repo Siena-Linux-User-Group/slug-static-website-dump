@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] dipendenze......
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dipendenze......&In-Reply-To=%3C4B7C27E2.2080508%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000965.html">
+   <LINK REL="Next"  HREF="000969.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] dipendenze......</H1>
+    <B>robi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dipendenze......&In-Reply-To=%3C4B7C27E2.2080508%40valdelsa.net%3E"
+       TITLE="[Tecnica] dipendenze......">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Mer 17 Feb 2010 17:31:14 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000965.html">[Tecnica] dipendenze......
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000969.html">[Tecnica] dipendenze......
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#968">[ Data ]</a>
+              <a href="thread.html#968">[ Thread ]</a>
+              <a href="subject.html#968">[ Oggetto ]</a>
+	      <a href="author.html#968">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>:<i>-))))) bene ho gia fatto un passo avanti....se a voi funziona vuol dire 
+</I>che il problema è probabilmente nei repo.....oppure un bug ....utilizzo 
+8.04 potreste postarmi la vostra lista repository così la sostituisco e 
+provo con la vostra.......un ultima cosa......cosa è il &quot;pinning&quot;....e 
+come si applica....allegata la mia lista repo....
+
+grazie  :-))))))))
+
+
+Paolo Sammicheli ha scritto:
+&gt;<i> Alle 19:02 del 16/2/2010, robi ha scritto:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> purtroppo come avete detto non funziona (premesso che di solito è il 
+</I>&gt;&gt;<i> gestore pacchetti che installa le dipendenze), in questo caso le 
+</I>&gt;&gt;<i> risposte da shell sono queste:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a robi-laptop</A>:~$ sudo apt-get install libglade2-dev
+</I>&gt;&gt;<i> Lettura della lista dei pacchetti in corso... Fatto
+</I>&gt;&gt;<i> Generazione dell'albero delle dipendenze in corso      
+</I>&gt;&gt;<i> Lettura delle informazioni di stato... Fatto    
+</I>&gt;&gt;<i> Alcuni pacchetti non possono essere installati. Questo può voler
+</I>&gt;&gt;<i> dire che è stata richiesta una situazione impossibile oppure, se
+</I>&gt;&gt;<i> si sta usando la distribuzione &quot;unstable&quot;, che alcuni pacchetti
+</I>&gt;&gt;<i> richiesti non sono ancora stati creati o rimossi da incoming.
+</I>&gt;&gt;<i>     
+</I>&gt;<i> &lt;SNIP&gt;
+</I>&gt;<i>   
+</I>&gt;&gt;<i> se provo con gli altri pacchetti lo stesso......ora ho il dubbio che ci 
+</I>&gt;&gt;<i> siano dei problemi con i &quot;repo&quot; ma vanno bene......e il serpente 
+</I>&gt;&gt;<i> continua a mordersi la coda.....
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> A me funziona:
+</I>&gt;<i>
+</I>&gt;<i> -----------------------------------------------------
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">x a bwing</A>:~$ sudo apt-get install libglade2-dev
+</I>&gt;<i> [sudo] password for x: 
+</I>&gt;<i> Lettura elenco dei pacchetti... Fatto
+</I>&gt;<i> Generazione albero delle dipendenze       
+</I>&gt;<i> Lettura informazioni sullo stato... Fatto
+</I>&gt;<i> I seguenti pacchetti saranno inoltre installati:
+</I>&gt;<i>   libxml2-dev
+</I>&gt;<i> Pacchetti suggeriti:
+</I>&gt;<i>   glade glade-gnome
+</I>&gt;<i> I seguenti pacchetti NUOVI saranno installati:
+</I>&gt;<i>   libglade2-dev libxml2-dev
+</I>&gt;<i> 0 aggiornati, 2 installati, 0 da rimuovere e 23 non aggiornati.
+</I>&gt;<i> È necessario scaricare 830kB di archivi.
+</I>&gt;<i> Dopo quest'operazione, verranno occupati 2703kB di spazio su disco.
+</I>&gt;<i> Continuare [S/n]? 
+</I>&gt;<i> Scaricare:1 <A HREF="http://it.archive.ubuntu.com">http://it.archive.ubuntu.com</A> karmic/main libxml2-dev 
+</I>&gt;<i> 2.7.5.dfsg-1ubuntu1 [745kB]
+</I>&gt;<i> Scaricare:2 <A HREF="http://it.archive.ubuntu.com">http://it.archive.ubuntu.com</A> karmic/main libglade2-dev 1:2.6.4-1 
+</I>&gt;<i> [85,8kB]
+</I>&gt;<i> Recuperati 830kB in 4s (176kB/s)    
+</I>&gt;<i> Selezionato il pacchetto libxml2-dev.
+</I>&gt;<i> (Lettura del database... 287726 file e directory attualmente installati.)
+</I>&gt;<i> Estrazione di libxml2-dev (da .../libxml2-dev_2.7.5.dfsg-1ubuntu1_i386.deb)...
+</I>&gt;<i> Selezionato il pacchetto libglade2-dev.
+</I>&gt;<i> Estrazione di libglade2-dev (da .../libglade2-dev_1%3a2.6.4-1_i386.deb)...
+</I>&gt;<i> Elaborazione dei trigger per man-db...
+</I>&gt;<i> Elaborazione dei trigger per doc-base...
+</I>&gt;<i> Processing 1 added doc-base file(s)...
+</I>&gt;<i> Registering documents with scrollkeeper...
+</I>&gt;<i> Configurazione di libxml2-dev (2.7.5.dfsg-1ubuntu1)...
+</I>&gt;<i> Configurazione di libglade2-dev (1:2.6.4-1)...
+</I>&gt;<i> -----------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Quindi hai *sicuramente* un casino con i repository. Che versione di Ubuntu 
+</I>&gt;<i> usi? Controlla il source.list
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i>   
+</I>
+-------------- parte successiva --------------
+È stato filtrato un testo allegato il cui set di caratteri non era
+indicato...
+Nome: apt sourses.list
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100217/ad110252/attachment.txt">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100217/ad110252/attachment.txt</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000965.html">[Tecnica] dipendenze......
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000969.html">[Tecnica] dipendenze......
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#968">[ Data ]</a>
+              <a href="thread.html#968">[ Thread ]</a>
+              <a href="subject.html#968">[ Oggetto ]</a>
+              <a href="author.html#968">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

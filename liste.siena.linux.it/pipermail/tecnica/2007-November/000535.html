@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Dual core !
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dual%20core%20%21&In-Reply-To=200711152142.38450.voland03%40libero.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000534.html">
+   <LINK REL="Next"  HREF="000539.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Dual core !</H1>
+    <B>Iacopo Palazzi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dual%20core%20%21&In-Reply-To=200711152142.38450.voland03%40libero.it"
+       TITLE="[Tecnica] Dual core !">iakko a siena.linux.it
+       </A><BR>
+    <I>Gio 15 Nov 2007 23:42:37 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000534.html">[Tecnica] Dual core !
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000539.html">[Tecnica] Dual core !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#535">[ Data ]</a>
+              <a href="thread.html#535">[ Thread ]</a>
+              <a href="subject.html#535">[ Oggetto ]</a>
+	      <a href="author.html#535">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 15 November 2007 21:42:38 Andrea V. wrote:
+
+&gt;<i> Come si vede il dual core non e' attivato!!! Quale flag dovrei settare nel
+</I>&gt;<i> kernel per andare a colpo sicuro e non dover fare inutili tentativi?Le
+</I>&gt;<i> prime volte al boot avevo i 2 pinguini,poi ho fatto cambiamenti ma non
+</I>&gt;<i> avevo notato che ne era rimasto solo 1.
+</I>
+Daro' per scontato che tu sappia configurare e ricompilare il kernel.
+Daro' per scontato che il tuo kernel sia alla versione 2.6.2*.
+
+Dal menu' di configurazione del kernel, devi selezionare le seguenti voci:
+
+
+  Processor type and features  ---&gt;
+
+     [*] Symmetric multi-processing support
+
+     Processor family (...)  ---&gt;
+         (X) Opteron/Athlon64/Hammer/K8
+
+     [*] Multi-core scheduler support
+
+Ricompili, installi, rebootti.
+
+-- 
+--------------------------------------------------------------
+Iacopo Palazzi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">iakko a siena.linux.it</A>&gt;
+
+GPG Public Key: <A HREF="http://iakko.net/iakko.gpgkey.asc">http://iakko.net/iakko.gpgkey.asc</A>
+Fingerprint: B0A8 BC97 C53E 172D 0C77 80B3 C30E 835F 5C31 65AE
+Siena Linux User Group - www.siena.linux.it
+
+    Please, consider sending plain text emails and using
+    open standards for attachments, thanks.
+
+&quot;Se solo Dio mi desse i sorgenti ...&quot;
+--------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: This is a digitally signed message part.
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20071116/4b7833f1/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20071116/4b7833f1/attachment.pgp</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000534.html">[Tecnica] Dual core !
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000539.html">[Tecnica] Dual core !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#535">[ Data ]</a>
+              <a href="thread.html#535">[ Thread ]</a>
+              <a href="subject.html#535">[ Oggetto ]</a>
+              <a href="author.html#535">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

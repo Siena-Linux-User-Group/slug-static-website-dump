@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] TSC
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20TSC&In-Reply-To=db01795b0801020330x3ceae37la76fceabc4a8130d%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000545.html">
+   <LINK REL="Next"  HREF="000547.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] TSC</H1>
+    <B>Andrea V.</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20TSC&In-Reply-To=db01795b0801020330x3ceae37la76fceabc4a8130d%40mail.gmail.com"
+       TITLE="[Tecnica] TSC">voland03 a libero.it
+       </A><BR>
+    <I>Mer  2 Gen 2008 20:09:36 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000545.html">[Tecnica] TSC
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000547.html">[Tecnica] barra tipo mac su ubuntu
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#546">[ Data ]</a>
+              <a href="thread.html#546">[ Thread ]</a>
+              <a href="subject.html#546">[ Oggetto ]</a>
+	      <a href="author.html#546">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il Wednesday 02 January 2008 12:30:24 Marco Slack ha scritto:
+&gt;<i> Il 30/12/07, Andrea V.&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">voland03 a libero.it</A>&gt; ha scritto:
+</I>&gt;<i> &gt; Ciao a tutti !
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ho notato sul mio portatile, una strana riga nel comando dmesg:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &quot;Clocksource tsc unstable (delta = -163993342 ns)&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ho fatto qualche ricerca su google ma non mi sono chiarito le idee.Ho
+</I>&gt;<i> &gt; capito che il TSC e' un timer ad alta risoluzione,che e' possibile
+</I>&gt;<i> &gt; disabilitarlo dal kernel, ma non ho capito se questo messaggio del kernel
+</I>&gt;<i> &gt; puo' essere un problema e quindi devo rimettere mano al kernel?
+</I>&gt;<i>
+</I>&gt;<i> provo a darti una risposta:
+</I>&gt;<i>
+</I>&gt;<i> il tsc o time stamp counter e' un registro interno ai processori
+</I>&gt;<i> intel-compatibili che viene incrementato ad ogni ciclo di clock.
+</I>&gt;<i> in passato era utilizzato come timer per la sua semplicita' di
+</I>&gt;<i> utilizzo, ma nei moderni processori e' relegato ad altri usi (misure
+</I>&gt;<i> prestazionali) a causa delle frequenze di clock variabili ed i vari
+</I>&gt;<i> core (ognuno con un proprio tsc) che creano complesse problematiche al
+</I>&gt;<i> suo utilizzo.
+</I>&gt;<i> Al boot il kernel verifica la sua stabilita' e nel caso lo esclude.
+</I>&gt;<i> se controlli con:
+</I>&gt;<i>
+</I>&gt;<i> $ cat /proc/timer_list
+</I>&gt;<i>
+</I>&gt;<i> il device tsc non dovrebbe essere presente.
+</I>&gt;<i>
+</I>&gt;<i> quindi direi che non e' assolutamente un problema.
+</I>
+Grazie mille, chiaro come sempre ! :-)
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000545.html">[Tecnica] TSC
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000547.html">[Tecnica] barra tipo mac su ubuntu
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#546">[ Data ]</a>
+              <a href="thread.html#546">[ Thread ]</a>
+              <a href="subject.html#546">[ Oggetto ]</a>
+              <a href="author.html#546">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

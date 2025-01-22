@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema con httpd (forse) - Fedora core 5
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20con%20httpd%20%28forse%29%20-%20Fedora%20core%205&In-Reply-To=003b01c6f301%24e10e85a0%2448fea8c0%40doctorx">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000235.html">
+   <LINK REL="Next"  HREF="000245.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema con httpd (forse) - Fedora core 5</H1>
+    <B>Martino di Filippo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20con%20httpd%20%28forse%29%20-%20Fedora%20core%205&In-Reply-To=003b01c6f301%24e10e85a0%2448fea8c0%40doctorx"
+       TITLE="[Tecnica] Problema con httpd (forse) - Fedora core 5">puntodifuga a gmail.com
+       </A><BR>
+    <I>Gio 19 Ott 2006 02:07:06 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000235.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000245.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#236">[ Data ]</a>
+              <a href="thread.html#236">[ Thread ]</a>
+              <a href="subject.html#236">[ Oggetto ]</a>
+	      <a href="author.html#236">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mi verrebbe da pensare che il problema non sia relativo alla macchina in sè,
+ma alla configurazione di qualche firewall (sia della macchina che firewall
+hardware eventuali), router, switch o così via.
+Più precisamente, com'è costruita e settata questa rete?
+
+On 10/19/06, cristiano &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">crisk a tiscalinet.it</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Vi scrivo perche' non saprei veramente come formulare una query su google
+</I>&gt;<i> con il problema che mi ritrovo a dover risolvere...
+</I>&gt;<i>
+</I>&gt;<i> Il mio server (Fedora core 5, yumupdatato fino a due minuti fa, kernel
+</I>&gt;<i> compreso, 2.6.18-1.2200.fc5) da un un po' di mesi fa le bizze (anche con
+</I>&gt;<i> gli
+</I>&gt;<i> altri kernel aveva lo stesso comportamento)...
+</I>&gt;<i>
+</I>&gt;<i> praticamente ogni tanto e' come se si &quot;ibernasse&quot; e non risponde a nessuna
+</I>&gt;<i> connessione via browser (httpd-2.2.2-1.2) o ssh (openssh-4.3p2-4.10) da
+</I>&gt;<i> fuori rete (sono gli unici servizi accessibili da fuori rete).
+</I>&gt;<i>
+</I>&gt;<i> La cosa buffa e' che basta fargli un ping o un tentitativo di connessione
+</I>&gt;<i> ssh da un'altra macchina (Solaris) che sta nella stessa stanza (sono sulla
+</I>&gt;<i> rete dell'università che attualmente si trova al Laboratorio Multimediale
+</I>&gt;<i> in
+</I>&gt;<i> via dei Termini) e subito si sblocca e ricomincia a rispondere anche da
+</I>&gt;<i> fuori rete.
+</I>&gt;<i>
+</I>&gt;<i> Riassumendo:
+</I>&gt;<i>
+</I>&gt;<i> 1 - dopo un po' la macchina non risponde piu' ai tentativi di connessione
+</I>&gt;<i> del browser (ne' alle chiamate ssh ne' ai ping... non riesco a capire se
+</I>&gt;<i> &quot;dopo un po'&quot; e' un lasso di tempo preciso... tipo &quot;dopo 35 minuti che il
+</I>&gt;<i> server non ricve nessuna chiamata&quot;... dai log non traspare niente)
+</I>&gt;<i>
+</I>&gt;<i> 2 - per &quot;riattivarlo&quot; da casa (alice ADSL) devo telnettarmi su una
+</I>&gt;<i> macchina
+</I>&gt;<i> che sta fisicamente accanto al server e devo pingare o tentare di
+</I>&gt;<i> ritelnettarmi sul server stesso.
+</I>&gt;<i>
+</I>&gt;<i> 3 - questo basta a riattivarlo
+</I>&gt;<i>
+</I>&gt;<i> Roba da pazzi.
+</I>&gt;<i> Chi mi aiuta vince una birra da Rosi.
+</I>&gt;<i> Cristiano
+</I>&gt;<i>
+</I>&gt;<i> PS. non so se la cosa puo' essere collegata... ma dai log vedo solo degli
+</I>&gt;<i> errori del tipo:
+</I>&gt;<i> Oct  9 15:57:56 server kernel: hdc: dma_intr: status=0x51 { DriveReady
+</I>&gt;<i> SeekComplete Error }
+</I>&gt;<i> Oct  9 15:57:56 server kernel: hdc: dma_intr: error=0x84 {
+</I>&gt;<i> DriveStatusError
+</I>&gt;<i> BadCRC }
+</I>&gt;<i> Oct  9 15:57:56 server kernel: ide: failed opcode was: unknown
+</I>&gt;<i>
+</I>&gt;<i> si', lo so che non e' una bella cosa... ma gli errori sono relativamente
+</I>&gt;<i> pochi, il disco risulta sano a tutti i check... il bus e' intatto e della
+</I>&gt;<i> misura giusta... e soprattutto, gli errori NON occorrono quando il server
+</I>&gt;<i> si
+</I>&gt;<i> &quot;iberna&quot;.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Martino
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061019/8cd3493f/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061019/8cd3493f/attachment.htm</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000235.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000245.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#236">[ Data ]</a>
+              <a href="thread.html#236">[ Thread ]</a>
+              <a href="subject.html#236">[ Oggetto ]</a>
+              <a href="author.html#236">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

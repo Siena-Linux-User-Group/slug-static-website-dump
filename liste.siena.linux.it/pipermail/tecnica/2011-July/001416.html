@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Serverone per MAC a base Ubuntu (cap.2)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.2%29&In-Reply-To=%3CCA%2Bn2inC6oxW_B4Z2Km5tO1yepNidHd8%2BXX5CHe7tQmxP1kpcbg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001414.html">
+   <LINK REL="Next"  HREF="001417.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Serverone per MAC a base Ubuntu (cap.2)</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.2%29&In-Reply-To=%3CCA%2Bn2inC6oxW_B4Z2Km5tO1yepNidHd8%2BXX5CHe7tQmxP1kpcbg%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Serverone per MAC a base Ubuntu (cap.2)">polva86 a gmail.com
+       </A><BR>
+    <I>Gio 21 Lug 2011 17:41:35 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001414.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001417.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.2)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1416">[ Data ]</a>
+              <a href="thread.html#1416">[ Thread ]</a>
+              <a href="subject.html#1416">[ Oggetto ]</a>
+	      <a href="author.html#1416">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve Lista.
+Allora dopo un bel po' di casini con l'accrocchio (effettivamente da voi
+profetizzatimi), ho deciso di fare il grande passo e ho installato Ubuntu
+Server 11.04 PULITO.
+E, l'avessi mai detto? Non è difficile come pensavo, anzi.
+SSH è veramente potente quanto stabile, semplice e leggero.
+Certo fare tutto, ma proprio tutto, a stringa è un po' legnoso (ed è giusto
+che sia così, visto che Linux parte dal presupposto che si sappia cosa si
+stia facendo), ma dopo che mi sono studiato bene i comandi che mi servivano
+devo dire che vado abbastanza agilmente.
+Scusatemi se sono sembrato un Windowsista viziato e capriccioso; non è così,
+ma avevo solo un po' di fifa a buttarmici così radicalmente. Per fortuna
+anche con la mia parca esperienza sono riuscito di mettere in piedi QUASI
+tutto in una giornata sola (Grazie Andrea... era vero).
+Ora mancano solo le sincronizzazioni di RSYNC, per cui sto studiando il
+cron; più devo trovare il modo di far vedere gli UPS con interfaccia USB per
+la gestione in caso di mancanza 220V.
+Vi volevo ringraziare per gli stimoli, gli sproni e la perseveranza; piano
+piano sto imparando a fare le cose e farle bene.
+
+Vi aggiorno anche sulla questione raid. Ho parlato con il cliente.
+L'ho convinto ad evitare il raid0 per i motivi che tutti sappiamo e ha
+ceduto.
+Ora, in attesa di impararmi gli LVM, stavamo riflettendo sul fatto se fosse
+il caso o meno di mettere il raid5. Infatti i celeberrimi dischi da 3TB sono
+WD Caviar Green (gli unici che al momento dell'ordine materiale erano
+disponibili) e credo che per livelli RAID più complessi dello 0 e dell'1
+siano poco raccomandati. Ci vorrebbero dischi più robusti da Enterprise
+Storage, ma per quanto ne so io di questi tagli ancora non ne sono usciti.
+Il mio &quot;coordinatore&quot; (che comunque faceva il sistemista) che conosce meglio
+il cliente, mi ha detto che è uno che preferisce non rischiare sui dati e
+che gli può andare bene anche uno 1+0 con 6TB per macchina visibili;
+verrebbero due array 0 che vengono mirrorati fra di sè. Io personalmente
+credo che se stressi meno i dischi con rsync (mirror asincrono) piuttosto
+che col raid 1 (mirror immediato).
+Il Tutto viene poi replicato 1:1 nella macchina SLAVE di notte.
+Preferisce avere il doppio della ridondanza anche con la metà dello spazio.
+In futuro, se servirà, troveremo il modo di aumentarlo.
+
+Ultima cosa: il perchè ho installato la  11.04 è che la 10.04 LTS non aveva
+i driver per la NIC Atheros 8151. C'ho perso una giornata finendomi il
+cervello con le prove per installare dei driver ufficiali (e patcharli,
+visto che non supportavano il mio ProductID, con una guida in rete) e c'ho
+riununciato, perchè rischiavo veramente di fare un accrocchio e non ci stavo
+riuscendo.
+
+Per ora è tutto.
+Forse ora mi &quot;odierete&quot; un po' meno :D ...
+Il Polva.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20110721/23759ea5/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20110721/23759ea5/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001414.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001417.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.2)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1416">[ Data ]</a>
+              <a href="thread.html#1416">[ Thread ]</a>
+              <a href="subject.html#1416">[ Oggetto ]</a>
+              <a href="author.html#1416">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

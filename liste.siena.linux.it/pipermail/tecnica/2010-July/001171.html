@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problema ubuntu - scheda video ati
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problema%20ubuntu%20-%20scheda%20video%20ati&In-Reply-To=%3CAANLkTi%3DTR4T1bGU%3DA6tuRpEMMnY1gnVYJSyJTLc%2BdELz%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001170.html">
+   <LINK REL="Next"  HREF="001172.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problema ubuntu - scheda video ati</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20problema%20ubuntu%20-%20scheda%20video%20ati&In-Reply-To=%3CAANLkTi%3DTR4T1bGU%3DA6tuRpEMMnY1gnVYJSyJTLc%2BdELz%40mail.gmail.com%3E"
+       TITLE="[Tecnica] problema ubuntu - scheda video ati">bartrosso a gmail.com
+       </A><BR>
+    <I>Mer 28 Lug 2010 10:31:01 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001170.html">[Tecnica] problema ubuntu - scheda video ati
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001172.html">[Tecnica] avvio lento dopo aggiornamento 10.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1171">[ Data ]</a>
+              <a href="thread.html#1171">[ Thread ]</a>
+              <a href="subject.html#1171">[ Oggetto ]</a>
+	      <a href="author.html#1171">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>avevo la stessa scheda tua sul portatile, nessun problema se usi fglrx
+driver dal restricted driver manager.
+
+in qualche reinstallazione mi aveva dato problemi a dire ilv ero. poi
+risolti modificando lo xorg.conf manua,mente mettendo in section device gli
+fglrx al posto dei ati driver..
+
+comunque sia, dal gestore dei driver con restrizioni ci sono gli fglrx.
+
+il problema nasce dal fatto che con le ati non supportate salta la
+condivisione UMA della memoria e quindi andrebbe impostata al momento della
+instalalzione in SidePort+UMA e non solo sideport come è di default.
+andrebbero impostati almeno 128 mega in uma.
+
+però...le 200M series delle radeon xpress, quelle dei portatili appunto,
+sono supportate anche dai driver ufficiali attuali..o non più?
+tanga
+
+
+
+2010/7/28 Edoardo Giomi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">edogiomi a yahoo.it</A>&gt;
+
+&gt;<i> buongiorno a tutti,
+</I>&gt;<i> sono un neofita, ma in questi 12 mesi ho contribuito alla migrazione a
+</I>&gt;<i> Linux dei pc di una scuola media qui in citta'.
+</I>&gt;<i> uso linux da circa 2 anni nelle distro Ubuntu e Kubuntu.
+</I>&gt;<i> Il problema stavolta e' sul mio laptop.
+</I>&gt;<i> Distro: Ubuntu 10.04
+</I>&gt;<i> Scheda video: ati radeon xpress 200 M (integrata)
+</I>&gt;<i> Attualmente utilizzo il driver open source (di nome &quot;radeon&quot;??) ma
+</I>&gt;<i> affinche' il laptop non vada a scatti ho impostato:
+</I>&gt;<i> Effetti visivi: nessuno
+</I>&gt;<i> Composizione: attiva (tramite gconf-editor; infatti la Cairo Dock non mi fa
+</I>&gt;<i> lo sfondo nero!)
+</I>&gt;<i> Mi scuso fin da ora per eventuali errori/imprecisioni che sto inserendo.
+</I>&gt;<i> Mi piacerebbe almeno avere le finestre tremolanti....
+</I>&gt;<i> Qualche giorno fa volevo installare i driver proprietari catalyst.
+</I>&gt;<i> Il problema e' che l'ultima versione che supporta la 200M e' la catalyst
+</I>&gt;<i> 9.3, che purtroppo non supporta ubuntu 10.04 (mi sembra che si fermi a 9.04
+</I>&gt;<i> oppure 9.10).
+</I>&gt;<i> Cosa mi consigliate di fare?
+</I>&gt;<i> Un saluto,
+</I>&gt;<i>
+</I>&gt;<i> edoardo
+</I>&gt;<i>
+</I>&gt;<i> --------------------------------------------
+</I>&gt;<i> Edoardo Giomi
+</I>&gt;<i> V.le G. Mazzini, 24 - 53100 Siena
+</I>&gt;<i> 0577-223762
+</I>&gt;<i> 333-4335551
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">edogiomi a yahoo.it</A>
+</I>&gt;<i> --------------------------------------------
+</I>&gt;<i> Save a tree. Please consider the environment before printing this email.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+Sono ciò che sono grazie a quello che siamo tutti,
+
+
+
+un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare Debian..&quot;
+
+
+«Immagina se ogni persona sulla terra potesse condividere con accesso libero
+e totale tutta la conoscenza umana.»
+&#8212; Jimmy Wales, fondatore di Wikipedia
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100728/fb4fbccd/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100728/fb4fbccd/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001170.html">[Tecnica] problema ubuntu - scheda video ati
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001172.html">[Tecnica] avvio lento dopo aggiornamento 10.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1171">[ Data ]</a>
+              <a href="thread.html#1171">[ Thread ]</a>
+              <a href="subject.html#1171">[ Oggetto ]</a>
+              <a href="author.html#1171">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema path autocomplete in SSH
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20path%20autocomplete%20in%20SSH&In-Reply-To=%3CCA%2Bn2inDN%3D7%3D9anAnhKXbqryDf9gbvRQRL-LsvcK8nWA%2Bn4Dwww%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="001788.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema path autocomplete in SSH</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20path%20autocomplete%20in%20SSH&In-Reply-To=%3CCA%2Bn2inDN%3D7%3D9anAnhKXbqryDf9gbvRQRL-LsvcK8nWA%2Bn4Dwww%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Problema path autocomplete in SSH">polva86 a gmail.com
+       </A><BR>
+    <I>Mer 25 Giu 2014 19:54:30 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="001788.html">[Tecnica] Problema path autocomplete in SSH
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1787">[ Data ]</a>
+              <a href="thread.html#1787">[ Thread ]</a>
+              <a href="subject.html#1787">[ Oggetto ]</a>
+	      <a href="author.html#1787">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve lista.
+Io ed il mio amico bartrosso oggi abbiamo avuto degli strani problemi con
+un serverino OpenMediaVault (ultima release) là dove lavora.
+In poche parole, lo stavo aiutando a preparare dei backup delle postazioni
+con rsync. Praticamente il serverino OMV accede con un
+*rsync -Pavze ssh <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a remotodabackuppare</A>://cartella/remota
+/media/disco/cartellalocale*
+e fa un pull dei dati. Ovviamente ho prima copiato le chiavi pubbliche del
+mio user del server OMV sull'host da backuppare per autenticarmi.
+Ho notato, però che l'autocomplete sull'rsync via ssh non funzionava,
+mentre dal mio portatile di prova (Ubuntu 12.04LTS) autenticato alla stessa
+maniera si.
+Non credo che ci siano problemi di autenticazione dato che con ssh
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a remotodabackuppare</A> entravo tranquillamente.
+Ho provato per una mezz'oretta, controllando attentamente percorsi, ip e
+sintassi, ma non c'è stato verso. Il problema è che non copiava nemmeno i
+dati, restituendo un errore.
+Sono andato a mangiare un boccone e al tentativo successivo,
+aleatoriamente, mi verrebbe da dire, funzionava, sia l'autocomplete che la
+copia.
+Il problema lo ha manifestato collegandosi con un iMac e un'altro computer
+con Ubuntu.
+Questo episodio mi ha fatto tornare anche in mente che in passato avevo
+riavuto problemi simili e quindi vi volevo chiedere: vi è mai capitato?
+Sapete quello che potrebbe essere? Vorrei evitare che risucceda.
+Grazie e buona serata.
+Il Polva.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140625/dd27c239/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140625/dd27c239/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="001788.html">[Tecnica] Problema path autocomplete in SSH
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1787">[ Data ]</a>
+              <a href="thread.html#1787">[ Thread ]</a>
+              <a href="subject.html#1787">[ Oggetto ]</a>
+              <a href="author.html#1787">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

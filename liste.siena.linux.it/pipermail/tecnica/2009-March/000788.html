@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Wake up on lan
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Wake%20up%20on%20lan&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Wake up on lan</H1>
+    <B>Jacopo Baldi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Wake%20up%20on%20lan&In-Reply-To="
+       TITLE="[Tecnica] Wake up on lan">jacopo a jacopo81.it
+       </A><BR>
+    <I>Mer  4 Mar 2009 16:30:49 GMT</I>
+    <P><UL>
+        
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#788">[ Data ]</a>
+              <a href="thread.html#788">[ Thread ]</a>
+              <a href="subject.html#788">[ Oggetto ]</a>
+	      <a href="author.html#788">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve a tutti,
+ho un problema nell'accendere un pc da remoto tramite wol.
+Ho configurato tutto il necessario sul pc da avviare da remoto,
+facendo in modo che la scheda di rete rimanga attiva dopo lo
+spegnimento della macchina (sono accesi i led). Inviando i &quot;pacchetti
+magici&quot; per avviare il pc da dentro la lan questo parte regolarmente.
+Se invece invio i pacchetti da fuori la lan, da una macchina generica
+collegata ad internet, il pc non  si avvia. Specifico che ho
+configurato correttamente la porta del firewall presente sul router,
+la 9 con protocollo UDP.  Ho testato anche se effettivamente i
+pacchetti venissero inoltrati; il risultato con il pc da accedere
+acceso, è positivo mentre con il pc spento non arriva un bel niente.
+
+Leggendo svariate guide in rete sono arrivato alla conclusione che il
+mio router inoltra i pacchetti alla macchina di destinazione solo se
+questa è accesa, in accordo con il fatto che l'ip è assegnato solo
+alla scheda di rete accesa, il che nel mio caso impedisce di
+recapitare i pacchetti magici che avviano la macchina.
+
+Ho provato anche a configurare il router in modo che i pacchetti
+destinati alla porta 9 venissero inoltrati in broadcast a tutti i pc
+della rete, ma il router non mi permette di farlo.
+
+Qualcuno ha qualche suggerimento, a parte quello scontato di cambiare
+router? Devo forse fare in modo che la scheda mantenga il proprio ip
+attivo anche quando la macchina è spenta (e quindi si pingabile)?
+Sul pc da accedere è installata una debian 5.
+
+Grazie a tutti ed un saluto.
+Jacopo
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#788">[ Data ]</a>
+              <a href="thread.html#788">[ Thread ]</a>
+              <a href="subject.html#788">[ Oggetto ]</a>
+              <a href="author.html#788">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

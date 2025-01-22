@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] RISOLTO Re: caricare modulo ne2000 all'avvio
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20RISOLTO%20Re%3A%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=aaab9ad90904211619p368d42edga09670f4bcd29493%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000802.html">
+   <LINK REL="Next"  HREF="000797.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] RISOLTO Re: caricare modulo ne2000 all'avvio</H1>
+    <B>Luca Mercurio</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20RISOLTO%20Re%3A%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=aaab9ad90904211619p368d42edga09670f4bcd29493%40mail.gmail.com"
+       TITLE="[Tecnica] RISOLTO Re: caricare modulo ne2000 all'avvio">luca a willothewisp.it
+       </A><BR>
+    <I>Mer 22 Apr 2009 22:23:19 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000802.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000797.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#803">[ Data ]</a>
+              <a href="thread.html#803">[ Thread ]</a>
+              <a href="subject.html#803">[ Oggetto ]</a>
+	      <a href="author.html#803">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>YESSS!!!!
+
+Grazie Alessandro! L'inghippo stava proprio lì! Non modificare 
+/etc/modules bensì /etc/modules.conf.
+Infatti come riprova ho eliminato la riga &quot;ne&quot; anche in /etc/modules e 
+la scheda va alla grande!
+
+Inoltre ho provveduto a mettere in DHCP la scheda modificando così il 
+file /etc/network/interfaces
+
+auto eth0
+iface eth0 inet dhcp
+
+All'avvio posso tranquillamente usare dillo e navigare a dritto!
+
+Grazie a tutti e a presto!
+
+Ciao
+
+L.
+
+Alessandro Iurlano wrote:
+&gt;<i> ho sbagliato, volevo dire:
+</I>&gt;<i>
+</I>&gt;<i> alias eth0 ne
+</I>&gt;<i> options eth0 io=0x300 irq=5
+</I>&gt;<i>
+</I>&gt;<i> 2009/4/22 Alessandro Iurlano &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">alessandro.iurlano a gmail.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">alessandro.iurlano a gmail.com</A>&gt;&gt;
+</I>&gt;<i>
+</I>&gt;<i>     e se metti queste due righe in /etc/modules.conf :
+</I>&gt;<i>
+</I>&gt;<i>     alias eth0 ne
+</I>&gt;<i>
+</I>&gt;<i>     options ne io=0x300 irq=5
+</I>&gt;<i>
+</I>&gt;<i>     funziona?
+</I>&gt;<i>
+</I>&gt;<i>     2009/4/21 Luca Mercurio &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">luca a willothewisp.it</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">luca a willothewisp.it</A>&gt;&gt;
+</I>&gt;<i>
+</I>&gt;<i>         Mmmmmmmm... Sto quasi pensando al segno degli antichi da
+</I>&gt;<i>         dipingere sulla
+</I>&gt;<i>         macchina perché il consiglio di Lele non ha funzionato :-(
+</I>&gt;<i>
+</I>&gt;<i>         Emanuele Bruni wrote:
+</I>&gt;<i>         &gt; Prova a specificare nel file che passi opzioni con il
+</I>&gt;<i>         parametro options e
+</I>&gt;<i>         &gt; già che ci sei specifica l'irq della porta.
+</I>&gt;<i>         &gt;
+</I>&gt;<i>         &gt; Il risultato dovrebbe essere qualcosa tipo:
+</I>&gt;<i>         &gt;
+</I>&gt;<i>         &gt; options ne io=0x300 irq=5
+</I>&gt;<i>         &gt;
+</I>&gt;<i>         &gt; dove il 5 varia con l'irq
+</I>&gt;<i>         &gt;
+</I>&gt;<i>         &gt; Se non va così, per ora posso solo suggerire di dipingere un
+</I>&gt;<i>         segno degli
+</I>&gt;<i>         &gt; antichi sulla macchina...
+</I>&gt;<i>
+</I>&gt;<i>         Per la cronaca vi mando il contenuto del mio modules:
+</I>&gt;<i>
+</I>&gt;<i>         ide-scsi
+</I>&gt;<i>         ide-cd
+</I>&gt;<i>         cloop
+</I>&gt;<i>         rtc
+</I>&gt;<i>         apm power_off=1
+</I>&gt;<i>         pcmcia_core
+</I>&gt;<i>         ieee1394
+</I>&gt;<i>         serial
+</I>&gt;<i>         nls_cp437
+</I>&gt;<i>         nls_iso8859-1
+</I>&gt;<i>         unionfs
+</I>&gt;<i>         hid
+</I>&gt;<i>         mousedev
+</I>&gt;<i>         soundcore
+</I>&gt;<i>         af_packet
+</I>&gt;<i>         ne io=0x300 irq=9
+</I>&gt;<i>
+</I>&gt;<i>         L'ultima riga l'ho aggiunta io. Ho provato anche ad inserire
+</I>&gt;<i>         la parola
+</I>&gt;<i>         &quot;options&quot; fra &quot;ne&quot; e &quot;io&quot; ma nulla da fare :-(.
+</I>&gt;<i>
+</I>&gt;<i>         Vi ricordo che facendo sudo modprobe ne io=0x300 tutto mi va
+</I>&gt;<i>         alla grande...
+</I>&gt;<i>
+</I>&gt;<i>         Inoltre la correttezza del consiglio di Lele è corroborata da
+</I>&gt;<i>         questo link:
+</I>&gt;<i>
+</I>&gt;<i>         <A HREF="http://ubuntuforums.org/showthread.php?t=95133">http://ubuntuforums.org/showthread.php?t=95133</A>
+</I>&gt;<i>
+</I>&gt;<i>         Quindi, che fare? Vi ricordo che sto usando Damn Small Linux
+</I>&gt;<i>         una distro
+</I>&gt;<i>         per vecchi PC basata su knoppix.
+</I>&gt;<i>         In compenso grazie a questi casini ho imparato ad usare ssh e
+</I>&gt;<i>         a copiare
+</I>&gt;<i>         files tramite rete :-D
+</I>&gt;<i>
+</I>&gt;<i>         Grazie ancora per il vostro tempo!
+</I>&gt;<i>
+</I>&gt;<i>         MacMercury
+</I>&gt;<i>         _______________________________________________
+</I>&gt;<i>         Tecnica mailing list
+</I>&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>   
+</I>RISOLTO
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000802.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000797.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#803">[ Data ]</a>
+              <a href="thread.html#803">[ Thread ]</a>
+              <a href="subject.html#803">[ Oggetto ]</a>
+              <a href="author.html#803">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

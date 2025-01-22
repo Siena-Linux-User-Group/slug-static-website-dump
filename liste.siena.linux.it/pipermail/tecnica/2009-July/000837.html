@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi con grub
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20grub&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000836.html">
+   <LINK REL="Next"  HREF="000838.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi con grub</H1>
+    <B>roberto.volpini a valdelsa.net</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20grub&In-Reply-To="
+       TITLE="[Tecnica] problemi con grub">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Mar 14 Lug 2009 19:27:10 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000836.html">[Tecnica] problemi con chiavetta onda mobile e ubuntu 9.04
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000838.html">[Tecnica] problemi con chiavetta onda mobile e ubuntu 9.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#837">[ Data ]</a>
+              <a href="thread.html#837">[ Thread ]</a>
+              <a href="subject.html#837">[ Oggetto ]</a>
+	      <a href="author.html#837">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>purtroppo alcuni programmi che uso non funzionano a dovere con la macchina virtuale (ho usato per un anno vmware e poi un altro anno virtualbox) e mentre sbloccavo un cellulare ho avuto un crash di sistema e non è stato per niente semplice recuperarlo....per cui niente macchina virtuale....per  LBA invece....non è possibile disattivarla dal mio bios che è datato 2003.....che oltre a questo ha anche altri limiti...non posso cambiare il masterizzatore perchè quello che ho a bordo è un reverse cable select e non esiste questo tipo di firmware per il 90% dei masterizzatori (i rivenditori non sanno nemmeno di cosa sto parlando quando glielo dico).....non posso avviare nulla da una periferica usb (floppy o chiavine) sempre per questo bios del cavolo.....
+
+anzi...se c'è qualcuno può consigliarmi su i due problemi sopra descritti sono tutto orecchie.....
+
+grazie 
+
+ciao a  tutti :-)))))
+
+
+
+
+&gt;<i> ----- Messaggio Originale -----
+</I>&gt;<i> Da: Luigi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">per.gigi a aruba.it</A>&gt;
+</I>&gt;<i> A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i> Data: 13/07/2009 23:18
+</I>&gt;<i> Oggetto: Re: [Tecnica] problemi con grub
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A> ha scritto:
+</I>&gt;<i> &gt; ho risolto facendo così.....siccome il problema era proprio quello che hai scritto.....e non mi è possibile aggiornare il bios (quello montato è l'ultima versione disponibile per il mio asus a2h).....ho partizionato l'hd lasciando all'inizio 200mb senza allocazione poi ho installato winzozz in una partizione ntfs che era la prima dopo quella non allocata....e con il partizionatore di ubuntu a quei 200mb gli ho dato l'allocazione come /boot e la partizione ext3 di ubuntu come / .....finita l'installazione funziona tutto ottimamente....questo qui sotto è il mio disco:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Disco /dev/sda: 160.0 GB, 160041885696 byte
+</I>&gt;<i> &gt; 255 testine, 63 settori/tracce, 19457 cilindri
+</I>&gt;<i> &gt; Unità = cilindri di 16065 * 512 = 8225280 byte
+</I>&gt;<i> &gt; Identificativo disco: 0x00037091
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Dispositivo Boot      Start         End      Blocks   Id  System
+</I>&gt;<i> &gt; /dev/sda1   *          26        2671    21253995    7  HPFS/NTFS
+</I>&gt;<i> &gt; /dev/sda2            2672       19244   133122622+  83  Linux
+</I>&gt;<i> &gt; /dev/sda3           19245       19457     1710922+  82  Linux swap / Solaris
+</I>&gt;<i> &gt; /dev/sda4               1          25      200781    5  Esteso
+</I>&gt;<i> &gt; /dev/sda5               1          25      200749+  83  Linux
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Le voci nella tabella delle partizioni non sono nello stesso ordine del disco
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; grazie infinite....
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; roberto 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;&gt; ----- Messaggio Originale -----
+</I>&gt;<i> &gt;&gt; Da: Luigi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">per.gigi a aruba.it</A>&gt;
+</I>&gt;<i> &gt;&gt; A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i> &gt;&gt; Data: 12/07/2009 16:36
+</I>&gt;<i> &gt;&gt; Oggetto: Re: [Tecnica] problemi con grub
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; robi ha scritto:
+</I>&gt;<i> &gt;&gt;&gt; andiamo con ordine.....LBA è 40008mb.....il disco è stato partizionato 
+</I>&gt;<i> &gt;&gt;&gt; con il partizionatore di ubuntu .....se pensi che il problema sia la 
+</I>&gt;<i> &gt;&gt;&gt; partizione dimmi come devo farla e poi ne riparliamo.... l'hd è 160gb ed 
+</I>&gt;<i> &gt;&gt;&gt; è stato sostituito a quello originale da 40gb....grazie aspetto 
+</I>&gt;<i> &gt;&gt;&gt; ulteriori consigli...
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt; Secondo me il problema è proprio nella sostituzione del disco: 40008Mb
+</I>&gt;<i> &gt;&gt; sono circa 40Gb. In concreto il BIOS non vede tutto l'HD, quindi devi
+</I>&gt;<i> &gt;&gt; trafficare un po' con il BIOS, o aggiornarlo se non può vedere i 160Gb
+</I>&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; Tecnica mailing list
+</I>&gt;<i> &gt;&gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt;&gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Tecnica mailing list
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Non ho ben capito cosa tu abbia combinato, ma se funziona ok. Hai
+</I>&gt;<i> provato a disabilitare LBA dal BIOS? Inoltre, se non usi programmi molto
+</I>&gt;<i> particolari, Windows conviene installarlo in una macchina virtuale,
+</I>&gt;<i> VirtualBox funziona benissimo, io avevo bisogno di Windows per i
+</I>&gt;<i> programmi della macchina fotografica, ho usato questo sistema e tutto va
+</I>&gt;<i> perfettamente.
+</I>&gt;<i> Personalmente non faccio mai una partizione di boot separata, alla fine
+</I>&gt;<i> può far girare anche i santissimi, partiziono il disco per root
+</I>&gt;<i> (10-15GB), swap (piccolina, dipende dalla memoria) e tutto il resto per
+</I>&gt;<i> home; in questa ci sta molto comodo anche un &quot;disco&quot; per Windows in
+</I>&gt;<i> VirtualBox
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000836.html">[Tecnica] problemi con chiavetta onda mobile e ubuntu 9.04
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000838.html">[Tecnica] problemi con chiavetta onda mobile e ubuntu 9.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#837">[ Data ]</a>
+              <a href="thread.html#837">[ Thread ]</a>
+              <a href="subject.html#837">[ Oggetto ]</a>
+              <a href="author.html#837">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Xubuntu con HD pieno di LOG
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Xubuntu%20con%20HD%20pieno%20di%20LOG&In-Reply-To=%3CCAONfR_CgmtV6h9%2B9Fj8qq%2BSAYvpNaizzvz4v8gxh%2BKWidP3s0A%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="001569.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Xubuntu con HD pieno di LOG</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Xubuntu%20con%20HD%20pieno%20di%20LOG&In-Reply-To=%3CCAONfR_CgmtV6h9%2B9Fj8qq%2BSAYvpNaizzvz4v8gxh%2BKWidP3s0A%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Xubuntu con HD pieno di LOG">freeze a siena.linux.it
+       </A><BR>
+    <I>Mar  4 Set 2012 19:19:48 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="001569.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1568">[ Data ]</a>
+              <a href="thread.html#1568">[ Thread ]</a>
+              <a href="subject.html#1568">[ Oggetto ]</a>
+	      <a href="author.html#1568">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+ho un amico con il seguente problemino
+
+il pc in questione ha 40 GB di HD da qualche giorno sta riscontrando
+dei problemi dovuti all HD pieno al 100%
+
+ieri sera ho spostato la cartella di thunderbird che occupava circa 11 GB
+oggi dopo aver fatto della semplice navigazione, vedo che sono liberi
+solo 874 MB
+--- estrazione dati comando --
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxx a XX</A>:/var/log$ df -h
+File system            Dim. Usati Disp. Uso% Montato su
+/dev/sda1              38G   35G  874M  98% /
+none                  242M  684K  241M   1% /dev
+none                  249M  116K  248M   1% /dev/shm
+none                  249M  436K  248M   1% /var/run
+none                  249M     0  249M   0% /var/lock
+/dev/sdc1              85G  8,3G   77G  10% /media/AE981DE8981DAFB7
+--- fine estrazione dati comando --
+
+lanciando il comando :  sudo du -h --max-dept=1
+
+ho visto che la cartella VAR è quella che occupa più di tutto
+--- estrazione dati comando --
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">XX a xx</A>:/$ sudo du -h --max-dept=1
+14M	./etc
+4,0K	./srv
+4,0K	./mnt
+4,0K	./cdrom
+292K	./tmp
+31G	./var
+--- fine estrazione dati comando --
+
+
+
+--- estrazione dati comando --
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">XXXXXX a XX</A>:/var$ sudo du -h --max-dept=1
+3,7M	./backups
+16K	./tmp
+140M	./cache
+4,0K	./local
+12K	./games
+4,0K	./crash
+436K	./run
+0	./lock
+149M	./lib
+2,1M	./spool
+4,0K	./opt
+30G	./log
+4,0K	./mail
+31G	.
+--- fine estrazione dati comando --
+
+eseguendo un ls -lsSh
+
+vedo che ci sono log  enormi che non mi spiego, anche perchè è un pc
+uso ufficio non server
+
+--- estrazione dati comando --
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxxxx a xxx</A>:/var/log$ ls -lsSh
+totale 30G
+ 11G -rw-r----- 1 syslog            adm   11G 2012-09-04 20:19 kern.log
+7,8G -rw-r----- 1 syslog            adm  7,8G 2012-09-03 10:03 kern.log.1
+5,7G -rw-r----- 1 syslog            adm  5,7G 2012-09-04 08:01 syslog.1
+4,6G -rw-r----- 1 syslog            adm  4,6G 2012-09-04 20:19 syslog
+409M -rw-r----- 1 syslog            adm  409M 2012-07-30 10:01 kern.log.4.gz
+363M -rw-r----- 1 syslog            adm  363M 2012-08-10 09:04 kern.log.3.gz
+302M -rw-r----- 1 syslog            adm  302M 2012-08-29 20:25 syslog.6.gz
+302M -rw-r----- 1 syslog            adm  302M 2012-08-29 20:44 kern.log.2.gz
+226M -rw-r----- 1 syslog            adm  226M 2012-09-01 07:35 syslog.3.gz
+155M -rw-r----- 1 syslog            adm  155M 2012-08-31 09:28 syslog.4.gz
+ 29M -rw-r----- 1 syslog            adm   29M 2012-09-03 09:47 syslog.2.gz
+884K -rw-r----- 1 syslog            adm  882K 2012-08-30 09:23 syslog.5.gz
+ 40K -rw-rw-r-- 1 root              utmp 286K 2012-09-04 19:36 lastlog
+--- fine estrazione dati comando --
+
+avete suggerimenti da darmi per capire che succede e come posso
+risolvere il problemino?
+
+
+ecco i dettagli sul sistema operativo montato
+
+--- inzio dettagli --
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxxx a xxx</A>:/var/log$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 11.04
+Release:	11.04
+Codename:	natty
+---fine dettagli --
+
+
+Grazie Mille a tutti
+Freeze
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="001569.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1568">[ Data ]</a>
+              <a href="thread.html#1568">[ Thread ]</a>
+              <a href="subject.html#1568">[ Oggetto ]</a>
+              <a href="author.html#1568">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

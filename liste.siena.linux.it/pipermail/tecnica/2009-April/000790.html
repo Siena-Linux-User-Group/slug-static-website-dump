@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] caricare modulo ne2000 all'avvio
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=49E3D6BC.3050406%40willothewisp.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000789.html">
+   <LINK REL="Next"  HREF="000791.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] caricare modulo ne2000 all'avvio</H1>
+    <B>Gabriele Monfardini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=49E3D6BC.3050406%40willothewisp.it"
+       TITLE="[Tecnica] caricare modulo ne2000 all'avvio">gabrimonfa a gmail.com
+       </A><BR>
+    <I>Mar 14 Apr 2009 08:48:32 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000789.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000791.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#790">[ Data ]</a>
+              <a href="thread.html#790">[ Thread ]</a>
+              <a href="subject.html#790">[ Oggetto ]</a>
+	      <a href="author.html#790">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Nelle distribuzioni basate su debian devi aggiungere il modulo a /etc/modules.
+
+Gabriele
+
+
+2009/4/14 Luca Mercurio &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">luca a willothewisp.it</A>&gt;:
+&gt;<i> Ciao a tutti,
+</I>&gt;<i>                    come sapete da qualche giorno mi sto buttando
+</I>&gt;<i> nell'installazione di vecchi PC e oggi posso dire di aver raggiunto un
+</I>&gt;<i> traguardo storico: per la prima volta in vita mia ho caricato a mano un
+</I>&gt;<i> modulo per fare funzionare una scheda ISA!
+</I>&gt;<i>
+</I>&gt;<i> Si tratta di una scheda di rete winbond che usa il modulo NE2000.
+</I>&gt;<i> Dopo svariati tentativi alla fine sono riuscito a beccare l'io e IRQ
+</I>&gt;<i> della scheda caricando il modulo chiamato &quot;ne&quot;. Più in dettaglio da
+</I>&gt;<i> terminale ho digitato:
+</I>&gt;<i>
+</I>&gt;<i> sudo modprobe ne io=0x300
+</I>&gt;<i>
+</I>&gt;<i> A questo punto facendo ifconfig eth0 mi viene restituito un risultato
+</I>&gt;<i> conforme alla mia scheda.
+</I>&gt;<i> Poi dal panello di controllo di DSL ho avviato la procedura per fare
+</I>&gt;<i> prendere i parametri di rete in DHCP.
+</I>&gt;<i>
+</I>&gt;<i> Fatto questo la scheda si inserisce nella rete con tanto di IP e default
+</I>&gt;<i> gateway e posso navigare in internet con un fantastico Pentium 75 a 100
+</I>&gt;<i> Mhz e 32 MB di RAM!!!
+</I>&gt;<i>
+</I>&gt;<i> A questo punto ho bisogno di inserire il driver all'avvio in modo tale
+</I>&gt;<i> da evitare di dare a mano questi comandi.
+</I>&gt;<i>
+</I>&gt;<i> Qualcuno mi può aiutare?
+</I>&gt;<i>
+</I>&gt;<i> Grazie 1000
+</I>&gt;<i>
+</I>&gt;<i> MacMercury
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000789.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000791.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#790">[ Data ]</a>
+              <a href="thread.html#790">[ Thread ]</a>
+              <a href="subject.html#790">[ Oggetto ]</a>
+              <a href="author.html#790">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

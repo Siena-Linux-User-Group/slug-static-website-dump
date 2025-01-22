@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Memoria e 32 bit
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Memoria%20e%2032%20bit&In-Reply-To=%3CAANLkTi%3DxfrsJ70Wh8adtqt5TaAm%2BNYUMP%2BcYRoOm8ugB%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001294.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Memoria e 32 bit</H1>
+    <B>Iacopo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Memoria%20e%2032%20bit&In-Reply-To=%3CAANLkTi%3DxfrsJ70Wh8adtqt5TaAm%2BNYUMP%2BcYRoOm8ugB%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Memoria e 32 bit">iakko a siena.linux.it
+       </A><BR>
+    <I>Mer 23 Feb 2011 16:24:39 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001294.html">[Tecnica] Memoria e 32 bit
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1295">[ Data ]</a>
+              <a href="thread.html#1295">[ Thread ]</a>
+              <a href="subject.html#1295">[ Oggetto ]</a>
+	      <a href="author.html#1295">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Il problema e' che se prendi un pc a 64 bit e ci monti 8GB, non puoi
+</I>&gt;<i> sfruttare l'estensione a 36bit quindi in tal caso rimani limitato a
+</I>&gt;<i> 4GB fintanto che non sostituisci un OS a 64bit.
+</I>
+Emanuele, mi sono sbagliato, avevo letto male.. anche processori piu'
+recenti come l'intel i7 implementano il PAE, quindi puoi comunque sia
+sfruttare l'estensione 32 -&gt; 36 bit. In ogni caso, per vedere se il
+processore ha il PAE tra i CPUID, basta che guardi dentro
+/proc/cpuinfo e greppi la stringa 'flags'.
+
+-- 
+Iacopo Palazzi
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001294.html">[Tecnica] Memoria e 32 bit
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1295">[ Data ]</a>
+              <a href="thread.html#1295">[ Thread ]</a>
+              <a href="subject.html#1295">[ Oggetto ]</a>
+              <a href="author.html#1295">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

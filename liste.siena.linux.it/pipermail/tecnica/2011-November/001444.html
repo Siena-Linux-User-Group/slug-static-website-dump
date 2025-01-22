@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] inner join
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20inner%20join&In-Reply-To=%3C-8726256970408098379%40unknownmsgid%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001443.html">
+   <LINK REL="Next"  HREF="001445.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] inner join</H1>
+    <B>Motaz Abuthiab</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20inner%20join&In-Reply-To=%3C-8726256970408098379%40unknownmsgid%3E"
+       TITLE="[Tecnica] inner join">moty66 a gmail.com
+       </A><BR>
+    <I>Lun 28 Nov 2011 19:35:56 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001443.html">[Tecnica] inner join
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001445.html">[Tecnica] inner join
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1444">[ Data ]</a>
+              <a href="thread.html#1444">[ Thread ]</a>
+              <a href="subject.html#1444">[ Oggetto ]</a>
+	      <a href="author.html#1444">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Non devi usare tabella.alias, basta il nome del campo, se hai due campi con
+nomi uguali dovresti fare select t1.id as t1_id, t2.id as t2_id from t1, t2
+where ......
+
+Ti consiglio di usare mysql_fetch_assoc() invece di fetch_array()
+
+M.
+
+--
+
+Crea il tuo sito con dinamocms.com
+
+Il giorno 28/nov/2011, alle ore 19:50, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha
+scritto:
+
+scusatemi
+
+ma quando devo fare una inner join con mysql e unisco due tabelle, usando
+gli alias,
+
+come si fa il fetch array dei risultati?
+
+Es:
+
+$query=mysql_query(&quot;SELECT * from pippo as p, topolino as t&quot;);
+
+while($res=mysql_fetch_array($query)){
+$id1=$res['p.id'];
+$id2=$res['t.id'];
+}
+
+
+QUESTO NON MI FUNZIONA, ma non mi da neanche errori
+
+
+
+Tanga aka Bartrosso
+
+
+-- 
+Sono ciò che sono grazie a quello che siamo tutti,
+
+
+
+un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare Debian..&quot;
+
+
+«Immagina se ogni persona sulla terra potesse condividere con accesso
+libero e totale tutta la conoscenza umana.»
+&#8212; Jimmy Wales, fondatore di Wikipedia
+
+_______________________________________________
+Tecnica mailing list
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20111128/97838c5f/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20111128/97838c5f/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001443.html">[Tecnica] inner join
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001445.html">[Tecnica] inner join
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1444">[ Data ]</a>
+              <a href="thread.html#1444">[ Thread ]</a>
+              <a href="subject.html#1444">[ Oggetto ]</a>
+              <a href="author.html#1444">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

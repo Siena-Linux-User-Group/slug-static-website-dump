@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problemino con Kubuntu-Firefox
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problemino%20con%20Kubuntu-Firefox&In-Reply-To=200811121628.16369.voland03%40interfree.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000704.html">
+   <LINK REL="Next"  HREF="000699.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problemino con Kubuntu-Firefox</H1>
+    <B>Gabriele Monfardini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problemino%20con%20Kubuntu-Firefox&In-Reply-To=200811121628.16369.voland03%40interfree.it"
+       TITLE="[Tecnica] Problemino con Kubuntu-Firefox">gabrimonfa a gmail.com
+       </A><BR>
+    <I>Mer 12 Nov 2008 18:01:12 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000704.html">[Tecnica] Problemino con Kubuntu-Firefox
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000699.html">[Tecnica] Problemino con Kubuntu-Firefox
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#705">[ Data ]</a>
+              <a href="thread.html#705">[ Thread ]</a>
+              <a href="subject.html#705">[ Oggetto ]</a>
+	      <a href="author.html#705">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> appena apro un secondo successivamente firefox va in crash e si chiude inaspettatamente !!!!
+</I>
+
+Io i video li vedo in un popup. Sono aperti da uno script in javascript.
+Quando apro un secondo video riutilizza lo stesso popup. Quindi non ne
+vedo due contemporaneamente.
+
+Se invece copio ed incollo gli indirizzi di due video in due tab
+diversi firefox va in crash.
+Il plugin vlc logga sulla console un sacco di info di debug e l'ultima è
+
+x11 video output error: X11 request 140.19 failed with error code 11:
+ BadAlloc (insufficient resources for operation)
+X Error of failed request:  BadAlloc (insufficient resources for operation)
+  Major opcode of failed request:  140 (XVideo)
+  Minor opcode of failed request:  19 ()
+  Serial number of failed request:  88
+  Current serial number in output stream:  89
+
+Sembra quindi un problema del plugin a gestire due video in
+contemporanea, un out-of-memory probabilemente
+
+Da quello che trovo su Google sembra essere noto soprattutto per le
+schede ATI gestite con il driver radeon e ci sono dei possibili
+workaround (chiaramente potrebbero funzionare o meno... invito
+caldamente a fare dei backup prima di modificare un file xorg.conf
+funzionante)
+
+<A HREF="https://bugs.launchpad.net/ubuntu/intrepid/+source/totem/+bug/264368">https://bugs.launchpad.net/ubuntu/intrepid/+source/totem/+bug/264368</A>
+<A HREF="https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-ati/+bug/269357">https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-ati/+bug/269357</A>
+
+Saluti
+
+Gabriele
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000704.html">[Tecnica] Problemino con Kubuntu-Firefox
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000699.html">[Tecnica] Problemino con Kubuntu-Firefox
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#705">[ Data ]</a>
+              <a href="thread.html#705">[ Thread ]</a>
+              <a href="subject.html#705">[ Oggetto ]</a>
+              <a href="author.html#705">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

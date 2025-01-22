@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] controllo server vnc
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20controllo%20server%20vnc&In-Reply-To=%3C4C0D204F.5070108%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001122.html">
+   <LINK REL="Next"  HREF="001139.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] controllo server vnc</H1>
+    <B>robi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20controllo%20server%20vnc&In-Reply-To=%3C4C0D204F.5070108%40valdelsa.net%3E"
+       TITLE="[Tecnica] controllo server vnc">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Lun  7 Giu 2010 17:37:35 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001122.html">[Tecnica] controllo server vnc
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001139.html">[Tecnica] controllo server vnc
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1137">[ Data ]</a>
+              <a href="thread.html#1137">[ Thread ]</a>
+              <a href="subject.html#1137">[ Oggetto ]</a>
+	      <a href="author.html#1137">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>grazie per la risposta......purtroppo temo che mi manchi qualcosa....mi 
+spego:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a robi-laptop</A>:~$ ssh -X <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a server</A> vcnviewer
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a server</A>'s password:
+bash: vcnviewer: comando non trovato
+
+questo è l'output del comando....nel server sono installati i paccheti 
+vnc....(xtightvncviewer e tightvncviewer).....deve essere installato 
+anche tsclient per funzionare?......perchè questo dipende da 126 
+pacchetti il che singnifica installare i 2/3 di tutta l'interfaccia 
+grafica.....oppure ci manca qualche altro pacchetto.....
+
+davvero grazie....visto che mi aiutate a capirci un pò di più tutte le 
+volte che qualcuno mi da una mano... :-)))))))))))
+
+
+
+Simone Soldateschi ha scritto:
+&gt;<i> Direi che la cosa più semplice e sicura è l'esecuzione di applicazioni 
+</I>&gt;<i> utilizzando l'/X11 forwarding/ di SSH (opzione -X).
+</I>&gt;<i> Semplice come scrivere:
+</I>&gt;<i>
+</I>&gt;<i>     $ ssh -X <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a host</A> comando
+</I>&gt;<i>
+</I>&gt;<i> my 2¢
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001122.html">[Tecnica] controllo server vnc
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001139.html">[Tecnica] controllo server vnc
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1137">[ Data ]</a>
+              <a href="thread.html#1137">[ Thread ]</a>
+              <a href="subject.html#1137">[ Oggetto ]</a>
+              <a href="author.html#1137">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

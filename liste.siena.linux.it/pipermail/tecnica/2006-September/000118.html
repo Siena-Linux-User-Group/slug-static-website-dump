@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ssh gaia unreachable
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=2ab8a5390609150705r456dfe87mfc0ed64e125d3f07%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000114.html">
+   <LINK REL="Next"  HREF="000134.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ssh gaia unreachable</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=2ab8a5390609150705r456dfe87mfc0ed64e125d3f07%40mail.gmail.com"
+       TITLE="[Tecnica] ssh gaia unreachable">pragma a siena.linux.it
+       </A><BR>
+    <I>Ven 15 Set 2006 13:30:40 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000114.html">[Tecnica] ssh gaia unreachable
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000134.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#118">[ Data ]</a>
+              <a href="thread.html#118">[ Thread ]</a>
+              <a href="subject.html#118">[ Oggetto ]</a>
+	      <a href="author.html#118">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 15 September 2006 16:05, GTL v97.6 wrote:
+&gt;<i> Gente...
+</I>&gt;<i>
+</I>&gt;<i> sono diversi giorni che tento invano di connettermi a gaia, però nn
+</I>&gt;<i> risponde o meglio risponde per l'esattezza:
+</I>&gt;<i>
+</I>&gt;<i> ssh: connect to host gaia.siena.linux.it port 22: Network is unreachable
+</I>&gt;<i>
+</I>&gt;<i> se qualcuno sa cosa fare lo faccia per favore...^^
+</I>
+Il demone ssh era morto. Iakko lo ha ritirato su.
+
+Domanda da esperti del TCP:
+
+Sintomi:
+
+- ssh: connect to host gaia.siena.linux.it port 22: Network is unreachable
+- il demone ssh è morto (quindi teoricamente nessuno ascolta sulla 22)
+- ping gaia.siena.linux.it risponde normalmente
+- il server web risponde tranquillamente (telnet gaia 80 funziona come
+
+  dovrebbe)
+
+Perchè l'errore restituito dal sistema è un &quot;Network is unreachable&quot; 
+invece di un &quot;Connection Refused&quot; ?
+
+La parte rilevante del tcpdump di &quot;ssh -l utente gaia.siena.linux.it&quot;
+è il seguente:
+
+13:36:56.025639 IP (tos 0x0, ttl  64, id 13087, offset 0, flags [DF], proto: 
+TCP (6), length: 60) ppp-234-4.27-151.libero.it.35165 &gt; 
+gaia.siena.linux.it.ssh: S, cksum 0x2ac8 (correct), 4185561033:4185561033(0) 
+win 5800 &lt;mss 1450,sackOK,timestamp 10134742 0,nop,wscale 7&gt;
+
+13:36:56.232156 IP (tos 0x0, ttl  49, id 0, offset 0, flags [DF], proto: TCP 
+(6), length: 40) gaia.siena.linux.it.ssh &gt; ppp-234-4.27-151.libero.it.35165: 
+R, cksum 0x4ea6 (correct), 0:0(0) ack 4185561034 win 0
+
+e qui &quot;Network is unreachable&quot;.
+
+Qualcuno sa dare una spiegazione ?
+
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Segmentation fault. Brain dumped.
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060915/3c95cd92/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060915/3c95cd92/attachment.pgp</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000114.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000134.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#118">[ Data ]</a>
+              <a href="thread.html#118">[ Thread ]</a>
+              <a href="subject.html#118">[ Oggetto ]</a>
+              <a href="author.html#118">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

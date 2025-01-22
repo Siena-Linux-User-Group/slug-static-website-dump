@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] recupero dati
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2016-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20recupero%20dati&In-Reply-To=%3CCAMQqH1a0LmFQ%3Dt3dPy8QsnF8ayAJCcz5J-MzE%3DnMeFFabu6vmw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002013.html">
+   <LINK REL="Next"  HREF="002015.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] recupero dati</H1>
+    <B>Andrea Coronese</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20recupero%20dati&In-Reply-To=%3CCAMQqH1a0LmFQ%3Dt3dPy8QsnF8ayAJCcz5J-MzE%3DnMeFFabu6vmw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] recupero dati">blackeye84 a gmail.com
+       </A><BR>
+    <I>Mar 13 Set 2016 15:18:36 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002013.html">[Tecnica] recupero dati
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002015.html">[Tecnica] R: Re:  recupero dati
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2014">[ Data ]</a>
+              <a href="thread.html#2014">[ Thread ]</a>
+              <a href="subject.html#2014">[ Oggetto ]</a>
+	      <a href="author.html#2014">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dovresti sapere che tipo di mappa partizioni era (MBR, uid...) e, partendo
+dal presupposto che fosse una partizione unica in formato noto, potresti
+prima cancellarla con il comando dd (una partizione MBR per esempio sono i
+primi 512 byte del device) e poi ricrearla usando fdisk. Una volta ho fatto
+così ed ha funzionato nel caso di una MBR corrotta, ma bisogna vedere il
+caso specifico di questo disco.
+
+2016-09-10 10:00 GMT+02:00 roberto &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a mail.com</A>&gt;:
+
+&gt;<i> Ciao a tutti, spero che possiate aiutarmi....
+</I>&gt;<i>
+</I>&gt;<i> Veniamo ai fatti. Mi hanno appena dato un HD da 2Tb contenente per la
+</I>&gt;<i> maggior parte file video. Non viene montato e Gparted lo vede come non
+</I>&gt;<i> allocato.
+</I>&gt;<i>
+</I>&gt;<i> Con photorec ho visto che realmente i file ci sono, chiaramente ne posso
+</I>&gt;<i> recuperare solo una parte, il pc che utilizzo ha un HD da 500Gb.
+</I>&gt;<i>
+</I>&gt;<i> Così a occhio direi che la tavola partizioni è stata cancellata, non
+</I>&gt;<i> chiedetemi come, è possibile ricrearla in qualche modo?
+</I>&gt;<i>
+</I>&gt;<i> Ho provato con testdisk selezionando &quot;partizioni intel&quot; ma dopo molte ore
+</I>&gt;<i> di lavoro e aver controllato tutti i cilindri, il risultato non è cambiato.
+</I>&gt;<i>
+</I>&gt;<i> Qualcuno di voi sa se ci sono altre soluzioni per ricostruire la tavola
+</I>&gt;<i> partizioni persa?
+</I>&gt;<i>
+</I>&gt;<i> Un ultima cosa, l' analisi scritt sopra potrebbe non essere corretta, se
+</I>&gt;<i> sbagliata vi prego di correggerla e di darmi i consigli giusti per
+</I>&gt;<i> risolvere (ammesso che sia possibile)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Grazie a tutti
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Roberto Volpini
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+*Andrea Coronese*
+*There is no place like /home*
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20160913/45652874/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20160913/45652874/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002013.html">[Tecnica] recupero dati
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002015.html">[Tecnica] R: Re:  recupero dati
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2014">[ Data ]</a>
+              <a href="thread.html#2014">[ Thread ]</a>
+              <a href="subject.html#2014">[ Oggetto ]</a>
+              <a href="author.html#2014">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

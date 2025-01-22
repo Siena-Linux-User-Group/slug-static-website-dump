@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Kernel Panic
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000531.html">
+   <LINK REL="Next"  HREF="000533.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Kernel Panic</H1>
+    <B>voland03 a interfree.it</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To="
+       TITLE="[Tecnica] Kernel Panic">voland03 a interfree.it
+       </A><BR>
+    <I>Gio 18 Ott 2007 18:03:09 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000531.html">[Tecnica] Iptables
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000533.html">[Tecnica] problemi con il multidesktop
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#532">[ Data ]</a>
+              <a href="thread.html#532">[ Thread ]</a>
+              <a href="subject.html#532">[ Oggetto ]</a>
+	      <a href="author.html#532">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Ciao a tutti,grazie per le vostre preziose risposte e scusatemi se rispondo con qualche giorno di ritardo.Vediamo di ordinare le idee:
+
+
+&gt;&gt;<i>Hai la versione con due dischi SATA, giusto ?
+</I>
+Si',confermo la presenza di 2 dischi da 160giga! 
+
+
+&gt;&gt;<i> Cmq ad occhio il tuo nuovo kernel non ha il supporto per il controller SATA &gt; 
+</I>&gt;<i>del tuo portatile, oppure (meno probabile) per il tipo di tabella di
+</I>&gt;&gt;<i> partizioni che hai usato.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Guarda che controller SATA hai.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> # lspci | grep SATA
+</I>&gt;&gt;<i> 00:0f.0 RAID bus controller: VIA Technologies, Inc. VIA VT6420 SATA RAID
+</I>&gt;&gt;<i> Controller (rev 80)
+</I>
+Vi passo sotto il risultato del mio intero lspci;ci sono molti &quot;unkwon device&quot;, pero' chissa' che non vi possa aiutare.
+ 
+00:00.0 RAM memory:nVidia Corporation Unkwon device 0547 (rev a2) 
+00:01.0 ISA bridge:nVidia Corporation Unkwon device 0548 (rev a2) 
+00:01.1 SMBus:nVidia Corporation Unkwon device 0542 (rev a2) 
+00:01.2 RAM memory:nVidia Corporation Unkwon device 0541 (rev a2) 
+00:01.3 Co-processor:nVidia Corporation Unkwon device 0543 (rev a2) 
+00:02.0 USB controller:nVidia Corporation Unkwon device 055e (rev a2)
+00:02.1 USB controller:nVidia Corporation Unkwon device 055f (rev a2)
+00:04.0 USB controller:nVidia Corporation Unkwon device 055e (rev a2)
+00:04.1 USB controller:nVidia Corporation Unkwon device 055f (rev a2)
+00:06.0 IDE interface:nVidia Corporation Unkwon device 0560 (rev a1)
+00:07.0 Audiointerface:nVidia Corporation MCP67 High Definition Audio (rev a1)
+00:08.0 PCI bridge:nVidia Corporation Unkwon device 0561 (rev a2)
+00:09.0 IDE interface:nVidia Corporation Unkwon device 0550 (rev a2) 
+00:0a.0 Ethernet controller:nVidia Corporation Unkwon device 054c (rev a2)
+00:0b.0 PCI bridge:nVidia Corporation Unkwon device 0562 (rev a2
+00:0c.0 PCI bridge:nVidia Corporation Unkwon device 0563 (rev a2) 
+00:0d.0 PCI bridge:nVidia Corporation Unkwon device 0564 (rev a2)
+00:18.0 Host bridge:Advanced Micro Devices [AMD] K8 [Athlon64/Opteron] HyperTransport Tecnology Configuration
+00:18.1 Host bridge:Advanced Micro Devices [AMD] K8 [Athlon64/Opteron] Address Map
+00:18.2 Host bridge:Advanced Micro Devices [AMD] K8 [Athlon64/Opteron] DRAM Controller
+00:18.3 Host bridge:Advanced Micro Devices [AMD] K8 [Athlon64/Opteron] Miscellaneus Control
+01:04.0 FireWire (IEEE 1394):Ricoh Co Ltd R5C832 IEEE 1394 Controller (rev 05)
+01:04.1 Generic system peripheral [0805]:Ricoh Co Ltd R5C822 SD/SDIO/MMC/MS/MSPro Host Adapter (rev 22)
+01:04.2 System peripheral:Ricoh Co Ltd Unkwon 0843 (rev 12)
+01:04.3 System peripheral:Ricoh Co Ltd R5C592 Memory Stick Bus Host Adapter (rev 12)
+01:04.4 System peripheral:Ricoh Co Ltd xD-Picture Card Controller (rev 12)
+02:00.0 VGA compatible controller:nVidia Corporation Unknow device 0428 (rev a1)
+05:00.0 Ethernet controller:Atherios Communications Inc. AR5006EG 802.11 b/g Wireless PCI Express Adapter (rev 01)
+
+
+&gt;&gt;<i> Poi cerca il driver nella configurazione del kernel e abilitalo.
+</I>&gt;&gt;<i>
+</I>
+Spero di aver attivato il flag giusto,ma in Device Driver---&gt; Serial ATA Parallel ATA Drivers c'e' appunto il flag &quot;nVidia SATA support&quot; 
+che io ho attivato come fisso.C'e' anche un &quot;nVidia ATA generic&quot; se non sbaglio ma non l'ho attivato.Ditemi se ho preso una cantonata
+oppure sono sulla strada giusta ma ancora la meta e' lontana!
+
+Ciao-ciao
+
+Andrea V.
+
+
+----------------------------------------------------------------------------
+DEXGATEMICRO il centralino VoIP multifunzione per l'azienda.
+Prova gratuita per 4 utenti!
+
+
+Scopri tutte le funzionalita' sul sito Dexgate.com
+----------------------------------------------------------------------------
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000531.html">[Tecnica] Iptables
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000533.html">[Tecnica] problemi con il multidesktop
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#532">[ Data ]</a>
+              <a href="thread.html#532">[ Thread ]</a>
+              <a href="subject.html#532">[ Oggetto ]</a>
+              <a href="author.html#532">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

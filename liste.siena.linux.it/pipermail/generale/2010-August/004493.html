@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] domanda php 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20php%202&In-Reply-To=%3C4C7A68CA.2080209%40zerozone.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004492.html">
+   <LINK REL="Next"  HREF="004494.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] domanda php 2</H1>
+    <B>Michele Pinassi</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20php%202&In-Reply-To=%3C4C7A68CA.2080209%40zerozone.it%3E"
+       TITLE="[Generale] domanda php 2">o-zone a zerozone.it
+       </A><BR>
+    <I>Dom 29 Ago 2010 15:03:54 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="004492.html">[Generale] domanda php 2
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="004494.html">[Generale] Bellissimo!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4493">[ Data ]</a>
+              <a href="thread.html#4493">[ Thread ]</a>
+              <a href="subject.html#4493">[ Oggetto ]</a>
+	      <a href="author.html#4493">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In più suggerisco di usare una funzione tipo cleanInput:
+
+function cleanInput($u_Input) {
+     $banlist = array (
+         &quot; insert &quot;, &quot; select &quot;, &quot; update &quot;, &quot; delete &quot;, &quot; distinct &quot;, &quot; 
+having &quot;, &quot; truncate &quot;, &quot; replace &quot;,
+         &quot; handler &quot;, &quot; like &quot;, &quot; as &quot;, &quot; or &quot;, &quot; procedure &quot;, &quot; limit 
+&quot;, &quot; order by &quot;, &quot; group by &quot;, &quot; asc &quot;, &quot; desc &quot;
+     );
+     $replacelist = array (
+         &quot; ins3rt &quot;, &quot; s3lect &quot;, &quot; upd4te &quot;, &quot; d3lete &quot;, &quot; d1stinct &quot;, &quot; 
+h4ving &quot;, &quot; trunc4te &quot;, &quot; r3place &quot;,
+         &quot; h4ndler &quot;, &quot; l1ke &quot;, &quot; 4s &quot;, &quot; 0r &quot;, &quot; procedur3 &quot;, &quot; l1mit 
+&quot;, &quot; 0rder by &quot;, &quot; gr0up by &quot;, &quot; 4sc &quot;, &quot; d3sc &quot;
+     );
+     if(eregi( &quot;[a-zA-Z0-9]+&quot;, $u_Input )) {
+         $u_Input = trim(str_replace($banlist, $replacelist, $u_Input));
+     } else {
+         $u_Input = NULL;
+     }
+     return $u_Input;
+}
+
+$myUsername = mysql_escape_string(CleanInput($_POST[&quot;myUsername&quot;]));
+
+che impedisce ad eventuali &quot;furbetti&quot; di fare sql injection.
+
+Michele
+
+
+On 27/08/2010 19:05, Yusef Maali wrote:
+&gt;<i> Altra cosa:
+</I>&gt;<i>
+</I>&gt;<i> quando concateni delle variabili ad un stringa SQL, usa sempre la funzione
+</I>&gt;<i> mysql_real_escape_string($mia_variabile) [1], invece della variabile diretta.
+</I>&gt;<i>
+</I>&gt;<i> L'Sql injection si basa su questo principio.
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i>
+</I>&gt;<i> [1]: <A HREF="http://www.php.net/manual/en/function.mysql-real-escape-string.php">http://www.php.net/manual/en/function.mysql-real-escape-string.php</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> In data venerdì 27 agosto 2010 17:32:51, bartrosso ha scritto:
+</I>&gt;<i>    
+</I>&gt;&gt;<i> salve, sono di nuovo il tanga.
+</I>&gt;&gt;<i> La prima risposta che ho avuto mi ha permesso di continuare il lavoro.
+</I>&gt;&gt;<i> Però ora ho un errore dovuto all'avvenuto upload delle immagini.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> quando ottengo il messaggio di conferma, faccio stampare a video un pò do
+</I>&gt;&gt;<i> info relative al file caricato, al momento di stampare il nome dell'autore
+</I>&gt;&gt;<i> però mi ritorna:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Resource id #11:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> codice:
+</I>&gt;&gt;<i> $idautore=$_SESSION['id'];  altro codice
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $query = &quot;INSERT INTO immagini (titolo,descrizione,nome,type,idautore)
+</I>&gt;&gt;<i> VALUES('$titolo','$descrizione','$nome','$type','$idautore')&quot;;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $autore=@mysql_query(&quot;SELECT 'username' FROM autore WHERE id='$idautore'&quot;);
+</I>&gt;&gt;<i> echo &quot;Autore: &quot;.$autore;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> mi potete aiutare?
+</I>&gt;&gt;<i> grazie mille
+</I>&gt;&gt;<i>   il tanga
+</I>&gt;&gt;<i>      
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Generale mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;<i>    
+</I>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="004492.html">[Generale] domanda php 2
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="004494.html">[Generale] Bellissimo!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4493">[ Data ]</a>
+              <a href="thread.html#4493">[ Thread ]</a>
+              <a href="subject.html#4493">[ Oggetto ]</a>
+              <a href="author.html#4493">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

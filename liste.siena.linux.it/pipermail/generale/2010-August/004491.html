@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] domanda php 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20php%202&In-Reply-To=%3CAANLkTimftnMA_wg%3D4zMoaAc%2BgqxA661hV5%2BLCyfon%3DTQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004490.html">
+   <LINK REL="Next"  HREF="004492.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] domanda php 2</H1>
+    <B>Iacopo</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20php%202&In-Reply-To=%3CAANLkTimftnMA_wg%3D4zMoaAc%2BgqxA661hV5%2BLCyfon%3DTQ%40mail.gmail.com%3E"
+       TITLE="[Generale] domanda php 2">iakko a omnikron.net
+       </A><BR>
+    <I>Ven 27 Ago 2010 17:00:42 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="004490.html">[Generale] domanda php 2
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="004492.html">[Generale] domanda php 2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4491">[ Data ]</a>
+              <a href="thread.html#4491">[ Thread ]</a>
+              <a href="subject.html#4491">[ Oggetto ]</a>
+	      <a href="author.html#4491">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> $autore=@mysql_query(&quot;SELECT 'username' FROM autore WHERE id='$idautore'&quot;);
+</I>&gt;<i> echo &quot;Autore: &quot;.$autore;
+</I>
+Non e' cosi' lineare il recupero dei dati da una query sql impartita
+tramite php.
+
+Se guardi la guida del php [1] noterai che la funzione mysql_query()
+restituisce un &quot;result&quot; che non e' un testo da stampare. Cio' che ti
+restituisce e' un oggetto che devi utilizzare successivamente per
+recuperare le informazioni che ti servono. Supponi per esempio che la
+tua query restituisca piu' righe, magari ognuna delle quali composta
+da piu' campi.. come potresti fare?
+
+Per questo motivo, devi utilizzare il risultato di mysql_query() con
+mysql_fetch_assoc() [2] che non fa altro che prenderti in pasto il
+risultato di mysql_query() e restituirti un array contenente i vari
+campi della query, indicizzati proprio dal nome della colonna che hai
+specificato nella query.
+In pratica, mysql_query() non fa altro che fornirti una sorta di
+puntatore a tutte le righe restituite dalla query, poi con
+mysql_fetch_assoc() scorri queste righe e le utilizzi come fossero
+array. Se la query non e' valida o non ci sono righe, il risultato lo
+tratti come fosse un FALSE.
+
+Per farti un esempio:
+
+$result = mysql_query(&quot;SELECT username, password FROM autore WHERE
+id='$idautore'&quot;);
+
+while($row = mysql_fetch_assoc($result))
+{
+    echo $row['username'];
+    echo $row['password'];
+}
+
+Nella query che hai scritto, il campo username non va tra apici.
+
+Ciao.
+
+[1]: <A HREF="http://www.php.net/manual/en/function.mysql-query.php">http://www.php.net/manual/en/function.mysql-query.php</A>
+[2]: <A HREF="http://www.php.net/manual/en/function.mysql-fetch-assoc.php">http://www.php.net/manual/en/function.mysql-fetch-assoc.php</A>
+
+-- 
+Iacopo Palazzi
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="004490.html">[Generale] domanda php 2
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="004492.html">[Generale] domanda php 2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4491">[ Data ]</a>
+              <a href="thread.html#4491">[ Thread ]</a>
+              <a href="subject.html#4491">[ Oggetto ]</a>
+              <a href="author.html#4491">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

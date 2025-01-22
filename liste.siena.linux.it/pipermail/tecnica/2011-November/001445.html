@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] inner join
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20inner%20join&In-Reply-To=%3C4ED48E7F.7080207%40zerozone.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001444.html">
+   <LINK REL="Next"  HREF="001446.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] inner join</H1>
+    <B>Michele Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20inner%20join&In-Reply-To=%3C4ED48E7F.7080207%40zerozone.it%3E"
+       TITLE="[Tecnica] inner join">o-zone a zerozone.it
+       </A><BR>
+    <I>Mar 29 Nov 2011 07:49:19 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001444.html">[Tecnica] inner join
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001446.html">[Tecnica] inner join
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1445">[ Data ]</a>
+              <a href="thread.html#1445">[ Thread ]</a>
+              <a href="subject.html#1445">[ Oggetto ]</a>
+	      <a href="author.html#1445">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 28/11/2011 20:35, Motaz Abuthiab ha scritto:
+&gt;<i> Non devi usare tabella.alias, basta il nome del campo, se hai due
+</I>&gt;<i> campi con nomi uguali dovresti fare select t1.id &lt;<A HREF="http://t1.id">http://t1.id</A>&gt; as
+</I>&gt;<i> t1_id, t2.id &lt;<A HREF="http://t2.id">http://t2.id</A>&gt; as t2_id from t1, t2 where ......
+</I>&gt;<i>
+</I>&gt;<i> Ti consiglio di usare mysql_fetch_assoc() invece di fetch_array()
+</I>&gt;<i>
+</I>Ad esempio:
+
+$result = DB_Query(&quot;SELECT DISTINCT(t1.sessionId), t2.Status,
+t2.addDate, t2.ChgDate, t2.Referrer FROM Answers AS t1 INNER JOIN
+SessionsPoll AS t2 ON t1.sessionId=t2.sessionId WHERE
+t1.PollID='$pollId' AND t2.PollID='$pollId' ORDER BY t2.addDate DESC
+LIMIT 10 OFFSET $startIdx;&quot;);
+if(mysql_num_rows($result) &gt; 0) {
+   while($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+         $sessionId = $row[&quot;sessionId&quot;];
+         $Status = $row[&quot;Status&quot;];
+         $addDate = $row[&quot;addDate&quot;];
+         $chgDate = $row[&quot;ChgDate&quot;];
+       ....
+    }
+}
+
+Michele
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20111129/3f5079f6/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20111129/3f5079f6/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001444.html">[Tecnica] inner join
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001446.html">[Tecnica] inner join
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1445">[ Data ]</a>
+              <a href="thread.html#1445">[ Thread ]</a>
+              <a href="subject.html#1445">[ Oggetto ]</a>
+              <a href="author.html#1445">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] default alsa
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2015-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20default%20alsa&In-Reply-To=%3C20150103213537.b5e652f6f48ccb3b6de5957e%40hacknight.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="001905.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] default alsa</H1>
+    <B>Emanuele Bruni</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20default%20alsa&In-Reply-To=%3C20150103213537.b5e652f6f48ccb3b6de5957e%40hacknight.org%3E"
+       TITLE="[Tecnica] default alsa">blackhat a hacknight.org
+       </A><BR>
+    <I>Sab  3 Gen 2015 20:35:37 GMT</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="001905.html">[Tecnica] Scrum. agile. extreme programming
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1904">[ Data ]</a>
+              <a href="thread.html#1904">[ Thread ]</a>
+              <a href="subject.html#1904">[ Oggetto ]</a>
+	      <a href="author.html#1904">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve gente, scusate l'assenza ma sto inguaiato...
+
+C'ho messo una settimana per far partire Lubuntu accanto a windows 8.1 e ancora non riesco a far partire il suono ergo la domanda:
+
+Come si imposta la scheda di default per Alsa?
+
+La scheda vera sarebbe la uno ma il sistema seleziona quella virtuale e la mette sulla zero.
+
+Il tutorial che ho trovato in rete suggerisce di modificare .asoundrc o /etc/asound.conf ma non ne ho trovato traccia.
+
+Quindi ho provato a creare il primo e a popolarlo così:
+
+defaults.ctl.card 1
+defaults.pcm.card 1
+defaults.timer.card 1
+
+Con zero risultati a quanto pare...
+
+Qualcuno ha consigli.
+
+Ah, prima che qualcuno lo chieda si parla di Lubuntu 14.10... ;)
+
+aloha!
+blackhat
+
+-- 
+Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt; -Utente Linux registrato #223702
+&quot;Beati gli ultimi perchè lo stack è LIFO&quot; (Dinogen)
+La via dello Unix è il KISS. 
+DIffida dei programmi che non rispettano il  KISS.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="001905.html">[Tecnica] Scrum. agile. extreme programming
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1904">[ Data ]</a>
+              <a href="thread.html#1904">[ Thread ]</a>
+              <a href="subject.html#1904">[ Oggetto ]</a>
+              <a href="author.html#1904">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

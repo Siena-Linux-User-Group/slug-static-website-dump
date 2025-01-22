@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=200611230304.12837.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001309.html">
+   <LINK REL="Next"  HREF="001292.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali</H1>
+    <B>Alex M4DC4T</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=200611230304.12837.pragma%40siena.linux.it"
+       TITLE="[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali">alex71si a hotmail.com
+       </A><BR>
+    <I>Gio 23 Nov 2006 02:44:21 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001309.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001292.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1308">[ Data ]</a>
+              <a href="thread.html#1308">[ Thread ]</a>
+              <a href="subject.html#1308">[ Oggetto ]</a>
+	      <a href="author.html#1308">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i>
+</I>&gt;<i>In perl la scrittura
+</I>&gt;<i>
+</I>&gt;<i>	$pippo[3][3][3]
+</I>&gt;<i>
+</I>&gt;<i>è una roba che è solo sintatticamente simile ad una matrice
+</I>&gt;<i>tridimensionale.
+</I>&gt;<i>
+</I>&gt;<i>In memoria è un aggeggio che _semplificando_ può essere schematizzato
+</I>&gt;<i>come una specie di albero:
+</I>&gt;<i>
+</I>&gt;<i>	|-ref-|-ref-|-ref-|
+</I>&gt;<i>                  |     |     |
+</I>&gt;<i>	    |     |     +&gt; |-ref-|-ref-|-ref-|
+</I>&gt;<i>	    |     |              |     |     |
+</I>&gt;<i>                  |     |             |     |     +-&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                  |     |             |     +-------&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                  |     |              +-------------&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                  |     |
+</I>&gt;<i>	    |     +-----+&gt; |-ref-|-ref-|-ref-|
+</I>&gt;<i>	    |                 |     |     |
+</I>&gt;<i>                  |                 |     |     +-&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                  |                 |     +-------&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                  |                 +-------------&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                  |
+</I>&gt;<i>	     +-----------+&gt; |-ref-|-ref-|-ref-|
+</I>&gt;<i>	                          |     |     |
+</I>&gt;<i>                                        |     |     +-&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                                        |     +-------&gt; |--?--|--?--|--?--|
+</I>&gt;<i>                                        +-------------&gt; |--?--|--?--|--?--|
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Dove ogni sotto-array lineare occupa un intervallo di memoria distinto.
+</I>&gt;<i>Nota che questo aggeggio occupa pure molta più memoria di quello in C.
+</I>&gt;<i>
+</I>
+Se lo noto e' solo perche' hai fatto il disegno piu' grande.... =D
+Per quanto riguarda la storia dell'albero, io da quello che mi sono 
+immaginato coi references, per ora non riesco a comprendere... il discorso 
+di quello che accade in c mi e' chiaro... con i references non c'ho capito 
+nulla... =(
+
+_________________________________________________________________
+Scopri i volti dei nostri blogger !              
+<A HREF="http://spaces.live.com/default.aspx?page=Interests&amp;ss=False">http://spaces.live.com/default.aspx?page=Interests&amp;ss=False</A>
+
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001309.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001292.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1308">[ Data ]</a>
+              <a href="thread.html#1308">[ Thread ]</a>
+              <a href="subject.html#1308">[ Oggetto ]</a>
+              <a href="author.html#1308">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

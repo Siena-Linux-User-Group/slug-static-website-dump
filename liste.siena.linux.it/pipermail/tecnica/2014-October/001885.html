@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20aggiornamento%20ubuntu%2012.04-14.04...non%20andata%20a%20buon%0A%20fine&In-Reply-To=%3C54353D0D.7090602%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001882.html">
+   <LINK REL="Next"  HREF="001883.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine</H1>
+    <B>roberto</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20aggiornamento%20ubuntu%2012.04-14.04...non%20andata%20a%20buon%0A%20fine&In-Reply-To=%3C54353D0D.7090602%40valdelsa.net%3E"
+       TITLE="[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Mer  8 Ott 2014 14:33:01 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001882.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001883.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1885">[ Data ]</a>
+              <a href="thread.html#1885">[ Thread ]</a>
+              <a href="subject.html#1885">[ Oggetto ]</a>
+	      <a href="author.html#1885">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ok grazie a tutti per le dritte e nei prossimi giorni (si prossimi 
+giorni ho davvero poco tempo per lavorarci) vedo che ne viene fuori, per 
+il momento lo uso con gnome shell e appena ho un pomeriggio libero mi 
+dedico alla soluzione dei problemi!.
+
+a presto
+
+
+Il 07/10/14 14.53, Luigi ha scritto:
+&gt;<i> Il 07/10/2014 14:33, Michele Pinassi ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> senza stare a reistallare tutto ...
+</I>&gt;<i> se hai creato il nuovo utente puoi spostare tutto compresi i files
+</I>&gt;<i> nascosti (&quot;punto&quot;) dalla home del vecchio alla home del nuovo, con due
+</I>&gt;<i> accortezze:
+</I>&gt;<i> 1) devi farlo da super user (un volgare sudo cp -r /home/vecchio/*
+</I>&gt;<i> /home/nuovo o, se vuoi farlo in modalità grafica - nautilus o quello che
+</I>&gt;<i> che usi - ALT+F2 -&gt; gksu nautilus/quello_che_usi ;
+</I>&gt;<i> 2) cambiare il proprietario:gruppo ai file compiati (sudo chown -r
+</I>&gt;<i> nuovo:nuovo /home/nuovo/*) perché il nuovo utente ha uid:gid differente
+</I>&gt;<i>
+</I>&gt;<i> ... e per la prossima installazione fai come dice Michele, metti almeno
+</I>&gt;<i> la home per conto suo ;-) ... lo puoi fare già adesso senza perder un
+</I>&gt;<i> bit dei tuoi dati, si tratta di trafficare un po' con Gparted o roba simile
+</I>&gt;<i>
+</I>&gt;<i> ciao
+</I>&gt;<i>
+</I>&gt;<i> l.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Ciao Roberto,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> probabilmente si, fai prima a reinstallarlo da capo. Unica accortezza
+</I>&gt;&gt;<i> che ti suggerisco: crea una partizione separata per le /home, così se
+</I>&gt;&gt;<i> devi aggiornare il sistema in futuro non dovrai preoccuparti di
+</I>&gt;&gt;<i> backuppare i tuoi documenti/impostazioni personali :-)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Esempio (dal mio PC):
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> /dev/sda1      /
+</I>&gt;&gt;<i> /dev/sda2      /var
+</I>&gt;&gt;<i> /dev/sda4      /home
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> (la /dev/sda3 è la swap...)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Michele
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il 07/10/2014 13:57, roberto ha scritto:
+</I>&gt;&gt;&gt;<i> completato il boot in nessun modo riesco ad avere un terminale, in
+</I>&gt;&gt;&gt;<i> recovery mode non riesco ad entrarci, da grub seleziono &quot;ozioni
+</I>&gt;&gt;&gt;<i> avanzate di boot&quot; e la schermata dopo, dove posso scegliere di
+</I>&gt;&gt;&gt;<i> avviarlo in modalità recovery, non sta aperta abbastanza tempo perchè
+</I>&gt;&gt;&gt;<i> io possa selezionare qualcosa di diverso dalla prima riga che è il
+</I>&gt;&gt;&gt;<i> boot normale.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ho creato un nuovo utente con gnome shell ma facendo questo tutto
+</I>&gt;&gt;&gt;<i> quello che avevo nel mio utente resta li......tu dici di spostare
+</I>&gt;&gt;&gt;<i> tutto e riconfigurare il nuovo utente da capo?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> premesso che non l'ho mai fatto, ma così a occhio forse faccio prima a
+</I>&gt;&gt;&gt;<i> installarlo di nuovo non credi?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> grazie
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Il 06/10/2014 09:01, Paolo Sammicheli ha scritto:
+</I>&gt;&gt;&gt;&gt;<i> Il 05/10/2014 13:49, roberto ha scritto:
+</I>&gt;&gt;&gt;&gt;&gt;<i> come faccio a creare un utente, premesso che non riesco ad arrivare ad
+</I>&gt;&gt;&gt;&gt;&gt;<i> un terminale....perche dalla schermata di grub il terminale che si
+</I>&gt;&gt;&gt;&gt;&gt;<i> avvia
+</I>&gt;&gt;&gt;&gt;&gt;<i> mi fa lavorare solo su &lt;grub&gt;....e quando il sistema è avviato con
+</I>&gt;&gt;&gt;&gt;&gt;<i> alt+f2 non mi apre il terminale....
+</I>&gt;&gt;&gt;&gt;<i> Nelle opzioni di boot dovresti avere (se non l'hai disabilitata) la
+</I>&gt;&gt;&gt;&gt;<i> recovery mode.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Oppure una volta completato il boot usando ctrl alt F1 (o anche F2, F3,
+</I>&gt;&gt;&gt;&gt;<i> F4, ecc) ti apre uno dei vari login testuali. Il login grafico lo trovi
+</I>&gt;&gt;&gt;&gt;<i> su CTRL ALT F7
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Ciao
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001882.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001883.html">[Tecnica] aggiornamento ubuntu 12.04-14.04...non andata a buon fine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1885">[ Data ]</a>
+              <a href="thread.html#1885">[ Thread ]</a>
+              <a href="subject.html#1885">[ Oggetto ]</a>
+              <a href="author.html#1885">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

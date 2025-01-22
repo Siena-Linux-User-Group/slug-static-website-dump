@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Help!!!! (X4)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Help%21%21%21%21%20%28X4%29&In-Reply-To=356182.83592.qm%40web55210.mail.re4.yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000598.html">
+   <LINK REL="Next"  HREF="000601.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Help!!!! (X4)</H1>
+    <B>Andrea Ciani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Help%21%21%21%21%20%28X4%29&In-Reply-To=356182.83592.qm%40web55210.mail.re4.yahoo.com"
+       TITLE="[Tecnica] Help!!!! (X4)">cianiandrea10 a gmail.com
+       </A><BR>
+    <I>Mar 20 Maggio 2008 09:20:57 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000598.html">[Tecnica] Help!!!! (X4)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000601.html">[Tecnica] Help!!!! (X4)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#599">[ Data ]</a>
+              <a href="thread.html#599">[ Thread ]</a>
+              <a href="subject.html#599">[ Oggetto ]</a>
+	      <a href="author.html#599">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 20 maggio 2008 9.33, Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a yahoo.com</A>&gt; ha scritto:
+
+&gt;<i> &gt; 3) Nel medesimo pc ho un webserver apache che contiene alcuni siti
+</I>&gt;<i> (diversi cms es. ho
+</I>&gt;<i> &gt; drupal, joomla etc...). suddivisi ognuno nella sua cartella (es
+</I>&gt;<i> www/drupal ; www/joomla etc...)
+</I>&gt;<i> &gt;  Come posso fare per impostare un cms come home page e da esso creare dei
+</I>&gt;<i> link per andare
+</I>&gt;<i> &gt; su tutti gli altri??
+</I>&gt;<i>
+</I>&gt;<i> No, non spostare nulla.
+</I>&gt;<i> Nella configurazione di Apache (httpd.conf) puoi associare un nome DNS ad
+</I>&gt;<i> una directory oppure ad una directory virtuale. Questo potrebbe risolvere il
+</I>&gt;<i> tuo problema.
+</I>&gt;<i> Per esempio puoi associare:
+</I>&gt;<i> la directory www/drupal con il nome drupal.mioserver.it
+</I>&gt;<i> la directory www/joomila con il nome joomila.mioserver.it
+</I>&gt;<i> Così richiamando
+</I>&gt;<i> <A HREF="http://drupal.mioserver.it">http://drupal.mioserver.it</A> andrai su drupal
+</I>&gt;<i> <A HREF="http://joomila.mioserver.it">http://joomila.mioserver.it</A> andrai su joomila
+</I>&gt;<i> vedi: <A HREF="http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost">http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost</A>
+</I>&gt;<i>
+</I>&gt;<i> Oppure  puoi associare:
+</I>&gt;<i> la directory www/drupal con la dir virtuale www.mioserver.it/drupal
+</I>&gt;<i> la directory www/joomila con il nome www.mioserver.it/joomila
+</I>&gt;<i> Così richiamando
+</I>&gt;<i> <A HREF="http://www.mioserver.it/drupal">http://www.mioserver.it/drupal</A> andrai su drupal
+</I>&gt;<i> <A HREF="http://www.mioserver.it/joomila">http://www.mioserver.it/joomila</A> andrai su joomila
+</I>&gt;<i> vedi: <A HREF="http://httpd.apache.org/docs/2.2/mod/core.html#directory">http://httpd.apache.org/docs/2.2/mod/core.html#directory</A>
+</I>&gt;<i>
+</I>&gt;<i> MERAVIGLIOSO! PROPRIO QUELLO CHE STAVO CERCANDO!! GRAZIE!!!
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> Scopri il Blog di Yahoo! Mail&lt;<A HREF="http://us.rd.yahoo.com/mail/it/taglines/yahoo/ymail/SIG=11djrg460/**http%3A%2F%2Fwww.ymailblogit.com%2Fblog%2F">http://us.rd.yahoo.com/mail/it/taglines/yahoo/ymail/SIG=11djrg460/**http%3A%2F%2Fwww.ymailblogit.com%2Fblog%2F</A>&gt;:
+</I>&gt;<i> trucchi, novità, consigli... e la tua opinione!
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20080520/10ccb165/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20080520/10ccb165/attachment.htm</A> 
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000598.html">[Tecnica] Help!!!! (X4)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000601.html">[Tecnica] Help!!!! (X4)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#599">[ Data ]</a>
+              <a href="thread.html#599">[ Thread ]</a>
+              <a href="subject.html#599">[ Oggetto ]</a>
+              <a href="author.html#599">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Problema con compiz su FC6.
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20con%20compiz%20su%20FC6.&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001975.html">
+   <LINK REL="Next"  HREF="001976.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Problema con compiz su FC6.</H1>
+    <B>Daniele Masini</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20con%20compiz%20su%20FC6.&In-Reply-To="
+       TITLE="[Generale] Problema con compiz su FC6.">d.masini a tiscali.it
+       </A><BR>
+    <I>Mer 14 Mar 2007 09:16:43 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001975.html">[Generale] Grazie a Paolo...
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001976.html">[Generale] Dell con Linux. L'affare si fa serio.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1974">[ Data ]</a>
+              <a href="thread.html#1974">[ Thread ]</a>
+              <a href="subject.html#1974">[ Oggetto ]</a>
+	      <a href="author.html#1974">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ho un problemino con compiz su Fedora Core 6.
+Ho due sistemi con FC6 sui quali è attivato compiz e sinceramente
+devo dire che vanno bene (uno con scheda video nVidia e l'altro con
+ATI). Da qualche tempo mi sono accorto che non viene più
+visualizzata l'immagine sulla faccia superiore del cubo (quello con
+i desktop sulle facce laterali), su nessuno dei due sistemi.
+L'errore riportato nel file ~/.xsession-errors è il seguente:
+
+(process:2789): GLib-WARNING **: GError set over the top of a
+previous GError or uninitialized memory.
+This indicates a bug in someone's code. You must ensure an error is
+NULL before it's set.
+The overwriting error message was: File not found
+compiz: Failed to load slide: /usr/share/pixmaps/fedora-logo.png
+compiz: water: GL_ARB_fragment_program is missing
+
+Sembra che compiz non riesca a caricare il file contente l'immagine
+da visualizzare sulla faccia superiore del cubo, sebbene il file in
+questione esista e sia raggiungibile e leggibile da chiunque. Ho
+provato inoltre a visualizzare un altro file png, ma con risultati
+identici a quello descritto. Provando invece con un'immagine svg,
+l'immagine viene visualizzata. Sembrerebbe che ci siano problemi con
+le immagini png.
+Inoltre, sempre da qualche tempo, non viene più visualizzata neanche
+l'immagine di sfondo (lo skydome) né con immagini png né svg.
+Probabilmente è colpa di qualche aggiornamento.
+
+Qualcuno ha riscontrato (e magari risolto) un problema simile?
+
+Grazie in anticipo.
+
+Saluti,
+
+Daniele
+
+-- 
+Registered GNU/Linux User # 335746
+<A HREF="http://www.vandali.org/DanieleMasini">http://www.vandali.org/DanieleMasini</A>
+GPG fingerprint: 444A 193A 28C2 2A99 1966 B2A5 4216 2453 4272 1648
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001975.html">[Generale] Grazie a Paolo...
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001976.html">[Generale] Dell con Linux. L'affare si fa serio.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1974">[ Data ]</a>
+              <a href="thread.html#1974">[ Thread ]</a>
+              <a href="subject.html#1974">[ Oggetto ]</a>
+              <a href="author.html#1974">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

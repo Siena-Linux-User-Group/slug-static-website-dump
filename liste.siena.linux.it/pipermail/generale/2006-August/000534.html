@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] casino, grosso casino!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=56248c610608150812n3e3ae39dh30e6870fac4a4211%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000538.html">
+   <LINK REL="Next"  HREF="000536.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] casino, grosso casino!</H1>
+    <B>Vincenzo Di Massa</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=56248c610608150812n3e3ae39dh30e6870fac4a4211%40mail.gmail.com"
+       TITLE="[Generale] casino, grosso casino!">hawk78 a interfree.it
+       </A><BR>
+    <I>Mer 16 Ago 2006 00:53:55 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000538.html">[Generale] casino, grosso casino!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000536.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#534">[ Data ]</a>
+              <a href="thread.html#534">[ Thread ]</a>
+              <a href="subject.html#534">[ Oggetto ]</a>
+	      <a href="author.html#534">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 17:12, martedì 15 agosto 2006, $ito ha scritto:
+&gt;<i> 2006/8/15, Vincenzo Di Massa &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">hawk78 a interfree.it</A>&gt;:
+</I>&gt;<i> &gt; Il problema è che i driver binari di ati e nvidia sono divisi in 2 pezzi:
+</I>&gt;<i> &gt; 1) kernel module
+</I>&gt;<i> &gt; 2) X11 driver
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Il secondo carica il primo nel sistema.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Una volta lanciato X11 hai il modulo nel kernel: lo hai preso nel kernel
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; :-P
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Per poter far funzionare i vecchi drivers devi scaricare quel driver
+</I>&gt;<i> &gt; (modprobe -r), ma... probabilmente dopo aver rimosso il driver la scheda
+</I>&gt;<i> &gt; sarà
+</I>&gt;<i> &gt; mooolto confusa (i driver all'uscita non fanno un reset fatto bene: sono
+</I>&gt;<i> &gt; fatti per restare sempre in controllo della scheda, se uno li vuole
+</I>&gt;<i> &gt; rimuovere... fatti suoi!).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; La soluzione da provare è quindi
+</I>&gt;<i> &gt; $ sudo modprobe -r nvidia
+</I>&gt;<i> &gt; $ sudo apr-get remove nvidia-glx xserver-xorg-driver-nv+\
+</I>&gt;<i> &gt; linux-restricted-modules-*
+</I>&gt;<i>
+</I>&gt;<i> Qui mi risponde :
+</I>&gt;<i> E:impossibile trovare nvidia (NVIDIA, le ho provate entrambe)
+</I>
+devi togliere nvidia-glx, non nvidia.
+
+prova il completamento automatico facendo
+$  source /etc/bash_completion
+# ora puoi usare tab per completare i nomi dei pacchetti.
+
+Altrimenti ...
+$ apt-cache search nvidia # ti da la lista dei pacchetti che 
+$ # hanno a che fare con nvidia
+
+&gt;<i> $ Xorg -configure
+</I>&gt;<i>
+</I>&gt;<i> Qui invece:
+</I>&gt;<i> Fatal server error:
+</I>&gt;<i> Cannot move old file (&quot;/var/log/Xorg.0.log&quot; to &quot;/var/log/Xorg.0.log.old&quot;
+</I>usa sudo!
+$ sudo Xorg -configure
+
+&gt;<i> Naturalmente poi il resto non funziona, onestamente mi viene da mangiarmi
+</I>&gt;<i> la Nvidia, ma non la scheda, tutta la fabbrica!!
+</I>&gt;<i> Ah, dato che ci sono allego anche lo Xorg.conf
+</I>&gt;<i>
+</I>&gt;<i> $ startx
+</I>&gt;<i>
+</I>&gt;<i> &gt; $ #se non funziona
+</I>&gt;<i> &gt; $ sudo reboot #al reboot la scheda rinsavisce
+</I>&gt;<i> &gt; ....
+</I>&gt;<i> &gt; $ startx
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ciao
+</I>&gt;<i> &gt; Vincenzo
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Alle 21:27, domenica 13 agosto 2006, sito ha scritto:
+</I>&gt;<i> &gt; &gt; Mi sa che ho fatto un casino, ho fatto il gravissimo errore di
+</I>&gt;<i> &gt; &gt; installare i driver Nvidia nella mia Kubuntu.
+</I>&gt;<i> &gt; &gt; La faccio breve, non parte più X, se provo a lanciare &quot;startx&quot; mi
+</I>&gt;<i> &gt; &gt; restituisce:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; (= =)Log file :&quot;/var/log/Xorg.0.log&quot; Time Sun aug 1321:12:22 2006
+</I>&gt;<i> &gt; &gt; (= =)Using config file: &quot;/etc/X11/xorg.conf&quot;
+</I>&gt;<i> &gt; &gt; (WW) NVIDIA: No matching Devicesection for instance (BusID PC:1:0:0)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; found
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; (EE) No devices detected.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Fatal server error:
+</I>&gt;<i> &gt; &gt; no screen found
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Se invece provo a ripristinare i driver precedenti mi sostituisce
+</I>&gt;<i> &gt; &gt; soltanto la parola NVIDIA con NV.
+</I>&gt;<i> &gt; &gt; Ok, so da me che non è niente di grave, ma senza connessione ad
+</I>&gt;<i> &gt; &gt; internet non riesco a cavarci il ragno dal buco.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Generale mailing list
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I></PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000538.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000536.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#534">[ Data ]</a>
+              <a href="thread.html#534">[ Thread ]</a>
+              <a href="subject.html#534">[ Oggetto ]</a>
+              <a href="author.html#534">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

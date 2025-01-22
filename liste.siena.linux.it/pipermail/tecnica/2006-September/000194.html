@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ASUS &amp; Linux (help me!)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ASUS%20%26%20Linux%20%28help%20me%21%29&In-Reply-To=200609231511.32172.iakko%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000193.html">
+   <LINK REL="Next"  HREF="000165.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ASUS &amp; Linux (help me!)</H1>
+    <B>GTL v97.6</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ASUS%20%26%20Linux%20%28help%20me%21%29&In-Reply-To=200609231511.32172.iakko%40siena.linux.it"
+       TITLE="[Tecnica] ASUS &amp; Linux (help me!)">gtlv97.6 a siena.linux.it
+       </A><BR>
+    <I>Sab 23 Set 2006 18:15:51 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000193.html">[Tecnica] ASUS &amp; Linux (help me!)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000165.html">[Tecnica] dns dinamico
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#194">[ Data ]</a>
+              <a href="thread.html#194">[ Thread ]</a>
+              <a href="subject.html#194">[ Oggetto ]</a>
+	      <a href="author.html#194">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>mastro_apulo...stai prendendo in giro?? ti ho scritto una mail
+kilometrica con un bel pò di risposte e continui a porre le stesse
+domande!?...
+
+se nn ti è arrivata eccotela:
+
+Il 22/09/06, GTL v97.6&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">gtlv97.6 a siena.linux.it</A>&gt; ha scritto:
+&gt;<i> &gt; 1) VOGLIO RINGRAZIARVI PER AVER RISPOSTO COSI' CELERMENTE
+</I>&gt;<i>
+</I>&gt;<i> prego
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; 2) QUANDO ACCENDO IL PC MI DICE CHE L'APPLICAZIONE SOUNDSERVER  (artsd) E'
+</I>&gt;<i> &gt; ANDATA IN CRASH E HA CAUSATO IL SEGNALE 11
+</I>&gt;<i>
+</I>&gt;<i> artsd è il demone audio di kde non penso che la cosa sia così
+</I>&gt;<i> problematica ma si può pensare di sistemare...in un secondo tempo
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; 3) QUANDO VADO NELLA CARTELLA /usr/src/ NON TROVO LA DIRECTORY linux (NON
+</I>&gt;<i> &gt; C'E' NIENTE)
+</I>&gt;<i>
+</I>&gt;<i> questo è perché quando hai fatto l'installazione con Mithenks lui nn
+</I>&gt;<i> ha selezionato la copia delle sorgenti del kernel!! la cosa non è un
+</I>&gt;<i> problema si risolve nel seguente modo:
+</I>&gt;<i>
+</I>&gt;<i> scarichi le sorgenti del kernel da www.kernel.org
+</I>&gt;<i>
+</I>&gt;<i> prendi pure l'ultimo kernel rilasciato:
+</I>&gt;<i>
+</I>&gt;<i>   # cd
+</I>&gt;<i> (senza argomenti ti riporta nella tua home)
+</I>&gt;<i>
+</I>&gt;<i>   # wget <A HREF="http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2">http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2</A>
+</I>&gt;<i> (con wget -c [url] riprendi un download già iniziato, ovviamente devi
+</I>&gt;<i> assicurarti di essere sempre nella stessa directory dove avevi
+</I>&gt;<i> iniziato il download)
+</I>&gt;<i>
+</I>&gt;<i> scaricati pure l'md5 (nella stessa cartella è meglio):
+</I>&gt;<i>   # wget <A HREF="http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2.sign">http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2.sign</A>
+</I>&gt;<i>
+</I>&gt;<i> poi controlla che il file scaricato sia integro tramite il comando:
+</I>&gt;<i>   # md5sum -c linux-2.6.18.tar.bz2
+</I>&gt;<i>
+</I>&gt;<i> in seguito dovrai estrarre le sorgenti del kernel:
+</I>&gt;<i> (da root adesso..comando # su)
+</I>&gt;<i>   # cd /usr/src/
+</I>&gt;<i>   # tar -xjvpf ~/linux-2.6.18.tar.bz2
+</I>&gt;<i>
+</I>&gt;<i> creare il link symbolico alle sorgenti del kernel:
+</I>&gt;<i>   # ln -s linux-2.6.18 linux
+</I>&gt;<i>
+</I>&gt;<i> a questo punto hai le sorgenti del kernel pronte ad essere configurate
+</I>&gt;<i> e ricompilate.
+</I>&gt;<i> Per mantenere la configurazione attuale devi copiare il file di
+</I>&gt;<i> configurazione generato dal kernel sopra il file di configurazione
+</I>&gt;<i> base delle sorgenti del kernel:
+</I>&gt;<i>   # cd linux
+</I>&gt;<i>   # gzcat /proc/config.gz &gt; .config
+</I>&gt;<i> (o se il file nn esiste lì, puoi provare in /proc/sys/config.gz
+</I>&gt;<i> altrimenti #find /proc -type f -name 'config.gz' e lo trovi)
+</I>&gt;<i>
+</I>&gt;<i> adesso puoi far partire il programma di configurazione del kernel come
+</I>&gt;<i> ti suggeriva iakko:
+</I>&gt;<i>   # make menuconfig
+</I>&gt;<i>
+</I>&gt;<i> aggeggiare dove ti aveva suggerito e in seguito compilare il kernel:
+</I>&gt;<i>  # make &amp;&amp; make modules_install
+</I>&gt;<i>
+</I>&gt;<i> una volta compilato il kernel devi copiare l'immagine del kernel in
+</I>&gt;<i> /boot, per fare ciò andiamo prima a caccia dell'immagine del kernel:
+</I>&gt;<i>   # find -L /usr/src/linux -type f -iname 'bzImage'
+</I>&gt;<i>
+</I>&gt;<i> indi lo copiamo nella cartella /boot, dovresti già avere un file che
+</I>&gt;<i> si chiama linux qualcosa..fatti una copia di backup di quello e poi
+</I>&gt;<i> copia in boot l'immagine trovata prima:
+</I>&gt;<i>   # cp /boot/kernelprecedente /boot/kernelprecedente.backup
+</I>&gt;<i>   # cp /usr/src/linux/[path-to-bzImage] /boot/kernelprecedente
+</I>&gt;<i> (questo ti evita di dover riconfigurare il bootloader)
+</I>&gt;<i>
+</I>&gt;<i> rebootta e moh vediamo!!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; 4) MI DICE COMMAND NOT FOUND
+</I>&gt;<i>
+</I>&gt;<i> tramite il comando/applicazione di install (che nn so quale sia sotto
+</I>&gt;<i> slackware) installa il pacchetto:
+</I>&gt;<i>
+</I>&gt;<i>   pciutils
+</I>&gt;<i>
+</I>&gt;<i> e avrai il comando lspci e l'abbinata pagina di manuale ^^
+</I>&gt;<i>
+</I>&gt;<i> &gt; 5)  QUANDO HO INSTALLATO LA SLACKWARE ABBIAMO FATTO IN MODO CHE PARTE
+</I>&gt;<i> &gt; DELL'HD SI VEDESSE SIA SU LINUX CHE SU WINDOWS; PERO' NON RIESCO A TROVARLA
+</I>&gt;<i> &gt; SU LINUX
+</I>&gt;<i>
+</I>&gt;<i> uhm qui sembra ci sia qualche problema legato al file fstab..
+</I>&gt;<i>
+</I>&gt;<i> se hai un solo HD in /dev dovresti avere diversi file che iniziano per hda
+</I>&gt;<i>
+</I>&gt;<i> /dev/hda1
+</I>&gt;<i> /dev/hda2 ecc
+</I>&gt;<i>
+</I>&gt;<i> con il comando mount senza argomenti puoi vedere quali di queste
+</I>&gt;<i> partizioni è montata, se vedi che nn tutti gli hda* sono montati
+</I>&gt;<i> allora prova a montarlo così:
+</I>&gt;<i> (sempre tutto da root)
+</I>&gt;<i>   # mkdir /mnt/shared
+</I>&gt;<i> (crei punto di mount)
+</I>&gt;<i>   # newgrp sharedata
+</I>&gt;<i> (crei un gruppo per la lettura-scrittura dei dati sulla partizione
+</I>&gt;<i> condivisa win-linux)
+</I>&gt;<i>   # gpasswd -a [tuousername] sharedata
+</I>&gt;<i> (ti aggiungi a quel gruppo)
+</I>&gt;<i>   # chown root:sharedata /mnt/shared
+</I>&gt;<i> (cambi il proprietario e il gruppo della directory)
+</I>&gt;<i>   # chmod 774 /mnt/shared
+</I>&gt;<i> (cambi i permessi su quella directory)
+</I>&gt;<i>   # mount -t auto /dev/[hda-mancante] /mnt/shared
+</I>&gt;<i> (monti la partizione)
+</I>&gt;<i>
+</I>&gt;<i> e poi fatti un bel:
+</I>&gt;<i>   # ls /mnt/shared
+</I>&gt;<i> e vedi se questo è quello che ti mancava, se non era quello allora
+</I>&gt;<i> smontalo e rimontane un altro mancante:
+</I>&gt;<i>   # umount /mnt/shared
+</I>&gt;<i> e rimonti
+</I>&gt;<i>
+</I>&gt;<i> quando lo hai trovato vedi se è di tipo fat32 o ntfs:
+</I>&gt;<i>   # mount -t vfat
+</I>&gt;<i> se è nell'elenco seguente quel comando allora è fat32
+</I>&gt;<i>   # mount -t ntfs
+</I>&gt;<i> se è nell'elenco seguente quel comando allora è ntfs
+</I>&gt;<i>
+</I>&gt;<i> adesso aggiungi una linea al file fstab (non so attualmente in quale
+</I>&gt;<i> delle tue directory si trova ma potrebbe essere in /etc)
+</I>&gt;<i> con un pò di pazienza lo trovi con:
+</I>&gt;<i>   # find / -type f -name 'fstab'
+</I>&gt;<i>
+</I>&gt;<i> aggiungi la linea così:
+</I>&gt;<i>   # echo &quot;/dev/[hda-mancante] /mnt/shared [tipo:vfat o ntfs]
+</I>&gt;<i> noatime,rw,umask=000 0 0
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; 6) QUANDO LO SPENGO NON SI SPENGNE: ESCE DA KDE E SI BLOCCA
+</I>&gt;<i>
+</I>&gt;<i> uhm da vedere
+</I>&gt;<i>
+</I>&gt;<i> &gt; 7) CE LA FARO'???
+</I>&gt;<i>
+</I>&gt;<i> in bocca al lupo
+</I>&gt;<i>
+</I>
+-- 
+GTL v97.6
+&quot;...fallou de linucs uei and
+mei de surss bi uiv iu...&quot;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000193.html">[Tecnica] ASUS &amp; Linux (help me!)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000165.html">[Tecnica] dns dinamico
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#194">[ Data ]</a>
+              <a href="thread.html#194">[ Thread ]</a>
+              <a href="subject.html#194">[ Oggetto ]</a>
+              <a href="author.html#194">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

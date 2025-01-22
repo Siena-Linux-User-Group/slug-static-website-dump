@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problemi con bash e ftp
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problemi%20con%20bash%20e%20ftp&In-Reply-To=%3CCAPqRDy%2B3%3D%3D_1DOcEv1mCGT3r21BZuAsBh4jv-ZbRU%2BaC-c2v1w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001861.html">
+   <LINK REL="Next"  HREF="001866.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problemi con bash e ftp</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problemi%20con%20bash%20e%20ftp&In-Reply-To=%3CCAPqRDy%2B3%3D%3D_1DOcEv1mCGT3r21BZuAsBh4jv-ZbRU%2BaC-c2v1w%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Problemi con bash e ftp">dinogen a gmail.com
+       </A><BR>
+    <I>Mer 17 Set 2014 07:24:40 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001861.html">[Tecnica] Problemi con bash e ftp
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001866.html">[Tecnica] Problemi con bash e ftp
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1862">[ Data ]</a>
+              <a href="thread.html#1862">[ Thread ]</a>
+              <a href="subject.html#1862">[ Oggetto ]</a>
+	      <a href="author.html#1862">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Credo che manchi il ritorno a capo dopo END.
+Questo perché EOF significa End Of File e si vede che bash si aspetta un
+END\n
+
+
+________________________________________
+Marcello Semboli
+Siena
+
+Il giorno 17 settembre 2014 00:10, Alessandro Iurlano &lt;
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">alessandro.iurlano a gmail.com</A>&gt; ha scritto:
+
+&gt;<i> Ncftp ?
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.ncftp.com/ncftp/doc/ncftpput.html">http://www.ncftp.com/ncftp/doc/ncftpput.html</A>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.linxlab.it/linux/ncftp-upload-cartelle-e-file-da-locale-a-remoto-tramite-ftp-108.html">http://www.linxlab.it/linux/ncftp-upload-cartelle-e-file-da-locale-a-remoto-tramite-ftp-108.html</A>
+</I>&gt;<i>
+</I>&gt;<i> Just my $0.02
+</I>&gt;<i> Ciao
+</I>&gt;<i>
+</I>&gt;<i> 2014-09-16 23:23 GMT+02:00 Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt;:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Allora, armatomi della conoscIenza della rete ho cercato di
+</I>&gt;&gt;<i> automatizzare l'upload di file in rete usando ftp.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> In pratica ho usato il metodo suggerito qui:
+</I>&gt;&gt;<i> <A HREF="http://www.stratigery.com/scripting.ftp.html">http://www.stratigery.com/scripting.ftp.html</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> per ottenere questo risultato
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ftp -n $HOST &lt;&lt;END
+</I>&gt;&gt;<i>   quote USER $USER
+</I>&gt;&gt;<i>   quote PASS $PASS
+</I>&gt;&gt;<i>   put $FILE1
+</I>&gt;&gt;<i>   put $FILE2
+</I>&gt;&gt;<i>   put $FILE3
+</I>&gt;&gt;<i>   quit
+</I>&gt;&gt;<i>   END
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> per ottenere i seguenti errori:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ./carica.sh: riga 37: attenzione: here-document alla riga 28 è
+</I>&gt;&gt;<i> delimitato da un EOF (era richiesto &quot;END&quot;)
+</I>&gt;&gt;<i> ./carica.sh: riga 38: errore di sintassi: EOF non atteso
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Immagino sia il solito errore bastardo di sintassi ma per quanto ci
+</I>&gt;&gt;<i> combatta, non lo trovo...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il client ftp in questione è gftp.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Suggerimenti? Altri metodi conosciuti?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> aloha!
+</I>&gt;&gt;<i> blackhat
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140917/2935a51d/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140917/2935a51d/attachment-0001.htm</A>&gt;
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001861.html">[Tecnica] Problemi con bash e ftp
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001866.html">[Tecnica] Problemi con bash e ftp
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1862">[ Data ]</a>
+              <a href="thread.html#1862">[ Thread ]</a>
+              <a href="subject.html#1862">[ Oggetto ]</a>
+              <a href="author.html#1862">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

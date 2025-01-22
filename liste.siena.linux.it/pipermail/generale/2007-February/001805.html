@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Autenticazione LDAP su Ubuntu server
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Autenticazione%20LDAP%20su%20Ubuntu%20server&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001800.html">
+   <LINK REL="Next"  HREF="001806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Autenticazione LDAP su Ubuntu server</H1>
+    <B>Alessio Cappelli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Autenticazione%20LDAP%20su%20Ubuntu%20server&In-Reply-To="
+       TITLE="[Generale] Autenticazione LDAP su Ubuntu server">amc a interfree.it
+       </A><BR>
+    <I>Lun 19 Feb 2007 13:58:07 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001800.html">[Generale] Fwd: primo incontro-concerto del MuESLi
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001806.html">[Generale] Dell vuole idee
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1805">[ Data ]</a>
+              <a href="thread.html#1805">[ Thread ]</a>
+              <a href="subject.html#1805">[ Oggetto ]</a>
+	      <a href="author.html#1805">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+ sto mettendo su un PDC con Samba e database LDAP su Ubuntu Server e sto 
+sperimentando problemi con l'autenticazione degli utenti da console via 
+LDAP. Secondo la documentazione che ho a disposizione (tratta dal sito 
+idealx.org ma è per Fedora Core 5), dovrei aggiungere nel file 
+/etc/nsswitch.conf la metodologia di autenticazione. In breve il file 
+originale contiene:
+
+---------------
+passwd: compat
+group: compat
+shadow: compat
+----------------
+
+Se lo trasformo in
+
+----------------
+passwd: compat ldap
+group: compat ldap
+shadow: compat ldap
+----------------
+
+intendendo &quot;prova con l'autenticazione locale, sennò con quella LDAP&quot;, 
+la macchina &quot;stenta&quot; ad avviarsi, presumibilmente per una serie di 
+timeout che si verificano lanciando i servizi: se faccio boot in 
+modalità verbosa, ogni voce dell'avvio ci mette una vita a scorrere.
+I servizi e demoni LDAP sono tutti configurati e funzionanti. Appena 
+apporto questa modifica, salta tutto, devo riavviare con il CD e fare il 
+recovery del file a mano.
+
+Capisco che le informazioni che ho dato sono poche, ma posso fornire 
+tutto il necessario appena si sospetta quale sia il problema.
+
+Grazie in anticipo.
+ Alessio
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001800.html">[Generale] Fwd: primo incontro-concerto del MuESLi
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001806.html">[Generale] Dell vuole idee
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1805">[ Data ]</a>
+              <a href="thread.html#1805">[ Thread ]</a>
+              <a href="subject.html#1805">[ Oggetto ]</a>
+              <a href="author.html#1805">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

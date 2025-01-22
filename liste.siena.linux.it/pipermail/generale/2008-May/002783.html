@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] scheda wireless
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-May/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20scheda%20wireless&In-Reply-To=7392dd720805291155r7b0c86adl6be07bfc12377960%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002782.html">
+   <LINK REL="Next"  HREF="002784.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] scheda wireless</H1>
+    <B>O-Zone</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20scheda%20wireless&In-Reply-To=7392dd720805291155r7b0c86adl6be07bfc12377960%40mail.gmail.com"
+       TITLE="[Generale] scheda wireless">o-zone a zerozone.it
+       </A><BR>
+    <I>Ven 30 Maggio 2008 15:32:16 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002782.html">[Generale] scheda wireless
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002784.html">[Generale] scheda wireless
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2783">[ Data ]</a>
+              <a href="thread.html#2783">[ Thread ]</a>
+              <a href="subject.html#2783">[ Oggetto ]</a>
+	      <a href="author.html#2783">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 29 May 2008 20:55:43 +0200
+&quot;Freeze NorthPole&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">freeze a siena.linux.it</A>&gt; wrote:
+
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> sto cercando di far funzionare la scheda wireless nel mio notebook.
+</I>&gt;<i> 
+</I>&gt;<i> Facendo &quot;lspci&quot;mi compare:
+</I>&gt;<i> 
+</I>&gt;<i> 06:00.0 Network controller: Intel Corporation PRO/Wireless 4965 AG or
+</I>&gt;<i> AGN Network Connection (rev 61)
+</I>&gt;<i> 
+</I>&gt;<i> cercando nella rete ho trovato che è necessario installare &quot;ath5k&quot;
+</I>&gt;<i> oppure &quot;ndiswrapper&quot;.
+</I>&gt;<i> per entrambi sono richiesti i &quot;kernel headers&quot;, come faccio a sapere
+</I>&gt;<i> se li ho anche io? ricordo che monto slackware 12.1.
+</I>
+bè su Slack i sorgenti del kernel stanno in /usr/src/linux:
+
+ls /usr/src/linux/
+
+Eventualmente scaricati un kernel aggiornato su www.kernel.org e
+scompattalo in /usr/src. Per sapere che versione del kernel hai usa:
+
+uname -a
+
+Guardando su <A HREF="http://madwifi.org/wiki/About/ath5k">http://madwifi.org/wiki/About/ath5k</A> mi pare che il driver
+sia già nel kernel. Magari ti basta attivarlo nella configurazione del
+kernel:
+
+make menuconfig
+
+e poi ricompilare ed installare il tutto:
+
+make
+make install
+make modules
+make modules_install
+lilo
+
+&gt;<i> qualcuno di voi ha già lottato con una scheda wireless simile alla
+</I>&gt;<i> mia?Quale tra i due programmi mi consigliate?
+</I>
+ndiswrapper funziona ma non è proprio il massimo :-)
+ 
+&gt;<i> Thanks a lot
+</I>
+Figurati ! Aloha !!!
+
+O-Zone
+
+-- 
+O-Zone ! No (C) 1996
+WEB     <A HREF="http://www.zerozone.it">http://www.zerozone.it</A>
+BLOG    <A HREF="http://www.openitaly.net/diary/O-Zone">http://www.openitaly.net/diary/O-Zone</A>
+PHOTOS  <A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002782.html">[Generale] scheda wireless
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002784.html">[Generale] scheda wireless
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2783">[ Data ]</a>
+              <a href="thread.html#2783">[ Thread ]</a>
+              <a href="subject.html#2783">[ Oggetto ]</a>
+              <a href="author.html#2783">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

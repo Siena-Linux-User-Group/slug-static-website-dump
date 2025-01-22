@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Pppoe
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Pppoe&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000278.html">
+   <LINK REL="Next"  HREF="000280.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Pppoe</H1>
+    <B>Giulio Saletti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Pppoe&In-Reply-To="
+       TITLE="[Tecnica] Pppoe">giulio.saletti a gmail.com
+       </A><BR>
+    <I>Lun  6 Nov 2006 13:05:53 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000278.html">[Tecnica] poi si diceva di mandrake..
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000280.html">[Tecnica] Pppoe
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#279">[ Data ]</a>
+              <a href="thread.html#279">[ Thread ]</a>
+              <a href="subject.html#279">[ Oggetto ]</a>
+	      <a href="author.html#279">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buongiorno a tutta la lista,
+sono di nuovo qua con questi problemini...
+
+La connessione pppoe fa le bizze:
+
+plog subito dopo la connessione:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a gio-desktop</A>:~# pon dsl-provider
+Plugin rp-pppoe.so loaded.
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a gio-desktop</A>:~# plog
+Nov  6 13:58:32 gio-desktop pppd[5309]: Using interface ppp0
+Nov  6 13:58:32 gio-desktop pppd[5309]: Connect: ppp0 &lt;--&gt; wlan0
+Nov  6 13:58:32 gio-desktop pppd[5309]: PAP authentication succeeded
+Nov  6 13:58:32 gio-desktop pppd[5309]: peer from calling number
+00:09:B6:8B:01:90 authorized
+Nov  6 13:58:32 gio-desktop pppd[5309]: replacing old default route to wlan0
+[192.168.1.1]
+Nov  6 13:58:32 gio-desktop pppd[5309]: Cannot determine ethernet address
+for proxy ARP
+Nov  6 13:58:32 gio-desktop pppd[5309]: local  IP address 82.55.126.132
+Nov  6 13:58:32 gio-desktop pppd[5309]: remote IP address 192.168.100.1
+Nov  6 13:58:32 gio-desktop pppd[5309]: primary   DNS address 85.37.17.5
+Nov  6 13:58:32 gio-desktop pppd[5309]: secondary DNS address 85.38.28.77
+
+La connessione 'regge' per circa un paio di click sui link... dopodichè non
+riesco più a navigare.
+A questo punto richiedo nuovamente il log ma non ho risultato:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a gio-desktop</A>:~# plog
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a gio-desktop</A>:~#
+
+Quindi chiudo la connessione:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a gio-desktop</A>:~# poff -a
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a gio-desktop</A>:~# plog
+Nov  6 14:03:29 gio-desktop pppd[5408]: Terminating on signal 15
+Nov  6 14:03:29 gio-desktop pppd[5408]: Connect time 3.1 minutes.
+Nov  6 14:03:29 gio-desktop pppd[5408]: Sent 53228 bytes, received 62674
+bytes.
+Nov  6 14:03:29 gio-desktop pppd[5408]: restoring old default route to wlan0
+[192.168.1.1]
+Nov  6 14:03:29 gio-desktop pppd[5408]: Connection terminated.
+Nov  6 14:03:29 gio-desktop pppd[5408]: Exit.
+
+e riparto con pon dsl-provider...
+
+Ecco come stanno le cose... qualche idea?
+
+Grazie!
+
+Giulio.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061106/73d431d8/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061106/73d431d8/attachment.htm</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000278.html">[Tecnica] poi si diceva di mandrake..
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000280.html">[Tecnica] Pppoe
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#279">[ Data ]</a>
+              <a href="thread.html#279">[ Thread ]</a>
+              <a href="subject.html#279">[ Oggetto ]</a>
+              <a href="author.html#279">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

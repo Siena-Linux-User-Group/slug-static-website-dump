@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] VPN
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VPN&In-Reply-To=%3C4C116279.3040904%40aruba.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001155.html">
+   <LINK REL="Next"  HREF="001157.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] VPN</H1>
+    <B>Luigi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VPN&In-Reply-To=%3C4C116279.3040904%40aruba.it%3E"
+       TITLE="[Tecnica] VPN">pergigi49 a gmail.com
+       </A><BR>
+    <I>Gio 10 Giu 2010 23:08:57 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001155.html">[Tecnica] VPN
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001157.html">[Tecnica] php 5, mysql e winzozz: a rischio mia sanità mentale
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1156">[ Data ]</a>
+              <a href="thread.html#1156">[ Thread ]</a>
+              <a href="subject.html#1156">[ Oggetto ]</a>
+	      <a href="author.html#1156">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 10/06/2010 08:55, Paolo Sammicheli wrote:
+&gt;<i> Alle 02:24 del 10/6/2010, Yusef Maali ha scritto:
+</I>&gt;&gt;<i> Luigi vuole/serve veramente una Vpn?
+</I>&gt;&gt;<i> Ammesso che la voglia effettivamente, basta che prenda una sottorete qualsiasi 
+</I>&gt;&gt;<i> che sia ad almeno 2 hop di distanza dal proprio Ip e non c'è collisione.
+</I>&gt;<i> 
+</I>&gt;<i> Scusa Yusef, ma non è così. Lui deve essere sicuro che la sottorete che sceglie per 
+</I>&gt;<i> entrambi i capi della vpn non sia né tra quelle che attraversa per arrivare su internet 
+</I>&gt;<i> né tra quelle che attraversa per raggiunge i servizi che gli offre il suo provider (dns 
+</I>&gt;<i> e gateway, non so cos'altro possa offrirgli).
+</I>&gt;<i> 
+</I>&gt;<i> Considerando che l'ip che negozia è nella sottorete 10.0.0.0/8 e che il default gateway 
+</I>&gt;<i> nella 192.168.1.0/24 i suoi timori sono fondati perché non ne restano tantissime.
+</I>&gt;<i> 
+</I>&gt;<i> Ultima cosa, deve controllare che non sia dietro ad un proxy trasparente e che non siano 
+</I>&gt;<i> tagliate via le connessioni su certe porte.
+</I>&gt;<i> 
+</I>&gt;<i> Ciao
+</I>
+Visto che sono l'interessato :-) intervengo nella discussione e mi
+spiego meglio ...
+Con la VPN non intendo certo condividere la connessione, per fare questo
+utilizzerò (ancora devo fare molte cose, in questi 20 giorni ho passato
+il tempo soprattutto a rendere fruibile una casa che spero definitiva,
+per quello che può essere &quot;definitivo&quot; da queste parti) una banalissima
+LAN, magari utilizzando LTS.
+L'idea della VPN m'è venuta sostanzialmente per 2 cose.
+Parto dalla più ovvia: collegarmi da remoto ad un PC (utilizzando dal
+&quot;banale&quot; vinagre in là) per una qualche forma di assistenza,
+collegamento che si complica ulteriormente se il PC da collegare è in
+una LAN.
+La seconda è meno ovvia. Parlando con il prete responsabile diocesano
+delle comunicazioni, questo è venuto fuori con l'idea di una &quot;intranet&quot;,
+l'ho guardato con aria alquanto perplessa pensando che il vino che aveva
+usato per la messa mattutina fosse un po' troppo forte ;-) ...
+evidentemente parlano &quot;per sentito dire&quot; e non hanno nessuna idea di
+cosa significhi mettere su una intranet, qui poi ... ma m'è venuto
+l'idea di poter verificare in qualche modo la possibilità di poter
+mettere da qualche parte in diocesi (da scegliere con molta attenzione
+perché i problemi di corrente sono esagerati) una macchina che potesse
+condividere alcune informazioni/servizi comuni (quindi un server) e per
+fare questo cosa trovate di meglio di una VPN? Ma qui è sorto il mio
+dubbio: il vescovo ha la possibilità di trovare una connessione (+ o -
+gratuita) ad Internet per il server, connessione che funzioni 24/24
+(ovviamente sempre in rapporto alla situazione); i preti, le parrocchie
+e tutto il resto dell'ambaradan hanno la possibilità di collegarsi come
+mi collego io, ma qui m'è venuto fuori il problema: di fatto sono già
+dietro una VPN, come c....volo faccio a vedere il &quot;mio&quot; server? Tra
+l'altro devo verificare ancora che razza di rete utilizza il vescovo (ha
+già un collegamento con il provider che è un suo amico) ... uno di
+questi giorni vado da lui e farò qualche controllo. Vi saprò dire ...
+
+Con la mente appena più fresca di quella di stasera cercherò di capire
+meglio che razza di rete sto utilizzando, quali porte sono aperte e
+tutto il resto (posso già dire con quasi assoluta certezza che le porte
+utilizzate dai servizi SIP sono chiuse perché non riesco a collegarmi in
+nessun modo a messagenet.it; la politica da queste parti è peggio di
+quella berlusconiana, le telecomunicazioni sono praticamente tutte in
+mano alla famiglia al governo - salvo 2 eccezioni, a cui per altro fanno
+girare di molto i santissimi attributi - e guai a far circolare
+informazioni, si rischia pesante ... il tutto grazie alla Francia, alla
+faccia della Rivoluzione del 1789).
+Se in qualche modo riuscierò a provare almeno vinagre o aggeggi simili
+sarà già un passo avanti ...
+
+Niente baci perché siete brutti ;-) ... ma un abbraccio per l'aiuto che
+mi date, quello sì, con tutto il cuore; resto in &quot;ascolto&quot; e grazie di
+tutto.
+
+Luigi
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001155.html">[Tecnica] VPN
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001157.html">[Tecnica] php 5, mysql e winzozz: a rischio mia sanità mentale
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1156">[ Data ]</a>
+              <a href="thread.html#1156">[ Thread ]</a>
+              <a href="subject.html#1156">[ Oggetto ]</a>
+              <a href="author.html#1156">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

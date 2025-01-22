@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] dubbio su MBR e EFI
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dubbio%20su%20MBR%20e%20EFI&In-Reply-To=%3Cb430785c0912020607p12aa2da7n14012defac6ed1df%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000905.html">
+   <LINK REL="Next"  HREF="000907.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] dubbio su MBR e EFI</H1>
+    <B>simone giuliani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dubbio%20su%20MBR%20e%20EFI&In-Reply-To=%3Cb430785c0912020607p12aa2da7n14012defac6ed1df%40mail.gmail.com%3E"
+       TITLE="[Tecnica] dubbio su MBR e EFI">simone.giuliani a gmail.com
+       </A><BR>
+    <I>Mer  2 Dic 2009 14:07:46 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000905.html">[Tecnica] checking the filesystem -- Xubuntu
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000907.html">[Tecnica] Creare pacchetto per Ubuntu/Debian
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#906">[ Data ]</a>
+              <a href="thread.html#906">[ Thread ]</a>
+              <a href="subject.html#906">[ Oggetto ]</a>
+	      <a href="author.html#906">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao,
+sto provando ad installare ZeroShell (linux 2.6) su sull' hd del  MacMini.
+La soluzione piu' ovvia e' quella di installare OSX e poi utilizzare
+l'assistente BootCamp che imposta una partizione per windows che poi si puo'
+utilizzare per tutto.
+In questo caso, credo, che il MBR venga in realta' simulato visto che la
+partizione EFI e' ancora presente.
+Volendo pero' installare ZeroShell che e' privo di installazione l'unica via
+e' gunzippare l'immagine del disco sul dev desiderato (es: gunzip -c
+nomeimmagine.img.gz &gt; /dev/sda e non /dev/sda1).
+Cosi' facendo si distrugge totalmente la tabella delle partizioni (GPT e
+MBR) e al boot il bios efi non riconosce la partizione come avviabile e non
+lancia GRUB.
+Ho provato anche ad installare Ubuntu nella stessa modalita' (cioe' facendo
+fuori il GPT e creando di fatto 2 partizioni: swap+ext3) e il problema e' lo
+stesso, cioe' niente boot.
+Immaginavo che il problema fosse che grub non era installato su
+quell'hardware ma neanche la procedura di installazione di ubuntu ha dato
+esito positivo dunque mi sembrerebbe logico dedurre che il bios efi del
+macmini non e' capace di leggere da un MBR senza partizione EFI, mi sbaglio?
+A questo punto non ho idea di come fare ad installare ZeroShell su HardDisk.
+Ho provato ad installarlo su una macchina virtuale per vedere come e'
+sistemata la tabella delle partizioni e ho visto che  unzippando l'immagine
+sul device si ottengono 3 partizioni (di cui nessuna di boot e tutte di tipo
+linux ext2).
+La mia idea era quella di copiare la partizione da sda1 della macchina
+virtuale su un pendrive e poi sovrascrivere la partizione di BootCamp ma
+essendo 3 le partizioni la cosa si complica.
+Ho il sospetto che ZeroShell usi isolinux per il boot anche da HD ma non ne
+sono certo, e' plausibile visto che ci sono 3 partizioni?
+
+Se qualche anima pia ha qualche suggerimento...
+
+grazie
+   Simone
+
+p.s. Il MacMini non fa boot neanche da un dispositivo USB che non sia un
+CDROM: un pendrive che fa boot su PC non fa boot su MacMini, neanche usando
+Refit. Ancora piu' stravangante: quel pendrive fa boot su IMac con Refit.
+Ergo: l'efi del macmini e' maledettamente scansafatiche?
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20091202/0dbde9fd/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20091202/0dbde9fd/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000905.html">[Tecnica] checking the filesystem -- Xubuntu
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000907.html">[Tecnica] Creare pacchetto per Ubuntu/Debian
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#906">[ Data ]</a>
+              <a href="thread.html#906">[ Thread ]</a>
+              <a href="subject.html#906">[ Oggetto ]</a>
+              <a href="author.html#906">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

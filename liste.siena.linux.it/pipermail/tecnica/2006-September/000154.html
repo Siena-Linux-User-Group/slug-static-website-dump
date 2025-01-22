@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ora impazzita
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ora%20impazzita&In-Reply-To=87c98d450609201644o79b297aav828ff7d68df0fada%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000153.html">
+   <LINK REL="Next"  HREF="000155.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ora impazzita</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ora%20impazzita&In-Reply-To=87c98d450609201644o79b297aav828ff7d68df0fada%40mail.gmail.com"
+       TITLE="[Tecnica] ora impazzita">pragma a siena.linux.it
+       </A><BR>
+    <I>Gio 21 Set 2006 01:14:33 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000153.html">[Tecnica] ora impazzita
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000155.html">[Tecnica] ora impazzita
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#154">[ Data ]</a>
+              <a href="thread.html#154">[ Thread ]</a>
+              <a href="subject.html#154">[ Oggetto ]</a>
+	      <a href="author.html#154">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 21 September 2006 01:44, Yusef Maali wrote:
+&gt;<i> On 9/20/05, Iacopo &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">iakko a siena.linux.it</A>&gt; wrote:
+</I>&gt;<i> &gt; intanto assicurati che il localtime sia impostato a quello di Roma, puoi
+</I>&gt;<i> &gt; farlo copiando la zoneinfo nel localtime:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         cp /usr/share/zoneinfo/Europe/Rome /etc/localtime
+</I>&gt;<i>
+</I>&gt;<i> A voler essere pignoli, ma proprio pignoli pignoli, le linee guida
+</I>&gt;<i> gentoo dicono di fare:
+</I>&gt;<i>
+</I>&gt;<i> ln -s /usr/share/zoneinfo/Europe/Rome /etc/localtime
+</I>
+Su filesystem furbi(ssimi) (leggi reiserfs) risparmi ben 951-31=920 bytes di 
+spazio su disco. Sul filesystem medio non risparmi niente perchè sia il link 
+che il file ti occupano 1 intero blocco (che su ext2/3 è minimo 1KB).
+
+Perdi però in tempo di elaborazione perchè il kernel deve dereferenziare il 
+link simbolico ogni volta (quindi tirare su dal disco un blocco in più, 
+potenzialmente molto distante).
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- If you want to make an apple pie from scratch you
+- must first create the universe
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060921/9fea1b61/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060921/9fea1b61/attachment.pgp</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000153.html">[Tecnica] ora impazzita
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000155.html">[Tecnica] ora impazzita
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#154">[ Data ]</a>
+              <a href="thread.html#154">[ Thread ]</a>
+              <a href="subject.html#154">[ Oggetto ]</a>
+              <a href="author.html#154">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

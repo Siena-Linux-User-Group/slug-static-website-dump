@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAMX%3Dvyb-jg4SsozJu54z2rLN9-WWd2QmXERkyCnfXmw-4bEDnQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005704.html">
+   <LINK REL="Next"  HREF="005706.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] shell</H1>
+    <B>Max Murdock</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAMX%3Dvyb-jg4SsozJu54z2rLN9-WWd2QmXERkyCnfXmw-4bEDnQ%40mail.gmail.com%3E"
+       TITLE="[Generale] shell">maxmurd a gmail.com
+       </A><BR>
+    <I>Dom  5 Feb 2012 18:36:31 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005704.html">[Generale] shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005706.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5705">[ Data ]</a>
+              <a href="thread.html#5705">[ Thread ]</a>
+              <a href="subject.html#5705">[ Oggetto ]</a>
+	      <a href="author.html#5705">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2012/2/5 Freeze NorthPole &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">freeze a siena.linux.it</A>&gt;:
+&gt;<i> Ciao,
+</I>&gt;<i>
+</I>&gt;<i> dunque se lo faccio come utente mi compare:
+</I>&gt;<i>
+</I>&gt;<i> $ echo $PS1
+</I>&gt;<i> $
+</I>&gt;<i> $
+</I>&gt;<i>
+</I>&gt;<i> se lo faccio come root compare:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">root a Debian-60-squeeze-64-LAMP</A>:/home/davide# echo $PS1
+</I>&gt;<i> ${debian_chroot:+($debian_chroot)}\u@\h:\w\$
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">root a Debian-60-squeeze-64-LAMP</A>:/home/davide#
+</I>
+Benissimo, allora prova a digitare da bash dal tuo utente
+PS1=&quot;\u@\h:\w\$ &quot;
+per il percorso completo oppure
+PS1=&quot;\u@\h:\W\$ &quot;
+se vuoi visualizzare l'ultima dir
+se non dovesse funzionare prova con
+PS1=&quot;${debian_chroot:+($debian_chroot)}\u@\h:\w\$ &quot;
+
+insomma fai un po' di prove direttamente da shell e poi quando trovi
+una stringa che ti va bene mettila nel tuo .bashrc
+
+se nemmeno adesso il tuo utente riesce a cambiare il prompt, fai le
+stesse prove con root, ci sta che tu abbia qualche limitazione che non
+avevo previsto, e allora toca andare a googlare per vedere coem
+rimuoverla. Fedora non le ha, ad esempio.
+
+&gt;<i> Grazie mille ancora
+</I>E di che scusa :)
+
+cYa
+-- 
+Fabrizio Felici
+Registered Linux User #398394
+
+Vuoi passare a GNU/Linux e al software libero? Chiedimi come!
+GroLug Grosseto - <A HREF="http://www.grolug.org/">http://www.grolug.org/</A>
+Blog: Open Source e Linux Business <A HREF="http://www.smartmedia2000.it/articoli/">http://www.smartmedia2000.it/articoli/</A>
+
+&quot;Guardiamo lontano perché ci ergiamo sulle spalle dei giganti che ci
+hanno preceduto&quot; [Isaac Newton]
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005704.html">[Generale] shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005706.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5705">[ Data ]</a>
+              <a href="thread.html#5705">[ Thread ]</a>
+              <a href="subject.html#5705">[ Oggetto ]</a>
+              <a href="author.html#5705">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

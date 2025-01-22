@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Connessione sicura
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Connessione%20sicura&In-Reply-To=%3CCAD7fOTyG%3D03L%2B4n75GN_%3DBQoucyD15BPGwybMVDr2u8dbUXXGQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001814.html">
+   <LINK REL="Next"  HREF="001816.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Connessione sicura</H1>
+    <B>Simone Soldateschi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Connessione%20sicura&In-Reply-To=%3CCAD7fOTyG%3D03L%2B4n75GN_%3DBQoucyD15BPGwybMVDr2u8dbUXXGQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Connessione sicura">simone.soldateschi a gmail.com
+       </A><BR>
+    <I>Ven 25 Lug 2014 08:42:52 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001814.html">[Tecnica] Connessione sicura
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001816.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1815">[ Data ]</a>
+              <a href="thread.html#1815">[ Thread ]</a>
+              <a href="subject.html#1815">[ Oggetto ]</a>
+	      <a href="author.html#1815">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Vorrei chiedere al giornalista se e' disponibile per iPhone! ;)
+
+BTW - Ottimo lavoro, Marcello!
+
+~Simone
+
+
+
+2014-07-24 8:38 GMT+01:00 Michele Pinassi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a zerozone.it</A>&gt;:
+
+&gt;<i> Marcello,
+</I>&gt;<i>
+</I>&gt;<i> oggi sei sul giornale :-)
+</I>&gt;<i>
+</I>&gt;<i> Michele
+</I>&gt;<i>
+</I>&gt;<i> Il 18/07/2014 12:07, Paolo Sammicheli ha scritto:
+</I>&gt;<i> &gt; Il 17/07/2014 16:42, Marcello Semboli ha scritto:
+</I>&gt;<i> &gt;&gt; Ciao a tutti.
+</I>&gt;<i> &gt;&gt; Ho fatto una app android che fa votare la gente.
+</I>&gt;<i> &gt;&gt; Su un server tophost ci sono un paio di web service in php, uno che
+</I>&gt;<i> &gt;&gt; salva il voto, un altro che restituisce il totale dei voti in JSON.
+</I>&gt;<i> &gt;&gt; La app usa i due web service per registrare il voto e per  leggere i
+</I>&gt;<i> &gt;&gt; risultati.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Non vorrei però che qualcuno scoprisse la url e si mettesse a buttarci
+</I>&gt;<i> &gt;&gt; dati falsi.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; SSH temo di non poterlo usare, ho letto che tophost non lo supporta, e
+</I>&gt;<i> &gt;&gt; poi da una app usare ssh non è banale.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Pensavo di passare i dati come stringa criptata, ma è abbastanza inutile
+</I>&gt;<i> &gt;&gt; perché se io sniffo la url
+</I>&gt;<i> &gt;&gt; <A HREF="http://ciao.com/webservice1.php?key=ka2sjk3jsf4gsd6f">http://ciao.com/webservice1.php?key=ka2sjk3jsf4gsd6f</A>
+</I>&gt;<i> &gt;&gt; è sempre una URL che posso copiare su un browser. Il server non si
+</I>&gt;<i> &gt;&gt; accorge che non proviene dalla app.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Avete una soluzione semplice?
+</I>&gt;<i> &gt; Cifri (o firmi, se ti torna meglio) con una chiave asimmetrica la frame
+</I>&gt;<i> &gt; dei dati che mandi al server con una chiave che nascondi dentro al
+</I>&gt;<i> &gt; codice. Nel frame includi un timestamp in modo che se uno cattura
+</I>&gt;<i> &gt; l'intera frame e la ritrasmette pari pari il server la rifiuta dopo un
+</I>&gt;<i> &gt; tempo x (oppure uno uidd che il client genera e che il server si annota
+</I>&gt;<i> &gt; per ricordarsi le frame ricevute e riconoscere eventuali duplicati).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; L'unico modo che ha l'attaccante di andare sull'url e postare dati falsi
+</I>&gt;<i> &gt; è disassemblare l'applicazione per catturare la chiave. Cosa che non è
+</I>&gt;<i> &gt; improbabile se fossero transazioni finanziare ma trattandosi di
+</I>&gt;<i> &gt; pronostici sul palio...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ciao
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> &quot;Il numero di parole conosciute e usate è direttamente proporzionale al
+</I>&gt;<i> grado di sviluppo della democrazia e dell'uguaglianza delle possibilità.
+</I>&gt;<i> Poche parole e poche idee, poche possibilità e poca democrazia; più sono le
+</I>&gt;<i> parole che si conoscono, più ricca è le discussione politica e, con essa,
+</I>&gt;<i> la vita democratica&quot; Gustavo Zagrebelsky
+</I>&gt;<i> BLOG @ www.zerozone.it
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140725/d0820a66/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140725/d0820a66/attachment.htm</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001814.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001816.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1815">[ Data ]</a>
+              <a href="thread.html#1815">[ Thread ]</a>
+              <a href="subject.html#1815">[ Oggetto ]</a>
+              <a href="author.html#1815">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

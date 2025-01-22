@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Domanda multi IP su DNS
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3CCAPqRDy%2BEAkHBk9WJOvtQ6zZnHavfc957wh1TG0RoU0J8NJP%2ByQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001890.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Domanda multi IP su DNS</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3CCAPqRDy%2BEAkHBk9WJOvtQ6zZnHavfc957wh1TG0RoU0J8NJP%2ByQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Domanda multi IP su DNS">dinogen a gmail.com
+       </A><BR>
+    <I>Ven 31 Ott 2014 11:00:33 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001890.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1891">[ Data ]</a>
+              <a href="thread.html#1891">[ Thread ]</a>
+              <a href="subject.html#1891">[ Oggetto ]</a>
+	      <a href="author.html#1891">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bisogna vedere se la versione di bind che hai tu gestisce il load balancing
+solamente oppure anche il fault tolerance.
+Non lo so.
+Bilanciare il carico è facile, basta mandare le richieste una volta ad uno,
+una volta all'altro...
+Realizzare il fault tolerance è più difficile. Prima di rispondere alla
+richiesta devo controllare  l'heartbeat del IP candidate.
+Secondo me è questa la domanda che ti devi fare.
+
+
+________________________________________
+Marcello Semboli
+Siena
+
+Il giorno 31 ottobre 2014 11:52, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha scritto:
+
+&gt;<i> io ho un server su cui posso installare bind, poi faccio puntare le
+</I>&gt;<i> richeiste tutte a me e con bind smisto..
+</I>&gt;<i> bind è un dns server e gestisce il round robin..
+</I>&gt;<i>
+</I>&gt;<i> fattibile secondo voi?
+</I>&gt;<i>
+</I>&gt;<i> bartrosso
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2014-10-31 11:47 GMT+01:00 bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt;:
+</I>&gt;<i>
+</I>&gt;&gt;<i> scusa ma il round robin dns è una tecnica diffusa, leggo in giro. si
+</I>&gt;&gt;<i> tratta di mettere due A sullo stesso record, e il server DOVREBBE attuare,
+</I>&gt;&gt;<i> load balancing e fault tollerance in automatico
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> nessuno ha mai usato queste cose?
+</I>&gt;&gt;<i> sto prendendo un incarico con 8 ip raddoppiati da gestire su un unico
+</I>&gt;&gt;<i> server e ho bisogno di sapere prima se è fattibile e coma fa a funzionare
+</I>&gt;&gt;<i> ora.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> bartrosso
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2014-10-31 11:37 GMT+01:00 Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a gmail.com</A>&gt;:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> No, il DNS non offre questo servizio, o almeno al netto delle mie
+</I>&gt;&gt;&gt;<i> conoscenze.
+</I>&gt;&gt;&gt;<i> Tu hai bisogno di LVS <A HREF="http://www.linuxvirtualserver.org/">http://www.linuxvirtualserver.org/</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ________________________________________
+</I>&gt;&gt;&gt;<i> Marcello Semboli
+</I>&gt;&gt;&gt;<i> Siena
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Il giorno 31 ottobre 2014 11:33, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha
+</I>&gt;&gt;&gt;<i> scritto:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Che voi sappiate, come faccio a impostare due IP (due server fisici
+</I>&gt;&gt;&gt;&gt;<i> differenti, mirror ) che puntano allo stesso record, così da avere una
+</I>&gt;&gt;&gt;&gt;<i> protezione in caso di  server irraggiungibile?
+</I>&gt;&gt;&gt;&gt;<i> il dns server se il primo non lo trova switcha suls econdo? o occorre
+</I>&gt;&gt;&gt;&gt;<i> altro?
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Bartrosso
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20141031/e7af81c1/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20141031/e7af81c1/attachment.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001890.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1891">[ Data ]</a>
+              <a href="thread.html#1891">[ Thread ]</a>
+              <a href="subject.html#1891">[ Oggetto ]</a>
+              <a href="author.html#1891">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

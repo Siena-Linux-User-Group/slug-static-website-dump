@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Re: [Tecnica] compatibilità schede pci
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%3D%3FISO-8859-1%3FQ%3FRe%3A_%5BTecnica%5D_compatibilit%3DE0_schede_pci%3F%3D&In-Reply-To=4EF1F9AD-E228-4628-B116-771AE8AE1ACB%40email.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000202.html">
+   <LINK REL="Next"  HREF="000209.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>Re: [Tecnica] compatibilità schede pci</H1>
+    <B>Martino di Filippo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%3D%3FISO-8859-1%3FQ%3FRe%3A_%5BTecnica%5D_compatibilit%3DE0_schede_pci%3F%3D&In-Reply-To=4EF1F9AD-E228-4628-B116-771AE8AE1ACB%40email.it"
+       TITLE="Re: [Tecnica] compatibilità schede pci">puntodifuga a gmail.com
+       </A><BR>
+    <I>Mar 10 Ott 2006 11:01:48 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000202.html">[Tecnica] compatibilità schede pci
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000209.html">Re: [Tecnica] compatibilità schede pci
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#203">[ Data ]</a>
+              <a href="thread.html#203">[ Thread ]</a>
+              <a href="subject.html#203">[ Oggetto ]</a>
+	      <a href="author.html#203">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Facilmente le due schede usb/firewire sono compatibili, è difficile che
+richiedano dei driver proprietari e verranno riconosciuti i controller usb e
+firewire dal kernel. L'unica nota che ho trovato è riguardo ad alcune schede
+con chipset VIA che possono dare problemi, magari chiedi in negozio.
+
+Per quanto riguarda il controller sata pci, fai prima una valutazione.
+Il bus pci standard è più lento degli hard disk sata1, e molto più lento dei
+sata2. Forse vale la pena che risparmi qualcosa sul controller e lo spendi
+su un hard disk sata2 migliore che ti servirà anche in futuro.
+Se invece il controller devi montarlo su pci-express quella scheda non va
+bene ;)
+
+<A HREF="http://linux-ata.org/driver-status.html">http://linux-ata.org/driver-status.html</A>
+Comunque, qui c'è una lista dei controller supportati e i driver relativi
+sotto linux, scegline uno dall'elenco e vai sul sicuro!
+
+-- 
+Martino
+
+On 10/9/06, Massimo Sandolo &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bastilani a email.it</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Sera,non riesco a trovare info riugardo alla compatibilità delle seguenti
+</I>&gt;<i> schede:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.essedi.it/scheda_art.htm?SID=&amp;ID=47771&amp;ID_MCAT=0&amp;ID_CAT=5&amp;SHOP=5&amp;LST=_BB_&amp;PRT=">http://www.essedi.it/scheda_art.htm?SID=&amp;ID=47771&amp;ID_MCAT=0&amp;ID_CAT=5&amp;SHOP=5&amp;LST=_BB_&amp;PRT=</A>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.essedi.it/scheda_art.htm?SID=&amp;ID=49984&amp;ID_MCAT=0&amp;ID_CAT=138&amp;SHOP=5&amp;LST=_BB_&amp;PRT=">http://www.essedi.it/scheda_art.htm?SID=&amp;ID=49984&amp;ID_MCAT=0&amp;ID_CAT=138&amp;SHOP=5&amp;LST=_BB_&amp;PRT=</A>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.fraelpoint.it/catalogo/scheda_prodotto.php?&amp;codart=970906&amp;back=/catalogo/listino.php?cod=31">http://www.fraelpoint.it/catalogo/scheda_prodotto.php?&amp;codart=970906&amp;back=/catalogo/listino.php?cod=31</A>
+</I>&gt;<i>
+</I>&gt;<i> secondo voi funzionano?
+</I>&gt;<i>
+</I>&gt;<i> dando un occhio su google trovavo solo pagine di negozi o recensioni..
+</I>&gt;<i> Per il sata ho visto linux-ata.org, ma non ho trovato niente della hamlet
+</I>&gt;<i> .. su essedi modelli successivi e più costosi vengono riporatati compatibili
+</I>&gt;<i> con red hat e altri ..
+</I>&gt;<i>
+</I>&gt;<i> byez
+</I>&gt;<i> max
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061010/5f661b0a/attachment.html">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061010/5f661b0a/attachment.html</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000202.html">[Tecnica] compatibilità schede pci
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000209.html">Re: [Tecnica] compatibilità schede pci
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#203">[ Data ]</a>
+              <a href="thread.html#203">[ Thread ]</a>
+              <a href="subject.html#203">[ Oggetto ]</a>
+              <a href="author.html#203">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

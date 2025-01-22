@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] [Risolto] Module assistant e nvidia
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20%5BRisolto%5D%20Module%20assistant%20e%20nvidia&In-Reply-To=%3Cj2u339d31641005040624s3f19bf42u4fda31c36a9b9c1f%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001039.html">
+   <LINK REL="Next"  HREF="001038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] [Risolto] Module assistant e nvidia</H1>
+    <B>Giulio Saletti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20%5BRisolto%5D%20Module%20assistant%20e%20nvidia&In-Reply-To=%3Cj2u339d31641005040624s3f19bf42u4fda31c36a9b9c1f%40mail.gmail.com%3E"
+       TITLE="[Tecnica] [Risolto] Module assistant e nvidia">giulio.saletti a gmail.com
+       </A><BR>
+    <I>Mar  4 Maggio 2010 14:24:50 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001039.html">[Tecnica] [Era]Re:  Module assistant e nvidia
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001038.html">[Tecnica] [Risolto] Module assistant e nvidia
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1037">[ Data ]</a>
+              <a href="thread.html#1037">[ Thread ]</a>
+              <a href="subject.html#1037">[ Oggetto ]</a>
+	      <a href="author.html#1037">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Risolto.
+
+Procedura.
+
+Ho messo in blacklist i moduli consigliatimi da Andrea (non so se può
+servire, devo verificare)
+Ho disinstallato ogni traccia di Nvidia:
+&gt;<i> sudo apt-get purge nvidia-*
+</I>Tramite synaptic ho disinstallato xserver-xorg-video-nouveau
+Ho installato i driver prelevati dal sito Nvidia (questa volta non ho avuto
+nessun errore riguardo al modulo 'nvidia.ko')
+Riavvio in low graphical mode
+Modifico il file xorg.conf seguendo questo articolo
+<A HREF="https://bugs.launchpad.net/ubuntu/+source/nvidia-graphics-drivers/+bug/565382">https://bugs.launchpad.net/ubuntu/+source/nvidia-graphics-drivers/+bug/565382</A>
+Riavvio
+Chiedetemi se sono felice!
+
+Ubuntu Lucid Lynx 10.04 - Sony Vaio VPCF11M1E
+
+Grazie a tutti per l'aiuto e la pazienza.
+
+Giulio.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100504/0181ce67/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100504/0181ce67/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001039.html">[Tecnica] [Era]Re:  Module assistant e nvidia
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001038.html">[Tecnica] [Risolto] Module assistant e nvidia
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1037">[ Data ]</a>
+              <a href="thread.html#1037">[ Thread ]</a>
+              <a href="subject.html#1037">[ Oggetto ]</a>
+              <a href="author.html#1037">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Ssh e configurazione multi-utente
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703041227.33422.hawk78%40interfree.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000431.html">
+   <LINK REL="Next"  HREF="000433.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Ssh e configurazione multi-utente</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703041227.33422.hawk78%40interfree.it"
+       TITLE="[Tecnica] Ssh e configurazione multi-utente">contact a yusefmaali.net
+       </A><BR>
+    <I>Dom  4 Mar 2007 12:03:24 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000431.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000433.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#432">[ Data ]</a>
+              <a href="thread.html#432">[ Thread ]</a>
+              <a href="subject.html#432">[ Oggetto ]</a>
+	      <a href="author.html#432">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 12:49, domenica 04 marzo 2007, Vincenzo Di Massa ha scritto:
+&gt;<i> Vediamo se ho capito la domanda...
+</I>
+a fiducia direi di no :P
+
+&gt;<i> Alle giovedì 1 marzo 2007, Yusef Maali ha scritto:
+</I>&gt;<i> &gt; poter dare l'accesso shell ad alcuni utenti e ad altri no, 
+</I>&gt;<i> Questo è facile AllowUsers e DenyUsers (da manuale ;-) ) fanno proprio questo.
+</I>
+Qui forse mi sono spiegato male.
+Se tu usi programmi che fanno tunnelling attraverso ssh, ad esempio git+ssh oppure svn+ssh, il client
+ssh non crea una vera sessione shell, ma si autentica, fa partire i programmi che sono richiesti e chiude tutto.
+Facendo un &quot;ps aux&quot; si vede che ssh apre una sessione <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a notty.</A>
+
+In sostanza a me interessa permettere questo tipo di utilizzo, ma non l'utilizzo della shell (bash) con tutte le sue funzionalità,
+che è un problema diverso dal permettere/non permettere l'autenticazione.
+
+
+&gt;<i> &gt; permettere il 
+</I>&gt;<i> &gt; forwarding ad alcuni e ad altri no, ecc...
+</I>&gt;<i> Ma a cosa serve???? Gli utenti che possono accedere seza forwarding possono 
+</I>&gt;<i> fare lo stesso il forwarding &quot;a manina&quot;! 
+</I>&gt;<i> [SNIP]
+</I>&gt;<i> Si capisce che il server non corre più rischi a disabilitare il forwarding...
+</I>&gt;<i> e anche se lo fa è (ovviamente) possibile fare forwarding in 1000000 di altri 
+</I>&gt;<i> modi.
+</I>
+Vero, ma alla fine è una conseguenza del punto precedente. Se ci fosse il modo di non darti l'accesso a bash, ma di farti fare tunnelling,
+non hai neanche modo di fare fowarding a meno che tu non sia estremamente sveglio! Ma in tal caso l'unico modo per salvarsi è non dare proprio accesso.
+
+&gt;<i> Bhe inventiamo un nuovo acronimo CRTFM,Y! ( Carefully Read The Fu**ing Manual, 
+</I>&gt;<i> Yusef!) ;-)
+</I>
+RIMMTFQ (Read In My Mind The Fu**ing Question!) :P :P :P
+Ciao!!!!!
+
+-- 
+Y.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000431.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000433.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#432">[ Data ]</a>
+              <a href="thread.html#432">[ Thread ]</a>
+              <a href="subject.html#432">[ Oggetto ]</a>
+              <a href="author.html#432">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

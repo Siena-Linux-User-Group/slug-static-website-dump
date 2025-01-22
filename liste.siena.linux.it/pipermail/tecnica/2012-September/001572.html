@@ -1,0 +1,343 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Xubuntu con HD pieno di LOG
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Xubuntu%20con%20HD%20pieno%20di%20LOG&In-Reply-To=%3C504A2D86.7070105%40valdelsa.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001571.html">
+   <LINK REL="Next"  HREF="001573.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Xubuntu con HD pieno di LOG</H1>
+    <B>roberto</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Xubuntu%20con%20HD%20pieno%20di%20LOG&In-Reply-To=%3C504A2D86.7070105%40valdelsa.net%3E"
+       TITLE="[Tecnica] Xubuntu con HD pieno di LOG">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Ven  7 Set 2012 18:23:18 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001571.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001573.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1572">[ Data ]</a>
+              <a href="thread.html#1572">[ Thread ]</a>
+              <a href="subject.html#1572">[ Oggetto ]</a>
+	      <a href="author.html#1572">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ciao per quello che riguarda cron.....non ricordo come va 
+configurato....per cui qui sotto il link di riferimento.....
+
+<A HREF="http://wiki.ubuntu-it.org/AmministrazioneSistema/Cron">http://wiki.ubuntu-it.org/AmministrazioneSistema/Cron</A>
+
+a presto e spero che possa esserti di aiuto :-)
+
+
+
+Il 06/09/12 21.48, Freeze NorthPole ha scritto:
+&gt;<i> Ciao,
+</I>&gt;<i> ho fatto quanto mi hai suggerito
+</I>&gt;<i> ma non ci ho capito nulla per cui abuso della vostra cortesia e vi
+</I>&gt;<i> posto qui stralci del risultato, stralci perche` quando provavo a fare
+</I>&gt;<i> tail -n100&gt;  log_mio.txt mi dava errore
+</I>&gt;<i>
+</I>&gt;<i> @ROberto CRON e` presente...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Grazie a tutti
+</I>&gt;<i> Freeze
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -- inizio log--
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100283] pci 0000:00:01.0:   bridge
+</I>&gt;<i> window [mem 0xf4000000-0xf5dfffff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100292] pci 0000:00:01.0:   bridge
+</I>&gt;<i> window [mem 0xf5f00000-0xf7ffffff pref]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100347] pci 0000:02:0b.0:
+</I>&gt;<i> [1516:0803] type 0 class 0x000200
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100373] pci 0000:02:0b.0: reg 10:
+</I>&gt;<i> [io  0xd800-0xd8ff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100388] pci 0000:02:0b.0: reg 14:
+</I>&gt;<i> [mem 0xf3800000-0xf38003ff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100441] pci 0000:02:0b.0: reg 30:
+</I>&gt;<i> [mem 0x00000000-0x0000ffff pref]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100468] pci 0000:02:0b.0: supports D1
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100474] pci 0000:02:0b.0: PME#
+</I>&gt;<i> supported from D1 D3hot D3cold
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100483] pci 0000:02:0b.0: PME# disabled
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100525] pci 0000:00:1e.0: PCI bridge
+</I>&gt;<i> to [bus 02-02] (subtractive decode)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100535] pci 0000:00:1e.0:   bridge
+</I>&gt;<i> window [io  0xd000-0xdfff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100544] pci 0000:00:1e.0:   bridge
+</I>&gt;<i> window [mem 0xf3800000-0xf3ffffff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100554] pci 0000:00:1e.0:   bridge
+</I>&gt;<i> window [mem 0xf5e00000-0xf5efffff pref]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100561] pci 0000:00:1e.0:   bridge
+</I>&gt;<i> window [io  0x0000-0xffff] (subtractive deco
+</I>&gt;<i> de)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100568] pci 0000:00:1e.0:   bridge
+</I>&gt;<i> window [mem 0x00000000-0xffffffff] (subtract
+</I>&gt;<i> ive decode)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100589] pci_bus 0000:00: on NUMA node 0
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100600] ACPI: PCI Interrupt Routing
+</I>&gt;<i> Table [\_SB_.PCI0._PRT]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100707] ACPI: PCI Interrupt Routing
+</I>&gt;<i> Table [\_SB_.PCI0.PCI1._PRT]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.100774] ACPI: PCI Interrupt Routing
+</I>&gt;<i> Table [\_SB_.PCI0.PCI2._PRT]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.103054] ACPI: PCI Interrupt Link
+</I>&gt;<i> [LNKA] (IRQs 3 4 5 6 7 9 10 *11 12 14 15)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.103209] ACPI: PCI Interrupt Link
+</I>&gt;<i> [LNKB] (IRQs 3 4 5 6 7 9 *10 11 12 14 15)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.103324] ACPI: PCI Interrupt Link
+</I>&gt;<i> [LNKC] (IRQs 3 4 5 6 7 9 10 11 12 14 15) *0, d
+</I>&gt;<i> isabled.
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.103460] ACPI: PCI Interrupt Link
+</I>&gt;<i> [LNKD] (IRQs 3 4 *5 6 7 9 10 11 12 14 15)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.103574] ACPI: PCI Interrupt Link
+</I>&gt;<i> [LNKE] (IRQs 3 4 5 6 7 9 10 11 12 14 15) *0, d
+</I>&gt;<i> isabled.
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.103690] ACPI: PCI Interrupt Link
+</I>&gt;<i> [LNKF] (IRQs 3 4 5 6 7 9 10 11 12 14 15) *0, d
+</I>&gt;<i> isabled.
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.105197] usbcore: registered new
+</I>&gt;<i> interface driver hub
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.105288] usbcore: registered new
+</I>&gt;<i> device driver usb
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.105610] wmi: Mapper loaded
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.105619] PCI: Using ACPI for IRQ routing
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.105632] PCI: pci_cache_line_size set
+</I>&gt;<i> to 64 bytes
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.105710] reserve RAM buffer:
+</I>&gt;<i> 000000000009fc00 - 000000000009ffff
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.105719] reserve RAM buffer:
+</I>&gt;<i> 000000001fffc000 - 000000001fffffff
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.106002] NetLabel: Initializing
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.106009] NetLabel:  domain hash size = 128
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.106017] NetLabel:  protocols =
+</I>&gt;<i> UNLABELED CIPSOv4
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.106046] NetLabel:  unlabeled traffic
+</I>&gt;<i> allowed by default
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.124748] AppArmor: AppArmor Filesystem Enabled
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.124849] pnp: PnP ACPI init
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.124901] ACPI: bus type pnp registered
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125133] pnp 00:00: [mem 0x00000000-0x0009ffff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125142] pnp 00:00: [mem 0x000f0000-0x000fffff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125149] pnp 00:00: [mem 0x00100000-0x1fffffff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125156] pnp 00:00: [mem 0xfec00000-0xfec000ff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125162] pnp 00:00: [mem 0xfee00000-0xfee00fff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125293] system 00:00: [mem
+</I>&gt;<i> 0x00000000-0x0009ffff] could not be reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125303] system 00:00: [mem
+</I>&gt;<i> 0x000f0000-0x000fffff] could not be reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125312] system 00:00: [mem
+</I>&gt;<i> 0x00100000-0x1fffffff] could not be reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125321] system 00:00: [mem
+</I>&gt;<i> 0xfec00000-0xfec000ff] could not be reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125329] system 00:00: [mem
+</I>&gt;<i> 0xfee00000-0xfee00fff] has been reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125340] system 00:00: Plug and Play
+</I>&gt;<i> ACPI device, IDs PNP0c01 (active)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125826] pnp 00:01: [bus 00-ff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125835] pnp 00:01: [io  0x0cf8-0x0cff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125841] pnp 00:01: [io  0x0000-0x0cf7 window]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.125848] pnp 00:01: [io  0x0d00-0xffff window]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126086] pnp 00:02: [mem 0xfff80000-0xffffffff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126092] pnp 00:02: [mem 0xffb80000-0xffbfffff]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126200] system 00:02: [io
+</I>&gt;<i> 0xe400-0xe47f] has been reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126209] system 00:02: [io
+</I>&gt;<i> 0xe800-0xe81f] could not be reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126218] system 00:02: [io
+</I>&gt;<i> 0xec00-0xec3f] has been reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126227] system 00:02: [mem
+</I>&gt;<i> 0xfff80000-0xffffffff] could not be reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126236] system 00:02: [mem
+</I>&gt;<i> 0xffb80000-0xffbfffff] has been reserved
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126245] system 00:02: Plug and Play
+</I>&gt;<i> ACPI device, IDs PNP0c02 (active)
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126312] pnp 00:03: [io  0x0010-0x001f]
+</I>&gt;<i> Sep  6 21:04:38 xx kernel: [    0.126319] pnp 00:03: [io  0x0022-0Sep
+</I>&gt;<i> 6 21:04:48 xx kernel: [   24.350272] [drm]
+</I>&gt;<i>   nouveau 0000:01:00.0: Setting dpms mode 0 on vga encoder (output 0)
+</I>&gt;<i> Sep  6 21:04:48 xx kernel: [   24.350287] [drm] nouveau 0000:01:00.0:
+</I>&gt;<i> Output VGA-1 is running on CRTC 0 using out
+</I>&gt;<i> put A
+</I>&gt;<i> Sep  6 21:04:48 xx kernel: [   25.003732] audit_printk_skb: 6
+</I>&gt;<i> callbacks suppressed
+</I>&gt;<i> Sep  6 21:04:48 xx kernel: [   25.003741] type=1400
+</I>&gt;<i> audit(1346958288.899:14): apparmor=&quot;STATUS&quot; operation=&quot;profil
+</I>&gt;<i> e_replace&quot; name=&quot;/usr/lib/cups/backend/cups-pdf&quot; pid=1096 comm=&quot;apparmor_parser&quot;
+</I>&gt;<i> Sep  6 21:04:48 xx kernel: [   25.009707] type=1400
+</I>&gt;<i> audit(1346958288.907:15): apparmor=&quot;STATUS&quot; operation=&quot;profil
+</I>&gt;<i> e_replace&quot; name=&quot;/usr/sbin/cupsd&quot; pid=1096 comm=&quot;apparmor_parser&quot;
+</I>&gt;<i> Sep  6 21:04:49 xx kernel: [   25.370444] EXT4-fs (sda1): re-mounted.
+</I>&gt;<i> Opts: errors=remount-ro,commit=0
+</I>&gt;<i> Sep  6 21:04:50 xx kernel: [   26.759948] usb 2-2.1: usbfs: interface
+</I>&gt;<i> 0 claimed by usblp while 'usb' sets config
+</I>&gt;<i> #1
+</I>&gt;<i> Sep  6 21:04:50 xx kernel: [   27.000034] eth0: no IPv6 routers present
+</I>&gt;<i> Sep  6 21:04:57 xx kernel: [   33.595148] EXT4-fs (sda1): re-mounted.
+</I>&gt;<i> Opts: errors=remount-ro,commit=0
+</I>&gt;<i> Sep  6 21:05:07 xx kernel: [   43.135437] cfg80211: Found new beacon
+</I>&gt;<i> on frequency: 2472 MHz (Ch 13) on phy0
+</I>&gt;<i> Sep  6 21:06:08 xx kernel: [  104.905058] firefox[1657]: segfault at 4
+</I>&gt;<i> ip 00931496 sp bf9933b0 error 4 in nouveau
+</I>&gt;<i> _vieux_dri.so[91a000+34000]
+</I>&gt;<i> Sep  6 21:15:26 xx kernel: [  662.513047] handle_rx_packet: invalid,
+</I>&gt;<i> small RX packet : 1
+</I>&gt;<i> Sep  6 21:16:23 xx kernel: [  719.283571] handle_rx_packet: invalid,
+</I>&gt;<i> small RX packet : 1
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2012/9/4 Martino di Filippo&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">puntodifuga a gmail.com</A>&gt;:
+</I>&gt;&gt;<i> Userei `tail -n100 /var/log/kern.log` per controllare cosa è effettivamente
+</I>&gt;&gt;<i> presente nei log. Dovrebbe essere facile risalire alla causa dei messaggi e
+</I>&gt;&gt;<i> sistemarla.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ciao!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On Sep 4, 2012 8:19 PM, &quot;Freeze NorthPole&quot;&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">freeze a siena.linux.it</A>&gt;  wrote:
+</I>&gt;&gt;&gt;<i> Ciao a tutti,
+</I>&gt;&gt;&gt;<i> ho un amico con il seguente problemino
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> il pc in questione ha 40 GB di HD da qualche giorno sta riscontrando
+</I>&gt;&gt;&gt;<i> dei problemi dovuti all HD pieno al 100%
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ieri sera ho spostato la cartella di thunderbird che occupava circa 11 GB
+</I>&gt;&gt;&gt;<i> oggi dopo aver fatto della semplice navigazione, vedo che sono liberi
+</I>&gt;&gt;&gt;<i> solo 874 MB
+</I>&gt;&gt;&gt;<i> --- estrazione dati comando --
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxx a XX</A>:/var/log$ df -h
+</I>&gt;&gt;&gt;<i> File system            Dim. Usati Disp. Uso% Montato su
+</I>&gt;&gt;&gt;<i> /dev/sda1              38G   35G  874M  98% /
+</I>&gt;&gt;&gt;<i> none                  242M  684K  241M   1% /dev
+</I>&gt;&gt;&gt;<i> none                  249M  116K  248M   1% /dev/shm
+</I>&gt;&gt;&gt;<i> none                  249M  436K  248M   1% /var/run
+</I>&gt;&gt;&gt;<i> none                  249M     0  249M   0% /var/lock
+</I>&gt;&gt;&gt;<i> /dev/sdc1              85G  8,3G   77G  10% /media/AE981DE8981DAFB7
+</I>&gt;&gt;&gt;<i> --- fine estrazione dati comando --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> lanciando il comando :  sudo du -h --max-dept=1
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ho visto che la cartella VAR è quella che occupa più di tutto
+</I>&gt;&gt;&gt;<i> --- estrazione dati comando --
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">XX a xx</A>:/$ sudo du -h --max-dept=1
+</I>&gt;&gt;&gt;<i> 14M     ./etc
+</I>&gt;&gt;&gt;<i> 4,0K    ./srv
+</I>&gt;&gt;&gt;<i> 4,0K    ./mnt
+</I>&gt;&gt;&gt;<i> 4,0K    ./cdrom
+</I>&gt;&gt;&gt;<i> 292K    ./tmp
+</I>&gt;&gt;&gt;<i> 31G     ./var
+</I>&gt;&gt;&gt;<i> --- fine estrazione dati comando --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --- estrazione dati comando --
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">XXXXXX a XX</A>:/var$ sudo du -h --max-dept=1
+</I>&gt;&gt;&gt;<i> 3,7M    ./backups
+</I>&gt;&gt;&gt;<i> 16K     ./tmp
+</I>&gt;&gt;&gt;<i> 140M    ./cache
+</I>&gt;&gt;&gt;<i> 4,0K    ./local
+</I>&gt;&gt;&gt;<i> 12K     ./games
+</I>&gt;&gt;&gt;<i> 4,0K    ./crash
+</I>&gt;&gt;&gt;<i> 436K    ./run
+</I>&gt;&gt;&gt;<i> 0       ./lock
+</I>&gt;&gt;&gt;<i> 149M    ./lib
+</I>&gt;&gt;&gt;<i> 2,1M    ./spool
+</I>&gt;&gt;&gt;<i> 4,0K    ./opt
+</I>&gt;&gt;&gt;<i> 30G     ./log
+</I>&gt;&gt;&gt;<i> 4,0K    ./mail
+</I>&gt;&gt;&gt;<i> 31G     .
+</I>&gt;&gt;&gt;<i> --- fine estrazione dati comando --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> eseguendo un ls -lsSh
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> vedo che ci sono log  enormi che non mi spiego, anche perchè è un pc
+</I>&gt;&gt;&gt;<i> uso ufficio non server
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --- estrazione dati comando --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxxxx a xxx</A>:/var/log$ ls -lsSh
+</I>&gt;&gt;&gt;<i> totale 30G
+</I>&gt;&gt;&gt;<i>   11G -rw-r----- 1 syslog            adm   11G 2012-09-04 20:19 kern.log
+</I>&gt;&gt;&gt;<i> 7,8G -rw-r----- 1 syslog            adm  7,8G 2012-09-03 10:03 kern.log.1
+</I>&gt;&gt;&gt;<i> 5,7G -rw-r----- 1 syslog            adm  5,7G 2012-09-04 08:01 syslog.1
+</I>&gt;&gt;&gt;<i> 4,6G -rw-r----- 1 syslog            adm  4,6G 2012-09-04 20:19 syslog
+</I>&gt;&gt;&gt;<i> 409M -rw-r----- 1 syslog            adm  409M 2012-07-30 10:01
+</I>&gt;&gt;&gt;<i> kern.log.4.gz
+</I>&gt;&gt;&gt;<i> 363M -rw-r----- 1 syslog            adm  363M 2012-08-10 09:04
+</I>&gt;&gt;&gt;<i> kern.log.3.gz
+</I>&gt;&gt;&gt;<i> 302M -rw-r----- 1 syslog            adm  302M 2012-08-29 20:25 syslog.6.gz
+</I>&gt;&gt;&gt;<i> 302M -rw-r----- 1 syslog            adm  302M 2012-08-29 20:44
+</I>&gt;&gt;&gt;<i> kern.log.2.gz
+</I>&gt;&gt;&gt;<i> 226M -rw-r----- 1 syslog            adm  226M 2012-09-01 07:35 syslog.3.gz
+</I>&gt;&gt;&gt;<i> 155M -rw-r----- 1 syslog            adm  155M 2012-08-31 09:28 syslog.4.gz
+</I>&gt;&gt;&gt;<i>   29M -rw-r----- 1 syslog            adm   29M 2012-09-03 09:47 syslog.2.gz
+</I>&gt;&gt;&gt;<i> 884K -rw-r----- 1 syslog            adm  882K 2012-08-30 09:23 syslog.5.gz
+</I>&gt;&gt;&gt;<i>   40K -rw-rw-r-- 1 root              utmp 286K 2012-09-04 19:36 lastlog
+</I>&gt;&gt;&gt;<i> --- fine estrazione dati comando --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> avete suggerimenti da darmi per capire che succede e come posso
+</I>&gt;&gt;&gt;<i> risolvere il problemino?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ecco i dettagli sul sistema operativo montato
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> --- inzio dettagli --
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxxx a xxx</A>:/var/log$ lsb_release -a
+</I>&gt;&gt;&gt;<i> No LSB modules are available.
+</I>&gt;&gt;&gt;<i> Distributor ID: Ubuntu
+</I>&gt;&gt;&gt;<i> Description:    Ubuntu 11.04
+</I>&gt;&gt;&gt;<i> Release:        11.04
+</I>&gt;&gt;&gt;<i> Codename:       natty
+</I>&gt;&gt;&gt;<i> ---fine dettagli --
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Grazie Mille a tutti
+</I>&gt;&gt;&gt;<i> Freeze
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001571.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001573.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1572">[ Data ]</a>
+              <a href="thread.html#1572">[ Thread ]</a>
+              <a href="subject.html#1572">[ Oggetto ]</a>
+              <a href="author.html#1572">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

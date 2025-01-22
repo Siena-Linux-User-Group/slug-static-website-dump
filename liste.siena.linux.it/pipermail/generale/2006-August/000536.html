@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] casino, grosso casino!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=200608160153.55875.hawk78%40interfree.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000534.html">
+   <LINK REL="Next"  HREF="000537.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] casino, grosso casino!</H1>
+    <B>sito</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20casino%2C%20grosso%20casino%21&In-Reply-To=200608160153.55875.hawk78%40interfree.it"
+       TITLE="[Generale] casino, grosso casino!">checco.sito a gmail.com
+       </A><BR>
+    <I>Mer 16 Ago 2006 15:42:51 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000534.html">[Generale] casino, grosso casino!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000537.html">[Generale] Re: casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#536">[ Data ]</a>
+              <a href="thread.html#536">[ Thread ]</a>
+              <a href="subject.html#536">[ Oggetto ]</a>
+	      <a href="author.html#536">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Eseguito tutto (questa volta correttamente, errori dati dalla fretta, 
+scusate :-P), ma continua a darmi sempre il solito errore all'esecuzione 
+di &quot;startx&quot;.
+Provo a fare come ha detto Pragma in un'altra mail, altrimenti... Che ne 
+direste di una bella hacknight dopoPalio (vittorie permettendo)? Quando 
+riapre il LIL?
+
+Vincenzo Di Massa ha scritto:
+
+&gt;<i>Alle 17:12, martedì 15 agosto 2006, $ito ha scritto:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>2006/8/15, Vincenzo Di Massa &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">hawk78 a interfree.it</A>&gt;:
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Il problema è che i driver binari di ati e nvidia sono divisi in 2 pezzi:
+</I>&gt;&gt;&gt;<i>1) kernel module
+</I>&gt;&gt;&gt;<i>2) X11 driver
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Il secondo carica il primo nel sistema.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Una volta lanciato X11 hai il modulo nel kernel: lo hai preso nel kernel
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;:<i>-P
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Per poter far funzionare i vecchi drivers devi scaricare quel driver
+</I>&gt;&gt;&gt;<i>(modprobe -r), ma... probabilmente dopo aver rimosso il driver la scheda
+</I>&gt;&gt;&gt;<i>sarà
+</I>&gt;&gt;&gt;<i>mooolto confusa (i driver all'uscita non fanno un reset fatto bene: sono
+</I>&gt;&gt;&gt;<i>fatti per restare sempre in controllo della scheda, se uno li vuole
+</I>&gt;&gt;&gt;<i>rimuovere... fatti suoi!).
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>La soluzione da provare è quindi
+</I>&gt;&gt;&gt;<i>$ sudo modprobe -r nvidia
+</I>&gt;&gt;&gt;<i>$ sudo apr-get remove nvidia-glx xserver-xorg-driver-nv+\
+</I>&gt;&gt;&gt;<i>linux-restricted-modules-*
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>Qui mi risponde :
+</I>&gt;&gt;<i>E:impossibile trovare nvidia (NVIDIA, le ho provate entrambe)
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>devi togliere nvidia-glx, non nvidia.
+</I>&gt;<i>
+</I>&gt;<i>prova il completamento automatico facendo
+</I>&gt;<i>$  source /etc/bash_completion
+</I>&gt;<i># ora puoi usare tab per completare i nomi dei pacchetti.
+</I>&gt;<i>
+</I>&gt;<i>Altrimenti ...
+</I>&gt;<i>$ apt-cache search nvidia # ti da la lista dei pacchetti che 
+</I>&gt;<i>$ # hanno a che fare con nvidia
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>$ Xorg -configure
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Qui invece:
+</I>&gt;&gt;<i>Fatal server error:
+</I>&gt;&gt;<i>Cannot move old file (&quot;/var/log/Xorg.0.log&quot; to &quot;/var/log/Xorg.0.log.old&quot;
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>usa sudo!
+</I>&gt;<i>$ sudo Xorg -configure
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Naturalmente poi il resto non funziona, onestamente mi viene da mangiarmi
+</I>&gt;&gt;<i>la Nvidia, ma non la scheda, tutta la fabbrica!!
+</I>&gt;&gt;<i>Ah, dato che ci sono allego anche lo Xorg.conf
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>$ startx
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>$ #se non funziona
+</I>&gt;&gt;&gt;<i>$ sudo reboot #al reboot la scheda rinsavisce
+</I>&gt;&gt;&gt;<i>....
+</I>&gt;&gt;&gt;<i>$ startx
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Ciao
+</I>&gt;&gt;&gt;<i>Vincenzo
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Alle 21:27, domenica 13 agosto 2006, sito ha scritto:
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>Mi sa che ho fatto un casino, ho fatto il gravissimo errore di
+</I>&gt;&gt;&gt;&gt;<i>installare i driver Nvidia nella mia Kubuntu.
+</I>&gt;&gt;&gt;&gt;<i>La faccio breve, non parte più X, se provo a lanciare &quot;startx&quot; mi
+</I>&gt;&gt;&gt;&gt;<i>restituisce:
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>(= =)Log file :&quot;/var/log/Xorg.0.log&quot; Time Sun aug 1321:12:22 2006
+</I>&gt;&gt;&gt;&gt;<i>(= =)Using config file: &quot;/etc/X11/xorg.conf&quot;
+</I>&gt;&gt;&gt;&gt;<i>(WW) NVIDIA: No matching Devicesection for instance (BusID PC:1:0:0)
+</I>&gt;&gt;&gt;&gt;<i>        
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>found
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>(EE) No devices detected.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>Fatal server error:
+</I>&gt;&gt;&gt;&gt;<i>no screen found
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>Se invece provo a ripristinare i driver precedenti mi sostituisce
+</I>&gt;&gt;&gt;&gt;<i>soltanto la parola NVIDIA con NV.
+</I>&gt;&gt;&gt;&gt;<i>Ok, so da me che non è niente di grave, ma senza connessione ad
+</I>&gt;&gt;&gt;&gt;<i>internet non riesco a cavarci il ragno dal buco.
+</I>&gt;&gt;&gt;&gt;<i>        
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Generale mailing list
+</I>&gt;&gt;&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>------------------------------------------------------------------------
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Generale mailing list
+</I>&gt;&gt;&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000534.html">[Generale] casino, grosso casino!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000537.html">[Generale] Re: casino, grosso casino!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#536">[ Data ]</a>
+              <a href="thread.html#536">[ Thread ]</a>
+              <a href="subject.html#536">[ Oggetto ]</a>
+              <a href="author.html#536">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Visualizzare un numero in complemento a due
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To=200901222106.43717.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000756.html">
+   <LINK REL="Next"  HREF="000754.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Visualizzare un numero in complemento a due</H1>
+    <B>Michele &quot;O-Zone&quot; Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To=200901222106.43717.pragma%40siena.linux.it"
+       TITLE="[Tecnica] Visualizzare un numero in complemento a due">o-zone a zerozone.it
+       </A><BR>
+    <I>Ven 23 Gen 2009 10:07:32 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000756.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000754.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#757">[ Data ]</a>
+              <a href="thread.html#757">[ Thread ]</a>
+              <a href="subject.html#757">[ Oggetto ]</a>
+	      <a href="author.html#757">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Grazie a tutti,
+ho trovato la soluzione &quot;casereccia&quot;:
+
+...
+	unsigned char buf[2], sign, strTemp[16];
+	float temp;
+	// lcdSetPos(ROW3);
+	DS1631_readTemp(buf);
+	// Check sign bit
+	if((buf[0] &gt; 0x80)) {
+		sign = '-';
+		/* Negate all bits */
+		buf[0] = ~buf[0];
+		buf[1] = ~buf[1] + 1;
+	} else {
+		sign = '+';	
+	}	
+	temp = buf[0];
+	temp += ((buf[1] &gt;&gt; 4) * 0.0625);
+	ftoa((float)temp, strTemp, 2, 'f');
+	sprintf(tmpBuf,&quot;t:%c%s°C &quot;,sign, strTemp);
+...
+
+e sembra funzionare :-) grazie comunque !!!!
+
+P.S. Se qualcuno è interessato al progettino* a cui sto lavorando, fate un 
+fischio :-)
+
+* Usando una PIC 18F4455, un DS1631 (termometro), DS1337 (RTC), eeprom 
+24xx1025, un MPX5500 (sensore di pressione) sto realizzando un moduletto che 
+mi visualizza su un display LCD data/ora, temperatura, pressione oltre a 
+memorizzare sulla eeprom, come in un &quot;log&quot;, tutte le variazioni del caso. 
+Questa è la prima fase del progetto. In realtà vorrei arrivare a sostituire 
+questo affare al termostato di casa :-) e riuscire ad usare un qualche 
+sistema di comunicazione (infrarossi ? rf ?) per scaricare i dati relativi 
+alla temperatura/pressione.
+
+Michele
+
+On Thursday 22 January 2009 21:06:43 Szymon Tomasz Stefanek wrote:
+&gt;<i> unsigned char b[2];                      
+</I>&gt;<i>   b[0] = b2;                                
+</I>&gt;<i>   b[1] = b1;                                
+</I>&gt;<i>
+</I>&gt;<i>   short * p = (short *)b;
+</I>&gt;<i>
+</I>&gt;<i>   printf(&quot;FLOAT: %f\n&quot;,(double)*p / 256.0);
+</I>
+
+
+-- 
+O-Zone ! No (C) since 1996
+On the road with VFR VTec 2002 &quot;Vuffy&quot;, on the net with Slackware !
+Home @ <A HREF="http://www.zerozone.it">http://www.zerozone.it</A> and photos @ 
+<A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000756.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000754.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#757">[ Data ]</a>
+              <a href="thread.html#757">[ Thread ]</a>
+              <a href="subject.html#757">[ Oggetto ]</a>
+              <a href="author.html#757">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

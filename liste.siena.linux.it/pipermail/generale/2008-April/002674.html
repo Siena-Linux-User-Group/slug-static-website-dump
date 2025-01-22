@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] lanciatore per programma java
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20lanciatore%20per%20programma%20java&In-Reply-To=4810297D.7070303%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002673.html">
+   <LINK REL="Next"  HREF="002675.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] lanciatore per programma java</H1>
+    <B>Dalamar</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20lanciatore%20per%20programma%20java&In-Reply-To=4810297D.7070303%40valdelsa.net"
+       TITLE="[Generale] lanciatore per programma java">d4lamar a gmail.com
+       </A><BR>
+    <I>Gio 24 Apr 2008 09:02:42 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002673.html">[Generale] lanciatore per programma java
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002675.html">[Generale] lanciatore per programma java
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2674">[ Data ]</a>
+              <a href="thread.html#2674">[ Thread ]</a>
+              <a href="subject.html#2674">[ Oggetto ]</a>
+	      <a href="author.html#2674">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2008/4/24 robi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">roberto.volpini a valdelsa.net</A>&gt;:
+&gt;<i> buon giorno a tutti....sto cercando di creare un lanciatore per un
+</I>&gt;<i>  programma java (sweethome3d).....ma secondo quello che ho letto nei
+</I>&gt;<i>  forum....nella sezione comando dovrei scrivere:
+</I>&gt;<i>
+</I>&gt;<i>  java /home/robi/SweetHome3D-1.2.1/./SweetHome3D
+</I>&gt;<i>
+</I>&gt;<i>  ma purtroppo non funziona ed come risposta dalla shell ho questa:
+</I>&gt;<i>
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">robi a robi-laptop</A>:~$ java /home/robi/SweetHome3D-1.2.1/./SweetHome3D
+</I>&gt;<i>  Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError:
+</I>&gt;<i>  /home/robi/SweetHome3D-1/2/1///SweetHome3D
+</I>&gt;<i>  Caused by: java.lang.ClassNotFoundException:
+</I>&gt;<i>  .home.robi.SweetHome3D-1.2.1...SweetHome3D
+</I>&gt;<i>         at java.net.URLClassLoader$1.run(URLClassLoader.java:221)
+</I>&gt;<i>         at java.security.AccessController.doPrivileged(Native Method)
+</I>&gt;<i>         at java.net.URLClassLoader.findClass(URLClassLoader.java:209)
+</I>&gt;<i>         at java.lang.ClassLoader.loadClass(ClassLoader.java:324)
+</I>&gt;<i>         at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:294)
+</I>&gt;<i>         at java.lang.ClassLoader.loadClass(ClassLoader.java:269)
+</I>&gt;<i>         at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:337)
+</I>&gt;<i>  Error: Could not find the main class.
+</I>&gt;<i>  Error: A JNI error has occurred, please check your installation and try
+</I>&gt;<i>  again
+</I>&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">robi a robi-laptop</A>:~$
+</I>&gt;<i>
+</I>&gt;<i>  dove è l'errore?
+</I>&gt;<i>  visto che se vado manualmente nella directory e digito ./SweetHome3D il
+</I>&gt;<i>  programma parte.....
+</I>&gt;<i>
+</I>&gt;<i>  spero di aver spiegato bene il problema....
+</I>
+Ciao,
+
+Ti rispondo qui dato che non leggo la &quot;tecnica&quot; e non so se qualcuno
+ti ha gia' risposto di la' che sarebbe la sede adeguata.
+
+Devi settare il classpath!
+
+$JAVA_HOME/bin/java -classpath $CLASSPATH $MAINCLASS
+
+Il classpath deve contenere tutte le directory e .jar che contengono
+le definizioni delle classi che usi.
+quindi molto probabilmente anche la directory dove sta la $MAINCLASS.
+Lanciandolo dalla directory ti funziona perche' il classpath non
+specificato contiene la &quot;directory di lancio&quot;.
+
+Ciao,
+d4lamar
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002673.html">[Generale] lanciatore per programma java
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002675.html">[Generale] lanciatore per programma java
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2674">[ Data ]</a>
+              <a href="thread.html#2674">[ Thread ]</a>
+              <a href="subject.html#2674">[ Oggetto ]</a>
+              <a href="author.html#2674">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

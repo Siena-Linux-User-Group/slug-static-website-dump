@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] acer 5920g con debian wifi
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20acer%205920g%20con%20debian%20wifi&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="000810.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] acer 5920g con debian wifi</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20acer%205920g%20con%20debian%20wifi&In-Reply-To="
+       TITLE="[Tecnica] acer 5920g con debian wifi">freeze a siena.linux.it
+       </A><BR>
+    <I>Lun  8 Giu 2009 11:04:33 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="000810.html">[Tecnica] acer 5920g con debian wifi
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#809">[ Data ]</a>
+              <a href="thread.html#809">[ Thread ]</a>
+              <a href="subject.html#809">[ Oggetto ]</a>
+	      <a href="author.html#809">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>CIao a tutti,
+ho da poco installato sul mio notebook acer 5920g debian lenny, ma il
+wireless non funziona, avete suggerimenti?
+ecco un po' di info, per aiutarvi ad aiutarmi :)
+
+- lspci | grep Network
+------
+06:00.0 Network controller: Intel Corporation PRO/Wireless 4965 AG or
+AGN [Kedron] Network Connection (rev 61)
+
+- ifconfig
+------
+eth0      Link encap:Ethernet  HWaddr 00:1b:24:3e:b8:4e
+          inet addr:192.168.1.70  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::21b:24ff:fe3e:b84e/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:12375 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:15619 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:2747331 (2.6 MiB)  TX bytes:17368494 (16.5 MiB)
+          Interrupt:17
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:66 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:66 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:5248 (5.1 KiB)  TX bytes:5248 (5.1 KiB)
+
+-iwconfig
+-----
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+
+wmaster0  no wireless extensions.
+
+wlan0     IEEE 802.11  ESSID:&quot;&quot;
+          Mode:Managed  Frequency:2.412 GHz  Access Point: Not-Associated
+          Tx-Power=0 dBm
+          Retry min limit:7   RTS thr:off   Fragment thr=2352 B
+          Encryption key:off
+          Link Quality:0  Signal level:0  Noise level:0
+          Rx invalid nwid:0  Rx invalid crypt:0  Rx invalid frag:0
+          Tx excessive retries:0  Invalid misc:0   Missed beacon:0
+
+- ifconfig wlan0 up
+-------
+SIOCSIFFLAGS: No such device
+
+-uname -a
+-------
+Linux davide-laptop 2.6.26-2-686 #1 SMP Thu May 28 15:39:35 UTC 2009
+i686 GNU/Linux
+
+
+grazie a tutti
+-- 
+Registered GNU/Linux User #439266
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="000810.html">[Tecnica] acer 5920g con debian wifi
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#809">[ Data ]</a>
+              <a href="thread.html#809">[ Thread ]</a>
+              <a href="subject.html#809">[ Oggetto ]</a>
+              <a href="author.html#809">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

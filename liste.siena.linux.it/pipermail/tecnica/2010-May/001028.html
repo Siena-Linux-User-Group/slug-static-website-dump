@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Module assistant e nvidia
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Module%20assistant%20e%20nvidia&In-Reply-To=%3Cl2x5a6284bf1005040054s78b30202l4aefe4cf073ac9c1%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001027.html">
+   <LINK REL="Next"  HREF="001030.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Module assistant e nvidia</H1>
+    <B>Andrea Coronese</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Module%20assistant%20e%20nvidia&In-Reply-To=%3Cl2x5a6284bf1005040054s78b30202l4aefe4cf073ac9c1%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Module assistant e nvidia">blackeye84 a gmail.com
+       </A><BR>
+    <I>Mar  4 Maggio 2010 08:54:07 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001027.html">[Tecnica] Module assistant e nvidia
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001030.html">[Tecnica] Module assistant e nvidia
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1028">[ Data ]</a>
+              <a href="thread.html#1028">[ Thread ]</a>
+              <a href="subject.html#1028">[ Oggetto ]</a>
+	      <a href="author.html#1028">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il problema nasce da alcuni moduli che sono stati introdotti in lucid. Se
+vuoi installare i driver nvidia devi andare in
+/etc/modprobe.d/blacklist.conf ed inserire queste righe
+
+blacklist vga16fb
+blacklist nouveau
+blacklist rivafb
+blacklist nvidiafb
+blacklist rivatv
+
+
+Il modulo nvidia.ko non te lo carica perché uno di questi moduli (vga16fb
+nel mio caso) ti prende il lock sulla periferica. Fatto ciò riavvia, compila
+i driver come al solito e hai finito. Occhio perché compiz ha qualche
+problema su lucid, ma puoi vedere sempre il thread che ho linkato sopra.
+
+Ciao
+
+2010/5/4 Giulio Saletti &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">giulio.saletti a gmail.com</A>&gt;
+
+&gt;<i> Ciao,
+</I>&gt;<i> avete ragione, come al solito non ho fornito abbastanza informazioni.
+</I>&gt;<i>
+</I>&gt;<i> Come Yusef ben ricorda (dopo la gara di velocità di installazione fatta tra
+</I>&gt;<i> i nostri due pc che ho miseramente perso!) utilizzo ubuntu.
+</I>&gt;<i> Il problema è sorto con la Lucid Lynx ed il pc è un Sony Vaio 64bit
+</I>&gt;<i> VPCF11M1E con scheda grafica GeForce GT330M.
+</I>&gt;<i>
+</I>&gt;<i> Prima ho provato ad attivare i driver con il tool di ubuntu ma al riavvio
+</I>&gt;<i> la macchina entrava in low graphical mode (per fortuna, almeno ho potuto
+</I>&gt;<i> disattivarli senza problemi), allora ho scaricato i driver dal sito Nvidia,
+</I>&gt;<i> ho installato le varie dipendenze, ho arrestato il desktop manager ed ho
+</I>&gt;<i> lanciato l'installazione ma il risultato è stato l'errore di cui sopra
+</I>&gt;<i> (ERROR: Unable to load the kernel module 'nvidia.ko') è per questo che
+</I>&gt;<i> chiedevo se qualcuno potesse chiarirmi l'installazione dei driver Nvidia
+</I>&gt;<i> attraverso module-assistant...
+</I>&gt;<i>
+</I>&gt;<i> Ecco , mi sembra tutto... anzi, la versione dei driver:
+</I>&gt;<i> NVIDIA-Linux-x86_64-195.36.24-pkg2.run
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+{Andrea Coronese}
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100504/9303f72a/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100504/9303f72a/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001027.html">[Tecnica] Module assistant e nvidia
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001030.html">[Tecnica] Module assistant e nvidia
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1028">[ Data ]</a>
+              <a href="thread.html#1028">[ Thread ]</a>
+              <a href="subject.html#1028">[ Oggetto ]</a>
+              <a href="author.html#1028">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

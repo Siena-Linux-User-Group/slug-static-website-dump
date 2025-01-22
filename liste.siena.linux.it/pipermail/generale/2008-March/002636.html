@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] BSD (era Re:  hacknight?)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20BSD%20%28era%20Re%3A%20%20hacknight%3F%29&In-Reply-To=7392dd720803070032q47486a2bk22eea3384412d1c4%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002634.html">
+   <LINK REL="Next"  HREF="002637.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] BSD (era Re:  hacknight?)</H1>
+    <B>Alessio Cappelli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20BSD%20%28era%20Re%3A%20%20hacknight%3F%29&In-Reply-To=7392dd720803070032q47486a2bk22eea3384412d1c4%40mail.gmail.com"
+       TITLE="[Generale] BSD (era Re:  hacknight?)">amc a interfree.it
+       </A><BR>
+    <I>Ven  7 Mar 2008 23:02:11 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002634.html">[Generale] hacknight?
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002637.html">[Generale] BSD (era Re:  hacknight?)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2636">[ Data ]</a>
+              <a href="thread.html#2636">[ Thread ]</a>
+              <a href="subject.html#2636">[ Oggetto ]</a>
+	      <a href="author.html#2636">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Freeze NorthPole wrote:
+
+&gt;<i>che differenze hai trovato con linux?
+</I>&gt;<i>hai trovato difficoltà a far riconoscere le periferche?
+</I>&gt;<i>parere tuo in generale?
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>Ti faccio un minimo di introduzione:
+i sistemi *BSD che puoi trovare oggi sono fondamentalmente tre: FreeBSD, 
+NetBSD e OpenBSD. Tutti derivano dal 4.4BSD-Lite Release 2, lo UNIX di 
+Berkeley al quale hanno lavorato le più brillanti menti informatiche 
+contemporanee, per fare due nomi Bill Joy (lo stack TCP/IP, vi e altre 
+cosette) e Marshall Kirk McKusick (il Berkeley FastFileSystem, la 
+memoria virtuale e altro) che era il responsabile tecnologico del 
+progetto. Nel 1995 lo scopo del progetto fu dichiarato raggiunto e il 
+gruppo di lavoro fu sciolto, non senza però che tutto il codice fosse 
+epurato dai sorgenti originali di AT&amp;T (da qui il nome &quot;Lite&quot;) e 
+rilasciato sotto licenza BSD. Ognuno dei tre progetti citati all'inizio 
+riprende la strada interrotta e la indirizza verso obbiettivi ben 
+precisi: FreeBSD vuole essere l'erede &quot;principale&quot; del 4.4BSD con 
+l'ambizione di essere adatto sia per sistemi server anche di fascia 
+enterprise, avere un ottimo supporto per l'hardware ed essere 
+utilizzabile anche per il desktop. L'ambiente operativo di elezione in 
+questo caso è il KDE. NetBSD si pone come scopo quello di essere un 
+sistema robusto, il più possibile aderente agli standard UNIX e 
+soprattutto vanta la maggior portabilità che io conosca di un sistema 
+operativo: credo che sia in grado di girare su una cinquantina (si, 50) 
+piattaforme hardware diverse. OpenBSD, infine, si pone come obbiettivo 
+quello di essere un sistema &quot;sicuro&quot; per default. E' uno spin-off di 
+NetBSD ed è particolarmente indirizzato ai servizi di rete, firewall in 
+primis.
+
+La differenza fondamentale con Linux (senza togliere il merito 
+dell'enorme lavoro che ha fatto -e sta continuando a fare- Linus) è che 
+Linux sappiamo bene è solo un kernel al quale viene aggiunto il resto 
+del sistema in maniera custom e da cui nascono le varie distribuzioni 
+attingendo il software necessario da dove si ritiene più opportuno e 
+filosoficamente legittimo, mentre un sistema operativo *BSD non è solo 
+un kernel ma anche tutte le utility a corredo sono originarie del 
+4.4BSD, per questo (ma è una personalissima opinione) lo ritengo un 
+sistema &quot;completo&quot;, quindi non esistono distribuzioni nel senso comune 
+del termine, ma solo la versione attuale.
+
+Personalmente preferisco OpenBSD per la pulizia del sistema, i 
+pochissimi file di configurazione necessari per le varie 
+personalizzazioni e perchè si installa in 10 minuti netti. Per fare un 
+paio di esempi è diverso il sistema di avvio (due soli file di boot e 
+non il sistema a runlevel del SVR4), i meccanismi avanzati di 
+autenticazione degli utenti, l'organizzazione di alcune directory di 
+sistema e include alcune utility proprie del progetto tra cui OpenSSH ed 
+il firewall (il pf) che è molto avanzato. Un'altra differenza 
+fondamentale rispetto a qualsiasi distribuzione Linux è che non ci sono 
+installazioni di tipo server o desktop o altro. L'installer installa 
+solo il sistema nudo e crudo: il resto dei pacchetti va aggiunto a mano 
+(e ci sono varie possibilità per farlo). Questo può essere visto come 
+uno svantaggio che causa perdite di tempo ma a me piace avere il 
+controllo e la conoscenza di quello che metto sulla macchina. Per 
+contro, configurare un sistema desktop è di una noia e una pena struggente.
+
+Il supporto hardware non è veramente male, la lista dell'hardware i386 
+supportato è lunghissima e il kernel fa le sue configurazioni con 
+pochissima necessità di intervento, tranne rarissimi casi in cui ho 
+dovuto patchare i sorgenti per forzare il riconoscimento di qualche scheda.
+
+Per quello che mi riguarda, uso Linux quando non voglio 
+usare/consigliare Windows ma voglio comunque una GUI e dei programmi di 
+produttività quotidiana, quando invece devo fare un server -casalingo o 
+meno- valuto (per le ragioni sopra esposte) prima OpenBSD e casomai 
+Linux se ho necessità particolari (e non entro nel dettaglio perché sono 
+stato fin troppo prolisso).
+
+Ciao a tutti
+  Alessio
+
+
+
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002634.html">[Generale] hacknight?
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002637.html">[Generale] BSD (era Re:  hacknight?)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2636">[ Data ]</a>
+              <a href="thread.html#2636">[ Thread ]</a>
+              <a href="subject.html#2636">[ Oggetto ]</a>
+              <a href="author.html#2636">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

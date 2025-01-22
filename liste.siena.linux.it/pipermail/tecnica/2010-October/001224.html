@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ... problemini africani ... ;)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTimZYJKp9cRhS3noLOadh%3DHHn_B%3D-_kdhokz_RtJ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001223.html">
+   <LINK REL="Next"  HREF="001225.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ... problemini africani ... ;)</H1>
+    <B>info@labi Laboratori Innovazione</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTimZYJKp9cRhS3noLOadh%3DHHn_B%3D-_kdhokz_RtJ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] ... problemini africani ... ;)">info a labi.it
+       </A><BR>
+    <I>Sab 16 Ott 2010 22:04:33 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001223.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001225.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1224">[ Data ]</a>
+              <a href="thread.html#1224">[ Thread ]</a>
+              <a href="subject.html#1224">[ Oggetto ]</a>
+	      <a href="author.html#1224">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>non avevo inteso rsync, ...
+
+supponiamo tu debba ottenere un rc pari a 0 ovvero tutti i file trasferiti
+
+
+RC=1
+while [[ RC -ne 0 ]]
+do
+rsync -a etc.etc.etc.etc.
+RC=$?
+done
+
+attenzione, che in caso di problemi di permessi cio' portera' a cicli
+infiniti. Quindi puoi inserirci qualche controllo
+gli exit code di rsync sono qui.. non so se aggiornato (googlato)
+
+<A HREF="http://wpkg.org/Rsync_exit_codes">http://wpkg.org/Rsync_exit_codes</A>
+
+un controllo potrebbe essere
+
+RC=12; while [[ $RC -eq 12 || $RC -eq 30 ]]
+
+ciau
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/1bf786c0/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/1bf786c0/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001223.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001225.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1224">[ Data ]</a>
+              <a href="thread.html#1224">[ Thread ]</a>
+              <a href="subject.html#1224">[ Oggetto ]</a>
+              <a href="author.html#1224">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

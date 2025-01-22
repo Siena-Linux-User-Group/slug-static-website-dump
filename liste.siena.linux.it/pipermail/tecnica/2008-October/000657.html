@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Supporto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Supporto&In-Reply-To=200810311338.14364.xdatap1%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000654.html">
+   <LINK REL="Next"  HREF="000658.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Supporto</H1>
+    <B>Giovanni</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Supporto&In-Reply-To=200810311338.14364.xdatap1%40siena.linux.it"
+       TITLE="[Tecnica] Supporto">cerrigno a gmail.com
+       </A><BR>
+    <I>Ven 31 Ott 2008 17:25:53 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000654.html">[Tecnica] Supporto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000658.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#657">[ Data ]</a>
+              <a href="thread.html#657">[ Thread ]</a>
+              <a href="subject.html#657">[ Oggetto ]</a>
+	      <a href="author.html#657">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il pc funziona benissimo, ovviamente senza interfaccia grafica. Riesco però
+a usare la shell perché il sistema lo carica tutto, tranne gnome. Il sistema
+vecchio comunque non c'è più quindi non posso farlo partire.
+
+Allora. lspci. Posto solo il VGA, non ce la fo a copiare tutto. (e alcune
+cose audio che non so se c'entrino qualcosa)
+
+01:05.0 VGA compatible controller: ATI Technologies Inc RS780M/RS780MN
+[Radeon HD 3200 Graphics]
+01:05.1 Audio device: ATI Technologies Inc RS780 Azalia contoller
+2:00.0 VGA compatible controller: ATI Technologies Inc Mobility Radeon HD
+3400 Series
+2:00.1 Audio device: ATI Techologies Inc RV620 Audio device [Radeon HD 34xx
+Series]
+
+Il portatiel è un Fujistu-Siemens Amilo Pa 3553.
+
+il reconfigure xorg lo provai ieri senza risultati (non sapendo nemmeno come
+funzionasse) quindi semmai riproverò.
+
+Giovanni
+
+On Fri, Oct 31, 2008 at 13:38, Paolo Sammicheli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xdatap1 a siena.linux.it</A>&gt;wrote:
+
+&gt;<i> Alle venerdì 31 ottobre 2008, Giovanni ha scritto:
+</I>&gt;<i> &gt; Buongiorno! Ho un problema, che parlai con il relatore al Linux Day (non
+</I>&gt;<i> &gt; ricordo il nome, scusa) della conferenza di Ubuntu.
+</I>&gt;<i>
+</I>&gt;<i> Ciao,
+</I>&gt;<i> ero io :)
+</I>&gt;<i>
+</I>&gt;<i> &gt; Mi disse il relatore che in pratica ci sono die problemi di driver con le
+</I>&gt;<i> &gt; schede ati e nvidia, ma perché con la 8.04 andava tutto bene?
+</I>&gt;<i>
+</I>&gt;<i> i casi sono due, o c'è un errore di regressione nel pacchetto nuovo o è
+</I>&gt;<i> cambiato qualcosa sul driver Ati che purtroppo è proprietario e la comunità
+</I>&gt;<i> puo' far ben poco per correggerlo.
+</I>&gt;<i>
+</I>&gt;<i> Partiamo per gradi, per diagnosticare il tuo problema occorre il modello
+</I>&gt;<i> preciso di scheda video. Dalla shell digita il comando &quot;lspci&quot; e mandaci
+</I>&gt;<i> l'output. (riesci ancora a partire con la versione precedente o hai il pc
+</I>&gt;<i> piantato senza interfaccia grafica?)
+</I>&gt;<i>
+</I>&gt;<i> Da shell il comando che dovrebbe sistemarti tutto, probabilmente pero'
+</I>&gt;<i> tornando al driver non accelerato, è &quot;sudo dpkg-reconfigure xserver-xorg&quot;.
+</I>&gt;<i> Provalo pure seguendo le istruzioni a schermo.
+</I>&gt;<i>
+</I>&gt;<i> Se non mi sbaglio era un portatile, dacci anche il modello preciso in modo
+</I>&gt;<i> che
+</I>&gt;<i> possiamo fare qualche ricerca più approfondita e, in caso negativo, aprire
+</I>&gt;<i> anche un bug ai mantainer del server X.
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i> --
+</I>&gt;<i> Paolo Sammicheli
+</I>&gt;<i> Email: xdatap1(at)siena.linux.it
+</I>&gt;<i> Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+</I>&gt;<i> - Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20081031/b6b81167/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20081031/b6b81167/attachment-0001.htm</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000654.html">[Tecnica] Supporto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000658.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#657">[ Data ]</a>
+              <a href="thread.html#657">[ Thread ]</a>
+              <a href="subject.html#657">[ Oggetto ]</a>
+              <a href="author.html#657">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

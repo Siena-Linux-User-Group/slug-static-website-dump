@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] kate: file di testo sovrascritto come binario
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20kate%3A%20file%20di%20testo%20sovrascritto%20come%20binario&In-Reply-To=20060912081359.22094.qmail%40web55209.mail.re4.yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000100.html">
+   <LINK REL="Next"  HREF="000102.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] kate: file di testo sovrascritto come binario</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20kate%3A%20file%20di%20testo%20sovrascritto%20come%20binario&In-Reply-To=20060912081359.22094.qmail%40web55209.mail.re4.yahoo.com"
+       TITLE="[Tecnica] kate: file di testo sovrascritto come binario">maali.yusef a gmail.com
+       </A><BR>
+    <I>Mar 12 Set 2006 16:58:15 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000100.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000102.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#101">[ Data ]</a>
+              <a href="thread.html#101">[ Thread ]</a>
+              <a href="subject.html#101">[ Oggetto ]</a>
+	      <a href="author.html#101">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mi state devastando :)
+Considerate, però, che ci stiamo &quot;battendo&quot; su un problema NON mio,
+che a me non è mai successo e riporto per sentito dire, quindi non
+conosco il problema in tutte le sue parti.
+
+Partiamo dal fondo:
+
+On 9/12/06, Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a yahoo.com</A>&gt; wrote:
+&gt;<i> --- Yusef Maali &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">maali.yusef a gmail.com</A>&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> &gt; significa che aprendo il file con un normale editor,
+</I>&gt;<i> &gt; lo vede come se
+</I>&gt;<i> &gt; lo aprisse con un editor esadecimale :)
+</I>&gt;<i>
+</I>&gt;<i> No, scusa, ma questa frase non ha senso.
+</I>
+Mi sono espresso male:
+
+Un file, come dice iakko, non è altro che un serie di byte scritti
+seguendo uno specifico formato.
+Un file di testo segue le specifiche ASCII, il quale assegna ad ogni
+lettera un valore decimale compreso tra 0 e 256.
+
+Supponiamo per assurdo che su questi byte (del file di testo) venga
+eseguita una qualche operazione di matematica binaria (not, and, or,
+xor).
+Cosa succede? Impossibile dirlo. Sicuramente riaprendo lo stesso file
+con un editor di testo otterremo in output una serie stravagante di
+simboli e simbolini (che altro non sono i caratteri ASCII non
+visualizzabili).
+
+Quando aprite un eseguibile con un editor esadecimale viene mostrato
+il contenuto binario del file (0 e 1) più, solitamente, quello
+tradotto in codice ASCII, che sono i soliti simboli stravaganti.
+
+Ciò che volevo dire, è che GTL aprendo il suo file di testo corrotto
+vede tutta una serie di simboli, come se aprisse un eseguibile con un
+editor esadecimale, guardando la parte tradotta in ASCII.
+
+
+On xx/xx/xx, Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a yahoo.com</A>&gt; wrote:
+&gt;&gt;<i> partendo dalla definizione, un file e' &quot;un insieme di informazioni
+</I>&gt;&gt;<i> codificate organizzate come una sequenza di byte&quot;.
+</I>&gt;&gt;<i> tornando al problema di GTL, non ha senso quando dice &quot;kate salva in
+</I>&gt;&gt;<i> binario&quot; perchè lui salva la sequenza di byte che scrivi
+</I>
+&gt;<i>Perfetto, ci siamo arrivati finalmente: NON HA SENSO!
+</I>&gt;<i>
+</I>&gt;<i>Capito Yusef?
+</I>
+Ma infatti io non ho mai avvallato la frase &quot;kate salva in binario&quot;.
+Lo so che non ha senso.
+
+&gt;<i>Ah si? Un programma che scrive un formato file che non &gt;riesce a riaprire? Io
+</I>&gt;<i>lo chiamo errore irreversibile, amico mio. Se non é grave &gt;questo spiegami
+</I>&gt;<i>cosa lo é.
+</I>
+Rileggendo bene quello che ho scritto, affermo che secondo me il
+problema non deriva da un bug di kate, ma da smenattamenti vari (dopo
+darò la definizione).
+Se fosse kate a corrompere i file, allora si che sarebbe un errore
+grave (ma scommetto una birra che non dipende da kate).
+
+&gt;<i>Ci risei, ricadi nello stesso errore.
+</I>&gt;<i>Dammi la definizione scientifica di &quot;smanettare&quot; allora.
+</I>
+Se quella di wikipedia è sufficente:
+<A HREF="http://it.wikipedia.org/wiki/Glossario_informatico#S">http://it.wikipedia.org/wiki/Glossario_informatico#S</A>
+
+vedi che alla fine non mi invento nulla.
+
+Ti voglio comunque dare la mia definizione.
+Tu quando installi un qualsiasi programma per vedere come funziona,
+cosa fai? Ti leggi le decine e decine di pagine di manuale oppure
+provi a mettere nei file di configurazione valori che a prima vista ti
+sembrano giusti? Non mi dire che non lo fai, perchè non ci credo.
+
+Questo si chiama smanettare.
+
+Quando poi il programma ti è piaciuto e lo vuoi configurare bene e
+magari scoprire anche caratteristiche più avanzate, allora ti leggi
+tutta la documentazione.
+
+
+Smanettare nel modo sbagliato:
+supponiamo lo stesso programma appena installato. Stai mettendo nei
+file di configurazione dei valori che ti SEMBRANO coerenti con quello
+che vuoi. Ma SEMBRANO, in realtà non lo sono e quando fai ripartire il
+programma, questo ti genera degli errori/danni di vario genere.
+Possono essere banali, come configurare in modo sbagliato apache, che
+al massimo non parte, ma possono diventare errori seri, come
+configurare male programmi che gestiscono direttamente l'hardware.
+
+Questo è smanettare nel modo sbagliato.
+
+Tutti smanettiamo. C'è chi lo fa con un pò di sale in zucca (e quasi
+sempre il sale in zucca deriva dall'esperienza), che chi lo fa a caso
+e combina i peggio guai.
+
+Siccome GTL si è avvicinato a linux da molto poco, con una
+distribuzione (gentoo) che non ti facilita nell'apprendimento e ti
+costringe a configurare a mano tutto, considero quasi scontato che sia
+dipesa da lui la corruzione del file.
+Poi sul come abbia fatto o con quali programmi abbia smanettato, non
+lo so. Andrebbe chiesto a lui.
+
+
+&gt;<i>O si approfondisce gli argomenti e si chiariscono oppure &gt;la lista
+</I>&gt;<i>diventa cibo per spamassassin. Tanto vale rinominarci in &gt;it.comp.os.windows
+</I>&gt;<i>allora.
+</I>
+Hai ragione. Ma non siamo dei computer, rispondendo alle email (parlo
+in prima persona) si può usare un tono meno &quot;ufficiale&quot; ma più
+discorsivo, coadiuvato dal fatto che spesso si risponde a persone che
+si conoscono.
+GTL lo conosco (poco, ma abbastanza da esserci entrato in sintonia) e
+pertanto non ho pensato a rispondere in un modo più completo ed
+esaustivo, ma ho buttato li una serie di risposte pressapochiste,
+considerando il fatto che a lui non interessasse poi molto risolvere
+il problema.
+
+Aggiungi che a scrivere siamo in 4 gatti. Se dobbiamo essere solenni
+ad ogni email che scriviamo finisce che da 4 diventiamo 0. Un pò di
+pressapochismo ogni tanto non fa male, specie in argomenti (come
+questo) che non mi risultano essere di vitale importanza (sempre
+considerando il fatto che GTL è stato il primo a dire che non gli
+interessava trovare una soluzione).
+
+Pressapochismo in una discussione come il Call Of Paper, sarebbe
+decisamente fuori luogo, ma li non mi sembra di esserlo stato. A meno
+che tu consideri pressapochista chi consiglia ma non si impegna in
+prima persona...
+
+In ogni caso, se leggi (o leggete, rivolto a tutti) del pressapochismo
+in tutte le mie email, dimmelo (ditemelo) che cercherò in futuro di
+correggere il tono e la completezza delle email.
+
+In ogni caso se la cosa ti ha dato fastidio, me ne scuso.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000100.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000102.html">[Tecnica] kate: file di testo sovrascritto come binario
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#101">[ Data ]</a>
+              <a href="thread.html#101">[ Thread ]</a>
+              <a href="subject.html#101">[ Oggetto ]</a>
+              <a href="author.html#101">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

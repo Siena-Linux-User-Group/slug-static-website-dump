@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] lanciatore per programma java
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20lanciatore%20per%20programma%20java&In-Reply-To=3d38a1340804240102u47485184m5ece483017620ba%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002674.html">
+   <LINK REL="Next"  HREF="002676.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] lanciatore per programma java</H1>
+    <B>robi</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20lanciatore%20per%20programma%20java&In-Reply-To=3d38a1340804240102u47485184m5ece483017620ba%40mail.gmail.com"
+       TITLE="[Generale] lanciatore per programma java">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Gio 24 Apr 2008 13:38:34 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002674.html">[Generale] lanciatore per programma java
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002676.html">[Generale] lanciatore per programma java
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2675">[ Data ]</a>
+              <a href="thread.html#2675">[ Thread ]</a>
+              <a href="subject.html#2675">[ Oggetto ]</a>
+	      <a href="author.html#2675">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dalamar ha scritto:
+&gt;<i> 2008/4/24 robi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">roberto.volpini a valdelsa.net</A>&gt;:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> buon giorno a tutti....sto cercando di creare un lanciatore per un
+</I>&gt;&gt;<i>  programma java (sweethome3d).....ma secondo quello che ho letto nei
+</I>&gt;&gt;<i>  forum....nella sezione comando dovrei scrivere:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  java /home/robi/SweetHome3D-1.2.1/./SweetHome3D
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  ma purtroppo non funziona ed come risposta dalla shell ho questa:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">robi a robi-laptop</A>:~$ java /home/robi/SweetHome3D-1.2.1/./SweetHome3D
+</I>&gt;&gt;<i>  Exception in thread &quot;main&quot; java.lang.NoClassDefFoundError:
+</I>&gt;&gt;<i>  /home/robi/SweetHome3D-1/2/1///SweetHome3D
+</I>&gt;&gt;<i>  Caused by: java.lang.ClassNotFoundException:
+</I>&gt;&gt;<i>  .home.robi.SweetHome3D-1.2.1...SweetHome3D
+</I>&gt;&gt;<i>         at java.net.URLClassLoader$1.run(URLClassLoader.java:221)
+</I>&gt;&gt;<i>         at java.security.AccessController.doPrivileged(Native Method)
+</I>&gt;&gt;<i>         at java.net.URLClassLoader.findClass(URLClassLoader.java:209)
+</I>&gt;&gt;<i>         at java.lang.ClassLoader.loadClass(ClassLoader.java:324)
+</I>&gt;&gt;<i>         at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:294)
+</I>&gt;&gt;<i>         at java.lang.ClassLoader.loadClass(ClassLoader.java:269)
+</I>&gt;&gt;<i>         at java.lang.ClassLoader.loadClassInternal(ClassLoader.java:337)
+</I>&gt;&gt;<i>  Error: Could not find the main class.
+</I>&gt;&gt;<i>  Error: A JNI error has occurred, please check your installation and try
+</I>&gt;&gt;<i>  again
+</I>&gt;&gt;<i>  <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">robi a robi-laptop</A>:~$
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  dove è l'errore?
+</I>&gt;&gt;<i>  visto che se vado manualmente nella directory e digito ./SweetHome3D il
+</I>&gt;&gt;<i>  programma parte.....
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  spero di aver spiegato bene il problema....
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Ciao,
+</I>&gt;<i>
+</I>&gt;<i> Ti rispondo qui dato che non leggo la &quot;tecnica&quot; e non so se qualcuno
+</I>&gt;<i> ti ha gia' risposto di la' che sarebbe la sede adeguata.
+</I>&gt;<i>
+</I>&gt;<i> Devi settare il classpath!
+</I>&gt;<i>
+</I>&gt;<i> $JAVA_HOME/bin/java -classpath $CLASSPATH $MAINCLASS
+</I>&gt;<i>
+</I>&gt;<i> Il classpath deve contenere tutte le directory e .jar che contengono
+</I>&gt;<i> le definizioni delle classi che usi.
+</I>&gt;<i> quindi molto probabilmente anche la directory dove sta la $MAINCLASS.
+</I>&gt;<i> Lanciandolo dalla directory ti funziona perche' il classpath non
+</I>&gt;<i> specificato contiene la &quot;directory di lancio&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Ciao,
+</I>&gt;<i> d4lamar
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Generale mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>credo di non aver capito molto di quello che mi hai scritto :-(((
+infatti ho cercato il CLASSPATH e il MAINCLASS ma il primo è in usr e 
+del secondo non ne ho trovato traccia.....
+saresti così gentile di chiarirmi un poco le idee....
+
+davvero grazie infinite
+
+roberto
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002674.html">[Generale] lanciatore per programma java
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002676.html">[Generale] lanciatore per programma java
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2675">[ Data ]</a>
+              <a href="thread.html#2675">[ Thread ]</a>
+              <a href="subject.html#2675">[ Oggetto ]</a>
+              <a href="author.html#2675">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

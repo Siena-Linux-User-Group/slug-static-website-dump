@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Kernel Panic
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To=200710150354.29065.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000528.html">
+   <LINK REL="Next"  HREF="000530.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Kernel Panic</H1>
+    <B>Alessandro Iurlano</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To=200710150354.29065.pragma%40siena.linux.it"
+       TITLE="[Tecnica] Kernel Panic">alessandro.iurlano a gmail.com
+       </A><BR>
+    <I>Lun 15 Ott 2007 10:39:35 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000528.html">[Tecnica] Kernel Panic
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000530.html">[Tecnica] Iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#529">[ Data ]</a>
+              <a href="thread.html#529">[ Thread ]</a>
+              <a href="subject.html#529">[ Oggetto ]</a>
+	      <a href="author.html#529">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 10/15/07, Szymon Stefanek &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pragma a siena.linux.it</A>&gt; wrote:
+&gt;<i> On Sunday 14 October 2007 23:29, <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">voland03 a interfree.it</A> wrote:
+</I>&gt;<i> &gt; [...]
+</I>&gt;<i> &gt; Solamente che non riesco ad uscire dal
+</I>&gt;<i> &gt; seguente vicolo cieco del kernel panic,vi riporto le ultime 4 righe che
+</I>&gt;<i> &gt; appaiono nei messaggi al boot del nuovo kernel compilato.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; VFS: cannot open root device &quot;811&quot; or unknown-block(8,17)
+</I>&gt;<i> &gt; please append a correct &quot;root=&quot; boot option;here are the available
+</I>&gt;<i> &gt; partitions; 0300      4194302     hda driver:  ide-cdrom
+</I>&gt;<i> &gt; Kernel Panic - not syncing:VFS: unable to mount root fs on
+</I>&gt;<i> &gt; unknown-block(8,17)
+</I>&gt;<i>
+</I>&gt;<i> Hai la versione con due dischi SATA, giusto ?
+</I>&gt;<i>
+</I>&gt;<i> Cmq ad occhio il tuo nuovo kernel non ha il supporto per il controller SATA
+</I>&gt;<i> del tuo portatile, oppure (meno probabile) per il tipo di tabella di
+</I>&gt;<i> partizioni che hai usato.
+</I>&gt;<i>
+</I>&gt;<i> Guarda che controller SATA hai.
+</I>&gt;<i>
+</I>&gt;<i> # lspci | grep SATA
+</I>&gt;<i> 00:0f.0 RAID bus controller: VIA Technologies, Inc. VIA VT6420 SATA RAID
+</I>&gt;<i> Controller (rev 80)
+</I>&gt;<i>
+</I>&gt;<i> Poi cerca il driver nella configurazione del kernel e abilitalo.
+</I>&gt;<i>
+</I>
+Assicurati anche di configurarlo non come modulo ma selezionalo per
+l'inlcusione del kernel. Se lo configuri come modulo il kernel cerca
+di caricarlo dalla partizione di root dopo la fase di
+inizializzazione, ma al disco come ci arriva se non ha il driver per
+la partizione di root?? --&gt; panic!
+
+Ciao
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000528.html">[Tecnica] Kernel Panic
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000530.html">[Tecnica] Iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#529">[ Data ]</a>
+              <a href="thread.html#529">[ Thread ]</a>
+              <a href="subject.html#529">[ Oggetto ]</a>
+              <a href="author.html#529">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

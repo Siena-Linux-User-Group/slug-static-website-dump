@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ISC-DHCP ha uno strano comportamento...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20ISC-DHCP%20ha%20uno%20strano%20comportamento...&In-Reply-To=%3C505906FD.9040102%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001603.html">
+   <LINK REL="Next"  HREF="001605.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ISC-DHCP ha uno strano comportamento...</H1>
+    <B>Szymon Tomasz Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20ISC-DHCP%20ha%20uno%20strano%20comportamento...&In-Reply-To=%3C505906FD.9040102%40siena.linux.it%3E"
+       TITLE="[Tecnica] ISC-DHCP ha uno strano comportamento...">pragma a siena.linux.it
+       </A><BR>
+    <I>Mer 19 Set 2012 00:42:53 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001603.html">[Tecnica] ISC-DHCP ha uno strano comportamento...
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001605.html">[Tecnica] virtual box...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1604">[ Data ]</a>
+              <a href="thread.html#1604">[ Thread ]</a>
+              <a href="subject.html#1604">[ Oggetto ]</a>
+	      <a href="author.html#1604">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 09/17/2012 11:27 AM, Michele Pinassi wrote:
+
+ &gt; La cosa strana è che nella subnet_1 viene assegnato l'IP ai primi 3
+ &gt; mentre sui rifiuta ostinatamente di assegnarlo al quarto. I log di
+ &gt; sistema dicono:
+ &gt;
+ &gt; dhcpd: DHCPREQUEST for 172.20.1.16 (172.20.1.2) from cc:ef:48:5d:MAC4
+ &gt; via eth1
+ &gt; dhcpd: DHCPACK on 172.20.1.16 to cc:ef:48:5d:MAC4 via eth1
+ &gt; dhcpd: DHCPDISCOVER from cc:ef:48:5d:MAC4 via eth1: network
+ &gt; 172.20.0.0/16: no free leases
+ &gt; dhcpd: DHCPDISCOVER from cc:ef:48:5d:MAC4 via eth1: network
+ &gt; 172.20.0.0/16: no free leases
+ &gt;
+ &gt; e non c'è verso di farlo andare. Ovviamente gli altri 3 funzionano benone.
+
+Non ne so moltissimo di DHCP però sembra che ad essere confuso
+sia il dispositivo con MAC4 e non il server. In particolare nella
+sequenza si vede che MAC4 richiede un indirizzo IP già noto
+(probabilmente uno che ha avuto in passato) e il server risponde
+con un DHCPACK che vuol dire &quot;si, ok, prenditi quell'IP&quot;.
+
+Il discorso dovrebbe essere chiuso qui, invece per qualche
+motivo MAC4 riparte con la sequenza dall'inizio: DHCPDISCOVER...
+
+Guarda un pò in /var/lib/dhcpd/dhcpd.leases...
+-- 
+
+Szymon Tomasz Stefanek
+
+------------------------------------------------------------------------------
+-
+- The most beautiful thing we can experience is the mysterious.
+-
+------------------------------------------------------------------------------
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001603.html">[Tecnica] ISC-DHCP ha uno strano comportamento...
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001605.html">[Tecnica] virtual box...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1604">[ Data ]</a>
+              <a href="thread.html#1604">[ Thread ]</a>
+              <a href="subject.html#1604">[ Oggetto ]</a>
+              <a href="author.html#1604">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Dubbi su immagine
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dubbi%20su%20immagine&In-Reply-To=200612281703.24193.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000329.html">
+   <LINK REL="Next"  HREF="000332.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Dubbi su immagine</H1>
+    <B>marco</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dubbi%20su%20immagine&In-Reply-To=200612281703.24193.pragma%40siena.linux.it"
+       TITLE="[Tecnica] Dubbi su immagine">consumi2 a unisi.it
+       </A><BR>
+    <I>Gio 28 Dic 2006 16:57:04 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000329.html">[Tecnica] Dubbi su immagine
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000332.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#331">[ Data ]</a>
+              <a href="thread.html#331">[ Thread ]</a>
+              <a href="subject.html#331">[ Oggetto ]</a>
+	      <a href="author.html#331">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Pragma sopravvaluti le mie conoscenze..cmq il problema non sarà linux 
+(non dovrò ripristinarlo spesso e verrà usato poco...:(  spesso dovrò 
+rimettere w$ e vorrei farlo senza dover rimettere dopo le mani su 
+linux.  La tua soluzione è ottima ma non vorrei smontare tutti i dischi 
+e pensavo di fare un'immagine su un disco del server e poi installarlo 
+via rete nei vari PC..... potrei farlo anche con dei DVD.
+Pensavo addirittura di fare l'immagine della partizione di XP sul pc 
+stesso sotto linux e poi ripristinarla con linux quando serve...che ne dici?
+UgoSugo
+
+Szymon Stefanek ha scritto:
+&gt;<i> On Thursday 28 December 2006 16:11, marco wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Vi espongo brevemente:
+</I>&gt;&gt;<i> Nell'aula  PC dove lavoro i vari pc sono pieni di schifezze (adware
+</I>&gt;&gt;<i> virus giochi java etc) e quindi inservibili.....per ovviare al problema
+</I>&gt;&gt;<i> e ridurre al minimo i giramenti di ... ho deciso di reinstallare tutto
+</I>&gt;&gt;<i> su un pc aggiornarle tutto  fare immagine e  poi ogni tanto formattare e
+</I>&gt;&gt;<i> riaprtire dall'immagine già pronta (visto che sono 12 pc uguali).
+</I>&gt;&gt;<i> Contemporaneamente volevo mettere anche linux  così se qualcuno lo vuole
+</I>&gt;&gt;<i> provare...domande:
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Beh, secondo me è facile: basta che tieni una macchina (o un disco) &quot;master&quot;
+</I>&gt;<i> pulito.
+</I>&gt;<i>
+</I>&gt;<i> Prepari una macchina a dovere installando i due OS su un disco, ad esempio 
+</I>&gt;<i> hda. Quando sei soddisfatto, connetti un secondo disco (supponiamo hdb) di 
+</I>&gt;<i> dimensioni uguali (o superiori) ed esegui
+</I>&gt;<i>
+</I>&gt;<i> 	dd if=/dev/hda of=/dev/hdb
+</I>&gt;<i>
+</I>&gt;<i> Ed ecco che sul secondo disco hai una copia bit-a-bit del primo: lo puoi 
+</I>&gt;<i> connettere ad un pc. Fatto.
+</I>&gt;<i>
+</I>&gt;<i> Hm.. il problema può nascere per le configurazioni specifiche della
+</I>&gt;<i> macchina, come l'IP e il nome della macchina.
+</I>&gt;<i> Per l'IP direi che puoi risolvere con dhcp: la configurazione sarà
+</I>&gt;<i> uguale per tutte le macchine.
+</I>&gt;<i>
+</I>&gt;<i> Per il nome della macchina invece dovrai per forza smanicchiolare 
+</I>&gt;<i> nell'immagine appena creata. Nel caso di linux puoi montare la partizione
+</I>&gt;<i> che contiene /etc e cambiare /etc/hostname subito dopo il dd.
+</I>&gt;<i> Si può fare con un banale script di shell.
+</I>&gt;<i> Costruire lo stesso automatismo per Windows a prima vista non è banalissimo,  
+</I>&gt;<i> perchè il nome della macchina è scritto nel registro (?) e probabilmente è 
+</I>&gt;<i> pure scritto in caratteri UNICODE. Un approccio può essere quello di cercare 
+</I>&gt;<i> l'immagine binaria del nome del pc nella partizione di windows (intesa come 
+</I>&gt;<i> file /dev/hdbX) e modificarla in modo brutale.. forse si può istruire sed a 
+</I>&gt;<i> fare una cosa del genere. Dovresti scegliere dei nomi di pc tutti della 
+</I>&gt;<i> stessa lunghezza però...
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> 1) la partizioni le devo fare prima o quando faccio l'immagine  ricrea
+</I>&gt;&gt;<i> anche le partizioni negli altri pc?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Se usi la tecnica che ho esposto sopra l'immagine è dell'intero disco,
+</I>&gt;<i> compresa la tabella delle partizioni e le partizioni stesse.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> 2) devo fare un'immagine per ogni S.O.? se la risposta è NO posso poi
+</I>&gt;&gt;<i> ripristinare solo win oppure tutte le volte che rimetto l'immagine
+</I>&gt;&gt;<i> azzero anche linux?
+</I>&gt;&gt;<i> 3) Dato che pensavo di lasciare una partizione fat32 per mettere i dati
+</I>&gt;&gt;<i> durante il ripristino..posso scegliere di riprendere dall'immagine solo
+</I>&gt;&gt;<i> alcune partizioni o mi riscrive sempre tutto il disco?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Con la tecnica esposta sopra sovrascrivi l'intero disco e ti consiglio
+</I>&gt;<i> di farlo la prima volta su tutti i pc in modo da trovarti le partizioni
+</I>&gt;<i> già fatte.
+</I>&gt;<i> Se dopo vuoi ripristinare una sola partizione di una macchina &quot;slave&quot; basta 
+</I>&gt;<i> che connetti il sul hd ed istruisci dd con:
+</I>&gt;<i>
+</I>&gt;<i> 	dd if=/dev/hda3 of=/dev/hdb3
+</I>&gt;<i>
+</I>&gt;<i> In questo modo copierai l'immagine della sola terza partizione.
+</I>&gt;<i>
+</I>&gt;<i> Per ripristinare un intero OS dovrai ovviamente copiare il gruppo delle
+</I>&gt;<i> relative partizioni.
+</I>&gt;<i>
+</I>&gt;<i> Occhio a non incasinarti con le partizioni estese (assicurati di sapere
+</I>&gt;<i> cosa sono e come sono disposte sul disco).
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> So che state per chiederlo..sono indeciso tra mandrake, zenwalk
+</I>&gt;&gt;<i> (!!!!thanks to blackhat!!!) (mi ha colpito subito per la sua semplicità)
+</I>&gt;&gt;<i> ubuntu....molto software scientifico è scritto da debianisti....
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> In questo non ti so aiutare: gentoo forever! :D
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> __________ Informazione NOD32 1942 (20061228) __________
+</I>&gt;<i>
+</I>&gt;<i> Questo messaggio  è stato controllato dal Sistema Antivirus NOD32
+</I>&gt;<i> <A HREF="http://www.nod32.it">http://www.nod32.it</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+-- 
+Marco Consumi, PhD
+Polo Universitario Colle di Val d'Elsa
+Via Matteotti, 15 - 53034 Colle di Val D'Elsa (SI) 
+
+Dip. Scienze e Tecnologie Chimiche e dei Biosistemi
+(Department of Chemical and Biosystem Sciences)
+University of Siena
+Via Aldo Moro, 2 - 53100 Siena, Italy
+ph. +390577900321  fax +390577900322
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000329.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000332.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#331">[ Data ]</a>
+              <a href="thread.html#331">[ Thread ]</a>
+              <a href="subject.html#331">[ Oggetto ]</a>
+              <a href="author.html#331">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

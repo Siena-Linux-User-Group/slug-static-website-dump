@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] multiusers su un sistema
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20multiusers%20su%20un%20sistema&In-Reply-To=%3CCA%2B1kOc%2BJeCGC4EcBdePrZTgyOZS6DBNJgmQf2BUWLe_wYaJ24Q%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001556.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] multiusers su un sistema</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20multiusers%20su%20un%20sistema&In-Reply-To=%3CCA%2B1kOc%2BJeCGC4EcBdePrZTgyOZS6DBNJgmQf2BUWLe_wYaJ24Q%40mail.gmail.com%3E"
+       TITLE="[Tecnica] multiusers su un sistema">bartrosso a gmail.com
+       </A><BR>
+    <I>Gio 15 Mar 2012 15:44:56 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001556.html">[Tecnica] multiusers su un sistema
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1557">[ Data ]</a>
+              <a href="thread.html#1557">[ Thread ]</a>
+              <a href="subject.html#1557">[ Oggetto ]</a>
+	      <a href="author.html#1557">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>grazie mille della utile risposta.
+Ho risolto in quanto commettevo un errore..
+Dalla documentazione ufficiale di Postfix non si capisce assolutamente
+questa cosa.( o almeno io mi ci sono perso più volte).
+Una volta scritto il mio login_maps, dovevo semplicemente passarlo a
+#postmap per farlo processare come hash e farmelo riconoscere.
+Comunque in quanto si tratta di un server mail dedicato ad un solo utente
+non ho problemi. Ho creato un utente apposito per fare questo.
+Per la guida di ubuntu.it era quella che ho utilizzato maggiormente nel
+lavoro sul server..
+Grazie mille per il tempo dedicatomi.
+
+Tanga aka Bartrosso
+
+
+2012/3/15 daniele masti &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">danielemasti a gmail.com</A>&gt;
+
+&gt;<i> Salve
+</I>&gt;<i> non necessariamente. Postifix accetta come utenti quelli di sistema
+</I>&gt;<i> oppure quelli specificati attraverso uno dei backend supportati, che
+</I>&gt;<i> possono essere, oltre al canonico database, anche semplici file di
+</I>&gt;<i> testo. Stessa cosa fa dovecot (anche se non tramite la stessa
+</I>&gt;<i> sintassi) mentre per courier non sono tanto sicuro. Come guida di
+</I>&gt;<i> riferimento ti mando a questa (
+</I>&gt;<i> <A HREF="https://help.ubuntu.com/community/PostfixVirtualMailBoxClamSmtpHowto">https://help.ubuntu.com/community/PostfixVirtualMailBoxClamSmtpHowto</A>
+</I>&gt;<i> ). Se poi ti interessa (e soprattutto se lo ritrovo) tempo fa scrissi
+</I>&gt;<i> un piccolo tool per automatizzare il processo di creazione/rimozione
+</I>&gt;<i> utenti, se ti interessa fammi un fischio.
+</I>&gt;<i>
+</I>&gt;<i> Il 14 marzo 2012 18:57, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha scritto:
+</I>&gt;<i> &gt; salve, ho configurato un postfix con sasl per autenticarmi in tls,
+</I>&gt;<i> &gt; ora ho una domanda stupida, ma dalla risposta celata nei meandri della
+</I>&gt;<i> ret,
+</I>&gt;<i> &gt; e non riesco a trovarla.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Gli utenti che possono loggarsi al server smtp devono per forza essere
+</I>&gt;<i> &gt; utenti del sistema in uso?
+</I>&gt;<i> &gt; o posso riempire una lista da qualche parte (ho un
+</I>&gt;<i> &gt; controlled_envelope_sender, ma non reagisce ai cambiamenti)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Sono giunto al termine di una lunga giornata di configurazioni e prove.
+</I>&gt;<i> &gt; Ora mi si connette ma ricevo:
+</I>&gt;<i> &gt; SMTP server error: 5.7.1 : Sender address rejected: not owned by user
+</I>&gt;<i> &gt; root@(miodominiodiprova.com)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; sto usando root perchè qualsiasi altro nome inserito nella controlled
+</I>&gt;<i> &gt; envelope sender mi da un errore di autenticazione
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ho un controlled... .db credo sia stato generato a partire dal file
+</I>&gt;<i> &gt; precedente, ma le associazioni utente e password non so dove vadano
+</I>&gt;<i> messe,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; le 39 guide ufficiali che sto usando in questi giorni sorvolano tutte
+</I>&gt;<i> sulla
+</I>&gt;<i> &gt; cosa fondamentale, una volta installato, come si usa??? WTF
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Sappiatemi voler bene.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a presto
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; tanga
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Sono ciò che sono grazie a quello che siamo tutti,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare
+</I>&gt;<i> Debian..&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; «Immagina se ogni persona sulla terra potesse condividere con accesso
+</I>&gt;<i> libero
+</I>&gt;<i> &gt; e totale tutta la conoscenza umana.»
+</I>&gt;<i> &gt; &#8212; Jimmy Wales, fondatore di Wikipedia
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Tecnica mailing list
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>
+
+
+-- 
+Sono ciò che sono grazie a quello che siamo tutti,
+
+
+
+un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare Debian..&quot;
+
+
+«Immagina se ogni persona sulla terra potesse condividere con accesso
+libero e totale tutta la conoscenza umana.»
+&#8212; Jimmy Wales, fondatore di Wikipedia
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20120315/5f3a84ba/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20120315/5f3a84ba/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001556.html">[Tecnica] multiusers su un sistema
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1557">[ Data ]</a>
+              <a href="thread.html#1557">[ Thread ]</a>
+              <a href="subject.html#1557">[ Oggetto ]</a>
+              <a href="author.html#1557">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

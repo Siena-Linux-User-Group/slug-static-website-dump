@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAMX%3DvybBmYR2aCww7kCoJ3Q4x_287Ps8kPvWVzGqMXRMCYN3GQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005696.html">
+   <LINK REL="Next"  HREF="005698.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] shell</H1>
+    <B>Max Murdock</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAMX%3DvybBmYR2aCww7kCoJ3Q4x_287Ps8kPvWVzGqMXRMCYN3GQ%40mail.gmail.com%3E"
+       TITLE="[Generale] shell">maxmurd a gmail.com
+       </A><BR>
+    <I>Dom  5 Feb 2012 10:11:53 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005696.html">[Generale] shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005698.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5697">[ Data ]</a>
+              <a href="thread.html#5697">[ Thread ]</a>
+              <a href="subject.html#5697">[ Oggetto ]</a>
+	      <a href="author.html#5697">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2012/2/4 Freeze NorthPole &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">freeze a siena.linux.it</A>&gt;:
+&gt;<i> [SNIP]
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Mah io crfedo che vada bene in fondo. :)
+</I>&gt;&gt;<i> Del resto è un comando di assegnazione a una variabile di ambiente e
+</I>&gt;&gt;<i> quindi dove lo metti lo metti basta che non ti venga sovrascritta. :)
+</I>&gt;<i>  e quindi se ho imodificato il file in questo modo
+</I>&gt;<i>
+</I>&gt;<i> if [ -f /etc/bash_completion ] &amp;&amp; ! shopt -oq posix; then
+</I>&gt;<i>    . /etc/bash_completion
+</I>&gt;<i> fi
+</I>&gt;<i> PROMPT_COMMAND='printf &quot;\033]0;%s@%s:%s\007&quot; &quot;${USER}&quot;
+</I>&gt;<i> &quot;${HOSTNAME%%.*}&quot; &quot;${PWD/#$HOME/~}&quot;'
+</I>&gt;<i>
+</I>&gt;<i> e se mi loggo con l'utenza in question dovrei vedere il terminal diverso giusto?
+</I>&gt;<i> e in vece se sul mio server mi loggo come utente (diverso da root)
+</I>&gt;<i> vedo sempre il solito terminale, ovvero solo con $
+</I>&gt;<i>
+</I>&gt;<i> mica dovrò riaviare il server?
+</I>Bhe m acerto che no.
+
+Vediamo che succede al mio. Sto provando a capire un po'.
+Ecco, quel PROMPT_COMMAND a quanto pare maneggi aperlopiù il titolo
+che ti appare nel tab del terminale.
+Per quelloc eh apapre prima del prompt va maneggiata la variabile PS1,
+tipo prova a vedere che succede se metti nel tuo bashrc
+PS1=&quot;[\u@\h \W]\\$ &quot;
+oppure
+PS1=&quot;[\u@\h:\l \W]\\$ &quot;
+e dinamicamente ti dovrebbe cambiar eil prompt, a me lo fa ecco.
+
+Com'è da voi nel senese? Qui in Maremma siamo una delle poche zone in
+Italia che non ha visto la neve.
+
+buona domenica
+--
+Fabrizio Felici
+Registered Linux User #398394
+
+Vuoi passare a GNU/Linux e al software libero? Chiedimi come!
+GroLug Grosseto - <A HREF="http://www.grolug.org/">http://www.grolug.org/</A>
+Blog: Open Source e Linux Business <A HREF="http://www.smartmedia2000.it/articoli/">http://www.smartmedia2000.it/articoli/</A>
+
+&quot;Guardiamo lontano perché ci ergiamo sulle spalle dei giganti che ci
+hanno preceduto&quot; [Isaac Newton]
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005696.html">[Generale] shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005698.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5697">[ Data ]</a>
+              <a href="thread.html#5697">[ Thread ]</a>
+              <a href="subject.html#5697">[ Oggetto ]</a>
+              <a href="author.html#5697">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

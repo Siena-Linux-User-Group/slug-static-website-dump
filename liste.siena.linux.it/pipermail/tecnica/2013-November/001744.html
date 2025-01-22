@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] SSH su istanza remota
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20SSH%20su%20istanza%20remota&In-Reply-To=%3C0353e7ef-64b0-4283-ae6c-0dca07add379%40email.android.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001741.html">
+   <LINK REL="Next"  HREF="001749.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] SSH su istanza remota</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20SSH%20su%20istanza%20remota&In-Reply-To=%3C0353e7ef-64b0-4283-ae6c-0dca07add379%40email.android.com%3E"
+       TITLE="[Tecnica] SSH su istanza remota">contact a yusefmaali.net
+       </A><BR>
+    <I>Sab  9 Nov 2013 00:20:19 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001741.html">[Tecnica] SSH su istanza remota
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001749.html">[Tecnica] Offerta di lavoro.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1744">[ Data ]</a>
+              <a href="thread.html#1744">[ Thread ]</a>
+              <a href="subject.html#1744">[ Oggetto ]</a>
+	      <a href="author.html#1744">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>+1
+
+
+Simone Soldateschi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>&gt; ha scritto:
+&gt;<i>Stai utilizzando SSH con '-X' o '-Y'. Cosi' facendo l'applicazione
+</I>&gt;<i>viene
+</I>&gt;<i>eseguita sull'host remoto, ma il server grafico e' sul tuo client.
+</I>&gt;<i>
+</I>&gt;<i>Semplicemente:
+</I>&gt;<i>
+</I>&gt;<i>   - non usare SSH con '-X' o '-Y', ma semplicemente 'ssh <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a host</A>'
+</I>&gt;<i>   - imposta la variabile DISPLAY correttamente
+</I>&gt;<i>   - lancia l'applicazione sull'host remoto
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Simone Soldateschi
+</I>&gt;<i>--
+</I>&gt;<i>*email*: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>
+</I>&gt;<i>*phone*: +44 750 723 9300
+</I>&gt;<i>*LinkedIn*: linkedin.com/in/simonesoldateschi
+</I>&gt;<i>*skype*: simone.soldateschi
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>2013/11/8 Angelo Polvanesi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> Salve lista!
+</I>&gt;&gt;<i> Ho il bisogno di amministrare da remoto un PC con la desktop Ubuntu
+</I>&gt;<i>12.04
+</I>&gt;&gt;<i> LTS che ho a casa da terminale. In poche parole vorrei poter lanciare
+</I>&gt;&gt;<i> programmi (es. VLC) nella stessa &quot;istanza&quot; utente in esecuzione sul
+</I>&gt;<i>pc, in
+</I>&gt;&gt;<i> modo tale da, poniamo, avviare uno streaming radio da remoto e far
+</I>&gt;<i>partire
+</I>&gt;&gt;<i> la musica.
+</I>&gt;&gt;<i> Ho pensato subito a SSH, il problema è che questo mi avvia,
+</I>&gt;<i>giustamente,
+</I>&gt;&gt;<i> un'altra sessione utente per il mio collegamento remoto e me la fa
+</I>&gt;<i>girare
+</I>&gt;&gt;<i> sul client da cui lancio la connessione. Sarebbe possibile, invece,
+</I>&gt;&gt;<i> impostare il collegamento per controllare la sessione già aperta sul
+</I>&gt;&gt;<i> computer remoto?
+</I>&gt;&gt;<i> Forse è una domanda stupida, ma non sono riuscito a trovare risposte
+</I>&gt;<i>in
+</I>&gt;&gt;<i> giro.
+</I>&gt;&gt;<i> Vi ringrazio!
+</I>&gt;&gt;<i> Angelo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Tecnica mailing list
+</I>&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i><A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+Yusef Maali
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">contact a yusefmaali.net</A>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20131109/ba93a0bf/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20131109/ba93a0bf/attachment.htm</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001741.html">[Tecnica] SSH su istanza remota
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001749.html">[Tecnica] Offerta di lavoro.
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1744">[ Data ]</a>
+              <a href="thread.html#1744">[ Thread ]</a>
+              <a href="subject.html#1744">[ Oggetto ]</a>
+              <a href="author.html#1744">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

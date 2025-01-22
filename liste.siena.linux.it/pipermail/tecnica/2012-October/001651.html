@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] attacco bruteforce
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20attacco%20bruteforce&In-Reply-To=%3CCAPYHJka_ak53%2BUiGcbrVyX4Fph9O%3DNqUNovUT3BzQ%2B%3D1oBwo6g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001650.html">
+   <LINK REL="Next"  HREF="001632.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] attacco bruteforce</H1>
+    <B>Martino di Filippo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20attacco%20bruteforce&In-Reply-To=%3CCAPYHJka_ak53%2BUiGcbrVyX4Fph9O%3DNqUNovUT3BzQ%2B%3D1oBwo6g%40mail.gmail.com%3E"
+       TITLE="[Tecnica] attacco bruteforce">puntodifuga a gmail.com
+       </A><BR>
+    <I>Gio 11 Ott 2012 14:06:22 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001650.html">[Tecnica] attacco bruteforce
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001632.html">[Tecnica] attacco bruteforce
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1651">[ Data ]</a>
+              <a href="thread.html#1651">[ Thread ]</a>
+              <a href="subject.html#1651">[ Oggetto ]</a>
+	      <a href="author.html#1651">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ti do il mio punto di vista, dato che di server in produzione ne ho una
+ventina.
+
+- Disabilita assolutamente l'accesso SSH per l'utente root. Accedi come
+utente
+  non privilegiato, e poi usa sudo / su quando ti servono i permessi.
+Questo e'
+  fondamentale.
+
+- Sposta SSH dalla porta 22. Essendo &quot;security through obscurity&quot; non rende
+il
+  server piu' &quot;sicuro&quot;, ma eviti i tool automatizzati che provano password
+per
+  giorni e ti riempiono i log ;)
+
+- Disabilita l'accesso tramite password per tutti gli utenti. Crea una
+chiave usando
+  ssh-keygen, lascia la chiave pubblica in ~/.ssh/authorized_keys e
+proteggi la
+  chiave privata sul tuo pc con una password (che ti verra' chiesta ogni
+volta che
+  usi la chiave).
+
+  Puo' sembrare poco pratico, ma ti ci abitui velocemente. Personalmente
+tengo
+  le due o tre chiavi che mi possono servire per manutenzione in ogni
+momento in
+  Dropbox. Sono protette da password, ma se ho bisogno urgente di accedere
+  da un pc non mio posso sempre scaricarle da dropbox.com. Le uso senza
+  problemi da Linux e Mac (ssh), Windows (putty) ed Android
+(connectbot/irssi).
+
+  Se devi dare accesso ad altre persone, puoi mettere tutte le loro chiavi
+pubbliche
+  in ~/.ssh/authorized_keys, per cui ciascuno accede con la propria. La
+chiave
+  vale anche per SFTP ovviamente.
+
+- Prendi l'abitudine di leggere, ogni volta che ti connetti, la riga &quot;Last
+login: &quot;, e
+  indaga immediatamente se noti un IP / orario che non ti e' familiare.
+
+
+Detto questo, se qualcuno ha acceduto al tuo server, e' molto importante
+che tu
+lo formatti e riparta da capo, trasferendo strettamente solo i dati che ti
+servono.
+E' pratica molto comune lasciare almeno una backdoor per poter accedere in
+seguito al server, quindi non puoi avere la certezza di averlo rimesso in
+sicurezza
+se non ripartendo da zero.
+
+Buon lavoro! :)
+
+Martino
+
+
+2012/10/11 Freeze NorthPole &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">freeze782 a gmail.com</A>&gt;
+
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> prima di ogni cosa vi ringrazio per le vostre pronte risposte
+</I>&gt;<i> come vi accennavo ho spento il server e &quot;tranquillizato&quot; sia il mio
+</I>&gt;<i> provider che i proprietari  dei 2 server attaccati
+</I>&gt;<i> sono già in movimento per salvare il salvabile e reinstallare una
+</I>&gt;<i> versione &quot;pulita&quot; dell' OS
+</I>&gt;<i> a questo punto devo proteggermi per il futuro, sto leggendo con
+</I>&gt;<i> interesse tutte i suggerimenti che mi state dando ma non vi nascondo
+</I>&gt;<i> la mia ignoranza in materia, per cui mi servirebbe qualche &quot;guru&quot; che
+</I>&gt;<i> mi segua nei primi passi (alla peggio intervenga direttamente) per
+</I>&gt;<i> essere sicuro di non fare ulteriori danni....
+</I>&gt;<i>
+</I>&gt;<i> qualcuno di voi sarebbe disponibile  ?
+</I>&gt;<i>
+</I>&gt;<i> Grazie Mille acnora a tutti
+</I>&gt;<i> Freeze
+</I>&gt;<i>
+</I>&gt;<i> 2012/10/11 Yusef Maali &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">contact a yusefmaali.net</A>&gt;:
+</I>&gt;<i> &gt; On 11/10/2012 12:39, Simone Soldateschi wrote:
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; se stiamo parlando di irrobustire un server allora le misure da
+</I>&gt;<i> &gt;&gt; intraprendere
+</I>&gt;<i> &gt;&gt; non sono mai abbastanza, ed anche quando pensi di aver fatto tutto il
+</I>&gt;<i> &gt;&gt; possibile
+</I>&gt;<i> &gt;&gt; devi continuamente esaminare i log
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Vero, diciamo che questa è la regola 0.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; se usi qualsiasi dispositivo con *nix (android compreso) non ci sono
+</I>&gt;<i> &gt;&gt; problemi a
+</I>&gt;<i> &gt;&gt; fare knocking ed usare certificati digitali
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; diverso e' il discorso se stiamo parlando di un server casalingo a cui
+</I>&gt;<i> &gt;&gt; vuoi
+</I>&gt;<i> &gt;&gt; accedere da qualsiasi dispositivo e da qualsiasi posto
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Per la mia esperienza, vale l'esatto contrario.
+</I>&gt;<i> &gt; Se usi un server in produzione (aka per lavoro), puoi avere la necessità
+</I>&gt;<i> di
+</I>&gt;<i> &gt; dover accederci con macchine non tue, con qualsiasi OS, da reti blindate,
+</I>&gt;<i> &gt; ecc...
+</I>&gt;<i> &gt; Un server in produzione deve essere versatile, a meno che non abbia una
+</I>&gt;<i> &gt; finalità precisa su cui puoi fare scelte e tagli drastici.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; E proprio sul server casalingo, monoutente, su cui ti puoi divertire ad
+</I>&gt;<i> &gt; integrare le tecnologie più fighe (e restrittive) :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; In ogni caso dipende sempre dalle proprie necessità, ovviamente ;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Tecnica mailing list
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20121011/07ffafd6/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20121011/07ffafd6/attachment.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001650.html">[Tecnica] attacco bruteforce
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001632.html">[Tecnica] attacco bruteforce
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1651">[ Data ]</a>
+              <a href="thread.html#1651">[ Thread ]</a>
+              <a href="subject.html#1651">[ Oggetto ]</a>
+              <a href="author.html#1651">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

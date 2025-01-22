@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Visualizzare un numero in complemento a due
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To=db01795b0901221123r6a89897dga0d8c1bf5ab3be49%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000753.html">
+   <LINK REL="Next"  HREF="000756.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Visualizzare un numero in complemento a due</H1>
+    <B>Szymon Tomasz Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To=db01795b0901221123r6a89897dga0d8c1bf5ab3be49%40mail.gmail.com"
+       TITLE="[Tecnica] Visualizzare un numero in complemento a due">pragma a siena.linux.it
+       </A><BR>
+    <I>Gio 22 Gen 2009 20:06:43 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000753.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000756.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#755">[ Data ]</a>
+              <a href="thread.html#755">[ Thread ]</a>
+              <a href="subject.html#755">[ Oggetto ]</a>
+	      <a href="author.html#755">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 22 January 2009, Marco Slack wrote:
+&gt;<i> Il giorno 22 gennaio 2009 19.07, Michele O-Zone Pinassi
+</I>&gt;<i>
+</I>&gt;<i> &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a zerozone.it</A>&gt;ha scritto:
+</I>&gt;<i> &gt; Ciao a tutti,
+</I>&gt;<i> &gt; domanda per i cervelloni (io non riesco a venirne fuori !). Ho un DS1631
+</I>&gt;<i> &gt; collegato, via I2C, al PIC 18F4455. Il DS1631 mi restituisce la
+</I>&gt;<i> &gt; temperatura in 12-bit complemento a due. Praticamente io ho un array di
+</I>&gt;<i> &gt; due byte in cui il most significant byte mi rappresenta la parte intera,
+</I>&gt;<i> &gt; con il MSB ad 1 se negativo o 0 se positivo, mentre il least significant
+</I>&gt;<i> &gt; byte contiene la parte
+</I>&gt;<i> &gt; decimale. Un esempio (dal datasheet del DS1631):
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 0111 1101 0000 0000 (7d00h) = +125°C
+</I>&gt;<i> &gt; 0001 1001 0001 0000 (1910h) = +25.0625 °C
+</I>&gt;<i> &gt; 0000 0000 1000 0000 (0080h) = +0.5 °C
+</I>&gt;<i> &gt; 0000 0000 0000 0000 (0000h) = 0 °C
+</I>&gt;<i> &gt; 1111 1111 1000 0000 (FF80h) = -0.5 °C
+</I>&gt;<i> &gt; 1110 0110 1111 0000 (E6F0h) = -25.0625 °C
+</I>&gt;<i> &gt; 1100 1001 0000 0000 (C900h) = -55 °C
+</I>
+Questo è un signed short (in qualche byte order) che rappresenta 256-esime 
+parti di grado (con una precisione di soli 12 bit pero').
+
+void display(unsigned char b1,unsigned char b2)
+{                                           
+  unsigned char b[2];                       
+  b[0] = b2;                                
+  b[1] = b1;                                
+
+  short * p = (short *)b;
+
+  printf(&quot;FLOAT: %f\n&quot;,(double)*p / 256.0);
+}                                          
+
+Se ti segna dei valori strani, scambia b1 con b2 (byte order sbagliato).
+
+
+Szymon Tomasz Stefanek
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000753.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000756.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#755">[ Data ]</a>
+              <a href="thread.html#755">[ Thread ]</a>
+              <a href="subject.html#755">[ Oggetto ]</a>
+              <a href="author.html#755">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

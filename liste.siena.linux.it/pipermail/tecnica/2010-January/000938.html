@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] RAID non riconosciuto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20RAID%20non%20riconosciuto&In-Reply-To=%3C1264078798.2671.5.camel%40AndreTuxPC%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000937.html">
+   <LINK REL="Next"  HREF="000939.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] RAID non riconosciuto</H1>
+    <B>Andrea Ciani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20RAID%20non%20riconosciuto&In-Reply-To=%3C1264078798.2671.5.camel%40AndreTuxPC%3E"
+       TITLE="[Tecnica] RAID non riconosciuto">cianiandrea10 a gmail.com
+       </A><BR>
+    <I>Gio 21 Gen 2010 12:59:58 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000937.html">[Tecnica] [Fwd: remastersys]
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000939.html">[Tecnica] aggiornare mozilla firefox e thunderbird
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#938">[ Data ]</a>
+              <a href="thread.html#938">[ Thread ]</a>
+              <a href="subject.html#938">[ Oggetto ]</a>
+	      <a href="author.html#938">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve di nuovo a tutti. Vi presento questo problema che ho presentato
+anche al forum di ubuntu.it con scarsi risultati:
+
+Ho un HD da 80 GB sul quale ho installato Ubuntu 9.10 x64.
+Ho poi un raid0 con Windows7 (sempre x64) che vorrei far partire come
+sistema operativo alternativo.
+
+Come va fatta l'impostazione di grub?? Ho provato con &quot;md0&quot; ma non
+riconosce comunque gli hd! Vi posto sia la versione di grub che il fdisk
+-l:
+
+        grub (GNU GRUB 0.97)
+        
+        fdisk -l:
+        
+        Disco /dev/sda: 160.0 GB, 160041885696 byte
+        255 testine, 63 settori/tracce, 19457 cilindri
+        Unità = cilindri di 16065 * 512 = 8225280 byte
+        Identificativo disco: 0x29dd29dc
+        
+        Dispositivo Boot      Start         End      Blocks   Id  System
+        /dev/sda1   *       43749       87506   351474930+  e1  accesso
+        DOS
+        La partizione 1 non termina al limite del cilindro.
+        /dev/sda2           43782       87571   351737078+  e9
+        Sconosciuto
+        La partizione 2 non termina al limite del cilindro.
+        /dev/sda3           43814       87636   351999226+  f1
+        SpeedStor
+        La partizione 3 non termina al limite del cilindro.
+        /dev/sda4           43847       87701   352261374+  f9
+        Sconosciuto
+        La partizione 4 non termina al limite del cilindro.
+        
+        Disco /dev/sdb: 160.0 GB, 160041885696 byte
+        255 testine, 63 settori/tracce, 19457 cilindri
+        Unità = cilindri di 16065 * 512 = 8225280 byte
+        Identificativo disco: 0xd6440761
+        
+        Dispositivo Boot      Start         End      Blocks   Id  System
+        /dev/sdb1   *           1          13      102400    7
+        HPFS/NTFS
+        La partizione 1 non termina al limite del cilindro.
+        /dev/sdb2              13       38914   312472576    7
+        HPFS/NTFS
+        
+        Disco /dev/sdc: 500.1 GB, 500107862016 byte
+        255 testine, 63 settori/tracce, 60801 cilindri
+        Unità = cilindri di 16065 * 512 = 8225280 byte
+        Identificativo disco: 0xfd66fd66
+        
+        Dispositivo Boot      Start         End      Blocks   Id  System
+        /dev/sdc1   *           1       60800   488375968+   7
+        HPFS/NTFS
+        
+        Disco /dev/sdd: 80.0 GB, 80026361856 byte
+        255 testine, 63 settori/tracce, 9729 cilindri
+        Unità = cilindri di 16065 * 512 = 8225280 byte
+        Identificativo disco: 0xe1c5e1c5
+        
+        Dispositivo Boot      Start         End      Blocks   Id  System
+        /dev/sdd1   *           1        9327    74919096   83  Linux
+        /dev/sdd2            9328        9729     3229065    5  Esteso
+        /dev/sdd5            9328        9729     3229033+  82  Linux
+        swap / Solaris
+
+Gli HD in raid sono la coppia da 160 GB....
+
+Qualcuno sa darmi qualche aiuto please??? :(
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000937.html">[Tecnica] [Fwd: remastersys]
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000939.html">[Tecnica] aggiornare mozilla firefox e thunderbird
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#938">[ Data ]</a>
+              <a href="thread.html#938">[ Thread ]</a>
+              <a href="subject.html#938">[ Oggetto ]</a>
+              <a href="author.html#938">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

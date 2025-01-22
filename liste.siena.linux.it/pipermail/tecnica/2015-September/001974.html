@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Periferiche Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2015-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Periferiche%20Linux&In-Reply-To=%3C55F9E97B.2010801%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001973.html">
+   <LINK REL="Next"  HREF="001975.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Periferiche Linux</H1>
+    <B>Szymon Tomasz Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Periferiche%20Linux&In-Reply-To=%3C55F9E97B.2010801%40siena.linux.it%3E"
+       TITLE="[Tecnica] Periferiche Linux">pragma a siena.linux.it
+       </A><BR>
+    <I>Mer 16 Set 2015 23:13:15 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001973.html">[Tecnica] Periferiche Linux
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001975.html">[Tecnica] Periferiche Linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1974">[ Data ]</a>
+              <a href="thread.html#1974">[ Thread ]</a>
+              <a href="subject.html#1974">[ Oggetto ]</a>
+	      <a href="author.html#1974">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 16/09/2015 22:53, Marcello Semboli wrote:
+&gt;<i> Salve,
+</I>&gt;<i> dovrei imparare a gestire delle periferiche su raspberry pi 2.
+</I>&gt;<i> Intendo &quot;gestire&quot; in senso molto lato perché sono quasi totalmente a digiuno di tutto ciò che riguarda la directory /dev.
+</I>&gt;<i> So che esistono i moduli e so che i moduli fanno apparire le periferiche nella directory /dev.
+</I>&gt;<i> Ma non so poi cosa dovrebbe fare un programma per usare la periferica.
+</I>&gt;<i> Non devo padroneggiare l'argomento, devo solo cominciare a capirlo.
+</I>
+Hm... l'argomento di per sè è abbastanza ampio e dipende a che livello vuoi arrivare.
+Puoi leggere qualcosa qui: <A HREF="http://www.tldp.org/LDP/tlk/dd/drivers.html">http://www.tldp.org/LDP/tlk/dd/drivers.html</A> .
+Io a suo tempo lessi &quot;Linux Device Drivers&quot; di Rubini, fatto molto bene,
+ma non so se c'è una versione aggiornata per i kernel recenti.
+
+Comunque, sintetizzando.
+
+- Sulla raspberry ci gira linux standard, quindi la gestione delle periferiche
+   non è particolare.
+
+- La gestione di una periferica varia in funzione del tipo di dispositivo.
+
+- Come hai già accennato, per molti dispositivi (quelli che comunemente attacchi
+   ad un pc tramite USB, ad esempio) il kernel offre un'interfaccia userspace
+   accessibile tramite un file in /dev (che poi si chiama &quot;(char o block) device&quot;)
+   Poi ci vuole uno strato software in userspace che di fatto usi la periferica
+   con il protocollo corretto.
+
+Un esempio:
+
+- Modem 3G connesso via USB.
+   Per esempio Alcatel One Touch X230, magari brandizzato da Vodafone o qualche
+   altra compagnia.
+
+- Il kernel da solo si accorge che c'è un dispositivo connesso su USB e lo &quot;aggancia&quot;,
+   tramite il driver generico USB al suo albero di dispositivi. A questo livello vedi
+   la periferica tramite lsusb e poco altro.
+   $ lsusb
+   ...
+   Bus 001 Device 028: ID 1bbb:0017 T &amp; A Mobile Phones
+   ...
+
+- Il dispositivo espone un identificativo composto da &lt;vendor_id&gt;:&lt;device_id&gt;
+   (nel nostro caso 1bbb:0017)
+
+- A questo punto serve un driver che sia in grado di riconoscere il dispositivo
+   e &quot;parlare&quot; con il particolare chip a bordo.
+
+- Se il modulo del driver è già caricato (o il driver è builtin nel kernel) allora
+   la sua attivazione avviene automaticamente tramite la coppia &lt;vendor_id&gt;:&lt;device_id&gt;.
+   Se il driver non è caricato allora si può caricarlo tramite modprobe.
+   Ci sono dei meccanismi che consentono di caricare automaticamente i moduli
+   quando viene inserito un dispositivo riconosciuto.
+
+   Per il modem in oggetto il driver è usbserial (piùttosto generico).
+   Sulla ubuntu il driver viene caricato automaticamente mentre su distribuzioni
+   &quot;embedded&quot; spesso l'ho dovuto tirare su a mano.
+
+- Il driver riconosce il chip e tipicamente espone un interfaccia
+   di tipo seriale associata ad una nuova coppia di numeri (minor/major).
+
+   Con il programma mknod puoi creare un &quot;device&quot; dentro /dev (ma anche
+   da qualche altra parte) che si &quot;aggancia&quot; alla coppia minor/major e permette
+   di comunicare con il driver. Per esempio /dev/ttyUSB0.
+
+   La /dev/ di quasi tutte le distribuzioni è prepopolata con i device
+   più comuni e ci sono dei meccanismi per creare i device automaticamente.
+
+   Quindi mknod non si usa quasi più... però è bene sapere che il processo
+   teorico sarebbe quello.
+
+- A questo punto un programma userspace, come ad esempio minicom,
+   può connettersi al modem e &quot;parlarci&quot; con il relativo protocollo (i comandi AT).
+
+   Per usare il modem 3G nel mondo reale, poi, hai bisogno di un programma
+   più complicato: pppd, che usa sequenze di comandi AT per stabilire una
+   connessione remota e tira su tutta la baracca necessaria perchè
+   il tuo browser possa fare connessioni TCP attraverso di essa.
+
+Quindi per usare una periferica in generale ci vuole uno &quot;stack&quot; di software.
+Nel caso del modem 3G abbiamo:
+
+- Driver usb generico (in kernelspace)
+- Driver dello specifico chip (in kernelspace)
+       |
+      /dev/ttyUSB0
+       |
+- pppd (in userspace)
+       |
+      ppp0
+       |
+- google-chrome
+
+Ci sono diverse varianti di questo schema.
+
+- Alcuni dispositivi hanno driver quasi completamente in userspace. Un esempio
+   sono dispositivi accessibili tramite libusb, un'altro sono le stampanti di rete.
+
+- Le schede video sono bestie molto complicate e i relativi driver a livello
+   kernel non necessariamente offrono un'interfaccia in /dev.
+
+- Le schede di rete offrono interfacce specializzate (eth0, wlan0 etc..)
+   che non stanno dentro /dev.
+
+- Alcuni dispositivi possono offrire più interfacce userspace, anche di
+   tipo diverso (ad esempio ci sono chiavette USB che fanno anche storage).
+
+Poi ci sono vari &quot;glitch&quot;.
+
+- Alcuni dispositivi USB hanno bisogno di essere &quot;switchati&quot; di modalità
+   per poter funzionare. Per questo c'è usb_modeswitch.
+
+- Il kernel non conosce gli ID di tutti i possibili dispositivi
+   quindi non è detto che sia in grado di tirare su il driver necessario.
+   Non è neanche detto che il driver stesso sia in grado di agganciarsi
+   al proprio dispositivo, magari bisogna dargli qualche dritta.
+
+Etc...
+
+Se hai domande specifiche, spara.
+
+--
+
+STS
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001973.html">[Tecnica] Periferiche Linux
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001975.html">[Tecnica] Periferiche Linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1974">[ Data ]</a>
+              <a href="thread.html#1974">[ Thread ]</a>
+              <a href="subject.html#1974">[ Oggetto ]</a>
+              <a href="author.html#1974">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

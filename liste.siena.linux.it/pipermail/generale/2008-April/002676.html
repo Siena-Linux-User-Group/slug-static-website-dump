@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] lanciatore per programma java
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20lanciatore%20per%20programma%20java&In-Reply-To=48107F4A.4070401%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002675.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] lanciatore per programma java</H1>
+    <B>Dalamar</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20lanciatore%20per%20programma%20java&In-Reply-To=48107F4A.4070401%40valdelsa.net"
+       TITLE="[Generale] lanciatore per programma java">d4lamar a gmail.com
+       </A><BR>
+    <I>Gio 24 Apr 2008 16:16:59 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002675.html">[Generale] lanciatore per programma java
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2676">[ Data ]</a>
+              <a href="thread.html#2676">[ Thread ]</a>
+              <a href="subject.html#2676">[ Oggetto ]</a>
+	      <a href="author.html#2676">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>  credo di non aver capito molto di quello che mi hai scritto :-(((
+</I>&gt;<i>  infatti ho cercato il CLASSPATH e il MAINCLASS ma il primo è in usr e
+</I>&gt;<i>  del secondo non ne ho trovato traccia.....
+</I>&gt;<i>  saresti così gentile di chiarirmi un poco le idee....
+</I>
+Iniziamo dal principio...
+Dato che  lo lanci con ./SweetHome3D mi pare di capire che questo file
+sia un eseguibile e non una classe java!
+
+Se e' uno script di shell dovresti allegarmelo in modo che possa capire cosa fa.
+
+Se Invece funziona quando fai:
+
+cd /home/robi/SweetHome3D-1.2.1
+java SweetHome3D
+
+allora e' java.
+
+Se funziona cosi' perche' non fare uno script:
+
+----------------------------------------------------
+
+#!/bin/bash
+
+DIR=$PWD
+cd /home/robi/SweetHome3D-1.2.1
+java SweetHome3D
+cd $DIR
+
+----------------------------------------------------
+
+Con $MAINCLASS intendevo la classe principale java quella che contiene
+il metodo main() da  eseguire.
+Con $CLASSPATH intendevo l'inseme di PATH separati da : contenenti
+tutte le classi java o archivi .jar necessari all'esecuzione del
+metodo main() della classe principale.
+
+Proseguiamo in pvt nel caso, non credo sia argomento di interesse &quot;generale&quot;.
+
+Ciao,
+d4lamar
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002675.html">[Generale] lanciatore per programma java
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2676">[ Data ]</a>
+              <a href="thread.html#2676">[ Thread ]</a>
+              <a href="subject.html#2676">[ Oggetto ]</a>
+              <a href="author.html#2676">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

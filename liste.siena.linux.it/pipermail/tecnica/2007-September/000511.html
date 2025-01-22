@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi con /etc/sudoers
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=BAY131-W21F2CDCCBDA77FAB6391C2B4B40%40phx.gbl">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000510.html">
+   <LINK REL="Next"  HREF="000512.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi con /etc/sudoers</H1>
+    <B>roberto volpini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=BAY131-W21F2CDCCBDA77FAB6391C2B4B40%40phx.gbl"
+       TITLE="[Tecnica] problemi con /etc/sudoers">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Sab 22 Set 2007 13:04:27 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000510.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000512.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#511">[ Data ]</a>
+              <a href="thread.html#511">[ Thread ]</a>
+              <a href="subject.html#511">[ Oggetto ]</a>
+	      <a href="author.html#511">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>no ....mi si presentava così quando avevo windows in un altra 
+partizione....e questo mi riporta a come faccio ad avviare la modalità 
+recovery?
+
+alfonso - ha scritto:
+&gt;<i> Ma scusa quando avvii il pc, non ti si presenta dopo un pò una 
+</I>&gt;<i> schermata con
+</I>&gt;<i> Ubuntu ed i vari kernel ed affianco scritto &quot;Recovery mode&quot; ed alla 
+</I>&gt;<i> fine:  &quot;Ubuntu, memtest86+&quot;?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; Date: Sat, 22 Sep 2007 11:16:52 +0200
+</I>&gt;<i> &gt; From: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i> &gt; To: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; Subject: Re: [Tecnica] problemi con /etc/sudoers
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ho provato con cntr+alt+f1 ma non mi fa cambiare i permessi in quanto
+</I>&gt;<i> &gt; non mi riconosce come amministratore nemmenno con
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; su -
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; quanto al grub non so come fare a entrarci visto che ho una sola
+</I>&gt;<i> &gt; partizione con ubuntu....e winzozz virtualizzato....(il casino credo di
+</I>&gt;<i> &gt; averlo fatto ieri cambiando i permessi a vmplayer)...
+</I>&gt;<i> &gt; in questo caso come faccio a far partire il ricovery mode?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; grazie ancora
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; alfonso - ha scritto:
+</I>&gt;<i> &gt; &gt; hai riavviato in modalità recovery? da grub selezioni avvio di ubuntu
+</I>&gt;<i> &gt; &gt; in recovery mode,
+</I>&gt;<i> &gt; &gt; semplicemente scrivi
+</I>&gt;<i> &gt; &gt; chmod 440 /etc/sudoers
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Attenzione non scrivere sudo prima perchè 1 non ce n'è bisogno 2
+</I>&gt;<i> &gt; &gt; probabilmente non funzionerebbe perchè il comando sudo non va essendo
+</I>&gt;<i> &gt; &gt; appunto incasinato il file sudoers.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; exit
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; e dovrebbe partire gdm... quindi prova a &quot;sudare&quot;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Date: Sat, 22 Sep 2007 08:21:28 +0200
+</I>&gt;<i> &gt; &gt; &gt; From: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i> &gt; &gt; &gt; To: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">generale a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; &gt; &gt; Subject: [Tecnica] problemi con /etc/sudoers
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; stamani sono andato per aggiornare il mio ubuntu e non ne ha voluto
+</I>&gt;<i> &gt; &gt; &gt; saperne....visto che dal gestore non si aggiornava, ho provato 
+</I>&gt;<i> con sudo
+</I>&gt;<i> &gt; &gt; &gt; apt-get update....
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; sudo: /etc/sudoers is mode 0777, should be 0440
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; questa è stata la risposta del terminale dal quale si evince che i
+</I>&gt;<i> &gt; &gt; &gt; permessi di /etc/sudoers sono sbagliati.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; bene.....come faccio a rimetterli come devono essere ?
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; visto che con chmod 440 /etc/sudoers ho questa risposta:
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; chmod: ripristino dei permessi di `/etc/sudoers': Funzione non 
+</I>&gt;<i> permessa
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; ovviamente non mi riconosce come amministratore.....
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; qualcuno sa come fare?
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; grazie a tutti
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; roberto
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> &gt; &gt; Lanciati in una sfida con i tuoi amici a Battaglia Navale, il nuovo
+</I>&gt;<i> &gt; &gt; gioco per Messenger! Battaglia Navale
+</I>&gt;<i> &gt; &gt; &lt;<A HREF="http://messengergiochi.it.msn.com/battaglianavale.htm">http://messengergiochi.it.msn.com/battaglianavale.htm</A>&gt;
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Tecnica mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Tecnica mailing list
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> Lanciati in una sfida con i tuoi amici a Battaglia Navale, il nuovo 
+</I>&gt;<i> gioco per Messenger! Battaglia Navale 
+</I>&gt;<i> &lt;<A HREF="http://messengergiochi.it.msn.com/battaglianavale.htm">http://messengergiochi.it.msn.com/battaglianavale.htm</A>&gt;
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000510.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000512.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#511">[ Data ]</a>
+              <a href="thread.html#511">[ Thread ]</a>
+              <a href="subject.html#511">[ Oggetto ]</a>
+              <a href="author.html#511">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

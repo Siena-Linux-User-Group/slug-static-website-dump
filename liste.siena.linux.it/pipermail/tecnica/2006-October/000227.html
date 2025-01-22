@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Siam qui...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Siam%20qui...&In-Reply-To=200610162026.41391.pragma%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000226.html">
+   <LINK REL="Next"  HREF="000228.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Siam qui...</H1>
+    <B>Giulio Saletti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Siam%20qui...&In-Reply-To=200610162026.41391.pragma%40siena.linux.it"
+       TITLE="[Tecnica] Siam qui...">giulio.saletti a gmail.com
+       </A><BR>
+    <I>Lun 16 Ott 2006 22:32:33 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000226.html">[Tecnica] Siam qui...
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000228.html">[Tecnica] Siam qui...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#227">[ Data ]</a>
+              <a href="thread.html#227">[ Thread ]</a>
+              <a href="subject.html#227">[ Oggetto ]</a>
+	      <a href="author.html#227">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Grazie Szymon,
+ma il problema vero è che sono un somaro io!
+
+Modificavo le impostazioni senza passare ad amministratore...
+
+Sono profondamente convinto che utilizzare Linux sia anzitutto un problema
+di concetto, di approccio, soprattutto per i microsoftiani come me, come
+dice il buon Simone Soldateschi...
+
+La mia esperienza con Windows mi porta a ragionare in determinate direzioni
+e questo mi rallenta sicuramente nell'apprendimento di Linux... accidenti!
+
+Ad esempio non riesco a capire dove siano gli eseguibili (veramente io cerco
+degli eseguibili ma non so nemmeno se sia questo il modo di pensare di
+Linux... ariaccidenti!) e quando installo un nuovo pacchetto dal tool di
+gestione degli stessi per me è scontato ritrovarmi il link all'eseguibile
+(aridagli!) nel menù di KDE...
+
+Comunque va già un pò meglio... almeno sono riuscito a configurare il
+desktop... forse verso le tre di notte sarò riuscito a capire il perchè mi
+va in crash Amarok...
+
+Sarà una strada mooolto lunga... solo per legger questa mailing list mi
+tocca utilizzare Windows...
+
+Per adesso grazie e a presto!
+
+Il 16/10/06, Szymon Stefanek &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pragma a siena.linux.it</A>&gt; ha scritto:
+&gt;<i>
+</I>&gt;<i> On Monday 16 October 2006 20:09, Giulio Saletti wrote:
+</I>&gt;<i> &gt; Siam qui,
+</I>&gt;<i> &gt; completamente in balìa di Linux...
+</I>&gt;<i> &gt; Imposto la risoluzione del video e non viene mantenuta, non riesco a far
+</I>&gt;<i> &gt; funzionare la mia scheda wireless, i programmi di si bloccano con una
+</I>&gt;<i> &gt; puntualità incredibile...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; In una settimana (e due nuove installazioni della distro) sono riuscito
+</I>&gt;<i> &gt; solo ad attivare una penna bluetooth...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ma come si fa a cominciare bene?
+</I>&gt;<i>
+</I>&gt;<i> Insisti.
+</I>&gt;<i> Anni fa, la prima volta, ci ho messo una settimana a far andare X sul mio
+</I>&gt;<i> pc... ora però vivo di rendita perchè ho capito in dettaglio come
+</I>&gt;<i> funzionano
+</I>&gt;<i> le cose.
+</I>&gt;<i>
+</I>&gt;<i> Per diventare un risolutore di problemi devi affrontarli almeno una volta
+</I>&gt;<i> :)
+</I>&gt;<i>
+</I>&gt;<i> &gt; Partiamo dalle cose che sembravano semplici:
+</I>&gt;<i> &gt; imposto la risoluzione video  a 1024x768, confermo le impostazioni e al
+</I>&gt;<i> &gt; riavvio torna alla risoluzione precedente... come mai?
+</I>&gt;<i>
+</I>&gt;<i> Edita /etc/X11/xorg.conf (o XF86Config se hai ancora XFree86).
+</I>&gt;<i>
+</I>&gt;<i> Ad un certo punto trovi:
+</I>&gt;<i>
+</I>&gt;<i> Section &quot;Screen&quot;
+</I>&gt;<i>        Identifier &quot;Screen0&quot;
+</I>&gt;<i>        Device     &quot;Qualcosa&quot;
+</I>&gt;<i>        Monitor    &quot;Monitor0&quot;
+</I>&gt;<i>        DefaultDepth     24
+</I>&gt;<i>        ...
+</I>&gt;<i>        SubSection &quot;Display&quot;
+</I>&gt;<i>                ....
+</I>&gt;<i>                Depth     24
+</I>&gt;<i>                Modes    &quot;800x600&quot; &quot;1024x768&quot; &quot;1280x1024&quot;
+</I>&gt;<i>                ....
+</I>&gt;<i>        EndSubSection
+</I>&gt;<i> EndSection
+</I>&gt;<i>
+</I>&gt;<i> La linea &quot;Modes&quot; contiene le modalità grafiche ammesse.
+</I>&gt;<i> Il server X si prende di default la prima &quot;usabile&quot; che trova.
+</I>&gt;<i> Se ci metti solo &quot;1024x768&quot; lui non potrà fare altro che prendere
+</I>&gt;<i> quella...
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> Szymon Stefanek
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------------
+</I>&gt;<i> -
+</I>&gt;<i> - Somewhere, something incredible is waiting to be known.
+</I>&gt;<i> -
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061016/482ee9fc/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061016/482ee9fc/attachment.htm</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000226.html">[Tecnica] Siam qui...
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000228.html">[Tecnica] Siam qui...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#227">[ Data ]</a>
+              <a href="thread.html#227">[ Thread ]</a>
+              <a href="subject.html#227">[ Oggetto ]</a>
+              <a href="author.html#227">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] acer extensa 5220 problemi wi-fi
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20acer%20extensa%205220%20problemi%20wi-fi&In-Reply-To=5a6284bf0902130001s342e3256r10aef8a9f3883b93%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000775.html">
+   <LINK REL="Next"  HREF="000779.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] acer extensa 5220 problemi wi-fi</H1>
+    <B>robi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20acer%20extensa%205220%20problemi%20wi-fi&In-Reply-To=5a6284bf0902130001s342e3256r10aef8a9f3883b93%40mail.gmail.com"
+       TITLE="[Tecnica] acer extensa 5220 problemi wi-fi">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Ven 13 Feb 2009 17:28:54 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000775.html">[Tecnica] acer extensa 5220 problemi wi-fi
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000779.html">[Tecnica] Arduino
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#771">[ Data ]</a>
+              <a href="thread.html#771">[ Thread ]</a>
+              <a href="subject.html#771">[ Oggetto ]</a>
+	      <a href="author.html#771">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>allora al momento ho installato i driver proprietari offerti da &quot;la 
+ditta&quot; ...in questo forum tutte le tappe che ho superato senza risultati 
+sufficientemente validi...
+
+<A HREF="http://forum.ubuntu-it.org/index.php/topic,257940.0.html">http://forum.ubuntu-it.org/index.php/topic,257940.0.html</A>
+
+trimix ovviamente sono io...
+ e questo è l output di lshw:
+&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">jessica a jessica-laptop</A>:~$ lshw
+</I>&gt;<i> WARNING: you should run this program as super-user.
+</I>&gt;<i> jessica-laptop            
+</I>&gt;<i>     description: Computer
+</I>&gt;<i>     width: 32 bits
+</I>&gt;<i>   *-core
+</I>&gt;<i>        description: Motherboard
+</I>&gt;<i>        physical id: 0
+</I>&gt;<i>      *-memory
+</I>&gt;<i>           description: System memory
+</I>&gt;<i>           physical id: 0
+</I>&gt;<i>           size: 1000MiB
+</I>&gt;<i>      *-cpu
+</I>&gt;<i>           product: Intel(R) Celeron(R) CPU          560  @ 2.13GHz
+</I>&gt;<i>           vendor: Intel Corp.
+</I>&gt;<i>           physical id: 1
+</I>&gt;<i>           bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">cpu a 0</A>
+</I>&gt;<i>           version: 6.6.1
+</I>&gt;<i>           serial: 0001-0661-0000-0000-0000-0000
+</I>&gt;<i>           size: 500MHz
+</I>&gt;<i>           width: 64 bits
+</I>&gt;<i>           capabilities: fpu fpu_exception wp vme de pse tsc msr pae 
+</I>&gt;<i> mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr 
+</I>&gt;<i> sse sse2 ss tm pbe nx x86-64 constant_tsc up arch_perfmon pebs bts pni 
+</I>&gt;<i> monitor ds_cpl tm2 ssse3 cx16 xtpr lahf_lm
+</I>&gt;<i>      *-pci
+</I>&gt;<i>           description: Host bridge
+</I>&gt;<i>           product: Mobile PM965/GM965/GL960 Memory Controller Hub
+</I>&gt;<i>           vendor: Intel Corporation
+</I>&gt;<i>           physical id: 100
+</I>&gt;<i>           bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:00.0
+</I>&gt;<i>           version: 03
+</I>&gt;<i>           width: 32 bits
+</I>&gt;<i>           clock: 33MHz
+</I>&gt;<i>           configuration: driver=agpgart-intel module=intel_agp
+</I>&gt;<i>         *-display:0 UNCLAIMED
+</I>&gt;<i>              description: VGA compatible controller
+</I>&gt;<i>              product: Mobile GM965/GL960 Integrated Graphics Controller
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 2
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:02.0
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 64 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master cap_list
+</I>&gt;<i>              configuration: latency=0
+</I>&gt;<i>         *-display:1 UNCLAIMED
+</I>&gt;<i>              description: Display controller
+</I>&gt;<i>              product: Mobile GM965/GL960 Integrated Graphics Controller
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 2.1
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:02.1
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 64 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master cap_list
+</I>&gt;<i>              configuration: latency=0
+</I>&gt;<i>         *-usb:0
+</I>&gt;<i>              description: USB Controller
+</I>&gt;<i>              product: 82801H (ICH8 Family) USB UHCI Controller #4
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1a
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1a.0
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master
+</I>&gt;<i>              configuration: driver=uhci_hcd latency=0 module=uhci_hcd
+</I>&gt;<i>         *-usb:1
+</I>&gt;<i>              description: USB Controller
+</I>&gt;<i>              product: 82801H (ICH8 Family) USB UHCI Controller #5
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1a.1
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1a.1
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master
+</I>&gt;<i>              configuration: driver=uhci_hcd latency=0 module=uhci_hcd
+</I>&gt;<i>         *-usb:2
+</I>&gt;<i>              description: USB Controller
+</I>&gt;<i>              product: 82801H (ICH8 Family) USB2 EHCI Controller #2
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1a.7
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1a.7
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master cap_list
+</I>&gt;<i>              configuration: driver=ehci_hcd latency=0 module=ehci_hcd
+</I>&gt;<i>         *-multimedia
+</I>&gt;<i>              description: Audio device
+</I>&gt;<i>              product: 82801H (ICH8 Family) HD Audio Controller
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1b
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1b.0
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 64 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master cap_list
+</I>&gt;<i>              configuration: driver=HDA Intel latency=0 
+</I>&gt;<i> module=snd_hda_intel
+</I>&gt;<i>         *-pci:0
+</I>&gt;<i>              description: PCI bridge
+</I>&gt;<i>              product: 82801H (ICH8 Family) PCI Express Port 1
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1c
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1c.0
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: pci bus_master cap_list
+</I>&gt;<i>              configuration: driver=pcieport-driver
+</I>&gt;<i>            *-network
+</I>&gt;<i>                 description: Ethernet interface
+</I>&gt;<i>                 product: NetLink BCM5787M Gigabit Ethernet PCI Express
+</I>&gt;<i>                 vendor: Broadcom Corporation
+</I>&gt;<i>                 physical id: 0
+</I>&gt;<i>                 bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:02:00.0
+</I>&gt;<i>                 logical name: eth0
+</I>&gt;<i>                 version: 02
+</I>&gt;<i>                 serial: 00:1d:72:2d:7e:49
+</I>&gt;<i>                 width: 64 bits
+</I>&gt;<i>                 clock: 33MHz
+</I>&gt;<i>                 capabilities: bus_master cap_list ethernet physical
+</I>&gt;<i>                 configuration: broadcast=yes driver=tg3 
+</I>&gt;<i> driverversion=3.94 firmware=5787m-v3.23 ip=192.168.1.3 latency=0 
+</I>&gt;<i> module=tg3 multicast=yes
+</I>&gt;<i>         *-pci:1
+</I>&gt;<i>              description: PCI bridge
+</I>&gt;<i>              product: 82801H (ICH8 Family) PCI Express Port 2
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1c.1
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1c.1
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: pci bus_master cap_list
+</I>&gt;<i>              configuration: driver=pcieport-driver
+</I>&gt;<i>            *-network
+</I>&gt;<i>                 description: Wireless interface
+</I>&gt;<i>                 product: BCM4312 802.11b/g
+</I>&gt;<i>                 vendor: Broadcom Corporation
+</I>&gt;<i>                 physical id: 0
+</I>&gt;<i>                 bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:04:00.0
+</I>&gt;<i>                 logical name: eth1
+</I>&gt;<i>                 version: 01
+</I>&gt;<i>                 serial: 00:1f:3a:ba:07:69
+</I>&gt;<i>                 width: 64 bits
+</I>&gt;<i>                 clock: 33MHz
+</I>&gt;<i>                 capabilities: bus_master cap_list ethernet physical 
+</I>&gt;<i> wireless
+</I>&gt;<i>                 configuration: broadcast=yes driver=wl0 
+</I>&gt;<i> driverversion=5.10.27.12 latency=0 module=wl multicast=yes 
+</I>&gt;<i> wireless=IEEE 802.11
+</I>&gt;<i>         *-pci:2
+</I>&gt;<i>              description: PCI bridge
+</I>&gt;<i>              product: 82801H (ICH8 Family) PCI Express Port 3
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1c.2
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1c.2
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: pci bus_master cap_list
+</I>&gt;<i>              configuration: driver=pcieport-driver
+</I>&gt;<i>         *-usb:3
+</I>&gt;<i>              description: USB Controller
+</I>&gt;<i>              product: 82801H (ICH8 Family) USB UHCI Controller #1
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1d
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1d.0
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master
+</I>&gt;<i>              configuration: driver=uhci_hcd latency=0 module=uhci_hcd
+</I>&gt;<i>         *-usb:4
+</I>&gt;<i>              description: USB Controller
+</I>&gt;<i>              product: 82801H (ICH8 Family) USB UHCI Controller #2
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1d.1
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1d.1
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master
+</I>&gt;<i>              configuration: driver=uhci_hcd latency=0 module=uhci_hcd
+</I>&gt;<i>         *-usb:5
+</I>&gt;<i>              description: USB Controller
+</I>&gt;<i>              product: 82801H (ICH8 Family) USB UHCI Controller #3
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1d.2
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1d.2
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master
+</I>&gt;<i>              configuration: driver=uhci_hcd latency=0 module=uhci_hcd
+</I>&gt;<i>         *-usb:6
+</I>&gt;<i>              description: USB Controller
+</I>&gt;<i>              product: 82801H (ICH8 Family) USB2 EHCI Controller #1
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1d.7
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1d.7
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: bus_master cap_list
+</I>&gt;<i>              configuration: driver=ehci_hcd latency=0 module=ehci_hcd
+</I>&gt;<i>         *-pci:3
+</I>&gt;<i>              description: PCI bridge
+</I>&gt;<i>              product: 82801 Mobile PCI Bridge
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1e
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1e.0
+</I>&gt;<i>              version: f3
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: pci bus_master cap_list
+</I>&gt;<i>            *-pcmcia
+</I>&gt;<i>                 description: CardBus bridge
+</I>&gt;<i>                 product: PCIxx12 Cardbus Controller
+</I>&gt;<i>                 vendor: Texas Instruments
+</I>&gt;<i>                 physical id: 6
+</I>&gt;<i>                 bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:0f:06.0
+</I>&gt;<i>                 version: 00
+</I>&gt;<i>                 width: 32 bits
+</I>&gt;<i>                 clock: 33MHz
+</I>&gt;<i>                 capabilities: pcmcia bus_master cap_list
+</I>&gt;<i>                 configuration: driver=yenta_cardbus latency=176 
+</I>&gt;<i> maxlatency=5 mingnt=192 module=yenta_socket
+</I>&gt;<i>            *-firewire
+</I>&gt;<i>                 description: FireWire (IEEE 1394)
+</I>&gt;<i>                 product: PCIxx12 OHCI Compliant IEEE 1394 Host Controller
+</I>&gt;<i>                 vendor: Texas Instruments
+</I>&gt;<i>                 physical id: 6.1
+</I>&gt;<i>                 bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:0f:06.1
+</I>&gt;<i>                 version: 00
+</I>&gt;<i>                 width: 32 bits
+</I>&gt;<i>                 clock: 33MHz
+</I>&gt;<i>                 capabilities: bus_master cap_list
+</I>&gt;<i>                 configuration: driver=ohci1394 latency=32 maxlatency=4 
+</I>&gt;<i> mingnt=2 module=ohci1394
+</I>&gt;<i>            *-storage
+</I>&gt;<i>                 description: Mass storage controller
+</I>&gt;<i>                 product: 5-in-1 Multimedia Card Reader (SD/MMC/MS/MS 
+</I>&gt;<i> PRO/xD)
+</I>&gt;<i>                 vendor: Texas Instruments
+</I>&gt;<i>                 physical id: 6.2
+</I>&gt;<i>                 bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:0f:06.2
+</I>&gt;<i>                 version: 00
+</I>&gt;<i>                 width: 32 bits
+</I>&gt;<i>                 clock: 33MHz
+</I>&gt;<i>                 capabilities: storage bus_master cap_list
+</I>&gt;<i>                 configuration: driver=tifm_7xx1 latency=57 
+</I>&gt;<i> maxlatency=4 mingnt=7 module=tifm_7xx1
+</I>&gt;<i>            *-system
+</I>&gt;<i>                 description: SD Host controller
+</I>&gt;<i>                 product: PCIxx12 SDA Standard Compliant SD Host Controller
+</I>&gt;<i>                 vendor: Texas Instruments
+</I>&gt;<i>                 physical id: 6.3
+</I>&gt;<i>                 bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:0f:06.3
+</I>&gt;<i>                 version: 00
+</I>&gt;<i>                 width: 32 bits
+</I>&gt;<i>                 clock: 33MHz
+</I>&gt;<i>                 capabilities: bus_master cap_list
+</I>&gt;<i>                 configuration: driver=sdhci-pci latency=57 
+</I>&gt;<i> maxlatency=4 mingnt=7 module=sdhci_pci
+</I>&gt;<i>         *-isa
+</I>&gt;<i>              description: ISA bridge
+</I>&gt;<i>              product: 82801HEM (ICH8M) LPC Interface Controller
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1f
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1f.0
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: isa bus_master cap_list
+</I>&gt;<i>              configuration: latency=0
+</I>&gt;<i>         *-ide:0
+</I>&gt;<i>              description: IDE interface
+</I>&gt;<i>              product: 82801HBM/HEM (ICH8M/ICH8M-E) IDE Controller
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1f.1
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1f.1
+</I>&gt;<i>              logical name: scsi0
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              capabilities: ide bus_master emulated
+</I>&gt;<i>              configuration: driver=ata_piix latency=0 module=ata_piix
+</I>&gt;<i>            *-cdrom
+</I>&gt;<i>                 description: DVD-RAM writer
+</I>&gt;<i>                 product: CDDVDW TS-L632H
+</I>&gt;<i>                 vendor: TSSTcorp
+</I>&gt;<i>                 physical id: 0.0.0
+</I>&gt;<i>                 bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">scsi a 0</A>:0.0.0
+</I>&gt;<i>                 logical name: /dev/cdrom
+</I>&gt;<i>                 logical name: /dev/cdrw
+</I>&gt;<i>                 logical name: /dev/dvd
+</I>&gt;<i>                 logical name: /dev/dvdrw
+</I>&gt;<i>                 logical name: /dev/scd0
+</I>&gt;<i>                 logical name: /dev/sr0
+</I>&gt;<i>                 version: AC01
+</I>&gt;<i>                 capabilities: removable audio cd-r cd-rw dvd dvd-r dvd-ram
+</I>&gt;<i>                 configuration: ansiversion=5 status=nodisc
+</I>&gt;<i>         *-ide:1
+</I>&gt;<i>              description: IDE interface
+</I>&gt;<i>              product: 82801HBM/HEM (ICH8M/ICH8M-E) SATA IDE Controller
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1f.2
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1f.2
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 66MHz
+</I>&gt;<i>              capabilities: ide bus_master cap_list
+</I>&gt;<i>              configuration: driver=ata_piix latency=0 module=ata_piix
+</I>&gt;<i>         *-serial UNCLAIMED
+</I>&gt;<i>              description: SMBus
+</I>&gt;<i>              product: 82801H (ICH8 Family) SMBus Controller
+</I>&gt;<i>              vendor: Intel Corporation
+</I>&gt;<i>              physical id: 1f.3
+</I>&gt;<i>              bus info: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pci a 0000</A>:00:1f.3
+</I>&gt;<i>              version: 03
+</I>&gt;<i>              width: 32 bits
+</I>&gt;<i>              clock: 33MHz
+</I>&gt;<i>              configuration: latency=0
+</I>&gt;<i>   *-network DISABLED
+</I>&gt;<i>        description: Ethernet interface
+</I>&gt;<i>        physical id: 1
+</I>&gt;<i>        logical name: pan0
+</I>&gt;<i>        serial: 02:ea:ec:db:fb:a0
+</I>&gt;<i>        capabilities: ethernet physical
+</I>&gt;<i>        configuration: broadcast=yes driver=bridge driverversion=2.3 
+</I>&gt;<i> firmware=N/A multicast=yes
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">jessica a jessica-laptop</A>:~$
+</I>&gt;<i>
+</I>questa è la scheda di rete wireless:
+&gt;<i> 04:00.0 Network controller: Broadcom Corporation BCM4312 802.11b/g 
+</I>&gt;<i> (rev 01)
+</I>se avete bisogno di altre informazioni chiedete pure....nel frattempo 
+tento la via indicatami da giulio saletti.....dimenticavo non uso 
+network manager ma wicd che per i principianti come me è un pò più facile...
+
+grazie di nuovo a tutti...
+
+
+
+
+
+Andrea Coronese ha scritto:
+&gt;<i> Bisognerebbe intanto capire se la cosa dipende dalla connessione in se 
+</I>&gt;<i> o dall'extensa... Perché non provi a postare l'output di lshw? Mi 
+</I>&gt;<i> viene da pensare comunque che sia un problema di driver quindi vediamo 
+</I>&gt;<i> intanto di capire che scheda di rete hai
+</I>&gt;<i>
+</I>&gt;<i> 2009/2/12 simone giuliani &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.giuliani a gmail.com</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.giuliani a gmail.com</A>&gt;&gt;
+</I>&gt;<i>
+</I>&gt;<i>     ma nooooo e' un chiaro esempio di richiesta di aiuto ben fatta! 
+</I>&gt;<i>     :)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Il giorno 12 febbraio 2009 23.09, Michele Mondelli &lt;mithenks.ml
+</I>&gt;<i>     &lt;<A HREF="http://mithenks.ml">http://mithenks.ml</A>&gt;@gmail.com &lt;<A HREF="http://gmail.com">http://gmail.com</A>&gt;&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         Ci vorrebbe giusto qualche informazione in più ....
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         Il giorno 12 febbraio 2009 20.36, <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i>         &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt;
+</I>&gt;<i>         &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i>         &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt;&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>                 ------------------------------------------------------------------------
+</I>&gt;<i>                 buona sera a tutta la lista ho dei problemi con la
+</I>&gt;<i>                 connessione wireless del notebook in oggetto.....mi
+</I>&gt;<i>                 spiego ho una connessione che non supera i
+</I>&gt;<i>                 18kb/s.....qualcuno sa aiutarmi?
+</I>&gt;<i>
+</I>&gt;<i>                 grazie a tutti
+</I>&gt;<i>
+</I>&gt;<i>                 roberto
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         -- 
+</I>&gt;<i>         Homepage: <A HREF="http://www.mithenks.com">http://www.mithenks.com</A>
+</I>&gt;<i>         Slackware GNU/Linux User since 2003
+</I>&gt;<i>         Registered Linux User #383379
+</I>&gt;<i>         Registered Linux Machine #391361
+</I>&gt;<i>
+</I>&gt;<i>         _______________________________________________
+</I>&gt;<i>         Tecnica mailing list
+</I>&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Tecnica mailing list
+</I>&gt;<i>     <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i>     <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000775.html">[Tecnica] acer extensa 5220 problemi wi-fi
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000779.html">[Tecnica] Arduino
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#771">[ Data ]</a>
+              <a href="thread.html#771">[ Thread ]</a>
+              <a href="subject.html#771">[ Oggetto ]</a>
+              <a href="author.html#771">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

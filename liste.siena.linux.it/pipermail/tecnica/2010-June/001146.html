@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Sicurezza password degli hard disk
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Sicurezza%20password%20degli%20hard%20disk&In-Reply-To=%3CAANLkTil6VuH7uws-C13imo6AhIkU9RKUa5SodTtqLJr4%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001145.html">
+   <LINK REL="Next"  HREF="001147.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Sicurezza password degli hard disk</H1>
+    <B>Simone Soldateschi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Sicurezza%20password%20degli%20hard%20disk&In-Reply-To=%3CAANLkTil6VuH7uws-C13imo6AhIkU9RKUa5SodTtqLJr4%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Sicurezza password degli hard disk">simone.soldateschi a gmail.com
+       </A><BR>
+    <I>Mar  8 Giu 2010 12:09:44 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001145.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001147.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1146">[ Data ]</a>
+              <a href="thread.html#1146">[ Thread ]</a>
+              <a href="subject.html#1146">[ Oggetto ]</a>
+	      <a href="author.html#1146">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>L'IO, soprattutto quello del disco, è il punto debole delle macchine
+virtuali in genere.
+
+Dai un occhio a questi benchmarks:
+
+
+<A HREF="http://www.tomshardware.com/reviews/locking-linux-creating-a-cryptobook,1303.html">http://www.tomshardware.com/reviews/locking-linux-creating-a-cryptobook,1303.html</A>
+
+Non ho mai provato EncFS ma a giudicare da questi risultati direi che
+potrebbe essere un indiziato per i problemi di lentezza.
+EncFS scrive e legge ad una velocità inferiore di un ordine di grandezza
+rispetto a LUKS!
+
+Ho fatto altre prove.
+&gt;<i>
+</I>&gt;<i> Copiando 700MB di dati dalla macchina reale a quella virtuale:
+</I>&gt;<i> Macchina virtuale su spazio non criptato: 9minuti
+</I>&gt;<i> Macchina virtuale su spazio criptato: 18minuti
+</I>&gt;<i>
+</I>&gt;<i> Di sicuro mi sembra che le prestazioni della rete virtuale non siano
+</I>&gt;<i> esaltanti: 700MB in 9 minuti, mi sembra che faccia un misero 1,3MB/s.
+</I>&gt;<i> Non so se sia colpa di vmware, di samba o di chi altro.
+</I>&gt;<i>
+</I>&gt;<i> Durante questa prova il processo vmware e' rimasto buono, senza schizzare
+</I>&gt;<i> al
+</I>&gt;<i> 100% di cpu come avevo notato l'altra volta.
+</I>&gt;<i>
+</I>
+Questo è abbastanza normale: per gran parte del tempo il processo vmware
+sarà in idle in attesa che vengano completate le letture/scritture.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100608/860ba84e/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100608/860ba84e/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001145.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001147.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1146">[ Data ]</a>
+              <a href="thread.html#1146">[ Thread ]</a>
+              <a href="subject.html#1146">[ Oggetto ]</a>
+              <a href="author.html#1146">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

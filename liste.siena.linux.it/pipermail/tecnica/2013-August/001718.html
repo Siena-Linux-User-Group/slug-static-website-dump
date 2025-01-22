@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Fwd: Traffico in upload abnorme
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20Traffico%20in%20upload%20abnorme&In-Reply-To=%3CCAKsp6bLLr8MML-O%2BpCyu7crYHb_NFK7%3D%2BNoUvJGeL-4XL7O7aQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001716.html">
+   <LINK REL="Next"  HREF="001719.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Fwd: Traffico in upload abnorme</H1>
+    <B>luca mercurio</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20Traffico%20in%20upload%20abnorme&In-Reply-To=%3CCAKsp6bLLr8MML-O%2BpCyu7crYHb_NFK7%3D%2BNoUvJGeL-4XL7O7aQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Fwd: Traffico in upload abnorme">luca.mercurio a gmail.com
+       </A><BR>
+    <I>Mer 21 Ago 2013 10:01:41 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001716.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001719.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1718">[ Data ]</a>
+              <a href="thread.html#1718">[ Thread ]</a>
+              <a href="subject.html#1718">[ Oggetto ]</a>
+	      <a href="author.html#1718">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Effettivamente il problema non è risolto....
+Spengendo il router gli ho dato una scossetta, ma ora a regime sono punto a
+capo.
+
+Di switch cinesi non ne ho. Addirittura la maggior parte degli switch sono
+HP procurve.
+
+Da solo è un po' un casino fare queste prove: ad ogni switch ci sono
+collegati la totalità dei cavi e per fare un controllo approfondito ho
+bisogno di almeno un'altra persona.
+
+L'unica adesso è staccare brutalmente il generale della scuola.
+
+Ovviamente la parte più difficile è convincere i colleghi che per risolvere
+il problema ho bisogno di abbuiare tutto... Ma tanto lo sapete meglio di me
+che in questi casi ognuno è preso dal sacro furore del demone del lavoro e
+non può interrompere per nessun motivo...
+
+pazienza...
+
+Si aspetterà la fatina magica che risolve tutto oppure fare come dice il
+mio collega amministratore &quot;'un ti preoccupà... tanto fra poino riparte
+tutto da sè...&quot;
+
+Uno sconfortato MacMercury
+
+P.S.: Ma se il problema è uno switch impazzito, perché se utilizzo la linea
+ADSL di Backup tutto funziona? Provo a rispondermi: Perché magari gli
+switch puntano al router Cisco della Telecom e fanno casino?
+
+
+Il giorno 21 agosto 2013 10:52, Yusef Maali &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">contact a yusefmaali.net</A>&gt; ha
+scritto:
+
+&gt;<i> On 21/08/2013 10:03, luca mercurio wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Sto studiando wureshark per capire come individuare questa macchina ma
+</I>&gt;&gt;<i> ancora non ci ho chiappato niente.
+</I>&gt;&gt;<i> Voi sapete se c'è un tool all'interno di wireshark che faccia questo
+</I>&gt;&gt;<i> tipo di analisi e che mi permetta di individuare il colpevole?
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Considera che gli switch isolano i domini di collisione, quindi con
+</I>&gt;<i> wireshark, sniffando la tua porta ethernet, non riesci a vedere il traffico
+</I>&gt;<i> in upload di altre macchine.
+</I>&gt;<i> Puoi vedere solo i pacchetti mandati in broadcast, che ti serve a poco.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  Sto pure pensando che si tratti di uno switch difettoso (ne abbiamo 7 in
+</I>&gt;&gt;<i> funzione in tutta la scuola)
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Molto probabile.
+</I>&gt;<i> Paradossalmente, come dice Michele, potrebbe essere qualche switch cinese
+</I>&gt;<i> che avete preso per attaccare un pc in più, ad esempio.
+</I>&gt;<i>
+</I>&gt;<i> Invece di spegnere i pc, dovresti proprio staccare i cavi in modo da
+</I>&gt;<i> isolare le varie sezioni.
+</I>&gt;<i>
+</I>&gt;<i> Visto che hai degli switch cisco, prova a guardare tramite le loro
+</I>&gt;<i> statistiche chi sta generando traffico. Sono molto dettagliate.
+</I>&gt;<i>
+</I>&gt;<i> L'approccio più brutale è scaricarti una qualsiasi ditro live per fare
+</I>&gt;<i> routing (ie. IPFire) e metterti nel mezzo tra il router telecom e tutto il
+</I>&gt;<i> resto. In quel modo hai tutti gli strumenti linux (ie. iptraf) per vedere
+</I>&gt;<i> da dove parte il traffico.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ______________________________**_________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="http://liste.siena.linux.it/**cgi-bin/mailman/listinfo/**tecnica&lt;http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica">http://liste.siena.linux.it/**cgi-bin/mailman/listinfo/**tecnica&lt;http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>&gt;
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20130821/0b4a4619/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20130821/0b4a4619/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001716.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001719.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1718">[ Data ]</a>
+              <a href="thread.html#1718">[ Thread ]</a>
+              <a href="subject.html#1718">[ Oggetto ]</a>
+              <a href="author.html#1718">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

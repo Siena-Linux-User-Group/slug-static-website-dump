@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] installazione joomla su server debian con plesk
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20installazione%20joomla%20su%20server%20debian%20con%20plesk&In-Reply-To=%3CCAONfR_BYNZJRQfeJwwZa%2Bba4wjH9MnbGyAfxg5XvymuGa2tvLw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001476.html">
+   <LINK REL="Next"  HREF="001478.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] installazione joomla su server debian con plesk</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20installazione%20joomla%20su%20server%20debian%20con%20plesk&In-Reply-To=%3CCAONfR_BYNZJRQfeJwwZa%2Bba4wjH9MnbGyAfxg5XvymuGa2tvLw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] installazione joomla su server debian con plesk">freeze782 a gmail.com
+       </A><BR>
+    <I>Dom  4 Dic 2011 22:51:40 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001476.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001478.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1477">[ Data ]</a>
+              <a href="thread.html#1477">[ Thread ]</a>
+              <a href="subject.html#1477">[ Oggetto ]</a>
+	      <a href="author.html#1477">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>[SNIP]
+Se così non fosse dai un occhio ai file di log di apache:
+
+&gt;<i>
+</I>&gt;<i>     # tail -f /var/log/apache2/*log
+</I>
+
+ho fatto la prova che mi hai chiesto e non ho avuto fortuna, controllando i
+log ho notato una cosa molto curiosa
+
+nel log compare:
+
+[Sun Dec 04 23:34:23 2011] [error] [client xx.xx.xxx.xx] File does not
+exist: /var/www/vhosts/default/htdocs/miodominio.it
+
+ma nel server non c'è quella cartella
+
+ma invece è presente in cd /var/www/vhosts
+e il bello è che sono cartelle che si creano autoticamente quando creo un
+nuovo dominio da plesk
+
+suggerimenti ?
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20111204/5c001b5d/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20111204/5c001b5d/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001476.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001478.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1477">[ Data ]</a>
+              <a href="thread.html#1477">[ Thread ]</a>
+              <a href="subject.html#1477">[ Oggetto ]</a>
+              <a href="author.html#1477">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

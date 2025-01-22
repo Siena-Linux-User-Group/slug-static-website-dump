@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] passare da debian 6 a debian 7 in sicurezza
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20passare%20da%20debian%206%20a%20debian%207%20in%20sicurezza&In-Reply-To=%3CCAD7fOTyj%2BOFpGVFfeNUzqpOS%2B_at7Jc%2B%3DyKhX5Lv2D5FAp4MVA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001798.html">
+   <LINK REL="Next"  HREF="001801.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] passare da debian 6 a debian 7 in sicurezza</H1>
+    <B>Simone Soldateschi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20passare%20da%20debian%206%20a%20debian%207%20in%20sicurezza&In-Reply-To=%3CCAD7fOTyj%2BOFpGVFfeNUzqpOS%2B_at7Jc%2B%3DyKhX5Lv2D5FAp4MVA%40mail.gmail.com%3E"
+       TITLE="[Tecnica] passare da debian 6 a debian 7 in sicurezza">simone.soldateschi a gmail.com
+       </A><BR>
+    <I>Mar  1 Lug 2014 12:53:09 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001798.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001801.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1799">[ Data ]</a>
+              <a href="thread.html#1799">[ Thread ]</a>
+              <a href="subject.html#1799">[ Oggetto ]</a>
+	      <a href="author.html#1799">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Quoto Motaz.
+Ma se hai Debian, vorrai usare *sempre* &quot;aptitude&quot;.
+
+@Marcello lol x i flames
+@Yusef Ubuntu? :D
+
+~Simone
+
+--
+*Simone Soldateschi*
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A> | +44 (0)75 0723 9300 | *skype*:
+simone.soldateschi
+
+[image: Gmail] &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>&gt;  [image: LinkedIn]
+&lt;<A HREF="http://uk.linkedin.com/in/simonesoldateschi/">http://uk.linkedin.com/in/simonesoldateschi/</A>&gt;
+&lt;<A HREF="http://www.slideshare.net/SimoneSoldateschi">http://www.slideshare.net/SimoneSoldateschi</A>&gt;  [image: GitHub (siso)]
+&lt;<A HREF="https://github.com/siso">https://github.com/siso</A>&gt;  [image: twitter] &lt;<A HREF="https://twitter.com/soldasimo">https://twitter.com/soldasimo</A>&gt;
+ [image: Google+] &lt;<A HREF="https://plus.google.com/+SimoneSoldateschi">https://plus.google.com/+SimoneSoldateschi</A>&gt;  [image:
+instagram] &lt;<A HREF="http://instagram.com/soldasimo">http://instagram.com/soldasimo</A>&gt;
+
+
+2014-07-01 10:57 GMT+01:00 Motaz Abuthiab &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">moty66 a gmail.com</A>&gt;:
+
+&gt;<i> Bisogna iniziare da
+</I>&gt;<i>
+</I>&gt;<i> # dpkg --list
+</I>&gt;<i> # cat /etc/apt/sources.list
+</I>&gt;<i>
+</I>&gt;<i> giuso per avere un idea di cosa hai di installato
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> in generale facendo
+</I>&gt;<i>
+</I>&gt;<i> # apt-get update &amp;&amp; apt-get upgrade
+</I>&gt;<i>
+</I>&gt;<i> modifica /etc/apt/sources.list, canbiabno &quot;squeeze&quot; a &quot;wheezy&quot;, e di
+</I>&gt;<i> nuovo dopo
+</I>&gt;<i>
+</I>&gt;<i> # apt-get update &amp;&amp; apt-get upgrade &amp;&amp; apt-get dist-upgrade
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> dovrebbe andare bene, consigliato fare backup alla cartella /etc
+</I>&gt;<i>
+</I>&gt;<i> boun dist-upgrade
+</I>&gt;<i>
+</I>&gt;<i> m.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 01 luglio 2014 09:32, Freeze NorthPole &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">freeze a siena.linux.it</A>&gt;
+</I>&gt;<i> ha scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Ciao a tutti,
+</I>&gt;&gt;<i> come da oggetto mi piacerebbe aggiornare un server su cui ospito dei
+</I>&gt;&gt;<i> siti, da debian 6 a debian 7, senza perdere tutte le configurazioni e
+</I>&gt;&gt;<i> ottimizzazioni che ho fatto nel corso del tempo.
+</I>&gt;&gt;<i> Avreste suggerimenti, dritte e punti di osservazione da darmi per non
+</I>&gt;&gt;<i> perdere tutto?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Grazie mille a tutti  :D
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> *Motaz Abuthiab*
+</I>&gt;<i> Web developer &amp; System Integrator
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140701/eddbb0b3/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140701/eddbb0b3/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001798.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001801.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1799">[ Data ]</a>
+              <a href="thread.html#1799">[ Thread ]</a>
+              <a href="subject.html#1799">[ Oggetto ]</a>
+              <a href="author.html#1799">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Ssh e configurazione multi-utente
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703032342.10738.contact%40yusefmaali.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000430.html">
+   <LINK REL="Next"  HREF="000432.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Ssh e configurazione multi-utente</H1>
+    <B>Vincenzo Di Massa</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703032342.10738.contact%40yusefmaali.net"
+       TITLE="[Tecnica] Ssh e configurazione multi-utente">hawk78 a interfree.it
+       </A><BR>
+    <I>Dom  4 Mar 2007 11:27:33 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000430.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000432.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#431">[ Data ]</a>
+              <a href="thread.html#431">[ Thread ]</a>
+              <a href="subject.html#431">[ Oggetto ]</a>
+	      <a href="author.html#431">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle sabato 3 marzo 2007, Yusef Maali ha scritto:
+&gt;<i> Alle 23:36, venerdì 02 marzo 2007, Vincenzo Di Massa ha scritto:
+</I>&gt;<i> &gt; Ciao
+</I>&gt;<i> &gt; e... RTFM
+</I>&gt;<i> &gt; Vincenzo
+</I>&gt;<i>
+</I>&gt;<i> L'ho letto il manuale :)
+</I>&gt;<i> E ho pure googlato un pomeriggio intero...
+</I>&gt;<i>
+</I>&gt;<i> Per le mie esigenze non posso abilitare solo l'accesso con chiave. E il mio
+</I>&gt;<i> problema è quello! Poter differenziare le modalità di accesso senza essere
+</I>&gt;<i> costretto ad usare solo l'autenticazione con chiave.
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i> e...RTFQ :)
+</I>
+Vediamo se ho capito la domanda...
+Alle giovedì 1 marzo 2007, Yusef Maali ha scritto:
+&gt;<i> Mi stavo chiedendo se fosse possibile configurare un server SSH in modo da
+</I>&gt;<i> avere configurazioni diverse per utenti diversi. Mi interessa, ad esempio,
+</I>&gt;<i> poter dare l'accesso shell ad alcuni utenti e ad altri no, 
+</I>Questo è facile AllowUsers e DenyUsers (da manuale ;-) ) fanno proprio questo.
+
+&gt;<i> permettere il 
+</I>&gt;<i> forwarding ad alcuni e ad altri no, ecc...
+</I>Ma a cosa serve???? Gli utenti che possono accedere seza forwarding possono 
+fare lo stesso il forwarding &quot;a manina&quot;! 
+
+Leggendo il manuale qui
+&quot;&quot;&quot;
+    AllowTcpForwarding
+             Specifies whether TCP forwarding is permitted.  The default is
+             &#8220;yes&#8221;.  Note that disabling TCP forwarding does not improve secu&#8208;
+             rity unless users are also denied shell access, as they can
+             always install their own forwarders.
+
+&quot;&quot;&quot;
+e ancora qui
+&quot;&quot;&quot;
+     X11Forwarding
+             Specifies whether X11 forwarding is permitted.  The argument must
+             be &#8220;yes&#8221; or &#8220;no&#8221;.  The default is &#8220;no&#8221;.
+
+             When X11 forwarding is enabled, there may be additional exposure
+             to the server and to client displays if the sshd proxy display is
+             configured to listen on the wildcard address (see X11UseLocalhost
+             below), however this is not the default.  Additionally, the
+             authentication spoofing and authentication data verification and
+             substitution occur on the client side.  The security risk of
+             using X11 forwarding is that the client&#8217;s X11 display server may
+             be exposed to attack when the ssh client requests forwarding (see
+             the warnings for ForwardX11 in ssh_config(5)).  A system adminis&#8208;
+             trator may have a stance in which they want to protect clients
+             that may expose themselves to attack by unwittingly requesting
+             X11 forwarding, which can warrant a &#8220;no&#8221; setting.
+
+             Note that disabling X11 forwarding does not prevent users from
+             forwarding X11 traffic, as users can always install their own
+             forwarders.  X11 forwarding is automatically disabled if UseLogin
+             is enabled.
+&quot;&quot;&quot;
+
+Si capisce che il server non corre più rischi a disabilitare il forwarding...
+e anche se lo fa è (ovviamente) possibile fare forwarding in 1000000 di altri 
+modi.
+
+Bhe inventiamo un nuovo acronimo CRTFM,Y! ( Carefully Read The Fu**ing Manual, 
+Yusef!) ;-)
+
+Ciao
+&gt;<i> Ciao.
+</I>
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000430.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000432.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#431">[ Data ]</a>
+              <a href="thread.html#431">[ Thread ]</a>
+              <a href="subject.html#431">[ Oggetto ]</a>
+              <a href="author.html#431">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

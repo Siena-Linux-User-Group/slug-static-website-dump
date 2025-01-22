@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Mysqldump da host remoto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3CCAPqRDyLcaTFXB5yKEQfw%3DhmsJZ4g2bGm%3Drt09am8jN-u38mPbg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001818.html">
+   <LINK REL="Next"  HREF="001825.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Mysqldump da host remoto</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3CCAPqRDyLcaTFXB5yKEQfw%3DhmsJZ4g2bGm%3Drt09am8jN-u38mPbg%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Mysqldump da host remoto">dinogen a gmail.com
+       </A><BR>
+    <I>Mer 30 Lug 2014 07:49:44 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001818.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001825.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1819">[ Data ]</a>
+              <a href="thread.html#1819">[ Thread ]</a>
+              <a href="subject.html#1819">[ Oggetto ]</a>
+	      <a href="author.html#1819">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sicuramente non dovresti usare root, ma un utente apposito.
+Ma Mysql è un pochino noioso a volte con i permessi.
+Se dai il permesso a pippo lui magari registra il permesso a
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pippo a localhost.localdomain</A> e quindi pippo oppure <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pippo a localhost</A> beccano
+access denied.
+Oppure se sei sul server A e dai il permesso a <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pippo a A</A> poi <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pippo a localhost</A>
+(che dovrebbe essere la stessa cosa) non va.
+Se guardi la tabella mysql.user o qualcosa del genere, vedi chi ha il
+permesso davvero.
+
+
+________________________________________
+Marcello Semboli
+Siena
+
+
+Il giorno 29 luglio 2014 23:51, Freeze NorthPole &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">freeze a siena.linux.it</A>&gt; ha
+scritto:
+
+&gt;<i> ciao a tutti,
+</I>&gt;<i> eccomi con una nuoa e inopportuna domanda :)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *ecco il mio obiettivo: *
+</I>&gt;<i> fare backup periodici, nel server B, di un DB presente sul server A
+</I>&gt;<i>
+</I>&gt;<i> *precondizione:*
+</I>&gt;<i> l'ip del server  B e` stato autorizzato ad accedere al DB del server A
+</I>&gt;<i>
+</I>&gt;<i> *come ci sto lavorando:*
+</I>&gt;<i> dal server B mi loggo come root e lancio il comando
+</I>&gt;<i>
+</I>&gt;<i> /usr/bin/mysqldump &#8211;opt &#8211;user=miousername &#8211;password=miapassword
+</I>&gt;<i> --host=localhost nome_del_db &gt; /home/backup/database.sql
+</I>&gt;<i>
+</I>&gt;<i> ma ottengo il seguente messaggio di errore:
+</I>&gt;<i> *mysqldump: Got error: 1045: Access denied for user 'root'@'server B'
+</I>&gt;<i> (using password: YES) when trying to connect*
+</I>&gt;<i>
+</I>&gt;<i> da quel che ho letto e` che sul DB l'utente  &quot;root&quot; non e` abilitato
+</I>&gt;<i>
+</I>&gt;<i> la prima soluzione che mi e` venuta in mente
+</I>&gt;<i> e` di creare un utente sul&quot; server B&quot; col nome &quot;miousername&quot; e di
+</I>&gt;<i> rilanciare il comando da quell'utenza
+</I>&gt;<i> ma mi sembra una soluzione un attimo becera oltre che potenzialmente
+</I>&gt;<i> insicura
+</I>&gt;<i>
+</I>&gt;<i> a voi vengono in mente soluzioni meno criminali?
+</I>&gt;<i>
+</I>&gt;<i> Grazie Mille a tutti
+</I>&gt;<i> Freeze :)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140730/afae82cc/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140730/afae82cc/attachment.htm</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001818.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001825.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1819">[ Data ]</a>
+              <a href="thread.html#1819">[ Thread ]</a>
+              <a href="subject.html#1819">[ Oggetto ]</a>
+              <a href="author.html#1819">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

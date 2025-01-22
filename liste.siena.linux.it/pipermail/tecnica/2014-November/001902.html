@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Domanda multi IP su DNS
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3C5476D875.6000001%40unisi.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001901.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Domanda multi IP su DNS</H1>
+    <B>Roberto Bartali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3C5476D875.6000001%40unisi.it%3E"
+       TITLE="[Tecnica] Domanda multi IP su DNS">bartali a unisi.it
+       </A><BR>
+    <I>Gio 27 Nov 2014 07:53:25 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001901.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1902">[ Data ]</a>
+              <a href="thread.html#1902">[ Thread ]</a>
+              <a href="subject.html#1902">[ Oggetto ]</a>
+	      <a href="author.html#1902">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il DNS, se imposti un record A su più IP, effettua un bilanciamento 
+round robin, quindi quello che ti dicono è vero però, coe ti dicevo, fai 
+solo &quot;load balancing&quot;, nel senso che se uno degli IP è giù, il DNS gli 
+invia comunque il traffico.
+Con il sistema che ti ho indicato, se un nodo va giù idirectord smette 
+di inviargli richieste e le invia solo ai nodi che rimangono su. 
+Inoltre, per ogni servizio, puoi prevedere un sito di emergenza (un nodo 
+o una pagina web) nel caso tutti i nodi vadano giù.
+Oltre a ldirectord ci sono molte altre soluzioni che, come ti diceva 
+l'altro Roberto, rientrano nella categoria HA. Ad esempio un'altra molto 
+utilizzata, in accoppiata con Heartbeat, è Corosync.
+Ti segnalo questo articolo presente su un sito dove la materia è 
+trattata piuttosto approfonditamente.
+<A HREF="http://www.miamammausalinux.org/seminario/evoluzione-dellalta-affidabilita-su-linux/">http://www.miamammausalinux.org/seminario/evoluzione-dellalta-affidabilita-su-linux/</A>
+Ciao
+
+Roberto
+
+*Roberto Bartali*
+/Università di Siena/
+Servizio reti, sistemi e sicurezza informatica
+Via Bandini, 25
+53100 - SIENA
+E-mail: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A>&gt;
+Tel. +39 0577 23(2189)
+Linux User no. #542525
+Il 24/11/2014 17:30, bartrosso ha scritto:
+&gt;<i> Chiedo scusa FOLKS,
+</I>&gt;<i> ma avendo questa incombenza cerco la strada più rapida e veloce per 
+</I>&gt;<i> risolvere.
+</I>&gt;<i>
+</I>&gt;<i> Leggo sulla teoria del Round Robin che è proprio una rotazione  del 
+</I>&gt;<i> carico su più server che UNA TECNICA di previsione sul FAULT tollerance.
+</I>&gt;<i> Fornendo più di un ip a disposizione del server dns si ottiene questa 
+</I>&gt;<i> doppia funzione se il server lo sa gestire.
+</I>&gt;<i>
+</I>&gt;<i> Bene, a me, register.it &lt;<A HREF="http://register.it">http://register.it</A>&gt; dice che loro lo fanno 
+</I>&gt;<i> tranquillamente, con politiche di round robin automatiche se imposto 
+</I>&gt;<i> più destinazioni allo stesso record.
+</I>&gt;<i>
+</I>&gt;<i> Devo credergli? O sarebbe troppo bello per essere vero?
+</I>&gt;<i>
+</I>&gt;<i> altrimenti mi tocca tirare su un server (A GRATIS per il cliente) che 
+</I>&gt;<i> gestisca quello che diceva Roberto Bartali.
+</I>&gt;<i>
+</I>&gt;<i> Domanda di logica, il load balancing su uno ceh non risponde, devia 
+</I>&gt;<i> sull'altro... e quindi ho risolto, oppur eno?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> bartrosso dnsdistructor
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2014-11-24 9:31 GMT+01:00 Roberto Giorgi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">giorgi a dii.unisi.it</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">giorgi a dii.unisi.it</A>&gt;&gt;:
+</I>&gt;<i>
+</I>&gt;<i>     ...segnalo UCARP, forse potrebbe essere sufficiente per la
+</I>&gt;<i>     ridondanza degli IP:
+</I>&gt;<i>     <A HREF="http://ucarp.wordpress.com/">http://ucarp.wordpress.com/</A>
+</I>&gt;<i>
+</I>&gt;<i>     La problematica generale ricade sotto &quot;High Availability&quot; (HA)
+</I>&gt;<i>     Server/Cluster e non e' per niente banale nel suo complesso!
+</I>&gt;<i>
+</I>&gt;<i>     Saluti,
+</I>&gt;<i>     Roberto.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     2014-11-24 8:47 GMT+01:00 Roberto Bartali &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A>&gt;&gt;:
+</I>&gt;<i>
+</I>&gt;<i>         Ciao
+</I>&gt;<i>         per quello che ne so io il DNS gestisce SOLO il load
+</I>&gt;<i>         balancing, senza curarsi se uno dei nodi cui punta è su o meno.
+</I>&gt;<i>         Per avere questo tipo di controllo devi usare sistemi che
+</I>&gt;<i>         controllano se il servizio sul nodo risponde, ad esempio
+</I>&gt;<i>         ldirectord.
+</I>&gt;<i>         Io ne ho implementato uno che sta funzionando alla grande
+</I>&gt;<i>         seguendo questa guida:
+</I>&gt;<i>         <A HREF="http://www.tuxjournal.net/postfix-in-alta-affidabilita-con-heartbeat-lvs-ed-ldirectord-14/">http://www.tuxjournal.net/postfix-in-alta-affidabilita-con-heartbeat-lvs-ed-ldirectord-14/</A>
+</I>&gt;<i>         Ciao
+</I>&gt;<i>
+</I>&gt;<i>         *Roberto Bartali*
+</I>&gt;<i>         /Università di Siena/
+</I>&gt;<i>         Servizio reti, sistemi e sicurezza informatica
+</I>&gt;<i>         Via Bandini, 25
+</I>&gt;<i>         53100 - SIENA
+</I>&gt;<i>         E-mail: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A>&gt;
+</I>&gt;<i>         Tel. +39 0577 23 &lt;tel:%2B39%200577%2023&gt;(2189)
+</I>&gt;<i>         Linux User no. #542525
+</I>&gt;<i>         Il 31/10/2014 11:33, bartrosso ha scritto:
+</I>&gt;&gt;<i>         Che voi sappiate, come faccio a impostare due IP (due server
+</I>&gt;&gt;<i>         fisici differenti, mirror ) che puntano allo stesso record,
+</I>&gt;&gt;<i>         così da avere una protezione in caso di  server irraggiungibile?
+</I>&gt;&gt;<i>         il dns server se il primo non lo trova switcha suls econdo? o
+</I>&gt;&gt;<i>         occorre altro?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         Bartrosso
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         _______________________________________________
+</I>&gt;&gt;<i>         Tecnica mailing list
+</I>&gt;&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>  &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>         _______________________________________________
+</I>&gt;<i>         Tecnica mailing list
+</I>&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i>         <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     -- 
+</I>&gt;<i>     ----------------------------------
+</I>&gt;<i>     Q: Why is this email four sentences or less?
+</I>&gt;<i>     A: <A HREF="http://four.sentenc.es">http://four.sentenc.es</A>
+</I>&gt;<i>     ----------------------------------
+</I>&gt;<i>     Roberto Giorgi, PhD --- <A HREF="http://www.dii.unisi.it/~giorgi">http://www.dii.unisi.it/~giorgi</A>
+</I>&gt;<i>     &lt;<A HREF="http://www.dii.unisi.it/%7Egiorgi">http://www.dii.unisi.it/%7Egiorgi</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Tecnica mailing list
+</I>&gt;<i>     <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i>     <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20141127/fe9818f6/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20141127/fe9818f6/attachment.htm</A>&gt;
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        smime.p7s
+Tipo:        application/pkcs7-signature
+Dimensione:  1916 bytes
+Descrizione: Firma crittografica S/MIME
+URL:         &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20141127/fe9818f6/attachment.bin">http://liste.siena.linux.it/pipermail/tecnica/attachments/20141127/fe9818f6/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001901.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1902">[ Data ]</a>
+              <a href="thread.html#1902">[ Thread ]</a>
+              <a href="subject.html#1902">[ Oggetto ]</a>
+              <a href="author.html#1902">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

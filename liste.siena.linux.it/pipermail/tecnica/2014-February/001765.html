@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] File server con accesso remoto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20File%20server%20con%20accesso%20remoto&In-Reply-To=%3CCAD7fOTys5jZUh4qs4zP%2BMhtGbrnoZLfk8dqVdiC5TDA24j2ydA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001763.html">
+   <LINK REL="Next"  HREF="001767.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] File server con accesso remoto</H1>
+    <B>Simone Soldateschi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20File%20server%20con%20accesso%20remoto&In-Reply-To=%3CCAD7fOTys5jZUh4qs4zP%2BMhtGbrnoZLfk8dqVdiC5TDA24j2ydA%40mail.gmail.com%3E"
+       TITLE="[Tecnica] File server con accesso remoto">simone.soldateschi a gmail.com
+       </A><BR>
+    <I>Gio  6 Feb 2014 11:21:08 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001763.html">[Tecnica] File server con accesso remoto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001767.html">[Tecnica] File server con accesso remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1765">[ Data ]</a>
+              <a href="thread.html#1765">[ Thread ]</a>
+              <a href="subject.html#1765">[ Oggetto ]</a>
+	      <a href="author.html#1765">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>FTP è divertente da amministrare come un MTA :P
+
+Dai un occhio a sftp.
+Fyi, non ftps
+On 6 Feb 2014 09:43, &quot;bartrosso&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; wrote:
+
+&gt;<i> &quot;seee seee mio cuggino&quot;
+</I>&gt;<i> anche io avevo un cuggino che aveva un amico che voleva fare un server
+</I>&gt;<i> linux in casa poi ha scoperto che:
+</I>&gt;<i>
+</I>&gt;<i> c'è poi il problema del dns sull'Ip di casa..
+</I>&gt;<i> e sui permessi del router per instradare al pc giusto.
+</I>&gt;<i>
+</I>&gt;<i> c'è da sbizzarrirsi su come e quando farlo accendere da remoto...
+</I>&gt;<i>
+</I>&gt;<i> Lo streaming comunque non si può fare per mancanza di banda.
+</I>&gt;<i>
+</I>&gt;<i> Molti router non permettono regole firewall in concomitanza a DMZ, che non
+</I>&gt;<i> andrebbero mai usate.
+</I>&gt;<i>
+</I>&gt;<i> La lista degli scoramenti è lunga . MA..
+</I>&gt;<i> per un normale uso da file repository una  distro ubuntu (server, ma
+</I>&gt;<i> anche home) ha tutto quello che serve.
+</I>&gt;<i>
+</I>&gt;<i> basta configurare un ftp server correttamente seguendo
+</I>&gt;<i> <A HREF="http://wiki.ubuntu-it.org/Server/Ftp">http://wiki.ubuntu-it.org/Server/Ftp</A>
+</I>&gt;<i> e poi da remoto usare un normale client tipo :FILEZILLA&lt;<A HREF="https://filezilla-project.org/download.php">https://filezilla-project.org/download.php</A>&gt;
+</I>&gt;<i> (resta sempre il discorso dell'instradamento su ip dinamico..e porte 21 22
+</I>&gt;<i> del server in locale)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> bartrosso
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2014-02-05 22:41 GMT+01:00 Simone Soldateschi &lt;
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>&gt;:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Ciao,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Creare il file-server non e' un problema, ma ha poi abbastanza banda per
+</I>&gt;&gt;<i> accedere ai file da remoto?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Se si' condividi con NFS, ed accedi in VPN.
+</I>&gt;&gt;<i> Altrimenti usa il servizio Cloud (GDrive, Dropbox, Box, *etc*) che piu'
+</I>&gt;&gt;<i> ti piace.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ~Simone
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Simone Soldateschi
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> *email*: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>
+</I>&gt;&gt;<i> *phone*: +44 750 723 9300
+</I>&gt;&gt;<i> *LinkedIn*: linkedin.com/in/simonesoldateschi
+</I>&gt;&gt;<i> *skype*: simone.soldateschi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2014-02-05 Giulio Saletti &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">giulio.saletti a gmail.com</A>&gt;:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Salve a tutta la lista,
+</I>&gt;&gt;&gt;<i> mio cugino vorrebbe tirar su un file server linux-based con la
+</I>&gt;&gt;&gt;<i> possibilità di accedere ai files anche da remoto.
+</I>&gt;&gt;&gt;<i> Consigli, guide, tutorial, esperienze personali?
+</I>&gt;&gt;&gt;<i> Anche a me non dispiacerebbe creare qualcosa di simile in ufficio.
+</I>&gt;&gt;&gt;<i>  Sarà tutto ben gradito in quanto non so da dove cominciare.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> P.s. Hard disk in raid 0
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Grazie a tutti dell'aiuto
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> &lt;<A HREF="http://keslab.it/">http://keslab.it/</A>&gt; KES LAB - Fotografia Web Informatica by kes srl
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140206/6fe9c6db/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140206/6fe9c6db/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001763.html">[Tecnica] File server con accesso remoto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001767.html">[Tecnica] File server con accesso remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1765">[ Data ]</a>
+              <a href="thread.html#1765">[ Thread ]</a>
+              <a href="subject.html#1765">[ Oggetto ]</a>
+              <a href="author.html#1765">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Supporto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Supporto&In-Reply-To=7f7db5320810311025m1f65b593w72d244e717b267b7%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000657.html">
+   <LINK REL="Next"  HREF="000659.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Supporto</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Supporto&In-Reply-To=7f7db5320810311025m1f65b593w72d244e717b267b7%40mail.gmail.com"
+       TITLE="[Tecnica] Supporto">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Ven 31 Ott 2008 20:40:39 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000657.html">[Tecnica] Supporto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000659.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#658">[ Data ]</a>
+              <a href="thread.html#658">[ Thread ]</a>
+              <a href="subject.html#658">[ Oggetto ]</a>
+	      <a href="author.html#658">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle venerdì 31 ottobre 2008, Giovanni ha scritto:
+&gt;<i> Il pc funziona benissimo, ovviamente senza interfaccia grafica. Riesco però
+</I>&gt;<i> a usare la shell perché il sistema lo carica tutto, tranne gnome. Il sistema
+</I>&gt;<i> vecchio comunque non c'è più quindi non posso farlo partire.
+</I>
+Ok.
+La prossima volta che hai problemi conviene che anche sul forum gli posti 
+subito queste info (lspci e modello pc) così fai prima ;)
+
+Allora, anche dal forum ti consigliano di provare con Envy. Anche io lo uso 
+sul portatile Dell che ha una NVIDIA. Cos'è Envy? E' un programma (scritto da 
+un ragazzo Italiano) che si scarica da solo l'ultimissimo driver dai siti 
+nvidia o ati e te lo installa automaticamente creando un pacchetto deb 
+(quindi non fa casino con il gestore dei pacchetti come invece farebbe il 
+pacchetto che distribuisce direttamente la ATI).
+
+Visto che sei in modalità testuale devi digitare:
+
+$ sudo apt-get install envyng-gtk envyng
+
+dopodiché, quando ti ha installato tutto lo lanci con
+
+$ sudo envyng -t
+
+ovvero il programma Envy in modalità testuale. Ti appare un menù e tu scegli 
+l'opzione 3, ovvero installazione driver ATI automatica. Farà tutto da solo e 
+quando ha finito riavvii il sistema (deve caricare un modulo del kernel, per 
+questo motivo conviene riavviare)
+
+A quel punto si spera che dovrebbe andare a posto, visto che avresti nel 
+sistema il super ultimissimo driver direttamente dal sito ati (pero' closed 
+source, purtroppo)
+
+Facci sapere se hai risolto,
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000657.html">[Tecnica] Supporto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000659.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#658">[ Data ]</a>
+              <a href="thread.html#658">[ Thread ]</a>
+              <a href="subject.html#658">[ Oggetto ]</a>
+              <a href="author.html#658">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

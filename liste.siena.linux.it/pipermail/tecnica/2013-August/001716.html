@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Fwd: Traffico in upload abnorme
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20Traffico%20in%20upload%20abnorme&In-Reply-To=%3C52147FC5.8080602%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001711.html">
+   <LINK REL="Next"  HREF="001718.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Fwd: Traffico in upload abnorme</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20Traffico%20in%20upload%20abnorme&In-Reply-To=%3C52147FC5.8080602%40yusefmaali.net%3E"
+       TITLE="[Tecnica] Fwd: Traffico in upload abnorme">contact a yusefmaali.net
+       </A><BR>
+    <I>Mer 21 Ago 2013 09:52:21 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001711.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001718.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1716">[ Data ]</a>
+              <a href="thread.html#1716">[ Thread ]</a>
+              <a href="subject.html#1716">[ Oggetto ]</a>
+	      <a href="author.html#1716">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 21/08/2013 10:03, luca mercurio wrote:
+&gt;<i> Sto studiando wureshark per capire come individuare questa macchina ma
+</I>&gt;<i> ancora non ci ho chiappato niente.
+</I>&gt;<i> Voi sapete se c'è un tool all'interno di wireshark che faccia questo
+</I>&gt;<i> tipo di analisi e che mi permetta di individuare il colpevole?
+</I>
+Considera che gli switch isolano i domini di collisione, quindi con 
+wireshark, sniffando la tua porta ethernet, non riesci a vedere il 
+traffico in upload di altre macchine.
+Puoi vedere solo i pacchetti mandati in broadcast, che ti serve a poco.
+
+
+&gt;<i> Sto pure pensando che si tratti di uno switch difettoso (ne abbiamo 7 in
+</I>&gt;<i> funzione in tutta la scuola)
+</I>
+Molto probabile.
+Paradossalmente, come dice Michele, potrebbe essere qualche switch 
+cinese che avete preso per attaccare un pc in più, ad esempio.
+
+Invece di spegnere i pc, dovresti proprio staccare i cavi in modo da 
+isolare le varie sezioni.
+
+Visto che hai degli switch cisco, prova a guardare tramite le loro 
+statistiche chi sta generando traffico. Sono molto dettagliate.
+
+L'approccio più brutale è scaricarti una qualsiasi ditro live per fare 
+routing (ie. IPFire) e metterti nel mezzo tra il router telecom e tutto 
+il resto. In quel modo hai tutti gli strumenti linux (ie. iptraf) per 
+vedere da dove parte il traffico.
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001711.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001718.html">[Tecnica] Fwd: Traffico in upload abnorme
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1716">[ Data ]</a>
+              <a href="thread.html#1716">[ Thread ]</a>
+              <a href="subject.html#1716">[ Oggetto ]</a>
+              <a href="author.html#1716">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Siam qui...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Siam%20qui...&In-Reply-To=339d31640610161109w5e2ed01bw70aa80239b8541c7%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000225.html">
+   <LINK REL="Next"  HREF="000227.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Siam qui...</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Siam%20qui...&In-Reply-To=339d31640610161109w5e2ed01bw70aa80239b8541c7%40mail.gmail.com"
+       TITLE="[Tecnica] Siam qui...">pragma a siena.linux.it
+       </A><BR>
+    <I>Lun 16 Ott 2006 19:26:38 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000225.html">[Tecnica] Siam qui...
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000227.html">[Tecnica] Siam qui...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#226">[ Data ]</a>
+              <a href="thread.html#226">[ Thread ]</a>
+              <a href="subject.html#226">[ Oggetto ]</a>
+	      <a href="author.html#226">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 16 October 2006 20:09, Giulio Saletti wrote:
+&gt;<i> Siam qui,
+</I>&gt;<i> completamente in balìa di Linux...
+</I>&gt;<i> Imposto la risoluzione del video e non viene mantenuta, non riesco a far
+</I>&gt;<i> funzionare la mia scheda wireless, i programmi di si bloccano con una
+</I>&gt;<i> puntualità incredibile...
+</I>&gt;<i>
+</I>&gt;<i> In una settimana (e due nuove installazioni della distro) sono riuscito
+</I>&gt;<i> solo ad attivare una penna bluetooth...
+</I>&gt;<i>
+</I>&gt;<i> Ma come si fa a cominciare bene?
+</I>
+Insisti.
+Anni fa, la prima volta, ci ho messo una settimana a far andare X sul mio 
+pc... ora però vivo di rendita perchè ho capito in dettaglio come funzionano 
+le cose.
+
+Per diventare un risolutore di problemi devi affrontarli almeno una volta :)
+
+&gt;<i> Partiamo dalle cose che sembravano semplici:
+</I>&gt;<i> imposto la risoluzione video  a 1024x768, confermo le impostazioni e al
+</I>&gt;<i> riavvio torna alla risoluzione precedente... come mai?
+</I>
+Edita /etc/X11/xorg.conf (o XF86Config se hai ancora XFree86).
+
+Ad un certo punto trovi:
+
+Section &quot;Screen&quot;
+        Identifier &quot;Screen0&quot;
+        Device     &quot;Qualcosa&quot;
+        Monitor    &quot;Monitor0&quot;
+        DefaultDepth     24
+	...
+        SubSection &quot;Display&quot;
+		....
+                Depth     24
+                Modes    &quot;800x600&quot; &quot;1024x768&quot; &quot;1280x1024&quot;
+		....
+        EndSubSection
+EndSection
+
+La linea &quot;Modes&quot; contiene le modalità grafiche ammesse.
+Il server X si prende di default la prima &quot;usabile&quot; che trova.
+Se ci metti solo &quot;1024x768&quot; lui non potrà fare altro che prendere quella...
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Somewhere, something incredible is waiting to be known.
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061016/85115aed/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061016/85115aed/attachment.pgp</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000225.html">[Tecnica] Siam qui...
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000227.html">[Tecnica] Siam qui...
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#226">[ Data ]</a>
+              <a href="thread.html#226">[ Thread ]</a>
+              <a href="subject.html#226">[ Oggetto ]</a>
+              <a href="author.html#226">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

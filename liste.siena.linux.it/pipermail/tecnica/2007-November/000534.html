@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Dual core !
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dual%20core%20%21&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="000535.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Dual core !</H1>
+    <B>Andrea V.</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dual%20core%20%21&In-Reply-To="
+       TITLE="[Tecnica] Dual core !">voland03 a libero.it
+       </A><BR>
+    <I>Gio 15 Nov 2007 20:42:38 GMT</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="000535.html">[Tecnica] Dual core !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#534">[ Data ]</a>
+              <a href="thread.html#534">[ Thread ]</a>
+              <a href="subject.html#534">[ Oggetto ]</a>
+	      <a href="author.html#534">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Ciao.
+
+Oggi volevo verificare se sul mio portatile e' attivo il dual core,cosi' 
+spulciando su internet ho trovato questo consiglio:verificare 
+in /proc/cpuinfo se ci sono due liste ,una per processore 0 ed una per 
+processore 1.Cosi' ho fatto ma...
+
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">andrea01 a darkstar</A>:/proc$ cat /proc/cpuinfo
+processor       : 0
+vendor_id       : AuthenticAMD
+cpu family      : 15
+model           : 72
+model name      : AMD Turion(tm) 64 X2 Mobile Technology TL-60
+stepping        : 2
+cpu MHz         : 2000.000
+cache size      : 512 KB
+fdiv_bug        : no
+hlt_bug         : no
+f00f_bug        : no
+coma_bug        : no
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 1
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca 
+cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt rdtscp 
+lm 3dnowext 3dnow pni cx16 lahf_lm cmp_legacy svm extapic cr8_legacy ts fid 
+vid ttp tm stc
+bogomips        : 4003.46
+clflush size    : 64
+
+Come si vede il dual core non e' attivato!!! Quale flag dovrei settare nel 
+kernel per andare a colpo sicuro e non dover fare inutili tentativi?Le prime 
+volte al boot avevo i 2 pinguini,poi ho fatto cambiamenti ma non avevo notato 
+che ne era rimasto solo 1.
+
+Ciao e grazie !
+
+Andrea
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="000535.html">[Tecnica] Dual core !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#534">[ Data ]</a>
+              <a href="thread.html#534">[ Thread ]</a>
+              <a href="subject.html#534">[ Oggetto ]</a>
+              <a href="author.html#534">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

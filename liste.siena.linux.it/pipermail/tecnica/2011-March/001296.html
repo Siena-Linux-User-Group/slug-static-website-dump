@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Vi faccio ridere un pò...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FVi_faccio_ridere_un_p%3DF2%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C4D6E30D0.5090807%40zerozone.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="001297.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Vi faccio ridere un pò...</H1>
+    <B>O-Zone</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20%3D%3Fiso-8859-1%3Fq%3FVi_faccio_ridere_un_p%3DF2%3D2E%3D2E%3D2E%3F%3D&In-Reply-To=%3C4D6E30D0.5090807%40zerozone.it%3E"
+       TITLE="[Tecnica] Vi faccio ridere un pò...">o-zone a zerozone.it
+       </A><BR>
+    <I>Mer  2 Mar 2011 11:58:08 GMT</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="001297.html">[Tecnica] ibook linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1296">[ Data ]</a>
+              <a href="thread.html#1296">[ Thread ]</a>
+              <a href="subject.html#1296">[ Oggetto ]</a>
+	      <a href="author.html#1296">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Cosa succede quanto si mette in mano un server Linux a chi non ci
+capisce nulla ?
+
+Praticamente è venuto fuori che non si poteva fare una operazione di
+migrazione a causa di una discrepanza delle versioni del Kernel, dando
+la colpa al fatto che avevo installato male (...io !) il sistema operativo:
+
+&gt;<i> Allego estratto tradotto del supporto VMware:
+</I>&gt;<i>_______
+</I>&gt;<i>
+</I>&gt;<i> L' mkinitrd che viene lanciato in fase di virtualizzazione (P2V),
+</I>&gt;<i> nonostante il kernel possa essere chiamato in qualsiasi modo
+</I>&gt;<i> all'interno del grub, fa girare un &quot;uname -r&quot; che verifica la
+</I>&gt;<i> versione del kernel che sta girando e si aspetta di trovare una
+</I>&gt;<i> direttorio chiamato allo stesso modo sotto la /lib/modules/.
+</I>&gt;<i>
+</I>&gt;<i> Dai file che avete mandato probabilmente e' stato cambiato il nome
+</I>&gt;<i> del kernel a 2.6.9-100.EL. Lo script lanciato dal tool di
+</I>&gt;<i> virtualizzazione va a cercare il direttorio /lib/modules
+</I>&gt;<i> /2.6.9-89.0.26.EL che non esiste, in quanto sembra essere stato
+</I>&gt;<i> rinominato in 2.6.9-100.EL, e questo ha generato l'errore.
+</I>&gt;<i>
+</I>&gt;<i> Il server in questione non è virtualizzabile con questa situazione a
+</I>&gt;<i> meno che non si ripristinino le posizioni originali dei files e delle
+</I>&gt;<i> lib, cosa che può essere fatta solo con un downtime e dopo un
+</I>&gt;<i> cold-backup.
+</I>&gt;<i>
+</I>&gt;<i> Consigliamo una nuova installazione del sistema in modo da rendere
+</I>&gt;<i>standard le posizioni e possibile l'avvio degli script post-copia.
+</I>&gt;<i> _______
+</I>
+Ecco la mia risposta:
+
+=============================
+
+Ok, bene.
+
+Se faccio &quot;uname -r&quot; ottengo, correttamente:
+
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> home]# uname -r
+2.6.9-89.0.26.EL
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> home]#
+
+ma se guardo i moduli del kernel, dentro /lib/modules, vedo che -come da
+segnalazione-:
+
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> modules]# ls -l
+totale 16
+drwxr-xr-x  3 root root 4096 20 feb 13:39 2.6.9-100.EL
+drwxr-xr-x  3 root root 4096 20 feb 13:39 2.6.9-100.ELsmp
+drwxr-xr-x  2 root root 4096  1 feb 18:14 kabi-4.0-0
+drwxr-xr-x  2 root root 4096  1 feb 18:31 kabi-4.0-0smp
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> modules]#
+
+Questa discrepanza da cosa dipende ? Beh, probabilmente dal fatto che è
+stato fatto un aggiornamento del sistema (up2date ?) che ha aggiornato
+il kernel all'ultima release disponibile (la 2.6.9-100EL, appunto) ma
+che, siccome NON SI E' PROVVEDUTO AL REBOOT DELLA MACCHINA, come dice
+'uptime':
+
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> modules]# uptime
+ 12:47:58 up 116 days,  1:40,  6 users,  load average: 1.63, 1.94, 2.27
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> modules]#
+
+e come si vede dal kernel presente in /boot:
+
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> boot]# ls -l
+totale 6632
+-rw-r--r--  1 root root   51676  1 feb 18:13 config-2.6.9-100.EL
+-rw-r--r--  1 root root   51301  1 feb 18:30 config-2.6.9-100.ELsmp
+drwxr-xr-x  2 root root    4096 20 feb 13:39 grub
+-rw-r--r--  1 root root  941059 20 feb 13:39 initrd-2.6.9-100.EL.img
+-rw-r--r--  1 root root  919265 20 feb 13:39 initrd-2.6.9-100.ELsmp.img
+-rw-r--r--  1 root root     547  9 ago  2005 kernel.h
+-rw-r--r--  1 root root   23108  3 ago  2005 message
+-rw-r--r--  1 root root   21282  3 ago  2005 message.ja
+-rw-r--r--  1 root root   67797  1 feb 18:14 symvers-2.6.9-100.EL.gz
+-rw-r--r--  1 root root   68571  1 feb 18:31 symvers-2.6.9-100.ELsmp.gz
+lrwxrwxrwx  1 root root      32 21 gen  2008 System.map -&gt;
+/boot/System.map-2.6.9-67.0.1.EL
+-rw-r--r--  1 root root  770652  1 feb 18:13 System.map-2.6.9-100.EL
+-rw-r--r--  1 root root  787646  1 feb 18:30 System.map-2.6.9-100.ELsmp
+-rw-r--r--  1 root root 1538260  1 feb 18:13 vmlinuz-2.6.9-100.EL
+-rw-r--r--  1 root root 1476983  1 feb 18:30 vmlinuz-2.6.9-100.ELsmp
+[<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a sfx</A> boot]#
+
+è evidente che il kernel che attualmente è in ESECUZIONE non è lo stesso
+per cui ci sono i moduli.
+
+Come si risolve ?
+
+Probabilmente è sufficente fare un reboot della macchina.
+
+...e non è un problema di installazione del server.
+
+Saluti, Michele
+
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="001297.html">[Tecnica] ibook linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1296">[ Data ]</a>
+              <a href="thread.html#1296">[ Thread ]</a>
+              <a href="subject.html#1296">[ Oggetto ]</a>
+              <a href="author.html#1296">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

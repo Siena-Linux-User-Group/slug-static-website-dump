@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Specificità del kernel nelle distribuzioni [was: Re: [Generale] ri-portatile]
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%3D%3Fiso-8859-15%3Fq%3FSpecificit%3DE0_del_kernel_nelle_distribuzioni_%3D5Bwas%3D3A%3F%3D%0A%09%3D%3Fiso-8859-15%3Fq%3F_Re%3D3A_%3D5BGenerale%3D5D%3F%3D%20ri-portatile%5D&In-Reply-To=aaab9ad90702160714ob8c2589he88839f5203f70be%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001787.html">
+   <LINK REL="Next"  HREF="001796.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>Specificità del kernel nelle distribuzioni [was: Re: [Generale] ri-portatile]</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%3D%3Fiso-8859-15%3Fq%3FSpecificit%3DE0_del_kernel_nelle_distribuzioni_%3D5Bwas%3D3A%3F%3D%0A%09%3D%3Fiso-8859-15%3Fq%3F_Re%3D3A_%3D5BGenerale%3D5D%3F%3D%20ri-portatile%5D&In-Reply-To=aaab9ad90702160714ob8c2589he88839f5203f70be%40mail.gmail.com"
+       TITLE="Specificità del kernel nelle distribuzioni [was: Re: [Generale] ri-portatile]">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Ven 16 Feb 2007 16:26:39 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001787.html">[Generale] ri-portatile
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001796.html">Re: Specificità del kernel nelle distribuzioni [was: Re: [Generale] ri-portatile]
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1793">[ Data ]</a>
+              <a href="thread.html#1793">[ Thread ]</a>
+              <a href="subject.html#1793">[ Oggetto ]</a>
+	      <a href="author.html#1793">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 16:14, venerdì 16 febbraio 2007, Alessandro Iurlano ha scritto:
+&gt;<i> Interessante. Intendi dire che le distribuzione stanno iniziando a portare
+</I>&gt;<i> avanti un
+</I>&gt;<i> proprio fork del kernel di linux?
+</I>
+Allora, molto di questo l'ho percepito dall'intervista a Ben Collins che ho 
+tradotto sul sito di Ubuntu [1] ma la questione ha diversi aspetti oltre a 
+quelli che introduci tu, come ad esempio i moduli liberi non incorporati nel 
+branch stabile del kernel o i moduli binari.
+
+Comunque, citando Ben che forse è più chiaro di me:
+
+----------------------
+«- Fino a che punto c'è collaborazione tra i maintainer del kernel delle 
+differenti distribuzioni?
+
+Il kernel in ogni distribuzione è molto specifico. Le distribuzioni hanno 
+differenti linee guida su cosa vogliono dal loro kernel. Alcune distribuzioni 
+rimangono vicine alla versione orginale il più possibile, anche in presenza 
+di bug conosciuti, mentre altre sono disponibili ad integrare anche grandi 
+modifiche cambiando così molte funzionalità, anche rilevanti, e 
+differenziandosi molto dal kernel originale. Inoltre, le distribuzioni 
+possono avere differenti punti di vista riguardo il supporto di hardware con 
+driver che non sono ancora integrati nel kernel originale. Quindi, mentre 
+cerco di rendere il kernel di Ubuntu disponibile il più possibile alle altre 
+distribuzioni, è molto dubbio che le nostre linee guida coincidano con quelle 
+degli altri. Un'area ove interagiamo e collaboriamo molto è nelle 
+vulnerabilità di sicurezza. Debian e Ubuntu hanno un repository subversion 
+comune per tracciare i problemi rilevanti e condividere le patch.»
+----------------------
+
+Quindi, alla data x, un hardware potrebbe funzionare su una distro e non 
+funzionare su di un altra. Se il problema è dato da moduli non ancora 
+incorporati la cosa si risolve al rilascio successivo (anche se 
+commercialmente non è una cosa accettabile), se invece il problema è dato da 
+moduli che per un qualche motivo *non si intende* importare la cosa potrebbe 
+andare avanti molto tempo.
+
+Quindi un rivenditore ha difficoltà a dire, se non lo dice il produttore, 
+questo hardware è *linux* compatibile (in particolare i portatili).
+Mentre, un rivenditore, se ha un po' di supporto tecnico alle spalle, può 
+anche dire &quot;questo portatile funziona anche con la distribuzione xy versione 
+1.2&quot; usando le schede di compatibilità presenti nei siti *ufficiali* delle 
+distribuzioni.
+
+Purtroppo vendere un hardware con una distribuzione preinstallata è 
+completamente diverso di un utente che installa *dopo* un altro sistema.
+Se un pc non funziona, con il software fornito fin dall'acquisto, il cliente 
+ha diritto alla sostituzione, per legge. Questo fardello non può prenderselo 
+tutto il negoziante, per quanto ben predisposto verso il Software Libero.
+
+Note 
+[1]: <A HREF="http://www.ubuntu-it.org/index.php?page=ben-collins">http://www.ubuntu-it.org/index.php?page=ben-collins</A>
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001787.html">[Generale] ri-portatile
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001796.html">Re: Specificità del kernel nelle distribuzioni [was: Re: [Generale] ri-portatile]
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1793">[ Data ]</a>
+              <a href="thread.html#1793">[ Thread ]</a>
+              <a href="subject.html#1793">[ Oggetto ]</a>
+              <a href="author.html#1793">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

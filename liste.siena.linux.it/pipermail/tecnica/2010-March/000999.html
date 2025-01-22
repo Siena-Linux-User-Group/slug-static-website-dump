@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Router con iptables
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C201003261624.59617.contact%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000998.html">
+   <LINK REL="Next"  HREF="001000.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Router con iptables</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Router%20con%20iptables&In-Reply-To=%3C201003261624.59617.contact%40yusefmaali.net%3E"
+       TITLE="[Tecnica] Router con iptables">contact a yusefmaali.net
+       </A><BR>
+    <I>Ven 26 Mar 2010 15:24:59 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000998.html">[Tecnica] Router con iptables
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001000.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#999">[ Data ]</a>
+              <a href="thread.html#999">[ Thread ]</a>
+              <a href="subject.html#999">[ Oggetto ]</a>
+	      <a href="author.html#999">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Le route?
+
+Fai un route -n e vedi se ci sono tutte.
+
+
+Ciao
+
+
+
+In data venerdì 26 marzo 2010 12:37:45, Andrea Ciani ha scritto:
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> 
+</I>&gt;<i> stavo configurando un router/firewall con linux ubuntu server utilizzando
+</I>&gt;<i>  le iptables.
+</I>&gt;<i> 
+</I>&gt;<i> Ho 2 schede di rete chiamate eht0 (LAN) ed eth1 (collegata a sua volta con
+</I>&gt;<i>  un modem/router di fastweb).
+</I>&gt;<i> 
+</I>&gt;<i> Ho creato un DHCP che assegna correttamente gli indirizzi nella lan. La
+</I>&gt;<i>  scheda eth0 ha indirizzo 192.168.0.2 e la eth1 invece prende gli ip
+</I>&gt;<i>  direttamente da fastweb.
+</I>&gt;<i> 
+</I>&gt;<i> Il computer è correttamente connesso a internet (ho provato e testato con
+</I>&gt;<i>  wget) e la eth0 è correttamente configurata in lan (ho provato a scambiare
+</I>&gt;<i>  risorse condivise e funziona tutto).
+</I>&gt;<i> 
+</I>&gt;<i> Però, come faccio a far andare i computer della lan su internet?? Perché
+</I>&gt;<i>  non riescono a dialogare??
+</I>&gt;<i> 
+</I>&gt;<i> Con iptables ho inserito le seguenti regole:
+</I>&gt;<i> 
+</I>&gt;<i> iptables -P INPUT ACCEPT
+</I>&gt;<i> iptables -P FORWARD ACCEPT
+</I>&gt;<i> iptables -P OUTPUT ACCEPT
+</I>&gt;<i> iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+</I>&gt;<i> 
+</I>&gt;<i> ed ho inserito la seguente riga nel file /etc/sysctl.conf
+</I>&gt;<i> 
+</I>&gt;<i> net.ipv4.ip_forward = 1
+</I>&gt;<i> 
+</I>&gt;<i> riavviando ho notato che iptables aveva mantenuto i settaggi, però ancora
+</I>&gt;<i>  niente internet dalla LAN!!! Perché?? Cosa ho sbagliato?? Qualcuno mi
+</I>&gt;<i>  saprebbe dare una mano?
+</I>&gt;<i> 
+</I>&gt;<i> -----------------------------------------------
+</I>&gt;<i> Andrea Ciani
+</I>&gt;<i> 
+</I></PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000998.html">[Tecnica] Router con iptables
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001000.html">[Tecnica] Router con iptables
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#999">[ Data ]</a>
+              <a href="thread.html#999">[ Thread ]</a>
+              <a href="subject.html#999">[ Oggetto ]</a>
+              <a href="author.html#999">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] php help me
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20php%20help%20me&In-Reply-To=%3CBANLkTik7XPRUkZBJD2WFt-hnFinu3k035g%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005230.html">
+   <LINK REL="Next"  HREF="005235.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] php help me</H1>
+    <B>d4lamar</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20php%20help%20me&In-Reply-To=%3CBANLkTik7XPRUkZBJD2WFt-hnFinu3k035g%40mail.gmail.com%3E"
+       TITLE="[Generale] php help me">d4lamar a gmail.com
+       </A><BR>
+    <I>Gio  7 Apr 2011 10:39:52 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005230.html">[Generale] php help me
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005235.html">[Generale] php help me
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5233">[ Data ]</a>
+              <a href="thread.html#5233">[ Thread ]</a>
+              <a href="subject.html#5233">[ Oggetto ]</a>
+	      <a href="author.html#5233">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 07 aprile 2011 09:52, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">bartrosso a gmail.com</A>&gt; ha scritto:
+&gt;<i> Salve sono il tanga,
+</I>&gt;<i> Ho un quesito per ottimizzare un mio sito attualmente in costruzione.
+</I>&gt;<i> Qualche tempo fa lessi come creare pagine dinamiche ma generate ogni tot
+</I>&gt;<i> tempo (ad esempio film al cinema una volta al giorno) e non ad ogni refresh
+</I>&gt;<i> di pagina.
+</I>&gt;<i> Non trovo più l'articolo e se cerco semidinamiche o generare pagine trovo
+</I>&gt;<i> ovviamente tutto e di più. Mi sapete indirizzare sul giusto argomento???
+</I>&gt;<i> grazie mille
+</I>&gt;<i> tanga
+</I>
+qualcosa del genere ?
+
+<A HREF="http://www.programmazione.it/index.php?entity=eitem&amp;idItem=39869">http://www.programmazione.it/index.php?entity=eitem&amp;idItem=39869</A>
+
+Per un po' di tempo ho utilizzato un service provider che forniva solo
+servizio PHP senza i cron jobs, si possono appunto simulare dei cron
+jobs eseguendo determinate operazioni solo ogni tot tempo.
+Come credo suggeriva qualcuno, basta salvarsi la data di esecuzione
+dell'ultima operazione pseudo cron da qualche parte (il db ?) e ad
+ogni caricamento della pagina principale (quella con piu' accessi)
+confrontare tale data con quella attuale e se e' passato il tempo
+necessario eseguire il codice dello pseudo cron e salvarsi la nuova
+data.
+
+Effetto collaterale il rallentamento del caricamento della pagina
+all'esecuzione dello pseudo cron (... ma ora che ci penso forse si
+puo' forkare ... non ricordo).
+Problemi? Se non hai accessi frequenti la cosa funziona molto poco.
+
+Discussione da [Generale] ?
+
+Ciao,
+d4lamar
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005230.html">[Generale] php help me
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005235.html">[Generale] php help me
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5233">[ Data ]</a>
+              <a href="thread.html#5233">[ Thread ]</a>
+              <a href="subject.html#5233">[ Oggetto ]</a>
+              <a href="author.html#5233">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

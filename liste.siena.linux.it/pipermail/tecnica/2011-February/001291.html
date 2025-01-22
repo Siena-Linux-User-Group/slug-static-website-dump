@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Memoria e 32 bit
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Memoria%20e%2032%20bit&In-Reply-To=%3CAANLkTimfUnocV0JVeqdv8x8ZFtz9hvMidQ5xYHxcf6SF%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001290.html">
+   <LINK REL="Next"  HREF="001292.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Memoria e 32 bit</H1>
+    <B>Iacopo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Memoria%20e%2032%20bit&In-Reply-To=%3CAANLkTimfUnocV0JVeqdv8x8ZFtz9hvMidQ5xYHxcf6SF%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Memoria e 32 bit">iakko a siena.linux.it
+       </A><BR>
+    <I>Mer 23 Feb 2011 14:57:46 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001290.html">[Tecnica] Memoria e 32 bit
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001292.html">[Tecnica] Memoria e 32 bit
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1291">[ Data ]</a>
+              <a href="thread.html#1291">[ Thread ]</a>
+              <a href="subject.html#1291">[ Oggetto ]</a>
+	      <a href="author.html#1291">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> La prima domanda è: un SO 32 bit è in grado di sfruttarla almeno
+</I>&gt;<i> parzialmente o dovrei buttarmi sul 64?
+</I>
+Gestendo dati a 32 bit, l'allocazione massima di memoria che si puo'
+avere e' data da un puntatore formato appunto da 32 bit che quindi
+indirizza massimo 2^32 byte (4GB). Ci sono metodi di estensione
+implementati in alcuni processori a 32 bit che portano da 32 a 36
+mettendo a disposizione fino a 64GB, ma per esempio Windows XP non lo
+sfrutta (linux ovviamente si).
+
+&gt;<i> La seconda domanda: i plug-in ed i software stanno iniziando a
+</I>&gt;<i> sfruttare bit e memoria in più (O almeno a girare senza farle girare)?
+</I>
+Io lo uso da un paio di anni a 64 bit e non ho riscontrato problemi
+rilevanti sia per lo sviluppo che per l'utilizzo di applicazioni da
+utente normale. Inizialmente si riscontravano problemi con alcuni
+plugin come il flash player, ma adesso si sono adeguati a farlo
+funzionare male come quello a 32 bit.
+
+Il problema e' che se prendi un pc a 64 bit e ci monti 8GB, non puoi
+sfruttare l'estensione a 36bit quindi in tal caso rimani limitato a
+4GB fintanto che non sostituisci un OS a 64bit.
+
+-- 
+Iacopo Palazzi
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001290.html">[Tecnica] Memoria e 32 bit
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001292.html">[Tecnica] Memoria e 32 bit
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1291">[ Data ]</a>
+              <a href="thread.html#1291">[ Thread ]</a>
+              <a href="subject.html#1291">[ Oggetto ]</a>
+              <a href="author.html#1291">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

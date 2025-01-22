@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=87c98d450611221818l2ed97837v522424d65dac948c%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001304.html">
+   <LINK REL="Next"  HREF="001307.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Re%3A%20%5BTecnica%5D%20Perl%20e%20strutture%20dati%20multidimensionali&In-Reply-To=87c98d450611221818l2ed97837v522424d65dac948c%40mail.gmail.com"
+       TITLE="[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali">pragma a siena.linux.it
+       </A><BR>
+    <I>Gio 23 Nov 2006 02:31:41 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001304.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001307.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1305">[ Data ]</a>
+              <a href="thread.html#1305">[ Thread ]</a>
+              <a href="subject.html#1305">[ Oggetto ]</a>
+	      <a href="author.html#1305">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 23 November 2006 03:18, Yusef Maali wrote:
+
+&gt;<i> Devo ancora capire se sei semplicemente un genio, oppure un genio pazzo :P
+</I>
+Macchè genio.. io sono malato :D
+
+Che poi, ora, preso dalla mania dell'onnipotenza, vaneggio del tutto...
+Non mi ascoltate :D
+
+&gt;<i> L'algoritmo che pensa alla matrice è il seguente:
+</I>&gt;<i>
+</I>&gt;<i> 	for(int i=0;i&lt;100;i++)
+</I>&gt;<i> 	{
+</I>&gt;<i> 		for(int j=0;j&lt;100;j++)
+</I>&gt;<i> 		{
+</I>&gt;<i> 			immagine[i][j] = (immagine[i][j] * 11) / 10;
+</I>&gt;<i> 		}
+</I>&gt;<i> 	}
+</I>&gt;<i>
+</I>&gt;<i> L'algoritmo che pensa all'array lineare è il seguente
+</I>&gt;<i>
+</I>&gt;<i> 	unsigned char * p = immagine;
+</I>&gt;<i> 	unsigned char * fine = p + (100 * 100);
+</I>&gt;<i> 	while(p &lt; fine)
+</I>&gt;<i> 	{
+</I>&gt;<i> 		*p = (*p * 11) / 10;
+</I>&gt;<i> 		p++;
+</I>&gt;<i> 	}
+</I>&gt;<i>
+</I>&gt;<i> Nota che il primo algoritmo usa due indici e fa 10% di confronti ed
+</I>&gt;<i> incrementi in più (è dimostrabile).
+</I>
+Il primo algoritmo, ad ogni passo, è costretto a calcolare la posizione 
+dell'elemento indicizzado da i e j tramite la formula i*10+j.
+Nell'architettura ix86 (e probabilmente in tutte le altre) le istruzioni
+sono studiate per minimizzare il costo di questo conto, ma anche
+se si potesse fare con una singola istruzione, questa userebbe sicuramente
+molta più logica di un semplice incremento (usato nell'algoritmo 2).
+
+Questo significa che l'algoritmo senza puntatori non solo ci mette di più
+ad eseguire ma consuma pure un botto di corrente in più...
+
+I puntatori sono &quot;verdi&quot;: &quot;save the planet, use pointers, use C(++)&quot;.
+
+Vabbeh.. vado a letto eh :D
+
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- The brighter you are the more you have to learn.
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20061123/d8b64e62/attachment.pgp">http://liste.siena.linux.it/pipermail/generale/attachments/20061123/d8b64e62/attachment.pgp</A>
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001304.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001307.html">[Generale] Re: [Tecnica] Perl e strutture dati multidimensionali
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1305">[ Data ]</a>
+              <a href="thread.html#1305">[ Thread ]</a>
+              <a href="subject.html#1305">[ Oggetto ]</a>
+              <a href="author.html#1305">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

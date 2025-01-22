@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] macchina virtuale con vmware
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20macchina%20virtuale%20con%20vmware&In-Reply-To=1152893765.8410.9.camel%40localhost.localdomain">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000027.html">
+   <LINK REL="Next"  HREF="000036.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] macchina virtuale con vmware</H1>
+    <B>Michele &quot;O-Zone&quot; Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20macchina%20virtuale%20con%20vmware&In-Reply-To=1152893765.8410.9.camel%40localhost.localdomain"
+       TITLE="[Tecnica] macchina virtuale con vmware">o-zone a siena.linux.it
+       </A><BR>
+    <I>Dom 16 Lug 2006 09:32:57 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000027.html">[Tecnica] macchina virtuale con vmware
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000036.html">[Tecnica] macchina virtuale con vmware
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#35">[ Data ]</a>
+              <a href="thread.html#35">[ Thread ]</a>
+              <a href="subject.html#35">[ Oggetto ]</a>
+	      <a href="author.html#35">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 16:16, venerdì 14 luglio 2006, roberto volpini ha scritto:
+&gt;<i> ciao a tutti......giorni fa ho deciso di virtualizzare uindou$....con
+</I>&gt;<i> vmware workstation 5.0.3......bene a metà installazione mi da questo
+</I>&gt;<i> errore (in allegato) sembra che gli manchi il compilatore gcc
+</I>
+L'errore è ben chiaro leggendo il messaggio:
+
+Your kernel was built with &quot;gcc&quot; version &quot;3.4.5&quot;, while you are trying to use
+&quot;/usr/bin/gcc&quot; version &quot;4.0.2&quot;. This configuration is not supported and VMware
+Workstation cannot work in such configuration. Please either recompile your
+kernel with &quot;/usr/bin/gcc&quot; version &quot;4.0.2&quot;, or 
+restart /usr/bin/vmware-config.plwith CC environment variable pointing to the 
+&quot;gcc&quot; version &quot;3.4.5&quot;.
+
+Se leggi bene dice anche come risolvere la questione. Consiglio mio ? 
+Ricompila il kernel con gcc 4.0.2 :-)
+
+Saluti, Oz
+
+-- 
+----
+O-Zone ! Since 1996 No (C)
+WEB (<A HREF="http://www.zerozone.it">http://www.zerozone.it</A>) and BLOG (<A HREF="http://blog.zerozone.it">http://blog.zerozone.it</A>)
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000027.html">[Tecnica] macchina virtuale con vmware
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000036.html">[Tecnica] macchina virtuale con vmware
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#35">[ Data ]</a>
+              <a href="thread.html#35">[ Thread ]</a>
+              <a href="subject.html#35">[ Oggetto ]</a>
+              <a href="author.html#35">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

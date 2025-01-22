@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] passare da debian 6 a debian 7 in sicurezza
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20passare%20da%20debian%206%20a%20debian%207%20in%20sicurezza&In-Reply-To=%3CCACw3ADgkg%3Dvz%2Bg9U%3DFGmvSALCnQvLym1YskJA5T8%3DcOYryfHpQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001799.html">
+   <LINK REL="Next"  HREF="001802.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] passare da debian 6 a debian 7 in sicurezza</H1>
+    <B>Gabriele Monfardini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20passare%20da%20debian%206%20a%20debian%207%20in%20sicurezza&In-Reply-To=%3CCACw3ADgkg%3Dvz%2Bg9U%3DFGmvSALCnQvLym1YskJA5T8%3DcOYryfHpQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] passare da debian 6 a debian 7 in sicurezza">gabrimonfa a gmail.com
+       </A><BR>
+    <I>Mar  1 Lug 2014 13:19:37 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001799.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001802.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1801">[ Data ]</a>
+              <a href="thread.html#1801">[ Thread ]</a>
+              <a href="subject.html#1801">[ Oggetto ]</a>
+	      <a href="author.html#1801">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A parte fare un backup di dati e configurazioni, il mio consiglio è seguire:
+
+<A HREF="https://www.debian.org/releases/stable/i386/release-notes/ch-upgrading.html">https://www.debian.org/releases/stable/i386/release-notes/ch-upgrading.html</A>
+
+Soprattutto la parte fighissima in cui si registra la sessione
+
+<A HREF="https://www.debian.org/releases/stable/i386/release-notes/ch-upgrading.en.html#record-session">https://www.debian.org/releases/stable/i386/release-notes/ch-upgrading.en.html#record-session</A>
+
+Un'altra cosa che puoi fare è in fase di aggiornamento non aggiornare i
+file di configurazione e farteli lasciare in file.dpkgnew.
+Poi puoi riconciliarli con calma usando un'utility di compare tipo meld o
+vimdiff.
+
+Se poi non ti puoi permettere molto downtime puoi anche fare
+<A HREF="https://www.debian.org/releases/stable/i386/release-notes/ch-upgrading.en.html#minimal-upgrade">https://www.debian.org/releases/stable/i386/release-notes/ch-upgrading.en.html#minimal-upgrade</A>
+
+Il mio consiglio comunque è guarda anche prima con calma i cambiamenti che
+sono stati fatti ai servizi che usi (mysql, apache, php, postgresql ecc...)
+in modo da non avere sorprese.
+
+Saluti
+
+Gabriele
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140701/e3415988/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140701/e3415988/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001799.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001802.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1801">[ Data ]</a>
+              <a href="thread.html#1801">[ Thread ]</a>
+              <a href="subject.html#1801">[ Oggetto ]</a>
+              <a href="author.html#1801">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

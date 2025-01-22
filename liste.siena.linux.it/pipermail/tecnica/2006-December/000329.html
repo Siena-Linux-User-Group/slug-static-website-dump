@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Dubbi su immagine
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dubbi%20su%20immagine&In-Reply-To=4593DE8D.8070308%40unisi.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000327.html">
+   <LINK REL="Next"  HREF="000331.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Dubbi su immagine</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Dubbi%20su%20immagine&In-Reply-To=4593DE8D.8070308%40unisi.it"
+       TITLE="[Tecnica] Dubbi su immagine">pragma a siena.linux.it
+       </A><BR>
+    <I>Gio 28 Dic 2006 16:03:19 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000327.html">[Tecnica] Dubbi su immagine
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000331.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#329">[ Data ]</a>
+              <a href="thread.html#329">[ Thread ]</a>
+              <a href="subject.html#329">[ Oggetto ]</a>
+	      <a href="author.html#329">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday 28 December 2006 16:11, marco wrote:
+&gt;<i> Vi espongo brevemente:
+</I>&gt;<i> Nell'aula  PC dove lavoro i vari pc sono pieni di schifezze (adware
+</I>&gt;<i> virus giochi java etc) e quindi inservibili.....per ovviare al problema
+</I>&gt;<i> e ridurre al minimo i giramenti di ... ho deciso di reinstallare tutto
+</I>&gt;<i> su un pc aggiornarle tutto  fare immagine e  poi ogni tanto formattare e
+</I>&gt;<i> riaprtire dall'immagine già pronta (visto che sono 12 pc uguali).
+</I>&gt;<i> Contemporaneamente volevo mettere anche linux  così se qualcuno lo vuole
+</I>&gt;<i> provare...domande:
+</I>
+Beh, secondo me è facile: basta che tieni una macchina (o un disco) &quot;master&quot;
+pulito.
+
+Prepari una macchina a dovere installando i due OS su un disco, ad esempio 
+hda. Quando sei soddisfatto, connetti un secondo disco (supponiamo hdb) di 
+dimensioni uguali (o superiori) ed esegui
+
+	dd if=/dev/hda of=/dev/hdb
+
+Ed ecco che sul secondo disco hai una copia bit-a-bit del primo: lo puoi 
+connettere ad un pc. Fatto.
+
+Hm.. il problema può nascere per le configurazioni specifiche della
+macchina, come l'IP e il nome della macchina.
+Per l'IP direi che puoi risolvere con dhcp: la configurazione sarà
+uguale per tutte le macchine.
+
+Per il nome della macchina invece dovrai per forza smanicchiolare 
+nell'immagine appena creata. Nel caso di linux puoi montare la partizione
+che contiene /etc e cambiare /etc/hostname subito dopo il dd.
+Si può fare con un banale script di shell.
+Costruire lo stesso automatismo per Windows a prima vista non è banalissimo,  
+perchè il nome della macchina è scritto nel registro (?) e probabilmente è 
+pure scritto in caratteri UNICODE. Un approccio può essere quello di cercare 
+l'immagine binaria del nome del pc nella partizione di windows (intesa come 
+file /dev/hdbX) e modificarla in modo brutale.. forse si può istruire sed a 
+fare una cosa del genere. Dovresti scegliere dei nomi di pc tutti della 
+stessa lunghezza però...
+
+&gt;<i> 1) la partizioni le devo fare prima o quando faccio l'immagine  ricrea
+</I>&gt;<i> anche le partizioni negli altri pc?
+</I>
+Se usi la tecnica che ho esposto sopra l'immagine è dell'intero disco,
+compresa la tabella delle partizioni e le partizioni stesse.
+
+&gt;<i> 2) devo fare un'immagine per ogni S.O.? se la risposta è NO posso poi
+</I>&gt;<i> ripristinare solo win oppure tutte le volte che rimetto l'immagine
+</I>&gt;<i> azzero anche linux?
+</I>&gt;<i> 3) Dato che pensavo di lasciare una partizione fat32 per mettere i dati
+</I>&gt;<i> durante il ripristino..posso scegliere di riprendere dall'immagine solo
+</I>&gt;<i> alcune partizioni o mi riscrive sempre tutto il disco?
+</I>
+
+Con la tecnica esposta sopra sovrascrivi l'intero disco e ti consiglio
+di farlo la prima volta su tutti i pc in modo da trovarti le partizioni
+già fatte.
+Se dopo vuoi ripristinare una sola partizione di una macchina &quot;slave&quot; basta 
+che connetti il sul hd ed istruisci dd con:
+
+	dd if=/dev/hda3 of=/dev/hdb3
+
+In questo modo copierai l'immagine della sola terza partizione.
+
+Per ripristinare un intero OS dovrai ovviamente copiare il gruppo delle
+relative partizioni.
+
+Occhio a non incasinarti con le partizioni estese (assicurati di sapere
+cosa sono e come sono disposte sul disco).
+
+&gt;<i> So che state per chiederlo..sono indeciso tra mandrake, zenwalk
+</I>&gt;<i> (!!!!thanks to blackhat!!!) (mi ha colpito subito per la sua semplicità)
+</I>&gt;<i> ubuntu....molto software scientifico è scritto da debianisti....
+</I>
+In questo non ti so aiutare: gentoo forever! :D
+
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Tried anarchy, once. Found it had too many constraints.
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061228/3d39f78a/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061228/3d39f78a/attachment.pgp</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000327.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000331.html">[Tecnica] Dubbi su immagine
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#329">[ Data ]</a>
+              <a href="thread.html#329">[ Thread ]</a>
+              <a href="subject.html#329">[ Oggetto ]</a>
+              <a href="author.html#329">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

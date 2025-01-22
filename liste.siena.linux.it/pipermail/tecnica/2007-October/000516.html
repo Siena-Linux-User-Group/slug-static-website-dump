@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] configurazione di rete
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=dbe330bd0710011322i5242c4b7ndf148e1218250d31%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000515.html">
+   <LINK REL="Next"  HREF="000517.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] configurazione di rete</H1>
+    <B>roberto volpini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=dbe330bd0710011322i5242c4b7ndf148e1218250d31%40mail.gmail.com"
+       TITLE="[Tecnica] configurazione di rete">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Lun  1 Ott 2007 22:48:58 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000515.html">[Tecnica] configurazione di rete
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000517.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#516">[ Data ]</a>
+              <a href="thread.html#516">[ Thread ]</a>
+              <a href="subject.html#516">[ Oggetto ]</a>
+	      <a href="author.html#516">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>sei stato chiarissimo.....domani sera provo e poi al limite scrivo di 
+nuovo...
+
+ciao e grazie
+&gt;<i> Il 01/10/07, roberto volpini&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt; ha scritto:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> ma in RISORSE-RETE vedo i pc....ma non li riesco a &quot;leggere&quot;, nel
+</I>&gt;&gt;<i> router è abilitato il server DHCP.....
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Intendi che quando provi ad accedervi ti dà errore?
+</I>&gt;<i> Nel file di configurazione di samba ci dovrebbe essere una riga
+</I>&gt;<i>   security = *****
+</I>&gt;<i> controlla che sia impostata a &quot;share&quot;.
+</I>&gt;<i> Se non và nemmeno così, all'interno delle definizioni degli share
+</I>&gt;<i> ([robi] ad esempio)
+</I>&gt;<i> aggiungi
+</I>&gt;<i>   guest ok = yes
+</I>&gt;<i>
+</I>&gt;<i> Questo se ho capito bene e vuoi che tutti accedano a tali cartelle. Se
+</I>&gt;<i> invece vuoi che
+</I>&gt;<i> gli utenti remoti inseriscano nome utente e password, questo non l'ho
+</I>&gt;<i> mai fatto e non ti saprei dire su due piedi.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> getaddrinfo 'robi-laptop' error: No address associated with hostname
+</I>&gt;&gt;<i>  - warning: unable to determine IP address of 'robi-laptop'
+</I>&gt;&gt;<i>  - error: no valid servers configured
+</I>&gt;&gt;<i>  - Fatal: error processing configuration file '/etc/proftpd/proftpd.conf'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i> ......
+</I>&gt;<i>   
+</I>&gt;&gt;<i> mi sembra di capire che il sistema non ha associato un indirizzo con il
+</I>&gt;&gt;<i> mio portatile (robi-laptop)...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Hmmm si, ma non ho capito una cosa, stai cercando di configurare un
+</I>&gt;<i> server NFS, un server FTP e un server Samba, giusto?
+</I>&gt;<i> Per impostare l'indirizzo ip a mano per il tuo laptop puoi editare il
+</I>&gt;<i> file /etc/hosts e aggiungere
+</I>&gt;<i> la linea
+</I>&gt;<i>     192.168.1.2 robi-laptop
+</I>&gt;<i> Naturalmente ci metti il giusto ip del tuo laptop.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> qualcuno può aiutarmi a sbrigliare la matassa?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> grazie infinite a tutti
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> roberto
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> P.S. immagino di essermi spiegato in modo pessimo.....percui chiedete
+</I>&gt;&gt;<i> delucidazioni e cercherò di chiarire il più possibile...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> :-))))))))))))))
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Vedi tu se ci ho capito qualcosa, nel caso riscrivi :D
+</I>&gt;<i> Ciao!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000515.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000517.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#516">[ Data ]</a>
+              <a href="thread.html#516">[ Thread ]</a>
+              <a href="subject.html#516">[ Oggetto ]</a>
+              <a href="author.html#516">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

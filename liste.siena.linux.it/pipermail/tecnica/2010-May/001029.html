@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Module assistant e nvidia
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Module%20assistant%20e%20nvidia&In-Reply-To=%3Cg2u2bab69c91005030717v428b90acm77af629da2955471%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001038.html">
+   <LINK REL="Next"  HREF="001033.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Module assistant e nvidia</H1>
+    <B>Iacopo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Module%20assistant%20e%20nvidia&In-Reply-To=%3Cg2u2bab69c91005030717v428b90acm77af629da2955471%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Module assistant e nvidia">iakko a omnikron.net
+       </A><BR>
+    <I>Lun  3 Maggio 2010 15:17:22 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001038.html">[Tecnica] [Risolto] Module assistant e nvidia
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001033.html">[Tecnica] upgrade to 10.4
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1029">[ Data ]</a>
+              <a href="thread.html#1029">[ Thread ]</a>
+              <a href="subject.html#1029">[ Oggetto ]</a>
+	      <a href="author.html#1029">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>L'unico modo per stabilire cosa significa &quot;Unable&quot; e' vedere cosa dice
+il kernel quando carichi il modulo.
+
+----------
+_1_ Entra in console (definiamola Console 1) e lancia il seguente:
+
+     tail -f /var/log/messages
+
+_2.a_ Da un'altra console (definiamola Console 2) effettua il seguente:
+
+     modprobe nvidia
+
+_2.b_ Se il modulo non e' stato installato e non si trova nel percorso
+/lib/... allora devi posizionarti nella cartella contenente il file
+nvidia.ko ed usare il seguente:
+
+    insmode nvidia.ko
+
+_3_ Controlla cosa e' successo nella Console 1. Dovrebbe dirti i
+motivi per i quali il kernel non e' stato caricato correttamente.
+----------
+
+In ogni caso, vedi se il modulo e' presente utilizzando il comando:
+
+    lsmod | grep nvidia
+
+Appena hai output utile, fatti vivo.
+
+PS: potrebbe essere necessario ottenere i privilegi di root per
+eseguire tutti o parte dei comandi che ho citato.
+
+-- 
+Iacopo Palazzi
+</PRE>
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001038.html">[Tecnica] [Risolto] Module assistant e nvidia
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001033.html">[Tecnica] upgrade to 10.4
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1029">[ Data ]</a>
+              <a href="thread.html#1029">[ Thread ]</a>
+              <a href="subject.html#1029">[ Oggetto ]</a>
+              <a href="author.html#1029">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

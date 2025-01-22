@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] errori nella rimozione del pacchetto bstheme-common su Debian Lenny
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20errori%20nella%20rimozione%20del%20pacchetto%20bstheme-common%20su%0A%20Debian%20Lenny&In-Reply-To=919931.56980.qm%40web55212.mail.re4.yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000557.html">
+   <LINK REL="Next"  HREF="000559.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] errori nella rimozione del pacchetto bstheme-common su Debian Lenny</H1>
+    <B>Enrico Guastaldi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20errori%20nella%20rimozione%20del%20pacchetto%20bstheme-common%20su%0A%20Debian%20Lenny&In-Reply-To=919931.56980.qm%40web55212.mail.re4.yahoo.com"
+       TITLE="[Tecnica] errori nella rimozione del pacchetto bstheme-common su Debian Lenny">guastaldi a unisi.it
+       </A><BR>
+    <I>Mar  5 Feb 2008 15:40:06 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000557.html">[Tecnica] forward port
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000559.html">[Tecnica] errori nella rimozione del pacchetto bstheme-common	su Debian Lenny
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#558">[ Data ]</a>
+              <a href="thread.html#558">[ Thread ]</a>
+              <a href="subject.html#558">[ Oggetto ]</a>
+	      <a href="author.html#558">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve a tutti,
+la settimana passata ho fatto il grave errore di istallare bootsplash ecc.,
+l'ho disistallato ma mi è rimasto un pacchetto che non c'è verso di rimuoverlo e, per questo, apt-get non mi istalla altri pacchetti di cui ho bisogno.
+
+ottengo questo:
+
+dell-enrico:/home/ugolone# apt-get remove --purge bstheme-common
+Lettura della lista dei pacchetti in corso... Fatto
+Generazione dell'albero delle dipendenze in corso
+Reading state information... Fatto
+The following packages were automatically installed and are no longer required:
+  libopencdk10-dev libodbcinstq1c2 libgnutlsxx13 libtasn1-3-dev libnetcdf++3 libgpg-error-dev libjasper-dev comerr-dev libgeos-dev
+  libgcrypt11-dev netcdfg-dev libsqlite3-dev unixodbc-dev libkrb5-dev libtool libltdl3-dev libhdf5-serial-dev libgnutls-dev libhdf4g-dev
+  autotools-dev libungif4-dev libtiff4-dev libtiffxx0c2 liblzo2-dev libkadm55 libidn11-dev libxerces27-dev
+Use 'apt-get autoremove' to remove them.
+I seguenti pacchetti saranno RIMOSSI:
+  bstheme-common*
+0 aggiornati, 0 installati, 1 da rimuovere e 149 non aggiornati.
+1 non completamente installati o rimossi.
+È necessario prendere 0B di archivi.
+Dopo l'estrazione, verranno liberati 73,7kB di spazio su disco.
+Continuare [S/n]? S
+(Lettura del database ... 197943 file e directory attualmente installati.)
+Rimuovo bstheme-common ...
+Removing the bootsplash patch for /etc/init.d/rc
+patching file /etc/init.d/rc
+Hunk #2 FAILED at 39.
+Hunk #3 succeeded at 53 with fuzz 2 (offset -9 lines).
+Hunk #4 FAILED at 67.
+Hunk #5 succeeded at 186 (offset -2 lines).
+Hunk #6 FAILED at 223.
+Hunk #7 FAILED at 235.
+Hunk #8 succeeded at 273 (offset -4 lines).
+Hunk #9 succeeded at 313 (offset -2 lines).
+Hunk #10 succeeded at 324 (offset -2 lines).
+4 out of 10 hunks FAILED -- saving rejects to file /etc/init.d/rc.rej
+dpkg: errore processando bstheme-common (--purge):
+ il sottoprocesso pre-removal script ha restituito un codice di errore 1
+Patching /etc/init.d/rc for bootsplash...
+patching file /etc/init.d/rc
+Hunk #2 FAILED at 43.
+Hunk #3 succeeded at 63 with fuzz 2 (offset -6 lines).
+Hunk #4 FAILED at 79.
+Hunk #5 succeeded at 198 (offset 1 line).
+Hunk #6 FAILED at 244.
+Hunk #7 FAILED at 255.
+Hunk #8 succeeded at 298 (offset 1 line).
+Hunk #9 succeeded at 339 (offset 3 lines).
+Hunk #10 succeeded at 351 (offset 3 lines).
+4 out of 10 hunks FAILED -- saving rejects to file /etc/init.d/rc.rej
+dpkg: errore durante la pulizia:
+ il sottoprocesso post-installation script ha restituito un codice di errore 1
+Sono occorsi degli errori processando:
+ bstheme-common
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+dell-enrico:/home/ugolone#                                     
+
+
+non ho idea di come poterlo buttare via
+
+Nessuno ha qualche idea?
+
+grazie in ogni caso
+
+-- 
+Enrico Guastaldi
+Laboratorio di Geomatica, Sezione Rischi Geologici e Geostatistica
+Centro di GeoTecnologie dell'Università degli Studi Siena,
+Via Vetri Vecchi, 34
+52027 - San Giovanni Valdarno (AR)
+Italy
+
+Io uso Debian GNU/Linux!
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000557.html">[Tecnica] forward port
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000559.html">[Tecnica] errori nella rimozione del pacchetto bstheme-common	su Debian Lenny
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#558">[ Data ]</a>
+              <a href="thread.html#558">[ Thread ]</a>
+              <a href="subject.html#558">[ Oggetto ]</a>
+              <a href="author.html#558">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

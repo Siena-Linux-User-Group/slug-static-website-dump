@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Re: E vai col wifi!!!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Re%3A%20E%20vai%20col%20wifi%21%21%21&In-Reply-To=200611031219.25401.xdatap1%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000272.html">
+   <LINK REL="Next"  HREF="000274.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Re: E vai col wifi!!!</H1>
+    <B>Giulio Saletti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Re%3A%20E%20vai%20col%20wifi%21%21%21&In-Reply-To=200611031219.25401.xdatap1%40siena.linux.it"
+       TITLE="[Tecnica] Re: E vai col wifi!!!">giulio.saletti a gmail.com
+       </A><BR>
+    <I>Ven  3 Nov 2006 13:11:18 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000272.html">[Tecnica] Re: E vai col wifi!!!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000274.html">[Tecnica] poi si diceva di mandrake..
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#273">[ Data ]</a>
+              <a href="thread.html#273">[ Thread ]</a>
+              <a href="subject.html#273">[ Oggetto ]</a>
+	      <a href="author.html#273">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Buongiorno a tutta la lista!
+Anzitutto mi scuso per il marasma di informazioni che ho richiesto
+senza ben definire l'architettura della mia connessione.
+Il problema principale era l'assenza di informazioni a proposito
+dell'hardware, in pratica non riuscivo a capire se la mia connessione
+avrebbe comunque mai funzionato, anche se ben settata a livello
+software e di IPTables, tutto qui.
+Vi assicuro che è un gran bell'ostacolo non sapere se comunque quello
+che fai non potrà in ogni caso funzionare. E' frustrante.
+
+Al momento utilizzo una Kubuntu 6.10, una PCI Wireless della Texas
+Instruments ACX111 (che da Mandrake 10.1 non veniva riconosciuta ma da
+Kubuntu si...) Un Access Point della DLink ed il 'famigerato' modem
+DLink 300T.
+
+All'inizio mi ostinavo a settare la rete wireless con wlassistant
+tramite protocollo DHCP... era il primo errore. Con iwconfig potevo
+apprezzare una rete wlan0 funzionante ed attiva, da wlassistant una
+rete disattiva, il dhclient (seguendo il consiglio di Paolo) non
+trovava nessuna LAN funzionante, ma riuscivo comunque a &quot;pingare&quot; il
+modem all'indirizzo 192.168.1.1... e sembrava anche una discreta
+connessione!
+Confusione...
+Ho comunque provato a settare una connessione PPPoE visto che utilizzo
+una flat Aliceadsl e quindi mi viene richiesto nome utente e password.
+Utilizzando tk-pppoe niente da fare...
+
+Ieri sera - e non chiedetemi che cavolo è successo - durante uno
+deggli illusori tentativi di apire l'amatissimo <A HREF="http://www.google.it">http://www.google.it</A>
+che cavolo ti combina la rete? Si connette all'url!!!
+C'era un sacco di impostazioni del cavolo ma non so come mai si è
+connesso e sono arrivato a scrivere il post dove esulto per la
+magnificenza di Kubuntu (a proposito, scusa Paolo se sono sparito, ora
+capirai il perchè...).
+Tutto contento ho chiuso Konqueror per iniziare gli aggiornamenti
+della distro e... bum... tutto chiuso... niente rete nè connessioni...
+ma la cosa più importante è che ho avuto la conferma che questa
+configurazione è riuscita ad accedere ad Internet ed a autenticarsi!!!
+L'ostacolo più grosso si era sbriciolato!
+
+Allora ho reinstallato completamente la distro (avevo fatto troppi
+casini) ed ho effettuato le seguenti operazioni:
+
+1-Dal CD Live lanciata l'installazione senza fare assolutamente nient'altro
+2-Lanciato wlassistant da Menu K-&gt;Internet-&gt;Wireless Assistant
+3-Tralasciato il DHCP ed impostato i parametri manualmente (primo
+passo importante!!!)
+4-La prima volta la connessione è fallita, ma riprovando subito dopo è
+partita e non ha più fatto le bizze!
+5-Da shell lanciato pppoeconf wlan0 lasciando i parametri inalerati
+(tutto 'YES' in pratica)
+6-Aggiunto al file /etc/ppp/peers/dsl-provider la riga 'password
+&quot;aliceadsl&quot;'... ecco, questo è stato uno dei passi importanti... ho
+notato che pppoeconf, anche se la richiede, non salva nello script la
+password... infatti avevo anche dei problemi di accesso
+negato...(Questo è il secondo punto importante)
+7-Lanciato il comando pon dsl-provider
+8-Lanciato Konqueror
+9-Allacciate le cinture e buona navigazione!!!
+ In pratica è successo questo...
+
+Ho ancora un problema, la connessione pppoe sgancia di continuo anche
+se lo script continua ad essete attivo... ma basta fare 'pof -a ' e
+dopo un secondo 'pon dsl-provider' che sono di nuovo on-line...
+qualcuno a qualche suggerimento?
+
+Infine grazie a tutti della pazienza!
+
+A presto!
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000272.html">[Tecnica] Re: E vai col wifi!!!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000274.html">[Tecnica] poi si diceva di mandrake..
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#273">[ Data ]</a>
+              <a href="thread.html#273">[ Thread ]</a>
+              <a href="subject.html#273">[ Oggetto ]</a>
+              <a href="author.html#273">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

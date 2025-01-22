@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Apache Mail
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Apache%20Mail&In-Reply-To=649bf45d0806041132h2fdce96w33bc5e8177c2104a%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000625.html">
+   <LINK REL="Next"  HREF="000627.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Apache Mail</H1>
+    <B>Simone Giuliani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Apache%20Mail&In-Reply-To=649bf45d0806041132h2fdce96w33bc5e8177c2104a%40mail.gmail.com"
+       TITLE="[Tecnica] Apache Mail">simone.giuliani a gmail.com
+       </A><BR>
+    <I>Mer  4 Giu 2008 19:44:12 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000625.html">[Tecnica] Apache Mail
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000627.html">[Tecnica] Apache Mail
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#626">[ Data ]</a>
+              <a href="thread.html#626">[ Thread ]</a>
+              <a href="subject.html#626">[ Oggetto ]</a>
+	      <a href="author.html#626">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>io credo di aver capito questo:
+
+ti serve un dominio da associare al tuo linux.
+
+prova con:
+apt-get install no-ip
+
+se non ti chiede di fare la configurazione fai il modo che te lo  
+chieda con:
+no-ip -C
+
+vai sul sito www.no-ip.org e registrati.
+aggiungi il dominio gratuito che preferisci.
+
+durante la creazione della configurazione ti verranno chieste le  
+credenziali di accesso con cui ti logghi al sito www.no-ip.org e quale  
+dominio aggiornare.
+
+a questo punto puoi configurarti sendmail per operare con quel dominio  
+(magari usando webmin).
+
+ora il tuo computer ha un dominio ed e' capace di inviare mail.
+
+non dovrebbe mancarti altro.
+
+ciao
+
+   simone
+
+Il giorno 04/giu/08, alle ore 20:32, Andrea Ciani ha scritto:
+
+&gt;<i> Beh, a dirle il vero drupal non da errore!!! Dice &quot;messaggio  
+</I>&gt;<i> inviato&quot; ma non arriva nulla!! Inoltre ci sarebbe l'opzione di  
+</I>&gt;<i> conferma dell'account (quella che manda l'e-mail per confermare  
+</I>&gt;<i> tramite link) ma non l'ho potuta attivare poichè non funziona (l'ho  
+</I>&gt;<i> attivata e anche in quel caso non arriva nulla). In joomla invece  
+</I>&gt;<i> l'errore è il seguente:
+</I>&gt;<i>
+</I>&gt;<i> Impossibile iniziare funzione mail
+</I>&gt;<i> EMAIL_NOT_SENT
+</I>&gt;<i>
+</I>&gt;<i> ... io non riesco proprio a capire cosa possa essere...
+</I>&gt;<i>
+</I>&gt;<i> 2008/6/4 Paolo Sammicheli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xdatap1 a siena.linux.it</A>&gt;:
+</I>&gt;<i> Alle mercoledì 4 giugno 2008, Andrea Ciani ha scritto:
+</I>&gt;<i> &gt; Non riesco a trovare documentazione che ne parli. Se può essere  
+</I>&gt;<i> d'aiuto è il
+</I>&gt;<i> &gt; modulo &quot;contact&quot; di drupal.* Penso* che la stessa operazione la  
+</I>&gt;<i> faccia
+</I>&gt;<i> &gt; joomla con il simbolino dell'e-mail sopra gli articoli (infatti  
+</I>&gt;<i> nemmeno
+</I>&gt;<i> &gt; quello funziona). Non riesco a capire nemmeno cosa devo cercare...la
+</I>&gt;<i> &gt; configurazione di drupal allora?? Non apache o php?? boh....
+</I>&gt;<i>
+</I>&gt;<i> Sicuramente si. Lascia perdere Apache e php, è solo drupal da  
+</I>&gt;<i> configurare, nel
+</I>&gt;<i> caso siano veramente email.
+</I>&gt;<i>
+</I>&gt;<i> P.S.
+</I>&gt;<i> Mi dici che non funziona. Ma un errore lo dà? Che errore di preciso?
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i> --
+</I>&gt;<i> Paolo Sammicheli
+</I>&gt;<i> Email: xdatap1(at)siena.linux.it
+</I>&gt;<i> Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+</I>&gt;<i> - Non ho paura dei computer, ho paura della loro mancanza. (I.  
+</I>&gt;<i> Asimov) -
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20080604/7c671252/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20080604/7c671252/attachment-0001.htm</A> 
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000625.html">[Tecnica] Apache Mail
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000627.html">[Tecnica] Apache Mail
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#626">[ Data ]</a>
+              <a href="thread.html#626">[ Thread ]</a>
+              <a href="subject.html#626">[ Oggetto ]</a>
+              <a href="author.html#626">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

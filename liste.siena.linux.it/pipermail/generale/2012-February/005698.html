@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2012-February/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAONfR_BDvjaEn0vQy9QTRH9_Bb8OpQykvWt1KvVgh9Ptn%2BD_Hg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005697.html">
+   <LINK REL="Next"  HREF="005699.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] shell</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAONfR_BDvjaEn0vQy9QTRH9_Bb8OpQykvWt1KvVgh9Ptn%2BD_Hg%40mail.gmail.com%3E"
+       TITLE="[Generale] shell">freeze a siena.linux.it
+       </A><BR>
+    <I>Dom  5 Feb 2012 11:27:09 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005697.html">[Generale] shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005699.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5698">[ Data ]</a>
+              <a href="thread.html#5698">[ Thread ]</a>
+              <a href="subject.html#5698">[ Oggetto ]</a>
+	      <a href="author.html#5698">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>@max murdoxk
+non ti nascondo che comincio a dubitare delle mie capacita`
+
+ho fatto la modifica che mi hai indicato  ma ancora nulla
+in basso riporto il file
+
+ps nel senese milanese (dove sono io  :) ) ha appena ripreso a nevicare
+
+grazie ancora e buona domenica a tutti
+--------
+
+# for examples
+
+# If not running interactively, don't do anything
+[ -z &quot;$PS1&quot; ] &amp;&amp; return
+
+# don't put duplicate lines in the history. See bash(1) for more options
+# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
+HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# make less more friendly for non-text input files, see lesspipe(1)
+#[ -x /usr/bin/lesspipe ] &amp;&amp; eval &quot;$(SHELL=/bin/sh lesspipe)&quot;
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z &quot;$debian_chroot&quot; ] &amp;&amp; [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we &quot;want&quot; color)
+case &quot;$TERM&quot; in
+    xterm-color) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n &quot;$force_color_prompt&quot; ]; then
+    if [ -x /usr/bin/tput ] &amp;&amp; tput setaf 1 &gt;&amp;/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ &quot;$color_prompt&quot; = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+'
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+# If this is an xterm set the title to <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">user a host</A>:dir
+case &quot;$TERM&quot; in
+xterm*|rxvt*)
+    PS1=&quot;\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1&quot;
+    ;;
+*)
+    ;;
+esac
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors &amp;&amp; eval &quot;$(dircolors -b ~/.dircolors)&quot; ||
+eval &quot;$(dircolors -b)&quot;
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+#alias ll='ls -l'
+#alias la='ls -A'
+#alias l='ls -CF'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] &amp;&amp; ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+
+PS1=&quot;[\u@\h:\l \W]\\$ &quot;
+
+---
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005697.html">[Generale] shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005699.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5698">[ Data ]</a>
+              <a href="thread.html#5698">[ Thread ]</a>
+              <a href="subject.html#5698">[ Oggetto ]</a>
+              <a href="author.html#5698">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

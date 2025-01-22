@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Periferiche Linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2015-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Periferiche%20Linux&In-Reply-To=%3CCAPqRDy%2BLe1iDto_p1Mb5Gbs%3DOy2WH8Db7m8QTy2bDagimk5S-w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001974.html">
+   <LINK REL="Next"  HREF="001977.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Periferiche Linux</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Periferiche%20Linux&In-Reply-To=%3CCAPqRDy%2BLe1iDto_p1Mb5Gbs%3DOy2WH8Db7m8QTy2bDagimk5S-w%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Periferiche Linux">dinogen a gmail.com
+       </A><BR>
+    <I>Gio 17 Set 2015 06:47:37 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001974.html">[Tecnica] Periferiche Linux
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001977.html">[Tecnica] Periferiche Linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1975">[ Data ]</a>
+              <a href="thread.html#1975">[ Thread ]</a>
+              <a href="subject.html#1975">[ Oggetto ]</a>
+	      <a href="author.html#1975">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bè, direi che dopo questa splendida introduzione ho già le basi che mi
+servivano.
+Grazie Pragma.!
+Il 17/set/2015 12:13 AM, &quot;Szymon Tomasz Stefanek&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">pragma a siena.linux.it</A>&gt;
+ha scritto:
+
+&gt;<i> On 16/09/2015 22:53, Marcello Semboli wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Salve,
+</I>&gt;&gt;<i> dovrei imparare a gestire delle periferiche su raspberry pi 2.
+</I>&gt;&gt;<i> Intendo &quot;gestire&quot; in senso molto lato perché sono quasi totalmente a
+</I>&gt;&gt;<i> digiuno di tutto ciò che riguarda la directory /dev.
+</I>&gt;&gt;<i> So che esistono i moduli e so che i moduli fanno apparire le periferiche
+</I>&gt;&gt;<i> nella directory /dev.
+</I>&gt;&gt;<i> Ma non so poi cosa dovrebbe fare un programma per usare la periferica.
+</I>&gt;&gt;<i> Non devo padroneggiare l'argomento, devo solo cominciare a capirlo.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hm... l'argomento di per sè è abbastanza ampio e dipende a che livello
+</I>&gt;<i> vuoi arrivare.
+</I>&gt;<i> Puoi leggere qualcosa qui: <A HREF="http://www.tldp.org/LDP/tlk/dd/drivers.html">http://www.tldp.org/LDP/tlk/dd/drivers.html</A> .
+</I>&gt;<i> Io a suo tempo lessi &quot;Linux Device Drivers&quot; di Rubini, fatto molto bene,
+</I>&gt;<i> ma non so se c'è una versione aggiornata per i kernel recenti.
+</I>&gt;<i>
+</I>&gt;<i> Comunque, sintetizzando.
+</I>&gt;<i>
+</I>&gt;<i> - Sulla raspberry ci gira linux standard, quindi la gestione delle
+</I>&gt;<i> periferiche
+</I>&gt;<i>   non è particolare.
+</I>&gt;<i>
+</I>&gt;<i> - La gestione di una periferica varia in funzione del tipo di dispositivo.
+</I>&gt;<i>
+</I>&gt;<i> - Come hai già accennato, per molti dispositivi (quelli che comunemente
+</I>&gt;<i> attacchi
+</I>&gt;<i>   ad un pc tramite USB, ad esempio) il kernel offre un'interfaccia
+</I>&gt;<i> userspace
+</I>&gt;<i>   accessibile tramite un file in /dev (che poi si chiama &quot;(char o block)
+</I>&gt;<i> device&quot;)
+</I>&gt;<i>   Poi ci vuole uno strato software in userspace che di fatto usi la
+</I>&gt;<i> periferica
+</I>&gt;<i>   con il protocollo corretto.
+</I>&gt;<i>
+</I>&gt;<i> Un esempio:
+</I>&gt;<i>
+</I>&gt;<i> - Modem 3G connesso via USB.
+</I>&gt;<i>   Per esempio Alcatel One Touch X230, magari brandizzato da Vodafone o
+</I>&gt;<i> qualche
+</I>&gt;<i>   altra compagnia.
+</I>&gt;<i>
+</I>&gt;<i> - Il kernel da solo si accorge che c'è un dispositivo connesso su USB e lo
+</I>&gt;<i> &quot;aggancia&quot;,
+</I>&gt;<i>   tramite il driver generico USB al suo albero di dispositivi. A questo
+</I>&gt;<i> livello vedi
+</I>&gt;<i>   la periferica tramite lsusb e poco altro.
+</I>&gt;<i>   $ lsusb
+</I>&gt;<i>   ...
+</I>&gt;<i>   Bus 001 Device 028: ID 1bbb:0017 T &amp; A Mobile Phones
+</I>&gt;<i>   ...
+</I>&gt;<i>
+</I>&gt;<i> - Il dispositivo espone un identificativo composto da
+</I>&gt;<i> &lt;vendor_id&gt;:&lt;device_id&gt;
+</I>&gt;<i>   (nel nostro caso 1bbb:0017)
+</I>&gt;<i>
+</I>&gt;<i> - A questo punto serve un driver che sia in grado di riconoscere il
+</I>&gt;<i> dispositivo
+</I>&gt;<i>   e &quot;parlare&quot; con il particolare chip a bordo.
+</I>&gt;<i>
+</I>&gt;<i> - Se il modulo del driver è già caricato (o il driver è builtin nel
+</I>&gt;<i> kernel) allora
+</I>&gt;<i>   la sua attivazione avviene automaticamente tramite la coppia
+</I>&gt;<i> &lt;vendor_id&gt;:&lt;device_id&gt;.
+</I>&gt;<i>   Se il driver non è caricato allora si può caricarlo tramite modprobe.
+</I>&gt;<i>   Ci sono dei meccanismi che consentono di caricare automaticamente i
+</I>&gt;<i> moduli
+</I>&gt;<i>   quando viene inserito un dispositivo riconosciuto.
+</I>&gt;<i>
+</I>&gt;<i>   Per il modem in oggetto il driver è usbserial (piùttosto generico).
+</I>&gt;<i>   Sulla ubuntu il driver viene caricato automaticamente mentre su
+</I>&gt;<i> distribuzioni
+</I>&gt;<i>   &quot;embedded&quot; spesso l'ho dovuto tirare su a mano.
+</I>&gt;<i>
+</I>&gt;<i> - Il driver riconosce il chip e tipicamente espone un interfaccia
+</I>&gt;<i>   di tipo seriale associata ad una nuova coppia di numeri (minor/major).
+</I>&gt;<i>
+</I>&gt;<i>   Con il programma mknod puoi creare un &quot;device&quot; dentro /dev (ma anche
+</I>&gt;<i>   da qualche altra parte) che si &quot;aggancia&quot; alla coppia minor/major e
+</I>&gt;<i> permette
+</I>&gt;<i>   di comunicare con il driver. Per esempio /dev/ttyUSB0.
+</I>&gt;<i>
+</I>&gt;<i>   La /dev/ di quasi tutte le distribuzioni è prepopolata con i device
+</I>&gt;<i>   più comuni e ci sono dei meccanismi per creare i device automaticamente.
+</I>&gt;<i>
+</I>&gt;<i>   Quindi mknod non si usa quasi più... però è bene sapere che il processo
+</I>&gt;<i>   teorico sarebbe quello.
+</I>&gt;<i>
+</I>&gt;<i> - A questo punto un programma userspace, come ad esempio minicom,
+</I>&gt;<i>   può connettersi al modem e &quot;parlarci&quot; con il relativo protocollo (i
+</I>&gt;<i> comandi AT).
+</I>&gt;<i>
+</I>&gt;<i>   Per usare il modem 3G nel mondo reale, poi, hai bisogno di un programma
+</I>&gt;<i>   più complicato: pppd, che usa sequenze di comandi AT per stabilire una
+</I>&gt;<i>   connessione remota e tira su tutta la baracca necessaria perchè
+</I>&gt;<i>   il tuo browser possa fare connessioni TCP attraverso di essa.
+</I>&gt;<i>
+</I>&gt;<i> Quindi per usare una periferica in generale ci vuole uno &quot;stack&quot; di
+</I>&gt;<i> software.
+</I>&gt;<i> Nel caso del modem 3G abbiamo:
+</I>&gt;<i>
+</I>&gt;<i> - Driver usb generico (in kernelspace)
+</I>&gt;<i> - Driver dello specifico chip (in kernelspace)
+</I>&gt;<i>       |
+</I>&gt;<i>      /dev/ttyUSB0
+</I>&gt;<i>       |
+</I>&gt;<i> - pppd (in userspace)
+</I>&gt;<i>       |
+</I>&gt;<i>      ppp0
+</I>&gt;<i>       |
+</I>&gt;<i> - google-chrome
+</I>&gt;<i>
+</I>&gt;<i> Ci sono diverse varianti di questo schema.
+</I>&gt;<i>
+</I>&gt;<i> - Alcuni dispositivi hanno driver quasi completamente in userspace. Un
+</I>&gt;<i> esempio
+</I>&gt;<i>   sono dispositivi accessibili tramite libusb, un'altro sono le stampanti
+</I>&gt;<i> di rete.
+</I>&gt;<i>
+</I>&gt;<i> - Le schede video sono bestie molto complicate e i relativi driver a
+</I>&gt;<i> livello
+</I>&gt;<i>   kernel non necessariamente offrono un'interfaccia in /dev.
+</I>&gt;<i>
+</I>&gt;<i> - Le schede di rete offrono interfacce specializzate (eth0, wlan0 etc..)
+</I>&gt;<i>   che non stanno dentro /dev.
+</I>&gt;<i>
+</I>&gt;<i> - Alcuni dispositivi possono offrire più interfacce userspace, anche di
+</I>&gt;<i>   tipo diverso (ad esempio ci sono chiavette USB che fanno anche storage).
+</I>&gt;<i>
+</I>&gt;<i> Poi ci sono vari &quot;glitch&quot;.
+</I>&gt;<i>
+</I>&gt;<i> - Alcuni dispositivi USB hanno bisogno di essere &quot;switchati&quot; di modalità
+</I>&gt;<i>   per poter funzionare. Per questo c'è usb_modeswitch.
+</I>&gt;<i>
+</I>&gt;<i> - Il kernel non conosce gli ID di tutti i possibili dispositivi
+</I>&gt;<i>   quindi non è detto che sia in grado di tirare su il driver necessario.
+</I>&gt;<i>   Non è neanche detto che il driver stesso sia in grado di agganciarsi
+</I>&gt;<i>   al proprio dispositivo, magari bisogna dargli qualche dritta.
+</I>&gt;<i>
+</I>&gt;<i> Etc...
+</I>&gt;<i>
+</I>&gt;<i> Se hai domande specifiche, spara.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i> STS
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20150917/bdf31a52/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20150917/bdf31a52/attachment-0001.htm</A>&gt;
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001974.html">[Tecnica] Periferiche Linux
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001977.html">[Tecnica] Periferiche Linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1975">[ Data ]</a>
+              <a href="thread.html#1975">[ Thread ]</a>
+              <a href="subject.html#1975">[ Oggetto ]</a>
+              <a href="author.html#1975">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] domanda php 2
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20php%202&In-Reply-To=%3C201008271905.49237.contact%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="004491.html">
+   <LINK REL="Next"  HREF="004493.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] domanda php 2</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20domanda%20php%202&In-Reply-To=%3C201008271905.49237.contact%40yusefmaali.net%3E"
+       TITLE="[Generale] domanda php 2">contact a yusefmaali.net
+       </A><BR>
+    <I>Ven 27 Ago 2010 18:05:49 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="004491.html">[Generale] domanda php 2
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="004493.html">[Generale] domanda php 2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4492">[ Data ]</a>
+              <a href="thread.html#4492">[ Thread ]</a>
+              <a href="subject.html#4492">[ Oggetto ]</a>
+	      <a href="author.html#4492">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Altra cosa:
+
+quando concateni delle variabili ad un stringa SQL, usa sempre la funzione 
+mysql_real_escape_string($mia_variabile) [1], invece della variabile diretta.
+
+L'Sql injection si basa su questo principio.
+
+Ciao
+
+[1]: <A HREF="http://www.php.net/manual/en/function.mysql-real-escape-string.php">http://www.php.net/manual/en/function.mysql-real-escape-string.php</A>
+
+
+
+
+In data venerdì 27 agosto 2010 17:32:51, bartrosso ha scritto:
+&gt;<i> salve, sono di nuovo il tanga.
+</I>&gt;<i> La prima risposta che ho avuto mi ha permesso di continuare il lavoro.
+</I>&gt;<i> Però ora ho un errore dovuto all'avvenuto upload delle immagini.
+</I>&gt;<i> 
+</I>&gt;<i> quando ottengo il messaggio di conferma, faccio stampare a video un pò do
+</I>&gt;<i> info relative al file caricato, al momento di stampare il nome dell'autore
+</I>&gt;<i> però mi ritorna:
+</I>&gt;<i> 
+</I>&gt;<i> Resource id #11:
+</I>&gt;<i> 
+</I>&gt;<i> codice:
+</I>&gt;<i> $idautore=$_SESSION['id'];  altro codice
+</I>&gt;<i> 
+</I>&gt;<i> $query = &quot;INSERT INTO immagini (titolo,descrizione,nome,type,idautore)
+</I>&gt;<i> VALUES('$titolo','$descrizione','$nome','$type','$idautore')&quot;;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> $autore=@mysql_query(&quot;SELECT 'username' FROM autore WHERE id='$idautore'&quot;);
+</I>&gt;<i> echo &quot;Autore: &quot;.$autore;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> mi potete aiutare?
+</I>&gt;<i> grazie mille
+</I>&gt;<i>  il tanga
+</I></PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="004491.html">[Generale] domanda php 2
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="004493.html">[Generale] domanda php 2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#4492">[ Data ]</a>
+              <a href="thread.html#4492">[ Thread ]</a>
+              <a href="subject.html#4492">[ Oggetto ]</a>
+              <a href="author.html#4492">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

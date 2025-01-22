@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] R: Re:  R: Re: R: Re: recupero dati
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2016-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20R%3A%20Re%3A%20%20R%3A%20Re%3A%20R%3A%20Re%3A%20recupero%20dati&In-Reply-To=%3Ctd7186q6pn3riudptmn6qewi.1473856158922%40email.android.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002018.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] R: Re:  R: Re: R: Re: recupero dati</H1>
+    <B>roberto.volpini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20R%3A%20Re%3A%20%20R%3A%20Re%3A%20R%3A%20Re%3A%20recupero%20dati&In-Reply-To=%3Ctd7186q6pn3riudptmn6qewi.1473856158922%40email.android.com%3E"
+       TITLE="[Tecnica] R: Re:  R: Re: R: Re: recupero dati">roberto.volpini a mail.com
+       </A><BR>
+    <I>Mer 14 Set 2016 13:29:18 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002018.html">[Tecnica] R: Re: R: Re: recupero dati
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2019">[ Data ]</a>
+              <a href="thread.html#2019">[ Thread ]</a>
+              <a href="subject.html#2019">[ Oggetto ]</a>
+	      <a href="author.html#2019">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Non è un raid....è un semplice HD collegato ad un alimentatore e ad una presa usb....testdisk fino ad ora ha fallito....
+
+
+Inviato da Samsung Mobile.
+
+&lt;div&gt;-------- Messaggio originale --------&lt;/div&gt;&lt;div&gt;Da: bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; &lt;/div&gt;&lt;div&gt;Data:14/09/2016  22:04  (GMT+10:00) &lt;/div&gt;&lt;div&gt;A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt; &lt;/div&gt;&lt;div&gt;Oggetto: Re: [Tecnica] R: Re: R: Re: recupero dati &lt;/div&gt;&lt;div&gt;
+&lt;/div&gt;salve a tutti, 
+premettendo che i contenuti del disco siano i TUOI, visto che te lo hanno regalato e tu stai ovviamente cercando di recuperare i file personali di questa persona.. cosa che ogni informatico sano di mente FAREBBE subito,  ti chiedo: 
+per caso era un raid? nel caso devi provare a ricostruire il raid
+(purtroppo l'ho fatto solo una volta sotto windows con due programmi magici , nautilus e Captain Nemo, un raid reconstructor e un file manager che si occupava di recuperare i dati. 
+ovviamente ci volle altrettanto spazio per copiare quei 5 tera di archivio., usando 2 Hd esterni e l'interno del mio pc...
+
+
+altrimenti: <A HREF="http://www.cgsecurity.org/wiki/%20TestDisk">http://www.cgsecurity.org/wiki/%20TestDisk</A> ottimo programmino per ricreare tabelle di partizione.
+
+Altrimenti non saprei, seguo per interesse
+
+Francesco bartrosso tanganelli 
+
+
+2016-09-14 13:40 GMT+02:00 roberto.volpini &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a mail.com</A>&gt;:
+No non ho provato perche non l ho mai usato e non lo conosco....vedo di leggere qualche guida...e dopo vedo che ne tiro fuori....
+
+
+Inviato da Samsung Mobile.
+
+
+-------- Messaggio originale --------
+Da: Andrea Coronese
+Data:14/09/2016 20:21 (GMT+10:00)
+A: Lista Tecnica del Siena Linux User Group
+Oggetto: Re: [Tecnica] R: Re: recupero dati
+
+Scusa se insisto ma con fdisk hai provato?
+
+
+Il 14 set 2016 12:13 PM, &quot;roberto.volpini&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a mail.com</A>&gt; ha scritto:
+Grazie Andrea, purtroppo non conosco che tipo di tabella sia....test disk trova una partizione xfat...ma dopo circa 20 ore  non è riuscito a ricostruirla ....gparted lo vede come non allocato  dopo averlo lasciato lavorare per 2 giorni dopo aver lanciato &quot;recupero dati&quot; non ha avuto risultati....l unica opzione è recuperare quello che posso con photorec...e sará ben poco....se qualcuno ha qualche altra idea ben venga!!!
+
+
+Inviato da Samsung Mobile. 
+
+
+-------- Messaggio originale --------
+Da: Andrea Coronese
+Data:14/09/2016 00:18 (GMT+10:00)
+A: Lista Tecnica del Siena Linux User Group
+Oggetto: Re: [Tecnica] recupero dati
+
+Dovresti sapere che tipo di mappa partizioni era (MBR, uid...) e, partendo dal presupposto che fosse una partizione unica in formato noto, potresti prima cancellarla con il comando dd (una partizione MBR per esempio sono i primi 512 byte del device) e poi ricrearla usando fdisk. Una volta ho fatto così ed ha funzionato nel caso di una MBR corrotta, ma bisogna vedere il caso specifico di questo disco.
+
+2016-09-10 10:00 GMT+02:00 roberto &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a mail.com</A>&gt;:
+Ciao a tutti, spero che possiate aiutarmi....
+
+Veniamo ai fatti. Mi hanno appena dato un HD da 2Tb contenente per la maggior parte file video. Non viene montato e Gparted lo vede come non allocato.
+
+Con photorec ho visto che realmente i file ci sono, chiaramente ne posso recuperare solo una parte, il pc che utilizzo ha un HD da 500Gb.
+
+Così a occhio direi che la tavola partizioni è stata cancellata, non chiedetemi come, è possibile ricrearla in qualche modo?
+
+Ho provato con testdisk selezionando &quot;partizioni intel&quot; ma dopo molte ore di lavoro e aver controllato tutti i cilindri, il risultato non è cambiato.
+
+Qualcuno di voi sa se ci sono altre soluzioni per ricostruire la tavola partizioni persa?
+
+Un ultima cosa, l' analisi scritt sopra potrebbe non essere corretta, se sbagliata vi prego di correggerla e di darmi i consigli giusti per risolvere (ammesso che sia possibile)
+
+
+Grazie a tutti
+
+
+Roberto Volpini
+
+
+_______________________________________________
+Tecnica mailing list
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+
+
+
+-- 
+Andrea Coronese
+There is no place like /home
+
+_______________________________________________
+Tecnica mailing list
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+
+
+_______________________________________________
+Tecnica mailing list
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20160914/c92139c5/attachment-0001.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20160914/c92139c5/attachment-0001.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002018.html">[Tecnica] R: Re: R: Re: recupero dati
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2019">[ Data ]</a>
+              <a href="thread.html#2019">[ Thread ]</a>
+              <a href="subject.html#2019">[ Oggetto ]</a>
+              <a href="author.html#2019">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

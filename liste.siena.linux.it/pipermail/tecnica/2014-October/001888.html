@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Domanda multi IP su DNS
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3CCA%2B1kOcLhLVFrj7vqvdXLQhgJVL5tw7YUa%3DUpBA2qtUe_n%3D74tw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001887.html">
+   <LINK REL="Next"  HREF="001889.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Domanda multi IP su DNS</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3CCA%2B1kOcLhLVFrj7vqvdXLQhgJVL5tw7YUa%3DUpBA2qtUe_n%3D74tw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Domanda multi IP su DNS">bartrosso a gmail.com
+       </A><BR>
+    <I>Ven 31 Ott 2014 10:47:53 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001887.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001889.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1888">[ Data ]</a>
+              <a href="thread.html#1888">[ Thread ]</a>
+              <a href="subject.html#1888">[ Oggetto ]</a>
+	      <a href="author.html#1888">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>scusa ma il round robin dns è una tecnica diffusa, leggo in giro. si tratta
+di mettere due A sullo stesso record, e il server DOVREBBE attuare, load
+balancing e fault tollerance in automatico
+
+nessuno ha mai usato queste cose?
+sto prendendo un incarico con 8 ip raddoppiati da gestire su un unico
+server e ho bisogno di sapere prima se è fattibile e coma fa a funzionare
+ora.
+
+bartrosso
+
+
+2014-10-31 11:37 GMT+01:00 Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a gmail.com</A>&gt;:
+
+&gt;<i> No, il DNS non offre questo servizio, o almeno al netto delle mie
+</I>&gt;<i> conoscenze.
+</I>&gt;<i> Tu hai bisogno di LVS <A HREF="http://www.linuxvirtualserver.org/">http://www.linuxvirtualserver.org/</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ________________________________________
+</I>&gt;<i> Marcello Semboli
+</I>&gt;<i> Siena
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 31 ottobre 2014 11:33, bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt; ha
+</I>&gt;<i> scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Che voi sappiate, come faccio a impostare due IP (due server fisici
+</I>&gt;&gt;<i> differenti, mirror ) che puntano allo stesso record, così da avere una
+</I>&gt;&gt;<i> protezione in caso di  server irraggiungibile?
+</I>&gt;&gt;<i> il dns server se il primo non lo trova switcha suls econdo? o occorre
+</I>&gt;&gt;<i> altro?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Bartrosso
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20141031/b5e486cb/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20141031/b5e486cb/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001887.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001889.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1888">[ Data ]</a>
+              <a href="thread.html#1888">[ Thread ]</a>
+              <a href="subject.html#1888">[ Oggetto ]</a>
+              <a href="author.html#1888">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Visualizzare un numero in complemento a due
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000746.html">
+   <LINK REL="Next"  HREF="000753.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Visualizzare un numero in complemento a due</H1>
+    <B>Michele &quot;O-Zone&quot; Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Visualizzare%20un%20numero%20in%20complemento%20a%20due&In-Reply-To="
+       TITLE="[Tecnica] Visualizzare un numero in complemento a due">o-zone a zerozone.it
+       </A><BR>
+    <I>Gio 22 Gen 2009 18:07:26 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000746.html">[Tecnica] compilare i sorgenti
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000753.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#752">[ Data ]</a>
+              <a href="thread.html#752">[ Thread ]</a>
+              <a href="subject.html#752">[ Oggetto ]</a>
+	      <a href="author.html#752">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+domanda per i cervelloni (io non riesco a venirne fuori !). Ho un DS1631 
+collegato, via I2C, al PIC 18F4455. Il DS1631 mi restituisce la temperatura 
+in 12-bit complemento a due. Praticamente io ho un array di due byte in cui 
+il most significant byte mi rappresenta la parte intera, con il MSB ad 1 se 
+negativo o 0 se positivo, mentre il least significant byte contiene la parte 
+decimale. Un esempio (dal datasheet del DS1631):
+
+0111 1101 0000 0000 (7d00h) = +125°C
+0001 1001 0001 0000 (1910h) = +25.0625 °C
+0000 0000 1000 0000 (0080h) = +0.5 °C
+0000 0000 0000 0000 (0000h) = 0 °C
+1111 1111 1000 0000 (FF80h) = -0.5 °C
+1110 0110 1111 0000 (E6F0h) = -25.0625 °C
+1100 1001 0000 0000 (C900h) = -55 °C
+
+Attualmente mi sono sempre accontentato di visualizzare la parte intera (e 
+neanche sono sicuto che funzioni bene....) con questo pezzo di codice:
+
+...
+	char sig, buf[2];
+	DS1631_readTemp(buf);
+	// Check sign bit
+	if((buf[0] &gt; 0x80)) {
+		sign = '-';
+	} else {
+		sign = '+';	
+	}	
+	buf[0] = buf[0] &amp; 0x7F; /* Reset sign bit */
+	sprintf(tmpBuf,&quot;t:%c%d°C &quot;,sign, buf[0]);
+...
+
+adesso vorrei riuscire a visualizzare anche i decimali :-) ma non riesco 
+assolutamente a capire come funziona questa storia del complemento a due. 
+
+Se qualche anima pia può aiutarmi... :-)
+
+Michele
+-- 
+O-Zone ! No (C) since 1996
+On the road with VFR VTec 2002 &quot;Vuffy&quot;, on the net with Slackware !
+Home @ <A HREF="http://www.zerozone.it">http://www.zerozone.it</A> and photos @ 
+<A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000746.html">[Tecnica] compilare i sorgenti
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000753.html">[Tecnica] Visualizzare un numero in complemento a due
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#752">[ Data ]</a>
+              <a href="thread.html#752">[ Thread ]</a>
+              <a href="subject.html#752">[ Oggetto ]</a>
+              <a href="author.html#752">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

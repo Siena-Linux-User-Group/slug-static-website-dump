@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema con httpd (forse) - Fedora core 5
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20con%20httpd%20%28forse%29%20-%20Fedora%20core%205&In-Reply-To=mailman.0.1161209467.16122.tecnica%40liste.siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000234.html">
+   <LINK REL="Next"  HREF="000236.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema con httpd (forse) - Fedora core 5</H1>
+    <B>cristiano</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20con%20httpd%20%28forse%29%20-%20Fedora%20core%205&In-Reply-To=mailman.0.1161209467.16122.tecnica%40liste.siena.linux.it"
+       TITLE="[Tecnica] Problema con httpd (forse) - Fedora core 5">crisk a tiscalinet.it
+       </A><BR>
+    <I>Mer 18 Ott 2006 23:08:02 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000234.html">[Tecnica] sick cvs diagnostic: erronea configuris
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000236.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#235">[ Data ]</a>
+              <a href="thread.html#235">[ Thread ]</a>
+              <a href="subject.html#235">[ Oggetto ]</a>
+	      <a href="author.html#235">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> Vi scrivo perche' non saprei veramente come formulare una query su google
+con il problema che mi ritrovo a dover risolvere...
+
+Il mio server (Fedora core 5, yumupdatato fino a due minuti fa, kernel
+compreso, 2.6.18-1.2200.fc5) da un un po' di mesi fa le bizze (anche con gli
+altri kernel aveva lo stesso comportamento)...
+
+praticamente ogni tanto e' come se si &quot;ibernasse&quot; e non risponde a nessuna
+connessione via browser (httpd-2.2.2-1.2) o ssh (openssh-4.3p2-4.10) da
+fuori rete (sono gli unici servizi accessibili da fuori rete).
+
+La cosa buffa e' che basta fargli un ping o un tentitativo di connessione
+ssh da un'altra macchina (Solaris) che sta nella stessa stanza (sono sulla
+rete dell'università che attualmente si trova al Laboratorio Multimediale in
+via dei Termini) e subito si sblocca e ricomincia a rispondere anche da
+fuori rete.
+
+Riassumendo:
+
+1 - dopo un po' la macchina non risponde piu' ai tentativi di connessione
+del browser (ne' alle chiamate ssh ne' ai ping... non riesco a capire se
+&quot;dopo un po'&quot; e' un lasso di tempo preciso... tipo &quot;dopo 35 minuti che il
+server non ricve nessuna chiamata&quot;... dai log non traspare niente)
+
+2 - per &quot;riattivarlo&quot; da casa (alice ADSL) devo telnettarmi su una macchina
+che sta fisicamente accanto al server e devo pingare o tentare di
+ritelnettarmi sul server stesso.
+
+3 - questo basta a riattivarlo
+
+Roba da pazzi.
+Chi mi aiuta vince una birra da Rosi.
+Cristiano
+
+PS. non so se la cosa puo' essere collegata... ma dai log vedo solo degli
+errori del tipo:
+Oct  9 15:57:56 server kernel: hdc: dma_intr: status=0x51 { DriveReady
+SeekComplete Error }
+Oct  9 15:57:56 server kernel: hdc: dma_intr: error=0x84 { DriveStatusError
+BadCRC }
+Oct  9 15:57:56 server kernel: ide: failed opcode was: unknown
+
+si', lo so che non e' una bella cosa... ma gli errori sono relativamente
+pochi, il disco risulta sano a tutti i check... il bus e' intatto e della
+misura giusta... e soprattutto, gli errori NON occorrono quando il server si
+&quot;iberna&quot;.
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000234.html">[Tecnica] sick cvs diagnostic: erronea configuris
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000236.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#235">[ Data ]</a>
+              <a href="thread.html#235">[ Thread ]</a>
+              <a href="subject.html#235">[ Oggetto ]</a>
+              <a href="author.html#235">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

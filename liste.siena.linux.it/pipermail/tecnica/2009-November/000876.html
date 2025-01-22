@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] masterizzare DVD con Debian
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20masterizzare%20DVD%20con%20Debian&In-Reply-To=%3C7392dd720911031136s22729934q7d1c89cd011bd852%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000873.html">
+   <LINK REL="Next"  HREF="000877.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] masterizzare DVD con Debian</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20masterizzare%20DVD%20con%20Debian&In-Reply-To=%3C7392dd720911031136s22729934q7d1c89cd011bd852%40mail.gmail.com%3E"
+       TITLE="[Tecnica] masterizzare DVD con Debian">freeze a siena.linux.it
+       </A><BR>
+    <I>Mar  3 Nov 2009 19:36:48 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000873.html">[Tecnica] bluetooth ubuntu 9.10 e nokia 6630
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000877.html">[Tecnica] masterizzare DVD con Debian
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#876">[ Data ]</a>
+              <a href="thread.html#876">[ Thread ]</a>
+              <a href="subject.html#876">[ Oggetto ]</a>
+	      <a href="author.html#876">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ecco il log che mi dà K3B
+
+System
+-----------------------
+K3b Version: 1.0.5
+
+KDE Version: 3.5.10
+QT Version:  3.3.8b
+Kernel:      2.6.26-2-686
+Devices
+-----------------------
+Slimtype DVD A  DS8A1P CA11 (/dev/hda, ) [CD-R, CD-RW, CD-ROM,
+DVD-ROM, DVD-R, DVD-RW, DVD-R DL, DVD+R, DVD+RW, DVD+R DL] [DVD-ROM,
+DVD-R Sequential, DVD-R Dual Layer Sequential, DVD-R Dual Layer Jump,
+DVD-RAM, DVD-RW Restricted Overwrite, DVD-RW Sequential, DVD+RW,
+DVD+R, DVD+R Dual Layer, CD-ROM, CD-R, CD-RW] [SAO, TAO, RAW,
+SAO/R96P, SAO/R96R, RAW/R16, RAW/R96P, RAW/R96R, Restricted Overwrite,
+Layer Jump]
+
+Burned media
+-----------------------
+DVD+R
+
+Used versions
+-----------------------
+growisofs: 7.1
+
+growisofs
+-----------------------
+Executing 'builtin_dd if=/dev/fd/0 of=/dev/hda obs=32k seek=0'
+/dev/hda: &quot;Current Write Speed&quot; is 8.2x1352KBps.
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/4682338304 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+:<i>-[ <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">WRITE a LBA</A>=0h failed with SK=3h/POWER CALIBRATION AREA ERROR]:
+</I>Input/output error
+:<i>-( write failed: Input/output error
+</I>
+growisofs command:
+-----------------------
+/usr/bin/growisofs -Z /dev/hda=/dev/fd/0 -use-the-force-luke=notray
+-use-the-force-luke=tty -use-the-force-luke=tracksize:2286298
+-dvd-compat -speed=8 -use-the-force-luke=bufsize:32m
+
+
+2009/11/3 Davide Messia &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">davidemessia a gmail.com</A>&gt;:
+&gt;<i> Ciao a tutti,
+</I>&gt;<i>
+</I>&gt;<i> quando provo a masterizzare con Debian Lenny mi da errore!
+</I>&gt;<i>
+</I>&gt;<i> qualcuno mi può aiutare a capire cosa è che non va?
+</I>&gt;<i> ho avuto problemi sia con K3 che con gnome baker che con il tooldi Debian
+</I>&gt;<i>
+</I>&gt;<i> grazie mille a tutti.
+</I>&gt;<i> |Freeze|
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Registered GNU/Linux User #439266
+</I>&gt;<i>
+</I>
+
+
+-- 
+Registered GNU/Linux User #439266
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000873.html">[Tecnica] bluetooth ubuntu 9.10 e nokia 6630
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000877.html">[Tecnica] masterizzare DVD con Debian
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#876">[ Data ]</a>
+              <a href="thread.html#876">[ Thread ]</a>
+              <a href="subject.html#876">[ Oggetto ]</a>
+              <a href="author.html#876">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

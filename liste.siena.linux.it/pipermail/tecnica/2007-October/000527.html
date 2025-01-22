@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Kernel Panic
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To=20071014212951.16425.qmail%40community29.interfree.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000526.html">
+   <LINK REL="Next"  HREF="000528.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Kernel Panic</H1>
+    <B>Iacopo Palazzi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Kernel%20Panic&In-Reply-To=20071014212951.16425.qmail%40community29.interfree.it"
+       TITLE="[Tecnica] Kernel Panic">iakko a siena.linux.it
+       </A><BR>
+    <I>Dom 14 Ott 2007 23:28:09 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000526.html">[Tecnica] Kernel Panic
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000528.html">[Tecnica] Kernel Panic
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#527">[ Data ]</a>
+              <a href="thread.html#527">[ Thread ]</a>
+              <a href="subject.html#527">[ Oggetto ]</a>
+	      <a href="author.html#527">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday 14 October 2007 23:29:51 <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">voland03 a interfree.it</A> wrote:
+
+&gt;<i> VFS: cannot open root device &quot;811&quot; or unknown-block(8,17)
+</I>&gt;<i> please append a correct &quot;root=&quot; boot option;here are the available
+</I>&gt;<i> partitions; 0300      4194302     hda driver:  ide-cdrom
+</I>&gt;<i> Kernel Panic - not syncing:VFS: unable to mount root fs on
+</I>&gt;<i> unknown-block(8,17)
+</I>
+Non trova la partizione dove andare a pescare init (il processo che il kernel 
+lancia appena eseguito il boot). Solitamente, tale partizione e' indicata 
+dalla variabile &quot;root&quot; del bootloader, come viene suggerito dal messaggio 
+stesso.
+
+&gt;<i> image = /boot/vmlinux
+</I>&gt;<i> label = linux
+</I>&gt;<i> root = /dev/sdb1
+</I>
+La variabile in questione.
+
+&gt;<i> image = /boot/vmlinux-2.6.23.1
+</I>&gt;<i> label = linux-new
+</I>&gt;<i> root = /dev/sdb1
+</I>
+La variabile in questione.
+
+Anche se il partizionamento dei dischi e' una cosa abbastanza variabile da 
+distro a distro, solitamente e' suddivisa nel seguente modo (per i nomi dei 
+dispositivi, mi adeguo alla configurazione del tuo lilo):
+
+  /dev/sdb1 : Partizione di boot ( /boot )
+  /dev/sdb2 : Partizione di swap ( swap, non ha entry point )
+  /dev/sdb3 : Partizione di root ( / )
+
+Domanda: hai deciso esplicitamente che la partizione di root si trovasse 
+in /dev/sdb1 ? Questo e' quello che risulta dalla configurazione di lilo che 
+hai postato.
+
+Consiglio: cambia &quot;root = /dev/sdb1&quot; con &quot;root = /dev/sdb3&quot; in entrambi i 
+blocchi del tuo lilo.conf e, a riga di comando (da utente root), dai &quot;lilo&quot; 
+per applicare le modifiche.
+
+Iacopo
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000526.html">[Tecnica] Kernel Panic
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000528.html">[Tecnica] Kernel Panic
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#527">[ Data ]</a>
+              <a href="thread.html#527">[ Thread ]</a>
+              <a href="subject.html#527">[ Oggetto ]</a>
+              <a href="author.html#527">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

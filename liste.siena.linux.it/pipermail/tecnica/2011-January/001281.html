@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Fwd: software per VoIP + video
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20software%20per%20VoIP%20%2B%20video&In-Reply-To=%3C201101180325.37842.pragma%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001280.html">
+   <LINK REL="Next"  HREF="001282.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Fwd: software per VoIP + video</H1>
+    <B>Szymon Tomasz Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Fwd%3A%20software%20per%20VoIP%20%2B%20video&In-Reply-To=%3C201101180325.37842.pragma%40siena.linux.it%3E"
+       TITLE="[Tecnica] Fwd: software per VoIP + video">pragma a siena.linux.it
+       </A><BR>
+    <I>Mar 18 Gen 2011 02:25:37 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001280.html">[Tecnica] Fwd: software per VoIP + video
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001282.html">[Tecnica] Fwd: software per VoIP + video
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1281">[ Data ]</a>
+              <a href="thread.html#1281">[ Thread ]</a>
+              <a href="subject.html#1281">[ Oggetto ]</a>
+	      <a href="author.html#1281">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday, January 17, 2011, Marcello Semboli wrote:
+&gt;<i> Ciao, aiutate il mio amico?
+</I>&gt;<i>
+</I>&gt;&gt;<i> Per la mia testi dovrei sviluppare un software per inviare dei dati
+</I>&gt;&gt;<i> attraverso internet insieme a video e audio (e sincronizzare questi tre
+</I>&gt;&gt;<i> segnali).
+</I>&gt;&gt;<i> In poche parole mi servirebbe trovare un software in grado di inviare
+</I>&gt;&gt;<i> audio e video via internet (tipo Pidgin, Ekiga, etc.) ma il più semplice
+</I>&gt;&gt;<i> e minimale possibile in modo da riuscire a modificarlo abbastanza
+</I>&gt;&gt;<i> facilmente.
+</I>
+Quello di Kopete è sicuramente un sorgente da spulciare.
+Pidgin e la sua libpurple un'altro: dalla 2.6 c'è il supporto
+per googletalk-video. Anche amsn potrebbe essere interessante.
+
+In generale, comunque, inviare video, audio e dati &quot;live&quot; è una roba
+abbastanza complicata. Aspettati di dover maneggiare più componenti
+(librerie) e protocolli di vario tipo (acquisizione, signaling, encoding, trasporto,
+decoding, sincronizzazione, rendering...).
+
+KVirc al suo interno ha motori DCC VOICE (audio) e DCC VIDEO,
+al momento separati, piùttosto grezzi e quasi sicuramente non sufficienti
+per il tuo scopo ma il sorgente è contenuto tutto dentro un modulo
+ed è relativamente semplice da capire (vedi src/modules/dcc).
+
+-- 
+
+Szymon Tomasz Stefanek
+
+------------------------------------------------------------------------------
+-
+- Will design spacecraft for food.
+-
+------------------------------------------------------------------------------
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001280.html">[Tecnica] Fwd: software per VoIP + video
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001282.html">[Tecnica] Fwd: software per VoIP + video
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1281">[ Data ]</a>
+              <a href="thread.html#1281">[ Thread ]</a>
+              <a href="subject.html#1281">[ Oggetto ]</a>
+              <a href="author.html#1281">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

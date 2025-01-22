@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Per l'archivio delle notizie
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2006-December/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Per%20l%27archivio%20delle%20notizie&In-Reply-To=b28779190612211042g2c6de568t6571bbb14aedbb94%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001552.html">
+   <LINK REL="Next"  HREF="001557.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Per l'archivio delle notizie</H1>
+    <B>Daniele Paganelli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Per%20l%27archivio%20delle%20notizie&In-Reply-To=b28779190612211042g2c6de568t6571bbb14aedbb94%40mail.gmail.com"
+       TITLE="[Generale] Per l'archivio delle notizie">daniele a modena1.it
+       </A><BR>
+    <I>Gio 21 Dic 2006 22:38:57 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001552.html">[Generale] Per l'archivio delle notizie
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001557.html">[Generale] Per l'archivio delle notizie
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1555">[ Data ]</a>
+              <a href="thread.html#1555">[ Thread ]</a>
+              <a href="subject.html#1555">[ Oggetto ]</a>
+	      <a href="author.html#1555">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In un punto successivo il blogger si chiede anche cosa significhino quei 
+codicilli come l'ID e tutti gli altri numeretti... sarebbe interessante 
+trovare una risposta. Nel caso si trattasse di un codice che identifica 
+univocamente la copia di windows installata... beh, sarebbe un po' grave.
+
+Mi chiedo se non sarebbe più intelligente fare un filtro che, invece di 
+richiedere tutto l'url, chieda soltanto il dominio. Poi il server remoto 
+risponderà con una lista di indirizzi pericolosi, con cui confrontare l'url.
+
+* genererebbe molte meno richieste remote rispetto al filtro in tempo reale 
+(basta un download per un intero dominio e per un po' sei a posto) 
+
+* le richieste sarebbero di entità minore (scarichi solo il diff dall'ultima 
+blacklist che hai)
+
+* sarebbe salvaguardata molto meglio la privacy dell'utente perché non viene 
+inviato l'url intero ma solo il dominio (informazione che del resto dobbiamo 
+rassegnarci a rendere nota perché abbiamo pur sempre bisogno di un DNS...)
+
+
+Alle 19:42, giovedì 21 dicembre 2006, Gabriele Monfardini ha scritto:
+&gt;<i> Ciao, se leggete bene, l'articolo si riferisce al filtro antipishing
+</I>&gt;<i> integrato in IE7.
+</I>&gt;<i> Per funzionare deve controllare se l'indirizzo su cui lo user naviga
+</I>&gt;<i> sia riportato in una lista di indirizzi farlocchi.
+</I>&gt;<i>
+</I>&gt;<i> Anche Firefox implementa una tecnologia antipishing similare ma usando
+</I>&gt;<i> un file locale.
+</I>&gt;<i> Volendo si può attivare il filtro antipishing fornito da Google ed in
+</I>&gt;<i> questo caso tutti gli indirizzi sono mandati là (da Google) per il
+</I>&gt;<i> controllo. (Attivabile da Preferences/Security o Options/Security a
+</I>&gt;<i> seconda sel S.O.)
+</I>&gt;<i> Cio' pone gli stessi problemi di privacy ed è anche per questo che di
+</I>&gt;<i> default è attivato il controllo da file locale.
+</I>&gt;<i>
+</I>&gt;<i> Naturalmente in Firefox le cose sono fatte in maniera un po' più
+</I>&gt;<i> seria, facendo accettare esplicitamente all'utente il fatto che se
+</I>&gt;<i> attiva il controllo da web gli indirizzi sono mandati a Google e si
+</I>&gt;<i> dichiara che non sono associati all'utente ma usati in forma anonima.
+</I>&gt;<i> Il controllo locale ovviamente usa liste meno aggiornate che sono
+</I>&gt;<i> scaricate ogni tanto, ma è più veloce perché non deve inviare ogni
+</I>&gt;<i> indirizzo e attendere la risposta.
+</I>&gt;<i>
+</I>&gt;<i> Io credo che nella licenza di IE7 si faccia riferimento al fatto che
+</I>&gt;<i> l'antipishing
+</I>&gt;<i> avrebbe previsto questo invio, oppure è disattivabile (anche per
+</I>&gt;<i> ragioni di performance, ve lo immaginate a dover attendere la risposta
+</I>&gt;<i> da Microsoft prima di cominciare a scaricare ogni pagina?).
+</I>&gt;<i>
+</I>&gt;<i> Che poi non sia serio scriverlo a pagina &gt;&gt; 1 di un contratto di
+</I>&gt;<i> licenza scritto in legalese che puoi solo accettare è un altro
+</I>&gt;<i> discorso.
+</I>&gt;<i>
+</I>&gt;<i> C'è un'altra questione
+</I>&gt;<i>
+</I>&gt;<i> &quot;Why in the world does Microsoft feel it necessary to check INTERNAL
+</I>&gt;<i> ADDRESSES for phishing web sites?  Yes, this actually happens.  I
+</I>&gt;<i> browsed to a 172. address and a request with the full internal IP was
+</I>&gt;<i> sent to Microsoft&quot;
+</I>&gt;<i>
+</I>&gt;<i> In effetti questa domanda non ha una risposta intelligente. Posso solo
+</I>&gt;<i> supporre che sia per semplicità. Ma in effetti è molto più semplice
+</I>&gt;<i> prefiltrare gli indirizzi interni. Quindi non so che dire su questo.
+</I>&gt;<i> Non so quanto sia utile capire quale indirizzi interni siano adottati,
+</I>&gt;<i> certo che è una informazione che non dovrebbe uscire.
+</I>&gt;<i>
+</I>&gt;<i> In sostanza, credo che come al solito Microsoft sia in regola dal
+</I>&gt;<i> punto di vista formale/legale (sarà scritto da qualche parte), ma non
+</I>&gt;<i> sostanziale (chi è che legge tutte le clausole e poi, perché i
+</I>&gt;<i> contratti stanno spesso in frame così piccoli che uno legge solo 10
+</I>&gt;<i> righe alla volta?).
+</I>&gt;<i>
+</I>&gt;<i> Cordiali saluti a tutti e buone feste.
+</I>&gt;<i>
+</I>&gt;<i> Gabriele
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> From: Paolo Sammicheli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">xdatap1 a siena.linux.it</A>&gt;
+</I>&gt;<i> Date: Dec 21, 2006 4:32 PM
+</I>&gt;<i> Subject: Re: [Generale] Per l'archivio delle notizie
+</I>&gt;<i> To: Lista Generale del Siena Linux User Group
+</I>&gt;<i> &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">generale a liste.siena.linux.it</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> Alle 16:31, giovedì 21 dicembre 2006, Paolo Sammicheli ha scritto:
+</I>&gt;<i> &gt; Alle 15:56, giovedì 21 dicembre 2006, Michele &quot;O-Zone&quot; Pinassi ha scritto:
+</I>&gt;<i> &gt; &gt; On Thursday 21 December 2006 15:54, Paolo Sammicheli wrote:
+</I>&gt;<i> &gt; &gt; &gt; Alle 14:13, giovedì 21 dicembre 2006, Alex M4DC4T ha scritto:
+</I>&gt;<i> &gt; &gt; &gt; &gt; GHASP!!! O_O
+</I>&gt;<i> &gt; &gt; &gt; &gt; Strano che non gli sia stata ancora fatta causa....
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Per cosa? Mica è uscito ancora.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Internet Explorer 7, a cui si riferisce l'articolo, mi pare sia già
+</I>&gt;<i> &gt; &gt; uscito....
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; <A HREF="http://www.microsoft.com/italy/windows/ie/default.mspx">http://www.microsoft.com/italy/windows/ie/default.mspx</A>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Saluti, Oz
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Veramente l'articolo dice: &quot;Today I was testing WebInspect on my newly
+</I>&gt;<i> &gt; installed version of Vista with IE7 and found something startling.&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; WebInspect è presente anche in IE7 per XP/2003?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Nel caso allora ha ragione Alex e sarebbe da segnalare a qualche
+</I>&gt;<i> &gt; associazione di settore, ma bisogna essere sicuri.
+</I>&gt;<i>
+</I>&gt;<i> s/settore/consumatori
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i> --
+</I>&gt;<i> Paolo Sammicheli
+</I>&gt;<i> Email: xdatap1(at)siena.linux.it
+</I>&gt;<i> Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+</I>&gt;<i> - Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Generale mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>
+-- 
+<A HREF="http://daniele.homelinux.org">http://daniele.homelinux.org</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001552.html">[Generale] Per l'archivio delle notizie
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001557.html">[Generale] Per l'archivio delle notizie
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1555">[ Data ]</a>
+              <a href="thread.html#1555">[ Thread ]</a>
+              <a href="subject.html#1555">[ Oggetto ]</a>
+              <a href="author.html#1555">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

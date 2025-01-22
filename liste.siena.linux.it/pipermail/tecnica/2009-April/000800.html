@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] caricare modulo ne2000 all'avvio
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=2339.87.18.126.148.1239873365.squirrel%40webmail.hacknight.org">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000794.html">
+   <LINK REL="Next"  HREF="000801.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] caricare modulo ne2000 all'avvio</H1>
+    <B>Luca Mercurio</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20caricare%20modulo%20ne2000%20all%27avvio&In-Reply-To=2339.87.18.126.148.1239873365.squirrel%40webmail.hacknight.org"
+       TITLE="[Tecnica] caricare modulo ne2000 all'avvio">luca a willothewisp.it
+       </A><BR>
+    <I>Mar 21 Apr 2009 22:54:11 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000794.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000801.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#800">[ Data ]</a>
+              <a href="thread.html#800">[ Thread ]</a>
+              <a href="subject.html#800">[ Oggetto ]</a>
+	      <a href="author.html#800">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mmmmmmmm... Sto quasi pensando al segno degli antichi da dipingere sulla 
+macchina perché il consiglio di Lele non ha funzionato :-(
+
+Emanuele Bruni wrote:
+&gt;<i> Prova a specificare nel file che passi opzioni con il parametro options e
+</I>&gt;<i> già che ci sei specifica l'irq della porta.
+</I>&gt;<i>
+</I>&gt;<i> Il risultato dovrebbe essere qualcosa tipo:
+</I>&gt;<i>
+</I>&gt;<i> options ne io=0x300 irq=5
+</I>&gt;<i>
+</I>&gt;<i> dove il 5 varia con l'irq
+</I>&gt;<i>
+</I>&gt;<i> Se non va così, per ora posso solo suggerire di dipingere un segno degli
+</I>&gt;<i> antichi sulla macchina...
+</I>
+Per la cronaca vi mando il contenuto del mio modules:
+
+ide-scsi
+ide-cd
+cloop
+rtc
+apm power_off=1
+pcmcia_core
+ieee1394
+serial
+nls_cp437
+nls_iso8859-1
+unionfs
+hid
+mousedev
+soundcore
+af_packet
+ne io=0x300 irq=9
+
+L'ultima riga l'ho aggiunta io. Ho provato anche ad inserire la parola 
+&quot;options&quot; fra &quot;ne&quot; e &quot;io&quot; ma nulla da fare :-(.
+
+Vi ricordo che facendo sudo modprobe ne io=0x300 tutto mi va alla grande...
+
+Inoltre la correttezza del consiglio di Lele è corroborata da questo link:
+
+<A HREF="http://ubuntuforums.org/showthread.php?t=95133">http://ubuntuforums.org/showthread.php?t=95133</A>
+
+Quindi, che fare? Vi ricordo che sto usando Damn Small Linux una distro 
+per vecchi PC basata su knoppix.
+In compenso grazie a questi casini ho imparato ad usare ssh e a copiare 
+files tramite rete :-D
+
+Grazie ancora per il vostro tempo!
+
+MacMercury
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000794.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000801.html">[Tecnica] caricare modulo ne2000 all'avvio
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#800">[ Data ]</a>
+              <a href="thread.html#800">[ Thread ]</a>
+              <a href="subject.html#800">[ Oggetto ]</a>
+              <a href="author.html#800">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

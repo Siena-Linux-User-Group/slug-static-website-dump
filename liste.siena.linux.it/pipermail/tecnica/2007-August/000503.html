@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] montare device mobili da shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20montare%20device%20mobili%20da%20shell&In-Reply-To=260798.45095.qm%40web55215.mail.re4.yahoo.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000501.html">
+   <LINK REL="Next"  HREF="000504.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] montare device mobili da shell</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20montare%20device%20mobili%20da%20shell&In-Reply-To=260798.45095.qm%40web55215.mail.re4.yahoo.com"
+       TITLE="[Tecnica] montare device mobili da shell">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Mer  1 Ago 2007 09:24:53 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000501.html">[Tecnica] montare device mobili da shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000504.html">[Tecnica] montare device mobili da shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#503">[ Data ]</a>
+              <a href="thread.html#503">[ Thread ]</a>
+              <a href="subject.html#503">[ Oggetto ]</a>
+	      <a href="author.html#503">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle mercoledì 1 agosto 2007, Marcello Semboli ha scritto:
+&gt;<i> Ciao, ho la ubuntu.
+</I>&gt;<i> è possibile da shell montare una penna usb?
+</I>&gt;<i> Se digito
+</I>&gt;<i>     mount /media/disk
+</I>&gt;<i> non funziona perché la directory ancora non esiste
+</I>&gt;<i> mentre
+</I>&gt;<i>     mount /dev/sda1
+</I>&gt;<i> non funziona perché sda1 non è ancora nella /etc/fstab.
+</I>&gt;<i>
+</I>&gt;<i> Però il KDE la vede e la monta, COME FA?
+</I>
+Io ho creato una directory in mnt chiamata penna e poi ho dato
+
+mount /dev/sda1 /mnt/penna
+
+Come faccia kde non so, che crei una directory lui sotto media?
+
+Nel file mtab ci sono i dispositivi *montati* non da montare, quindi è normale 
+che dopo che kde l'abbia montato appaia li.
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000501.html">[Tecnica] montare device mobili da shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000504.html">[Tecnica] montare device mobili da shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#503">[ Data ]</a>
+              <a href="thread.html#503">[ Thread ]</a>
+              <a href="subject.html#503">[ Oggetto ]</a>
+              <a href="author.html#503">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3C201107172040.15665.xdatap1%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001404.html">
+   <LINK REL="Next"  HREF="001406.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Serverone per MAC a base Ubuntu (cap.1)</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3C201107172040.15665.xdatap1%40siena.linux.it%3E"
+       TITLE="[Tecnica] Serverone per MAC a base Ubuntu (cap.1)">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Dom 17 Lug 2011 19:40:14 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001404.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001406.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1405">[ Data ]</a>
+              <a href="thread.html#1405">[ Thread ]</a>
+              <a href="subject.html#1405">[ Oggetto ]</a>
+	      <a href="author.html#1405">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 19:39 del 17/7/2011, bartrosso ha scritto:
+&gt;<i> Salve a tutti.
+</I>&gt;<i> Io e Bartrosso stiamo sviluppando per lavoro un server di backup per
+</I>&gt;<i> fotografi e tipografie, che hanno necessità di salvaguardare grandi moli di
+</I>&gt;<i> dati.
+</I>
+&gt;<i> Come sistema operativo ho installato un ubuntu server 11.04 con server SSH
+</I>&gt;<i> per il controllo remoto.
+</I>
+Io non ti consiglio di installare la versione semestrale per una cosa del genere, usa la 
+LTS. Non vorrai mica fare un upgrade completo ogni sei mesi su un server di lavoro?
+
+&gt;<i> Siccome ancora non mi sento un genio del terminale, non
+</I>&gt;<i> credo di essere ancora in grado di fare tutto via SSH percui ho bisogno di
+</I>&gt;<i> un minimo di interfaccia grafica
+</I>
+No, non farlo per favore. Non puoi dare un accrocchio del genere a un cliente. Tra 
+l'altro per usare programmi grafici su un server non devi installare tutta la parte 
+desktop (vedi dopo).
+
+&gt;<i> Inoltre, se per scrupolo partissi da una versione server 10.04 LTS e facessi
+</I>&gt;<i> apt-get install ubuntu-desktop mi ritroverei gnome o unity?
+</I>
+GNOME2. Unity non c'era nella 10.04.
+
+&gt;<i> Una seconda domanda è: esiste un programma di monitoraggio SMART che sia in
+</I>&gt;<i> grado di fare dei report via mail SOLO se vengono rilevati problemi sui
+</I>&gt;<i> dischi?
+</I>
+Che tipo di problemi sui dischi? Una cosa del genere sembrano 3 righe di script nel 
+cron, comunque. 
+
+&gt;<i> Detto questo, avventurarmi in questa nuova impresa è stato molto faticoso
+</I>&gt;<i> (tante ore e imprecazioni!!) ma anche incredibilmente formativo e
+</I>&gt;<i> stimolante. Ho scoperto cose che in anni di uso di ubuntu ed altre distro
+</I>&gt;<i> non avevo capito come funzionassero e sono molto contento. Chiaramente i
+</I>&gt;<i> dubbi sono ancora molti e diverse le cose da perfezionare.
+</I>
+Non c'è bisogno di installare X sul server e tantomeno un DE. Stai usando Ubuntu come se 
+fosse windows, dove tocca loggarsi in grafica sui server. 
+
+Il server Xorg è, appunto, un servizio client/server dove il server gira nella macchina 
+terminale mentre il client sta nella macchina remota, ovvero il tuo server. Se tu fai 
+ssh con l'opzione -X puoi eseguire programmi grafici nel server X del tuo PC. Se abiliti 
+XForwarding su sshd.conf non serve nemmeno l'opzione. È più difficile a spiegarlo che a 
+prevarlo.
+
+Fai così: 
+
+$ ssh -X indirizzo_server
+utente:server$ gedit
+e dopo un po' vedrai apparire magicamente il gedit che gira nel server nel tuo client.
+
+&gt;<i> PS: potreste sbloccarmi mio indirizzo per scrivere in &quot;generale&quot; e in
+</I>&gt;<i> &quot;tecnica&quot;? è polva86(at)tin.it. Mi sono accorto che è da un po' che i
+</I>&gt;<i> messaggi mi ritornano indietro... mi è toccato usare quella di Francesco...
+</I>
+Il tuo indirizzo è correttamente iscritto alla lista. Inviami in privato un messaggio 
+che ti torna indietro cosi' controlliamo l'errore. È probabilmente un problema di tin.
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Do what you like. Like what you do -
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001404.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001406.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1405">[ Data ]</a>
+              <a href="thread.html#1405">[ Thread ]</a>
+              <a href="subject.html#1405">[ Oggetto ]</a>
+              <a href="author.html#1405">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Reboot Mandriva 2007
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Reboot%20Mandriva%202007&In-Reply-To=2ab8a5390610190658k1a56b1c8j75f56fdfce987a9f%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000243.html">
+   <LINK REL="Next"  HREF="000248.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Reboot Mandriva 2007</H1>
+    <B>Giulio Saletti</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Reboot%20Mandriva%202007&In-Reply-To=2ab8a5390610190658k1a56b1c8j75f56fdfce987a9f%40mail.gmail.com"
+       TITLE="[Tecnica] Reboot Mandriva 2007">giulio.saletti a gmail.com
+       </A><BR>
+    <I>Gio 19 Ott 2006 16:51:10 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000243.html">[Tecnica] Reboot Mandriva 2007
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000248.html">[Tecnica] Reboot Mandriva 2007
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#244">[ Data ]</a>
+              <a href="thread.html#244">[ Thread ]</a>
+              <a href="subject.html#244">[ Oggetto ]</a>
+	      <a href="author.html#244">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Giusta osservazione Simone riguardo al root, comunque lo ero... anche
+perchè se tenti di updatare il db senza i privilegi di root ricevi un
+messaggio del Pinguino che ti dice*:&quot;Ma chi cavolo ti credi di essere per
+farmi aggiornare la mia banca dati? A ME! Solamente il mio buon
+amministratore può CHIEDERMI una cosa del genere! Cafone!&quot;* e quindi capisci
+che devi essere root per fare l'aggiornamento.
+Scherzi a parte non credo di essere ancora in grado di risalire se il
+comando 'locate' della mia distro viene installato da un pacchetto o da
+un'altro, come propone GTL v97.6,  ma prendo per buono il consiglio e
+proverò a risalire al pacchetto... ma che cavolo sto dicendo? lo devo
+individuarlo per forza perchè devo installarlo!!! Cavolo!!!
+
+Comunque...
+
+Riguardo agli altri intoppi della mia distro avete niente in mente?
+O meglio... se aveste gli stessi sintomi sulle vostre macchine... cosa
+provereste a fare? Dove andreste a raspare?
+
+Grazie in anticipo!
+Un saluto a tutta la lista!
+
+*Giò.*
+
+
+Il 19/10/06, GTL v97.6 &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">gtlv97.6 a siena.linux.it</A>&gt; ha scritto:
+&gt;<i>
+</I>&gt;<i> &gt; afaik slocate e locate sono due cose diverse
+</I>&gt;<i> &gt; slocate è &quot;Secure replacement of findutil's locate&quot;, che a quanto
+</I>&gt;<i> ricordo
+</I>&gt;<i> &gt; non mostra agli utenti i programmi per i quali non hanno sufficienti
+</I>&gt;<i> &gt; privilegi
+</I>&gt;<i>
+</I>&gt;<i> nn so se esiste il pacchetto &quot;locate&quot;, per lo meno la gentoo non lo
+</I>&gt;<i> censice, ho solo &quot;slocate&quot; che come dici tu non mostra agli utenti non
+</I>&gt;<i> autorizzati il percorso al file a cui esso non può accedere!!
+</I>&gt;<i>
+</I>&gt;<i> in ogni caso, che il pacchetto locate esista o non esista, i comandi
+</I>&gt;<i> che il pacchetto &quot;slocate&quot; installa sono due link simbolici
+</I>&gt;<i> /usr/bin/locate -&gt; /usr/bin/slocate e /usr/bin/updatedb -&gt;
+</I>&gt;<i> /usr/bin/slocate
+</I>&gt;<i>
+</I>&gt;<i> sicché come vedi ottieni lo stesso i due comandi che Giulio cercava
+</I>&gt;<i> anche se hanno un pò di restrizione rispetto a quelli che otterresti
+</I>&gt;<i> dal pacchetto &quot;locate&quot;. In ogni caso guardavo pure i pacchetti forniti
+</I>&gt;<i> dalla Slack e manco lì esiste più il pacchetto locate, suppongo sia
+</I>&gt;<i> diventato obsoleto dall'introduzione di slocate, cmq controlla un pò
+</I>&gt;<i> sulla tua distro se i tuoi comandi locate e updatedb vengono dal
+</I>&gt;<i> pacchetto locate o dal pacchetto slocate, tanto per cultura ^^
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> GTL v97.6
+</I>&gt;<i> &quot;...fallou de linucs uei and
+</I>&gt;<i> mei de surss bi uiv iu...&quot;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20061019/6dfc557d/attachment.html">http://liste.siena.linux.it/pipermail/tecnica/attachments/20061019/6dfc557d/attachment.html</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000243.html">[Tecnica] Reboot Mandriva 2007
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000248.html">[Tecnica] Reboot Mandriva 2007
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#244">[ Data ]</a>
+              <a href="thread.html#244">[ Thread ]</a>
+              <a href="subject.html#244">[ Oggetto ]</a>
+              <a href="author.html#244">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

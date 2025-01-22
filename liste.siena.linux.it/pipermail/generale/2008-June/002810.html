@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Nagios ed Asterisk...
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Nagios%20ed%20Asterisk...&In-Reply-To=20080630091255.14bc66b7%40moloch.unisi.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002809.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Nagios ed Asterisk...</H1>
+    <B>Luca Mercurio</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Nagios%20ed%20Asterisk...&In-Reply-To=20080630091255.14bc66b7%40moloch.unisi.it"
+       TITLE="[Generale] Nagios ed Asterisk...">luca a willothewisp.it
+       </A><BR>
+    <I>Lun 30 Giu 2008 21:48:24 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002809.html">[Generale] Nagios ed Asterisk...
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2810">[ Data ]</a>
+              <a href="thread.html#2810">[ Thread ]</a>
+              <a href="subject.html#2810">[ Oggetto ]</a>
+	      <a href="author.html#2810">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Guarda che ce l'avevi già raccontata ;-)
+
+Ehhhh...
+
+O-Zone... Se non ci fosse bisognerebbe disegnallo ;-)
+
+O-Zone ha scritto:
+&gt;<i> Ciao gente, 
+</I>&gt;<i> vi racconto questa perchè è divertente !
+</I>&gt;<i>
+</I>&gt;<i> Premesso: si stà parlando di un server con RedHat ES 4 con sopra
+</I>&gt;<i> Asterisk e Nagios.
+</I>&gt;<i>
+</I>&gt;<i> Tutto è iniziato quando al capufficio è venuta la bella idea di
+</I>&gt;<i> installare Groundwork perchè Nagios non gli piace: è un pacchetto
+</I>&gt;<i> tutto-incluso di gestione per Nagios con la possibilità di configurare
+</I>&gt;<i> tutto da web. Groundwork è un installer tutto-incluso ad eccezione di
+</I>&gt;<i> MySQL. Groundwork pretende la 5 mentre sul ns sistema c'era la 4. Ok, no
+</I>&gt;<i> problem, aggiorno MySQL. Scopro poi che non posso cambiare l'utente
+</I>&gt;<i> sotto il quale gira groundwork (nagios:nagios) nè quello sotto il quale
+</I>&gt;<i> gira asterisk (asterisk:asterisk) così sorge il dilemma: asterisk o
+</I>&gt;<i> groundwork ?
+</I>&gt;<i>
+</I>&gt;<i> Decido di tentare la via delle due istanze di apache: una di Groundwork
+</I>&gt;<i> che gira come nagios:nagios ed una di asterisk che gira come
+</I>&gt;<i> asterisk:asterisk (su due IP diversibindati sulla stessa eth). Sembrava
+</I>&gt;<i> prefetto SE NON CHE RedHat 4 ha la versione PHP 4.3 ed il relativo
+</I>&gt;<i> modulo php-mysql pretende MySQL 4 (e noi abbiamo la 5 perchè Groundwork
+</I>&gt;<i> pretende la 5...). Questo comporta che GroundWork e la sua istanza
+</I>&gt;<i> apache funzionano bene, l'altra non ne vuole sapere del supporto MySQL. 
+</I>&gt;<i> Interessante notare che se decido di fare &quot;up2date php-mysql&quot; esso non
+</I>&gt;<i> solo mi installa php-mysql-4.. MA ANCHE mysql 4 !!!!! 
+</I>&gt;<i>
+</I>&gt;<i> Mettiamo PHP5, con la speranza che supporti MySQL 5. Peccato ! La RHEL4
+</I>&gt;<i> (RedHat Enterpise Linux 4) come ultima versione di PHP ha la 4.3 ! 
+</I>&gt;<i>
+</I>&gt;<i> Bene, rimuovo l'rpm del PHP e lo installo a mano ! Allora dovete sapere
+</I>&gt;<i> che il PHP deve essere compilato come modulo usando apsx di apache.
+</I>&gt;<i> Peccato che l'rpm del server apache della redhat NON ha l'apsx (vorrei
+</I>&gt;<i> tanto sapere perchè...) percui non posso installare il PHP5 con il
+</I>&gt;<i> supporto MySQL 5. Dirrete voi: l'apsx c'è, è nel pacchetto httpd-dev !
+</I>&gt;<i> Si, peccato che il pacchetto httpd-dev richieda una serie di dipendenze
+</I>&gt;<i> ridondanti che lo rende impossibile da installare !!!!
+</I>&gt;<i>
+</I>&gt;<i> Dopo aver perso 4 giorni dietro questo schifo decido per una soluzione
+</I>&gt;<i> &quot;slackwerista&quot;: rimuovo l'RPM di Apache, l'RPM
+</I>&gt;<i> di PHP, scarico il nuovo Apache , il nuovo PHP, ricompilo tutto
+</I>&gt;<i> e...MAGIA ! Funziona !!!!!
+</I>&gt;<i>
+</I>&gt;<i> Morale: &quot;cavallo vincente non si cambia !&quot;
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002809.html">[Generale] Nagios ed Asterisk...
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2810">[ Data ]</a>
+              <a href="thread.html#2810">[ Thread ]</a>
+              <a href="subject.html#2810">[ Oggetto ]</a>
+              <a href="author.html#2810">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

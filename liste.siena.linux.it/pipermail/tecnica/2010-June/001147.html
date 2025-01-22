@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Sicurezza password degli hard disk
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Sicurezza%20password%20degli%20hard%20disk&In-Reply-To=%3C201006081341.07146.moreno.bartalucci%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001146.html">
+   <LINK REL="Next"  HREF="001148.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Sicurezza password degli hard disk</H1>
+    <B>Moreno Bartalucci</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Sicurezza%20password%20degli%20hard%20disk&In-Reply-To=%3C201006081341.07146.moreno.bartalucci%40gmail.com%3E"
+       TITLE="[Tecnica] Sicurezza password degli hard disk">moreno.bartalucci a gmail.com
+       </A><BR>
+    <I>Mar  8 Giu 2010 12:41:07 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001146.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001148.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1147">[ Data ]</a>
+              <a href="thread.html#1147">[ Thread ]</a>
+              <a href="subject.html#1147">[ Oggetto ]</a>
+	      <a href="author.html#1147">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> [...]
+</I>&gt;<i> Non ho mai provato EncFS ma a giudicare da questi risultati direi che
+</I>&gt;<i> potrebbe essere un indiziato per i problemi di lentezza.
+</I>&gt;<i> [...]
+</I>
+Una precisazione: uso ecryptfs non encfs.
+Encfs va col fuse, mentre ecryptfs e' nel kernel.
+
+Comunque, si: la differenza tra i due test e' senza dubbio da imputare alla 
+criptazione/decriptazione.
+
+Considera, comunque, che la macchina che sto usando dovrebbe avere ben altre 
+prestazioni.
+Questo (per quello che puo' dire) il test con hdparm del mio hdd:
+
+hdparm -tT /dev/sda
+/dev/sda:
+ Timing cached reads:   13018 MB in  1.99 seconds = 6533.24 MB/sec
+ Timing buffered disk reads:  320 MB in  3.02 seconds = 106.10 MB/sec
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001146.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001148.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1147">[ Data ]</a>
+              <a href="thread.html#1147">[ Thread ]</a>
+              <a href="subject.html#1147">[ Oggetto ]</a>
+              <a href="author.html#1147">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

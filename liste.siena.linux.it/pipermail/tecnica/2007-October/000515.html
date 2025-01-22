@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] configurazione di rete
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=47012E1A.1070906%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000514.html">
+   <LINK REL="Next"  HREF="000516.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] configurazione di rete</H1>
+    <B>Michele Mondelli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=47012E1A.1070906%40valdelsa.net"
+       TITLE="[Tecnica] configurazione di rete">mithenks.ml a gmail.com
+       </A><BR>
+    <I>Lun  1 Ott 2007 21:22:08 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000514.html">[Tecnica] configurazione di rete
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000516.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#515">[ Data ]</a>
+              <a href="thread.html#515">[ Thread ]</a>
+              <a href="subject.html#515">[ Oggetto ]</a>
+	      <a href="author.html#515">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 01/10/07, roberto volpini&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt; ha scritto:
+&gt;<i>
+</I>&gt;<i> ma in RISORSE-RETE vedo i pc....ma non li riesco a &quot;leggere&quot;, nel
+</I>&gt;<i> router è abilitato il server DHCP.....
+</I>&gt;<i>
+</I>
+Intendi che quando provi ad accedervi ti dà errore?
+Nel file di configurazione di samba ci dovrebbe essere una riga
+  security = *****
+controlla che sia impostata a &quot;share&quot;.
+Se non và nemmeno così, all'interno delle definizioni degli share
+([robi] ad esempio)
+aggiungi
+  guest ok = yes
+
+Questo se ho capito bene e vuoi che tutti accedano a tali cartelle. Se
+invece vuoi che
+gli utenti remoti inseriscano nome utente e password, questo non l'ho
+mai fatto e non ti saprei dire su due piedi.
+
+
+
+&gt;<i> getaddrinfo 'robi-laptop' error: No address associated with hostname
+</I>&gt;<i>  - warning: unable to determine IP address of 'robi-laptop'
+</I>&gt;<i>  - error: no valid servers configured
+</I>&gt;<i>  - Fatal: error processing configuration file '/etc/proftpd/proftpd.conf'
+</I>&gt;<i>
+</I>......
+&gt;<i>
+</I>&gt;<i> mi sembra di capire che il sistema non ha associato un indirizzo con il
+</I>&gt;<i> mio portatile (robi-laptop)...
+</I>&gt;<i>
+</I>
+Hmmm si, ma non ho capito una cosa, stai cercando di configurare un
+server NFS, un server FTP e un server Samba, giusto?
+Per impostare l'indirizzo ip a mano per il tuo laptop puoi editare il
+file /etc/hosts e aggiungere
+la linea
+    192.168.1.2 robi-laptop
+Naturalmente ci metti il giusto ip del tuo laptop.
+
+&gt;<i> qualcuno può aiutarmi a sbrigliare la matassa?
+</I>&gt;<i>
+</I>&gt;<i> grazie infinite a tutti
+</I>&gt;<i>
+</I>&gt;<i> roberto
+</I>&gt;<i>
+</I>&gt;<i> P.S. immagino di essermi spiegato in modo pessimo.....percui chiedete
+</I>&gt;<i> delucidazioni e cercherò di chiarire il più possibile...
+</I>&gt;<i>
+</I>&gt;<i> :-))))))))))))))
+</I>&gt;<i>
+</I>
+Vedi tu se ci ho capito qualcosa, nel caso riscrivi :D
+Ciao!
+
+
+-- 
+Mithenks
+.: www.mithenks.com :.
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000514.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000516.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#515">[ Data ]</a>
+              <a href="thread.html#515">[ Thread ]</a>
+              <a href="subject.html#515">[ Oggetto ]</a>
+              <a href="author.html#515">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

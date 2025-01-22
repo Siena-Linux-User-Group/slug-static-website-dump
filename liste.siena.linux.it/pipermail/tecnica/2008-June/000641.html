@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Antifurto a reti neurali !
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Antifurto%20a%20reti%20neurali%20%21&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000638.html">
+   <LINK REL="Next"  HREF="000642.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Antifurto a reti neurali !</H1>
+    <B>O-Zone</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Antifurto%20a%20reti%20neurali%20%21&In-Reply-To="
+       TITLE="[Tecnica] Antifurto a reti neurali !">o-zone a zerozone.it
+       </A><BR>
+    <I>Mar 24 Giu 2008 10:13:18 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000638.html">[Tecnica] Linux e PIC
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000642.html">[Tecnica] Antifurto a reti neurali !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#641">[ Data ]</a>
+              <a href="thread.html#641">[ Thread ]</a>
+              <a href="subject.html#641">[ Oggetto ]</a>
+	      <a href="author.html#641">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti,
+stò lavorando ad un sistema antifurto (ma che può servire a molto
+altro...) basato su sensori X10 MS14A e DS10A (comprati quà:
+<A HREF="http://stores.ebay.it/Digitronex-Domain">http://stores.ebay.it/Digitronex-Domain</A>) ed interfacciati, tramite un
+CM15A (ricevitore X10 su porta USB - leggermente modificato da me) con
+un NSLU2 (cos'è un NSLU2 ? Guarda quà: <A HREF="http://www.nslu2-linux.org/">http://www.nslu2-linux.org/</A>) con
+Debian sopra.
+
+Stò scrivendo il software e per adesso và benone. Ho scelto di fare un
+sistema &quot;a zone&quot; assegnando ad ogni sensore un certo &quot;peso&quot;. Ogni zona
+ha poi dei &quot;triggers&quot; che si attivano se si superano le soglie
+prestabilite. As esempio:
+
+ZonaA:
+	Sensore1 peso 3
+	Sensore2 peso 2
+	Sensore3 peso 5
+
+	Trigger:
+		WarningTreshold: 5
+		AlarmThreshold: 8
+
+ZonaB:
+	Sensore4 peso 2
+	Sensore5 peso 1
+	
+	Trigger:
+		WarningThreshold: 2
+		AlarmThreshold: 3
+
+le azioni quando si attivano i Triggers sono definite dall'utente, così
+come i vari pesi etc etc etc (in un file formato XML).
+Ovviamente è previsto l'uso di telecomandini (sempre X10, come i KR10A)
+per attivare/disattivare il tutto.
+
+Stavo pensando: ma si può usare le reti neurali (Vincenzoooo !!! Visto
+che fai parte del progetto FANN....) per insegnare all'antifurto quando
+deve scattare e quando no ? Insomma, un antifurto intelligente ?
+
+Sono gradite idee e suggerimenti ! Ovviamente il progetto è
+OpenSource :-)
+
+Alcune informazioni sui moduli X10 le trovate
+quà: <A HREF="http://www.zerozone.it/Hardware/X10/">http://www.zerozone.it/Hardware/X10/</A> (pagina in costruzione !)
+
+Michele
+-- 
+O-Zone ! No (C) 1996
+WEB     <A HREF="http://www.zerozone.it">http://www.zerozone.it</A>
+BLOG    <A HREF="http://www.openitaly.net/diary/O-Zone">http://www.openitaly.net/diary/O-Zone</A>
+PHOTOS  <A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000638.html">[Tecnica] Linux e PIC
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000642.html">[Tecnica] Antifurto a reti neurali !
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#641">[ Data ]</a>
+              <a href="thread.html#641">[ Thread ]</a>
+              <a href="subject.html#641">[ Oggetto ]</a>
+              <a href="author.html#641">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

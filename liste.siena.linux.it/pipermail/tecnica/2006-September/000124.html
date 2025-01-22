@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ssh gaia unreachable
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609171845.49783.xdatap1%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000123.html">
+   <LINK REL="Next"  HREF="000125.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ssh gaia unreachable</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ssh%20gaia%20unreachable&In-Reply-To=200609171845.49783.xdatap1%40siena.linux.it"
+       TITLE="[Tecnica] ssh gaia unreachable">pragma a siena.linux.it
+       </A><BR>
+    <I>Dom 17 Set 2006 18:07:17 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000123.html">[Tecnica] ssh gaia unreachable
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000125.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#124">[ Data ]</a>
+              <a href="thread.html#124">[ Thread ]</a>
+              <a href="subject.html#124">[ Oggetto ]</a>
+	      <a href="author.html#124">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday 17 September 2006 18:45, Paolo Sammicheli wrote:
+&gt;<i> Alle 18:43, domenica 17 settembre 2006, Szymon Stefanek ha scritto:
+</I>&gt;<i> &gt; On Sunday 17 September 2006 18:37, Paolo Sammicheli wrote:
+</I>&gt;<i> &gt; &gt; Scusate, ma trattandosi di una virtual machine in user mode linux, non
+</I>&gt;<i> &gt; &gt; sarà che la macchina ospite risponde cosi' quando non c'e' il servizio
+</I>&gt;<i> &gt; &gt; disponibile?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Lo stavo pensando pure io. Anche se, se fosse, la chiamerei &quot;feature&quot;
+</I>&gt;<i> &gt; per non dire &quot;bug&quot;. Ma perchè nell'output di tcpdump non si vede
+</I>&gt;<i> &gt; differenza ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Parlando del problema, ma trovare il motivo per cui ssh muore? Non so,
+</I>&gt;<i> &gt; &gt; esisterà una modalità di debug con log un po' piu' dettagliati
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Si, questo andrebbe fatto.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Se si riesce a farlo morire relativamente presto (prima che il disco
+</I>&gt;<i> &gt; si pieni :D), anche uno strace -f potrebbe darci qualche indicazione.
+</I>&gt;<i>
+</I>&gt;<i> Sarà un po' troppo? E poi muore per cavoli sua, senza errori o altro. Come
+</I>&gt;<i> lo riproduci il problema?
+</I>
+Eh.
+
+La cosa brutta è che sshd non ha un flag &quot;verbose&quot; usabile.
+
+-d Debug mode. The server sends verbose debug output to the system log, and 
+does not put itself in the background.  The server also will not fork and
+will only process one connection. This option is only intended for debugging 
+for the server. Multiple -d options increase the debugging level.
+
+Questo significa che uno deve stare appiccicato alla console della vm
+a guardarlo finchè non muore. E se muore per una connessione particolare ?
+
+
+Guardando i log ho visto una cosa orribile. C'è Shorewall che sputa fuori
+montagne di schifezze praticamente in tutti i log di sistema rendendoli 
+illeggibili. Ma non si può ridirezionarlo su un log apposito ?
+
+Cmq, greppando per sshd ci sono molti scan e un paio di questi:
+
+
+auth.log.0:Sep 14 12:25:53 gaia sshd[1763]: fatal: Couldn't obtain random 
+bytes (error 604389476)
+auth.log.0:Sep 14 12:25:53 gaia sshd[27614]: Did not receive identification 
+string from ::ffff:80.68.90.1
+auth.log.0:Sep 15 16:11:51 gaia sshd[7556]: Server listening on :: port 22.
+
+auth.log.0:Sep 15 20:44:19 gaia sshd[7556]: fatal: Couldn't obtain random 
+bytes (error 604389476)
+auth.log.0:Sep 15 20:44:19 gaia sshd[10037]: Did not receive identification 
+string from ::ffff:80.68.90.1
+auth.log.0:Sep 15 21:51:46 gaia sshd[10615]: Server listening on :: port 1022.
+
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- Tried anarchy, once. Found it had too many constraints.
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060917/a76276ff/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060917/a76276ff/attachment.pgp</A>
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000123.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000125.html">[Tecnica] ssh gaia unreachable
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#124">[ Data ]</a>
+              <a href="thread.html#124">[ Thread ]</a>
+              <a href="subject.html#124">[ Oggetto ]</a>
+              <a href="author.html#124">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

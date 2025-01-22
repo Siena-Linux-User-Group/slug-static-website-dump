@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20accesso%20a%20risorse%20di%20rete%20-%20Ubuntu%208.04&In-Reply-To=d2c5e6290806100117w1ebbc4d7j972143d4b0011ad2%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002797.html">
+   <LINK REL="Next"  HREF="002800.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Problema accesso a risorse di rete - Ubuntu 8.04</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20Problema%20accesso%20a%20risorse%20di%20rete%20-%20Ubuntu%208.04&In-Reply-To=d2c5e6290806100117w1ebbc4d7j972143d4b0011ad2%40mail.gmail.com"
+       TITLE="[Generale] Problema accesso a risorse di rete - Ubuntu 8.04">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Mar 10 Giu 2008 12:48:43 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002797.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002800.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2798">[ Data ]</a>
+              <a href="thread.html#2798">[ Thread ]</a>
+              <a href="subject.html#2798">[ Oggetto ]</a>
+	      <a href="author.html#2798">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle martedì 10 giugno 2008, flying.tux ha scritto:
+&gt;<i> Alcuni giorni fa ho scoperto perchè non ricevevo più messaggi dalla
+</I>&gt;<i> mailing list: non risultavo più iscritto a nessuna lista... :-) 
+</I>
+welcome back!!!
+
+&gt;<i> Adesso 
+</I>&gt;<i> che mi sono re-iscritto vi saluto tutti e vi pongo immediatamente un
+</I>&gt;<i> problema.
+</I>&lt;SNIP&gt;
+&gt;<i> auto eth0
+</I>&gt;<i> iface eth0 inet static
+</I>&gt;<i> address 192.168.0.202
+</I>&gt;<i> netmask 255.255.255.0
+</I>&gt;<i> network 192.168.0.0
+</I>&gt;<i> broadcast 192.168.0.255
+</I>&gt;<i> gateway 192.168.0.1
+</I>&gt;<i> 
+</I>&gt;<i> auto wlan0
+</I>&gt;<i> iface wlan0 inet static
+</I>&gt;<i> address 192.168.0.203
+</I>&gt;<i> netmask 255.255.255.0
+</I>&gt;<i> network 192.168.0.0
+</I>&gt;<i> broadcast 192.168.0.255
+</I>&gt;<i> gateway 192.168.0.1
+</I>&lt;SNIP&gt;
+&gt;<i> Avete qualche idea?
+</I>
+Una cosa che ho riscontrato con Hardy mentre non avevo con Gutsy è che se ci 
+sono due schede di rete sulla stessa sottorete, come nel tuo caso, può fare  
+casino. Ovvero, mentre sei connesso ad esempio con wlan0 cerca di ruotare i 
+pacchetti verso eth0 perché il default gateway è lo stesso anche se il cavo 
+non è collegato fisicamente ad eth0. Penso sia un qualcosa legato al servizio 
+zeroconf che tanto furbo non è visto che tira su l'interfaccia di rete anche 
+se non c'è la portante del cavo.
+
+Prova a buttare giù a mano l'interfaccia di rete che non usi tipo:
+
+sudo ifconfig eth0 down
+
+e facci sapere,
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Non ho paura dei computer, ho paura della loro mancanza. (I. Asimov) -
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002797.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002800.html">[Generale] Problema accesso a risorse di rete - Ubuntu 8.04
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2798">[ Data ]</a>
+              <a href="thread.html#2798">[ Thread ]</a>
+              <a href="subject.html#2798">[ Oggetto ]</a>
+              <a href="author.html#2798">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

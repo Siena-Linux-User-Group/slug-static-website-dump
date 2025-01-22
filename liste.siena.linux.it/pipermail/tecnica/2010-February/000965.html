@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] dipendenze......
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dipendenze......&In-Reply-To=%3C201002162124.45009.xdatap1%40siena.linux.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000964.html">
+   <LINK REL="Next"  HREF="000968.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] dipendenze......</H1>
+    <B>Paolo Sammicheli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20dipendenze......&In-Reply-To=%3C201002162124.45009.xdatap1%40siena.linux.it%3E"
+       TITLE="[Tecnica] dipendenze......">xdatap1 a siena.linux.it
+       </A><BR>
+    <I>Mar 16 Feb 2010 20:24:44 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000964.html">[Tecnica] dipendenze......
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000968.html">[Tecnica] dipendenze......
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#965">[ Data ]</a>
+              <a href="thread.html#965">[ Thread ]</a>
+              <a href="subject.html#965">[ Oggetto ]</a>
+	      <a href="author.html#965">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle 19:02 del 16/2/2010, robi ha scritto:
+&gt;<i> purtroppo come avete detto non funziona (premesso che di solito è il 
+</I>&gt;<i> gestore pacchetti che installa le dipendenze), in questo caso le 
+</I>&gt;<i> risposte da shell sono queste:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a robi-laptop</A>:~$ sudo apt-get install libglade2-dev
+</I>&gt;<i> Lettura della lista dei pacchetti in corso... Fatto
+</I>&gt;<i> Generazione dell'albero delle dipendenze in corso      
+</I>&gt;<i> Lettura delle informazioni di stato... Fatto    
+</I>&gt;<i> Alcuni pacchetti non possono essere installati. Questo può voler
+</I>&gt;<i> dire che è stata richiesta una situazione impossibile oppure, se
+</I>&gt;<i> si sta usando la distribuzione &quot;unstable&quot;, che alcuni pacchetti
+</I>&gt;<i> richiesti non sono ancora stati creati o rimossi da incoming.
+</I>&lt;SNIP&gt;
+&gt;<i> se provo con gli altri pacchetti lo stesso......ora ho il dubbio che ci 
+</I>&gt;<i> siano dei problemi con i &quot;repo&quot; ma vanno bene......e il serpente 
+</I>&gt;<i> continua a mordersi la coda.....
+</I>
+A me funziona:
+
+-----------------------------------------------------
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">x a bwing</A>:~$ sudo apt-get install libglade2-dev
+[sudo] password for x: 
+Lettura elenco dei pacchetti... Fatto
+Generazione albero delle dipendenze       
+Lettura informazioni sullo stato... Fatto
+I seguenti pacchetti saranno inoltre installati:
+  libxml2-dev
+Pacchetti suggeriti:
+  glade glade-gnome
+I seguenti pacchetti NUOVI saranno installati:
+  libglade2-dev libxml2-dev
+0 aggiornati, 2 installati, 0 da rimuovere e 23 non aggiornati.
+È necessario scaricare 830kB di archivi.
+Dopo quest'operazione, verranno occupati 2703kB di spazio su disco.
+Continuare [S/n]? 
+Scaricare:1 <A HREF="http://it.archive.ubuntu.com">http://it.archive.ubuntu.com</A> karmic/main libxml2-dev 
+2.7.5.dfsg-1ubuntu1 [745kB]
+Scaricare:2 <A HREF="http://it.archive.ubuntu.com">http://it.archive.ubuntu.com</A> karmic/main libglade2-dev 1:2.6.4-1 
+[85,8kB]
+Recuperati 830kB in 4s (176kB/s)    
+Selezionato il pacchetto libxml2-dev.
+(Lettura del database... 287726 file e directory attualmente installati.)
+Estrazione di libxml2-dev (da .../libxml2-dev_2.7.5.dfsg-1ubuntu1_i386.deb)...
+Selezionato il pacchetto libglade2-dev.
+Estrazione di libglade2-dev (da .../libglade2-dev_1%3a2.6.4-1_i386.deb)...
+Elaborazione dei trigger per man-db...
+Elaborazione dei trigger per doc-base...
+Processing 1 added doc-base file(s)...
+Registering documents with scrollkeeper...
+Configurazione di libxml2-dev (2.7.5.dfsg-1ubuntu1)...
+Configurazione di libglade2-dev (1:2.6.4-1)...
+-----------------------------------------------------
+
+Quindi hai *sicuramente* un casino con i repository. Che versione di Ubuntu 
+usi? Controlla il source.list
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Do what you like. Like what you do -
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000964.html">[Tecnica] dipendenze......
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000968.html">[Tecnica] dipendenze......
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#965">[ Data ]</a>
+              <a href="thread.html#965">[ Thread ]</a>
+              <a href="subject.html#965">[ Oggetto ]</a>
+              <a href="author.html#965">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

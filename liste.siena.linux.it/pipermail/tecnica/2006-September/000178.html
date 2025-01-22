@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ASUS &amp; Slackware &amp; help me!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ASUS%20%26%20Slackware%20%26%20help%20me%21&In-Reply-To=J5ZK7P%24E9F151049D5B82C12160AF99D2CAC4A5%40libero.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000169.html">
+   <LINK REL="Next"  HREF="000179.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ASUS &amp; Slackware &amp; help me!</H1>
+    <B>GTL v97.6</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20ASUS%20%26%20Slackware%20%26%20help%20me%21&In-Reply-To=J5ZK7P%24E9F151049D5B82C12160AF99D2CAC4A5%40libero.it"
+       TITLE="[Tecnica] ASUS &amp; Slackware &amp; help me!">gtlv97.6 a siena.linux.it
+       </A><BR>
+    <I>Ven 22 Set 2006 18:05:36 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000169.html">[Tecnica] ASUS &amp; Slackware &amp; help me!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000179.html">[Tecnica] ASUS &amp; Slackware &amp; help me!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#178">[ Data ]</a>
+              <a href="thread.html#178">[ Thread ]</a>
+              <a href="subject.html#178">[ Oggetto ]</a>
+	      <a href="author.html#178">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> 1) VOGLIO RINGRAZIARVI PER AVER RISPOSTO COSI' CELERMENTE
+</I>
+prego
+
+
+&gt;<i> 2) QUANDO ACCENDO IL PC MI DICE CHE L'APPLICAZIONE SOUNDSERVER  (artsd) E'
+</I>&gt;<i> ANDATA IN CRASH E HA CAUSATO IL SEGNALE 11
+</I>
+artsd è il demone audio di kde non penso che la cosa sia così
+problematica ma si può pensare di sistemare...in un secondo tempo
+
+
+&gt;<i> 3) QUANDO VADO NELLA CARTELLA /usr/src/ NON TROVO LA DIRECTORY linux (NON
+</I>&gt;<i> C'E' NIENTE)
+</I>
+questo è perché quando hai fatto l'installazione con Mithenks lui nn
+ha selezionato la copia delle sorgenti del kernel!! la cosa non è un
+problema si risolve nel seguente modo:
+
+scarichi le sorgenti del kernel da www.kernel.org
+
+prendi pure l'ultimo kernel rilasciato:
+
+  # cd
+(senza argomenti ti riporta nella tua home)
+
+  # wget <A HREF="http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2">http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2</A>
+(con wget -c [url] riprendi un download già iniziato, ovviamente devi
+assicurarti di essere sempre nella stessa directory dove avevi
+iniziato il download)
+
+scaricati pure l'md5 (nella stessa cartella è meglio):
+  # wget <A HREF="http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2.sign">http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.tar.bz2.sign</A>
+
+poi controlla che il file scaricato sia integro tramite il comando:
+  # md5sum -c linux-2.6.18.tar.bz2
+
+in seguito dovrai estrarre le sorgenti del kernel:
+(da root adesso..comando # su)
+  # cd /usr/src/
+  # tar -xjvpf ~/linux-2.6.18.tar.bz2
+
+creare il link symbolico alle sorgenti del kernel:
+  # ln -s linux-2.6.18 linux
+
+a questo punto hai le sorgenti del kernel pronte ad essere configurate
+e ricompilate.
+Per mantenere la configurazione attuale devi copiare il file di
+configurazione generato dal kernel sopra il file di configurazione
+base delle sorgenti del kernel:
+  # cd linux
+  # gzcat /proc/config.gz &gt; .config
+(o se il file nn esiste lì, puoi provare in /proc/sys/config.gz
+altrimenti #find /proc -type f -name 'config.gz' e lo trovi)
+
+adesso puoi far partire il programma di configurazione del kernel come
+ti suggeriva iakko:
+  # make menuconfig
+
+aggeggiare dove ti aveva suggerito e in seguito compilare il kernel:
+ # make &amp;&amp; make modules_install
+
+una volta compilato il kernel devi copiare l'immagine del kernel in
+/boot, per fare ciò andiamo prima a caccia dell'immagine del kernel:
+  # find /usr/src/linux -type f -iname 'bzImage'
+
+indi lo copiamo nella cartella /boot, dovresti già avere un file che
+si chiama linux qualcosa..fatti una copia di backup di quello e poi
+copia in boot l'immagine trovata prima:
+  # cp /boot/kernelprecedente /boot/kernelprecedente.backup
+  # cp /usr/src/linux/[path-to-bzImage] /boot/kernelprecedente
+(questo ti evita di dover riconfigurare il bootloader)
+
+rebootta e moh vediamo!!
+
+
+&gt;<i> 4) MI DICE COMMAND NOT FOUND
+</I>
+tramite il comando/applicazione di install (che nn so quale sia sotto
+slackware) installa il pacchetto:
+
+  pciutils
+
+e avrai il comando lspci e l'abbinata pagina di manuale ^^
+
+&gt;<i> 5)  QUANDO HO INSTALLATO LA SLACKWARE ABBIAMO FATTO IN MODO CHE PARTE
+</I>&gt;<i> DELL'HD SI VEDESSE SIA SU LINUX CHE SU WINDOWS; PERO' NON RIESCO A TROVARLA
+</I>&gt;<i> SU LINUX
+</I>
+uhm qui sembra ci sia qualche problema legato al file fstab..
+
+se hai un solo HD in /dev dovresti avere diversi file che iniziano per hda
+
+/dev/hda1
+/dev/hda2 ecc
+
+con il comando mount senza argomenti puoi vedere quali di queste
+partizioni è montata, se vedi che nn tutti gli hda* sono montati
+allora prova a montarlo così:
+(sempre tutto da root)
+  # mkdir /mnt/shared
+(crei punto di mount)
+  # newgrp sharedata
+(crei un gruppo per la lettura-scrittura dei dati sulla partizione
+condivisa win-linux)
+  # gpasswd -a [tuousername] sharedata
+(ti aggiungi a quel gruppo)
+  # chown root:sharedata /mnt/shared
+(cambi il proprietario e il gruppo della directory)
+  # chmod 774 /mnt/shared
+(cambi i permessi su quella directory)
+  # mount -t auto /dev/[hda-mancante] /mnt/shared
+(monti la partizione)
+
+e poi fatti un bel:
+  # ls /mnt/shared
+e vedi se questo è quello che ti mancava, se non era quello allora
+smontalo e rimontane un altro mancante:
+  # umount /mnt/shared
+e rimonti
+
+quando lo hai trovato vedi se è di tipo fat32 o ntfs:
+  # mount -t vfat
+se è nell'elenco seguente quel comando allora è fat32
+  # mount -t ntfs
+se è nell'elenco seguente quel comando allora è ntfs
+
+adesso aggiungi una linea al file fstab (non so attualmente in quale
+delle tue directory si trova ma potrebbe essere in /etc)
+con un pò di pazienza lo trovi con:
+  # find / -type f -name 'fstab'
+
+aggiungi la linea così:
+  # echo &quot;/dev/[hda-mancante] /mnt/shared [tipo:vfat o ntfs]
+noatime,rw,umask=000 0 0
+
+
+&gt;<i> 6) QUANDO LO SPENGO NON SI SPENGNE: ESCE DA KDE E SI BLOCCA
+</I>
+uhm da vedere
+
+&gt;<i> 7) CE LA FARO'???
+</I>
+in bocca al lupo
+
+-- 
+GTL v97.6
+&quot;...fallou de linucs uei and
+mei de surss bi uiv iu...&quot;
+</PRE>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000169.html">[Tecnica] ASUS &amp; Slackware &amp; help me!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000179.html">[Tecnica] ASUS &amp; Slackware &amp; help me!
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#178">[ Data ]</a>
+              <a href="thread.html#178">[ Thread ]</a>
+              <a href="subject.html#178">[ Oggetto ]</a>
+              <a href="author.html#178">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

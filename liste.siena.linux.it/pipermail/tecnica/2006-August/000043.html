@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] url rewriting
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=11A73EBC-69CD-455E-9560-F4576A38D183%40email.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000042.html">
+   <LINK REL="Next"  HREF="000044.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] url rewriting</H1>
+    <B>Martino di Filippo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=11A73EBC-69CD-455E-9560-F4576A38D183%40email.it"
+       TITLE="[Tecnica] url rewriting">puntodifuga a gmail.com
+       </A><BR>
+    <I>Mer 16 Ago 2006 09:36:32 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000042.html">[Tecnica] url rewriting
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000044.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#43">[ Data ]</a>
+              <a href="thread.html#43">[ Thread ]</a>
+              <a href="subject.html#43">[ Oggetto ]</a>
+	      <a href="author.html#43">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>La regola che ti ho scritto prevedeva un id numerico, con &quot;mondo&quot; non può
+funzionare.
+
+RewriteRule test/([^\.]+)\.html test.php?id=$1
+dovrebbe andare.
+
+Il file .htaccess è nella stessa directory di test.php vero?
+E, per scaramanzia, i permessi sul file test.php sono corretti? Cioè, apache
+può accedervi?
+
+Martino
+
+On 8/16/06, Massimo Sandolo &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bastilani a email.it</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 15/ago/06, alle ore 23:41, Martino di Filippo ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> Ho capito dove sta il problema.
+</I>&gt;<i> Inoltre, c'è almeno un errore, seppur triviale, oltre al fatto che non
+</I>&gt;<i> capisco bene l'uso di [^/] (perchè mai usare &quot;un carattere diverso da /&quot;
+</I>&gt;<i> quando l'id non è terminato da &quot;/&quot;? visto che l'url è nella forma
+</I>&gt;<i> test/ID.html, sarebbe più corretto usare [^\.]+\.html)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> questo tipo di regola l'avevo presa da un tutorial su un forum, che era
+</I>&gt;<i> data come prova per verificare il funzionamento del rewrite.. non mi sono
+</I>&gt;<i> soffermato troppo sulla correttezza dell'espressione :P
+</I>&gt;<i>
+</I>&gt;<i> Comunque, venendo al nocciolo della questione, il browser mostra il nuovo
+</I>&gt;<i> indirizzo perchè stai dando un url completo di http:// come rewrite,
+</I>&gt;<i> dovresti usare un url relativo alla directory corrente:
+</I>&gt;<i>
+</I>&gt;<i> RewriteRule test/(\d+)\.html text.php?id$1
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ok, in effetti tutti fanno riferimento a questo tipo di regole (senza url
+</I>&gt;<i> completo), però in realtà se non specifico l'url completo lui mi da un 404.
+</I>&gt;<i> Cmq con la tua regola chiedendo la pagina
+</I>&gt;<i> <A HREF="http://localhost/~massimo/prova_rewrite/test/mondo.html&lt;http://localhost/%7Emassimo/prova_rewrite/test/mondo.html">http://localhost/~massimo/prova_rewrite/test/mondo.html&lt;http://localhost/%7Emassimo/prova_rewrite/test/mondo.html</A>&gt;
+</I>&gt;<i> ottengo:
+</I>&gt;<i> Not Found
+</I>&gt;<i> The requested URL /~massimo/prova_rewrite/test/mondo.html was not found on
+</I>&gt;<i> this server.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> invece con la regola precedente:
+</I>&gt;<i> RewriteRule test/([^/]+).html test.php?id=$1 [L]
+</I>&gt;<i>
+</I>&gt;<i> richiamando: <A HREF="http://localhost/~massimo/prova_rewrite/test/mondo.html&lt;http://localhost/%7Emassimo/prova_rewrite/test/mondo.html">http://localhost/~massimo/prova_rewrite/test/mondo.html&lt;http://localhost/%7Emassimo/prova_rewrite/test/mondo.html</A>&gt;
+</I>&gt;<i> mi restituisce:
+</I>&gt;<i> Not Found
+</I>&gt;<i> The requested URL /Users/massimo/Sites/prova_rewrite/test.php was not
+</I>&gt;<i> found on this server.
+</I>&gt;<i>
+</I>&gt;<i> nel primo caso non riscrive, nel secondo invece il path sarebbe corretto
+</I>&gt;<i> perchè il file test.php è proprio in quella directory, solo che lo traduce
+</I>&gt;<i> in path e non in url
+</I>&gt;<i>
+</I>&gt;<i> (Nota che il . prima di html, se non preceduto da un backslash, indica &quot;un
+</I>&gt;<i> carattere qualsiasi&quot; e non un punto effettivo. L'espressione funziona
+</I>&gt;<i> comunque perchè un punto è &quot;un carattere qualsiasi&quot;, ma tanto vale essere
+</I>&gt;<i> precisi.
+</I>&gt;<i> In più, visto che gli id sono numerici, puoi usare \d+ (che indica una
+</I>&gt;<i> serie di cifre) al posto di [^/]+.)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> capito!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Spero che sia tutto chiaro!
+</I>&gt;<i> Martino
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> byez
+</I>&gt;<i> max
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20060816/cb061893/attachment.html">http://liste.siena.linux.it/pipermail/tecnica/attachments/20060816/cb061893/attachment.html</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000042.html">[Tecnica] url rewriting
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000044.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#43">[ Data ]</a>
+              <a href="thread.html#43">[ Thread ]</a>
+              <a href="subject.html#43">[ Oggetto ]</a>
+              <a href="author.html#43">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

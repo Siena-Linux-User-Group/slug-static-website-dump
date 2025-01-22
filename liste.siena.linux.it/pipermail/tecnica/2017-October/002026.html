@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Pacchetto irremovibile
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2017-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Pacchetto%20irremovibile&In-Reply-To=%3C1d3479a7-0150-0c85-0183-99ca1c2d6262%40fastwebnet.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="002027.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Pacchetto irremovibile</H1>
+    <B>Emanuele Bruni</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Pacchetto%20irremovibile&In-Reply-To=%3C1d3479a7-0150-0c85-0183-99ca1c2d6262%40fastwebnet.it%3E"
+       TITLE="[Tecnica] Pacchetto irremovibile">bruni_emanuele a fastwebnet.it
+       </A><BR>
+    <I>Lun 23 Ott 2017 20:54:40 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="002027.html">[Tecnica] Pacchetto irremovibile
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2026">[ Data ]</a>
+              <a href="thread.html#2026">[ Thread ]</a>
+              <a href="subject.html#2026">[ Oggetto ]</a>
+	      <a href="author.html#2026">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Nel tentativo di  installare amule adunanza seguendo la procedura sul 
+sito per l'installazione su derivate, sono riuscito con stile ed 
+eleganza a incasinare il database dei pacchetti e bloccare gli 
+aggiornamenti della mia linux mint. Ho rimosso il pacchetto al grido di 
+&quot;viva la legalità, abbasso il filesharing&quot; ma il problema persiste.
+
+Ho provato con apr-get -f install e dpkg -a configure (sul pacchetto 
+icriminato) ma nulla.
+
+Ovviamente, lo strumento punta e clicca ottiene meno che meno.
+
+Qualche suggerimento?
+
+(in allegato l'output di, appunto, apt-get -f install).
+
+aloha!
+blackhat
+-------------- parte successiva --------------
+Lettura elenco dei pacchetti...
+Generazione albero delle dipendenze...
+Lettura informazioni sullo stato...
+Correzione delle dipendenze... Fatto
+The following additional packages will be installed:
+  libpng12-0
+I seguenti pacchetti saranno aggiornati:
+  libpng12-0
+1 aggiornati, 0 installati, 0 da rimuovere e 40 non aggiornati.
+3 non completamente installati o rimossi.
+È necessario scaricare 0 B/116 kB di archivi.
+Dopo quest'operazione, verranno liberati 29,7 kB di spazio su disco.
+Continuare? [S/n] (Lettura del database... 
+(Lettura del database... 5%
+(Lettura del database... 10%
+(Lettura del database... 15%
+(Lettura del database... 20%
+(Lettura del database... 25%
+(Lettura del database... 30%
+(Lettura del database... 35%
+(Lettura del database... 40%
+(Lettura del database... 45%
+(Lettura del database... 50%
+(Lettura del database... 55%
+(Lettura del database... 60%
+(Lettura del database... 65%
+(Lettura del database... 70%
+(Lettura del database... 75%
+(Lettura del database... 80%
+(Lettura del database... 85%
+(Lettura del database... 90%
+(Lettura del database... 95%
+(Lettura del database... 100%
+(Lettura del database... 638638 file e directory attualmente installati.)
+Preparativi per estrarre .../libpng12-0_1.2.54-1ubuntu1_amd64.deb...
+Estrazione di libpng12-0:amd64 (1.2.54-1ubuntu1) su (1.2.51-0ubuntu3)...
+dpkg: errore nell'elaborare l'archivio /var/cache/apt/archives/libpng12-0_1.2.54-1ubuntu1_amd64.deb (--unpack):
+ tentata sovrascrittura di &quot;/usr/share/doc/libpng12-0/ANNOUNCE&quot; (condiviso), diverso da altre istanze del pacchetto libpng12-0:amd64
+Elaborazione dei trigger per libc-bin (2.23-0ubuntu9)...
+Si sono verificati degli errori nell'elaborazione:
+ /var/cache/apt/archives/libpng12-0_1.2.54-1ubuntu1_amd64.deb
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="002027.html">[Tecnica] Pacchetto irremovibile
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2026">[ Data ]</a>
+              <a href="thread.html#2026">[ Thread ]</a>
+              <a href="subject.html#2026">[ Oggetto ]</a>
+              <a href="author.html#2026">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

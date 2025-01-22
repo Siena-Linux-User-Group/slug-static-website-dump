@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Richiesta di aiuto urgente e gravissima
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Richiesta%20di%20aiuto%20urgente%20e%20gravissima&In-Reply-To=%3C20100603152210.28576.qmail%40community24.interfree.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001086.html">
+   <LINK REL="Next"  HREF="001098.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Richiesta di aiuto urgente e gravissima</H1>
+    <B>amc a interfree.it</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Richiesta%20di%20aiuto%20urgente%20e%20gravissima&In-Reply-To=%3C20100603152210.28576.qmail%40community24.interfree.it%3E"
+       TITLE="[Tecnica] Richiesta di aiuto urgente e gravissima">amc a interfree.it
+       </A><BR>
+    <I>Gio  3 Giu 2010 16:22:10 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001086.html">[Tecnica] Due domande
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001098.html">[Tecnica] Richiesta di aiuto urgente e gravissima
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1097">[ Data ]</a>
+              <a href="thread.html#1097">[ Thread ]</a>
+              <a href="subject.html#1097">[ Oggetto ]</a>
+	      <a href="author.html#1097">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Ciao
+se vuoi vivere felice lascia perdere il Network Manager e apri una shell:
+
+$ sudo -s
+
+# cd /etc/network/
+# vi interfaces
+
+... e da qui configuri tutte le interfacce che vuoi.
+Es:
+--------------------------------------------------------------
+
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+auto eth0
+#iface eth0 inet dhcp
+iface eth0 inet static
+address 192.168.7.106
+netmask 255.255.255.0
+network 192.168.7.0
+broadcast 192.168.7.255
+gateway 192.168.7.254
+------------------------------------------------------
+
+Come vedi, la eth0 prima era in dhcp e dopo e' con l'IP statico.
+
+Per i DNS:
+
+# cd /etc
+# vi resolv.conf
+
+nameserver
+nameserver
+nameserver
+domain
+search
+
+Salvi e hai configurato tutto con l'IP statico (senno' il resolv.conf te lo scrive automaticamente il DHCP).
+
+
+Buon navigazione.
+
+
+PS: Se sapere quali IP liberi ci sono nella rete e che quindi puoi usare... o te lo dice un amministratore di sistema... o li cerchi con un programma tipo AngryIP (win32) e speri che non siano assegnati ma momentaneamente spenti.
+
+
+Saluti
+Alessio
+
+-----Messaggio originale-----
+Da: bartrosso &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartrosso a gmail.com</A>&gt;
+Inviato il: 3 Giu 2010 - 08:05
+A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+
+
+
+ip subnet gateway dns sia uno che due nulla
+routes impostata manualmente o meno
+con ipov6 abilitati o meno
+sempre da root
+non abilita
+
+non so che dire
+non avevo mai avuto problemi...
+tanga
+
+
+2010/6/3 Marcello Semboli &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">dinogen a gmail.com</A>&gt;
+Il 03/06/2010 16.52, Paolo Sammicheli ha scritto:
+ Alle 16:47 del 3/6/2010, bartrosso ha scritto:
+ non sbagli, ma se non avessi provato per circ aun ora ad impostare network
+ manager manualmente, non avrei detto tale affermazione...
+ mi spiegate come mai pur compilando in ogni sua parte le impostazioni
+ manuali, network manager non abilita' mai il pulsante apply???
+ 
+ Ho provato giusto adesso per sicurezza e appena inserisci il default GW ti fa fare
+ applica, anche senza dns (giustamente).
+ 
+ Controlla meglio, devi poterlo fare.
+ 
+ Forse non sei nei sudoers.
+ 
+ 
+ Ciao
+
+ 
+ _______________________________________________
+ Tecnica mailing list
+ <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+ <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+
+
+
+-- 
+Sono cio' che sono grazie a quello che siamo tutti,
+
+
+
+un mio amico mi ha detto che ubuntu significa: &quot;Non so configurare Debian..&quot;
+
+ 
+Immagina se ogni persona sulla terra potesse condividere con accesso libero e totale tutta la conoscenza umana.
+ Jimmy Wales, fondatore di Wikipedia
+
+
+
+
+-------------------------------------------------------------------------------
+Valore legale alle tue mail
+InterfreePEC - la tua Posta Elettronica Certificata
+<A HREF="http://pec.interfree.it">http://pec.interfree.it</A>
+-------------------------------------------------------------------------------
+
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001086.html">[Tecnica] Due domande
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001098.html">[Tecnica] Richiesta di aiuto urgente e gravissima
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1097">[ Data ]</a>
+              <a href="thread.html#1097">[ Thread ]</a>
+              <a href="subject.html#1097">[ Oggetto ]</a>
+              <a href="author.html#1097">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

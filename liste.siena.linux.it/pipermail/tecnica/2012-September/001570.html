@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Xubuntu con HD pieno di LOG
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2012-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Xubuntu%20con%20HD%20pieno%20di%20LOG&In-Reply-To=%3CCAPYHJkYcpb03o0OWM-kBg2xotauXW-5ZbQyxsj4ktoOrnU90Mg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001569.html">
+   <LINK REL="Next"  HREF="001571.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Xubuntu con HD pieno di LOG</H1>
+    <B>Martino di Filippo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Xubuntu%20con%20HD%20pieno%20di%20LOG&In-Reply-To=%3CCAPYHJkYcpb03o0OWM-kBg2xotauXW-5ZbQyxsj4ktoOrnU90Mg%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Xubuntu con HD pieno di LOG">puntodifuga a gmail.com
+       </A><BR>
+    <I>Mar  4 Set 2012 19:38:33 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001569.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001571.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1570">[ Data ]</a>
+              <a href="thread.html#1570">[ Thread ]</a>
+              <a href="subject.html#1570">[ Oggetto ]</a>
+	      <a href="author.html#1570">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Userei `tail -n100 /var/log/kern.log` per controllare cosa è effettivamente
+presente nei log. Dovrebbe essere facile risalire alla causa dei messaggi e
+sistemarla.
+
+Ciao!
+On Sep 4, 2012 8:19 PM, &quot;Freeze NorthPole&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">freeze a siena.linux.it</A>&gt; wrote:
+
+&gt;<i> Ciao a tutti,
+</I>&gt;<i> ho un amico con il seguente problemino
+</I>&gt;<i>
+</I>&gt;<i> il pc in questione ha 40 GB di HD da qualche giorno sta riscontrando
+</I>&gt;<i> dei problemi dovuti all HD pieno al 100%
+</I>&gt;<i>
+</I>&gt;<i> ieri sera ho spostato la cartella di thunderbird che occupava circa 11 GB
+</I>&gt;<i> oggi dopo aver fatto della semplice navigazione, vedo che sono liberi
+</I>&gt;<i> solo 874 MB
+</I>&gt;<i> --- estrazione dati comando --
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxx a XX</A>:/var/log$ df -h
+</I>&gt;<i> File system            Dim. Usati Disp. Uso% Montato su
+</I>&gt;<i> /dev/sda1              38G   35G  874M  98% /
+</I>&gt;<i> none                  242M  684K  241M   1% /dev
+</I>&gt;<i> none                  249M  116K  248M   1% /dev/shm
+</I>&gt;<i> none                  249M  436K  248M   1% /var/run
+</I>&gt;<i> none                  249M     0  249M   0% /var/lock
+</I>&gt;<i> /dev/sdc1              85G  8,3G   77G  10% /media/AE981DE8981DAFB7
+</I>&gt;<i> --- fine estrazione dati comando --
+</I>&gt;<i>
+</I>&gt;<i> lanciando il comando :  sudo du -h --max-dept=1
+</I>&gt;<i>
+</I>&gt;<i> ho visto che la cartella VAR è quella che occupa più di tutto
+</I>&gt;<i> --- estrazione dati comando --
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">XX a xx</A>:/$ sudo du -h --max-dept=1
+</I>&gt;<i> 14M     ./etc
+</I>&gt;<i> 4,0K    ./srv
+</I>&gt;<i> 4,0K    ./mnt
+</I>&gt;<i> 4,0K    ./cdrom
+</I>&gt;<i> 292K    ./tmp
+</I>&gt;<i> 31G     ./var
+</I>&gt;<i> --- fine estrazione dati comando --
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --- estrazione dati comando --
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">XXXXXX a XX</A>:/var$ sudo du -h --max-dept=1
+</I>&gt;<i> 3,7M    ./backups
+</I>&gt;<i> 16K     ./tmp
+</I>&gt;<i> 140M    ./cache
+</I>&gt;<i> 4,0K    ./local
+</I>&gt;<i> 12K     ./games
+</I>&gt;<i> 4,0K    ./crash
+</I>&gt;<i> 436K    ./run
+</I>&gt;<i> 0       ./lock
+</I>&gt;<i> 149M    ./lib
+</I>&gt;<i> 2,1M    ./spool
+</I>&gt;<i> 4,0K    ./opt
+</I>&gt;<i> 30G     ./log
+</I>&gt;<i> 4,0K    ./mail
+</I>&gt;<i> 31G     .
+</I>&gt;<i> --- fine estrazione dati comando --
+</I>&gt;<i>
+</I>&gt;<i> eseguendo un ls -lsSh
+</I>&gt;<i>
+</I>&gt;<i> vedo che ci sono log  enormi che non mi spiego, anche perchè è un pc
+</I>&gt;<i> uso ufficio non server
+</I>&gt;<i>
+</I>&gt;<i> --- estrazione dati comando --
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxxxx a xxx</A>:/var/log$ ls -lsSh
+</I>&gt;<i> totale 30G
+</I>&gt;<i>  11G -rw-r----- 1 syslog            adm   11G 2012-09-04 20:19 kern.log
+</I>&gt;<i> 7,8G -rw-r----- 1 syslog            adm  7,8G 2012-09-03 10:03 kern.log.1
+</I>&gt;<i> 5,7G -rw-r----- 1 syslog            adm  5,7G 2012-09-04 08:01 syslog.1
+</I>&gt;<i> 4,6G -rw-r----- 1 syslog            adm  4,6G 2012-09-04 20:19 syslog
+</I>&gt;<i> 409M -rw-r----- 1 syslog            adm  409M 2012-07-30 10:01
+</I>&gt;<i> kern.log.4.gz
+</I>&gt;<i> 363M -rw-r----- 1 syslog            adm  363M 2012-08-10 09:04
+</I>&gt;<i> kern.log.3.gz
+</I>&gt;<i> 302M -rw-r----- 1 syslog            adm  302M 2012-08-29 20:25 syslog.6.gz
+</I>&gt;<i> 302M -rw-r----- 1 syslog            adm  302M 2012-08-29 20:44
+</I>&gt;<i> kern.log.2.gz
+</I>&gt;<i> 226M -rw-r----- 1 syslog            adm  226M 2012-09-01 07:35 syslog.3.gz
+</I>&gt;<i> 155M -rw-r----- 1 syslog            adm  155M 2012-08-31 09:28 syslog.4.gz
+</I>&gt;<i>  29M -rw-r----- 1 syslog            adm   29M 2012-09-03 09:47 syslog.2.gz
+</I>&gt;<i> 884K -rw-r----- 1 syslog            adm  882K 2012-08-30 09:23 syslog.5.gz
+</I>&gt;<i>  40K -rw-rw-r-- 1 root              utmp 286K 2012-09-04 19:36 lastlog
+</I>&gt;<i> --- fine estrazione dati comando --
+</I>&gt;<i>
+</I>&gt;<i> avete suggerimenti da darmi per capire che succede e come posso
+</I>&gt;<i> risolvere il problemino?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ecco i dettagli sul sistema operativo montato
+</I>&gt;<i>
+</I>&gt;<i> --- inzio dettagli --
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">xxxx a xxx</A>:/var/log$ lsb_release -a
+</I>&gt;<i> No LSB modules are available.
+</I>&gt;<i> Distributor ID: Ubuntu
+</I>&gt;<i> Description:    Ubuntu 11.04
+</I>&gt;<i> Release:        11.04
+</I>&gt;<i> Codename:       natty
+</I>&gt;<i> ---fine dettagli --
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Grazie Mille a tutti
+</I>&gt;<i> Freeze
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20120904/6196bb17/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20120904/6196bb17/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001569.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001571.html">[Tecnica] Xubuntu con HD pieno di LOG
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1570">[ Data ]</a>
+              <a href="thread.html#1570">[ Thread ]</a>
+              <a href="subject.html#1570">[ Oggetto ]</a>
+              <a href="author.html#1570">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

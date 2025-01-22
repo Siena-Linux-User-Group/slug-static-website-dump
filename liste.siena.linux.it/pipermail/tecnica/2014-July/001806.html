@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema path autocomplete in SSH
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20path%20autocomplete%20in%20SSH&In-Reply-To=%3CCA%2Bn2inDDq4RNgVCmkaLu%2BWp6gyPeQOTYxL6_iDVZot2J9Q3ZRw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001805.html">
+   <LINK REL="Next"  HREF="001807.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema path autocomplete in SSH</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20path%20autocomplete%20in%20SSH&In-Reply-To=%3CCA%2Bn2inDDq4RNgVCmkaLu%2BWp6gyPeQOTYxL6_iDVZot2J9Q3ZRw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Problema path autocomplete in SSH">polva86 a gmail.com
+       </A><BR>
+    <I>Gio 17 Lug 2014 14:46:01 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001805.html">[Tecnica] Problema path autocomplete in SSH
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001807.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1806">[ Data ]</a>
+              <a href="thread.html#1806">[ Thread ]</a>
+              <a href="subject.html#1806">[ Oggetto ]</a>
+	      <a href="author.html#1806">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao Lista.
+Penso di aver capito da che era dipeso il problema.
+A differenza di altre debian derivate come Ubuntu, OMV non integra il
+pacchetto addetto all'autocomplete dei path su ssh. Va semplicemente
+installato con
+
+# apt-get install bash-completion
+
+e dopo aggiungere al file .bash.rc della home dell'utente interessato
+
+if [ -f /etc/bash_completion ]; then
+. /etc/bash_completion
+fi
+
+Ho visto che infatti queste modifiche erano già presenti nel mio ubuntu
+mentre lì no.
+Ve lo scrivo nel caso riscontraste lo stesso problema con altre distro.
+Il Polva.
+
+
+Il giorno 16 luglio 2014 21:01, Angelo Polvanesi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt; ha
+scritto:
+
+&gt;<i> Ciao a tutti.
+</I>&gt;<i> Mi è risuccesso quel problema del mancato autocomplete via ssh.
+</I>&gt;<i> Ho provato a copiare un file da un file server OMV remoto al mio a casa:
+</I>&gt;<i> ho copiato la chiave pubblica con il copy-ssh-id sul'host remoto,
+</I>&gt;<i> auteticato l'operazione con la password e mi sono collegato. Ho fatto una
+</I>&gt;<i> prova di apertura sessione ssh e funzionava. Ho provato a usare
+</I>&gt;<i> l'autocomplete e mostrava sempre e solo i files locali.
+</I>&gt;<i> La differenza però qui è che, incollando il percorso giusto del file
+</I>&gt;<i> remoto, sono riuscito a copiare il file, senza errore di rete.
+</I>&gt;<i> L'autenticazione funziona quindi, ma non vuole partire l'autocomplete.
+</I>&gt;<i> Un dettaglio che non so se influisca o meno è che sto controllando, a sua
+</I>&gt;<i> volta, anche il computer da cui ho fatto il pull del file con ssh: in poche
+</I>&gt;<i> parole, il mio computer si logga in ssh con il mio serverino OMV, che a sua
+</I>&gt;<i> volta fa un scp via ssh a quello remoto. Non so se questo &quot;incapsulamento&quot;
+</I>&gt;<i> possa contribuire in qualche modo.
+</I>&gt;<i> Mica avete qualche idea?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 26 giugno 2014 10:57, Angelo Polvanesi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt; ha
+</I>&gt;<i> scritto:
+</I>&gt;<i>
+</I>&gt;<i> Ciao Gabriele.
+</I>&gt;&gt;<i> Purtroppo non posso risalire ora all'errore esatto. Mi ricordo che
+</I>&gt;&gt;<i> comunque non trovava la cartella remota (folder does not exist) e se si
+</I>&gt;&gt;<i> premeva il tab faceva il browsing solo delle cartelle locali e non di
+</I>&gt;&gt;<i> quelle remote.
+</I>&gt;&gt;<i> Il mio portatile di prova invece navigava tranquillamente in quelle
+</I>&gt;&gt;<i> remote.
+</I>&gt;&gt;<i> Per quanto riguarda l'autenticazione ho eseguito ssh-copy-id
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">utente a remotodabackuppare</A> da ciascun computer (omv e portatile di test),
+</I>&gt;&gt;<i> per cui ciascuno ha copiato la sua singola (e diversa) chiave pubblica nel
+</I>&gt;&gt;<i> .ssh/authorized_hosts dei computer da backuppare.
+</I>&gt;&gt;<i> Sospettavi della chiave del server omv? Ha senso, ma allora come mai in
+</I>&gt;&gt;<i> ssh mi entrava senza problemi? Usano la stessa chiave.
+</I>&gt;&gt;<i> Grazie in anticipo.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il giorno 26 giugno 2014 10:13, Gabriele Monfardini &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">gabrimonfa a gmail.com</A>
+</I>&gt;&gt;<i> &gt; ha scritto:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  Ciao,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  Ho notato, però che l'autocomplete sull'rsync via ssh non funzionava,
+</I>&gt;&gt;&gt;&gt;<i> mentre dal mio portatile di prova (Ubuntu 12.04LTS) autenticato alla stessa
+</I>&gt;&gt;&gt;&gt;<i> maniera si.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> L'autocomplete delle directory remote funziona solo se l'autenticazione
+</I>&gt;&gt;&gt;<i> con chiave funziona correttamente.
+</I>&gt;&gt;&gt;<i> Dai due computer accedi con la stessa chiave?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Il problema è che non copiava nemmeno i dati, restituendo un errore.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Quale?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  Gabriele
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140717/8503395e/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140717/8503395e/attachment.htm</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001805.html">[Tecnica] Problema path autocomplete in SSH
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001807.html">[Tecnica] Connessione sicura
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1806">[ Data ]</a>
+              <a href="thread.html#1806">[ Thread ]</a>
+              <a href="subject.html#1806">[ Oggetto ]</a>
+              <a href="author.html#1806">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

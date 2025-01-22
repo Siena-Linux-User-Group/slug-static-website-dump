@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] LaTeX e localizzazione
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2015-February/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20LaTeX%20e%20localizzazione&In-Reply-To=%3CCA%2B1kOcJvDR4VMhkGSkjRcwYCPuGBgHeX6djPtwfX%2BC0kt7BPuw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001907.html">
+   <LINK REL="Next"  HREF="001909.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] LaTeX e localizzazione</H1>
+    <B>bartrosso</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20LaTeX%20e%20localizzazione&In-Reply-To=%3CCA%2B1kOcJvDR4VMhkGSkjRcwYCPuGBgHeX6djPtwfX%2BC0kt7BPuw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] LaTeX e localizzazione">bartrosso a gmail.com
+       </A><BR>
+    <I>Dom 15 Feb 2015 19:55:49 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001907.html">[Tecnica] LaTeX e localizzazione
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001909.html">[Tecnica] LaTeX e localizzazione
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1908">[ Data ]</a>
+              <a href="thread.html#1908">[ Thread ]</a>
+              <a href="subject.html#1908">[ Oggetto ]</a>
+	      <a href="author.html#1908">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao Black. Ma intendi dire in formato today? prende la lingua di sistema
+se non sbaglio.
+Inoltre ti estraggo questo d un forum:
+Se si carica babel, si ha una definizione di \today che varia a seconda
+della lingua attiva. Infatti \selectlanguage{&lt;lingua&gt;} e
+\begin{otherlanguage}{&lt;lingua&gt;} eseguono il comando \date&lt;lingua&gt; (per
+esempio \dateitalian), la cui funzione è proprio di ridefinire \today.
+
+\usepackage[italian]{babel}
+
+bartrosso
+
+
+2015-02-15 20:14 GMT+01:00 Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt;:
+
+&gt;<i> Salve a tutti, belli e brutti!
+</I>&gt;<i>
+</I>&gt;<i> Qualcuna di voi menti eccelse nonchè utilizzatori di arcani sofware sa
+</I>&gt;<i> indicarmi come posso far smettere LaTeX, Lyx e pandoc di stamparmi
+</I>&gt;<i> february, 15 e convertirlo in un più comprensibile al popolo 15
+</I>&gt;<i> febbraio (anche Febbraio 15 potrebbe andare bene...)
+</I>&gt;<i>
+</I>&gt;<i> Immagino che debba in qualche modo fargli digerire il locale ma non
+</I>&gt;<i> riesco a trovare il modo giusto...
+</I>&gt;<i>
+</I>&gt;<i> aloha!
+</I>&gt;<i> blackhatL
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Emanuele Bruni &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">blackhat a hacknight.org</A>&gt; -Utente Linux registrato #223702
+</I>&gt;<i> &quot;Beati gli ultimi perchè lo stack è LIFO&quot; (Dinogen)
+</I>&gt;<i> La via dello Unix è il KISS.
+</I>&gt;<i> DIffida dei programmi che non rispettano il  KISS.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20150215/d5d0d5bd/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20150215/d5d0d5bd/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001907.html">[Tecnica] LaTeX e localizzazione
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001909.html">[Tecnica] LaTeX e localizzazione
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1908">[ Data ]</a>
+              <a href="thread.html#1908">[ Thread ]</a>
+              <a href="subject.html#1908">[ Oggetto ]</a>
+              <a href="author.html#1908">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

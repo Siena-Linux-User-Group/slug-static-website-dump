@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] ... problemini africani ... ;)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTi%3D%3DC3b2eakFEHMqwCHQpRZLkT5OjiE86e9uyTXr%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001219.html">
+   <LINK REL="Next"  HREF="001221.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] ... problemini africani ... ;)</H1>
+    <B>info@labi Laboratori Innovazione</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20...%20problemini%20africani%20...%20%3B%29&In-Reply-To=%3CAANLkTi%3D%3DC3b2eakFEHMqwCHQpRZLkT5OjiE86e9uyTXr%40mail.gmail.com%3E"
+       TITLE="[Tecnica] ... problemini africani ... ;)">info a labi.it
+       </A><BR>
+    <I>Sab 16 Ott 2010 18:09:45 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001219.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001221.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1220">[ Data ]</a>
+              <a href="thread.html#1220">[ Thread ]</a>
+              <a href="subject.html#1220">[ Oggetto ]</a>
+	      <a href="author.html#1220">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>SE NON ESISTE esegue cose
+altrimenti l'inverso
+
+
+se esiste eseque cose
+while [ -f FILE_NAME ]; do THINGS_HERE;done
+
+
+
+Il giorno 16 ottobre 2010 19:07, <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">info a labi</A> Laboratori Innovazione &lt;
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">info a labi.it</A>&gt; ha scritto:
+
+&gt;<i>  while [ ! -f FILE_NAME ]; do THINGS_HERE;done
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 16 ottobre 2010 18:40, Simone Soldateschi &lt;
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Senza costringermi a studiarmi tutto il manuale di BASH ;), chi ha
+</I>&gt;&gt;&gt;<i> un'idea di come fare uno script per mandare in loop un comando finché
+</I>&gt;&gt;&gt;<i> non torna zero?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> lo questo script:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ----------------------------------------
+</I>&gt;&gt;<i> #!/bin/bash
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> CONTINUA=1 # varaiabile di controllo del ciclo while
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> while [ $CONTINUA -eq 1 ]; do
+</I>&gt;&gt;<i>     # controllo
+</I>&gt;&gt;<i>     ls continua &gt; /dev/null 2&gt;&amp;1
+</I>&gt;&gt;<i>     if [ ! $? -eq 0 ]; then
+</I>&gt;&gt;<i>         CONTINUA=0
+</I>&gt;&gt;<i>     fi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     # do stuff here
+</I>&gt;&gt;<i>     date +%s
+</I>&gt;&gt;<i>     sleep 1
+</I>&gt;&gt;<i> done
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> exit 0
+</I>&gt;&gt;<i> ----------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> controlla che esista il file './continua': se esiste allora esegue 'do
+</I>&gt;&gt;<i> stuff here', altrimenti termina ;)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> // SS
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/a0787740/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20101016/a0787740/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001219.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001221.html">[Tecnica] ... problemini africani ... ;)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1220">[ Data ]</a>
+              <a href="thread.html#1220">[ Thread ]</a>
+              <a href="subject.html#1220">[ Oggetto ]</a>
+              <a href="author.html#1220">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

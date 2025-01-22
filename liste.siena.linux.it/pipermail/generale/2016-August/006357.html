@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] Linuguaggio di programmazione event-driven per BOT
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2016-August/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20Linuguaggio%20di%20programmazione%20event-driven%20per%20BOT&In-Reply-To=%3CCAKjoEh8Xzcf9HAD0TQeDx%2B70W8P2LAhasrW-4u%3DPH018Zu-jWg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="006356.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] Linuguaggio di programmazione event-driven per BOT</H1>
+    <B>daniele masti</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20Linuguaggio%20di%20programmazione%20event-driven%20per%20BOT&In-Reply-To=%3CCAKjoEh8Xzcf9HAD0TQeDx%2B70W8P2LAhasrW-4u%3DPH018Zu-jWg%40mail.gmail.com%3E"
+       TITLE="[Generale] Linuguaggio di programmazione event-driven per BOT">danielemasti a gmail.com
+       </A><BR>
+    <I>Mer 31 Ago 2016 14:21:30 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="006356.html">[Generale] Linuguaggio di programmazione event-driven per BOT
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#6357">[ Data ]</a>
+              <a href="thread.html#6357">[ Thread ]</a>
+              <a href="subject.html#6357">[ Oggetto ]</a>
+	      <a href="author.html#6357">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Capisco, alcune domande però:
+tale funzione di callback, chi la deve eseguire fra il server e il client?
+Se la fa il client, per farti un esempio, postresti utilizzare una sorta di
+polling in ajax per i nuovi eventi e poi sfruttare il meccanismo degli
+esempi custom (magari appoggiandoti a jquery) per agganciare le funzioni
+dell'utente al callback per l'evento custom stesso per poi rimandare
+indietro il risultato dell'elaborazione. Di fatto avresti una piccola api
+di tipo rest
+Se vuoi invece che lo script che l'utente ti &quot;vende&quot; venga eseguito dal tuo
+server, credo che la cosa migliore sarebbe appoggiarli al lua, che è
+integrato di serie dentro php (scoperto ora ora
+<A HREF="http://php.net/manual/en/book.lua.php">http://php.net/manual/en/book.lua.php</A> )
+Non sono troppo a favore di questo approccio comunque
+
+
+Il giorno 31 agosto 2016 14:30, Michele Pinassi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">michele.pinassi a gmail.com</A>&gt;
+ha scritto:
+
+&gt;<i> Grazie Daniele,
+</I>&gt;<i>
+</I>&gt;<i> in realtà l'idea è quella di avere un editor all'interno di un portale
+</I>&gt;<i> (una volgare &lt;textarea&gt; magari con syntax highlighting tipo
+</I>&gt;<i> <A HREF="http://prismjs.com">http://prismjs.com</A>) dove l'utente scrive un pezzetto di codice
+</I>&gt;<i> event-driven con il cui elaborare le risposte che il bot dovrebbe dare
+</I>&gt;<i> dietro input dell'utente.
+</I>&gt;<i>
+</I>&gt;<i> Esempio:
+</I>&gt;<i>
+</I>&gt;<i> dal BOT Telegram arriva il comando classico '/start'. Posso immagine
+</I>&gt;<i> qualcosa tipo una funzione di hook:
+</I>&gt;<i>
+</I>&gt;<i> function on_command_start($username, $chat_id) {
+</I>&gt;<i>     echo &quot;Salve, il BOT dello Slug ti da il benvenuto !&quot;
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> o altro, anche più evoluto. Lo scopo sarebbe quello di offrire
+</I>&gt;<i> all'utente una interfaccia il più possibile evoluta per il suo BOT di
+</I>&gt;<i> Telegram (è all'interno del progetto AllAroundSiena -
+</I>&gt;<i> www.allaroundsiena.com).
+</I>&gt;<i>
+</I>&gt;<i> Michele
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 31/08/2016 14:18, daniele masti wrote:
+</I>&gt;<i> &gt; salve,
+</I>&gt;<i> &gt; Sono assolutamente linguaggi server side: immaginavo lo use case fosse
+</I>&gt;<i> &gt; quello di una sorta di &quot;hosting&quot; di questi pezzetti di codice.
+</I>&gt;<i> &gt; Se invece la cosa deve essere client side, se vuoi rimanere dentro il
+</I>&gt;<i> &gt; browser, l'unica scelta è js (o al limite action script...)
+</I>&gt;<i> &gt; Escluso quello il web è comunque pieno di transpiler che hanno il js
+</I>&gt;<i> &gt; come target finale... qualcosa troveresti di sicuro.
+</I>&gt;<i> &gt; Se le azioni sono facili, valuta magari qualcosa di tipo grafico/a
+</I>&gt;<i> &gt; blocchi da poi interpretare al volo.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Diciamo che non me la sento di consigliarti ulteriormente senza avere
+</I>&gt;<i> &gt; un'idea più precisa di come vuoi strutturare l'applicazione: l'idea
+</I>&gt;<i> &gt; che mi sono fatto
+</I>&gt;<i> &gt; potrebbe essere drammaticamente differente da quella che hai tu, anche
+</I>&gt;<i> &gt; al netto di come l'utente fisicamente scriverà i propri comandi.
+</I>&gt;<i> &gt; Saluti
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> BLOG @ www.zerozone.it
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Generale mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/generale/attachments/20160831/2735d7d3/attachment.htm">http://liste.siena.linux.it/pipermail/generale/attachments/20160831/2735d7d3/attachment.htm</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="006356.html">[Generale] Linuguaggio di programmazione event-driven per BOT
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#6357">[ Data ]</a>
+              <a href="thread.html#6357">[ Thread ]</a>
+              <a href="subject.html#6357">[ Oggetto ]</a>
+              <a href="author.html#6357">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

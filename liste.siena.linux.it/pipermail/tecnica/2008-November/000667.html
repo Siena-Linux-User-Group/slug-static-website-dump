@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Supporto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Supporto&In-Reply-To=7f7db5320811020908h7d9d50fycbe585b749ba8b0a%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000666.html">
+   <LINK REL="Next"  HREF="000668.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Supporto</H1>
+    <B>Iacopo Palazzi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Supporto&In-Reply-To=7f7db5320811020908h7d9d50fycbe585b749ba8b0a%40mail.gmail.com"
+       TITLE="[Tecnica] Supporto">iacopo.palazzi a gmail.com
+       </A><BR>
+    <I>Dom  2 Nov 2008 21:24:36 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000666.html">[Tecnica] Supporto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000668.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#667">[ Data ]</a>
+              <a href="thread.html#667">[ Thread ]</a>
+              <a href="subject.html#667">[ Oggetto ]</a>
+	      <a href="author.html#667">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> A prima vista sembrano molto simili. Cambia solo qualcosa nelle prime 20
+</I>&gt;<i> righe. Notavo comunque che lui si accorge che io ho addirittura due schede
+</I>&gt;<i> video montate. Mica per caso gli darà noia questo?
+</I>
+Nel file xorg.conf non hai la sezione &quot;ServerLayout&quot; definita, non mi
+suona bene.
+
+Intanto prova ad installarti i driver ati forniti dalla ati stessa, li
+trovi a questo indirizzo:
+
+    <A HREF="http://ati.amd.com/support/driver.html">http://ati.amd.com/support/driver.html</A>
+
+Scarica ed installa (da root) il file .bin che ti danno.
+Per riprova, da root prova a caricare il modulo in questo modo:
+
+    modprobe fglrx
+
+Se non ti restituisce nessun messaggio di errore, assicurati di
+trovare il modulo fglrx nell'output fornito da:
+
+    lsmod
+
+Una volta fatto questo, usa un file di configurazione di questo tipo:
+
+    <A HREF="http://www.pastebin.ca/1243477">http://www.pastebin.ca/1243477</A>
+
+Se non ci sono problemi strani e se scarichi i driver giusti, dovrebbe partire.
+
+Sembra un &quot;banale&quot; problema di configurazione.
+
+-- 
+Iacopo Palazzi
+email: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">iacopo.palazzi a gmail.com</A>
+msn: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">iakko a omnikron.net</A>
+
+&quot;If only God give me the Sources ...&quot;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000666.html">[Tecnica] Supporto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000668.html">[Tecnica] Supporto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#667">[ Data ]</a>
+              <a href="thread.html#667">[ Thread ]</a>
+              <a href="subject.html#667">[ Oggetto ]</a>
+              <a href="author.html#667">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] VNC scomparso
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VNC%20scomparso&In-Reply-To=%3C26bcdb752d7add9db10016c5b8fc9017%40unisi.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001007.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] VNC scomparso</H1>
+    <B>Francesco Nardi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20VNC%20scomparso&In-Reply-To=%3C26bcdb752d7add9db10016c5b8fc9017%40unisi.it%3E"
+       TITLE="[Tecnica] VNC scomparso">nardifra a unisi.it
+       </A><BR>
+    <I>Lun 29 Mar 2010 14:17:53 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001007.html">[Tecnica] Router con iptables
+</A></li>
+        
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1009">[ Data ]</a>
+              <a href="thread.html#1009">[ Thread ]</a>
+              <a href="subject.html#1009">[ Oggetto ]</a>
+	      <a href="author.html#1009">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao,
+
+grazie,
+ma niente di fatto,
+l'opzione vnc continua a non essere disponibile da &quot;remote desktop viewer&quot;
+(vinagre).
+
+Nel frattempo ho installato un secondo programma vnc &quot;GTK VNC viewer&quot;,
+che funziona correttamente e mi permette connessioni vnc.
+
+
+Quindi il problema prioritario di non avere un vnc funzionante è di fatto
+risolto,
+ma vorrei comunque capire cosa è andato in tilt con vinagre,
+se qualcuno ha idee.
+
+Sapete che forma prende il protocollo vnc in ubuntu, un pacchetto?
+In alternativa, si trattasse di qualche opzione personale che blocca questa
+funzione del programma,
+sapete dove sono le impostazioni personali di questo (non come hidden
+folder in home, mi sembra di vedere, o almeno niente il cui nome lo dica
+chiaramente).
+
+grazie
+
+francesco nardi
+
+
+
+
+
+
+
+
+
+Premesso che non ho mai usato vinagre prima d'ora, io l'ho appena provato
+su karmic e ho 
+entrambe le connessioni. Tra i pacchetti installati con il vnc ho i
+seguenti:
+
+x a bwing:~$ dpkg --get-selections | grep vnc
+libgtk-vnc-1.0-0				install
+libvncserver0					install
+xvnc4viewer					install
+
+Cercando con synaptic mi indica anche &quot;vino&quot; come pacchetto vnc server.
+
+Prova ad aggiungere questi e facci sapere,
+
+Ciao
+-- 
+Paolo Sammicheli  
+Email: xdatap1(at)siena.linux.it
+Slug - Siena Linux User Group | <A HREF="http://www.siena.linux.it">http://www.siena.linux.it</A>
+- Do what you like. Like what you do -
+
+&gt;<i> 
+</I>&gt;<i> Buongiorno a tutti,
+</I>&gt;<i> 
+</I>&gt;<i> un problema col protocollo VNC.
+</I>&gt;<i> 
+</I>&gt;<i> Il programma Remote Desktop Viewer (vinagre) in ubuntu karmic
+</I>generalmente
+&gt;<i> offre due possibilità di connessione, ssh e vnc.
+</I>&gt;<i> Lo uso regolarmente per connessioni vnc.
+</I>&gt;<i> 
+</I>&gt;<i> Da circa una settimana la scelta vnc è scomparsa dal mio menu delle
+</I>&gt;<i> connessioni, e se richiamavo una connessione dallo storico che usava una
+</I>&gt;<i> vnc ottengevo un messaggio di errore sulla mancanza di VNC (non posso
+</I>&gt;<i> riprodurlo perchè ho fatto alcune connessioni ssh e non ho più
+</I>&gt;<i> connessioni vnc in memoria).
+</I>&gt;<i> 
+</I>&gt;<i> Ho disinstallato e reinstallato il programma Remote Desktop Viewer e
+</I>&gt;<i> controllato per broken dependencies, ma niente.
+</I>&gt;<i> 
+</I>&gt;<i> Avete qualche suggerimento? Cosa/dove è VNC in ubuntu? se è un
+</I>pacchetto
+&gt;<i> specifico potrei de/reinstallarlo per provare..
+</I>&gt;<i> 
+</I>&gt;<i> grazie per la collaborazione
+</I>&gt;<i> 
+</I>&gt;<i> francesco nardi
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> ++++++++++++++++++++++++
+</I>&gt;<i> Francesco Nardi, Dr.
+</I>&gt;<i> 
+</I>&gt;<i> Dept. of Evolutionary Biology
+</I>&gt;<i> University of Siena
+</I>&gt;<i> 
+</I>&gt;<i> Master in Bioinformatics
+</I>&gt;<i> University of Siena
+</I>&gt;<i> 
+</I>&gt;<i> via Aldo Moro 2 - 53100 Siena
+</I>&gt;<i> Italy
+</I>&gt;<i> 
+</I>&gt;<i> Ph.: +39.0577.234420 (lab. 4398)
+</I>&gt;<i> Fax.: +39.0577.234476
+</I>&gt;<i> +++++++++++++++++++++++++ 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Fri, 26 Mar 2010 12:37:45 +0100
+</I>&gt;<i> From: Andrea Ciani &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">cianiandrea10 a gmail.com</A>&gt;
+</I>&gt;<i> Subject: [Tecnica] Router con iptables
+</I>&gt;<i> To: SLUG Lista Tecnica SLUG &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i> Message-ID: &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">59B8E9BA-6AE2-439E-A0B6-11F23F8CC36A a gmail.com</A>&gt;
+</I>&gt;<i> Content-Type: text/plain; charset=&quot;iso-8859-1&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Ciao a tutti,
+</I>&gt;<i> 
+</I>&gt;<i> stavo configurando un router/firewall con linux ubuntu server utilizzando
+</I>&gt;<i> le iptables.
+</I>&gt;<i> 
+</I>&gt;<i> Ho 2 schede di rete chiamate eht0 (LAN) ed eth1 (collegata a sua volta
+</I>con
+&gt;<i> un modem/router di fastweb).
+</I>&gt;<i> 
+</I>&gt;<i> Ho creato un DHCP che assegna correttamente gli indirizzi nella lan. La
+</I>&gt;<i> scheda eth0 ha indirizzo 192.168.0.2 e la eth1 invece prende gli ip
+</I>&gt;<i> direttamente da fastweb.
+</I>&gt;<i> 
+</I>&gt;<i> Il computer è correttamente connesso a internet (ho provato e testato
+</I>con
+&gt;<i> wget) e la eth0 è correttamente configurata in lan (ho provato a
+</I>scambiare
+&gt;<i> risorse condivise e funziona tutto).
+</I>&gt;<i> 
+</I>&gt;<i> Però, come faccio a far andare i computer della lan su internet??
+</I>Perché
+&gt;<i> non riescono a dialogare??
+</I>&gt;<i> 
+</I>&gt;<i> Con iptables ho inserito le seguenti regole:
+</I>&gt;<i> 
+</I>&gt;<i> iptables -P INPUT ACCEPT
+</I>&gt;<i> iptables -P FORWARD ACCEPT
+</I>&gt;<i> iptables -P OUTPUT ACCEPT
+</I>&gt;<i> iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
+</I>&gt;<i> 
+</I>&gt;<i> ed ho inserito la seguente riga nel file /etc/sysctl.conf
+</I>&gt;<i> 
+</I>&gt;<i> net.ipv4.ip_forward = 1
+</I>&gt;<i> 
+</I>&gt;<i> riavviando ho notato che iptables aveva mantenuto i settaggi, però
+</I>ancora
+&gt;<i> niente internet dalla LAN!!! Perché?? Cosa ho sbagliato?? Qualcuno mi
+</I>&gt;<i> saprebbe dare una mano?
+</I>&gt;<i> 
+</I>&gt;<i> -----------------------------------------------
+</I>&gt;<i> Andrea Ciani
+</I>&gt;<i> 
+</I>&gt;<i> -------------- parte successiva --------------
+</I>&gt;<i> Un allegato HTML è stato rimosso...
+</I>&gt;<i> URL:
+</I>&gt;<i>
+</I>&lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/c389da3d/attachment.html">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100326/c389da3d/attachment.html</A>&gt;
+&gt;<i> 
+</I>&gt;<i> ------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Fine di Digest di Tecnica, Volume 44, Numero 5
+</I>&gt;<i> **********************************************
+</I>
+-- 
+++++++++++++++++++++++++
+Francesco Nardi, Dr.
+
+Dept. of Evolutionary Biology
+University of Siena
+
+Master in Bioinformatics
+University of Siena
+
+via Aldo Moro 2 - 53100 Siena
+Italy
+
+Ph.: +39.0577.234420 (lab. 4398)
+Fax.: +39.0577.234476
++++++++++++++++++++++++++ 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001007.html">[Tecnica] Router con iptables
+</A></li>
+	
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1009">[ Data ]</a>
+              <a href="thread.html#1009">[ Thread ]</a>
+              <a href="subject.html#1009">[ Oggetto ]</a>
+              <a href="author.html#1009">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

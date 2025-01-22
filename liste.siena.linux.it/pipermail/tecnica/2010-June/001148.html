@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Sicurezza password degli hard disk
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Sicurezza%20password%20degli%20hard%20disk&In-Reply-To=%3C201006081348.51045.moreno.bartalucci%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001147.html">
+   <LINK REL="Next"  HREF="001150.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Sicurezza password degli hard disk</H1>
+    <B>Moreno Bartalucci</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Sicurezza%20password%20degli%20hard%20disk&In-Reply-To=%3C201006081348.51045.moreno.bartalucci%40gmail.com%3E"
+       TITLE="[Tecnica] Sicurezza password degli hard disk">moreno.bartalucci a gmail.com
+       </A><BR>
+    <I>Mar  8 Giu 2010 12:48:51 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001147.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001150.html">[Tecnica] VPN
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1148">[ Data ]</a>
+              <a href="thread.html#1148">[ Thread ]</a>
+              <a href="subject.html#1148">[ Oggetto ]</a>
+	      <a href="author.html#1148">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Altra prova:
+
+Escludendo il discorso &quot;macchina virtuale&quot;.
+
+copia dei soliti 700MB da una cartella criptata a un'altra cartella criptata: 
+24secondi
+
+copia dei soliti 700MB da una cartella NON criptata a un'altra cartella NON 
+criptata: poco piu' di un secondo...
+
+:<i>-(
+</I>
+
+
+
+Alle martedì 8 giugno 2010, Simone Soldateschi ha scritto:
+&gt;<i> L'IO, soprattutto quello del disco, è il punto debole delle macchine
+</I>&gt;<i> virtuali in genere.
+</I>&gt;<i> 
+</I>&gt;<i> Dai un occhio a questi benchmarks:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://www.tomshardware.com/reviews/locking-linux-creating-a-cryptobook,130">http://www.tomshardware.com/reviews/locking-linux-creating-a-cryptobook,130</A>
+</I>&gt;<i> 3.html
+</I>&gt;<i> 
+</I>&gt;<i> Non ho mai provato EncFS ma a giudicare da questi risultati direi che
+</I>&gt;<i> potrebbe essere un indiziato per i problemi di lentezza.
+</I>&gt;<i> EncFS scrive e legge ad una velocità inferiore di un ordine di grandezza
+</I>&gt;<i> rispetto a LUKS!
+</I>&gt;<i> 
+</I>&gt;<i> Ho fatto altre prove.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Copiando 700MB di dati dalla macchina reale a quella virtuale:
+</I>&gt;<i> &gt; Macchina virtuale su spazio non criptato: 9minuti
+</I>&gt;<i> &gt; Macchina virtuale su spazio criptato: 18minuti
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Di sicuro mi sembra che le prestazioni della rete virtuale non siano
+</I>&gt;<i> &gt; esaltanti: 700MB in 9 minuti, mi sembra che faccia un misero 1,3MB/s.
+</I>&gt;<i> &gt; Non so se sia colpa di vmware, di samba o di chi altro.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Durante questa prova il processo vmware e' rimasto buono, senza schizzare
+</I>&gt;<i> &gt; al
+</I>&gt;<i> &gt; 100% di cpu come avevo notato l'altra volta.
+</I>&gt;<i> 
+</I>&gt;<i> Questo è abbastanza normale: per gran parte del tempo il processo vmware
+</I>&gt;<i> sarà in idle in attesa che vengano completate le letture/scritture.
+</I></PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001147.html">[Tecnica] Sicurezza password degli hard disk
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001150.html">[Tecnica] VPN
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1148">[ Data ]</a>
+              <a href="thread.html#1148">[ Thread ]</a>
+              <a href="subject.html#1148">[ Oggetto ]</a>
+              <a href="author.html#1148">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

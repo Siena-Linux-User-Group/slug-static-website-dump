@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] problemi con /etc/sudoers
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=46F4DD84.5060600%40valdelsa.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000509.html">
+   <LINK REL="Next"  HREF="000511.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] problemi con /etc/sudoers</H1>
+    <B>alfonso -</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20problemi%20con%20/etc/sudoers&In-Reply-To=46F4DD84.5060600%40valdelsa.net"
+       TITLE="[Tecnica] problemi con /etc/sudoers">alfovel a hotmail.com
+       </A><BR>
+    <I>Sab 22 Set 2007 11:00:06 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000509.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000511.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#510">[ Data ]</a>
+              <a href="thread.html#510">[ Thread ]</a>
+              <a href="subject.html#510">[ Oggetto ]</a>
+	      <a href="author.html#510">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Ma scusa quando avvii il pc, non ti si presenta dopo un pò una schermata con
+Ubuntu ed i vari kernel ed affianco scritto &quot;Recovery mode&quot; ed alla fine:  &quot;Ubuntu, memtest86+&quot;?
+
+
+
+&gt;<i> Date: Sat, 22 Sep 2007 11:16:52 +0200
+</I>&gt;<i> From: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i> To: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> Subject: Re: [Tecnica] problemi con /etc/sudoers
+</I>&gt;<i> 
+</I>&gt;<i> ho provato con cntr+alt+f1 ma non mi fa cambiare i permessi in quanto 
+</I>&gt;<i> non mi riconosce come amministratore nemmenno con
+</I>&gt;<i> 
+</I>&gt;<i> su -
+</I>&gt;<i> 
+</I>&gt;<i> quanto al grub non so come fare a entrarci visto che ho una sola 
+</I>&gt;<i> partizione con ubuntu....e winzozz virtualizzato....(il casino credo di 
+</I>&gt;<i> averlo fatto ieri cambiando i permessi a vmplayer)...
+</I>&gt;<i> in questo caso come faccio a far partire il ricovery mode?
+</I>&gt;<i> 
+</I>&gt;<i> grazie ancora
+</I>&gt;<i> 
+</I>&gt;<i> alfonso - ha scritto:
+</I>&gt;<i> &gt; hai riavviato in modalità recovery? da grub selezioni avvio di ubuntu 
+</I>&gt;<i> &gt; in recovery mode,
+</I>&gt;<i> &gt; semplicemente scrivi
+</I>&gt;<i> &gt; chmod 440 /etc/sudoers
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> &gt; Attenzione non scrivere sudo prima perchè 1 non ce n'è bisogno 2 
+</I>&gt;<i> &gt; probabilmente non funzionerebbe perchè il comando sudo non va essendo 
+</I>&gt;<i> &gt; appunto incasinato il file sudoers.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; exit
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> &gt; e dovrebbe partire gdm... quindi prova a &quot;sudare&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; Date: Sat, 22 Sep 2007 08:21:28 +0200
+</I>&gt;<i> &gt; &gt; From: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>
+</I>&gt;<i> &gt; &gt; To: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">generale a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; &gt; Subject: [Tecnica] problemi con /etc/sudoers
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; stamani sono andato per aggiornare il mio ubuntu e non ne ha voluto
+</I>&gt;<i> &gt; &gt; saperne....visto che dal gestore non si aggiornava, ho provato con sudo
+</I>&gt;<i> &gt; &gt; apt-get update....
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; sudo: /etc/sudoers is mode 0777, should be 0440
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; questa è stata la risposta del terminale dal quale si evince che i
+</I>&gt;<i> &gt; &gt; permessi di /etc/sudoers sono sbagliati.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; bene.....come faccio a rimetterli come devono essere ?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; visto che con chmod 440 /etc/sudoers ho questa risposta:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; chmod: ripristino dei permessi di `/etc/sudoers': Funzione non permessa
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; ovviamente non mi riconosce come amministratore.....
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; qualcuno sa come fare?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; grazie a tutti
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; roberto
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt; Lanciati in una sfida con i tuoi amici a Battaglia Navale, il nuovo 
+</I>&gt;<i> &gt; gioco per Messenger! Battaglia Navale 
+</I>&gt;<i> &gt; &lt;<A HREF="http://messengergiochi.it.msn.com/battaglianavale.htm">http://messengergiochi.it.msn.com/battaglianavale.htm</A>&gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Tecnica mailing list
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i> &gt;   
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+_________________________________________________________________
+Ti piace viaggiare? Allora racconta le tue avventure su MSN Diari di viaggio
+<A HREF="http://diaridiviaggio.it.msn.com/">http://diaridiviaggio.it.msn.com/</A>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20070922/fecf42b9/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20070922/fecf42b9/attachment.htm</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000509.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000511.html">[Tecnica] problemi con /etc/sudoers
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#510">[ Data ]</a>
+              <a href="thread.html#510">[ Thread ]</a>
+              <a href="subject.html#510">[ Oggetto ]</a>
+              <a href="author.html#510">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

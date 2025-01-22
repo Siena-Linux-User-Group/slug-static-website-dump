@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3C4E24A0F8.4040404%40biso.it%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001413.html">
+   <LINK REL="Next"  HREF="001416.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Serverone per MAC a base Ubuntu (cap.1)</H1>
+    <B>Andrea Mancini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3C4E24A0F8.4040404%40biso.it%3E"
+       TITLE="[Tecnica] Serverone per MAC a base Ubuntu (cap.1)">biso a biso.it
+       </A><BR>
+    <I>Lun 18 Lug 2011 22:09:12 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001413.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001416.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.2)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1414">[ Data ]</a>
+              <a href="thread.html#1414">[ Thread ]</a>
+              <a href="subject.html#1414">[ Oggetto ]</a>
+	      <a href="author.html#1414">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao,
+io non sono un esperto di shell et parenti ma sono riuscito lo stesso a 
+creare server che girano da 3 anni senza rompere i maroni.
+L'interfaccia grafica non ti serve, prova webmin se vuoi un tool che ti 
+aiuta a configurare i vari parametri.
+Se ce la faccio io che sono un designer, ce la puoi fare te :)
+
+Il RAID 0 è da evitare, è un single point of failure di tutto 
+rispetto.... minimo RAID5.
+Non capisco cosa voglia dire &quot;volumi singoli&quot;. Con RAID5 si ottiene 
+comunque un disco unico, un pò meno enorme del RAID0 ma ridondato. Cosa 
+cambia al cliente avere 8 Tera invece di 12??
+
+&quot;La ridondanza è a cadenza giornaliera e lui sa già che perde i dati di 
+un giorno interno in caso di faliure.&quot;
+
+Se si abbrustolisce la macchina di backup o viceversa, rimani con una 
+sola copia in RAID0 senza ridondanza, non mi pare molto furba come 
+soluzione...
+
+Ciao
+Andrea
+
+On 18/07/2011 22:01, Angelo Polvanesi wrote:
+&gt;<i> Chiaramente SSH non lo elimino. Anzi se una cosa la so fare da 
+</I>&gt;<i> terminale userò lui. Nel caso in cui questo esuli dalle mie capacità 
+</I>&gt;<i> andrò di VNC incrociando le dita. Il tutto in attesa di passare 
+</I>&gt;<i> completamente a SSH, chiaramente.
+</I>&gt;<i> Il raid0 è stato fatto unicamente per vedere un blocco unico condiviso 
+</I>&gt;<i> in rete. L'altra soluzione è l'LVM che ancora mi devo studiare (e 
+</I>&gt;<i> comunque c'è sempre corruzione di filesystem). Che io sappia altri 
+</I>&gt;<i> modi non ce ne sono.
+</I>&gt;<i> La ridondanza è a cadenza giornaliera e lui sa già che perde i dati di 
+</I>&gt;<i> un giorno interno in caso di faliure.
+</I>&gt;<i> Sono stato io il primo a sconsigliare il raid0 e di mettere volumi 
+</I>&gt;<i> singoli, ma quest'idea proprio non gli andava giù.
+</I>&gt;<i> in ogni caso sono 12TB da una parte e 12 dall'altra, come imposteresti 
+</I>&gt;<i> i dischi?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 18 luglio 2011 21:19, Yusef Maali &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">contact a yusefmaali.net</A> 
+</I>&gt;<i> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">contact a yusefmaali.net</A>&gt;&gt; ha scritto:
+</I>&gt;<i>
+</I>&gt;<i>     In data lunedì 18 luglio 2011 21:03:12, Angelo Polvanesi ha scritto:
+</I>&gt;<i>     &gt; Sono conscio del fatto che domando, faccio e prospetto cose non
+</I>&gt;<i>     ortodosse,
+</I>&gt;<i>
+</I>&gt;<i>     Eh si, ma davvero poco ortodosse :)
+</I>&gt;<i>
+</I>&gt;<i>     &gt; ma vorrei capire se sono sbagliate in linea di principio (es. il
+</I>&gt;<i>     server non
+</I>&gt;<i>     &gt; è stato pensato per...)
+</I>&gt;<i>
+</I>&gt;<i>     Si, sbagliatissime :)
+</I>&gt;<i>
+</I>&gt;<i>     &gt; o a livello strettamente funzionale (es. se lo fai
+</I>&gt;<i>     &gt; crasha ogni 5 min).
+</I>&gt;<i>
+</I>&gt;<i>     Probabile :)
+</I>&gt;<i>     In ogni caso devi provare. C'è caso che vnc ti si pianti
+</I>&gt;<i>     abbastanza spesso,
+</I>&gt;<i>     come c'è caso che si porti dietro tutto X.
+</I>&gt;<i>     A quel punto non accedi più da remoto.
+</I>&gt;<i>     SSH invece è piuttosto rock-solid. Mi è capitato di vederlo
+</I>&gt;<i>     funzionare e farmi
+</I>&gt;<i>     aprire una shell remota anche quando tutto il resto era inchiodato.
+</I>&gt;<i>
+</I>&gt;<i>     Devi provare.
+</I>&gt;<i>
+</I>&gt;<i>     Il punto debole a mio avviso è il raid0. Levalo appena puoi. Basta
+</I>&gt;<i>     il fail di
+</I>&gt;<i>     un disco per perdere tutto.
+</I>&gt;<i>     Un NAS in produzione deve avere come requisito *minimo* un
+</I>&gt;<i>     raid1/5, se poi il
+</I>&gt;<i>     cliente si lamenta non è problema tuo.
+</I>&gt;<i>     Quando poi perderà tutti i dati, allora si che diventa un grosso
+</I>&gt;<i>     problema tuo.
+</I>&gt;<i>
+</I>&gt;<i>     Il backup notturno è utile se la frequenza di aggiornamento degli
+</I>&gt;<i>     archivi è
+</I>&gt;<i>     bassa e sopratutto se il cliente è disposto alla perdita dei dati
+</I>&gt;<i>     dell'ultimo
+</I>&gt;<i>     giorno (ovvero dall'ultimo backup).
+</I>&gt;<i>
+</I>&gt;<i>     Spero tu abbia fatto queste valutazioni.
+</I>&gt;<i>
+</I>&gt;<i>     Ciao,
+</I>&gt;<i>     Y.
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Tecnica mailing list
+</I>&gt;<i>     <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A> &lt;mailto:<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>&gt;
+</I>&gt;<i>     <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20110718/db66b08b/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20110718/db66b08b/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001413.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001416.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.2)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1414">[ Data ]</a>
+              <a href="thread.html#1414">[ Thread ]</a>
+              <a href="subject.html#1414">[ Oggetto ]</a>
+              <a href="author.html#1414">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

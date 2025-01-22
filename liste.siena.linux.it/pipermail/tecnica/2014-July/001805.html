@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema path autocomplete in SSH
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20path%20autocomplete%20in%20SSH&In-Reply-To=%3CCA%2Bn2inBCdYUP-cZ0tL_VXhN9KLxzxLRaWGY_6uJDAjPWVJ1PRQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001800.html">
+   <LINK REL="Next"  HREF="001806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema path autocomplete in SSH</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20path%20autocomplete%20in%20SSH&In-Reply-To=%3CCA%2Bn2inBCdYUP-cZ0tL_VXhN9KLxzxLRaWGY_6uJDAjPWVJ1PRQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Problema path autocomplete in SSH">polva86 a gmail.com
+       </A><BR>
+    <I>Mer 16 Lug 2014 20:01:38 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001800.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001806.html">[Tecnica] Problema path autocomplete in SSH
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1805">[ Data ]</a>
+              <a href="thread.html#1805">[ Thread ]</a>
+              <a href="subject.html#1805">[ Oggetto ]</a>
+	      <a href="author.html#1805">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti.
+Mi è risuccesso quel problema del mancato autocomplete via ssh.
+Ho provato a copiare un file da un file server OMV remoto al mio a casa: ho
+copiato la chiave pubblica con il copy-ssh-id sul'host remoto, auteticato
+l'operazione con la password e mi sono collegato. Ho fatto una prova di
+apertura sessione ssh e funzionava. Ho provato a usare l'autocomplete e
+mostrava sempre e solo i files locali.
+La differenza però qui è che, incollando il percorso giusto del file
+remoto, sono riuscito a copiare il file, senza errore di rete.
+L'autenticazione funziona quindi, ma non vuole partire l'autocomplete.
+Un dettaglio che non so se influisca o meno è che sto controllando, a sua
+volta, anche il computer da cui ho fatto il pull del file con ssh: in poche
+parole, il mio computer si logga in ssh con il mio serverino OMV, che a sua
+volta fa un scp via ssh a quello remoto. Non so se questo &quot;incapsulamento&quot;
+possa contribuire in qualche modo.
+Mica avete qualche idea?
+
+
+Il giorno 26 giugno 2014 10:57, Angelo Polvanesi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">polva86 a gmail.com</A>&gt; ha
+scritto:
+
+&gt;<i> Ciao Gabriele.
+</I>&gt;<i> Purtroppo non posso risalire ora all'errore esatto. Mi ricordo che
+</I>&gt;<i> comunque non trovava la cartella remota (folder does not exist) e se si
+</I>&gt;<i> premeva il tab faceva il browsing solo delle cartelle locali e non di
+</I>&gt;<i> quelle remote.
+</I>&gt;<i> Il mio portatile di prova invece navigava tranquillamente in quelle
+</I>&gt;<i> remote.
+</I>&gt;<i> Per quanto riguarda l'autenticazione ho eseguito ssh-copy-id
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">utente a remotodabackuppare</A> da ciascun computer (omv e portatile di test),
+</I>&gt;<i> per cui ciascuno ha copiato la sua singola (e diversa) chiave pubblica nel
+</I>&gt;<i> .ssh/authorized_hosts dei computer da backuppare.
+</I>&gt;<i> Sospettavi della chiave del server omv? Ha senso, ma allora come mai in
+</I>&gt;<i> ssh mi entrava senza problemi? Usano la stessa chiave.
+</I>&gt;<i> Grazie in anticipo.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Il giorno 26 giugno 2014 10:13, Gabriele Monfardini &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">gabrimonfa a gmail.com</A>&gt;
+</I>&gt;<i> ha scritto:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Ciao,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Ho notato, però che l'autocomplete sull'rsync via ssh non funzionava,
+</I>&gt;&gt;&gt;<i> mentre dal mio portatile di prova (Ubuntu 12.04LTS) autenticato alla stessa
+</I>&gt;&gt;&gt;<i> maniera si.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> L'autocomplete delle directory remote funziona solo se l'autenticazione
+</I>&gt;&gt;<i> con chiave funziona correttamente.
+</I>&gt;&gt;<i> Dai due computer accedi con la stessa chiave?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Il problema è che non copiava nemmeno i dati, restituendo un errore.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Quale?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Gabriele
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Tecnica mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140716/35e0963e/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140716/35e0963e/attachment.htm</A>&gt;
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001800.html">[Tecnica] passare da debian 6 a debian 7 in sicurezza
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001806.html">[Tecnica] Problema path autocomplete in SSH
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1805">[ Data ]</a>
+              <a href="thread.html#1805">[ Thread ]</a>
+              <a href="subject.html#1805">[ Oggetto ]</a>
+              <a href="author.html#1805">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

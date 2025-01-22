@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] problema upload php
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20problema%20upload%20php&In-Reply-To=%3CAANLkTikKKN-T%2B6%2Bihr7rnDCpiYk%3DzXEJtM%2B_gN9p9hpr%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005078.html">
+   <LINK REL="Next"  HREF="005080.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] problema upload php</H1>
+    <B>Gabriele Monfardini</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20problema%20upload%20php&In-Reply-To=%3CAANLkTikKKN-T%2B6%2Bihr7rnDCpiYk%3DzXEJtM%2B_gN9p9hpr%40mail.gmail.com%3E"
+       TITLE="[Generale] problema upload php">gabrimonfa a gmail.com
+       </A><BR>
+    <I>Ven 11 Mar 2011 09:35:38 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005078.html">[Generale] problema upload php
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005080.html">[Generale] python---- ma perchè porcaccia eva
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5079">[ Data ]</a>
+              <a href="thread.html#5079">[ Thread ]</a>
+              <a href="subject.html#5079">[ Oggetto ]</a>
+	      <a href="author.html#5079">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dai un'occhiata qui
+
+<A HREF="http://it.php.net/manual/en/features.file-upload.errors.php">http://it.php.net/manual/en/features.file-upload.errors.php</A>
+
+Quando il file manca non ottieni un $_FILES vuoto ma più probabilmente
+un $_FILES['&lt;userfile&gt;']['error']=4 (ossia la costante dal nome
+autoesplicativo UPLOAD_ERR_NO_FILE).
+Quindi questo vuol dire che se il file manca il ramo del tuo codice
+seguito dovrebbe essere (mannaggia all'indentazione!!...)
+
+&quot;if (in_array($_FILES['file']['type'], $tipi_consentiti)){&quot;
+
+cosa che ovviamente non è vera e quindi l'elaborazione termina senza
+fare nulla (pagina bianca).
+
+Saluti
+
+Gabriele
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005078.html">[Generale] problema upload php
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005080.html">[Generale] python---- ma perchè porcaccia eva
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5079">[ Data ]</a>
+              <a href="thread.html#5079">[ Thread ]</a>
+              <a href="subject.html#5079">[ Oggetto ]</a>
+              <a href="author.html#5079">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

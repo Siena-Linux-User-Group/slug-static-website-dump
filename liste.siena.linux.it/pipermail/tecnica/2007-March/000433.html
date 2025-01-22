@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Ssh e configurazione multi-utente
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703041303.24578.contact%40yusefmaali.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000432.html">
+   <LINK REL="Next"  HREF="000434.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Ssh e configurazione multi-utente</H1>
+    <B>Alessandro Iurlano</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703041303.24578.contact%40yusefmaali.net"
+       TITLE="[Tecnica] Ssh e configurazione multi-utente">alessandro.iurlano a gmail.com
+       </A><BR>
+    <I>Dom  4 Mar 2007 12:42:34 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000432.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000434.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#433">[ Data ]</a>
+              <a href="thread.html#433">[ Thread ]</a>
+              <a href="subject.html#433">[ Oggetto ]</a>
+	      <a href="author.html#433">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Qui forse mi sono spiegato male.
+</I>&gt;<i> Se tu usi programmi che fanno tunnelling attraverso ssh, ad esempio
+</I>&gt;<i> git+ssh oppure svn+ssh, il client
+</I>&gt;<i> ssh non crea una vera sessione shell, ma si autentica, fa partire i
+</I>&gt;<i> programmi che sono richiesti e chiude tutto.
+</I>&gt;<i> Facendo un &quot;ps aux&quot; si vede che ssh apre una sessione <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a notty.</A>
+</I>&gt;<i>
+</I>&gt;<i> In sostanza a me interessa permettere questo tipo di utilizzo, ma non
+</I>&gt;<i> l'utilizzo della shell (bash) con tutte le sue funzionalità,
+</I>&gt;<i> che è un problema diverso dal permettere/non permettere l'autenticazione.
+</I>
+
+Dai un'occhiata a rssh:
+
+Description: Restricted shell allowing only scp, sftp, cvs, rsync and/or
+rdist
+ rssh is a restricted shell, used as a login shell, that allows users to
+ perform only scp, sftp, cvs, rdist, and/or rsync operations.  It can
+ also optionally chroot user logins into a restricted jail.
+
+Se non ti bastano i comandi che rssh fa eseguire di default potresti pensare
+a creare un alberatura
+di directory su cui far fare chroot al momento del login dell'utente. In
+quel modo gli utenti possono
+soltanto eseguire i programmi che ci sono nelle directory bin della chroot.
+
+Ciao,
+Alessandro
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20070304/bc203ebe/attachment.html">http://liste.siena.linux.it/pipermail/tecnica/attachments/20070304/bc203ebe/attachment.html</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000432.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000434.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#433">[ Data ]</a>
+              <a href="thread.html#433">[ Thread ]</a>
+              <a href="subject.html#433">[ Oggetto ]</a>
+              <a href="author.html#433">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

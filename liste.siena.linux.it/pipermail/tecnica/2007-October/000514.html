@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] configurazione di rete
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="000515.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] configurazione di rete</H1>
+    <B>roberto volpini</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20configurazione%20di%20rete&In-Reply-To="
+       TITLE="[Tecnica] configurazione di rete">roberto.volpini a valdelsa.net
+       </A><BR>
+    <I>Lun  1 Ott 2007 18:27:54 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="000515.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#514">[ Data ]</a>
+              <a href="thread.html#514">[ Thread ]</a>
+              <a href="subject.html#514">[ Oggetto ]</a>
+	      <a href="author.html#514">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ciao a tutti stò cercando di configurare una piccola rete domestica...ma 
+sono al rimbalzo....potete aiutarmi?
+
+Bene....ho dato 3 ip diversi:
+Router 192.168.1.1
+pc1 192.168.1.2
+pc2 192.168.1.3
+
+Ho impostato samba aggiungendo queste righe qui sotto:
+
+[robi]
+path = /home/robi
+available = yes
+browsable = yes
+public = yes
+writable = yes
+
+[laura]
+path = /home/laura
+available = yes
+browsable = yes
+public = yes
+writable = yes
+
+ma in RISORSE-RETE vedo i pc....ma non li riesco a &quot;leggere&quot;, nel
+router è abilitato il server DHCP.....
+
+ho letto anche l'howto di NFS e nel tentativo di installare i pacchetti 
+necessari nella shell ho questa risposta:
+
+Configuro proftpd (1.3.0-21ubuntu1) ...
+--------- IMPORTANT INFORMATION FOR XINETD USERS ----------
+The following line will be added to your /etc/inetd.conf file:
+
+ftp     stream  tcp     nowait  root    /usr/sbin/tcpd /usr/sbin/proftpd
+
+If you are indeed using xinetd, you will have to convert the
+above into /etc/xinetd.conf format, and add it manually. See
+/usr/share/doc/xinetd/README.Debian for more information.
+-----------------------------------------------------------
+
+ * Starting ftp server 
+proftpd                                                   - IPv4 
+getaddrinfo 'robi-laptop' error: No address associated with hostname
+ - warning: unable to determine IP address of 'robi-laptop'
+ - error: no valid servers configured
+ - Fatal: error processing configuration file '/etc/proftpd/proftpd.conf'
+                                                                         
+[fail]
+invoke-rc.d: initscript proftpd, action &quot;start&quot; failed.
+dpkg: errore processando proftpd (--configure):
+ il sottoprocesso post-installation script ha restituito un codice di 
+errore 1
+Sono occorsi degli errori processando:
+ proftpd
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+
+mi sembra di capire che il sistema non ha associato un indirizzo con il 
+mio portatile (robi-laptop)...
+
+qualcuno può aiutarmi a sbrigliare la matassa?
+
+grazie infinite a tutti
+
+roberto
+
+P.S. immagino di essermi spiegato in modo pessimo.....percui chiedete 
+delucidazioni e cercherò di chiarire il più possibile...
+
+:<i>-))))))))))))))
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="000515.html">[Tecnica] configurazione di rete
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#514">[ Data ]</a>
+              <a href="thread.html#514">[ Thread ]</a>
+              <a href="subject.html#514">[ Oggetto ]</a>
+              <a href="author.html#514">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

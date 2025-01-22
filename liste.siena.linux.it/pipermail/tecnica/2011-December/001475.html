@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] installazione joomla su server debian con plesk
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20installazione%20joomla%20su%20server%20debian%20con%20plesk&In-Reply-To=%3CCAONfR_BR21NyPbJ319ss6yvdfwNN%2B55hoBEVQtSAaea4uO8XKw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001474.html">
+   <LINK REL="Next"  HREF="001476.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] installazione joomla su server debian con plesk</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20installazione%20joomla%20su%20server%20debian%20con%20plesk&In-Reply-To=%3CCAONfR_BR21NyPbJ319ss6yvdfwNN%2B55hoBEVQtSAaea4uO8XKw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] installazione joomla su server debian con plesk">freeze a siena.linux.it
+       </A><BR>
+    <I>Dom  4 Dic 2011 21:57:15 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001474.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001476.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1475">[ Data ]</a>
+              <a href="thread.html#1475">[ Thread ]</a>
+              <a href="subject.html#1475">[ Oggetto ]</a>
+	      <a href="author.html#1475">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> [SNIP]
+</I>&gt;&gt;<i> 2011/12/4 Simone Soldateschi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">simone.soldateschi a gmail.com</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> posta la configurazione dei virtualhosts del tuo webserver, plz
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;<i> $ cat /etc/apache2/sites-enabled/*
+</I>&gt;<i>
+</I>
+
+in basso riporto quanto richiesto
+Grazie Mille
+
+
+&lt;VirtualHost *:80&gt;
+        ServerAdmin <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">webmaster a localhost</A>
+
+        DocumentRoot /var/www
+        &lt;Directory /&gt;
+                Options FollowSymLinks
+                AllowOverride None
+        &lt;/Directory&gt;
+        &lt;Directory /var/www/&gt;
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        &lt;/Directory&gt;
+
+        ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+        &lt;Directory &quot;/usr/lib/cgi-bin&quot;&gt;
+                AllowOverride None
+                Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+                Order allow,deny
+                Allow from all
+        &lt;/Directory&gt;
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    Alias /doc/ &quot;/usr/share/doc/&quot;
+    &lt;Directory &quot;/usr/share/doc/&quot;&gt;
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    &lt;/Directory&gt;
+
+&lt;/VirtualHost&gt;
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20111204/7f198623/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20111204/7f198623/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001474.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001476.html">[Tecnica] installazione joomla su server debian con plesk
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1475">[ Data ]</a>
+              <a href="thread.html#1475">[ Thread ]</a>
+              <a href="subject.html#1475">[ Oggetto ]</a>
+              <a href="author.html#1475">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

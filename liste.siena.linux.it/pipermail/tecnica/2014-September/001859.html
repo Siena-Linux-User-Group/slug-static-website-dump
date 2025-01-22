@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problemi con bash e ftp
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-September/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problemi%20con%20bash%20e%20ftp&In-Reply-To=%3C20140916232313.7502e4aa%40hacknight.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001869.html">
+   <LINK REL="Next"  HREF="001861.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problemi con bash e ftp</H1>
+    <B>Emanuele Bruni</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problemi%20con%20bash%20e%20ftp&In-Reply-To=%3C20140916232313.7502e4aa%40hacknight.org%3E"
+       TITLE="[Tecnica] Problemi con bash e ftp">blackhat a hacknight.org
+       </A><BR>
+    <I>Mar 16 Set 2014 22:23:13 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001869.html">[Tecnica] linux day e birra
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001861.html">[Tecnica] Problemi con bash e ftp
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1859">[ Data ]</a>
+              <a href="thread.html#1859">[ Thread ]</a>
+              <a href="subject.html#1859">[ Oggetto ]</a>
+	      <a href="author.html#1859">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Allora, armatomi della conoscIenza della rete ho cercato di
+automatizzare l'upload di file in rete usando ftp.
+
+In pratica ho usato il metodo suggerito qui: 
+<A HREF="http://www.stratigery.com/scripting.ftp.html">http://www.stratigery.com/scripting.ftp.html</A>
+
+per ottenere questo risultato
+
+ftp -n $HOST &lt;&lt;END
+  quote USER $USER
+  quote PASS $PASS
+  put $FILE1
+  put $FILE2
+  put $FILE3
+  quit 
+  END
+
+per ottenere i seguenti errori:
+
+./carica.sh: riga 37: attenzione: here-document alla riga 28 è
+delimitato da un EOF (era richiesto &quot;END&quot;)
+./carica.sh: riga 38: errore di sintassi: EOF non atteso 
+
+Immagino sia il solito errore bastardo di sintassi ma per quanto ci
+combatta, non lo trovo...
+
+Il client ftp in questione è gftp.
+
+Suggerimenti? Altri metodi conosciuti? 
+
+aloha!
+blackhat
+</PRE>
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001869.html">[Tecnica] linux day e birra
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001861.html">[Tecnica] Problemi con bash e ftp
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1859">[ Data ]</a>
+              <a href="thread.html#1859">[ Thread ]</a>
+              <a href="subject.html#1859">[ Oggetto ]</a>
+              <a href="author.html#1859">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

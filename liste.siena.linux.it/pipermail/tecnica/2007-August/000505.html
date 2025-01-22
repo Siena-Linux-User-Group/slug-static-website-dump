@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] montare device mobili da shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20montare%20device%20mobili%20da%20shell&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000502.html">
+   <LINK REL="Next"  HREF="000506.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] montare device mobili da shell</H1>
+    <B>Marcello Semboli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20montare%20device%20mobili%20da%20shell&In-Reply-To="
+       TITLE="[Tecnica] montare device mobili da shell">dinogen a yahoo.com
+       </A><BR>
+    <I>Mer  1 Ago 2007 11:00:12 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000502.html">[Tecnica] montare device mobili da shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000506.html">[Tecnica] Ghost 4 Linux 
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#505">[ Data ]</a>
+              <a href="thread.html#505">[ Thread ]</a>
+              <a href="subject.html#505">[ Oggetto ]</a>
+	      <a href="author.html#505">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ah, ho capito per cui /media è riservato alle applicazioni mentre /mnt è rimasto il classico riferimento per la fstab.
+Per cui se voglio usare la console, devo editare fstab come usava una volta.
+
+----- Messaggio originale -----
+Da: &quot;Michele &quot;O-Zone&quot; Pinassi&quot; &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a siena.linux.it</A>&gt;
+A: Lista Tecnica del Siena Linux User Group &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A>&gt;
+Inviato: Mercoledì 1 agosto 2007, 10:43:43
+Oggetto: Re: [Tecnica] montare device mobili da shell
+
+
+On Wednesday 01 August 2007 10:24, Paolo Sammicheli wrote:
+&gt;<i> Come faccia kde non so, che crei una directory lui sotto media?
+</I>
+Penso di si:
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a moloch</A>:/media$ ls
+README       cdrecorder0/  cdrom@   cdrom1/  dvd0/  floppy@   floppy1/  hd0/  
+memory@   memory1/  zip0/
+cdrecorder@  cdrecorder1/  cdrom0/  dvd@     dvd1/  floppy0/  hd@       hd1/  
+memory0/  zip@      zip1/
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a moloch</A>:/media$
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a moloch</A>:/media$ cat README
+
+The purpose of the /media directory is to provide a consistent place
+across different systems for users and applications to mount
+removeable media.  For example, this might be used by KDE's
+Media Manager feature in Konqueror.  That will look into /etc/fstab
+to determine where to mount a volume, and for now this still defaults
+to using /mnt (e.g. /mnt/cdrom as the cdrom mount point), but you
+may edit your /etc/fstab if you'd like to follow the FHS
+recommendations.
+
+See the /mnt directory also.
+
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">o-zone a moloch</A>:/media$         
+-- 
+O-Zone ! No (C) 1996
+WEB+BLOG <A HREF="http://www.zerozone.it">http://www.zerozone.it</A>
+PHOTOS <A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+_______________________________________________
+Tecnica mailing list
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+
+
+      ___________________________________ 
+L'email della prossima generazione? Puoi averla con la nuova Yahoo! Mail: <A HREF="http://it.docs.yahoo.com/nowyoucan.html">http://it.docs.yahoo.com/nowyoucan.html</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000502.html">[Tecnica] montare device mobili da shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000506.html">[Tecnica] Ghost 4 Linux 
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#505">[ Data ]</a>
+              <a href="thread.html#505">[ Thread ]</a>
+              <a href="subject.html#505">[ Oggetto ]</a>
+              <a href="author.html#505">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

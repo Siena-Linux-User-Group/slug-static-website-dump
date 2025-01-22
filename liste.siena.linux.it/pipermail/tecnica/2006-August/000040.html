@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] url rewriting
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=ff6b9ba30608151200v56f98455hb99a7de2cd70f300%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000039.html">
+   <LINK REL="Next"  HREF="000041.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] url rewriting</H1>
+    <B>Massimo Sandolo</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20url%20rewriting&In-Reply-To=ff6b9ba30608151200v56f98455hb99a7de2cd70f300%40mail.gmail.com"
+       TITLE="[Tecnica] url rewriting">bastilani a email.it
+       </A><BR>
+    <I>Mar 15 Ago 2006 22:14:13 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000039.html">[Tecnica] url rewriting
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000041.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#40">[ Data ]</a>
+              <a href="thread.html#40">[ Thread ]</a>
+              <a href="subject.html#40">[ Oggetto ]</a>
+	      <a href="author.html#40">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Il giorno 15/ago/06, alle ore 21:00, Martino di Filippo ha scritto:
+
+&gt;<i> Potresti inviare il codice del rewrite in modo da controllare che  
+</I>&gt;<i> non ci siano errori?
+</I>&gt;<i> A quanto ne so, se l'estensione è caricata in modo corretto non  
+</I>&gt;<i> dovrebbero esserci altre opzioni da modificare.
+</I>
+eh .. è quello che pensavo anche io ... cmq per il rewrite in  
+httpd.conf di apache ho queste righe:
+
+LoadModule rewrite_module     libexec/httpd/mod_rewrite.so
+AddModule mod_rewrite.c
+
+e poi queste altre:
+&lt;IfModule mod_rewrite.c&gt;
+     RewriteEngine On
+     RewriteCond %{REQUEST_METHOD} ^TRACE
+     RewriteRule .* - [F]
+&lt;/IfModule&gt;
+che cmq se commento non mi cambiano niente.
+
+nelle conf dell'user:
+&lt;Directory &quot;/Users/massimo/Sites/&quot;&gt;
+     Options All
+     AllowOverride All
+     Order allow,deny
+     Allow from all
+&lt;/Directory&gt;
+
+la regola di rewrite scritta nell'htaccess messo nella directory  
+prova_rewrite:
+RewriteEngine On
+RewriteRule ^test/([^/]+).html <A HREF="http://localhost/~massimo/">http://localhost/~massimo/</A> 
+prova_rewrite/test.php?id=$1 [L]
+
+Dimenticavo .. lavoro in locale su un osx e nn linux .. ma non credo  
+incida sensibilmete sul problema (spero).. apache è la versione 1.33
+
+byez
+max
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000039.html">[Tecnica] url rewriting
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000041.html">[Tecnica] url rewriting
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#40">[ Data ]</a>
+              <a href="thread.html#40">[ Thread ]</a>
+              <a href="subject.html#40">[ Oggetto ]</a>
+              <a href="author.html#40">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

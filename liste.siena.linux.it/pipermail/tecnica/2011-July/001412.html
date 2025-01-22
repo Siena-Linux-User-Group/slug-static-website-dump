@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3C201107182119.56478.contact%40yusefmaali.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001411.html">
+   <LINK REL="Next"  HREF="001413.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Serverone per MAC a base Ubuntu (cap.1)</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Serverone%20per%20MAC%20a%20base%20Ubuntu%20%28cap.1%29&In-Reply-To=%3C201107182119.56478.contact%40yusefmaali.net%3E"
+       TITLE="[Tecnica] Serverone per MAC a base Ubuntu (cap.1)">contact a yusefmaali.net
+       </A><BR>
+    <I>Lun 18 Lug 2011 20:19:56 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001411.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001413.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1412">[ Data ]</a>
+              <a href="thread.html#1412">[ Thread ]</a>
+              <a href="subject.html#1412">[ Oggetto ]</a>
+	      <a href="author.html#1412">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In data lunedì 18 luglio 2011 21:03:12, Angelo Polvanesi ha scritto:
+&gt;<i> Sono conscio del fatto che domando, faccio e prospetto cose non ortodosse,
+</I>
+Eh si, ma davvero poco ortodosse :)
+
+&gt;<i> ma vorrei capire se sono sbagliate in linea di principio (es. il server non
+</I>&gt;<i> è stato pensato per...) 
+</I>
+Si, sbagliatissime :)
+
+&gt;<i> o a livello strettamente funzionale (es. se lo fai
+</I>&gt;<i> crasha ogni 5 min). 
+</I>
+Probabile :)
+In ogni caso devi provare. C'è caso che vnc ti si pianti abbastanza spesso, 
+come c'è caso che si porti dietro tutto X.
+A quel punto non accedi più da remoto.
+SSH invece è piuttosto rock-solid. Mi è capitato di vederlo funzionare e farmi 
+aprire una shell remota anche quando tutto il resto era inchiodato.
+
+Devi provare.
+
+Il punto debole a mio avviso è il raid0. Levalo appena puoi. Basta il fail di 
+un disco per perdere tutto.
+Un NAS in produzione deve avere come requisito *minimo* un raid1/5, se poi il 
+cliente si lamenta non è problema tuo.
+Quando poi perderà tutti i dati, allora si che diventa un grosso problema tuo.
+
+Il backup notturno è utile se la frequenza di aggiornamento degli archivi è 
+bassa e sopratutto se il cliente è disposto alla perdita dei dati dell'ultimo 
+giorno (ovvero dall'ultimo backup).
+
+Spero tu abbia fatto queste valutazioni.
+
+Ciao,
+Y.
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001411.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001413.html">[Tecnica] Serverone per MAC a base Ubuntu (cap.1)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1412">[ Data ]</a>
+              <a href="thread.html#1412">[ Thread ]</a>
+              <a href="subject.html#1412">[ Oggetto ]</a>
+              <a href="author.html#1412">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

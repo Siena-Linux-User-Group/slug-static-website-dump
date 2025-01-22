@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2012-January/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAMX%3DvyY1RaO8Ox6r3TPNcc3VO97W3Q4s2U5cYcKc4nKCBbqLMQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005676.html">
+   <LINK REL="Next"  HREF="005678.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] shell</H1>
+    <B>Max Murdock</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAMX%3DvyY1RaO8Ox6r3TPNcc3VO97W3Q4s2U5cYcKc4nKCBbqLMQ%40mail.gmail.com%3E"
+       TITLE="[Generale] shell">maxmurd a gmail.com
+       </A><BR>
+    <I>Gio 26 Gen 2012 01:08:45 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005676.html">[Generale] shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005678.html">[Generale] cercasi programmatore part-time per collaborazione in progetto europeo (laurea non richiesta)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5677">[ Data ]</a>
+              <a href="thread.html#5677">[ Thread ]</a>
+              <a href="subject.html#5677">[ Oggetto ]</a>
+	      <a href="author.html#5677">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>2012/1/26 Alessandro Iurlano &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">alessandro.iurlano a gmail.com</A>&gt;:
+&gt;<i> Se stai usando bash queste impostazioni le trovi solitamente nel file
+</I>&gt;<i> .bashrc nella home dell'utente.
+</I>&gt;<i> Nel mio sistema ho il file /etc/skel/.bashrc che ha le impostazioni
+</I>&gt;<i> sia per il prompt che per i colori di ls.
+</I>&gt;<i> Prova:
+</I>&gt;<i>
+</I>&gt;<i> $ cp .bashrc bashrc-backup
+</I>&gt;<i> $ cp /etc/skel/.bashrc .bashrc
+</I>&gt;<i> $ bash
+</I>
+Bhe in realtà se ha creato un utente ex novo quei file da skel sono
+già stati copiati.
+
+Potresti avere un .bashrc dentro la tua home fatto così
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+che te lo fa puntare a /etc/bashrc globale, vedi cosa contiene.
+Se come terminale hai xterm (lo vedi in $TERM) e vuoi un prompt carino
+potresti inserire questo dentro il tuo .bashrc
+PROMPT_COMMAND='printf &quot;\033]0;%s@%s:%s\007&quot; &quot;${USER}&quot;
+&quot;${HOSTNAME%%.*}&quot; &quot;${PWD/#$HOME/~}&quot;'
+
+
+cYa
+-- 
+Fabrizio Felici
+Registered Linux User #398394
+
+Vuoi passare a GNU/Linux e al software libero? Chiedimi come!
+GroLug Grosseto - <A HREF="http://www.grolug.org/">http://www.grolug.org/</A>
+Blog: Open Source e Linux Business <A HREF="http://www.smartmedia2000.it/articoli/">http://www.smartmedia2000.it/articoli/</A>
+
+&quot;Guardiamo lontano perché ci ergiamo sulle spalle dei giganti che ci
+hanno preceduto&quot; [Isaac Newton]
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005676.html">[Generale] shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005678.html">[Generale] cercasi programmatore part-time per collaborazione in progetto europeo (laurea non richiesta)
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5677">[ Data ]</a>
+              <a href="thread.html#5677">[ Thread ]</a>
+              <a href="subject.html#5677">[ Oggetto ]</a>
+              <a href="author.html#5677">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

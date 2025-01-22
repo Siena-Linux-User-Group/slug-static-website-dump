@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Vorrei, ma non posso!
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Vorrei%2C%20ma%20non%20posso%21&In-Reply-To=JBJRND%24E69EE658FBC644642D606ECB71B45BD7%40libero.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000369.html">
+   <LINK REL="Next"  HREF="000371.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Vorrei, ma non posso!</H1>
+    <B>Vincenzo Di Massa</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Vorrei%2C%20ma%20non%20posso%21&In-Reply-To=JBJRND%24E69EE658FBC644642D606ECB71B45BD7%40libero.it"
+       TITLE="[Tecnica] Vorrei, ma non posso!">hawk78 a interfree.it
+       </A><BR>
+    <I>Lun  8 Gen 2007 16:48:56 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000369.html">[Tecnica] Vorrei, ma non posso!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000371.html">[Tecnica] problemi con winmodem
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#370">[ Data ]</a>
+              <a href="thread.html#370">[ Thread ]</a>
+              <a href="subject.html#370">[ Oggetto ]</a>
+	      <a href="author.html#370">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Prova così:
+
+quando la scritta &quot; frequenza fuori dal range&quot; ti appare premi:
+CTRL+ALT+F1
+
+Ti vengono chiesti username e password... 
+
+Ora sei sulla shell...
+digita
+$ sudo dpkg-reconfigure xserver-xorg
+
+Segui la procedura guidata... (quando non sai cosa rispondere premi invio o 
+scegli ok, la selezione si sposta con il tasto tab)
+Alla fine ti chiede i parametri del monitor...
+
+Quando torni alla shell premi 
+CTRL+ALT+F7
+
+poi
+
+CTRL+ALT+BACKSPACE
+
+Se non funziona prova a rifare tutto dall'inizio (non importa riavviare) dando 
+parametri diversi per il monitor.
+
+Se la rete ti funziona e vuoi provare i drivers ati fai (nella shell):
+
+$ sudo apt-get install xorg-driver-fglrx
+
+e poi
+
+$ sudo dpkg-reconfigure xserver-xorg
+
+quando ti chiede il driver da usare scegli fglrx
+
+poi continua come prima da CRTL+ALT+F7
+
+Ciao
+Vincenzo
+
+Alle 12:23, lunedì 8 gennaio 2007, <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sandrob a libero.it</A> ha scritto:
+&gt;<i> Buona idea ma come posso mettere il driver se Kubuntu non parte?
+</I>&gt;<i>
+</I>&gt;<i> Probabile che sia fattibile se me lo suggerisci ma di Linux sono a 0.
+</I>&gt;<i>
+</I>&gt;<i> Grazie e saluti.
+</I>&gt;<i> SB
+</I>&gt;<i>
+</I>&gt;<i> ---------- Initial Header -----------
+</I>&gt;<i>
+</I>&gt;<i> &gt;From      : <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica-bounces a liste.siena.linux.it</A>
+</I>&gt;<i>
+</I>&gt;<i> To          : &quot;Lista Tecnica del Siena Linux User Group&quot;
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">tecnica a liste.siena.linux.it</A> Cc          :
+</I>&gt;<i> Date      : Mon, 08 Jan 2007 11:32:04 +0100
+</I>&gt;<i> Subject : Re: [Tecnica] Vorrei, ma non posso!
+</I>&gt;<i>
+</I>&gt;<i> &gt; Ciao,
+</I>&gt;<i> &gt; l'unico suggerimento che ti posso dare è di istallare i drivers
+</I>&gt;<i> &gt; originali ATI (gratuitamente scaricabili dal sito ATI per i vari OS e le
+</I>&gt;<i> &gt; varie schede).
+</I>&gt;<i> &gt; Facedno così io ho risolto i miei problemi con il monitor esterno (vedi
+</I>&gt;<i> &gt; mail due o tre giorni fa).
+</I>&gt;<i> &gt; Ciao,
+</I>&gt;<i> &gt; Enrico
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; On Mon, 2007-01-08 at 11:17 +0100, <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">sandrob a libero.it</A> wrote:
+</I>&gt;<i> &gt; &gt; Ho un Athalon 64. Ho provato a montare la giusta versione su un HD
+</I>&gt;<i> &gt; &gt; vuoto (ho i cassetti estraibili).
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Tutto bene: mi propone anche la traduzione in Italiano.
+</I>&gt;<i> &gt; &gt; L' installazione termina senza errori apparenti.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Tolto il CD il boot sembra regolare: scritta Kubuntu, lineette di
+</I>&gt;<i> &gt; &gt; caricamento.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Poi, purtroppo, appare un rettangolo con la scritta frequenza fuori dal
+</I>&gt;<i> &gt; &gt; range (o qualcosa di simile).
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Ho rifatto l' installazione settando la scheda a 800x600 32K colori.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Idem. La scheda è una normalissima ATI 8100 credo AGP.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Potete aiutarmi?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Molte grazie e saluti.
+</I>&gt;<i> &gt; &gt; Spero di riuscire a partire per sperimentare, dopo molti
+</I>&gt;<i> &gt; &gt; anni di Windows, Linux.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; ------------------------------------------------------
+</I>&gt;<i> &gt; &gt; Passa a Infostrada. ADSL e Telefono senza limiti e senza canone Telecom
+</I>&gt;<i> &gt; &gt; <A HREF="http://click.libero.it/infostrada08gen07">http://click.libero.it/infostrada08gen07</A>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Tecnica mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> &gt; &gt; <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------
+</I>&gt;<i> Passa a Infostrada. ADSL e Telefono senza limiti e senza canone Telecom
+</I>&gt;<i> <A HREF="http://click.libero.it/infostrada08gen07">http://click.libero.it/infostrada08gen07</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000369.html">[Tecnica] Vorrei, ma non posso!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000371.html">[Tecnica] problemi con winmodem
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#370">[ Data ]</a>
+              <a href="thread.html#370">[ Thread ]</a>
+              <a href="subject.html#370">[ Oggetto ]</a>
+              <a href="author.html#370">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

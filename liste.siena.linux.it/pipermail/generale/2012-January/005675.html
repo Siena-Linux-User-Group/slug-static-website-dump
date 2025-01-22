@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] shell
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2012-January/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAPPgWa8eddD30BaK4zkdop4Qir6KWLhyqxNzGTJn-gdFhyu7JQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="005674.html">
+   <LINK REL="Next"  HREF="005676.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] shell</H1>
+    <B>Alessandro Iurlano</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=Re%3A%20%5BGenerale%5D%20shell&In-Reply-To=%3CCAPPgWa8eddD30BaK4zkdop4Qir6KWLhyqxNzGTJn-gdFhyu7JQ%40mail.gmail.com%3E"
+       TITLE="[Generale] shell">alessandro.iurlano a gmail.com
+       </A><BR>
+    <I>Mer 25 Gen 2012 23:48:04 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="005674.html">[Generale] shell
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="005676.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5675">[ Data ]</a>
+              <a href="thread.html#5675">[ Thread ]</a>
+              <a href="subject.html#5675">[ Oggetto ]</a>
+	      <a href="author.html#5675">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dovresti avere la variabile di ambiente SHELL settata. Prova con:
+
+$ echo $SHELL
+/bin/bash
+
+Ciao!
+
+2012/1/26 Freeze NorthPole &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">freeze a siena.linux.it</A>&gt;:
+&gt;<i> ok allora pongo una nuova domanda.. come faccio a sapere che shell sto usando?
+</I>&gt;<i>
+</I>&gt;<i> a naso credo che sia bash, installando debian 6 credo sia di &quot;Default&quot;
+</I>&gt;<i> ma so che esiste anche korn.. e onestamente non so come distinguere le due shell
+</I>&gt;<i>
+</I>&gt;<i> Grazie a tutti  ancora
+</I>&gt;<i> 2012/1/26 Alessandro Iurlano &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">alessandro.iurlano a gmail.com</A>&gt;:
+</I>&gt;&gt;<i> Se stai usando bash queste impostazioni le trovi solitamente nel file
+</I>&gt;&gt;<i> .bashrc nella home dell'utente.
+</I>&gt;&gt;<i> Nel mio sistema ho il file /etc/skel/.bashrc che ha le impostazioni
+</I>&gt;&gt;<i> sia per il prompt che per i colori di ls.
+</I>&gt;&gt;<i> Prova:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $ cp .bashrc bashrc-backup
+</I>&gt;&gt;<i> $ cp /etc/skel/.bashrc .bashrc
+</I>&gt;&gt;<i> $ bash
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Ciao!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 2012/1/26 Freeze NorthPole &lt;<A HREF="../../../cgi-bin/mailman/listinfo/generale.html">freeze a siena.linux.it</A>&gt;:
+</I>&gt;&gt;&gt;<i> Ciao a tutti,
+</I>&gt;&gt;&gt;<i> una domanda stupida ma che mi sta &quot;spiazzando&quot;
+</I>&gt;&gt;&gt;<i> ho creato sul server la mia utenza personalizzata cosi` da non usare
+</I>&gt;&gt;&gt;<i> quella di root, ma ora che ho creato l'utente mi trovo con una shell
+</I>&gt;&gt;&gt;<i> un po` bruttina ...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> appena loggato mi compare solo $
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> mi piacerebbe che comparisse nel formato: <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">nomeutente a nomeserver</A> ...
+</I>&gt;&gt;&gt;<i> e quando faccio un LS mi piacerebbe vedere il risultato &quot;colorato&quot;...
+</I>&gt;&gt;&gt;<i> so che sono fesserie, ma mi sapete dire dove e come configurare la mia
+</I>&gt;&gt;&gt;<i> debian per ottenere queste migliorie?
+</I>&gt;&gt;&gt;<i> Grazie Mille a tutti e a presto
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ps sto venendo a siena quasi ogni we se siete disponibili una volta di
+</I>&gt;&gt;&gt;<i> queste possiamo prendere un chesscake da qualche parte :)
+</I>&gt;&gt;&gt;<i> ciaoo
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Generale mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Generale mailing list
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Generale mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">Generale a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/generale.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/generale</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="005674.html">[Generale] shell
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="005676.html">[Generale] shell
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#5675">[ Data ]</a>
+              <a href="thread.html#5675">[ Thread ]</a>
+              <a href="subject.html#5675">[ Oggetto ]</a>
+              <a href="author.html#5675">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

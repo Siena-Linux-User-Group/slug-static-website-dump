@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Domanda multi IP su DNS
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-November/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3CCANyuArwVUtY9hxGB6M7oG%3DRLJmV%2B9SCT8CpDGBHY4_Arv8_7%2Bw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001899.html">
+   <LINK REL="Next"  HREF="001901.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Domanda multi IP su DNS</H1>
+    <B>Roberto Giorgi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Domanda%20multi%20IP%20su%20DNS&In-Reply-To=%3CCANyuArwVUtY9hxGB6M7oG%3DRLJmV%2B9SCT8CpDGBHY4_Arv8_7%2Bw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Domanda multi IP su DNS">giorgi a dii.unisi.it
+       </A><BR>
+    <I>Lun 24 Nov 2014 08:31:28 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001899.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001901.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1900">[ Data ]</a>
+              <a href="thread.html#1900">[ Thread ]</a>
+              <a href="subject.html#1900">[ Oggetto ]</a>
+	      <a href="author.html#1900">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>...segnalo UCARP, forse potrebbe essere sufficiente per la ridondanza degli
+IP:
+   <A HREF="http://ucarp.wordpress.com/">http://ucarp.wordpress.com/</A>
+
+La problematica generale ricade sotto &quot;High Availability&quot; (HA)
+Server/Cluster e non e' per niente banale nel suo complesso!
+
+Saluti,
+Roberto.
+
+
+2014-11-24 8:47 GMT+01:00 Roberto Bartali &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A>&gt;:
+
+&gt;<i>  Ciao
+</I>&gt;<i> per quello che ne so io il DNS gestisce SOLO il load balancing, senza
+</I>&gt;<i> curarsi se uno dei nodi cui punta è su o meno.
+</I>&gt;<i> Per avere questo tipo di controllo devi usare sistemi che controllano se
+</I>&gt;<i> il servizio sul nodo risponde, ad esempio ldirectord.
+</I>&gt;<i> Io ne ho implementato uno che sta funzionando alla grande seguendo questa
+</I>&gt;<i> guida:
+</I>&gt;<i> <A HREF="http://www.tuxjournal.net/postfix-in-alta-affidabilita-con-heartbeat-lvs-ed-ldirectord-14/">http://www.tuxjournal.net/postfix-in-alta-affidabilita-con-heartbeat-lvs-ed-ldirectord-14/</A>
+</I>&gt;<i> Ciao
+</I>&gt;<i>
+</I>&gt;<i> *Roberto Bartali*
+</I>&gt;<i> *Università di Siena*
+</I>&gt;<i> Servizio reti, sistemi e sicurezza informatica
+</I>&gt;<i> Via Bandini, 25
+</I>&gt;<i> 53100 - SIENA
+</I>&gt;<i> E-mail: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">bartali a unisi.it</A>
+</I>&gt;<i> Tel. +39 0577 23(2189)
+</I>&gt;<i> Linux User no. #542525
+</I>&gt;<i> Il 31/10/2014 11:33, bartrosso ha scritto:
+</I>&gt;<i>
+</I>&gt;<i> Che voi sappiate, come faccio a impostare due IP (due server fisici
+</I>&gt;<i> differenti, mirror ) che puntano allo stesso record, così da avere una
+</I>&gt;<i> protezione in caso di  server irraggiungibile?
+</I>&gt;<i> il dns server se il primo non lo trova switcha suls econdo? o occorre
+</I>&gt;<i> altro?
+</I>&gt;<i>
+</I>&gt;<i>  Bartrosso
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">listTecnica a liste.siena.linux.ithttp</A>://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+----------------------------------
+Q: Why is this email four sentences or less?
+A: <A HREF="http://four.sentenc.es">http://four.sentenc.es</A>
+----------------------------------
+Roberto Giorgi, PhD --- <A HREF="http://www.dii.unisi.it/~giorgi">http://www.dii.unisi.it/~giorgi</A>
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20141124/d4355fda/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20141124/d4355fda/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001899.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001901.html">[Tecnica] Domanda multi IP su DNS
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1900">[ Data ]</a>
+              <a href="thread.html#1900">[ Thread ]</a>
+              <a href="subject.html#1900">[ Oggetto ]</a>
+              <a href="author.html#1900">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

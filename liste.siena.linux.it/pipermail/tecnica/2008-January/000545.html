@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] TSC
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20TSC&In-Reply-To=200712301408.03625.voland03%40libero.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="000546.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] TSC</H1>
+    <B>Marco Slack</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20TSC&In-Reply-To=200712301408.03625.voland03%40libero.it"
+       TITLE="[Tecnica] TSC">mrkslack a gmail.com
+       </A><BR>
+    <I>Mer  2 Gen 2008 11:30:24 GMT</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="000546.html">[Tecnica] TSC
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#545">[ Data ]</a>
+              <a href="thread.html#545">[ Thread ]</a>
+              <a href="subject.html#545">[ Oggetto ]</a>
+	      <a href="author.html#545">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Il 30/12/07, Andrea V.&lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">voland03 a libero.it</A>&gt; ha scritto:
+&gt;<i> Ciao a tutti !
+</I>&gt;<i>
+</I>&gt;<i> Ho notato sul mio portatile, una strana riga nel comando dmesg:
+</I>&gt;<i>
+</I>&gt;<i> &quot;Clocksource tsc unstable (delta = -163993342 ns)&quot;
+</I>&gt;<i>
+</I>&gt;<i> Ho fatto qualche ricerca su google ma non mi sono chiarito le idee.Ho capito
+</I>&gt;<i> che il TSC e' un timer ad alta risoluzione,che e' possibile disabilitarlo dal
+</I>&gt;<i> kernel, ma non ho capito se questo messaggio del kernel puo' essere un
+</I>&gt;<i> problema e quindi devo rimettere mano al kernel?
+</I>
+provo a darti una risposta:
+
+il tsc o time stamp counter e' un registro interno ai processori
+intel-compatibili che viene incrementato ad ogni ciclo di clock.
+in passato era utilizzato come timer per la sua semplicita' di
+utilizzo, ma nei moderni processori e' relegato ad altri usi (misure
+prestazionali) a causa delle frequenze di clock variabili ed i vari
+core (ognuno con un proprio tsc) che creano complesse problematiche al
+suo utilizzo.
+Al boot il kernel verifica la sua stabilita' e nel caso lo esclude.
+se controlli con:
+
+$ cat /proc/timer_list
+
+il device tsc non dovrebbe essere presente.
+
+quindi direi che non e' assolutamente un problema.
+
+-- 
+Marco Dei
+GNU/Linux Registered User #407088 counter.li.org
+
+Elsaglug www.elsaglug.org
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="000546.html">[Tecnica] TSC
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#545">[ Data ]</a>
+              <a href="thread.html#545">[ Thread ]</a>
+              <a href="subject.html#545">[ Oggetto ]</a>
+              <a href="author.html#545">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

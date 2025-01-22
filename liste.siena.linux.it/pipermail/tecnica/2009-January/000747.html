@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] compilare i sorgenti
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20compilare%20i%20sorgenti&In-Reply-To=200901201908.24051.xdatap1%40siena.linux.it">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000744.html">
+   <LINK REL="Next"  HREF="000748.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] compilare i sorgenti</H1>
+    <B>lucio</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20compilare%20i%20sorgenti&In-Reply-To=200901201908.24051.xdatap1%40siena.linux.it"
+       TITLE="[Tecnica] compilare i sorgenti">luciobarabesi a gmail.com
+       </A><BR>
+    <I>Mer 21 Gen 2009 09:23:27 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000744.html">[Tecnica] compilare i sorgenti
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000748.html">[Tecnica] compilare i sorgenti
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#747">[ Data ]</a>
+              <a href="thread.html#747">[ Thread ]</a>
+              <a href="subject.html#747">[ Oggetto ]</a>
+	      <a href="author.html#747">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Paolo Sammicheli ha scritto:
+&gt;<i> Alle 09:33 del 20/1/2009, lucio barabesi ha scritto:
+</I>&gt;<i>   
+</I>&gt;&gt;<i>   Buon giorno
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> dopo essermi lanciato nella sc operta di ubuntu  ed aver approfondito un 
+</I>&gt;&gt;<i> pò la conoscenza di Linux in generale sono giunto al puntodi dover 
+</I>&gt;&gt;<i> apprendere la compilazione dei sorgenti da shell. Poichè ho scoperto un 
+</I>&gt;&gt;<i> sito 
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> <A HREF="http://linux.softpedia.com/progDownload/Flock-Download-6491.html">http://linux.softpedia.com/progDownload/Flock-Download-6491.html</A>
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;<i>
+</I>&gt;<i> Scusa un attimo, ma in questo link ci sono i sorgenti ma anche i pacchetti Deb 
+</I>&gt;<i> per Ubuntu, perché non usi quelli?
+</I>&gt;<i>
+</I>&gt;<i> Comunque, per compilare un programma da sorgenti non c'è una regola precisa. O 
+</I>&gt;<i> meglio si: apri il pacchetto e dentro trovi sempre un file che spiega cosa si 
+</I>&gt;<i> deve fare chiamato o README o INSTALL o a volte  entrambi, lo apri e lo leggi 
+</I>&gt;<i> :)
+</I>&gt;<i>
+</I>&gt;<i> Se poi c'è da compilare con i tools autoconf del progetto GNU la sequenza è
+</I>&gt;<i>
+</I>&gt;<i> $ ./configure
+</I>&gt;<i>
+</I>&gt;<i> elabora un pò dopodiché
+</I>&gt;<i>
+</I>&gt;<i> $ make
+</I>&gt;<i>
+</I>&gt;<i> e alla fine, per installare nel sistema
+</I>&gt;<i>
+</I>&gt;<i> $ sudo make install
+</I>&gt;<i>
+</I>&gt;<i> ma per compilare i programmi la prima cosa è leggere la documentazione 
+</I>&gt;<i> allegata.
+</I>&gt;<i>
+</I>&gt;<i> Facci sapere se incontri problemi,
+</I>&gt;<i>
+</I>&gt;<i> Ciao
+</I>&gt;<i>   
+</I>Carissimi vi ringrazio per l'aiuto eper la pazienza allora mi sono 
+scaricato il programmaFCKeditor_2.6.3.tar.gz con  il tool di 
+compressione di ubuntu 8.4 (uso questa distro) l'ho scompattato nell 
+cartella /home/mionome/Pubblici poi dalla schell (basch) mi sono portato 
+nella cartella con il comando cd ed ho scritto ./configure
+e la cosa a funzionato  le ultime tre righe ve le allego perchè ho il 
+sospetto che nella mia configurazione manchi il preprocessore c++
+
+vi allego le righe:
+checking how to run the C++ preprocessor... /lib/cpp
+configure: error: C++ preprocessor &quot;/lib/cpp&quot; fails sanity check
+See `config.log' for more details.
+
+se mi potete dare dei chiarimenti vi ringrazio
+
+lucio
+
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20090121/4a4709d1/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20090121/4a4709d1/attachment.htm</A> 
+</PRE>
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000744.html">[Tecnica] compilare i sorgenti
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000748.html">[Tecnica] compilare i sorgenti
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#747">[ Data ]</a>
+              <a href="thread.html#747">[ Thread ]</a>
+              <a href="subject.html#747">[ Oggetto ]</a>
+              <a href="author.html#747">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

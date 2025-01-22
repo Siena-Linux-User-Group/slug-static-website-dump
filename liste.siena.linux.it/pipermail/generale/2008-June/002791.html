@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Generale] scheda wireless
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/generale/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20scheda%20wireless&In-Reply-To=aaab9ad90805300826n53b339efxaec754c12e34f692%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="002796.html">
+   <LINK REL="Next"  HREF="002792.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Generale] scheda wireless</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:generale%40liste.siena.linux.it?Subject=%5BGenerale%5D%20scheda%20wireless&In-Reply-To=aaab9ad90805300826n53b339efxaec754c12e34f692%40mail.gmail.com"
+       TITLE="[Generale] scheda wireless">freeze a siena.linux.it
+       </A><BR>
+    <I>Mer  4 Giu 2008 22:03:28 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="002796.html">[Generale] Traduzione inglese sito Linux Day
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="002792.html">[Generale] tom tom su linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2791">[ Data ]</a>
+              <a href="thread.html#2791">[ Thread ]</a>
+              <a href="subject.html#2791">[ Oggetto ]</a>
+	      <a href="author.html#2791">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ciao a tutti
+in basso il risultato del comando lsmod.
+
+----inizio log----
+Module                  Size  Used by
+snd_seq_dummy           6660  0
+snd_seq_oss            32896  0
+snd_seq_midi_event     10112  1 snd_seq_oss
+snd_seq                50256  5 snd_seq_dummy,snd_seq_oss,snd_seq_midi_event
+snd_seq_device         10380  3 snd_seq_dummy,snd_seq_oss,snd_seq
+snd_pcm_oss            40352  0
+snd_mixer_oss          17920  1 snd_pcm_oss
+ipv6                  234724  12
+pcmcia                 35884  0
+pcmcia_core            35988  1 pcmcia
+lp                     13348  0
+parport_pc             27556  0
+parport                34632  2 lp,parport_pc
+fuse                   45588  3
+snd_hda_intel         289052  2
+snd_pcm                72068  2 snd_pcm_oss,snd_hda_intel
+iwl4965               104680  0
+snd_timer              22532  2 snd_seq,snd_pcm
+snd_page_alloc         11528  2 snd_hda_intel,snd_pcm
+mac80211              122124  1 iwl4965
+thermal                16540  0
+sdhci                  18692  0
+video                  19472  0
+snd_hwdep              10756  1 snd_hda_intel
+mmc_core               47236  1 sdhci
+snd                    47716  13
+snd_seq_oss,snd_seq,snd_seq_device,snd_pcm_oss,snd_mixer_oss,snd_hda_intel,snd_pcm,snd_timer,snd_hwdep
+cfg80211               14600  1 mac80211
+serio_raw               9092  0
+output                  6656  1 video
+ricoh_mmc               6912  0
+i2c_i801               11792  0
+battery                14340  0
+ac                      8068  0
+iTCO_wdt               13988  0
+intel_agp              25236  0
+processor              32680  1 thermal
+rtc_cmos               11040  0
+button                 10000  0
+tg3                   113028  0
+psmouse                40336  0
+evdev                  12672  6
+rtc_core               18696  1 rtc_cmos
+agpgart                30664  1 intel_agp
+soundcore               9824  1 snd
+iTCO_vendor_support     7044  1 iTCO_wdt
+rtc_lib                 6528  1 rtc_core
+sg                     30224  0
+-----fine log-----
+</PRE>
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="002796.html">[Generale] Traduzione inglese sito Linux Day
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="002792.html">[Generale] tom tom su linux
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#2791">[ Data ]</a>
+              <a href="thread.html#2791">[ Thread ]</a>
+              <a href="subject.html#2791">[ Oggetto ]</a>
+              <a href="author.html#2791">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/generale.html">Maggiori informazioni sulla lista 
+	       Generale</a><br>
+</body></html>

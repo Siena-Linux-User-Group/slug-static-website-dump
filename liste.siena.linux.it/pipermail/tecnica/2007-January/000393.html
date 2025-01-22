@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Frequenza
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Frequenza&In-Reply-To=339d31640701160432u5f463bf5ha551689a4e95a017%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000392.html">
+   <LINK REL="Next"  HREF="000394.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Frequenza</H1>
+    <B>Szymon Stefanek</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Frequenza&In-Reply-To=339d31640701160432u5f463bf5ha551689a4e95a017%40mail.gmail.com"
+       TITLE="[Tecnica] Frequenza">pragma a siena.linux.it
+       </A><BR>
+    <I>Mar 16 Gen 2007 13:40:02 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000392.html">[Tecnica] Frequenza
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000394.html">[Tecnica] Frequenza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#393">[ Data ]</a>
+              <a href="thread.html#393">[ Thread ]</a>
+              <a href="subject.html#393">[ Oggetto ]</a>
+	      <a href="author.html#393">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tuesday 16 January 2007 13:32, Giulio Saletti wrote:
+
+&gt;<i> La risoluzione del timer di sistema è troppo bassa
+</I>&gt;<i> Rosegarden non ha trovato una sorgente del timer ad alta risoluzione per la
+</I>&gt;<i> riproduzione MIDI.
+</I>
+Mi pare di aver visto qualcosa tipo &quot;High Resolution Timer Support&quot;
+dentro il config del kernel. Cerca &quot;HPET&quot;.
+
+&gt;<i> Razzolando in rete la soluzione proposta è il ricompilare il kernel
+</I>&gt;<i> settando la frequenza a 1000 Hz
+</I>&gt;<i>
+</I>&gt;<i> Domande:
+</I>&gt;<i> 1 - E' possibile modificare la frequenza senza ricompilare?
+</I>
+No, HZ è una costante fissata nei sorgenti e sostituita con il relativo
+numero a tempo di compilazione.
+
+&gt;<i> 2 - Se non fosse possibile... come si fa a cambiare la frequenza e
+</I>&gt;<i> ricompilare? :p
+</I>
+Mi pare che nei kernel recenti ci sia l'opzione grafica da selezionare 
+(CONFIG_HZ) in &quot;Processor Type and Features&quot;. Altrimenti 
+editi /usr/src/linux/include/asm-i386/param.h e forzi il valore della 
+costante HZ cambiando:
+
+#ifndef HZ
+#define HZ 100
+#endif
+
+in 
+
+#undef HZ
+#define HZ tuovalore
+
+-- 
+
+Szymon Stefanek
+
+------------------------------------------------------------------------------
+-
+- RSA-155 Tip of the day:
+- 10941738641570527421809707322040357612003732945449205990
+- 91384213147634998428893478471799725789126733249762575289
+- 9781833797076537244027146743531593354333897 equals
+- 10263959282974110577205419657399167590071656780803806680
+- 3341933521790711307779 * 1066034883801684548209272203600
+- 12878679207958575989291522270608237193062808643
+-
+------------------------------------------------------------------------------
+-------------- parte successiva --------------
+Un allegato non testuale è stato rimosso....
+Nome:        non disponibile
+Tipo:        application/pgp-signature
+Dimensione:  189 bytes
+Descrizione: non disponibile
+Url:         <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20070116/5e54f07e/attachment.pgp">http://liste.siena.linux.it/pipermail/tecnica/attachments/20070116/5e54f07e/attachment.pgp</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000392.html">[Tecnica] Frequenza
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000394.html">[Tecnica] Frequenza
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#393">[ Data ]</a>
+              <a href="thread.html#393">[ Thread ]</a>
+              <a href="subject.html#393">[ Oggetto ]</a>
+              <a href="author.html#393">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema Virtual Host Apache2
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20Virtual%20Host%20Apache2&In-Reply-To=667a6627fd42365f5247299de3c3e704%40localhost">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000634.html">
+   <LINK REL="Next"  HREF="000639.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema Virtual Host Apache2</H1>
+    <B>Andrea Ciani</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20Virtual%20Host%20Apache2&In-Reply-To=667a6627fd42365f5247299de3c3e704%40localhost"
+       TITLE="[Tecnica] Problema Virtual Host Apache2">cianiandrea10 a gmail.com
+       </A><BR>
+    <I>Mar 17 Giu 2008 08:08:32 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000634.html">[Tecnica] Problema Virtual Host Apache2
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000639.html">[Tecnica] Problema Virtual Host Apache2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#635">[ Data ]</a>
+              <a href="thread.html#635">[ Thread ]</a>
+              <a href="subject.html#635">[ Oggetto ]</a>
+	      <a href="author.html#635">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Esatto! Io ho un link di questo genere che (ovviamente) funziona solo con la
+rete interna... L'idea del proxy sembra ottima (rimane il problema che devo
+capire come si imposta!!). Però non ho capito... Devo seguire entrambi i
+punti da te descritti (1e2)oppure mi &quot;basta&quot; riuscire nel punto 1?
+
+2008/6/17 Yusef Maali &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">contact a yusefmaali.net</A>&gt;:
+
+&gt;<i> On Tue, 17 Jun 2008 00:55:23 +0200, &quot;Andrea Ciani&quot;
+</I>&gt;<i> &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">cianiandrea10 a gmail.com</A>&gt; wrote:
+</I>&gt;<i> &gt; In particolare *il mio pc con apache ha l'inirizzo di rete 192.168.0.2 e
+</I>&gt;<i> &gt; devo far puntare il link presente nella pagina web a questo indirizzo:
+</I>&gt;<i> &gt; 192.168.0.4:4748*
+</I>&gt;<i>
+</I>&gt;<i> Scusa forse non ho capito bene io, ma te hai una pagina web sul .0.2 che
+</I>&gt;<i> all'interno ha un link tipo questo:
+</I>&gt;<i> <A HREF="http://192.168.0.4:4748">http://192.168.0.4:4748</A>
+</I>&gt;<i> giusto?
+</I>&gt;<i>
+</I>&gt;<i> Questo funziona se ci arrivi da dentro la tua rete interna.
+</I>&gt;<i> Se ci vuoi arrivare da internet le cose sono due:
+</I>&gt;<i>
+</I>&gt;<i> 1) usi le funzionalità di proxy di apache sul pc .0.2, dicendogli
+</I>&gt;<i> praticamente per tutte le connessioni che arrivano su .0.2:40000 di
+</I>&gt;<i> rimandarle su .0.4:4748
+</I>&gt;<i> Metodo pratico e veloce. Se cerchi nella documentazione trovi scritto come
+</I>&gt;<i> funziona mod_proxy.
+</I>&gt;<i>
+</I>&gt;<i> 2) devi rendere pubblico il pc2, il che implica creare un server DNS per
+</I>&gt;<i> gestire un dominio di quarto livello che punti al pc2. Creare tutte le
+</I>&gt;<i> regole di routing del caso e/o impostare il pc1 per fare port-forward verso
+</I>&gt;<i> il pc2.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> So di non essere stato chiaro, ma so anche di sapere di non aver capito
+</I>&gt;<i> bene la domanda :)
+</I>&gt;<i> Ciao!
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> ~Yusef
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Tecnica mailing list
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">Tecnica a liste.siena.linux.it</A>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">http://liste.siena.linux.it/cgi-bin/mailman/listinfo/tecnica</A>
+</I>&gt;<i>
+</I>-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: <A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20080617/15ece6a6/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20080617/15ece6a6/attachment.htm</A> 
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000634.html">[Tecnica] Problema Virtual Host Apache2
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000639.html">[Tecnica] Problema Virtual Host Apache2
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#635">[ Data ]</a>
+              <a href="thread.html#635">[ Thread ]</a>
+              <a href="subject.html#635">[ Oggetto ]</a>
+              <a href="author.html#635">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

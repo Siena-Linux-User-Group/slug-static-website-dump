@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Mysqldump da host remoto
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2014-July/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3CCAONfR_Dh8XBeuNJC3-RnvkQVZiN1RUND7MYViudgx80Rh1HMuw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001820.html">
+   <LINK REL="Next"  HREF="001826.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Mysqldump da host remoto</H1>
+    <B>Freeze NorthPole</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Mysqldump%20da%20host%20remoto&In-Reply-To=%3CCAONfR_Dh8XBeuNJC3-RnvkQVZiN1RUND7MYViudgx80Rh1HMuw%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Mysqldump da host remoto">freeze782 a gmail.com
+       </A><BR>
+    <I>Mer 30 Lug 2014 12:51:10 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001820.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001826.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1824">[ Data ]</a>
+              <a href="thread.html#1824">[ Thread ]</a>
+              <a href="subject.html#1824">[ Oggetto ]</a>
+	      <a href="author.html#1824">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>*precondizione:*
+l'ip del server  B e` stato autorizzato ad accedere al DB del server A
+*come ci sto lavorando:*
+dal server B mi loggo come root e lancio il comando
+/usr/bin/mysqldump &#8211;opt &#8211;user=miousername &#8211;password=miapassword
+
+--host=localhost nome_del_db &gt; /home/backup/database.sql
+
+
+&gt;<i> Attento: invochi mysqldump con --host=localhost.
+</I>&gt;<i> lo dovresti invocare con --host=serverA
+</I>&gt;<i>
+</I>&gt;<i> ammetto di aver scritto male  come host ho messo SERVER A
+</I>
+Se hai creato correttamente l'utente <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">root a serverA</A> e il firewall non ti
+&gt;<i> blocca la connessione, dovrebbe funzionarti tutto.
+</I>&gt;<i>
+</I>
+beh  sul db del serverA c'è l'utente  &quot;miousername&quot; e non il root
+
+Usare un utente dedicato, abilitando solo i permessi necessari per il dump,
+&gt;<i> è la soluzione più sicura.
+</I>&gt;<i>
+</I>&gt;<i> cioè quella che mi sembrava una scelta &quot;becera&quot;
+</I>quindi creare  utenza <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">miouserame a severB</A>
+
+è la soluzione ideale?
+che intendi con i &quot;permessi necessari&quot; ?
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20140730/921593a7/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20140730/921593a7/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001820.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001826.html">[Tecnica] Mysqldump da host remoto
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1824">[ Data ]</a>
+              <a href="thread.html#1824">[ Thread ]</a>
+              <a href="subject.html#1824">[ Oggetto ]</a>
+              <a href="author.html#1824">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema con httpd (forse) - Fedora core 5
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2006-October/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20con%20httpd%20%28forse%29%20-%20Fedora%20core%205&In-Reply-To=ff6b9ba30610181807o4d3254caj9350529a7bd5c5bf%40mail.gmail.com">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000236.html">
+   <LINK REL="Next"  HREF="000247.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema con httpd (forse) - Fedora core 5</H1>
+    <B>Yusef Maali</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Problema%20con%20httpd%20%28forse%29%20-%20Fedora%20core%205&In-Reply-To=ff6b9ba30610181807o4d3254caj9350529a7bd5c5bf%40mail.gmail.com"
+       TITLE="[Tecnica] Problema con httpd (forse) - Fedora core 5">maali.yusef a gmail.com
+       </A><BR>
+    <I>Ven 20 Ott 2006 08:39:41 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000236.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000247.html">R: [Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#245">[ Data ]</a>
+              <a href="thread.html#245">[ Thread ]</a>
+              <a href="subject.html#245">[ Oggetto ]</a>
+	      <a href="author.html#245">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> On 10/19/06, cristiano &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">crisk a tiscalinet.it</A>&gt; wrote:
+</I>&gt;<i> &gt; Vi scrivo perche' non saprei veramente come formulare una query su google
+</I>&gt;<i> &gt; con il problema che mi ritrovo a dover risolvere...
+</I>
+Avevo anche io lo stesso problema e ti dico come l'ho risolto. Ametto
+però che il mio problema era dovuto ad una stupidaggine intrinseca del
+sottoscritto.
+
+Nel file /etc/hosts è contenuta la lista degli Ip conosciuti e,
+separati da uno spazio, la lista degli alias relativi a
+quell'indirizzo Ip. Se apri il file che la struttura è molto semplice
+da capire.
+
+Detto questo, il mio problema dipendeva dall'aver assegnato lo stesso
+alias a indirizzi Ip diversi (nello specifico al 127.0.0.1 e
+all'indirizzo che uso abitualmente nella mia rete).
+
+Ogni tanto (ma NON sempre!!) tutti i servizi di rete (apache, tomcat,
+ecc...) si piantavano in attesa di capire quale Ip usare.
+
+Sicuramente non è il tuo problema, ma dare un occhio all'/etc/hosts è
+cmq una cosa veloce :)
+Ciao!
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000236.html">[Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000247.html">R: [Tecnica] Problema con httpd (forse) - Fedora core 5
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#245">[ Data ]</a>
+              <a href="thread.html#245">[ Thread ]</a>
+              <a href="subject.html#245">[ Oggetto ]</a>
+              <a href="author.html#245">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

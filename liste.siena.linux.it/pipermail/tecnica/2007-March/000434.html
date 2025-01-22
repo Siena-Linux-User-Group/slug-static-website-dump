@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Ssh e configurazione multi-utente
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703041303.24578.contact%40yusefmaali.net">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000433.html">
+   <LINK REL="Next"  HREF="000435.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Ssh e configurazione multi-utente</H1>
+    <B>Vincenzo Di Massa</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Ssh%20e%20configurazione%20multi-utente&In-Reply-To=200703041303.24578.contact%40yusefmaali.net"
+       TITLE="[Tecnica] Ssh e configurazione multi-utente">hawk78 a interfree.it
+       </A><BR>
+    <I>Lun  5 Mar 2007 10:16:55 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000433.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000435.html">[Tecnica] primi danni....PC nuovo.. lungo
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#434">[ Data ]</a>
+              <a href="thread.html#434">[ Thread ]</a>
+              <a href="subject.html#434">[ Oggetto ]</a>
+	      <a href="author.html#434">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alle domenica 4 marzo 2007, Yusef Maali ha scritto:
+&gt;<i> Alle 12:49, domenica 04 marzo 2007, Vincenzo Di Massa ha scritto:
+</I>&gt;<i> &gt; Vediamo se ho capito la domanda...
+</I>&gt;<i>
+</I>&gt;<i> a fiducia direi di no :P
+</I>&gt;<i>
+</I>&gt;<i> &gt; Alle giovedì 1 marzo 2007, Yusef Maali ha scritto:
+</I>&gt;<i> &gt; &gt; poter dare l'accesso shell ad alcuni utenti e ad altri no,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Questo è facile AllowUsers e DenyUsers (da manuale ;-) ) fanno proprio
+</I>&gt;<i> &gt; questo.
+</I>&gt;<i>
+</I>&gt;<i> Qui forse mi sono spiegato male.
+</I>&gt;<i> Se tu usi programmi che fanno tunnelling attraverso ssh, ad esempio git+ssh
+</I>&gt;<i> oppure svn+ssh, il client ssh non crea una vera sessione shell, ma si
+</I>&gt;<i> autentica, fa partire i programmi che sono richiesti e chiude tutto.
+</I>&gt;<i> Facendo un &quot;ps aux&quot; si vede che ssh apre una sessione <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">user a notty.</A>
+</I>&gt;<i>
+</I>&gt;<i> In sostanza a me interessa permettere questo tipo di utilizzo, ma non
+</I>&gt;<i> l'utilizzo della shell (bash) con tutte le sue funzionalità, che è un
+</I>&gt;<i> problema diverso dal permettere/non permettere l'autenticazione.
+</I>
+
+Leggendo il man di sshd
+&quot;&quot;&quot;
+LOGIN PROCESS
+     When a user successfully logs in, sshd does the following:
+
+           1.   If the login is on a tty, and no command has been specified, 
+prints last login time and /etc/motd (unless prevented in the configuration 
+file or by ~/.hushlogin; see the FILES
+                section).
+
+           2.   If the login is on a tty, records login time.
+
+           3.   Checks /etc/nologin; if it exists, prints contents and quits 
+(unless root).
+
+           4.   Changes to run with normal user privileges.
+
+           5.   Sets up basic environment.
+
+           6.   Reads the file ~/.ssh/environment, if it exists, and users are 
+allowed to change their environment.  See the PermitUserEnvironment option in 
+sshd_config(5).
+
+           7.   Changes to user&#8217;s home directory.
+
+           8.   If ~/.ssh/rc exists, runs it; else if /etc/ssh/sshrc exists, 
+runs it; otherwise runs xauth.  The &#8220;rc&#8221; files are given the X11 
+authentication protocol and cookie in standard input.
+
+           9.   Runs user&#8217;s shell or command.
+&quot;&quot;&quot;
+deduco che basti disabilitare il login per l'utente togliendo /bin/bash 
+da /etc/passwd e mettendoci /bin/false... Facile!
+Oppure gli utenti devono poter usare la shell da locale ma non da remoto?
+
+Inventiamo un altro nuovo acronimo CRAFTED! ( Carefully Read Again, Fu*k, The  
+Exaustive Documentation!) :-P 
+Questo è anche più bellino!
+
+Ciao
+Vincenzo
+
+&gt;<i> &gt; &gt; permettere il
+</I>&gt;<i> &gt; &gt; forwarding ad alcuni e ad altri no, ecc...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ma a cosa serve???? Gli utenti che possono accedere seza forwarding
+</I>&gt;<i> &gt; possono fare lo stesso il forwarding &quot;a manina&quot;!
+</I>&gt;<i> &gt; [SNIP]
+</I>&gt;<i> &gt; Si capisce che il server non corre più rischi a disabilitare il
+</I>&gt;<i> &gt; forwarding... e anche se lo fa è (ovviamente) possibile fare forwarding
+</I>&gt;<i> &gt; in 1000000 di altri modi.
+</I>&gt;<i>
+</I>&gt;<i> Vero, ma alla fine è una conseguenza del punto precedente. Se ci fosse il
+</I>&gt;<i> modo di non darti l'accesso a bash, ma di farti fare tunnelling, non hai
+</I>&gt;<i> neanche modo di fare fowarding a meno che tu non sia estremamente sveglio!
+</I>&gt;<i> Ma in tal caso l'unico modo per salvarsi è non dare proprio accesso.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Bhe inventiamo un nuovo acronimo CRTFM,Y! ( Carefully Read The Fu**ing
+</I>&gt;<i> &gt; Manual, Yusef!) ;-)
+</I>&gt;<i>
+</I>&gt;<i> RIMMTFQ (Read In My Mind The Fu**ing Question!) :P :P :P
+</I>&gt;<i> Ciao!!!!!
+</I>
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000433.html">[Tecnica] Ssh e configurazione multi-utente
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000435.html">[Tecnica] primi danni....PC nuovo.. lungo
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#434">[ Data ]</a>
+              <a href="thread.html#434">[ Thread ]</a>
+              <a href="subject.html#434">[ Oggetto ]</a>
+              <a href="author.html#434">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

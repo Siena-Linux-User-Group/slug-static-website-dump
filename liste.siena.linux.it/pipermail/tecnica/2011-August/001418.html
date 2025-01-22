@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Problema WakeOnRTC
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20WakeOnRTC&In-Reply-To=%3CCA%2Bn2inBAuN4E1%2BL%2BdQj%2B5e8aY2%3DNfspM%3Dfs8p3-ggwsiD7LfNQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   
+   <LINK REL="Next"  HREF="001419.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Problema WakeOnRTC</H1>
+    <B>Angelo Polvanesi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20Problema%20WakeOnRTC&In-Reply-To=%3CCA%2Bn2inBAuN4E1%2BL%2BdQj%2B5e8aY2%3DNfspM%3Dfs8p3-ggwsiD7LfNQ%40mail.gmail.com%3E"
+       TITLE="[Tecnica] Problema WakeOnRTC">polva86 a gmail.com
+       </A><BR>
+    <I>Ven  5 Ago 2011 14:38:13 BST</I>
+    <P><UL>
+        
+        <LI>Prossimo messaggio: <A HREF="001419.html">[Tecnica] Pacchetti
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1418">[ Data ]</a>
+              <a href="thread.html#1418">[ Thread ]</a>
+              <a href="subject.html#1418">[ Oggetto ]</a>
+	      <a href="author.html#1418">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Salve Lista.
+Volevo sapere la vostra su una cosa strana che mi sta succedendo.
+Tempo fa cercai e trovai il modo di far avviare il PC a un ora determinata.
+Siccome per qualche ragione il mio RTC WakeUp da bios non funziona (ho
+sentito dire di un bug nel bios della mia mobo), ho provato a seguire questa
+guida &lt;<A HREF="http://www.mythtv.org/wiki/ACPI_Wakeup#Disable_HWclock_updates">http://www.mythtv.org/wiki/ACPI_Wakeup#Disable_HWclock_updates</A>&gt;.
+Ho effettuato per primo il test nella sezione &quot;manually test wakealarm&quot; e
+tutto funziona alla grande: quando faccio
+
+
+SECS=`date -u --date &quot;2011-08-05 15:00:00&quot; +%s`
+
+echo 0 &gt; /sys/class/rtc/rtc0/wakealarm
+
+echo $SECS &gt; /sys/class/rtc/rtc0/wakealarm
+
+scrivo un ora, lui la converte in epochtime e la scrive nel file in
+questione. Verificando con cat /proc/driver/rtc mi restituisce il timestamp,
+significa che lo ha scritto bene.
+Infatti, spegnendolo, si riaccende quando deve.
+Mi sono messo alla ricerca di uno script che automatizzi questa operazione
+tutti i giorni, da inserire nel cron.
+Sempre da quella guida, ho testato questo
+
+
+sudo sh -c &quot;echo 0 &gt; /sys/class/rtc/rtc0/wakealarm&quot;
+
+sudo sh -c &quot;echo `date '+%s' -d '+ 5 minutes'` &gt;
+/sys/class/rtc/rtc0/wakealarm&quot;
+
+cat /sys/class/rtc/rtc0/wakealarm
+
+ma non funziona. Ho notato che facendo cat /proc/driver/rtc restituisce un
+file vuoto. E' come se non scrivesse il timestamp. Ho provato anche ad usare
+la variabile $SECS, in modo analogo a sopra. Niente. Ho controllato la
+sintassi del comando, lanciandolo senza echo &gt; restituisce correttamente il
+timestamp. Ho provato a inserire anche intervalli maggiori o minori.
+L'unico modo in cui scrive nel file wakealarm è quando si determina il
+timestamp con la scrivendo la data a mano &quot;tra virgolette&quot;; sembra non
+accettarla se invece la determiniamo estrapolando quella di questo momento e
+sommandoci n minuti. Ho controllato, traducendo con date -d @$SECS +%F&quot; &quot;%T che
+effettivamente il timestamp corrispondesse al momento giusto, ed è così.
+Ultima annotazione: ho disabilitato la scrittura della data che Ubuntu
+effettua sul BIOS alla chiusura, come consigliato dalla guida, per
+far funzionare il tutto.
+
+Devo trovare un modo di rendere questa operazione rinnovabile di
+giorno in giorno.
+Avete nessuna idea?
+Grazie,
+Il Polva.
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20110805/1b9e4e8d/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20110805/1b9e4e8d/attachment.htm</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Prossimo messaggio: <A HREF="001419.html">[Tecnica] Pacchetti
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1418">[ Data ]</a>
+              <a href="thread.html#1418">[ Thread ]</a>
+              <a href="subject.html#1418">[ Oggetto ]</a>
+              <a href="author.html#1418">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

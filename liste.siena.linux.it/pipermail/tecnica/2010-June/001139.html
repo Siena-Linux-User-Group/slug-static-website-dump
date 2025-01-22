@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] controllo server vnc
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20controllo%20server%20vnc&In-Reply-To=%3CAANLkTikQ4-P1EO7lKAspZVU4IVDkdJne6neNs0f3zA6u%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="001137.html">
+   <LINK REL="Next"  HREF="001118.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] controllo server vnc</H1>
+    <B>Michele Mondelli</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=Re%3A%20%5BTecnica%5D%20controllo%20server%20vnc&In-Reply-To=%3CAANLkTikQ4-P1EO7lKAspZVU4IVDkdJne6neNs0f3zA6u%40mail.gmail.com%3E"
+       TITLE="[Tecnica] controllo server vnc">mithenks.ml a gmail.com
+       </A><BR>
+    <I>Lun  7 Giu 2010 19:43:45 BST</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="001137.html">[Tecnica] controllo server vnc
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="001118.html">[Tecnica] gparted
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1139">[ Data ]</a>
+              <a href="thread.html#1139">[ Thread ]</a>
+              <a href="subject.html#1139">[ Oggetto ]</a>
+	      <a href="author.html#1139">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Beh intanto il comando è vncviewer, quindi per quello non lo trova :D
+
+Comunque il suggerimento di Simone era si usare l'ssh forwarding al posto di
+vnc.
+Ovvero, se vuoi eseguire, per dire, firefox sull'host remoto, usi
+
+  ssh -X <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">utente a ip</A> firefox
+
+Per vnc, quando lanci il server che output ti da?
+Ti ripeto, prova a controllare che la porta sia aperta tramite nmap o
+netstat.
+
+
+ciao
+
+
+Il giorno 07 giugno 2010 18.37, robi &lt;<A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">roberto.volpini a valdelsa.net</A>&gt; ha
+scritto:
+
+&gt;<i> grazie per la risposta......purtroppo temo che mi manchi qualcosa....mi
+</I>&gt;<i> spego:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a robi-laptop</A>:~$ ssh -X <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a server</A> vcnviewer
+</I>&gt;<i> <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">robi a server</A>'s password:
+</I>&gt;<i> bash: vcnviewer: comando non trovato
+</I>&gt;<i>
+</I>&gt;<i> questo è l'output del comando....nel server sono installati i paccheti
+</I>&gt;<i> vnc....(xtightvncviewer e tightvncviewer).....deve essere installato anche
+</I>&gt;<i> tsclient per funzionare?......perchè questo dipende da 126 pacchetti il che
+</I>&gt;<i> singnifica installare i 2/3 di tutta l'interfaccia grafica.....oppure ci
+</I>&gt;<i> manca qualche altro pacchetto.....
+</I>&gt;<i>
+</I>&gt;<i> davvero grazie....visto che mi aiutate a capirci un pò di più tutte le
+</I>&gt;<i> volte che qualcuno mi da una mano... :-)))))))))))
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+-- 
+Michele &quot;Mithenks&quot; Mondelli
+Personal Web Page: www.mithenks.com
+Personal E-mail: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">mithenks a gmail.com</A>
+Slackware GNU/Linux User since 2003
+Registered Linux User #383379
+Registered Linux Machine #391361
+
+LiberiBIT, Engineering Students' Society of Siena
+Web Page: www.liberibit.it
+E-mail: <A HREF="../../../cgi-bin/mailman/listinfo/tecnica.html">info a liberibit.it</A>
+Tel: 0577 234850 (interno 1053)
+-------------- parte successiva --------------
+Un allegato HTML è stato rimosso...
+URL: &lt;<A HREF="http://liste.siena.linux.it/pipermail/tecnica/attachments/20100607/b081fcfe/attachment.htm">http://liste.siena.linux.it/pipermail/tecnica/attachments/20100607/b081fcfe/attachment.htm</A>&gt;
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="001137.html">[Tecnica] controllo server vnc
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="001118.html">[Tecnica] gparted
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#1139">[ Data ]</a>
+              <a href="thread.html#1139">[ Thread ]</a>
+              <a href="subject.html#1139">[ Oggetto ]</a>
+              <a href="author.html#1139">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>

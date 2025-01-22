@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Tecnica] Odiare HotPlug
+   </TITLE>
+   <LINK REL="Index" HREF="http://liste.siena.linux.it/pipermail/tecnica/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Odiare%20HotPlug&In-Reply-To=">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000383.html">
+   <LINK REL="Next"  HREF="000385.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Tecnica] Odiare HotPlug</H1>
+    <B>Michele &quot;O-Zone&quot; Pinassi</B> 
+    <A HREF="mailto:tecnica%40liste.siena.linux.it?Subject=%5BTecnica%5D%20Odiare%20HotPlug&In-Reply-To="
+       TITLE="[Tecnica] Odiare HotPlug">o-zone a zerozone.it
+       </A><BR>
+    <I>Sab 13 Gen 2007 09:46:29 GMT</I>
+    <P><UL>
+        <LI>Messaggio precedente: <A HREF="000383.html">[Tecnica] Vorrei, ma non posso!
+</A></li>
+        <LI>Prossimo messaggio: <A HREF="000385.html">[Tecnica] Odiare HotPlug
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#384">[ Data ]</a>
+              <a href="thread.html#384">[ Thread ]</a>
+              <a href="subject.html#384">[ Oggetto ]</a>
+	      <a href="author.html#384">[ Autore ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ho un problemino con Hotplug che mi affligge da tempo. Praticamente le 
+periferiche USB come scanner e macchina fotografica non funzionano se non da 
+root. Ho scoperto che, per farle funzionare anche come utente, devo fare un 
+'chmod' in /proc/bus/usb/xxx/xxx, dove xxx sono dei numeri del sistema. 
+Stamani ho decido di risolvere la questione e, seguendo Google, ho 
+configurato hotplug &quot;a modino&quot;. Ho anche abilitato il debug e questo è quello 
+che succede quando accendo lo scanner:
+
+Jan 13 09:33:15 gray kernel: usb 2-2: new full speed USB device using uhci_hcd 
+and address 7
+Jan 13 09:33:15 gray kernel: usb 2-2: Product: USB MFP
+Jan 13 09:33:15 gray kernel: usb 2-2: Manufacturer: EPSON
+Jan 13 09:33:15 gray kernel: usb 2-2: SerialNumber: RH0010410271027360
+Jan 13 09:33:15 gray kernel: drivers/usb/class/usblp.c: usblp0: USB 
+Bidirectional printer dev 7 if 1 alt 0 proto 2 vid 0x04B8 pid 0x080E
+Jan 13 09:33:15 gray default.hotplug[15712]: arguments (usb) env 
+(SUBSYSTEM=usb OLDPWD=/ 
+DEVPATH=/devices/pci0000:00/0000:00:1d.0/usb2/2-2/2-2:1.0 
+PATH=/bin:/sbin:/usr/sbin:/usr/bin ACTION=add 
+MODALIAS=usb:v04B8p080Ed0100dc00dsc00dp00icFFiscFFipFF PWD=/etc/hotplug 
+HOME=/ SHLVL=2 DEVICE=/proc/bus/usb/002/007 INTERFACE=255/255/255 
+PRODUCT=4b8/80e/100 TYPE=0/0/0 DEBUG=yes PHYSDEVBUS=usb SEQNUM=1085 
+_=/usr/bin/env)
+Jan 13 09:33:15 gray default.hotplug[15712]: invoke /etc/hotplug/usb.agent ()
+Jan 13 09:33:16 gray usb.agent[15712]: Setup scanner for USB product 
+4b8/80e/100
+Jan 13 09:33:16 gray default.hotplug[15714]: arguments (usb) env 
+(SUBSYSTEM=usb OLDPWD=/ 
+DEVPATH=/devices/pci0000:00/0000:00:1d.0/usb2/2-2/2-2:1.1 
+PATH=/bin:/sbin:/usr/sbin:/usr/bin ACTION=add 
+MODALIAS=usb:v04B8p080Ed0100dc00dsc00dp00ic07isc01ip02 PWD=/etc/hotplug 
+HOME=/ SHLVL=2 DEVICE=/proc/bus/usb/002/007 INTERFACE=7/1/2 
+PRODUCT=4b8/80e/100 TYPE=0/0/0 DEBUG=yes PHYSDEVBUS=usb SEQNUM=1086 
+_=/usr/bin/env)
+Jan 13 09:33:16 gray default.hotplug[15714]: invoke /etc/hotplug/usb.agent ()
+Jan 13 09:33:16 gray usb.agent[15714]: Setup scanner for USB product 
+4b8/80e/100
+Jan 13 09:33:16 gray default.hotplug[15801]: arguments (usb) env 
+(PHYSDEVPATH=/devices/pci0000:00/0000:00:1d.0/usb2/2-2/2-2:1.1 SUBSYSTEM=usb 
+OLDPWD=/ DEVPATH=/class/usb/lp0 MINOR=0 PATH=/bin:/sbin:/usr/sbin:/usr/bin 
+ACTION=add PWD=/etc/hotplug MAJOR=180 HOME=/ SHLVL=2 PHYSDEVDRIVER=usblp 
+DEBUG=yes PHYSDEVBUS=usb SEQNUM=1087 _=/usr/bin/env)
+Jan 13 09:33:16 gray default.hotplug[15801]: invoke /etc/hotplug/usb.agent ()
+Jan 13 09:33:16 gray default.hotplug[15814]: arguments (usb_device) env 
+(PHYSDEVPATH=/devices/pci0000:00/0000:00:1d.0/usb2/2-2 SUBSYSTEM=usb_device 
+OLDPWD=/ DEVPATH=/class/usb_device/usbdev2.7 MINOR=134 
+PATH=/bin:/sbin:/usr/sbin:/usr/bin ACTION=add PWD=/etc/hotplug MAJOR=189 
+HOME=/ SHLVL=2 PHYSDEVDRIVER=usb DEBUG=yes PHYSDEVBUS=usb SEQNUM=1088 
+_=/usr/bin/env)
+Jan 13 09:33:16 gray default.hotplug[15814]: 
+invoke /etc/hotplug/usb_device.agent ()
+Jan 13 09:33:16 gray default.hotplug[15706]: arguments (usb) env 
+(SUBSYSTEM=usb OLDPWD=/ DEVPATH=/devices/pci0000:00/0000:00:1d.0/usb2/2-2 
+PATH=/bin:/sbin:/usr/sbin:/usr/bin ACTION=add PWD=/etc/hotplug HOME=/ SHLVL=2 
+PHYSDEVDRIVER=usb DEBUG=yes PHYSDEVBUS=usb SEQNUM=1084 _=/usr/bin/env)
+Jan 13 09:33:16 gray default.hotplug[15706]: invoke /etc/hotplug/usb.agent ()
+Jan 13 09:33:18 gray udev[15879]: creating device node '/dev/usbdev2.7'
+Jan 13 09:33:28 gray udev[15876]: configured rule in 
+'/etc/udev/rules.d/udev.rules' at line 115 applied, 'lp0' becomes 'usb/%k'
+Jan 13 09:33:28 gray udev[15876]: creating device node '/dev/usb/lp0'
+
+l'usermap relativo è questo:
+
+# Epson CX3650 Scanner
+scanner 0x0003 0x04b8 0x080e 0x0000 0x0000 0x00 0x00 0x00 0x00 0x00 0x00 
+0x00000000
+
+
+dovrebbe, secondo l'usermap, lanciare lo script &quot;scanner&quot;:
+
+#!/bin/bash
+
+if [ &quot;$ACTION&quot; = &quot;add&quot; -a &quot;$TYPE&quot; = &quot;usb&quot; ]; then
+    chown root:scanner &quot;$DEVICE&quot;
+    chmod 0666 &quot;$DEVICE&quot;
+fi
+
+che però non viene eseguito, visto che i permessi del file relativo non 
+cambiano. Questo il tree della directory /etc/hotplug:
+
+|<i>-- blacklist
+</I>|<i>-- dasd.agent
+</I>|<i>-- dasd.permissions
+</I>|<i>-- firmware.agent
+</I>|<i>-- hotplug.functions
+</I>|<i>-- ieee1394.agent
+</I>|<i>-- input.agent
+</I>|<i>-- input.rc
+</I>|<i>-- net.agent
+</I>|<i>-- pci
+</I>|<i>-- pci.agent
+</I>|<i>-- pci.rc
+</I>|<i>-- scanner
+</I>|<i>-- scsi.agent
+</I>|<i>-- tape.agent
+</I>|<i>-- tape.permissions
+</I>|<i>-- usb
+</I>|<i>   |-- libsane.usermap
+</I>|<i>   `-- usbcam.usermap
+</I>|<i>-- usb.agent
+</I>|<i>-- usb.distmap
+</I>|<i>-- usb.handmap
+</I>|<i>-- usb.rc
+</I>|<i>-- usb_device.agent
+</I>`-- usbcam
+
+Consigli e suggerimenti ?
+
+Oz
+
+-- 
+----
+O-Zone ! No (C) since 1996
+Riding on VFR VTec 2002 &quot;Vuffy&quot;
+Home <A HREF="http://www.zerozone.it">http://www.zerozone.it</A>
+Blog <A HREF="http://blog.zerozone.it/user/o-zone">http://blog.zerozone.it/user/o-zone</A>
+Luna di miele <A HREF="http://www.lunamieleros.info">http://www.lunamieleros.info</A>
+Photos <A HREF="http://myphotos.zerozone.it/user/o-zone">http://myphotos.zerozone.it/user/o-zone</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Messaggio precedente: <A HREF="000383.html">[Tecnica] Vorrei, ma non posso!
+</A></li>
+	<LI>Prossimo messaggio: <A HREF="000385.html">[Tecnica] Odiare HotPlug
+</A></li>
+	<LI> <B>Messaggi ordinati per:</B> 
+              <a href="date.html#384">[ Data ]</a>
+              <a href="thread.html#384">[ Thread ]</a>
+              <a href="subject.html#384">[ Oggetto ]</a>
+              <a href="author.html#384">[ Autore ]</a>
+         </LI>
+       </UL>
+       <hr>
+       <a href="../../../cgi-bin/mailman/listinfo/tecnica.html">Maggiori informazioni sulla lista 
+	       Tecnica</a><br>
+</body></html>
